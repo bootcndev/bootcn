@@ -7,7 +7,8 @@ test.describe('badge', () => {
     const errors = collectErrors(page);
     await openPreview(page, 'badge');
 
-    await expect(page.locator('.bootcn-badge')).toHaveCount(8);
+    // One of each variant; dark mode is the page theme, not a second copy.
+    await expect(page.locator('.bootcn-badge')).toHaveCount(4);
     await expect(page.locator('.bootcn-badge--default').first()).toBeVisible();
 
     await expectNoAxeViolations(page);
