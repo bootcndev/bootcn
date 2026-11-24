@@ -43,7 +43,7 @@
   width: 100%;
   border: 1px solid var(--vp-c-divider);
   border-radius: 8px;
-  background: #fff;
+  background: transparent;
 }
 
 .bootcn-preview figcaption {

@@ -4,6 +4,24 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Bootcn Popover preview</title>
+    <script>
+      // Preview theme: ?theme=dark|light, else the docs page around the frame, else light.
+      (function () {
+        var theme = new URLSearchParams(location.search).get('theme');
+        if (!theme) {
+          try {
+            theme =
+              window.parent !== window &&
+              window.parent.document.documentElement.classList.contains('dark')
+                ? 'dark'
+                : 'light';
+          } catch (error) {
+            theme = 'light';
+          }
+        }
+        document.documentElement.setAttribute('data-bs-theme', theme === 'dark' ? 'dark' : 'light');
+      })();
+    </script>
     <link
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.9/dist/css/bootstrap.min.css"
@@ -15,6 +33,7 @@
   <body>
     <main class="container py-4">
       <h1 class="h4 mb-4">Popover</h1>
+      <h2 class="h6 mb-3">Click or focus a button</h2>
       <div class="d-flex flex-wrap gap-2">
         <button
           type="button"
@@ -38,37 +57,6 @@
           Dismiss on next click
         </button>
       </div>
-      <section
-        class="mt-5 p-3 rounded"
-        data-bs-theme="dark"
-        aria-label="Dark theme"
-        style="background-color: var(--bs-body-bg); color: var(--bs-body-color)"
-      >
-        <h2 class="h6 mb-3">Dark theme</h2>
-        <div class="d-flex flex-wrap gap-2">
-          <button
-            type="button"
-            class="btn bootcn-button bootcn-button--outline"
-            data-bs-toggle="popover"
-            data-bs-title="Storage"
-            data-bs-content="You are using 7.2 GB of your 10 GB plan."
-            data-bs-custom-class="bootcn-popover"
-          >
-            Show usage
-          </button>
-          <button
-            type="button"
-            class="btn bootcn-button bootcn-button--ghost"
-            data-bs-toggle="popover"
-            data-bs-trigger="focus"
-            data-bs-placement="bottom"
-            data-bs-content="Dismissed when focus moves elsewhere."
-            data-bs-custom-class="bootcn-popover"
-          >
-            Dismiss on next click
-          </button>
-        </div>
-      </section>
     </main>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.9/dist/js/bootstrap.bundle.min.js"></script>
     <script src="popover.js"></script>

@@ -46,3 +46,6 @@ window.Bootcn.popover.destroy(container);
 - Escape closes the popover and focus stays on the trigger.
 - Popovers are not modal and do not trap focus. For forms or complex content,
   use the Dialog component.
+- Bootstrap renders the popover title as an `<h3>`. Use popovers with a title
+  on pages that already have an `<h2>`, or set Bootstrap's `template` option to
+  a different heading level, so heading levels do not skip.

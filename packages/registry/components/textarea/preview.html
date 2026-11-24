@@ -4,6 +4,24 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Bootcn Textarea preview</title>
+    <script>
+      // Preview theme: ?theme=dark|light, else the docs page around the frame, else light.
+      (function () {
+        var theme = new URLSearchParams(location.search).get('theme');
+        if (!theme) {
+          try {
+            theme =
+              window.parent !== window &&
+              window.parent.document.documentElement.classList.contains('dark')
+                ? 'dark'
+                : 'light';
+          } catch (error) {
+            theme = 'light';
+          }
+        }
+        document.documentElement.setAttribute('data-bs-theme', theme === 'dark' ? 'dark' : 'light');
+      })();
+    </script>
     <link
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.9/dist/css/bootstrap.min.css"
@@ -55,56 +73,6 @@
           Write a message before sending.
         </div>
       </div>
-      <section
-        class="mt-5 p-3 rounded"
-        data-bs-theme="dark"
-        aria-label="Dark theme"
-        style="background-color: var(--bs-body-bg); color: var(--bs-body-color)"
-      >
-        <h2 class="h6 mb-3">Dark theme</h2>
-        <div class="bootcn-field">
-          <label for="bootcn-textarea-bio-dark" class="form-label bootcn-field__label">Bio</label>
-          <textarea
-            class="form-control bootcn-textarea"
-            id="bootcn-textarea-bio-dark"
-            name="bio-dark"
-            rows="3"
-            aria-describedby="bootcn-textarea-bio-help-dark"
-            placeholder="Tell us a little about yourself"
-          ></textarea>
-          <p class="bootcn-field__help" id="bootcn-textarea-bio-help-dark">Up to 280 characters.</p>
-        </div>
-
-        <div class="bootcn-field mt-3">
-          <label for="bootcn-textarea-notes-dark" class="form-label bootcn-field__label"
-            >Notes (grows with content)</label
-          >
-          <textarea
-            class="form-control bootcn-textarea bootcn-textarea--autosize"
-            id="bootcn-textarea-notes-dark"
-            name="notes-dark"
-            rows="2"
-          ></textarea>
-        </div>
-
-        <div class="bootcn-field mt-3">
-          <label for="bootcn-textarea-message-dark" class="form-label bootcn-field__label"
-            >Message</label
-          >
-          <textarea
-            class="form-control bootcn-textarea"
-            id="bootcn-textarea-message-dark"
-            name="message-dark"
-            rows="3"
-            required
-            aria-invalid="true"
-            aria-describedby="bootcn-textarea-message-error-dark"
-          ></textarea>
-          <div class="invalid-feedback" id="bootcn-textarea-message-error-dark">
-            Write a message before sending.
-          </div>
-        </div>
-      </section>
     </main>
   </body>
 </html>

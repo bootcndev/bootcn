@@ -111,6 +111,33 @@ for (const theme of ['light', 'dark'] as const) {
   }
 }
 
+test('previews follow the docs theme, without a separate dark copy', async ({ page }) => {
+  await setTheme(page, 'dark');
+  await page.goto('components/select');
+  const frameHtml = page.frameLocator('.bootcn-preview iframe').locator('html');
+  await expect(frameHtml).toHaveAttribute('data-bs-theme', 'dark');
+  await expect(
+    page
+      .frameLocator('.bootcn-preview iframe')
+      .locator('[data-bs-theme="dark"] [data-bs-theme="dark"], body [data-bs-theme]'),
+  ).toHaveCount(0);
+
+  await page.locator('.VPNavBar .VPSwitchAppearance:visible').first().click();
+  await expect(page.locator('html')).not.toHaveClass(/dark/);
+  await expect(frameHtml).toHaveAttribute('data-bs-theme', 'light');
+  await expect(page.getByRole('link', { name: 'Open in a new tab' })).toHaveAttribute(
+    'href',
+    /preview\.html\?theme=light$/,
+  );
+});
+
+test('a preview opened on its own honours ?theme=', async ({ page }) => {
+  await page.goto('previews/components/button/preview.html?theme=dark');
+  await expect(page.locator('html')).toHaveAttribute('data-bs-theme', 'dark');
+  await page.goto('previews/components/button/preview.html');
+  await expect(page.locator('html')).toHaveAttribute('data-bs-theme', 'light');
+});
+
 test('search finds a component', async ({ page }) => {
   await page.goto('guide/introduction');
   await page

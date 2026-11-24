@@ -110,6 +110,10 @@ Rules:
 - Components must work in both light and dark mode without extra classes.
 - Override tokens in the tokens file's dark block, not inside component files,
   unless a component genuinely needs its own dark value.
+- `preview.html` shows each example once. A small inline script in `<head>`
+  sets the page theme from `?theme=dark|light`, else from the docs page that
+  embeds it, else light. Do not add a separate dark copy of the examples;
+  the preview tests run axe with the whole page in both themes.
 
 ## 7. Reduced motion
 

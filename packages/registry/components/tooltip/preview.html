@@ -4,6 +4,24 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Bootcn Tooltip preview</title>
+    <script>
+      // Preview theme: ?theme=dark|light, else the docs page around the frame, else light.
+      (function () {
+        var theme = new URLSearchParams(location.search).get('theme');
+        if (!theme) {
+          try {
+            theme =
+              window.parent !== window &&
+              window.parent.document.documentElement.classList.contains('dark')
+                ? 'dark'
+                : 'light';
+          } catch (error) {
+            theme = 'light';
+          }
+        }
+        document.documentElement.setAttribute('data-bs-theme', theme === 'dark' ? 'dark' : 'light');
+      })();
+    </script>
     <link
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.9/dist/css/bootstrap.min.css"
@@ -51,50 +69,6 @@
           </svg>
         </button>
       </div>
-      <section
-        class="mt-5 p-3 rounded"
-        data-bs-theme="dark"
-        aria-label="Dark theme"
-        style="background-color: var(--bs-body-bg); color: var(--bs-body-color)"
-      >
-        <h2 class="h6 mb-3">Dark theme</h2>
-        <div class="d-flex flex-wrap gap-2">
-          <button
-            type="button"
-            class="btn bootcn-button bootcn-button--outline"
-            data-bs-toggle="tooltip"
-            data-bs-title="Add to library"
-            data-bs-custom-class="bootcn-tooltip"
-          >
-            Hover or focus me
-          </button>
-          <button
-            type="button"
-            class="btn bootcn-button bootcn-button--outline bootcn-button--icon"
-            aria-label="Settings"
-            data-bs-toggle="tooltip"
-            data-bs-title="Settings"
-            data-bs-placement="bottom"
-            data-bs-custom-class="bootcn-tooltip"
-          >
-            <svg
-              width="18"
-              height="18"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="2"
-              aria-hidden="true"
-              focusable="false"
-            >
-              <circle cx="12" cy="12" r="3" />
-              <path
-                d="M12 2v3M12 19v3M2 12h3M19 12h3M4.9 4.9l2.1 2.1M17 17l2.1 2.1M4.9 19.1 7 17M17 7l2.1-2.1"
-              />
-            </svg>
-          </button>
-        </div>
-      </section>
     </main>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.9/dist/js/bootstrap.bundle.min.js"></script>
     <script src="tooltip.js"></script>
