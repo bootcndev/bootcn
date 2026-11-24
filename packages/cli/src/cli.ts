@@ -8,6 +8,7 @@ import { diffCommand } from './commands/diff.js';
 import { infoCommand } from './commands/info.js';
 import { initCommand } from './commands/init.js';
 import { listCommand } from './commands/list.js';
+import { mcpCommand } from './commands/mcp.js';
 import { BRAND, BRAND_TITLE, EXIT } from './constants.js';
 import type { Context } from './context.js';
 import { CliError } from './errors.js';
@@ -117,6 +118,15 @@ export async function run(argv: readonly string[], deps: RunDeps = {}): Promise<
     .argument('[names...]', 'item names to compare')
     .action(async (names: string[], _options: unknown, command: Command) => {
       exitCode = await diffCommand(buildContext(command.optsWithGlobals<GlobalOptions>()), names);
+    });
+
+  program
+    .command('mcp')
+    .description('run a Model Context Protocol server on stdio for AI assistants')
+    .action(async (_options: unknown, command: Command) => {
+      // stdout carries the protocol: never prompt, never warn there.
+      const ctx = buildContext({ ...command.optsWithGlobals<GlobalOptions>(), yes: true });
+      exitCode = await mcpCommand(ctx, VERSION);
     });
 
   program

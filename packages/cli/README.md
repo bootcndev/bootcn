@@ -13,6 +13,7 @@ npx bootcn add button dialog  # copies the files, asks before overwriting
 npx bootcn list               # registry items, installed ones marked
 npx bootcn info dialog        # files, dependencies, accessibility notes
 npx bootcn diff               # your copies vs the registry, read-only
+npx bootcn mcp                # MCP server for AI assistants (stdio)
 npx bootcn add login-card     # blocks: sections built from components
 npx bootcn add admin-dashboard # templates: a complete page with working links
 ```

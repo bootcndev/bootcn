@@ -113,6 +113,7 @@ async function writeLlmsTxt(): Promise<void> {
     ['Theming', 'guide/theming', 'Design tokens and how to change them.'],
     ['Dark mode', 'guide/dark-mode', 'Color modes, saving the choice and a toggle.'],
     ['Laravel', 'guide/laravel', 'Blade views, asset paths, Vite and Livewire.'],
+    ['AI assistants (MCP)', 'guide/mcp', 'The bootcn mcp server for Claude, Cursor and VS Code.'],
     [
       'Right to left',
       'guide/rtl',

@@ -120,6 +120,7 @@ export default defineConfig({
           { text: 'Dark mode', link: '/guide/dark-mode' },
           { text: 'Right to left', link: '/guide/rtl' },
           { text: 'Laravel', link: '/guide/laravel' },
+          { text: 'AI assistants (MCP)', link: '/guide/mcp' },
         ],
       },
       ...kindSidebar('components'),

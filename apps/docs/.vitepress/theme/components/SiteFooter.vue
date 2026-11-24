@@ -17,6 +17,7 @@ const columns = [
       { text: 'Dark mode', href: withBase('/guide/dark-mode') },
       { text: 'Right to left', href: withBase('/guide/rtl') },
       { text: 'Laravel', href: withBase('/guide/laravel') },
+      { text: 'AI assistants (MCP)', href: withBase('/guide/mcp') },
     ],
   },
   {

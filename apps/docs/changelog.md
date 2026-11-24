@@ -138,6 +138,13 @@ each published version stays available under `/v/<version>/`) and the **CLI**
 
 ## CLI
 
+### 0.5.0
+
+- `bootcn mcp`: a Model Context Protocol server on stdio with `list_items`,
+  `search_items`, `get_item`, `add_items` and `get_project_config`, for
+  Claude, Cursor, VS Code and other assistants. Guide:
+  [AI assistants (MCP)](./guide/mcp).
+
 ### 0.4.0
 
 - Laravel: `init` recognizes a Laravel project and sets `"framework":
