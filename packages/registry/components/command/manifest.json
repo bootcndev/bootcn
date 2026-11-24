@@ -1,0 +1,33 @@
+{
+  "$schema": "../../schema/registry-item.schema.json",
+  "name": "command",
+  "type": "registry:ui",
+  "title": "Command",
+  "description": "A fast, searchable list of actions: inline, or as a Ctrl/⌘ K command palette in a dialog.",
+  "version": "1.0.0",
+  "categories": ["navigation"],
+  "dependencies": [],
+  "registryDependencies": ["kbd", "button"],
+  "compatibility": {
+    "bootstrap": "5.3",
+    "platform": ["Bootstrap CSS", "Bootstrap JS bundle"]
+  },
+  "license": "MIT",
+  "files": [
+    {
+      "path": "command.html",
+      "target": "command.html",
+      "type": "registry:component"
+    },
+    {
+      "path": "command.css",
+      "target": "command.css",
+      "type": "registry:style"
+    },
+    {
+      "path": "command.js",
+      "target": "command.js",
+      "type": "registry:script"
+    }
+  ]
+}

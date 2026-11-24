@@ -1,0 +1,52 @@
+.bootcn-menubar {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  padding: 0.25rem;
+  border: var(--bootcn-border-width) solid var(--bootcn-border-color);
+  border-radius: var(--bootcn-radius);
+  background-color: var(--bootcn-background);
+  box-shadow: var(--bootcn-shadow-sm);
+}
+
+.bootcn-menubar__menu {
+  position: relative;
+}
+
+.bootcn-menubar__trigger {
+  padding: 0.25rem 0.75rem;
+  border: 0;
+  border-radius: var(--bootcn-radius-sm);
+  background: transparent;
+  color: var(--bootcn-foreground);
+  font-size: 0.875rem;
+  font-weight: 500;
+}
+
+.bootcn-menubar__trigger:hover,
+.bootcn-menubar__trigger[aria-expanded='true'] {
+  background-color: var(--bootcn-accent);
+}
+
+.bootcn-menubar__trigger:focus-visible {
+  outline: 0;
+  box-shadow: var(--bootcn-focus-ring);
+}
+
+.bootcn-menubar__content {
+  top: calc(100% + 0.5rem);
+  left: -0.25rem;
+}
+
+.bootcn-menubar__content.show {
+  display: block;
+  position: absolute;
+}
+
+.bootcn-menubar__check-icon {
+  visibility: hidden;
+}
+
+.bootcn-menubar__check[aria-checked='true'] .bootcn-menubar__check-icon {
+  visibility: visible;
+}

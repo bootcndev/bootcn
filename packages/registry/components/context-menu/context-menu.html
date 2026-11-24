@@ -1,0 +1,81 @@
+<button
+  type="button"
+  class="bootcn-context-menu__target"
+  data-bootcn-context-menu="bootcn-context-menu-file"
+  aria-haspopup="menu"
+  aria-describedby="bootcn-context-menu-hint"
+>
+  <svg
+    class="bootcn-icon"
+    width="16"
+    height="16"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    stroke-width="2"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+    aria-hidden="true"
+    focusable="false"
+  >
+    <path d="M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z" />
+    <path d="M14 3v6h6" />
+  </svg>
+  <span>report.pdf</span>
+</button>
+<p class="bootcn-context-menu__hint" id="bootcn-context-menu-hint">
+  Right-click the file, or focus it and press Shift+F10, for actions.
+</p>
+
+<ul
+  class="dropdown-menu bootcn-dropdown__menu bootcn-context-menu"
+  id="bootcn-context-menu-file"
+  role="menu"
+  aria-label="File actions"
+>
+  <li role="none">
+    <button
+      class="dropdown-item bootcn-dropdown__item"
+      type="button"
+      role="menuitem"
+      tabindex="-1"
+      data-value="open"
+    >
+      Open <span class="bootcn-dropdown__shortcut" aria-hidden="true">⌘O</span>
+    </button>
+  </li>
+  <li role="none">
+    <button
+      class="dropdown-item bootcn-dropdown__item"
+      type="button"
+      role="menuitem"
+      tabindex="-1"
+      data-value="rename"
+    >
+      Rename <span class="bootcn-dropdown__shortcut" aria-hidden="true">⌘R</span>
+    </button>
+  </li>
+  <li role="none">
+    <button
+      class="dropdown-item bootcn-dropdown__item"
+      type="button"
+      role="menuitem"
+      tabindex="-1"
+      data-value="duplicate"
+    >
+      Duplicate <span class="bootcn-dropdown__shortcut" aria-hidden="true">⌘D</span>
+    </button>
+  </li>
+  <li role="separator"><hr class="dropdown-divider bootcn-dropdown__divider" /></li>
+  <li role="none">
+    <button
+      class="dropdown-item bootcn-dropdown__item bootcn-dropdown__item--destructive"
+      type="button"
+      role="menuitem"
+      tabindex="-1"
+      data-value="delete"
+    >
+      Delete
+    </button>
+  </li>
+</ul>

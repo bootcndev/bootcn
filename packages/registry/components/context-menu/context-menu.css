@@ -1,0 +1,39 @@
+.bootcn-context-menu__target {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  width: 100%;
+  max-width: 20rem;
+  height: 9rem;
+  border: var(--bootcn-border-width) dashed var(--bootcn-border-color);
+  border-radius: var(--bootcn-radius-lg);
+  background: transparent;
+  color: var(--bootcn-foreground);
+  font-size: 0.875rem;
+}
+
+.bootcn-context-menu__target .bootcn-icon {
+  width: 1.5rem;
+  height: 1.5rem;
+  color: var(--bootcn-muted-foreground);
+}
+
+.bootcn-context-menu__target:focus-visible {
+  outline: 0;
+  box-shadow: var(--bootcn-focus-ring);
+}
+
+.bootcn-context-menu__hint {
+  margin: 0.5rem 0 0;
+  color: var(--bootcn-muted-foreground);
+  font-size: 0.8125rem;
+}
+
+/* Positioned at the pointer by context-menu.js. */
+.bootcn-context-menu.show {
+  position: fixed;
+  z-index: 1060;
+  margin: 0;
+}

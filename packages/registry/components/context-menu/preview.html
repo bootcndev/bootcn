@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Bootcn Context menu preview</title>
+    <script>
+      // Preview theme: ?theme=dark|light, else the docs page around the frame, else light.
+      (function () {
+        var theme = new URLSearchParams(location.search).get('theme');
+        if (!theme) {
+          try {
+            theme =
+              window.parent !== window &&
+              window.parent.document.documentElement.classList.contains('dark')
+                ? 'dark'
+                : 'light';
+          } catch (error) {
+            theme = 'light';
+          }
+        }
+        document.documentElement.setAttribute('data-bs-theme', theme === 'dark' ? 'dark' : 'light');
+      })();
+    </script>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.9/dist/css/bootstrap.min.css"
+    />
+    <link rel="stylesheet" href="../../themes/tokens/tokens.css" />
+    <link rel="stylesheet" href="../button/button.css" />
+    <link rel="stylesheet" href="../dropdown/dropdown.css" />
+    <link rel="stylesheet" href="context-menu.css" />
+  </head>
+  <body>
+    <main class="container py-4" style="min-height: 24rem">
+      <h1 class="h4 mb-4">Context menu</h1>
+      <button
+        type="button"
+        class="bootcn-context-menu__target"
+        data-bootcn-context-menu="bootcn-context-menu-file"
+        aria-haspopup="menu"
+        aria-describedby="bootcn-context-menu-hint"
+      >
+        <svg
+          class="bootcn-icon"
+          width="16"
+          height="16"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          aria-hidden="true"
+          focusable="false"
+        >
+          <path d="M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z" />
+          <path d="M14 3v6h6" />
+        </svg>
+        <span>report.pdf</span>
+      </button>
+      <p class="bootcn-context-menu__hint" id="bootcn-context-menu-hint">
+        Right-click the file, or focus it and press Shift+F10, for actions.
+      </p>
+
+      <ul
+        class="dropdown-menu bootcn-dropdown__menu bootcn-context-menu"
+        id="bootcn-context-menu-file"
+        role="menu"
+        aria-label="File actions"
+      >
+        <li role="none">
+          <button
+            class="dropdown-item bootcn-dropdown__item"
+            type="button"
+            role="menuitem"
+            tabindex="-1"
+            data-value="open"
+          >
+            Open <span class="bootcn-dropdown__shortcut" aria-hidden="true">⌘O</span>
+          </button>
+        </li>
+        <li role="none">
+          <button
+            class="dropdown-item bootcn-dropdown__item"
+            type="button"
+            role="menuitem"
+            tabindex="-1"
+            data-value="rename"
+          >
+            Rename <span class="bootcn-dropdown__shortcut" aria-hidden="true">⌘R</span>
+          </button>
+        </li>
+        <li role="none">
+          <button
+            class="dropdown-item bootcn-dropdown__item"
+            type="button"
+            role="menuitem"
+            tabindex="-1"
+            data-value="duplicate"
+          >
+            Duplicate <span class="bootcn-dropdown__shortcut" aria-hidden="true">⌘D</span>
+          </button>
+        </li>
+        <li role="separator"><hr class="dropdown-divider bootcn-dropdown__divider" /></li>
+        <li role="none">
+          <button
+            class="dropdown-item bootcn-dropdown__item bootcn-dropdown__item--destructive"
+            type="button"
+            role="menuitem"
+            tabindex="-1"
+            data-value="delete"
+          >
+            Delete
+          </button>
+        </li>
+      </ul>
+    </main>
+    <script src="context-menu.js"></script>
+  </body>
+</html>

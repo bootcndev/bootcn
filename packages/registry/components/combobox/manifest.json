@@ -1,0 +1,33 @@
+{
+  "$schema": "../../schema/registry-item.schema.json",
+  "name": "combobox",
+  "type": "registry:ui",
+  "title": "Combobox",
+  "description": "A searchable select: type to filter a list, pick one option or several (shown as chips), fully keyboard accessible.",
+  "version": "1.0.0",
+  "categories": ["forms"],
+  "dependencies": [],
+  "registryDependencies": ["label"],
+  "compatibility": {
+    "bootstrap": "5.3",
+    "platform": ["Bootstrap CSS"]
+  },
+  "license": "MIT",
+  "files": [
+    {
+      "path": "combobox.html",
+      "target": "combobox.html",
+      "type": "registry:component"
+    },
+    {
+      "path": "combobox.css",
+      "target": "combobox.css",
+      "type": "registry:style"
+    },
+    {
+      "path": "combobox.js",
+      "target": "combobox.js",
+      "type": "registry:script"
+    }
+  ]
+}

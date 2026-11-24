@@ -15,6 +15,9 @@ const htmlvalidate = new HtmlValidate({
     'no-inline-style': 'off',
     'doctype-style': 'off',
     'void-style': 'off',
+    // A filterable list (combobox, command) needs a custom listbox: <select>
+    // cannot filter. Every other native-element preference still applies.
+    'prefer-native-element': ['error', { exclude: ['listbox'] }],
   },
 });
 

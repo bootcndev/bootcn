@@ -7,7 +7,7 @@ build with plain HTML and native PHP. Components are installed as editable
 HTML, CSS and JavaScript source files that you own. No React, Vue, jQuery,
 bundler or Node.js is required at runtime.
 
-> **Status:** early (0.x). 43 components, 16 blocks (authentication,
+> **Status:** early (0.x). 47 components, 16 blocks (authentication,
 > dashboard, navigation, marketing), an admin dashboard template and design
 > tokens, with a Tailwind-like look built on Bootstrap. The CLI is on
 > [npm](https://www.npmjs.com/package/bootcn); documentation, live previews and
@@ -54,6 +54,9 @@ the `<link>` and `<script>` tags to add to your layout.
 | `card`         | ui    | HTML, CSS     | Bootstrap CSS             | `button`                             |
 | `checkbox`     | ui    | HTML, CSS     | Bootstrap CSS             | —                                    |
 | `collapsible`  | ui    | HTML, CSS     | Bootstrap CSS + JS bundle | `button`                             |
+| `combobox`     | ui    | HTML, CSS, JS | Bootstrap CSS             | `label`                              |
+| `command`      | ui    | HTML, CSS, JS | Bootstrap CSS + JS bundle | `kbd`, `button`                      |
+| `context-menu` | ui    | HTML, CSS, JS | Bootstrap CSS             | `dropdown`                           |
 | `dialog`       | ui    | HTML, CSS, JS | Bootstrap CSS + JS bundle | `button`                             |
 | `drawer`       | ui    | HTML, CSS     | Bootstrap CSS + JS bundle | `button`, `input`                    |
 | `dropdown`     | ui    | HTML, CSS     | Bootstrap CSS + JS bundle | `button`                             |
@@ -65,6 +68,7 @@ the `<link>` and `<script>` tags to add to your layout.
 | `item`         | ui    | HTML, CSS     | Bootstrap CSS             | `button`, `avatar`                   |
 | `kbd`          | ui    | HTML, CSS     | Bootstrap CSS             | —                                    |
 | `label`        | ui    | HTML, CSS     | Bootstrap CSS             | `input`                              |
+| `menubar`      | ui    | HTML, CSS, JS | Bootstrap CSS             | `dropdown`                           |
 | `pagination`   | ui    | HTML, CSS     | Bootstrap CSS             | —                                    |
 | `popover`      | ui    | HTML, CSS, JS | Bootstrap CSS + JS bundle | `button`                             |
 | `progress`     | ui    | HTML, CSS     | Bootstrap CSS             | —                                    |

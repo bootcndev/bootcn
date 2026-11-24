@@ -1,0 +1,33 @@
+{
+  "$schema": "../../schema/registry-item.schema.json",
+  "name": "menubar",
+  "type": "registry:ui",
+  "title": "Menubar",
+  "description": "A horizontal bar of menus, like a desktop application, with full arrow-key navigation and checkable items.",
+  "version": "1.0.0",
+  "categories": ["navigation"],
+  "dependencies": [],
+  "registryDependencies": ["dropdown"],
+  "compatibility": {
+    "bootstrap": "5.3",
+    "platform": ["Bootstrap CSS"]
+  },
+  "license": "MIT",
+  "files": [
+    {
+      "path": "menubar.html",
+      "target": "menubar.html",
+      "type": "registry:component"
+    },
+    {
+      "path": "menubar.css",
+      "target": "menubar.css",
+      "type": "registry:style"
+    },
+    {
+      "path": "menubar.js",
+      "target": "menubar.js",
+      "type": "registry:script"
+    }
+  ]
+}

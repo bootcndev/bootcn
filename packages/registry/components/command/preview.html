@@ -1,0 +1,509 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Bootcn Command preview</title>
+    <script>
+      // Preview theme: ?theme=dark|light, else the docs page around the frame, else light.
+      (function () {
+        var theme = new URLSearchParams(location.search).get('theme');
+        if (!theme) {
+          try {
+            theme =
+              window.parent !== window &&
+              window.parent.document.documentElement.classList.contains('dark')
+                ? 'dark'
+                : 'light';
+          } catch (error) {
+            theme = 'light';
+          }
+        }
+        document.documentElement.setAttribute('data-bs-theme', theme === 'dark' ? 'dark' : 'light');
+      })();
+    </script>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.9/dist/css/bootstrap.min.css"
+    />
+    <link rel="stylesheet" href="../../themes/tokens/tokens.css" />
+    <link rel="stylesheet" href="../kbd/kbd.css" />
+    <link rel="stylesheet" href="../button/button.css" />
+    <link rel="stylesheet" href="command.css" />
+  </head>
+  <body>
+    <main class="container py-4">
+      <h1 class="h4 mb-4">Command</h1>
+      <div class="bootcn-command" data-bootcn-command>
+        <div class="bootcn-command__search">
+          <svg
+            class="bootcn-icon"
+            width="16"
+            height="16"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            aria-hidden="true"
+            focusable="false"
+          >
+            <circle cx="11" cy="11" r="7" />
+            <path d="m20 20-3.5-3.5" />
+          </svg>
+          <input
+            class="bootcn-command__input"
+            type="text"
+            role="combobox"
+            aria-expanded="true"
+            aria-controls="bootcn-command-inline-list"
+            aria-autocomplete="list"
+            aria-label="Search commands"
+            autocomplete="off"
+            placeholder="Type a command or search…"
+          />
+        </div>
+        <div
+          class="bootcn-command__list"
+          id="bootcn-command-inline-list"
+          role="listbox"
+          aria-label="Commands"
+        >
+          <div
+            class="bootcn-command__group"
+            role="group"
+            aria-labelledby="bootcn-command-inline-group-0"
+          >
+            <div class="bootcn-command__heading" id="bootcn-command-inline-group-0" role="none">
+              Suggestions
+            </div>
+            <div
+              class="bootcn-command__item"
+              role="option"
+              id="bootcn-command-inline-calendar"
+              data-value="calendar"
+              aria-selected="false"
+            >
+              <svg
+                class="bootcn-icon"
+                width="16"
+                height="16"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+                focusable="false"
+              >
+                <rect x="3" y="5" width="18" height="16" rx="2" />
+                <path d="M16 3v4M8 3v4M3 11h18" />
+              </svg>
+              <span>Calendar</span>
+            </div>
+            <div
+              class="bootcn-command__item"
+              role="option"
+              id="bootcn-command-inline-emoji"
+              data-value="emoji"
+              aria-selected="false"
+            >
+              <svg
+                class="bootcn-icon"
+                width="16"
+                height="16"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+                focusable="false"
+              >
+                <circle cx="12" cy="12" r="9" />
+                <path d="M8 14s1.5 2 4 2 4-2 4-2" />
+                <path d="M9 9h.01M15 9h.01" />
+              </svg>
+              <span>Search emoji</span>
+            </div>
+            <div
+              class="bootcn-command__item"
+              role="option"
+              id="bootcn-command-inline-file"
+              data-value="file"
+              aria-selected="false"
+            >
+              <svg
+                class="bootcn-icon"
+                width="16"
+                height="16"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+                focusable="false"
+              >
+                <path d="M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z" />
+                <path d="M14 3v6h6" />
+              </svg>
+              <span>New file</span>
+            </div>
+          </div>
+          <div class="bootcn-command__separator" aria-hidden="true"></div>
+          <div
+            class="bootcn-command__group"
+            role="group"
+            aria-labelledby="bootcn-command-inline-group-1"
+          >
+            <div class="bootcn-command__heading" id="bootcn-command-inline-group-1" role="none">
+              Settings
+            </div>
+            <div
+              class="bootcn-command__item"
+              role="option"
+              id="bootcn-command-inline-profile"
+              data-value="profile"
+              aria-selected="false"
+            >
+              <svg
+                class="bootcn-icon"
+                width="16"
+                height="16"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+                focusable="false"
+              >
+                <circle cx="12" cy="8" r="4" />
+                <path d="M4 21c0-4 4-7 8-7s8 3 8 7" />
+              </svg>
+              <span>Profile</span>
+              <span class="bootcn-command__shortcut" aria-hidden="true">⌘P</span>
+            </div>
+            <div
+              class="bootcn-command__item"
+              role="option"
+              id="bootcn-command-inline-billing"
+              data-value="billing"
+              aria-selected="false"
+            >
+              <svg
+                class="bootcn-icon"
+                width="16"
+                height="16"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+                focusable="false"
+              >
+                <rect x="2" y="5" width="20" height="14" rx="2" />
+                <path d="M2 10h20" />
+              </svg>
+              <span>Billing</span>
+              <span class="bootcn-command__shortcut" aria-hidden="true">⌘B</span>
+            </div>
+            <div
+              class="bootcn-command__item"
+              role="option"
+              id="bootcn-command-inline-settings"
+              data-value="settings"
+              aria-selected="false"
+            >
+              <svg
+                class="bootcn-icon"
+                width="16"
+                height="16"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+                focusable="false"
+              >
+                <circle cx="12" cy="12" r="3" />
+                <path
+                  d="M19.4 15a1.7 1.7 0 0 0 .3 1.8l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.8-.3 1.7 1.7 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1a1.7 1.7 0 0 0-1.1-1.5 1.7 1.7 0 0 0-1.8.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.8 1.7 1.7 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1a1.7 1.7 0 0 0 1.5-1.1 1.7 1.7 0 0 0-.3-1.8l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.7 1.7 0 0 0 1.8.3H9a1.7 1.7 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.1a1.7 1.7 0 0 0 1 1.5 1.7 1.7 0 0 0 1.8-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0-.3 1.8V9a1.7 1.7 0 0 0 1.5 1H21a2 2 0 1 1 0 4h-.1a1.7 1.7 0 0 0-1.5 1z"
+                />
+              </svg>
+              <span>Settings</span>
+              <span class="bootcn-command__shortcut" aria-hidden="true">⌘S</span>
+            </div>
+          </div>
+        </div>
+        <p class="bootcn-command__empty" hidden>No results found.</p>
+        <p class="visually-hidden" role="status" aria-live="polite" data-bootcn-command-status></p>
+      </div>
+
+      <button
+        type="button"
+        class="btn bootcn-button bootcn-button--outline mt-4"
+        data-bs-toggle="modal"
+        data-bs-target="#bootcn-command-dialog"
+      >
+        Open command palette
+        <span class="bootcn-kbd-group" aria-hidden="true"
+          ><kbd class="bootcn-kbd">Ctrl</kbd><kbd class="bootcn-kbd">K</kbd></span
+        >
+      </button>
+
+      <div
+        class="modal fade bootcn-command-dialog"
+        id="bootcn-command-dialog"
+        tabindex="-1"
+        aria-label="Command palette"
+        data-bootcn-command-shortcut="k"
+      >
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="bootcn-command" data-bootcn-command>
+              <div class="bootcn-command__search">
+                <svg
+                  class="bootcn-icon"
+                  width="16"
+                  height="16"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  aria-hidden="true"
+                  focusable="false"
+                >
+                  <circle cx="11" cy="11" r="7" />
+                  <path d="m20 20-3.5-3.5" />
+                </svg>
+                <input
+                  class="bootcn-command__input"
+                  type="text"
+                  role="combobox"
+                  aria-expanded="true"
+                  aria-controls="bootcn-command-dialog-list"
+                  aria-autocomplete="list"
+                  aria-label="Search commands"
+                  autocomplete="off"
+                  placeholder="Type a command or search…"
+                />
+              </div>
+              <div
+                class="bootcn-command__list"
+                id="bootcn-command-dialog-list"
+                role="listbox"
+                aria-label="Commands"
+              >
+                <div
+                  class="bootcn-command__group"
+                  role="group"
+                  aria-labelledby="bootcn-command-dialog-group-0"
+                >
+                  <div
+                    class="bootcn-command__heading"
+                    id="bootcn-command-dialog-group-0"
+                    role="none"
+                  >
+                    Suggestions
+                  </div>
+                  <div
+                    class="bootcn-command__item"
+                    role="option"
+                    id="bootcn-command-dialog-calendar"
+                    data-value="calendar"
+                    aria-selected="false"
+                  >
+                    <svg
+                      class="bootcn-icon"
+                      width="16"
+                      height="16"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      aria-hidden="true"
+                      focusable="false"
+                    >
+                      <rect x="3" y="5" width="18" height="16" rx="2" />
+                      <path d="M16 3v4M8 3v4M3 11h18" />
+                    </svg>
+                    <span>Calendar</span>
+                  </div>
+                  <div
+                    class="bootcn-command__item"
+                    role="option"
+                    id="bootcn-command-dialog-emoji"
+                    data-value="emoji"
+                    aria-selected="false"
+                  >
+                    <svg
+                      class="bootcn-icon"
+                      width="16"
+                      height="16"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      aria-hidden="true"
+                      focusable="false"
+                    >
+                      <circle cx="12" cy="12" r="9" />
+                      <path d="M8 14s1.5 2 4 2 4-2 4-2" />
+                      <path d="M9 9h.01M15 9h.01" />
+                    </svg>
+                    <span>Search emoji</span>
+                  </div>
+                  <div
+                    class="bootcn-command__item"
+                    role="option"
+                    id="bootcn-command-dialog-file"
+                    data-value="file"
+                    aria-selected="false"
+                  >
+                    <svg
+                      class="bootcn-icon"
+                      width="16"
+                      height="16"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      aria-hidden="true"
+                      focusable="false"
+                    >
+                      <path d="M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z" />
+                      <path d="M14 3v6h6" />
+                    </svg>
+                    <span>New file</span>
+                  </div>
+                </div>
+                <div class="bootcn-command__separator" aria-hidden="true"></div>
+                <div
+                  class="bootcn-command__group"
+                  role="group"
+                  aria-labelledby="bootcn-command-dialog-group-1"
+                >
+                  <div
+                    class="bootcn-command__heading"
+                    id="bootcn-command-dialog-group-1"
+                    role="none"
+                  >
+                    Settings
+                  </div>
+                  <div
+                    class="bootcn-command__item"
+                    role="option"
+                    id="bootcn-command-dialog-profile"
+                    data-value="profile"
+                    aria-selected="false"
+                  >
+                    <svg
+                      class="bootcn-icon"
+                      width="16"
+                      height="16"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      aria-hidden="true"
+                      focusable="false"
+                    >
+                      <circle cx="12" cy="8" r="4" />
+                      <path d="M4 21c0-4 4-7 8-7s8 3 8 7" />
+                    </svg>
+                    <span>Profile</span>
+                    <span class="bootcn-command__shortcut" aria-hidden="true">⌘P</span>
+                  </div>
+                  <div
+                    class="bootcn-command__item"
+                    role="option"
+                    id="bootcn-command-dialog-billing"
+                    data-value="billing"
+                    aria-selected="false"
+                  >
+                    <svg
+                      class="bootcn-icon"
+                      width="16"
+                      height="16"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      aria-hidden="true"
+                      focusable="false"
+                    >
+                      <rect x="2" y="5" width="20" height="14" rx="2" />
+                      <path d="M2 10h20" />
+                    </svg>
+                    <span>Billing</span>
+                    <span class="bootcn-command__shortcut" aria-hidden="true">⌘B</span>
+                  </div>
+                  <div
+                    class="bootcn-command__item"
+                    role="option"
+                    id="bootcn-command-dialog-settings"
+                    data-value="settings"
+                    aria-selected="false"
+                  >
+                    <svg
+                      class="bootcn-icon"
+                      width="16"
+                      height="16"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      aria-hidden="true"
+                      focusable="false"
+                    >
+                      <circle cx="12" cy="12" r="3" />
+                      <path
+                        d="M19.4 15a1.7 1.7 0 0 0 .3 1.8l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.8-.3 1.7 1.7 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1a1.7 1.7 0 0 0-1.1-1.5 1.7 1.7 0 0 0-1.8.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.8 1.7 1.7 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1a1.7 1.7 0 0 0 1.5-1.1 1.7 1.7 0 0 0-.3-1.8l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.7 1.7 0 0 0 1.8.3H9a1.7 1.7 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.1a1.7 1.7 0 0 0 1 1.5 1.7 1.7 0 0 0 1.8-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0-.3 1.8V9a1.7 1.7 0 0 0 1.5 1H21a2 2 0 1 1 0 4h-.1a1.7 1.7 0 0 0-1.5 1z"
+                      />
+                    </svg>
+                    <span>Settings</span>
+                    <span class="bootcn-command__shortcut" aria-hidden="true">⌘S</span>
+                  </div>
+                </div>
+              </div>
+              <p class="bootcn-command__empty" hidden>No results found.</p>
+              <p
+                class="visually-hidden"
+                role="status"
+                aria-live="polite"
+                data-bootcn-command-status
+              ></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.9/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="command.js"></script>
+  </body>
+</html>

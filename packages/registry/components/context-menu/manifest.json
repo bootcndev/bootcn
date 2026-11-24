@@ -1,0 +1,33 @@
+{
+  "$schema": "../../schema/registry-item.schema.json",
+  "name": "context-menu",
+  "type": "registry:ui",
+  "title": "Context menu",
+  "description": "A menu of actions for an element, opened with a right-click, Shift+F10 or the Menu key.",
+  "version": "1.0.0",
+  "categories": ["overlays"],
+  "dependencies": [],
+  "registryDependencies": ["dropdown"],
+  "compatibility": {
+    "bootstrap": "5.3",
+    "platform": ["Bootstrap CSS"]
+  },
+  "license": "MIT",
+  "files": [
+    {
+      "path": "context-menu.html",
+      "target": "context-menu.html",
+      "type": "registry:component"
+    },
+    {
+      "path": "context-menu.css",
+      "target": "context-menu.css",
+      "type": "registry:style"
+    },
+    {
+      "path": "context-menu.js",
+      "target": "context-menu.js",
+      "type": "registry:script"
+    }
+  ]
+}
