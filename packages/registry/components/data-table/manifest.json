@@ -1,0 +1,33 @@
+{
+  "$schema": "../../schema/registry-item.schema.json",
+  "name": "data-table",
+  "type": "registry:ui",
+  "title": "Data table",
+  "description": "A table with sorting, filtering, pagination and row selection, enhancing server-rendered rows.",
+  "version": "1.0.0",
+  "categories": ["data-display"],
+  "dependencies": [],
+  "registryDependencies": ["table", "input", "button", "checkbox"],
+  "compatibility": {
+    "bootstrap": "5.3",
+    "platform": ["Bootstrap CSS"]
+  },
+  "license": "MIT",
+  "files": [
+    {
+      "path": "data-table.html",
+      "target": "data-table.html",
+      "type": "registry:component"
+    },
+    {
+      "path": "data-table.css",
+      "target": "data-table.css",
+      "type": "registry:style"
+    },
+    {
+      "path": "data-table.js",
+      "target": "data-table.js",
+      "type": "registry:script"
+    }
+  ]
+}

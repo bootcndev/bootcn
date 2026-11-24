@@ -35,13 +35,16 @@
     if (root) render(root);
   }
 
-  // Keep the caret at the end, so typing always fills the next slot.
-  function onSelect(event) {
+  // Clicking a slot puts the caret at the end, so typing fills the next slot.
+  // A text selection (select all, then paste or type) is left alone, so it
+  // replaces the code.
+  function onPlaceCaret(event) {
     const input = event.target;
     if (!(input instanceof HTMLInputElement) || !input.closest(ROOT)) return;
     const end = input.value.length;
-    if (input.selectionStart !== end || input.selectionEnd !== end)
+    if (input.selectionStart === input.selectionEnd && input.selectionStart !== end) {
       input.setSelectionRange(end, end);
+    }
   }
 
   function init(root = document) {
@@ -51,8 +54,8 @@
     });
     if (!listening) {
       document.addEventListener('input', onInput);
-      document.addEventListener('select', onSelect, true);
-      document.addEventListener('click', onSelect, true);
+      document.addEventListener('click', onPlaceCaret, true);
+      document.addEventListener('focus', onPlaceCaret, true);
       listening = true;
     }
   }
@@ -61,8 +64,8 @@
     root.querySelectorAll(ROOT).forEach((element) => element.classList.remove('is-enhanced'));
     if (root === document && listening) {
       document.removeEventListener('input', onInput);
-      document.removeEventListener('select', onSelect, true);
-      document.removeEventListener('click', onSelect, true);
+      document.removeEventListener('click', onPlaceCaret, true);
+      document.removeEventListener('focus', onPlaceCaret, true);
       listening = false;
     }
   }

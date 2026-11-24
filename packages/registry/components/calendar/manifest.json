@@ -1,0 +1,33 @@
+{
+  "$schema": "../../schema/registry-item.schema.json",
+  "name": "calendar",
+  "type": "registry:ui",
+  "title": "Calendar",
+  "description": "A month grid for picking a date, with full keyboard navigation, localized names and optional limits.",
+  "version": "1.0.0",
+  "categories": ["forms"],
+  "dependencies": [],
+  "registryDependencies": [],
+  "compatibility": {
+    "bootstrap": "5.3",
+    "platform": ["Bootstrap CSS"]
+  },
+  "license": "MIT",
+  "files": [
+    {
+      "path": "calendar.html",
+      "target": "calendar.html",
+      "type": "registry:component"
+    },
+    {
+      "path": "calendar.css",
+      "target": "calendar.css",
+      "type": "registry:style"
+    },
+    {
+      "path": "calendar.js",
+      "target": "calendar.js",
+      "type": "registry:script"
+    }
+  ]
+}

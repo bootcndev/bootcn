@@ -215,6 +215,11 @@ test('input OTP: one input, digits only, slots mirror it, complete event', async
   await expect(page.locator('.bootcn-otp__slot.is-active')).toHaveCount(1);
   await expectNoAxeViolations(page);
 
+  // Select all, then type over it: the selection is replaced, not appended to.
+  await page.keyboard.press('ControlOrMeta+a');
+  await page.keyboard.type('55');
+  await expect(input).toHaveValue('55');
+
   await input.fill('987654'); // paste or SMS autofill fills every slot at once
   await expect(page.locator('.bootcn-otp__slot')).toHaveText(['9', '8', '7', '6', '5', '4']);
   await expect(page.locator('body')).toHaveAttribute('data-otp', '987654');
@@ -247,4 +252,149 @@ test('resizable: keyboard and pointer resize the controlled panel', async ({ pag
   await page.mouse.move(group.x + group.width * 0.6, box.y + box.height / 2, { steps: 4 });
   await page.mouse.up();
   await expect(handle).toHaveAttribute('aria-valuenow', '60');
+});
+
+test.describe('calendar and date picker', () => {
+  test.beforeEach(async ({ page }) => {
+    await page.clock.setFixedTime(new Date('2026-11-24T10:00:00'));
+  });
+
+  test('calendar: grid keyboard navigation, limits and selection', async ({ page }) => {
+    const errors = collectErrors(page);
+    await openPreview(page, 'calendar');
+    const grid = page.getByRole('grid', { name: 'November 2026' });
+    await expect(grid).toBeVisible();
+    // Weeks start on Monday unless data-week-start says otherwise.
+    await expect(grid.getByRole('columnheader').first()).toHaveAttribute('abbr', 'Monday');
+    const day = (name: string) => page.getByRole('button', { name, exact: true });
+    await expect(day('Tuesday, November 24, 2026')).toHaveAttribute('aria-current', 'date');
+    await expect(page.locator('td[aria-selected="true"]')).toHaveText('24');
+    await expectNoAxeViolations(page);
+
+    await day('Tuesday, November 24, 2026').focus();
+    await page.keyboard.press('ArrowRight');
+    await expect(day('Wednesday, November 25, 2026')).toBeFocused();
+    await page.keyboard.press('ArrowDown');
+    await expect(day('Wednesday, December 2, 2026')).toBeFocused();
+    await expect(page.getByRole('grid', { name: 'December 2026' })).toBeVisible();
+    await page.keyboard.press('PageUp');
+    await expect(day('Monday, November 2, 2026')).toBeFocused();
+    await page.keyboard.press('End');
+    await expect(day('Sunday, November 8, 2026')).toBeFocused();
+    await page.keyboard.press('Enter');
+    await expect(page.locator('input[name="date"]')).toHaveValue('2026-11-08');
+    await expect(page.locator('td[aria-selected="true"]')).toHaveText('8');
+
+    // data-min="2026-01-01": a year back stops at the limit.
+    await page.keyboard.press('Shift+PageUp');
+    await expect(day('Thursday, January 1, 2026')).toBeFocused();
+
+    await page.getByRole('button', { name: 'Next month' }).click();
+    await expect(page.getByRole('grid', { name: 'February 2026' })).toBeVisible();
+    expect(errors).toEqual([]);
+  });
+
+  test('date picker: opens on today, picks a date, returns focus', async ({ page }) => {
+    const errors = collectErrors(page);
+    await page.emulateMedia({ reducedMotion: 'reduce' });
+    await openPreview(page, 'date-picker');
+    const trigger = page.getByRole('button', { name: 'Delivery date Pick a date' });
+    await trigger.click();
+    const dialog = page.getByRole('dialog', { name: 'Choose a delivery date' });
+    await expect(dialog).toBeVisible();
+    await expect(page.getByRole('button', { name: 'Tuesday, November 24, 2026' })).toBeFocused();
+    await expectNoAxeViolations(page);
+
+    await page.keyboard.press('ArrowRight');
+    await page.keyboard.press('Enter');
+    await expect(dialog).toBeHidden();
+    const chosen = page.getByRole('button', { name: 'Delivery date November 25, 2026' });
+    await expect(chosen).toBeFocused();
+    await expect(page.locator('input[name="delivery"]')).toHaveValue('2026-11-25');
+
+    await chosen.click();
+    await expect(dialog).toBeVisible();
+    await page.keyboard.press('Escape');
+    await expect(dialog).toBeHidden();
+    expect(errors).toEqual([]);
+  });
+});
+
+test('data table: paging, sorting, filtering and selection', async ({ page }) => {
+  const errors = collectErrors(page);
+  await openPreview(page, 'data-table');
+  const status = page.locator('[data-bootcn-data-table-status]');
+  const selection = page.locator('[data-bootcn-data-table-selection]');
+  const rows = page.locator('tbody tr:not([hidden])');
+  const previous = page.getByRole('button', { name: 'Previous' });
+  const next = page.getByRole('button', { name: 'Next' });
+
+  await expect(status).toHaveText('Showing 1–5 of 12');
+  await expect(rows).toHaveCount(5);
+  await expect(previous).toBeDisabled();
+  await next.click();
+  await expect(status).toHaveText('Showing 6–10 of 12');
+  await next.click();
+  await expect(status).toHaveText('Showing 11–12 of 12');
+  await expect(next).toBeDisabled();
+
+  const amount = page.getByRole('columnheader', { name: 'Amount' });
+  await amount.getByRole('button').click();
+  await expect(amount).toHaveAttribute('aria-sort', 'ascending');
+  await expect(status).toHaveText('Showing 1–5 of 12');
+  await expect(rows.first().locator('td').last()).toHaveText('€74.00');
+  await amount.getByRole('button').click();
+  await expect(amount).toHaveAttribute('aria-sort', 'descending');
+  await expect(rows.first().locator('td').last()).toHaveText('€980.00');
+  await amount.getByRole('button').click();
+  await expect(amount).toHaveAttribute('aria-sort', 'none');
+
+  await page.getByRole('searchbox', { name: 'Filter payments' }).fill('failed');
+  await expect(status).toHaveText('Showing 1–3 of 3');
+  const all = page.getByRole('checkbox', { name: 'Select all rows' });
+  await all.check();
+  await expect(selection).toHaveText('3 of 12 rows selected.');
+  await page.getByRole('checkbox', { name: 'Select carmella@example.com' }).uncheck();
+  await expect(selection).toHaveText('2 of 12 rows selected.');
+  expect(await all.evaluate((el) => (el as HTMLInputElement).indeterminate)).toBe(true);
+  await expectNoAxeViolations(page);
+
+  await page.getByRole('searchbox', { name: 'Filter payments' }).fill('nothing-matches');
+  await expect(page.getByText('No payments match.')).toBeVisible();
+  expect(errors).toEqual([]);
+});
+
+test.describe('sidebar', () => {
+  test('desktop: collapses to icons, remembers it, Ctrl+B toggles', async ({ page }) => {
+    await page.setViewportSize({ width: 1280, height: 800 });
+    await openPreview(page, 'sidebar');
+    const layout = page.locator('[data-bootcn-sidenav-layout]');
+    const toggle = page.getByRole('button', { name: 'Toggle sidebar' });
+    await expect(toggle).toHaveAttribute('aria-expanded', 'true');
+    await toggle.click();
+    await expect(layout).toHaveClass(/is-collapsed/);
+    await expect(toggle).toHaveAttribute('aria-expanded', 'false');
+    // Labels are visually hidden, not removed: links keep their names.
+    await expect(page.getByRole('link', { name: 'Dashboard' })).toBeVisible();
+    await expectNoAxeViolations(page);
+
+    await page.reload();
+    await expect(layout).toHaveClass(/is-collapsed/);
+    await page.keyboard.press('Control+b');
+    await expect(layout).not.toHaveClass(/is-collapsed/);
+  });
+
+  test('phone: the toggle opens a drawer that Escape closes', async ({ page }) => {
+    await page.setViewportSize({ width: 375, height: 800 });
+    await page.emulateMedia({ reducedMotion: 'reduce' });
+    await openPreview(page, 'sidebar');
+    const toggle = page.getByRole('button', { name: 'Toggle sidebar' });
+    await expect(page.getByRole('link', { name: 'Inbox' })).toBeHidden();
+    await toggle.click();
+    await expect(page.getByRole('link', { name: 'Inbox' })).toBeVisible();
+    await expect(toggle).toHaveAttribute('aria-expanded', 'true');
+    await page.keyboard.press('Escape');
+    await expect(page.getByRole('link', { name: 'Inbox' })).toBeHidden();
+    await expect(toggle).toHaveAttribute('aria-expanded', 'false');
+  });
 });

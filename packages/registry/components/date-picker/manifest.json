@@ -1,0 +1,33 @@
+{
+  "$schema": "../../schema/registry-item.schema.json",
+  "name": "date-picker",
+  "type": "registry:ui",
+  "title": "Date picker",
+  "description": "A button that opens a calendar in a popover and shows the chosen date, with keyboard support and form value.",
+  "version": "1.0.0",
+  "categories": ["forms"],
+  "dependencies": [],
+  "registryDependencies": ["calendar", "button", "label"],
+  "compatibility": {
+    "bootstrap": "5.3",
+    "platform": ["Bootstrap CSS", "Bootstrap JS bundle"]
+  },
+  "license": "MIT",
+  "files": [
+    {
+      "path": "date-picker.html",
+      "target": "date-picker.html",
+      "type": "registry:component"
+    },
+    {
+      "path": "date-picker.css",
+      "target": "date-picker.css",
+      "type": "registry:style"
+    },
+    {
+      "path": "date-picker.js",
+      "target": "date-picker.js",
+      "type": "registry:script"
+    }
+  ]
+}

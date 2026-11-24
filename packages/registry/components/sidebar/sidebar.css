@@ -1,0 +1,164 @@
+.bootcn-sidenav-layout {
+  --bootcn-sidenav-width: 15rem;
+  --bootcn-sidenav-collapsed-width: 3.5rem;
+
+  display: flex;
+  min-height: 100vh;
+}
+
+.bootcn-sidenav {
+  --bs-offcanvas-width: var(--bootcn-sidenav-width);
+  --bs-offcanvas-bg: var(--bs-tertiary-bg);
+
+  display: flex;
+  flex-direction: column;
+}
+
+@media (min-width: 992px) {
+  .bootcn-sidenav {
+    position: sticky;
+    top: 0;
+    flex: 0 0 var(--bootcn-sidenav-width);
+    width: var(--bootcn-sidenav-width);
+    height: 100vh;
+    overflow-x: hidden;
+    border-right: var(--bootcn-border-width) solid var(--bootcn-border-color);
+    background-color: var(--bs-tertiary-bg);
+    transition:
+      width var(--bootcn-transition),
+      flex-basis var(--bootcn-transition);
+  }
+
+  /* Collapsed: an icon rail. Labels are visually hidden, not removed, so
+     links keep their names. */
+  .bootcn-sidenav-layout.is-collapsed .bootcn-sidenav {
+    flex-basis: var(--bootcn-sidenav-collapsed-width);
+    width: var(--bootcn-sidenav-collapsed-width);
+  }
+
+  .bootcn-sidenav-layout.is-collapsed .bootcn-sidenav__label {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+  }
+}
+
+.bootcn-sidenav__header,
+.bootcn-sidenav__footer {
+  display: flex;
+  align-items: center;
+  gap: 0.625rem;
+  padding: 0.875rem 1rem;
+  white-space: nowrap;
+}
+
+.bootcn-sidenav__footer {
+  margin-top: auto;
+  border-top: var(--bootcn-border-width) solid var(--bootcn-border-color);
+  font-size: 0.875rem;
+  font-weight: 500;
+}
+
+.bootcn-sidenav__footer .bootcn-avatar {
+  --bootcn-avatar-size: 1.75rem;
+
+  margin-left: -0.125rem;
+}
+
+.bootcn-sidenav__logo {
+  flex: none;
+  width: 1.25rem;
+  height: 1.25rem;
+}
+
+.bootcn-sidenav__brand {
+  font-weight: 600;
+}
+
+.bootcn-sidenav__nav {
+  padding: 0.5rem;
+}
+
+.bootcn-sidenav__list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.125rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.bootcn-sidenav__link {
+  display: flex;
+  align-items: center;
+  gap: 0.625rem;
+  padding: 0.5rem 0.625rem;
+  border-radius: var(--bootcn-radius);
+  color: var(--bootcn-foreground);
+  font-size: 0.875rem;
+  font-weight: 500;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.bootcn-sidenav__link .bootcn-icon {
+  flex: none;
+}
+
+.bootcn-sidenav__link:hover,
+.bootcn-sidenav__link[aria-current='page'] {
+  background-color: var(--bootcn-accent);
+  color: var(--bootcn-accent-foreground);
+}
+
+.bootcn-sidenav__link:focus-visible {
+  outline: 0;
+  box-shadow: var(--bootcn-focus-ring);
+}
+
+.bootcn-sidenav-layout__main {
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+.bootcn-sidenav-layout__header {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  height: 3.5rem;
+  padding: 0 1rem;
+  border-bottom: var(--bootcn-border-width) solid var(--bootcn-border-color);
+}
+
+.bootcn-sidenav-layout__title {
+  font-size: 0.875rem;
+  font-weight: 500;
+}
+
+.bootcn-sidenav__toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.75rem;
+  height: 1.75rem;
+  border: 0;
+  border-radius: var(--bootcn-radius);
+  background: transparent;
+  color: var(--bootcn-foreground);
+}
+
+.bootcn-sidenav__toggle:hover {
+  background-color: var(--bootcn-accent);
+}
+
+.bootcn-sidenav__toggle:focus-visible {
+  outline: 0;
+  box-shadow: var(--bootcn-focus-ring);
+}
+
+.bootcn-sidenav-layout__content {
+  padding: 1.5rem;
+}

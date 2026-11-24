@@ -4,7 +4,7 @@
   "type": "registry:ui",
   "title": "Input OTP",
   "description": "A one-time code field shown as separate boxes, backed by one real input that autofills from SMS and accepts paste.",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "categories": ["forms"],
   "dependencies": [],
   "registryDependencies": ["label"],

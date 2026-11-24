@@ -1,0 +1,33 @@
+{
+  "$schema": "../../schema/registry-item.schema.json",
+  "name": "sidebar",
+  "type": "registry:ui",
+  "title": "Sidebar",
+  "description": "An app sidebar that collapses to icons on desktop (remembered, Ctrl/⌘ B) and becomes a drawer on phones.",
+  "version": "1.0.0",
+  "categories": ["navigation"],
+  "dependencies": [],
+  "registryDependencies": ["avatar"],
+  "compatibility": {
+    "bootstrap": "5.3",
+    "platform": ["Bootstrap CSS", "Bootstrap JS bundle"]
+  },
+  "license": "MIT",
+  "files": [
+    {
+      "path": "sidebar.html",
+      "target": "sidebar.html",
+      "type": "registry:component"
+    },
+    {
+      "path": "sidebar.css",
+      "target": "sidebar.css",
+      "type": "registry:style"
+    },
+    {
+      "path": "sidebar.js",
+      "target": "sidebar.js",
+      "type": "registry:script"
+    }
+  ]
+}
