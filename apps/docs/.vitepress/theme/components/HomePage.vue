@@ -50,7 +50,7 @@ const steps = [
   },
   {
     title: 'Own the code',
-    text: 'Plain HTML, CSS and JavaScript in your project. Include it and edit it.',
+    text: 'Plain HTML, CSS and JavaScript in your project, or Blade views in Laravel. Include it and edit it.',
     code: "<?php include 'components/ui/dialog.html'; ?>",
   },
 ];
@@ -61,8 +61,8 @@ const features = [
     text: 'Source files land in your project. Change anything; nothing updates behind your back.',
   },
   {
-    title: 'Plain HTML and PHP',
-    text: 'Made for server-rendered sites: no React, no bundler, no Node.js at runtime.',
+    title: 'Plain HTML, PHP and Laravel',
+    text: 'Made for server-rendered sites. In Laravel the CLI writes Blade views; no React, no bundler, no Node.js at runtime.',
   },
   {
     title: 'Accessible and tested',
@@ -78,7 +78,7 @@ const features = [
   },
   {
     title: 'Ready for AI assistants',
-    text: 'llms.txt, a registry in JSON and a "Copy prompt" button on every page.',
+    text: 'An MCP server for Claude, Cursor and VS Code, llms.txt and a "Copy prompt" button on every page.',
   },
 ];
 </script>
@@ -100,9 +100,9 @@ const features = [
         width="64"
         height="64"
       />
-      <a class="bootcn-landing__pill" :href="withBase('/changelog')">
+      <a class="bootcn-landing__pill" :href="withBase('/guide/laravel')">
         <span class="bootcn-landing__pill-tag">New</span>
-        AI chat, right to left and the soft style
+        Laravel support and an MCP server for AI assistants
         <span aria-hidden="true">→</span>
       </a>
       <h1 id="bootcn-landing-title" class="bootcn-landing__title">

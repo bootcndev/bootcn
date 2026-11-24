@@ -19,7 +19,7 @@ card or a transactions table, built from components) and
 
 ## Who it is for
 
-- PHP and plain HTML sites that already use Bootstrap.
+- PHP, [Laravel](./laravel) and plain HTML sites that already use Bootstrap.
 - Teams who want consistent, accessible components without adopting React or
   Vue.
 - Anyone who prefers readable source over a compiled UI library.
