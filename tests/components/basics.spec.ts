@@ -3,12 +3,29 @@
  * generic preview checks (axe in both themes, overflow, console) run in
  * previews.spec.ts.
  */
-import { expect, test } from '@playwright/test';
+import { expect, test, type Page } from '@playwright/test';
 
 import { collectErrors, expectNoAxeViolations, openPreview, settleTransitions } from './helpers.js';
 
 // Bootstrap appends floating overlays to <body>, outside the page landmarks.
 const FLOATING = { disableRules: ['region'] };
+
+/**
+ * axe over an open Bootstrap modal or offcanvas crashes Firefox's page in CI
+ * ("Page crashed", Playwright 1.65). The open state is checked with axe in
+ * Chromium and WebKit; Firefox still runs every behaviour assertion.
+ */
+async function axeOnOpenOverlay(page: Page, browserName: string): Promise<void> {
+  if (browserName === 'firefox') {
+    test.info().annotations.push({
+      type: 'skip-axe',
+      description: 'axe on an open overlay crashes Firefox; covered in Chromium and WebKit',
+    });
+    return;
+  }
+  await settleTransitions(page);
+  await expectNoAxeViolations(page);
+}
 
 test('alert: the dismissible alert closes', async ({ page }) => {
   await openPreview(page, 'alert');
@@ -19,6 +36,7 @@ test('alert: the dismissible alert closes', async ({ page }) => {
 
 test('alert dialog: alertdialog role, Cancel focused, backdrop does not close it', async ({
   page,
+  browserName,
 }) => {
   const errors = collectErrors(page);
   await page.emulateMedia({ reducedMotion: 'reduce' });
@@ -29,8 +47,7 @@ test('alert dialog: alertdialog role, Cancel focused, backdrop does not close it
   await expect(dialog).toBeVisible();
   await expect(dialog).toHaveAccessibleDescription(/permanently deletes/);
   await expect(dialog.getByRole('button', { name: 'Cancel' })).toBeFocused();
-  await settleTransitions(page);
-  await expectNoAxeViolations(page);
+  await axeOnOpenOverlay(page, browserName);
 
   await page.mouse.click(5, 5); // the static backdrop
   await expect(dialog).toBeVisible();
@@ -118,7 +135,10 @@ for (const [name, button, title] of [
   ['sheet', 'Edit profile', 'Edit profile'],
   ['drawer', 'Set a goal', 'Daily goal'],
 ] as const) {
-  test(`${name}: opens as a modal dialog, closes with Escape, returns focus`, async ({ page }) => {
+  test(`${name}: opens as a modal dialog, closes with Escape, returns focus`, async ({
+    page,
+    browserName,
+  }) => {
     const errors = collectErrors(page);
     await page.emulateMedia({ reducedMotion: 'reduce' });
     await openPreview(page, name);
@@ -127,8 +147,7 @@ for (const [name, button, title] of [
     const dialog = page.getByRole('dialog', { name: title });
     await expect(dialog).toBeVisible();
     await expect(dialog).toHaveAttribute('aria-modal', 'true');
-    await settleTransitions(page);
-    await expectNoAxeViolations(page);
+    await axeOnOpenOverlay(page, browserName);
     await page.keyboard.press('Escape');
     await expect(dialog).toBeHidden();
     await expect(trigger).toBeFocused();
