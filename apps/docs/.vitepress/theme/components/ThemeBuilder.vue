@@ -1,7 +1,8 @@
 <script setup lang="ts">
 /**
- * Theme builder: pick a neutral scale, a primary color and a radius, see them
- * live on the installed admin dashboard template, and copy the CSS.
+ * Theme builder: pick a style, a neutral scale, a primary color and a radius,
+ * see them live on the installed admin dashboard template, and copy the CSS.
+ * The soft style is the registry's themes/soft/soft.css, included as is.
  * Every palette was checked beforehand: text pairs keep 4.5:1 and focus rings
  * 3:1 in both themes (palettes.json).
  */
@@ -9,6 +10,7 @@ import { computed, onMounted, ref, watch } from 'vue';
 import { useData, withBase } from 'vitepress';
 
 import palettes from '../palettes.json';
+import softCss from '../../../../../packages/registry/themes/soft/soft.css?raw';
 
 type Roles = Record<string, string>;
 
@@ -17,6 +19,8 @@ const bases = Object.keys(palettes.bases) as (keyof typeof palettes.bases)[];
 const primaries = Object.keys(palettes.primaries) as (keyof typeof palettes.primaries)[];
 const radii = [0, 0.3, 0.5, 0.75, 1];
 
+const styles = ['default', 'soft'] as const;
+const style = ref<(typeof styles)[number]>('default');
 const base = ref<(typeof bases)[number]>('zinc');
 const primary = ref<(typeof primaries)[number]>('neutral');
 const radius = ref(0.5);
@@ -81,9 +85,16 @@ function block(selector: string, mode: 'light' | 'dark'): string {
   return `${selector} {\n${lines.map((line) => `  ${line}`).join('\n')}\n}`;
 }
 
+// The soft style looks best with larger corners: switching sets the radius,
+// which can still be changed afterwards.
+watch(style, (value) => {
+  radius.value = value === 'soft' ? 0.75 : 0.5;
+});
+
 const css = computed(
   () =>
-    `/* Bootcn theme: ${base.value} base, ${primary.value} primary, ${radius.value}rem radius.\n   Load after tokens.css. */\n` +
+    `/* Bootcn theme: ${style.value} style, ${base.value} base, ${primary.value} primary, ${radius.value}rem radius.\n   Load after tokens.css and the component styles. */\n` +
+    (style.value === 'soft' ? `\n${softCss.trim()}\n\n/* Colors and radius */\n` : '') +
     `${block(":root,\n[data-bs-theme='light']", 'light')}\n\n${block("[data-bs-theme='dark']", 'dark')}\n`,
 );
 
@@ -119,6 +130,13 @@ async function copy(): Promise<void> {
 <template>
   <div class="bootcn-theme-builder">
     <div class="bootcn-theme-builder__controls">
+      <fieldset>
+        <legend>Style</legend>
+        <label v-for="name in styles" :key="name" class="bootcn-theme-builder__option">
+          <input v-model="style" type="radio" name="bootcn-theme-style" :value="name" />
+          {{ name }}
+        </label>
+      </fieldset>
       <fieldset>
         <legend>Base color</legend>
         <label v-for="name in bases" :key="name" class="bootcn-theme-builder__option">

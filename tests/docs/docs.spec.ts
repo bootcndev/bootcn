@@ -449,7 +449,7 @@ test('theme builder: choices restyle the preview and the CSS can be copied', asy
   await page.getByRole('button', { name: 'Copy CSS' }).click();
   await expect(page.getByRole('button', { name: 'Copied' })).toBeVisible();
   const copied = await page.evaluate(() => (window as unknown as { copied: string[] }).copied);
-  expect(copied[0]).toContain('slate base, violet primary, 1rem radius');
+  expect(copied[0]).toContain('default style, slate base, violet primary, 1rem radius');
   expect(copied[0]).toContain('--bs-border-radius-lg: 1rem;');
   expect(errors).toEqual([]);
 });
@@ -497,4 +497,26 @@ test('previews switch to right to left', async ({ page }) => {
     'href',
     /&dir=rtl$/,
   );
+});
+
+test('theme builder: the soft style fills fields and rounds corners', async ({ page }) => {
+  await page.goto('themes/');
+  const frame = page.locator('.bootcn-theme-builder__preview');
+  await expect(page.frameLocator('.bootcn-theme-builder__preview').locator('h1')).toHaveText(
+    'Dashboard',
+  );
+  await page.getByRole('radio', { name: 'soft' }).check();
+  await expect(page.getByRole('radio', { name: '0.75rem' })).toBeChecked();
+  const field = () =>
+    frame.evaluate((el: HTMLIFrameElement) => {
+      const input = el.contentDocument!.querySelector('.bootcn-input') as HTMLElement;
+      const style = getComputedStyle(input);
+      return { border: style.borderTopColor, background: style.backgroundColor };
+    });
+  await expect.poll(async () => (await field()).border).toBe('rgba(0, 0, 0, 0)');
+  expect((await field()).background).not.toBe('rgba(0, 0, 0, 0)');
+  await expect(page.locator('.bootcn-theme-builder__code pre')).toContainText('Bootcn soft style');
+  await page.getByRole('radio', { name: 'default' }).check();
+  await expect(page.getByRole('radio', { name: '0.5rem' })).toBeChecked();
+  await expect.poll(async () => (await field()).border).not.toBe('rgba(0, 0, 0, 0)');
 });

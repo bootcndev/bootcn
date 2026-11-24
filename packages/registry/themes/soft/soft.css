@@ -1,0 +1,93 @@
+/*
+ * Bootcn soft style: a rounder, filled look for every component. Fields have
+ * a tinted fill instead of an outline, cards float on a soft shadow, and
+ * corners are larger. Load it after tokens.css and the component styles.
+ *
+ * Colors, contrast and focus rings are unchanged: text keeps 4.5:1 and the
+ * focus ring 3:1 in both themes.
+ */
+:root,
+[data-bs-theme='light'] {
+  --bs-border-radius-sm: 0.5rem;
+  --bs-border-radius: 0.75rem;
+  --bs-border-radius-lg: 0.875rem;
+  --bs-border-radius-xl: 1.25rem;
+  --bootcn-shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.04);
+  --bootcn-shadow: 0 2px 8px -2px rgb(0 0 0 / 0.08);
+  --bootcn-shadow-md: 0 8px 24px -6px rgb(0 0 0 / 0.12);
+  --bootcn-shadow-lg: 0 16px 40px -8px rgb(0 0 0 / 0.16);
+  --bootcn-soft-field: var(--bootcn-muted);
+  --bootcn-soft-field-hover: var(--bootcn-accent);
+}
+
+[data-bs-theme='dark'] {
+  --bootcn-soft-field: var(--bootcn-muted);
+  --bootcn-soft-field-hover: var(--bootcn-accent);
+}
+
+/* Filled fields: the tint replaces the outline until the field has focus. */
+.bootcn-input,
+.bootcn-textarea,
+.bootcn-select,
+.bootcn-autocomplete__input,
+.bootcn-combobox__control,
+.bootcn-search-field,
+.bootcn-number-field,
+.bootcn-otp__slot,
+.bootcn-color-picker__hex,
+.bootcn-prompt-input__box {
+  border-color: transparent;
+  background-color: var(--bootcn-soft-field);
+  box-shadow: none;
+}
+
+.bootcn-input:hover:not(:focus, :disabled),
+.bootcn-textarea:hover:not(:focus, :disabled),
+.bootcn-select:hover:not(:focus, :disabled),
+.bootcn-autocomplete__input:hover:not(:focus),
+.bootcn-combobox__control:hover:not(:focus-within),
+.bootcn-search-field:hover:not(:focus-within),
+.bootcn-number-field:hover:not(:focus-within) {
+  background-color: var(--bootcn-soft-field-hover);
+}
+
+.bootcn-input:focus,
+.bootcn-textarea:focus,
+.bootcn-select:focus,
+.bootcn-autocomplete__input:focus,
+.bootcn-combobox__control:focus-within,
+.bootcn-search-field:focus-within,
+.bootcn-number-field:focus-within,
+.bootcn-prompt-input__box:focus-within {
+  border-color: var(--bootcn-ring);
+  background-color: var(--bootcn-background);
+}
+
+/* Errors keep their red outline. */
+.bootcn-input[aria-invalid='true'],
+.bootcn-select[aria-invalid='true'],
+.bootcn-textarea[aria-invalid='true'] {
+  border-color: var(--bs-danger);
+}
+
+/* Cards and panels float on a shadow; dark mode keeps the border, where
+   shadows do not show. */
+.bootcn-card {
+  border-color: transparent;
+  box-shadow: var(--bootcn-shadow-md);
+}
+
+[data-bs-theme='dark'] .bootcn-card {
+  border-color: var(--bootcn-border-color);
+  box-shadow: none;
+}
+
+/* Secondary buttons and toggles are filled too. */
+.bootcn-button--outline {
+  border-color: transparent;
+  background-color: var(--bootcn-soft-field);
+}
+
+.bootcn-button--outline:hover {
+  background-color: var(--bootcn-soft-field-hover);
+}

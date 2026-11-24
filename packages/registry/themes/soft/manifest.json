@@ -1,0 +1,23 @@
+{
+  "$schema": "../../schema/registry-item.schema.json",
+  "name": "soft",
+  "type": "registry:theme",
+  "title": "Soft style",
+  "description": "A rounder, filled look for every component: tinted fields instead of outlines, cards on soft shadows and larger corners. Load it after tokens.css.",
+  "version": "1.0.0",
+  "categories": ["theming"],
+  "dependencies": [],
+  "registryDependencies": ["tokens"],
+  "compatibility": {
+    "bootstrap": "5.3",
+    "platform": ["Bootstrap CSS"]
+  },
+  "license": "MIT",
+  "files": [
+    {
+      "path": "soft.css",
+      "target": "soft.css",
+      "type": "registry:style"
+    }
+  ]
+}

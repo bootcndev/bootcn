@@ -326,7 +326,7 @@ describe('list and info', () => {
     await runCli(['add', 'badge', '--yes', '--cwd', root]);
     const result = await runCli(['list', '--cwd', root]);
     expect(result.code).toBe(EXIT.ok);
-    expect(result.output).toMatch(/Themes:\n\s+✔ tokens/);
+    expect(result.output).toMatch(/Themes:\n(?:.*\n)*?\s+✔ tokens /);
     expect(result.output).toMatch(/Components:/);
     expect(result.output).toMatch(/✔ badge/);
     expect(result.output).toMatch(/\n\s{4}button/);

@@ -43,6 +43,7 @@ the `<link>` and `<script>` tags to add to your layout.
 | Item                | Type  | Files         | Requires                  | Depends on                                                |
 | ------------------- | ----- | ------------- | ------------------------- | --------------------------------------------------------- |
 | `tokens`            | theme | CSS           | Bootstrap CSS             | —                                                         |
+| `soft`              | theme | CSS           | Bootstrap CSS             | `tokens`                                                  |
 | `accordion`         | ui    | HTML, CSS     | Bootstrap CSS + JS bundle | —                                                         |
 | `alert-dialog`      | ui    | HTML, CSS, JS | Bootstrap CSS + JS bundle | `dialog`, `button`                                        |
 | `alert`             | ui    | HTML, CSS     | Bootstrap CSS + JS bundle | —                                                         |

@@ -6,6 +6,12 @@ each published version stays available under `/v/<version>/`) and the **CLI**
 
 ## Registry
 
+### 0.18.0
+
+- Soft style (`npx bootcn add soft`): tinted fields instead of outlines,
+  cards on soft shadows and larger corners. The theme builder has a Style
+  choice (Default or Soft) and copies the style with your colors.
+
 ### 0.17.0
 
 - Templates: Landing page (header, hero, logos, features, testimonials,
