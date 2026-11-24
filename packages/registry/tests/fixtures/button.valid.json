@@ -1,0 +1,23 @@
+{
+  "$schema": "https://bootcn.dev/schema/registry-item.json",
+  "name": "button",
+  "type": "registry:ui",
+  "title": "Button",
+  "description": "A customizable Bootstrap button.",
+  "version": "1.0.0",
+  "categories": ["buttons", "actions"],
+  "dependencies": [],
+  "registryDependencies": ["tokens"],
+  "files": [
+    {
+      "path": "button.html",
+      "target": "components/ui/button.html",
+      "type": "registry:component"
+    },
+    {
+      "path": "button.css",
+      "target": "assets/css/button.css",
+      "type": "registry:style"
+    }
+  ]
+}

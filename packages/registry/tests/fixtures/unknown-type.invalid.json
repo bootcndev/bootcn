@@ -1,0 +1,15 @@
+{
+  "$schema": "https://bootcn.dev/schema/registry-item.json",
+  "name": "widget",
+  "type": "registry:widget",
+  "title": "Unknown type",
+  "description": "This manifest intentionally uses an unsupported item type.",
+  "version": "1.0.0",
+  "files": [
+    {
+      "path": "widget.html",
+      "target": "components/ui/widget.html",
+      "type": "registry:component"
+    }
+  ]
+}

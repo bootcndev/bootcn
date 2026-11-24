@@ -1,0 +1,14 @@
+{
+  "$schema": "https://bootcn.dev/schema/registry-item.json",
+  "type": "registry:ui",
+  "title": "Broken item",
+  "description": "This manifest intentionally omits the required name field.",
+  "version": "1.0.0",
+  "files": [
+    {
+      "path": "broken.html",
+      "target": "components/ui/broken.html",
+      "type": "registry:component"
+    }
+  ]
+}

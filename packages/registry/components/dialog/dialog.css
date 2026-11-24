@@ -1,0 +1,33 @@
+.bootcn-dialog .modal-content {
+  border: var(--bootcn-border-width) solid var(--bootcn-border-color);
+  border-radius: var(--bootcn-dialog-radius);
+  box-shadow: var(--bootcn-dialog-shadow);
+}
+
+.bootcn-dialog .modal-header {
+  padding: var(--bootcn-dialog-padding);
+  border-bottom: var(--bootcn-border-width) solid var(--bootcn-border-color);
+}
+
+.bootcn-dialog .modal-body {
+  padding: var(--bootcn-dialog-padding);
+}
+
+.bootcn-dialog .modal-footer {
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  padding: var(--bootcn-dialog-padding);
+  border-top: var(--bootcn-border-width) solid var(--bootcn-border-color);
+}
+
+.bootcn-dialog__title {
+  margin: 0;
+  font-size: 1.125rem;
+  font-weight: 600;
+  line-height: 1.3;
+}
+
+.bootcn-dialog__description {
+  margin: 0;
+  color: var(--bs-secondary-color);
+}

@@ -1,0 +1,15 @@
+{
+  "$schema": "https://bootcn.dev/schema/registry-item.json",
+  "name": "traversal",
+  "type": "registry:ui",
+  "title": "Path traversal",
+  "description": "This manifest intentionally uses a parent-directory path.",
+  "version": "1.0.0",
+  "files": [
+    {
+      "path": "../traversal.html",
+      "target": "components/ui/traversal.html",
+      "type": "registry:component"
+    }
+  ]
+}

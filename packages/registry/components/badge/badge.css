@@ -1,0 +1,39 @@
+.bootcn-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  padding: var(--bootcn-badge-padding-y) var(--bootcn-badge-padding-x);
+  border: var(--bootcn-border-width) solid transparent;
+  border-radius: var(--bootcn-radius-pill);
+  background-color: var(--bs-primary-bg-subtle);
+  color: var(--bs-primary-text-emphasis);
+  font-size: 0.75rem;
+  font-weight: 600;
+  line-height: 1.2;
+  white-space: nowrap;
+  transition:
+    background-color var(--bootcn-transition),
+    color var(--bootcn-transition),
+    border-color var(--bootcn-transition);
+}
+
+.bootcn-badge--default {
+  background-color: var(--bs-primary-bg-subtle);
+  color: var(--bs-primary-text-emphasis);
+}
+
+.bootcn-badge--secondary {
+  background-color: var(--bs-secondary-bg-subtle);
+  color: var(--bs-secondary-text-emphasis);
+}
+
+.bootcn-badge--outline {
+  background-color: transparent;
+  color: var(--bs-body-color);
+  border-color: var(--bootcn-border-color);
+}
+
+.bootcn-badge--destructive {
+  background-color: var(--bs-danger-bg-subtle);
+  color: var(--bs-danger-text-emphasis);
+}

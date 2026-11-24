@@ -1,0 +1,57 @@
+:root {
+  --bootcn-radius-sm: var(--bs-border-radius-sm, 0.375rem);
+  --bootcn-radius: var(--bs-border-radius, 0.5rem);
+  --bootcn-radius-lg: var(--bs-border-radius-lg, 0.75rem);
+  --bootcn-radius-pill: var(--bs-border-radius-pill, 50rem);
+
+  --bootcn-border-width: 1px;
+  --bootcn-border-color: var(--bs-border-color, #dee2e6);
+  --bootcn-border-color-translucent: var(--bs-border-color-translucent, rgba(0, 0, 0, 0.175));
+
+  --bootcn-shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  --bootcn-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px -1px rgba(0, 0, 0, 0.1);
+  --bootcn-shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1);
+
+  --bootcn-focus-ring-width: var(--bs-focus-ring-width, 0.25rem);
+  --bootcn-focus-ring-color: var(
+    --bs-focus-ring-color,
+    rgba(var(--bs-primary-rgb, 13, 110, 253), 0.25)
+  );
+  --bootcn-focus-ring: 0 0 0 var(--bootcn-focus-ring-width) var(--bootcn-focus-ring-color);
+
+  --bootcn-transition-duration: 150ms;
+  --bootcn-transition-timing: ease;
+  --bootcn-transition: var(--bootcn-transition-duration) var(--bootcn-transition-timing);
+
+  --bootcn-control-height-sm: 2rem;
+  --bootcn-control-height: 2.5rem;
+  --bootcn-control-height-lg: 3rem;
+  --bootcn-control-padding-x: 0.875rem;
+  --bootcn-control-padding-y: 0.5rem;
+  --bootcn-control-font-size: 1rem;
+
+  --bootcn-badge-padding-x: 0.625rem;
+  --bootcn-badge-padding-y: 0.125rem;
+  --bootcn-card-padding: 1.25rem;
+  --bootcn-dialog-padding: 1.5rem;
+  --bootcn-dialog-radius: var(--bootcn-radius-lg);
+  --bootcn-dialog-shadow: var(--bootcn-shadow-lg);
+}
+
+[data-bs-theme='dark'] {
+  --bootcn-border-color: var(--bs-border-color, #495057);
+  --bootcn-border-color-translucent: var(--bs-border-color-translucent, rgba(255, 255, 255, 0.15));
+  --bootcn-shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.4);
+  --bootcn-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.5), 0 1px 2px -1px rgba(0, 0, 0, 0.5);
+  --bootcn-shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.6), 0 4px 6px -4px rgba(0, 0, 0, 0.6);
+  --bootcn-focus-ring-color: var(
+    --bs-focus-ring-color,
+    rgba(var(--bs-primary-rgb, 13, 110, 253), 0.4)
+  );
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --bootcn-transition-duration: 0ms;
+  }
+}

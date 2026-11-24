@@ -1,0 +1,69 @@
+<div class="bootcn-field">
+  <label for="bootcn-input-name" class="form-label bootcn-field__label">Name</label>
+  <input
+    type="text"
+    class="form-control bootcn-input"
+    id="bootcn-input-name"
+    name="name"
+    autocomplete="name"
+    aria-describedby="bootcn-input-name-help"
+    placeholder="Jane Doe"
+  />
+  <p class="bootcn-field__help" id="bootcn-input-name-help">Shown on your public profile.</p>
+</div>
+
+<div class="bootcn-field">
+  <label for="bootcn-input-email" class="form-label bootcn-field__label">Email</label>
+  <input
+    type="email"
+    class="form-control bootcn-input"
+    id="bootcn-input-email"
+    name="email"
+    autocomplete="email"
+    value="not-an-email"
+    aria-invalid="true"
+    aria-describedby="bootcn-input-email-help bootcn-input-email-error"
+  />
+  <p class="bootcn-field__help" id="bootcn-input-email-help">We never share your email.</p>
+  <div class="invalid-feedback" id="bootcn-input-email-error">Enter a valid email address.</div>
+</div>
+
+<div class="bootcn-field">
+  <label for="bootcn-input-disabled" class="form-label bootcn-field__label">Disabled</label>
+  <input
+    type="text"
+    class="form-control bootcn-input"
+    id="bootcn-input-disabled"
+    value="Read only"
+    disabled
+  />
+</div>
+
+<div class="bootcn-field">
+  <label for="bootcn-input-search" class="form-label bootcn-field__label">Search</label>
+  <div class="input-group">
+    <span class="input-group-text" aria-hidden="true">
+      <svg
+        width="16"
+        height="16"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        aria-hidden="true"
+        focusable="false"
+      >
+        <circle cx="11" cy="11" r="7" />
+        <path d="m20 20-3.5-3.5" />
+      </svg>
+    </span>
+    <input
+      type="search"
+      class="form-control bootcn-input"
+      id="bootcn-input-search"
+      name="search"
+      placeholder="Search projects"
+    />
+  </div>
+</div>

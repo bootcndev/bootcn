@@ -1,0 +1,37 @@
+{
+  "name": "bootcn",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Copy-paste UI components for Bootstrap 5.3+ and vanilla JavaScript.",
+  "license": "MIT",
+  "packageManager": "pnpm@11.10.0",
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "build": "pnpm -r --if-present run build",
+    "test": "pnpm -r --if-present run test",
+    "lint": "eslint .",
+    "format": "prettier --write .",
+    "typecheck": "tsc --noEmit -p tsconfig.json",
+    "registry:validate": "tsx scripts/validate-registry.ts",
+    "registry:build": "tsx scripts/build-registry.ts",
+    "test:e2e": "playwright test --pass-with-no-tests --config tests/e2e/playwright.config.ts"
+  },
+  "devDependencies": {
+    "@axe-core/playwright": "4.14.0",
+    "@eslint/js": "10.0.1",
+    "@playwright/test": "1.65.1",
+    "@types/node": "24.19.2",
+    "bootstrap": "5.3.9",
+    "eslint": "10.15.0",
+    "globals": "17.14.0",
+    "prettier": "3.10.1",
+    "tsup": "9.0.0",
+    "tsx": "4.23.15",
+    "typescript": "5.9.3",
+    "typescript-eslint": "8.74.0",
+    "vitest": "4.1.12"
+  }
+}

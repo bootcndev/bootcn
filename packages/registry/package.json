@@ -1,0 +1,16 @@
+{
+  "name": "@bootcn/registry",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Bootcn component registry: source files, manifests and schemas.",
+  "scripts": {
+    "test": "vitest run"
+  },
+  "devDependencies": {
+    "ajv": "8.20.0",
+    "ajv-formats": "3.0.1",
+    "html-validate": "11.21.1",
+    "vitest": "4.1.12"
+  }
+}

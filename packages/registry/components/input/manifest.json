@@ -1,0 +1,28 @@
+{
+  "$schema": "../../schema/registry-item.schema.json",
+  "name": "input",
+  "type": "registry:ui",
+  "title": "Input",
+  "description": "A text input with label, help text, invalid and disabled states, and an input-group icon example.",
+  "version": "1.0.0",
+  "categories": ["forms", "inputs"],
+  "dependencies": [],
+  "registryDependencies": [],
+  "compatibility": {
+    "bootstrap": "5.3",
+    "platform": ["Bootstrap CSS"]
+  },
+  "license": "MIT",
+  "files": [
+    {
+      "path": "input.html",
+      "target": "components/ui/input.html",
+      "type": "registry:component"
+    },
+    {
+      "path": "input.css",
+      "target": "assets/css/input.css",
+      "type": "registry:style"
+    }
+  ]
+}

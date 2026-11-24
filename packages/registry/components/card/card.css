@@ -1,0 +1,42 @@
+.bootcn-card {
+  overflow: hidden;
+  border: var(--bootcn-border-width) solid var(--bootcn-border-color);
+  border-radius: var(--bootcn-radius-lg);
+  background-color: var(--bs-body-bg);
+  color: var(--bs-body-color);
+  box-shadow: var(--bootcn-shadow-sm);
+}
+
+.bootcn-card__header {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  padding: var(--bootcn-card-padding);
+  border-bottom: var(--bootcn-border-width) solid var(--bootcn-border-color);
+}
+
+.bootcn-card__title {
+  margin: 0;
+  font-size: 1.125rem;
+  font-weight: 600;
+  line-height: 1.3;
+}
+
+.bootcn-card__description {
+  margin: 0;
+  color: var(--bs-secondary-color);
+  font-size: 0.875rem;
+}
+
+.bootcn-card__content {
+  padding: var(--bootcn-card-padding);
+}
+
+.bootcn-card__footer {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  justify-content: flex-end;
+  padding: var(--bootcn-card-padding);
+  border-top: var(--bootcn-border-width) solid var(--bootcn-border-color);
+}

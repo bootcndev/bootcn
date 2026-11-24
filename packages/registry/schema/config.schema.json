@@ -1,0 +1,33 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://bootcn.dev/schema/config.json",
+  "title": "Bootcn project configuration",
+  "description": "The bootcn.json file written into a developer's project.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["registry", "style", "bootstrap", "paths"],
+  "properties": {
+    "$schema": { "type": "string", "format": "uri-reference" },
+    "registry": { "type": "string", "minLength": 1 },
+    "style": { "type": "string", "minLength": 1 },
+    "bootstrap": { "type": "string", "pattern": "^5\\.\\d+(?:\\.\\d+)?$" },
+    "paths": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["components", "css", "js", "lib"],
+      "properties": {
+        "components": { "$ref": "#/$defs/safePath" },
+        "css": { "$ref": "#/$defs/safePath" },
+        "js": { "$ref": "#/$defs/safePath" },
+        "lib": { "$ref": "#/$defs/safePath" }
+      }
+    }
+  },
+  "$defs": {
+    "safePath": {
+      "type": "string",
+      "minLength": 1,
+      "pattern": "^(?!/)(?!.*\\\\)(?!.*\\x00)(?!\\.\\.(?:/|$))(?!.*/\\.\\.(?:/|$))(?!\\.(?:/|$))(?!.*/\\.(?:/|$))(?!.*//)(?!.*/$).+$"
+    }
+  }
+}

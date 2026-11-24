@@ -1,0 +1,21 @@
+{
+  "name": "@bootcn/cli",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Bootcn CLI: initialize projects and install copy-paste components.",
+  "bin": {
+    "bootcn": "dist/index.js"
+  },
+  "scripts": {
+    "build": "tsup",
+    "test": "vitest run",
+    "typecheck": "tsc --noEmit"
+  },
+  "devDependencies": {
+    "@types/node": "24.19.2",
+    "tsup": "9.0.0",
+    "typescript": "5.9.3",
+    "vitest": "4.1.12"
+  }
+}

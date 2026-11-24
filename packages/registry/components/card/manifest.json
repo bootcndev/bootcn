@@ -1,0 +1,28 @@
+{
+  "$schema": "../../schema/registry-item.schema.json",
+  "name": "card",
+  "type": "registry:ui",
+  "title": "Card",
+  "description": "A content container with header, title, description, content and footer regions.",
+  "version": "1.0.0",
+  "categories": ["cards", "layout"],
+  "dependencies": [],
+  "registryDependencies": ["button"],
+  "compatibility": {
+    "bootstrap": "5.3",
+    "platform": ["Bootstrap CSS"]
+  },
+  "license": "MIT",
+  "files": [
+    {
+      "path": "card.html",
+      "target": "components/ui/card.html",
+      "type": "registry:component"
+    },
+    {
+      "path": "card.css",
+      "target": "assets/css/card.css",
+      "type": "registry:style"
+    }
+  ]
+}

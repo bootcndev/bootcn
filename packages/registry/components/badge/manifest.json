@@ -1,0 +1,28 @@
+{
+  "$schema": "../../schema/registry-item.schema.json",
+  "name": "badge",
+  "type": "registry:ui",
+  "title": "Badge",
+  "description": "A small status label with default, secondary, outline and destructive variants.",
+  "version": "1.0.0",
+  "categories": ["badges", "data-display"],
+  "dependencies": [],
+  "registryDependencies": [],
+  "compatibility": {
+    "bootstrap": "5.3",
+    "platform": ["Bootstrap CSS"]
+  },
+  "license": "MIT",
+  "files": [
+    {
+      "path": "badge.html",
+      "target": "components/ui/badge.html",
+      "type": "registry:component"
+    },
+    {
+      "path": "badge.css",
+      "target": "assets/css/badge.css",
+      "type": "registry:style"
+    }
+  ]
+}

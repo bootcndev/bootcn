@@ -1,0 +1,149 @@
+.bootcn-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  min-height: var(--bootcn-control-height);
+  padding: var(--bootcn-control-padding-y) var(--bootcn-control-padding-x);
+  border: var(--bootcn-border-width) solid transparent;
+  border-radius: var(--bootcn-radius);
+  font-weight: 500;
+  line-height: 1.2;
+  text-align: center;
+  text-decoration: none;
+  transition:
+    background-color var(--bootcn-transition),
+    border-color var(--bootcn-transition),
+    color var(--bootcn-transition),
+    box-shadow var(--bootcn-transition);
+}
+
+.bootcn-button:focus-visible {
+  outline: 0;
+  box-shadow: var(--bootcn-focus-ring);
+}
+
+.bootcn-button:disabled,
+.bootcn-button.disabled,
+.bootcn-button[aria-disabled='true'] {
+  opacity: 0.65;
+  pointer-events: none;
+}
+
+.bootcn-button--default {
+  background-color: var(--bs-primary);
+  border-color: var(--bs-primary);
+  color: var(--bs-white, #fff);
+}
+
+.bootcn-button--secondary {
+  background-color: var(--bs-secondary);
+  border-color: var(--bs-secondary);
+  color: var(--bs-white, #fff);
+}
+
+.bootcn-button--destructive {
+  background-color: var(--bs-danger);
+  border-color: var(--bs-danger);
+  color: var(--bs-white, #fff);
+}
+
+.bootcn-button--default:hover,
+.bootcn-button--secondary:hover,
+.bootcn-button--destructive:hover {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1));
+}
+
+.bootcn-button--default:active,
+.bootcn-button--secondary:active,
+.bootcn-button--destructive:active {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.18), rgba(0, 0, 0, 0.18));
+}
+
+.bootcn-button--outline {
+  background-color: transparent;
+  border-color: var(--bootcn-border-color);
+  color: var(--bs-body-color);
+}
+
+.bootcn-button--outline:hover {
+  background-color: var(--bs-secondary-bg);
+  border-color: var(--bootcn-border-color);
+  color: var(--bs-body-color);
+}
+
+.bootcn-button--ghost {
+  background-color: transparent;
+  border-color: transparent;
+  color: var(--bs-body-color);
+}
+
+.bootcn-button--ghost:hover {
+  background-color: var(--bs-secondary-bg);
+  color: var(--bs-body-color);
+}
+
+.bootcn-button--link {
+  background-color: transparent;
+  border-color: transparent;
+  color: var(--bs-link-color, var(--bs-primary));
+}
+
+.bootcn-button--link:hover {
+  color: var(--bs-link-hover-color, var(--bs-primary));
+  text-decoration: underline;
+}
+
+.bootcn-button--sm {
+  min-height: var(--bootcn-control-height-sm);
+  padding: calc(var(--bootcn-control-padding-y) * 0.5) calc(var(--bootcn-control-padding-x) * 0.75);
+  font-size: 0.875rem;
+}
+
+.bootcn-button--lg {
+  min-height: var(--bootcn-control-height-lg);
+  padding: calc(var(--bootcn-control-padding-y) * 1.5) calc(var(--bootcn-control-padding-x) * 1.25);
+  font-size: 1.125rem;
+}
+
+.bootcn-button--icon {
+  width: var(--bootcn-control-height);
+  min-width: var(--bootcn-control-height);
+  padding: 0;
+  aspect-ratio: 1 / 1;
+}
+
+.bootcn-button--icon.bootcn-button--sm {
+  width: var(--bootcn-control-height-sm);
+  min-width: var(--bootcn-control-height-sm);
+}
+
+.bootcn-button--icon.bootcn-button--lg {
+  width: var(--bootcn-control-height-lg);
+  min-width: var(--bootcn-control-height-lg);
+}
+
+.bootcn-button[aria-busy='true'] {
+  cursor: progress;
+}
+
+.bootcn-button__spinner {
+  width: 1em;
+  height: 1em;
+  border: 0.15em solid currentColor;
+  border-right-color: transparent;
+  border-radius: 50%;
+  animation: bootcn-button-spin 0.6s linear infinite;
+}
+
+@keyframes bootcn-button-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .bootcn-button__spinner {
+    animation: none;
+  }
+}
