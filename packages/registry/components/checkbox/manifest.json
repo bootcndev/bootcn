@@ -1,0 +1,28 @@
+{
+  "$schema": "../../schema/registry-item.schema.json",
+  "name": "checkbox",
+  "type": "registry:ui",
+  "title": "Checkbox",
+  "description": "A checkbox with label, description, invalid and disabled states.",
+  "version": "1.0.0",
+  "categories": ["forms", "selection"],
+  "dependencies": [],
+  "registryDependencies": [],
+  "compatibility": {
+    "bootstrap": "5.3",
+    "platform": ["Bootstrap CSS"]
+  },
+  "license": "MIT",
+  "files": [
+    {
+      "path": "checkbox.html",
+      "target": "checkbox.html",
+      "type": "registry:component"
+    },
+    {
+      "path": "checkbox.css",
+      "target": "checkbox.css",
+      "type": "registry:style"
+    }
+  ]
+}

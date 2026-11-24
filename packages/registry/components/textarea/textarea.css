@@ -1,0 +1,35 @@
+.bootcn-textarea {
+  --bootcn-textarea-min-height: 5rem;
+
+  min-height: var(--bootcn-textarea-min-height);
+  border-radius: var(--bootcn-radius);
+  resize: vertical;
+  transition:
+    border-color var(--bootcn-transition),
+    box-shadow var(--bootcn-transition);
+}
+
+.bootcn-textarea:focus {
+  border-color: var(--bs-primary);
+  outline: 0;
+  box-shadow: var(--bootcn-focus-ring);
+}
+
+.bootcn-textarea[aria-invalid='true'] {
+  border-color: var(--bs-danger);
+}
+
+.bootcn-textarea[aria-invalid='true']:focus {
+  border-color: var(--bs-danger);
+  box-shadow: 0 0 0 var(--bootcn-focus-ring-width) rgba(var(--bs-danger-rgb, 220, 53, 69), 0.25);
+}
+
+.bootcn-textarea[aria-invalid='true'] ~ .invalid-feedback {
+  display: block;
+}
+
+/* Progressive enhancement: grows with its content where supported. */
+.bootcn-textarea--autosize {
+  field-sizing: content;
+  max-height: 20rem;
+}

@@ -1,0 +1,28 @@
+{
+  "$schema": "../../schema/registry-item.schema.json",
+  "name": "textarea",
+  "type": "registry:ui",
+  "title": "Textarea",
+  "description": "A multi-line text field with label, help text, invalid state and optional auto-sizing.",
+  "version": "1.0.0",
+  "categories": ["forms", "inputs"],
+  "dependencies": [],
+  "registryDependencies": ["input"],
+  "compatibility": {
+    "bootstrap": "5.3",
+    "platform": ["Bootstrap CSS"]
+  },
+  "license": "MIT",
+  "files": [
+    {
+      "path": "textarea.html",
+      "target": "textarea.html",
+      "type": "registry:component"
+    },
+    {
+      "path": "textarea.css",
+      "target": "textarea.css",
+      "type": "registry:style"
+    }
+  ]
+}

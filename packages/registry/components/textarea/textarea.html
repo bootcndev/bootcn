@@ -1,0 +1,40 @@
+<div class="bootcn-field">
+  <label for="bootcn-textarea-bio" class="form-label bootcn-field__label">Bio</label>
+  <textarea
+    class="form-control bootcn-textarea"
+    id="bootcn-textarea-bio"
+    name="bio"
+    rows="3"
+    aria-describedby="bootcn-textarea-bio-help"
+    placeholder="Tell us a little about yourself"
+  ></textarea>
+  <p class="bootcn-field__help" id="bootcn-textarea-bio-help">Up to 280 characters.</p>
+</div>
+
+<div class="bootcn-field mt-3">
+  <label for="bootcn-textarea-notes" class="form-label bootcn-field__label"
+    >Notes (grows with content)</label
+  >
+  <textarea
+    class="form-control bootcn-textarea bootcn-textarea--autosize"
+    id="bootcn-textarea-notes"
+    name="notes"
+    rows="2"
+  ></textarea>
+</div>
+
+<div class="bootcn-field mt-3">
+  <label for="bootcn-textarea-message" class="form-label bootcn-field__label">Message</label>
+  <textarea
+    class="form-control bootcn-textarea"
+    id="bootcn-textarea-message"
+    name="message"
+    rows="3"
+    required
+    aria-invalid="true"
+    aria-describedby="bootcn-textarea-message-error"
+  ></textarea>
+  <div class="invalid-feedback" id="bootcn-textarea-message-error">
+    Write a message before sending.
+  </div>
+</div>

@@ -1,0 +1,59 @@
+.bootcn-switch {
+  --bootcn-switch-width: 2.25rem;
+  --bootcn-switch-height: 1.25rem;
+  --bootcn-switch-gap: 0.75rem;
+
+  display: grid;
+  grid-template-columns: var(--bootcn-switch-width) 1fr;
+  column-gap: var(--bootcn-switch-gap);
+  align-items: start;
+  padding-left: 0;
+}
+
+.bootcn-switch--lg {
+  --bootcn-switch-width: 3rem;
+  --bootcn-switch-height: 1.625rem;
+}
+
+.bootcn-switch .bootcn-switch__input {
+  width: var(--bootcn-switch-width);
+  height: var(--bootcn-switch-height);
+  margin: 0;
+  margin-left: 0;
+  border-color: var(--bootcn-border-color);
+  cursor: pointer;
+}
+
+.bootcn-switch .bootcn-switch__input:focus-visible {
+  border-color: var(--bs-primary);
+  outline: 0;
+  box-shadow: var(--bootcn-focus-ring);
+}
+
+.bootcn-switch .bootcn-switch__input:focus:not(:focus-visible) {
+  box-shadow: none;
+}
+
+.bootcn-switch .bootcn-switch__input:disabled {
+  cursor: not-allowed;
+}
+
+.bootcn-switch__label {
+  grid-column: 2;
+  align-self: center;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.bootcn-switch__description {
+  grid-column: 2;
+  margin: 0.125rem 0 0;
+  color: var(--bs-secondary-color);
+  font-size: 0.875rem;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .bootcn-switch .bootcn-switch__input {
+    transition: none;
+  }
+}

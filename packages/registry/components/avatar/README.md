@@ -40,7 +40,7 @@ component has no JavaScript, so it does not swap a broken image for initials.
 | `--bootcn-avatar-radius`        | `50%`                      |
 | `--bootcn-avatar-bg`            | `var(--bs-secondary-bg)`   |
 | `--bootcn-avatar-color`         | `var(--bs-emphasis-color)` |
-| `--bootcn-avatar-group-overlap` | `-0.5rem`                 |
+| `--bootcn-avatar-group-overlap` | `-0.5rem`                  |
 
 ## Dependencies
 

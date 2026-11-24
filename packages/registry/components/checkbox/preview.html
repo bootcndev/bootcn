@@ -1,0 +1,143 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Bootcn Checkbox preview</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.9/dist/css/bootstrap.min.css"
+    />
+    <link rel="stylesheet" href="../../themes/tokens/tokens.css" />
+    <link rel="stylesheet" href="checkbox.css" />
+  </head>
+  <body>
+    <main class="container py-4">
+      <h1 class="h4 mb-4">Checkbox</h1>
+      <div class="form-check bootcn-checkbox">
+        <input
+          class="form-check-input bootcn-checkbox__input"
+          type="checkbox"
+          id="bootcn-checkbox-terms"
+          name="terms"
+        />
+        <label class="form-check-label bootcn-checkbox__label" for="bootcn-checkbox-terms"
+          >Accept terms and conditions</label
+        >
+      </div>
+
+      <div class="form-check bootcn-checkbox mt-3">
+        <input
+          class="form-check-input bootcn-checkbox__input"
+          type="checkbox"
+          id="bootcn-checkbox-news"
+          name="newsletter"
+          checked
+          aria-describedby="bootcn-checkbox-news-description"
+        />
+        <label class="form-check-label bootcn-checkbox__label" for="bootcn-checkbox-news"
+          >Product updates</label
+        >
+        <p class="bootcn-checkbox__description" id="bootcn-checkbox-news-description">
+          One email a month. Unsubscribe at any time.
+        </p>
+      </div>
+
+      <div class="form-check bootcn-checkbox mt-3">
+        <input
+          class="form-check-input bootcn-checkbox__input"
+          type="checkbox"
+          id="bootcn-checkbox-required"
+          name="consent"
+          required
+          aria-invalid="true"
+          aria-describedby="bootcn-checkbox-required-error"
+        />
+        <label class="form-check-label bootcn-checkbox__label" for="bootcn-checkbox-required"
+          >I agree to the data policy</label
+        >
+        <p class="bootcn-checkbox__error" id="bootcn-checkbox-required-error">
+          You must agree to continue.
+        </p>
+      </div>
+
+      <div class="form-check bootcn-checkbox mt-3">
+        <input
+          class="form-check-input bootcn-checkbox__input"
+          type="checkbox"
+          id="bootcn-checkbox-disabled"
+          disabled
+        />
+        <label class="form-check-label bootcn-checkbox__label" for="bootcn-checkbox-disabled"
+          >Disabled option</label
+        >
+      </div>
+      <section
+        class="mt-5 p-3 rounded"
+        data-bs-theme="dark"
+        aria-label="Dark theme"
+        style="background-color: var(--bs-body-bg); color: var(--bs-body-color)"
+      >
+        <h2 class="h6 mb-3">Dark theme</h2>
+        <div class="form-check bootcn-checkbox">
+          <input
+            class="form-check-input bootcn-checkbox__input"
+            type="checkbox"
+            id="bootcn-checkbox-terms-dark"
+            name="terms-dark"
+          />
+          <label class="form-check-label bootcn-checkbox__label" for="bootcn-checkbox-terms-dark"
+            >Accept terms and conditions</label
+          >
+        </div>
+
+        <div class="form-check bootcn-checkbox mt-3">
+          <input
+            class="form-check-input bootcn-checkbox__input"
+            type="checkbox"
+            id="bootcn-checkbox-news-dark"
+            name="newsletter-dark"
+            checked
+            aria-describedby="bootcn-checkbox-news-description-dark"
+          />
+          <label class="form-check-label bootcn-checkbox__label" for="bootcn-checkbox-news-dark"
+            >Product updates</label
+          >
+          <p class="bootcn-checkbox__description" id="bootcn-checkbox-news-description-dark">
+            One email a month. Unsubscribe at any time.
+          </p>
+        </div>
+
+        <div class="form-check bootcn-checkbox mt-3">
+          <input
+            class="form-check-input bootcn-checkbox__input"
+            type="checkbox"
+            id="bootcn-checkbox-required-dark"
+            name="consent-dark"
+            required
+            aria-invalid="true"
+            aria-describedby="bootcn-checkbox-required-error-dark"
+          />
+          <label class="form-check-label bootcn-checkbox__label" for="bootcn-checkbox-required-dark"
+            >I agree to the data policy</label
+          >
+          <p class="bootcn-checkbox__error" id="bootcn-checkbox-required-error-dark">
+            You must agree to continue.
+          </p>
+        </div>
+
+        <div class="form-check bootcn-checkbox mt-3">
+          <input
+            class="form-check-input bootcn-checkbox__input"
+            type="checkbox"
+            id="bootcn-checkbox-disabled-dark"
+            disabled
+          />
+          <label class="form-check-label bootcn-checkbox__label" for="bootcn-checkbox-disabled-dark"
+            >Disabled option</label
+          >
+        </div>
+      </section>
+    </main>
+  </body>
+</html>

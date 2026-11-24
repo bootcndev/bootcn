@@ -1,0 +1,70 @@
+<fieldset class="bootcn-radio-group">
+  <legend class="bootcn-radio-group__legend">Notify me about</legend>
+  <div class="form-check bootcn-radio-group__item">
+    <input
+      class="form-check-input"
+      type="radio"
+      name="bootcn-notify"
+      id="bootcn-notify-all"
+      value="all"
+      checked
+    />
+    <label class="form-check-label" for="bootcn-notify-all">All new messages</label>
+  </div>
+  <div class="form-check bootcn-radio-group__item">
+    <input
+      class="form-check-input"
+      type="radio"
+      name="bootcn-notify"
+      id="bootcn-notify-mentions"
+      value="mentions"
+    />
+    <label class="form-check-label" for="bootcn-notify-mentions"
+      >Direct messages and mentions</label
+    >
+  </div>
+  <div class="form-check bootcn-radio-group__item">
+    <input
+      class="form-check-input"
+      type="radio"
+      name="bootcn-notify"
+      id="bootcn-notify-none"
+      value="none"
+      disabled
+    />
+    <label class="form-check-label" for="bootcn-notify-none">Nothing (disabled)</label>
+  </div>
+</fieldset>
+
+<fieldset class="bootcn-radio-group bootcn-radio-group--cards mt-4">
+  <legend class="bootcn-radio-group__legend">Plan</legend>
+  <div class="form-check bootcn-radio-group__item">
+    <input
+      class="form-check-input"
+      type="radio"
+      name="bootcn-plan"
+      id="bootcn-plan-starter"
+      value="starter"
+      checked
+      aria-describedby="bootcn-plan-starter-description"
+    />
+    <label class="form-check-label" for="bootcn-plan-starter">Starter</label>
+    <p class="bootcn-radio-group__description" id="bootcn-plan-starter-description">
+      For personal projects.
+    </p>
+  </div>
+  <div class="form-check bootcn-radio-group__item">
+    <input
+      class="form-check-input"
+      type="radio"
+      name="bootcn-plan"
+      id="bootcn-plan-team"
+      value="team"
+      aria-describedby="bootcn-plan-team-description"
+    />
+    <label class="form-check-label" for="bootcn-plan-team">Team</label>
+    <p class="bootcn-radio-group__description" id="bootcn-plan-team-description">
+      Up to 20 members.
+    </p>
+  </div>
+</fieldset>

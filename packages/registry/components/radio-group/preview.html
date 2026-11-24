@@ -1,0 +1,167 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Bootcn Radio group preview</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.9/dist/css/bootstrap.min.css"
+    />
+    <link rel="stylesheet" href="../../themes/tokens/tokens.css" />
+    <link rel="stylesheet" href="radio-group.css" />
+  </head>
+  <body>
+    <main class="container py-4">
+      <h1 class="h4 mb-4">Radio group</h1>
+      <fieldset class="bootcn-radio-group">
+        <legend class="bootcn-radio-group__legend">Notify me about</legend>
+        <div class="form-check bootcn-radio-group__item">
+          <input
+            class="form-check-input"
+            type="radio"
+            name="bootcn-notify"
+            id="bootcn-notify-all"
+            value="all"
+            checked
+          />
+          <label class="form-check-label" for="bootcn-notify-all">All new messages</label>
+        </div>
+        <div class="form-check bootcn-radio-group__item">
+          <input
+            class="form-check-input"
+            type="radio"
+            name="bootcn-notify"
+            id="bootcn-notify-mentions"
+            value="mentions"
+          />
+          <label class="form-check-label" for="bootcn-notify-mentions"
+            >Direct messages and mentions</label
+          >
+        </div>
+        <div class="form-check bootcn-radio-group__item">
+          <input
+            class="form-check-input"
+            type="radio"
+            name="bootcn-notify"
+            id="bootcn-notify-none"
+            value="none"
+            disabled
+          />
+          <label class="form-check-label" for="bootcn-notify-none">Nothing (disabled)</label>
+        </div>
+      </fieldset>
+
+      <fieldset class="bootcn-radio-group bootcn-radio-group--cards mt-4">
+        <legend class="bootcn-radio-group__legend">Plan</legend>
+        <div class="form-check bootcn-radio-group__item">
+          <input
+            class="form-check-input"
+            type="radio"
+            name="bootcn-plan"
+            id="bootcn-plan-starter"
+            value="starter"
+            checked
+            aria-describedby="bootcn-plan-starter-description"
+          />
+          <label class="form-check-label" for="bootcn-plan-starter">Starter</label>
+          <p class="bootcn-radio-group__description" id="bootcn-plan-starter-description">
+            For personal projects.
+          </p>
+        </div>
+        <div class="form-check bootcn-radio-group__item">
+          <input
+            class="form-check-input"
+            type="radio"
+            name="bootcn-plan"
+            id="bootcn-plan-team"
+            value="team"
+            aria-describedby="bootcn-plan-team-description"
+          />
+          <label class="form-check-label" for="bootcn-plan-team">Team</label>
+          <p class="bootcn-radio-group__description" id="bootcn-plan-team-description">
+            Up to 20 members.
+          </p>
+        </div>
+      </fieldset>
+      <section
+        class="mt-5 p-3 rounded"
+        data-bs-theme="dark"
+        aria-label="Dark theme"
+        style="background-color: var(--bs-body-bg); color: var(--bs-body-color)"
+      >
+        <h2 class="h6 mb-3">Dark theme</h2>
+        <fieldset class="bootcn-radio-group">
+          <legend class="bootcn-radio-group__legend">Notify me about</legend>
+          <div class="form-check bootcn-radio-group__item">
+            <input
+              class="form-check-input"
+              type="radio"
+              name="bootcn-notify-dark"
+              id="bootcn-notify-all-dark"
+              value="all"
+              checked
+            />
+            <label class="form-check-label" for="bootcn-notify-all-dark">All new messages</label>
+          </div>
+          <div class="form-check bootcn-radio-group__item">
+            <input
+              class="form-check-input"
+              type="radio"
+              name="bootcn-notify-dark"
+              id="bootcn-notify-mentions-dark"
+              value="mentions"
+            />
+            <label class="form-check-label" for="bootcn-notify-mentions-dark"
+              >Direct messages and mentions</label
+            >
+          </div>
+          <div class="form-check bootcn-radio-group__item">
+            <input
+              class="form-check-input"
+              type="radio"
+              name="bootcn-notify-dark"
+              id="bootcn-notify-none-dark"
+              value="none"
+              disabled
+            />
+            <label class="form-check-label" for="bootcn-notify-none-dark">Nothing (disabled)</label>
+          </div>
+        </fieldset>
+
+        <fieldset class="bootcn-radio-group bootcn-radio-group--cards mt-4">
+          <legend class="bootcn-radio-group__legend">Plan</legend>
+          <div class="form-check bootcn-radio-group__item">
+            <input
+              class="form-check-input"
+              type="radio"
+              name="bootcn-plan-dark"
+              id="bootcn-plan-starter-dark"
+              value="starter"
+              checked
+              aria-describedby="bootcn-plan-starter-description-dark"
+            />
+            <label class="form-check-label" for="bootcn-plan-starter-dark">Starter</label>
+            <p class="bootcn-radio-group__description" id="bootcn-plan-starter-description-dark">
+              For personal projects.
+            </p>
+          </div>
+          <div class="form-check bootcn-radio-group__item">
+            <input
+              class="form-check-input"
+              type="radio"
+              name="bootcn-plan-dark"
+              id="bootcn-plan-team-dark"
+              value="team"
+              aria-describedby="bootcn-plan-team-description-dark"
+            />
+            <label class="form-check-label" for="bootcn-plan-team-dark">Team</label>
+            <p class="bootcn-radio-group__description" id="bootcn-plan-team-description-dark">
+              Up to 20 members.
+            </p>
+          </div>
+        </fieldset>
+      </section>
+    </main>
+  </body>
+</html>

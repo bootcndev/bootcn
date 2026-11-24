@@ -1,0 +1,52 @@
+<div class="bootcn-field">
+  <label for="bootcn-select-country" class="form-label bootcn-field__label">Country</label>
+  <select
+    class="form-select bootcn-select"
+    id="bootcn-select-country"
+    name="country"
+    aria-describedby="bootcn-select-country-help"
+  >
+    <option value="">Choose a country</option>
+    <option value="gr" selected>Greece</option>
+    <option value="cy">Cyprus</option>
+    <option value="it">Italy</option>
+  </select>
+  <p class="bootcn-field__help" id="bootcn-select-country-help">Used for tax calculation.</p>
+</div>
+
+<div class="bootcn-field mt-3">
+  <label for="bootcn-select-timezone" class="form-label bootcn-field__label">Timezone</label>
+  <select class="form-select bootcn-select" id="bootcn-select-timezone" name="timezone">
+    <optgroup label="Europe">
+      <option value="Europe/Athens">Athens</option>
+      <option value="Europe/Berlin">Berlin</option>
+    </optgroup>
+    <optgroup label="America">
+      <option value="America/New_York">New York</option>
+    </optgroup>
+  </select>
+</div>
+
+<div class="bootcn-field mt-3">
+  <label for="bootcn-select-role" class="form-label bootcn-field__label">Role</label>
+  <select
+    class="form-select bootcn-select"
+    id="bootcn-select-role"
+    name="role"
+    required
+    aria-invalid="true"
+    aria-describedby="bootcn-select-role-error"
+  >
+    <option value="" selected>Choose a role</option>
+    <option value="admin">Admin</option>
+    <option value="member">Member</option>
+  </select>
+  <div class="invalid-feedback" id="bootcn-select-role-error">Choose a role.</div>
+</div>
+
+<div class="bootcn-field mt-3">
+  <label for="bootcn-select-disabled" class="form-label bootcn-field__label">Disabled</label>
+  <select class="form-select bootcn-select" id="bootcn-select-disabled" disabled>
+    <option>Not available</option>
+  </select>
+</div>
