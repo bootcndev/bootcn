@@ -89,26 +89,48 @@ async function routeBootstrap(page: Page): Promise<void> {
 }
 
 interface ExampleCase {
-  name: 'plain-html' | 'native-php';
+  name: 'plain-html' | 'native-php' | 'vite';
   entry: string;
+  /** Runs after the CLI install, before serving. */
+  prepare?(dir: string): Promise<void>;
   startServer(dir: string, port: number): ChildProcess;
 }
+
+function staticServer(root: string, port: number): ChildProcess {
+  return spawn(process.execPath, [resolve(repoRoot, 'tests/static-server.mjs')], {
+    env: { ...process.env, ROOT: root, PORT: String(port) },
+    stdio: 'ignore',
+  });
+}
+
+const viteBin = resolve(repoRoot, 'node_modules/vite/bin/vite.js');
 
 const cases: ExampleCase[] = [
   {
     name: 'plain-html',
     entry: 'index.html',
-    startServer: (dir, port) =>
-      spawn(process.execPath, [resolve(repoRoot, 'tests/static-server.mjs')], {
-        env: { ...process.env, ROOT: dir, PORT: String(port) },
-        stdio: 'ignore',
-      }),
+    startServer: staticServer,
   },
   {
     name: 'native-php',
     entry: 'index.php',
     startServer: (dir, port) =>
       spawn('php', ['-S', `127.0.0.1:${port}`, '-t', dir], { stdio: 'ignore' }),
+  },
+  {
+    name: 'vite',
+    entry: 'index.html',
+    // Production build: proves the installed CSS/JS bundle cleanly with Vite.
+    prepare: async (dir) => {
+      await run(
+        process.execPath,
+        [viteBin, 'build', dir, '--outDir', resolve(dir, 'dist'), '--logLevel', 'error'],
+        {
+          cwd: dir,
+        },
+      );
+    },
+    startServer: (dir, port) => staticServer(resolve(dir, 'dist'), port),
   },
 ];
 
@@ -138,6 +160,8 @@ for (const example of cases) {
       expect(initOutput).toContain('wrote bootcn.json');
       const addOutput = await cli(['add', 'button', 'dialog', '--yes', '--cwd', dir]);
       expect(addOutput).toContain('wrote assets/js/dialog.js');
+
+      await example.prepare?.(dir);
 
       const port = await freePort();
       baseUrl = `http://127.0.0.1:${port}`;
