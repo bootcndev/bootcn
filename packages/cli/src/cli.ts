@@ -4,6 +4,7 @@ import { Command, CommanderError } from 'commander';
 
 import pkg from '../package.json' with { type: 'json' };
 import { addCommand } from './commands/add.js';
+import { diffCommand } from './commands/diff.js';
 import { infoCommand } from './commands/info.js';
 import { initCommand } from './commands/init.js';
 import { listCommand } from './commands/list.js';
@@ -108,6 +109,14 @@ export async function run(argv: readonly string[], deps: RunDeps = {}): Promise<
     .description('list registry items and mark the installed ones')
     .action(async (_options: unknown, command: Command) => {
       exitCode = await listCommand(buildContext(command.optsWithGlobals<GlobalOptions>()));
+    });
+
+  program
+    .command('diff')
+    .description('compare installed files with the registry (all installed items by default)')
+    .argument('[names...]', 'item names to compare')
+    .action(async (names: string[], _options: unknown, command: Command) => {
+      exitCode = await diffCommand(buildContext(command.optsWithGlobals<GlobalOptions>()), names);
     });
 
   program

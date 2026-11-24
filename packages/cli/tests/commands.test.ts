@@ -1,4 +1,4 @@
-import { chmod, lstat, readFile, readdir, symlink } from 'node:fs/promises';
+import { chmod, lstat, readFile, readdir, rm, symlink } from 'node:fs/promises';
 import { resolve } from 'node:path';
 
 import { afterAll, afterEach, beforeAll, describe, expect, it } from 'vitest';
@@ -345,6 +345,42 @@ describe('list and info', () => {
     expect(result.code).toBe(EXIT.ok);
     expect(result.output).toMatch(/Depends on:\s+button/);
     expect(result.output).toMatch(/registry:script\s+assets\/js\/dialog.js/);
+  });
+});
+
+describe('diff', () => {
+  it('shows a unified diff for changed files and writes nothing', async () => {
+    const root = await initProject();
+    await runCli(['add', 'badge', '--yes', '--cwd', root]);
+    const original = await read(root, 'assets/css/badge.css');
+    const edited = original.replace('font-weight: 600;', 'font-weight: 700;');
+    await writeFiles(root, { 'assets/css/badge.css': edited });
+
+    const result = await runCli(['diff', 'badge', '--cwd', root]);
+    expect(result.code).toBe(EXIT.ok);
+    expect(result.output).toMatch(/--- installed\/assets\/css\/badge.css/);
+    expect(result.output).toMatch(/\+\+\+ registry\/assets\/css\/badge.css/);
+    expect(result.output).toMatch(/-\s+font-weight: 700;/);
+    expect(result.output).toMatch(/\+\s+font-weight: 600;/);
+    expect(result.output).toMatch(/1 file\(s\) differ/);
+    expect(await read(root, 'assets/css/badge.css')).toBe(edited);
+  });
+
+  it('checks every installed item by default and reports missing files', async () => {
+    const root = await initProject();
+    await runCli(['add', 'dialog', '--yes', '--cwd', root]);
+    await rm(resolve(root, 'assets/js/dialog.js'));
+    const result = await runCli(['diff', '--cwd', root]);
+    expect(result.code).toBe(EXIT.ok);
+    expect(result.output).toMatch(/dialog: assets\/js\/dialog.js is not installed/);
+    expect(result.output).toMatch(/0 file\(s\) differ, \d+ unchanged, 1 not installed/);
+  });
+
+  it('says when nothing is installed', async () => {
+    const root = await initProject();
+    await rm(resolve(root, 'assets/css/tokens.css'));
+    const result = await runCli(['diff', '--cwd', root]);
+    expect(result.output).toMatch(/Nothing from the registry is installed yet/);
   });
 });
 
