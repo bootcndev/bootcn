@@ -35,10 +35,66 @@ const frameHeight = ref(props.fixed ? props.height : 360);
 let observer: ResizeObserver | undefined;
 
 function fit(): void {
-  if (props.fixed) return;
-  const doc = frame.value?.contentDocument;
+  if (props.fixed || !frame.value) return;
+  const doc = frame.value.contentDocument;
   if (!doc?.documentElement) return;
-  frameHeight.value = Math.max(360, Math.ceil(doc.documentElement.scrollHeight));
+  // The style height includes the frame's border; without it the content is
+  // a couple of pixels short and the frame shows a scrollbar.
+  const border = frame.value.offsetHeight - frame.value.clientHeight;
+  frameHeight.value = Math.max(360, Math.ceil(doc.documentElement.scrollHeight) + border);
+}
+
+/*
+ * Preview layout inside the frame (docs only; preview.html opened on its own
+ * is unchanged): never show scrollbars, since the frame grows to fit; and for
+ * components, center the content and visually hide the preview's own title,
+ * which the docs page already shows.
+ */
+const FRAME_CSS = `
+html { overflow: hidden; }
+body > main.container:first-child[data-bootcn-docs-center] {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  max-width: none;
+  padding: 2.5rem 1.5rem;
+}
+/* One centered block as wide as its widest child (at least 20rem), so
+   full-width children such as separators and tables keep their width. */
+.bootcn-docs-stage {
+  width: fit-content;
+  min-width: min(100%, 20rem);
+  max-width: 100%;
+}
+body > main.container:first-child[data-bootcn-docs-center] > h1:first-child {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+}`;
+
+function prepareFrame(): void {
+  const doc = frame.value?.contentDocument;
+  if (!doc?.head || props.fixed || doc.querySelector('style[data-bootcn-docs]')) return;
+  const style = doc.createElement('style');
+  style.setAttribute('data-bootcn-docs', '');
+  style.textContent = FRAME_CSS;
+  doc.head.appendChild(style);
+  const main = doc.body?.firstElementChild;
+  if (props.kind === 'components' && main?.matches('main.container')) {
+    main.setAttribute('data-bootcn-docs-center', '');
+    // Moving nodes keeps their listeners, ids and component state.
+    const stage = doc.createElement('div');
+    stage.className = 'bootcn-docs-stage';
+    Array.from(main.children)
+      .filter((child) => !(child === main.firstElementChild && child.matches('h1')))
+      .forEach((child) => stage.appendChild(child));
+    main.appendChild(stage);
+  }
 }
 
 function applyTheme(): void {
@@ -50,7 +106,10 @@ function applyTheme(): void {
 
 watch(isDark, applyTheme);
 
+let mutations: MutationObserver | undefined;
+
 function onLoad(): void {
+  prepareFrame();
   applyTheme();
   fit();
   const body = frame.value?.contentDocument?.body;
@@ -59,6 +118,13 @@ function onLoad(): void {
     observer = new ResizeObserver(fit);
     observer.observe(body);
   }
+  // Popups (menus, listboxes, calendars) change the content height without
+  // resizing <body>; refit when the preview's DOM changes.
+  if (body && !props.fixed) {
+    mutations?.disconnect();
+    mutations = new MutationObserver(() => requestAnimationFrame(fit));
+    mutations.observe(body, { subtree: true, childList: true, attributes: true });
+  }
 }
 
 // The frame may finish loading before hydration, when @load has no listener yet.
@@ -66,7 +132,10 @@ onMounted(() => {
   if (frame.value?.contentDocument?.readyState === 'complete') onLoad();
 });
 
-onBeforeUnmount(() => observer?.disconnect());
+onBeforeUnmount(() => {
+  observer?.disconnect();
+  mutations?.disconnect();
+});
 </script>
 
 <template>

@@ -99,14 +99,26 @@ for (const { item, kind } of sized) {
     await expect(frame.locator(`[class*="bootcn-"]`).first()).toBeVisible();
     const iframe = page.locator('.bootcn-preview iframe');
     await iframe.scrollIntoViewIfNeeded();
+    // The frame fits its content exactly: no scrollbar in either direction.
     await expect
       .poll(async () =>
         iframe.evaluate((el: HTMLIFrameElement) => {
           const doc = el.contentDocument?.documentElement;
-          return doc ? el.clientHeight + 2 >= doc.scrollHeight : false;
+          if (!doc) return 'no document';
+          return {
+            fits: el.clientHeight >= doc.scrollHeight && el.clientWidth >= doc.scrollWidth,
+            overflow: getComputedStyle(doc).overflow,
+          };
         }),
       )
-      .toBe(true);
+      .toEqual({ fits: true, overflow: 'hidden' });
+    if (kind === 'components' && item.name !== 'sidebar') {
+      // Components are centered; their own title is visually hidden.
+      await expect(page.frameLocator('.bootcn-preview iframe').locator('main')).toHaveAttribute(
+        'data-bootcn-docs-center',
+        '',
+      );
+    }
 
     expect(errors).toEqual([]);
   });
