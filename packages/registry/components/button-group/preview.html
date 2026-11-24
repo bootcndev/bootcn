@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Bootcn Button group preview</title>
+    <script>
+      // Preview theme: ?theme=dark|light, else the docs page around the frame, else light.
+      (function () {
+        var theme = new URLSearchParams(location.search).get('theme');
+        if (!theme) {
+          try {
+            theme =
+              window.parent !== window &&
+              window.parent.document.documentElement.classList.contains('dark')
+                ? 'dark'
+                : 'light';
+          } catch (error) {
+            theme = 'light';
+          }
+        }
+        document.documentElement.setAttribute('data-bs-theme', theme === 'dark' ? 'dark' : 'light');
+      })();
+    </script>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.9/dist/css/bootstrap.min.css"
+    />
+    <link rel="stylesheet" href="../../themes/tokens/tokens.css" />
+    <link rel="stylesheet" href="../button/button.css" />
+    <link rel="stylesheet" href="button-group.css" />
+  </head>
+  <body>
+    <main class="container py-4">
+      <h1 class="h4 mb-4">Button group</h1>
+      <div class="btn-group bootcn-button-group" role="group" aria-label="Archive actions">
+        <button type="button" class="btn bootcn-button bootcn-button--outline">Archive</button>
+        <button type="button" class="btn bootcn-button bootcn-button--outline">Report</button>
+        <button type="button" class="btn bootcn-button bootcn-button--outline">Snooze</button>
+      </div>
+
+      <div class="btn-group-vertical bootcn-button-group mt-3" role="group" aria-label="Zoom">
+        <button type="button" class="btn bootcn-button bootcn-button--outline">Zoom in</button>
+        <button type="button" class="btn bootcn-button bootcn-button--outline">Zoom out</button>
+      </div>
+    </main>
+  </body>
+</html>

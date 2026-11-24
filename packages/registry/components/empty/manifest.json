@@ -1,0 +1,28 @@
+{
+  "$schema": "../../schema/registry-item.schema.json",
+  "name": "empty",
+  "type": "registry:ui",
+  "title": "Empty state",
+  "description": "Fills an empty list or page with an icon, a short explanation and the next action to take.",
+  "version": "1.0.0",
+  "categories": ["feedback"],
+  "dependencies": [],
+  "registryDependencies": ["button"],
+  "compatibility": {
+    "bootstrap": "5.3",
+    "platform": ["Bootstrap CSS"]
+  },
+  "license": "MIT",
+  "files": [
+    {
+      "path": "empty.html",
+      "target": "empty.html",
+      "type": "registry:component"
+    },
+    {
+      "path": "empty.css",
+      "target": "empty.css",
+      "type": "registry:style"
+    }
+  ]
+}

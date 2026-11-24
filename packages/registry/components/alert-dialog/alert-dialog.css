@@ -1,0 +1,11 @@
+/* Buttons stack on phones, with the safe action last (nearest the thumb). */
+@media (max-width: 575.98px) {
+  .bootcn-alert-dialog__footer {
+    flex-direction: column-reverse;
+    align-items: stretch;
+  }
+
+  .bootcn-alert-dialog__footer > .bootcn-button {
+    width: 100%;
+  }
+}

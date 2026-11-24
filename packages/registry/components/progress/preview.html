@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Bootcn Progress preview</title>
+    <script>
+      // Preview theme: ?theme=dark|light, else the docs page around the frame, else light.
+      (function () {
+        var theme = new URLSearchParams(location.search).get('theme');
+        if (!theme) {
+          try {
+            theme =
+              window.parent !== window &&
+              window.parent.document.documentElement.classList.contains('dark')
+                ? 'dark'
+                : 'light';
+          } catch (error) {
+            theme = 'light';
+          }
+        }
+        document.documentElement.setAttribute('data-bs-theme', theme === 'dark' ? 'dark' : 'light');
+      })();
+    </script>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.9/dist/css/bootstrap.min.css"
+    />
+    <link rel="stylesheet" href="../../themes/tokens/tokens.css" />
+    <link rel="stylesheet" href="progress.css" />
+  </head>
+  <body>
+    <main class="container py-4">
+      <h1 class="h4 mb-4">Progress</h1>
+      <div class="bootcn-progress-label">
+        <label for="bootcn-progress-upload">Uploading report.pdf</label>
+        <span aria-hidden="true">60%</span>
+      </div>
+      <progress class="bootcn-progress" id="bootcn-progress-upload" max="100" value="60">
+        60%
+      </progress>
+
+      <progress class="bootcn-progress mt-4" aria-label="Profile completeness" max="100" value="25">
+        25%
+      </progress>
+
+      <div class="bootcn-progress-label mt-4">
+        <label for="bootcn-progress-sync">Syncing contacts</label>
+      </div>
+      <progress
+        class="bootcn-progress"
+        id="bootcn-progress-sync"
+        aria-describedby="bootcn-progress-sync-help"
+      ></progress>
+      <p class="bootcn-progress-help" id="bootcn-progress-sync-help">This can take a minute.</p>
+    </main>
+  </body>
+</html>

@@ -1,0 +1,28 @@
+{
+  "$schema": "../../schema/registry-item.schema.json",
+  "name": "field",
+  "type": "registry:ui",
+  "title": "Field",
+  "description": "Groups form controls with labels, descriptions and errors, in stacked, side-by-side and horizontal layouts.",
+  "version": "1.0.0",
+  "categories": ["forms"],
+  "dependencies": [],
+  "registryDependencies": ["input", "select", "switch", "label"],
+  "compatibility": {
+    "bootstrap": "5.3",
+    "platform": ["Bootstrap CSS"]
+  },
+  "license": "MIT",
+  "files": [
+    {
+      "path": "field.html",
+      "target": "field.html",
+      "type": "registry:component"
+    },
+    {
+      "path": "field.css",
+      "target": "field.css",
+      "type": "registry:style"
+    }
+  ]
+}

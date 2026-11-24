@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Bootcn Alert dialog preview</title>
+    <script>
+      // Preview theme: ?theme=dark|light, else the docs page around the frame, else light.
+      (function () {
+        var theme = new URLSearchParams(location.search).get('theme');
+        if (!theme) {
+          try {
+            theme =
+              window.parent !== window &&
+              window.parent.document.documentElement.classList.contains('dark')
+                ? 'dark'
+                : 'light';
+          } catch (error) {
+            theme = 'light';
+          }
+        }
+        document.documentElement.setAttribute('data-bs-theme', theme === 'dark' ? 'dark' : 'light');
+      })();
+    </script>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.9/dist/css/bootstrap.min.css"
+    />
+    <link rel="stylesheet" href="../../themes/tokens/tokens.css" />
+    <link rel="stylesheet" href="../button/button.css" />
+    <link rel="stylesheet" href="../dialog/dialog.css" />
+    <link rel="stylesheet" href="alert-dialog.css" />
+  </head>
+  <body>
+    <main class="container py-4">
+      <h1 class="h4 mb-4">Alert dialog</h1>
+      <button
+        type="button"
+        class="btn bootcn-button bootcn-button--outline"
+        data-bs-toggle="modal"
+        data-bs-target="#bootcn-alert-dialog"
+      >
+        Delete account
+      </button>
+
+      <div
+        class="modal fade bootcn-dialog bootcn-alert-dialog"
+        id="bootcn-alert-dialog"
+        tabindex="-1"
+        role="alertdialog"
+        aria-modal="true"
+        aria-labelledby="bootcn-alert-dialog-title"
+        aria-describedby="bootcn-alert-dialog-description"
+        data-bs-backdrop="static"
+      >
+        <div class="modal-dialog modal-dialog-centered">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h2 class="modal-title bootcn-dialog__title" id="bootcn-alert-dialog-title">
+                Delete your account?
+              </h2>
+            </div>
+            <div class="modal-body">
+              <p class="bootcn-dialog__description" id="bootcn-alert-dialog-description">
+                This permanently deletes your account and your data. You cannot undo it.
+              </p>
+            </div>
+            <div class="modal-footer bootcn-alert-dialog__footer">
+              <button
+                type="button"
+                class="btn bootcn-button bootcn-button--outline"
+                data-bs-dismiss="modal"
+                data-bootcn-alert-dialog-cancel
+              >
+                Cancel
+              </button>
+              <button
+                type="button"
+                class="btn bootcn-button bootcn-button--destructive"
+                data-bs-dismiss="modal"
+              >
+                Delete account
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.9/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../dialog/dialog.js"></script>
+    <script src="alert-dialog.js"></script>
+  </body>
+</html>

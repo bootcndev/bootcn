@@ -1,0 +1,28 @@
+{
+  "$schema": "../../schema/registry-item.schema.json",
+  "name": "toggle",
+  "type": "registry:ui",
+  "title": "Toggle",
+  "description": "A two-state button, such as Bold in a text editor, built on a native checkbox.",
+  "version": "1.0.0",
+  "categories": ["actions"],
+  "dependencies": [],
+  "registryDependencies": [],
+  "compatibility": {
+    "bootstrap": "5.3",
+    "platform": ["Bootstrap CSS"]
+  },
+  "license": "MIT",
+  "files": [
+    {
+      "path": "toggle.html",
+      "target": "toggle.html",
+      "type": "registry:component"
+    },
+    {
+      "path": "toggle.css",
+      "target": "toggle.css",
+      "type": "registry:style"
+    }
+  ]
+}

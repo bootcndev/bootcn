@@ -1,0 +1,57 @@
+.bootcn-toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  min-width: var(--bootcn-control-height);
+  height: var(--bootcn-control-height);
+  padding: 0 0.625rem;
+  border: var(--bootcn-border-width) solid transparent;
+  border-radius: var(--bootcn-radius);
+  background-color: transparent;
+  color: var(--bootcn-foreground);
+  font-size: 0.875rem;
+  font-weight: 500;
+  cursor: pointer;
+  user-select: none;
+  transition:
+    background-color var(--bootcn-transition),
+    color var(--bootcn-transition),
+    box-shadow var(--bootcn-transition);
+}
+
+.bootcn-toggle:hover {
+  background-color: var(--bootcn-muted);
+}
+
+.bootcn-toggle--outline {
+  border-color: var(--bootcn-input);
+  box-shadow: var(--bootcn-shadow-sm);
+}
+
+.bootcn-toggle--sm {
+  min-width: var(--bootcn-control-height-sm);
+  height: var(--bootcn-control-height-sm);
+  padding: 0 0.5rem;
+}
+
+.bootcn-toggle--lg {
+  min-width: var(--bootcn-control-height-lg);
+  height: var(--bootcn-control-height-lg);
+  padding: 0 0.75rem;
+}
+
+/* State comes from the Bootstrap .btn-check input before the label. */
+.btn-check:checked + .bootcn-toggle {
+  background-color: var(--bootcn-accent);
+  color: var(--bootcn-accent-foreground);
+}
+
+.btn-check:focus-visible + .bootcn-toggle {
+  box-shadow: var(--bootcn-focus-ring);
+}
+
+.btn-check:disabled + .bootcn-toggle {
+  cursor: not-allowed;
+  opacity: 0.5;
+}

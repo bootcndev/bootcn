@@ -1,0 +1,51 @@
+.bootcn-table {
+  --bs-table-bg: transparent;
+  --bs-table-color: var(--bootcn-foreground);
+  --bs-table-border-color: var(--bootcn-border-color);
+  --bs-table-hover-bg: var(--bootcn-muted);
+  --bs-table-hover-color: var(--bootcn-foreground);
+
+  margin: 0;
+  caption-side: bottom;
+  font-size: 0.875rem;
+}
+
+.bootcn-table > caption {
+  padding-top: 1rem;
+  color: var(--bootcn-muted-foreground);
+  text-align: center;
+}
+
+.bootcn-table > :not(caption) > * > * {
+  padding: 0.625rem 0.5rem;
+  vertical-align: middle;
+}
+
+.bootcn-table > thead > tr > th {
+  color: var(--bootcn-muted-foreground);
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+.bootcn-table > tbody > tr > th {
+  font-weight: 500;
+}
+
+.bootcn-table > tbody > tr {
+  transition: background-color var(--bootcn-transition);
+}
+
+.bootcn-table > tbody > tr:hover > * {
+  background-color: var(--bootcn-muted);
+}
+
+.bootcn-table > tfoot > tr > * {
+  border-bottom: 0;
+  background-color: var(--bs-tertiary-bg);
+  font-weight: 500;
+}
+
+.bootcn-table td,
+.bootcn-table th {
+  font-variant-numeric: tabular-nums;
+}

@@ -1,0 +1,27 @@
+.bootcn-breadcrumb {
+  --bs-breadcrumb-divider: '›';
+  --bs-breadcrumb-divider-color: var(--bootcn-muted-foreground);
+  --bs-breadcrumb-item-active-color: var(--bootcn-foreground);
+  --bs-breadcrumb-item-padding-x: 0.5rem;
+  --bs-breadcrumb-margin-bottom: 0;
+
+  flex-wrap: wrap;
+  font-size: 0.875rem;
+}
+
+.bootcn-breadcrumb a {
+  color: var(--bootcn-muted-foreground);
+  text-decoration: none;
+  transition: color var(--bootcn-transition);
+}
+
+.bootcn-breadcrumb a:hover {
+  color: var(--bootcn-foreground);
+  text-decoration: underline;
+}
+
+.bootcn-breadcrumb a:focus-visible {
+  border-radius: var(--bootcn-radius-sm);
+  outline: 0;
+  box-shadow: var(--bootcn-focus-ring);
+}

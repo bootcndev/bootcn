@@ -1,0 +1,38 @@
+<div class="bootcn-slider">
+  <div class="bootcn-slider__header">
+    <label class="bootcn-label" for="bootcn-slider-volume">Volume</label>
+    <output class="bootcn-slider__value" for="bootcn-slider-volume">50</output>
+  </div>
+  <input
+    type="range"
+    class="form-range bootcn-slider__input"
+    id="bootcn-slider-volume"
+    name="volume"
+    min="0"
+    max="100"
+    step="1"
+    value="50"
+    style="--bootcn-slider-fill: 50%"
+    data-bootcn-slider
+  />
+</div>
+
+<div class="bootcn-slider mt-4">
+  <div class="bootcn-slider__header">
+    <label class="bootcn-label" for="bootcn-slider-price">Maximum price</label>
+    <output class="bootcn-slider__value" for="bootcn-slider-price">€200</output>
+  </div>
+  <input
+    type="range"
+    class="form-range bootcn-slider__input"
+    id="bootcn-slider-price"
+    name="price"
+    min="0"
+    max="500"
+    step="10"
+    value="200"
+    style="--bootcn-slider-fill: 40%"
+    data-bootcn-slider
+    data-bootcn-slider-prefix="€"
+  />
+</div>

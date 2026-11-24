@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Bootcn Scroll area preview</title>
+    <script>
+      // Preview theme: ?theme=dark|light, else the docs page around the frame, else light.
+      (function () {
+        var theme = new URLSearchParams(location.search).get('theme');
+        if (!theme) {
+          try {
+            theme =
+              window.parent !== window &&
+              window.parent.document.documentElement.classList.contains('dark')
+                ? 'dark'
+                : 'light';
+          } catch (error) {
+            theme = 'light';
+          }
+        }
+        document.documentElement.setAttribute('data-bs-theme', theme === 'dark' ? 'dark' : 'light');
+      })();
+    </script>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.9/dist/css/bootstrap.min.css"
+    />
+    <link rel="stylesheet" href="../../themes/tokens/tokens.css" />
+    <link rel="stylesheet" href="scroll-area.css" />
+  </head>
+  <body>
+    <main class="container py-4">
+      <h1 class="h4 mb-4">Scroll area</h1>
+      <section
+        class="bootcn-scroll-area"
+        style="height: 16rem; max-width: 14rem"
+        tabindex="0"
+        aria-label="Release tags"
+      >
+        <p class="bootcn-scroll-area__heading">Tags</p>
+        <ul class="bootcn-scroll-area__list">
+          <li>v1.40.0</li>
+          <li>v1.39.0</li>
+          <li>v1.38.0</li>
+          <li>v1.37.0</li>
+          <li>v1.36.0</li>
+          <li>v1.35.0</li>
+          <li>v1.34.0</li>
+          <li>v1.33.0</li>
+          <li>v1.32.0</li>
+          <li>v1.31.0</li>
+          <li>v1.30.0</li>
+          <li>v1.29.0</li>
+          <li>v1.28.0</li>
+          <li>v1.27.0</li>
+          <li>v1.26.0</li>
+          <li>v1.25.0</li>
+          <li>v1.24.0</li>
+          <li>v1.23.0</li>
+          <li>v1.22.0</li>
+          <li>v1.21.0</li>
+          <li>v1.20.0</li>
+          <li>v1.19.0</li>
+          <li>v1.18.0</li>
+          <li>v1.17.0</li>
+          <li>v1.16.0</li>
+          <li>v1.15.0</li>
+          <li>v1.14.0</li>
+          <li>v1.13.0</li>
+          <li>v1.12.0</li>
+          <li>v1.11.0</li>
+        </ul>
+      </section>
+    </main>
+  </body>
+</html>

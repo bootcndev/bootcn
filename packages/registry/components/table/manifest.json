@@ -1,0 +1,28 @@
+{
+  "$schema": "../../schema/registry-item.schema.json",
+  "name": "table",
+  "type": "registry:ui",
+  "title": "Table",
+  "description": "A responsive data table with a caption, header, row hover and a totals footer.",
+  "version": "1.0.0",
+  "categories": ["data-display"],
+  "dependencies": [],
+  "registryDependencies": [],
+  "compatibility": {
+    "bootstrap": "5.3",
+    "platform": ["Bootstrap CSS"]
+  },
+  "license": "MIT",
+  "files": [
+    {
+      "path": "table.html",
+      "target": "table.html",
+      "type": "registry:component"
+    },
+    {
+      "path": "table.css",
+      "target": "table.css",
+      "type": "registry:style"
+    }
+  ]
+}

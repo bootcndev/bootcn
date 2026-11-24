@@ -1,0 +1,28 @@
+{
+  "$schema": "../../schema/registry-item.schema.json",
+  "name": "typography",
+  "type": "registry:ui",
+  "title": "Typography",
+  "description": "Readable styles for long-form text: headings, paragraphs, lists, quotes, inline code and tables.",
+  "version": "1.0.0",
+  "categories": ["layout"],
+  "dependencies": [],
+  "registryDependencies": [],
+  "compatibility": {
+    "bootstrap": "5.3",
+    "platform": ["Bootstrap CSS"]
+  },
+  "license": "MIT",
+  "files": [
+    {
+      "path": "typography.html",
+      "target": "typography.html",
+      "type": "registry:component"
+    },
+    {
+      "path": "typography.css",
+      "target": "typography.css",
+      "type": "registry:style"
+    }
+  ]
+}

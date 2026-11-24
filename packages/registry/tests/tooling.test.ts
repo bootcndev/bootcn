@@ -318,7 +318,8 @@ describe('buildRegistry', () => {
     await buildRegistry(REGISTRY_DIR, outB);
 
     const filesA = (await readdir(resolve(outA, 'r'))).sort();
-    expect(filesA).toEqual(REAL_ITEMS.map((name) => `${name}.json`));
+    // Sort the file names themselves: "alert-dialog.json" sorts before "alert.json".
+    expect(filesA).toEqual(REAL_ITEMS.map((name) => `${name}.json`).sort());
     for (const name of ['index.json', ...filesA.map((file) => `r/${file}`)]) {
       expect(await readFile(resolve(outA, name), 'utf8')).toBe(
         await readFile(resolve(outB, name), 'utf8'),

@@ -1,0 +1,28 @@
+{
+  "$schema": "../../schema/registry-item.schema.json",
+  "name": "alert",
+  "type": "registry:ui",
+  "title": "Alert",
+  "description": "A callout for important information, with an icon, title and description, in default and destructive styles.",
+  "version": "1.0.0",
+  "categories": ["feedback"],
+  "dependencies": [],
+  "registryDependencies": [],
+  "compatibility": {
+    "bootstrap": "5.3",
+    "platform": ["Bootstrap CSS", "Bootstrap JS bundle"]
+  },
+  "license": "MIT",
+  "files": [
+    {
+      "path": "alert.html",
+      "target": "alert.html",
+      "type": "registry:component"
+    },
+    {
+      "path": "alert.css",
+      "target": "alert.css",
+      "type": "registry:style"
+    }
+  ]
+}

@@ -1,0 +1,88 @@
+.bootcn-progress {
+  --bootcn-progress-height: 0.5rem;
+
+  display: block;
+  width: 100%;
+  max-width: 28rem;
+  height: var(--bootcn-progress-height);
+  overflow: hidden;
+  border: 0;
+  border-radius: 9999px;
+  background-color: var(--bootcn-muted);
+  color: var(--bootcn-primary);
+  appearance: none;
+}
+
+.bootcn-progress::-webkit-progress-bar {
+  border-radius: 9999px;
+  background-color: var(--bootcn-muted);
+}
+
+.bootcn-progress::-webkit-progress-value {
+  border-radius: 9999px;
+  background-color: var(--bootcn-primary);
+  transition: width var(--bootcn-transition);
+}
+
+.bootcn-progress::-moz-progress-bar {
+  border-radius: 9999px;
+  background-color: var(--bootcn-primary);
+}
+
+/* No value: indeterminate. A sliding bar, still under reduced motion. */
+.bootcn-progress:indeterminate {
+  background-image: linear-gradient(
+    to right,
+    var(--bootcn-muted) 0%,
+    var(--bootcn-primary) 50%,
+    var(--bootcn-muted) 100%
+  );
+  background-size: 50% 100%;
+  background-repeat: no-repeat;
+  animation: bootcn-progress-slide 1.4s ease-in-out infinite;
+}
+
+.bootcn-progress:indeterminate::-webkit-progress-bar {
+  background-color: transparent;
+}
+
+.bootcn-progress:indeterminate::-moz-progress-bar {
+  background-color: transparent;
+}
+
+@keyframes bootcn-progress-slide {
+  from {
+    background-position: -100% 0;
+  }
+
+  to {
+    background-position: 200% 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .bootcn-progress:indeterminate {
+    background-position: 50% 0;
+    animation: none;
+  }
+}
+
+.bootcn-progress-label {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  max-width: 28rem;
+  margin-bottom: 0.5rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+}
+
+.bootcn-progress-label label {
+  margin: 0;
+}
+
+.bootcn-progress-help {
+  margin: 0.5rem 0 0;
+  color: var(--bootcn-muted-foreground);
+  font-size: 0.875rem;
+}

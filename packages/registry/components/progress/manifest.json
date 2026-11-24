@@ -1,0 +1,28 @@
+{
+  "$schema": "../../schema/registry-item.schema.json",
+  "name": "progress",
+  "type": "registry:ui",
+  "title": "Progress",
+  "description": "Shows how far a task has got, on the native progress element, with an optional label and value.",
+  "version": "1.0.0",
+  "categories": ["feedback"],
+  "dependencies": [],
+  "registryDependencies": [],
+  "compatibility": {
+    "bootstrap": "5.3",
+    "platform": ["Bootstrap CSS"]
+  },
+  "license": "MIT",
+  "files": [
+    {
+      "path": "progress.html",
+      "target": "progress.html",
+      "type": "registry:component"
+    },
+    {
+      "path": "progress.css",
+      "target": "progress.css",
+      "type": "registry:style"
+    }
+  ]
+}

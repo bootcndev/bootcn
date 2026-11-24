@@ -1,0 +1,125 @@
+.bootcn-typography {
+  max-width: 42rem;
+  color: var(--bootcn-foreground);
+  font-size: 1rem;
+  line-height: 1.75;
+}
+
+.bootcn-typography > :first-child {
+  margin-top: 0;
+}
+
+.bootcn-typography h1 {
+  margin: 0 0 0.75rem;
+  font-size: 2.25rem;
+  font-weight: 800;
+  line-height: 1.15;
+  letter-spacing: -0.025em;
+}
+
+@media (min-width: 992px) {
+  .bootcn-typography h1 {
+    font-size: 3rem;
+  }
+}
+
+.bootcn-typography h2 {
+  margin: 2.5rem 0 0;
+  padding-bottom: 0.5rem;
+  border-bottom: var(--bootcn-border-width) solid var(--bootcn-border-color);
+  font-size: 1.875rem;
+  font-weight: 600;
+  letter-spacing: -0.025em;
+}
+
+.bootcn-typography h3 {
+  margin: 2rem 0 0;
+  font-size: 1.5rem;
+  font-weight: 600;
+  letter-spacing: -0.025em;
+}
+
+.bootcn-typography h4 {
+  margin: 1.5rem 0 0;
+  font-size: 1.25rem;
+  font-weight: 600;
+}
+
+.bootcn-typography p {
+  margin: 1.5rem 0 0;
+}
+
+.bootcn-typography a {
+  font-weight: 500;
+  text-underline-offset: 4px;
+}
+
+.bootcn-typography blockquote {
+  margin: 1.5rem 0 0;
+  padding-left: 1.5rem;
+  border-left: 2px solid var(--bootcn-border-color);
+  font-style: italic;
+}
+
+.bootcn-typography blockquote p {
+  margin: 0;
+}
+
+.bootcn-typography ul,
+.bootcn-typography ol {
+  margin: 1.5rem 0 0;
+  padding-left: 1.5rem;
+}
+
+.bootcn-typography li + li {
+  margin-top: 0.5rem;
+}
+
+.bootcn-typography code {
+  padding: 0.2rem 0.3rem;
+  border-radius: var(--bootcn-radius-sm);
+  background-color: var(--bootcn-muted);
+  color: var(--bootcn-foreground);
+  font-size: 0.875em;
+  font-weight: 600;
+}
+
+.bootcn-typography table {
+  width: 100%;
+  margin-top: 1.5rem;
+  border-collapse: collapse;
+  font-size: 0.875rem;
+}
+
+.bootcn-typography th,
+.bootcn-typography td {
+  padding: 0.5rem 1rem;
+  border: var(--bootcn-border-width) solid var(--bootcn-border-color);
+  text-align: left;
+}
+
+.bootcn-typography th {
+  font-weight: 600;
+}
+
+.bootcn-lead {
+  color: var(--bootcn-muted-foreground);
+  font-size: 1.25rem;
+  line-height: 1.6;
+}
+
+.bootcn-large {
+  font-size: 1.125rem;
+  font-weight: 600;
+}
+
+.bootcn-small {
+  font-size: 0.875rem;
+  font-weight: 500;
+  line-height: 1;
+}
+
+.bootcn-muted {
+  color: var(--bootcn-muted-foreground);
+  font-size: 0.875rem;
+}

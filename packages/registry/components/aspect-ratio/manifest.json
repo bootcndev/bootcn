@@ -1,0 +1,28 @@
+{
+  "$schema": "../../schema/registry-item.schema.json",
+  "name": "aspect-ratio",
+  "type": "registry:ui",
+  "title": "Aspect ratio",
+  "description": "Keeps media at a fixed width-to-height ratio, cropping images to fill.",
+  "version": "1.0.0",
+  "categories": ["layout"],
+  "dependencies": [],
+  "registryDependencies": [],
+  "compatibility": {
+    "bootstrap": "5.3",
+    "platform": ["Bootstrap CSS"]
+  },
+  "license": "MIT",
+  "files": [
+    {
+      "path": "aspect-ratio.html",
+      "target": "aspect-ratio.html",
+      "type": "registry:component"
+    },
+    {
+      "path": "aspect-ratio.css",
+      "target": "aspect-ratio.css",
+      "type": "registry:style"
+    }
+  ]
+}

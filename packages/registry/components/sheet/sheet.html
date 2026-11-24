@@ -1,0 +1,58 @@
+<button
+  class="btn bootcn-button bootcn-button--outline"
+  type="button"
+  data-bs-toggle="offcanvas"
+  data-bs-target="#bootcn-sheet"
+  aria-controls="bootcn-sheet"
+>
+  Edit profile
+</button>
+
+<div
+  class="offcanvas offcanvas-end bootcn-sheet"
+  tabindex="-1"
+  id="bootcn-sheet"
+  aria-labelledby="bootcn-sheet-title"
+>
+  <div class="offcanvas-header bootcn-sheet__header">
+    <div>
+      <h2 class="offcanvas-title bootcn-sheet__title" id="bootcn-sheet-title">Edit profile</h2>
+      <p class="bootcn-sheet__description">Change your public details. Save when you are done.</p>
+    </div>
+    <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+  </div>
+  <div class="offcanvas-body bootcn-sheet__body">
+    <div class="bootcn-field">
+      <label class="form-label bootcn-field__label" for="bootcn-sheet-name">Name</label>
+      <input
+        class="form-control bootcn-input"
+        type="text"
+        id="bootcn-sheet-name"
+        name="name"
+        value="Maria Papadopoulou"
+        autocomplete="name"
+      />
+    </div>
+    <div class="bootcn-field">
+      <label class="form-label bootcn-field__label" for="bootcn-sheet-username">Username</label>
+      <input
+        class="form-control bootcn-input"
+        type="text"
+        id="bootcn-sheet-username"
+        name="username"
+        value="@maria"
+        autocomplete="username"
+      />
+    </div>
+  </div>
+  <div class="bootcn-sheet__footer">
+    <button type="button" class="btn bootcn-button bootcn-button--default">Save changes</button>
+    <button
+      type="button"
+      class="btn bootcn-button bootcn-button--outline"
+      data-bs-dismiss="offcanvas"
+    >
+      Cancel
+    </button>
+  </div>
+</div>

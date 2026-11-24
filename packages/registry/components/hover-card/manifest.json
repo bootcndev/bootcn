@@ -1,0 +1,33 @@
+{
+  "$schema": "../../schema/registry-item.schema.json",
+  "name": "hover-card",
+  "type": "registry:ui",
+  "title": "Hover card",
+  "description": "A preview card that appears when the pointer rests on or keyboard focus reaches a link, built on Bootstrap Popover.",
+  "version": "1.0.0",
+  "categories": ["overlays"],
+  "dependencies": [],
+  "registryDependencies": ["avatar"],
+  "compatibility": {
+    "bootstrap": "5.3",
+    "platform": ["Bootstrap CSS", "Bootstrap JS bundle"]
+  },
+  "license": "MIT",
+  "files": [
+    {
+      "path": "hover-card.html",
+      "target": "hover-card.html",
+      "type": "registry:component"
+    },
+    {
+      "path": "hover-card.css",
+      "target": "hover-card.css",
+      "type": "registry:style"
+    },
+    {
+      "path": "hover-card.js",
+      "target": "hover-card.js",
+      "type": "registry:script"
+    }
+  ]
+}

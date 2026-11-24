@@ -1,0 +1,14 @@
+.bootcn-label {
+  display: inline-block;
+  font-size: 0.875rem;
+  font-weight: 500;
+  line-height: 1;
+  user-select: none;
+}
+
+/* Dim the label of a disabled control that follows it. */
+.bootcn-label:has(+ :disabled),
+.bootcn-label:has(+ * :disabled) {
+  cursor: not-allowed;
+  opacity: 0.5;
+}

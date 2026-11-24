@@ -1,0 +1,28 @@
+{
+  "$schema": "../../schema/registry-item.schema.json",
+  "name": "pagination",
+  "type": "registry:ui",
+  "title": "Pagination",
+  "description": "Links to the pages of a long list, with previous and next, the current page and a gap.",
+  "version": "1.0.0",
+  "categories": ["navigation"],
+  "dependencies": [],
+  "registryDependencies": [],
+  "compatibility": {
+    "bootstrap": "5.3",
+    "platform": ["Bootstrap CSS"]
+  },
+  "license": "MIT",
+  "files": [
+    {
+      "path": "pagination.html",
+      "target": "pagination.html",
+      "type": "registry:component"
+    },
+    {
+      "path": "pagination.css",
+      "target": "pagination.css",
+      "type": "registry:style"
+    }
+  ]
+}

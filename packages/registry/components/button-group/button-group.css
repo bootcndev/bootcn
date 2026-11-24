@@ -1,0 +1,9 @@
+/* One shadow for the whole group; Bootstrap joins the borders and corners. */
+.bootcn-button-group {
+  border-radius: var(--bootcn-radius);
+  box-shadow: var(--bootcn-shadow-sm);
+}
+
+.bootcn-button-group > .bootcn-button {
+  box-shadow: none;
+}

@@ -1,0 +1,28 @@
+{
+  "$schema": "../../schema/registry-item.schema.json",
+  "name": "button-group",
+  "type": "registry:ui",
+  "title": "Button group",
+  "description": "Joins related buttons into one control, horizontally or vertically.",
+  "version": "1.0.0",
+  "categories": ["actions"],
+  "dependencies": [],
+  "registryDependencies": ["button"],
+  "compatibility": {
+    "bootstrap": "5.3",
+    "platform": ["Bootstrap CSS"]
+  },
+  "license": "MIT",
+  "files": [
+    {
+      "path": "button-group.html",
+      "target": "button-group.html",
+      "type": "registry:component"
+    },
+    {
+      "path": "button-group.css",
+      "target": "button-group.css",
+      "type": "registry:style"
+    }
+  ]
+}

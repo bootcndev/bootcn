@@ -1,0 +1,33 @@
+{
+  "$schema": "../../schema/registry-item.schema.json",
+  "name": "alert-dialog",
+  "type": "registry:ui",
+  "title": "Alert dialog",
+  "description": "A modal confirmation that interrupts the user for an important decision, with Cancel focused first.",
+  "version": "1.0.0",
+  "categories": ["overlays"],
+  "dependencies": [],
+  "registryDependencies": ["dialog", "button"],
+  "compatibility": {
+    "bootstrap": "5.3",
+    "platform": ["Bootstrap CSS", "Bootstrap JS bundle"]
+  },
+  "license": "MIT",
+  "files": [
+    {
+      "path": "alert-dialog.html",
+      "target": "alert-dialog.html",
+      "type": "registry:component"
+    },
+    {
+      "path": "alert-dialog.css",
+      "target": "alert-dialog.css",
+      "type": "registry:style"
+    },
+    {
+      "path": "alert-dialog.js",
+      "target": "alert-dialog.js",
+      "type": "registry:script"
+    }
+  ]
+}

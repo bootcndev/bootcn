@@ -1,0 +1,28 @@
+{
+  "$schema": "../../schema/registry-item.schema.json",
+  "name": "breadcrumb",
+  "type": "registry:ui",
+  "title": "Breadcrumb",
+  "description": "Shows where the current page sits in the site hierarchy, with links to each parent.",
+  "version": "1.0.0",
+  "categories": ["navigation"],
+  "dependencies": [],
+  "registryDependencies": [],
+  "compatibility": {
+    "bootstrap": "5.3",
+    "platform": ["Bootstrap CSS"]
+  },
+  "license": "MIT",
+  "files": [
+    {
+      "path": "breadcrumb.html",
+      "target": "breadcrumb.html",
+      "type": "registry:component"
+    },
+    {
+      "path": "breadcrumb.css",
+      "target": "breadcrumb.css",
+      "type": "registry:style"
+    }
+  ]
+}

@@ -1,0 +1,62 @@
+.bootcn-input-group {
+  display: flex;
+  align-items: center;
+  min-height: var(--bootcn-control-height);
+  border: var(--bootcn-border-width) solid var(--bootcn-input);
+  border-radius: var(--bootcn-radius);
+  background-color: transparent;
+  box-shadow: var(--bootcn-shadow-sm);
+  transition:
+    border-color var(--bootcn-transition),
+    box-shadow var(--bootcn-transition);
+}
+
+.bootcn-input-group:focus-within {
+  border-color: var(--bootcn-ring);
+  box-shadow: 0 0 0 3px var(--bs-focus-ring-color);
+}
+
+.bootcn-input-group__input {
+  flex: 1 1 auto;
+  min-width: 0;
+  height: 100%;
+  padding: var(--bootcn-control-padding-y) var(--bootcn-control-padding-x);
+  border: 0;
+  background: transparent;
+  color: var(--bootcn-foreground);
+  font-size: 1rem;
+  outline: 0;
+}
+
+.bootcn-input-group__input::placeholder {
+  color: var(--bootcn-muted-foreground);
+}
+
+@media (min-width: 768px) {
+  .bootcn-input-group__input {
+    font-size: var(--bootcn-control-font-size);
+  }
+}
+
+.bootcn-input-group__addon {
+  display: inline-flex;
+  flex: none;
+  align-items: center;
+  gap: 0.375rem;
+  padding: 0 var(--bootcn-control-padding-x);
+  color: var(--bootcn-muted-foreground);
+  font-size: 0.875rem;
+  white-space: nowrap;
+}
+
+.bootcn-input-group__addon + .bootcn-input-group__input {
+  padding-left: 0;
+}
+
+.bootcn-input-group__input + .bootcn-input-group__addon {
+  padding-left: 0;
+}
+
+.bootcn-input-group__button {
+  margin-right: 0.25rem;
+}

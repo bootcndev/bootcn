@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Bootcn Collapsible preview</title>
+    <script>
+      // Preview theme: ?theme=dark|light, else the docs page around the frame, else light.
+      (function () {
+        var theme = new URLSearchParams(location.search).get('theme');
+        if (!theme) {
+          try {
+            theme =
+              window.parent !== window &&
+              window.parent.document.documentElement.classList.contains('dark')
+                ? 'dark'
+                : 'light';
+          } catch (error) {
+            theme = 'light';
+          }
+        }
+        document.documentElement.setAttribute('data-bs-theme', theme === 'dark' ? 'dark' : 'light');
+      })();
+    </script>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.9/dist/css/bootstrap.min.css"
+    />
+    <link rel="stylesheet" href="../../themes/tokens/tokens.css" />
+    <link rel="stylesheet" href="../button/button.css" />
+    <link rel="stylesheet" href="collapsible.css" />
+  </head>
+  <body>
+    <main class="container py-4">
+      <h1 class="h4 mb-4">Collapsible</h1>
+      <div class="bootcn-collapsible">
+        <div class="bootcn-collapsible__header">
+          <p class="bootcn-collapsible__title">3 unpaid invoices</p>
+          <button
+            class="btn bootcn-button bootcn-button--ghost bootcn-button--icon bootcn-button--sm"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#bootcn-collapsible-content"
+            aria-expanded="false"
+            aria-controls="bootcn-collapsible-content"
+          >
+            <svg
+              class="bootcn-icon"
+              width="16"
+              height="16"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              aria-hidden="true"
+              focusable="false"
+            >
+              <path d="m7 15 5 5 5-5" />
+              <path d="m7 9 5-5 5 5" />
+            </svg>
+            <span class="visually-hidden">Show all invoices</span>
+          </button>
+        </div>
+        <div class="bootcn-collapsible__item">Invoice #1042: Website redesign</div>
+        <div class="collapse" id="bootcn-collapsible-content">
+          <div class="bootcn-collapsible__item">Invoice #1041: Hosting, November</div>
+          <div class="bootcn-collapsible__item">Invoice #1040: Support plan</div>
+        </div>
+      </div>
+    </main>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.9/dist/js/bootstrap.bundle.min.js"></script>
+  </body>
+</html>

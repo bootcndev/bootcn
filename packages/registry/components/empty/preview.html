@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Bootcn Empty state preview</title>
+    <script>
+      // Preview theme: ?theme=dark|light, else the docs page around the frame, else light.
+      (function () {
+        var theme = new URLSearchParams(location.search).get('theme');
+        if (!theme) {
+          try {
+            theme =
+              window.parent !== window &&
+              window.parent.document.documentElement.classList.contains('dark')
+                ? 'dark'
+                : 'light';
+          } catch (error) {
+            theme = 'light';
+          }
+        }
+        document.documentElement.setAttribute('data-bs-theme', theme === 'dark' ? 'dark' : 'light');
+      })();
+    </script>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.9/dist/css/bootstrap.min.css"
+    />
+    <link rel="stylesheet" href="../../themes/tokens/tokens.css" />
+    <link rel="stylesheet" href="../button/button.css" />
+    <link rel="stylesheet" href="empty.css" />
+  </head>
+  <body>
+    <main class="container py-4">
+      <h1 class="h4 mb-4">Empty state</h1>
+      <div class="bootcn-empty">
+        <div class="bootcn-empty__media">
+          <svg
+            class="bootcn-icon"
+            width="16"
+            height="16"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            aria-hidden="true"
+            focusable="false"
+          >
+            <path d="M3 6h6l2 2h10v11H3z" />
+          </svg>
+        </div>
+        <h2 class="bootcn-empty__title">No projects yet</h2>
+        <p class="bootcn-empty__description">
+          You have not created any projects. Start with a new one or import an existing site.
+        </p>
+        <div class="bootcn-empty__actions">
+          <button type="button" class="btn bootcn-button bootcn-button--default">
+            Create project
+          </button>
+          <button type="button" class="btn bootcn-button bootcn-button--outline">Import</button>
+        </div>
+      </div>
+    </main>
+  </body>
+</html>

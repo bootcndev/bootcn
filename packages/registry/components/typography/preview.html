@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Bootcn Typography preview</title>
+    <script>
+      // Preview theme: ?theme=dark|light, else the docs page around the frame, else light.
+      (function () {
+        var theme = new URLSearchParams(location.search).get('theme');
+        if (!theme) {
+          try {
+            theme =
+              window.parent !== window &&
+              window.parent.document.documentElement.classList.contains('dark')
+                ? 'dark'
+                : 'light';
+          } catch (error) {
+            theme = 'light';
+          }
+        }
+        document.documentElement.setAttribute('data-bs-theme', theme === 'dark' ? 'dark' : 'light');
+      })();
+    </script>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.9/dist/css/bootstrap.min.css"
+    />
+    <link rel="stylesheet" href="../../themes/tokens/tokens.css" />
+    <link rel="stylesheet" href="typography.css" />
+  </head>
+  <body>
+    <main class="container py-4">
+      <article class="bootcn-typography">
+        <h1>The lighthouse keeper's notebook</h1>
+        <p class="bootcn-lead">
+          A short story about patience, weather and the small habits that keep a light burning.
+        </p>
+        <h2>The first winter</h2>
+        <p>
+          Every evening at six the keeper climbed the <a href="#stairs">ninety-two steps</a>, wound
+          the clockwork and wrote the weather in a notebook with a green cover.
+        </p>
+        <blockquote>
+          <p>"A light that is never late is the only kind a ship can trust."</p>
+        </blockquote>
+        <h3>Things to check each night</h3>
+        <ul>
+          <li>The lens is clean and the wick is trimmed.</li>
+          <li>The clockwork turns once every <code>30</code> seconds.</li>
+          <li>The fog bell answers when struck.</li>
+        </ul>
+        <p class="bootcn-muted">Notes from the keeper's log, 1894.</p>
+      </article>
+    </main>
+  </body>
+</html>

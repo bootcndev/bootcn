@@ -1,0 +1,28 @@
+{
+  "$schema": "../../schema/registry-item.schema.json",
+  "name": "kbd",
+  "type": "registry:ui",
+  "title": "Kbd",
+  "description": "Shows keyboard keys and shortcuts in text.",
+  "version": "1.0.0",
+  "categories": ["data-display"],
+  "dependencies": [],
+  "registryDependencies": [],
+  "compatibility": {
+    "bootstrap": "5.3",
+    "platform": ["Bootstrap CSS"]
+  },
+  "license": "MIT",
+  "files": [
+    {
+      "path": "kbd.html",
+      "target": "kbd.html",
+      "type": "registry:component"
+    },
+    {
+      "path": "kbd.css",
+      "target": "kbd.css",
+      "type": "registry:style"
+    }
+  ]
+}

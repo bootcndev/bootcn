@@ -1,0 +1,28 @@
+{
+  "$schema": "../../schema/registry-item.schema.json",
+  "name": "scroll-area",
+  "type": "registry:ui",
+  "title": "Scroll area",
+  "description": "A scrollable region with thin, theme-aware scrollbars that keyboard users can reach and scroll.",
+  "version": "1.0.0",
+  "categories": ["layout"],
+  "dependencies": [],
+  "registryDependencies": [],
+  "compatibility": {
+    "bootstrap": "5.3",
+    "platform": ["Bootstrap CSS"]
+  },
+  "license": "MIT",
+  "files": [
+    {
+      "path": "scroll-area.html",
+      "target": "scroll-area.html",
+      "type": "registry:component"
+    },
+    {
+      "path": "scroll-area.css",
+      "target": "scroll-area.css",
+      "type": "registry:style"
+    }
+  ]
+}

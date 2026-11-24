@@ -1,0 +1,54 @@
+<button
+  class="btn bootcn-button bootcn-button--outline"
+  type="button"
+  data-bs-toggle="offcanvas"
+  data-bs-target="#bootcn-drawer"
+  aria-controls="bootcn-drawer"
+>
+  Set a goal
+</button>
+
+<div
+  class="offcanvas offcanvas-bottom bootcn-drawer"
+  tabindex="-1"
+  id="bootcn-drawer"
+  aria-labelledby="bootcn-drawer-title"
+>
+  <div class="bootcn-drawer__handle" aria-hidden="true"></div>
+  <div class="bootcn-drawer__inner">
+    <div class="bootcn-drawer__header">
+      <h2 class="offcanvas-title bootcn-drawer__title" id="bootcn-drawer-title">Daily goal</h2>
+      <p class="bootcn-drawer__description">
+        Choose how many minutes you want to practise each day.
+      </p>
+    </div>
+    <div class="bootcn-drawer__body">
+      <div class="bootcn-field">
+        <label class="form-label bootcn-field__label" for="bootcn-drawer-minutes"
+          >Minutes per day</label
+        >
+        <input
+          class="form-control bootcn-input"
+          type="number"
+          id="bootcn-drawer-minutes"
+          name="minutes"
+          value="30"
+          min="5"
+          max="240"
+          step="5"
+          inputmode="numeric"
+        />
+      </div>
+    </div>
+    <div class="bootcn-drawer__footer">
+      <button type="button" class="btn bootcn-button bootcn-button--default">Save goal</button>
+      <button
+        type="button"
+        class="btn bootcn-button bootcn-button--outline"
+        data-bs-dismiss="offcanvas"
+      >
+        Cancel
+      </button>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,28 @@
+{
+  "$schema": "../../schema/registry-item.schema.json",
+  "name": "sheet",
+  "type": "registry:ui",
+  "title": "Sheet",
+  "description": "A panel that slides in from the edge of the screen for secondary tasks, built on Bootstrap Offcanvas.",
+  "version": "1.0.0",
+  "categories": ["overlays"],
+  "dependencies": [],
+  "registryDependencies": ["button", "input"],
+  "compatibility": {
+    "bootstrap": "5.3",
+    "platform": ["Bootstrap CSS", "Bootstrap JS bundle"]
+  },
+  "license": "MIT",
+  "files": [
+    {
+      "path": "sheet.html",
+      "target": "sheet.html",
+      "type": "registry:component"
+    },
+    {
+      "path": "sheet.css",
+      "target": "sheet.css",
+      "type": "registry:style"
+    }
+  ]
+}

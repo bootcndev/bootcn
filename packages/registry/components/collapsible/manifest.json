@@ -1,0 +1,28 @@
+{
+  "$schema": "../../schema/registry-item.schema.json",
+  "name": "collapsible",
+  "type": "registry:ui",
+  "title": "Collapsible",
+  "description": "A panel that shows a summary and expands to reveal more, built on Bootstrap Collapse.",
+  "version": "1.0.0",
+  "categories": ["layout"],
+  "dependencies": [],
+  "registryDependencies": ["button"],
+  "compatibility": {
+    "bootstrap": "5.3",
+    "platform": ["Bootstrap CSS", "Bootstrap JS bundle"]
+  },
+  "license": "MIT",
+  "files": [
+    {
+      "path": "collapsible.html",
+      "target": "collapsible.html",
+      "type": "registry:component"
+    },
+    {
+      "path": "collapsible.css",
+      "target": "collapsible.css",
+      "type": "registry:style"
+    }
+  ]
+}

@@ -1,0 +1,28 @@
+{
+  "$schema": "../../schema/registry-item.schema.json",
+  "name": "drawer",
+  "type": "registry:ui",
+  "title": "Drawer",
+  "description": "A panel that slides up from the bottom, with a handle, for quick tasks on phones.",
+  "version": "1.0.0",
+  "categories": ["overlays"],
+  "dependencies": [],
+  "registryDependencies": ["button", "input"],
+  "compatibility": {
+    "bootstrap": "5.3",
+    "platform": ["Bootstrap CSS", "Bootstrap JS bundle"]
+  },
+  "license": "MIT",
+  "files": [
+    {
+      "path": "drawer.html",
+      "target": "drawer.html",
+      "type": "registry:component"
+    },
+    {
+      "path": "drawer.css",
+      "target": "drawer.css",
+      "type": "registry:style"
+    }
+  ]
+}

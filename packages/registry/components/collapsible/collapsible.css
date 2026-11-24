@@ -1,0 +1,26 @@
+.bootcn-collapsible {
+  max-width: 24rem;
+}
+
+.bootcn-collapsible__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+.bootcn-collapsible__title {
+  margin: 0;
+  font-size: 0.875rem;
+  font-weight: 600;
+}
+
+.bootcn-collapsible__item {
+  margin-top: 0.5rem;
+  padding: 0.5rem 1rem;
+  border: var(--bootcn-border-width) solid var(--bootcn-border-color);
+  border-radius: var(--bootcn-radius);
+  font-family: var(--bs-font-monospace);
+  font-size: 0.8125rem;
+}

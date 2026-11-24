@@ -1,0 +1,43 @@
+.bootcn-scroll-area {
+  overflow: auto;
+  padding: 1rem;
+  border: var(--bootcn-border-width) solid var(--bootcn-border-color);
+  border-radius: var(--bootcn-radius-lg);
+  scrollbar-color: var(--bootcn-border-color) transparent;
+  scrollbar-width: thin;
+}
+
+.bootcn-scroll-area:focus-visible {
+  outline: 0;
+  box-shadow: var(--bootcn-focus-ring);
+}
+
+.bootcn-scroll-area::-webkit-scrollbar {
+  width: 0.625rem;
+  height: 0.625rem;
+}
+
+.bootcn-scroll-area::-webkit-scrollbar-thumb {
+  border: 2px solid transparent;
+  border-radius: 9999px;
+  background-color: var(--bootcn-border-color);
+  background-clip: padding-box;
+}
+
+.bootcn-scroll-area__heading {
+  margin: 0 0 0.75rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+}
+
+.bootcn-scroll-area__list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  font-size: 0.875rem;
+}
+
+.bootcn-scroll-area__list > li {
+  padding: 0.5rem 0;
+  border-top: var(--bootcn-border-width) solid var(--bootcn-border-color);
+}

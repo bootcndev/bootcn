@@ -1,0 +1,43 @@
+.bootcn-sheet {
+  --bs-offcanvas-width: min(24rem, 100vw);
+  --bs-offcanvas-height: auto;
+  --bs-offcanvas-bg: var(--bootcn-background);
+  --bs-offcanvas-color: var(--bootcn-foreground);
+  --bs-offcanvas-border-color: var(--bootcn-border-color);
+  --bs-offcanvas-box-shadow: var(--bootcn-shadow-lg);
+  --bs-offcanvas-padding-x: 1.5rem;
+  --bs-offcanvas-padding-y: 1.5rem;
+
+  box-shadow: var(--bs-offcanvas-box-shadow);
+}
+
+.bootcn-sheet__header {
+  align-items: flex-start;
+  gap: 1rem;
+  padding-bottom: 0.5rem;
+}
+
+.bootcn-sheet__title {
+  margin: 0;
+  font-size: 1.125rem;
+  font-weight: 600;
+}
+
+.bootcn-sheet__description {
+  margin: 0.375rem 0 0;
+  color: var(--bootcn-muted-foreground);
+  font-size: 0.875rem;
+}
+
+.bootcn-sheet__body {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.bootcn-sheet__footer {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding: 1rem var(--bs-offcanvas-padding-x) var(--bs-offcanvas-padding-y);
+}

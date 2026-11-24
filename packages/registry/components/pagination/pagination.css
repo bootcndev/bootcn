@@ -1,0 +1,57 @@
+.bootcn-pagination {
+  --bs-pagination-padding-x: 0.75rem;
+  --bs-pagination-padding-y: 0.375rem;
+  --bs-pagination-font-size: 0.875rem;
+  --bs-pagination-color: var(--bootcn-foreground);
+  --bs-pagination-bg: transparent;
+  --bs-pagination-border-width: var(--bootcn-border-width);
+  --bs-pagination-border-color: transparent;
+  --bs-pagination-border-radius: var(--bootcn-radius);
+  --bs-pagination-hover-color: var(--bootcn-accent-foreground);
+  --bs-pagination-hover-bg: var(--bootcn-accent);
+  --bs-pagination-hover-border-color: transparent;
+  --bs-pagination-focus-color: var(--bootcn-foreground);
+  --bs-pagination-focus-bg: transparent;
+  --bs-pagination-focus-box-shadow: var(--bootcn-focus-ring);
+  --bs-pagination-active-color: var(--bootcn-foreground);
+  --bs-pagination-active-bg: var(--bootcn-background);
+  --bs-pagination-active-border-color: var(--bootcn-input);
+  --bs-pagination-disabled-color: var(--bootcn-muted-foreground);
+  --bs-pagination-disabled-bg: transparent;
+  --bs-pagination-disabled-border-color: transparent;
+
+  flex-wrap: wrap;
+  gap: 0.25rem;
+  margin: 0;
+}
+
+/* Separate rounded buttons instead of Bootstrap's joined strip. */
+.bootcn-pagination .page-item .page-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.25rem;
+  min-width: 2.25rem;
+  height: 2.25rem;
+  margin-left: 0;
+  border-radius: var(--bs-pagination-border-radius);
+  font-weight: 500;
+}
+
+.bootcn-pagination .page-item.active .page-link {
+  box-shadow: var(--bootcn-shadow-sm);
+}
+
+.bootcn-pagination__gap {
+  pointer-events: none;
+}
+
+@media (max-width: 575.98px) {
+  .bootcn-pagination__step-text {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+  }
+}

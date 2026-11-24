@@ -1,0 +1,33 @@
+/* Joined toggles: one border, inner corners squared. */
+.bootcn-toggle-group {
+  display: inline-flex;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  border-radius: var(--bootcn-radius);
+  box-shadow: var(--bootcn-shadow-sm);
+}
+
+.bootcn-toggle-group > .bootcn-toggle {
+  border-radius: 0;
+  box-shadow: none;
+}
+
+.bootcn-toggle-group > .bootcn-toggle + .btn-check + .bootcn-toggle {
+  margin-left: calc(var(--bootcn-border-width) * -1);
+}
+
+.bootcn-toggle-group > .btn-check:first-of-type + .bootcn-toggle {
+  border-top-left-radius: var(--bootcn-radius);
+  border-bottom-left-radius: var(--bootcn-radius);
+}
+
+.bootcn-toggle-group > .bootcn-toggle:last-child {
+  border-top-right-radius: var(--bootcn-radius);
+  border-bottom-right-radius: var(--bootcn-radius);
+}
+
+.bootcn-toggle-group > .btn-check:focus-visible + .bootcn-toggle {
+  position: relative;
+  z-index: 1;
+}

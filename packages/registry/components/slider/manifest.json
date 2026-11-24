@@ -1,0 +1,33 @@
+{
+  "$schema": "../../schema/registry-item.schema.json",
+  "name": "slider",
+  "type": "registry:ui",
+  "title": "Slider",
+  "description": "A native range input with a filled track, a visible value and keyboard support.",
+  "version": "1.0.0",
+  "categories": ["forms"],
+  "dependencies": [],
+  "registryDependencies": ["label"],
+  "compatibility": {
+    "bootstrap": "5.3",
+    "platform": ["Bootstrap CSS"]
+  },
+  "license": "MIT",
+  "files": [
+    {
+      "path": "slider.html",
+      "target": "slider.html",
+      "type": "registry:component"
+    },
+    {
+      "path": "slider.css",
+      "target": "slider.css",
+      "type": "registry:style"
+    },
+    {
+      "path": "slider.js",
+      "target": "slider.js",
+      "type": "registry:script"
+    }
+  ]
+}

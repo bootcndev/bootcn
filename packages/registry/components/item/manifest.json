@@ -1,0 +1,28 @@
+{
+  "$schema": "../../schema/registry-item.schema.json",
+  "name": "item",
+  "type": "registry:ui",
+  "title": "Item",
+  "description": "A row with media, a title, a description and actions, for settings lists, files or people.",
+  "version": "1.0.0",
+  "categories": ["data-display"],
+  "dependencies": [],
+  "registryDependencies": ["button", "avatar"],
+  "compatibility": {
+    "bootstrap": "5.3",
+    "platform": ["Bootstrap CSS"]
+  },
+  "license": "MIT",
+  "files": [
+    {
+      "path": "item.html",
+      "target": "item.html",
+      "type": "registry:component"
+    },
+    {
+      "path": "item.css",
+      "target": "item.css",
+      "type": "registry:style"
+    }
+  ]
+}

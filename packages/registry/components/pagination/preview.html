@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Bootcn Pagination preview</title>
+    <script>
+      // Preview theme: ?theme=dark|light, else the docs page around the frame, else light.
+      (function () {
+        var theme = new URLSearchParams(location.search).get('theme');
+        if (!theme) {
+          try {
+            theme =
+              window.parent !== window &&
+              window.parent.document.documentElement.classList.contains('dark')
+                ? 'dark'
+                : 'light';
+          } catch (error) {
+            theme = 'light';
+          }
+        }
+        document.documentElement.setAttribute('data-bs-theme', theme === 'dark' ? 'dark' : 'light');
+      })();
+    </script>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.9/dist/css/bootstrap.min.css"
+    />
+    <link rel="stylesheet" href="../../themes/tokens/tokens.css" />
+    <link rel="stylesheet" href="pagination.css" />
+  </head>
+  <body>
+    <main class="container py-4">
+      <h1 class="h4 mb-4">Pagination</h1>
+      <nav aria-label="Pagination">
+        <ul class="pagination bootcn-pagination">
+          <li class="page-item">
+            <a class="page-link bootcn-pagination__step" href="#page-1" aria-label="Previous page">
+              <svg
+                class="bootcn-icon"
+                width="16"
+                height="16"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+                focusable="false"
+              >
+                <path d="m15 18-6-6 6-6" />
+              </svg>
+              <span class="bootcn-pagination__step-text">Previous</span>
+            </a>
+          </li>
+          <li class="page-item"><a class="page-link" href="#page-1">1</a></li>
+          <li class="page-item active">
+            <a class="page-link" href="#page-2" aria-current="page">2</a>
+          </li>
+          <li class="page-item"><a class="page-link" href="#page-3">3</a></li>
+          <li class="page-item">
+            <span class="page-link bootcn-pagination__gap" aria-hidden="true">…</span>
+          </li>
+          <li class="page-item"><a class="page-link" href="#page-12">12</a></li>
+          <li class="page-item">
+            <a class="page-link bootcn-pagination__step" href="#page-3" aria-label="Next page">
+              <span class="bootcn-pagination__step-text">Next</span>
+              <svg
+                class="bootcn-icon"
+                width="16"
+                height="16"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+                focusable="false"
+              >
+                <path d="m9 18 6-6-6-6" />
+              </svg>
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </main>
+  </body>
+</html>

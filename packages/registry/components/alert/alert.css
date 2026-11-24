@@ -1,0 +1,47 @@
+.bootcn-alert {
+  --bs-alert-bg: var(--bootcn-background);
+  --bs-alert-color: var(--bootcn-foreground);
+  --bs-alert-border-color: var(--bootcn-border-color);
+  --bs-alert-border-radius: var(--bootcn-radius-lg);
+  --bs-alert-padding-x: 1rem;
+  --bs-alert-padding-y: 0.875rem;
+  --bs-alert-margin-bottom: 0;
+
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  font-size: 0.875rem;
+}
+
+.bootcn-alert > .bootcn-icon {
+  flex: none;
+  margin-top: 0.125rem;
+}
+
+.bootcn-alert__body {
+  min-width: 0;
+}
+
+.bootcn-alert__title {
+  margin: 0;
+  font-weight: 500;
+  line-height: 1.25rem;
+}
+
+.bootcn-alert__description {
+  margin: 0.25rem 0 0;
+  color: var(--bootcn-muted-foreground);
+}
+
+.bootcn-alert--destructive {
+  --bs-alert-color: var(--bootcn-destructive-text);
+  --bs-alert-border-color: var(--bs-danger-border-subtle);
+}
+
+.bootcn-alert--destructive .bootcn-alert__description {
+  color: var(--bootcn-destructive-text);
+}
+
+.bootcn-alert.alert-dismissible .btn-close {
+  padding: 1.125rem 1rem;
+}

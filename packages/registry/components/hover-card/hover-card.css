@@ -1,0 +1,37 @@
+.bootcn-hover-card {
+  --bs-popover-max-width: 20rem;
+  --bs-popover-bg: var(--bootcn-background);
+  --bs-popover-border-color: var(--bootcn-border-color);
+  --bs-popover-border-radius: var(--bootcn-radius-lg);
+  --bs-popover-inner-border-radius: calc(var(--bootcn-radius-lg) - 1px);
+  --bs-popover-body-padding-x: 1rem;
+  --bs-popover-body-padding-y: 1rem;
+  --bs-popover-body-color: var(--bootcn-foreground);
+  --bs-popover-font-size: 0.875rem;
+
+  box-shadow: var(--bootcn-shadow-md);
+}
+
+.bootcn-hover-card__body {
+  display: flex;
+  gap: 1rem;
+}
+
+.bootcn-hover-card__name {
+  margin: 0;
+  font-weight: 600;
+}
+
+.bootcn-hover-card__text {
+  margin: 0.25rem 0 0;
+}
+
+.bootcn-hover-card__meta {
+  margin: 0.5rem 0 0;
+  color: var(--bootcn-muted-foreground);
+  font-size: 0.75rem;
+}
+
+.bootcn-hover-card__trigger {
+  font-weight: 500;
+}
