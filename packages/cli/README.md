@@ -4,14 +4,27 @@ Install copy-paste Bootstrap 5.3 components (HTML, CSS and vanilla JavaScript)
 into your own project. The installed files are yours: no runtime package, no
 framework, no Node.js needed in production.
 
-> Not published yet. See the repository README for running the CLI locally.
+Requires Node.js 20 or newer, only while you run the CLI. Bootstrap 5.3 is
+loaded by your pages (the CLI prints the CDN tags if it is missing).
 
 ```bash
-bootcn init
-bootcn add button dialog
-bootcn list
-bootcn info dialog
+npx bootcn init               # bootcn.json, directories, design tokens
+npx bootcn add button dialog  # copies the files, asks before overwriting
+npx bootcn list               # registry items, installed ones marked
+npx bootcn info dialog        # files, dependencies, accessibility notes
+npx bootcn diff               # your copies vs the registry, read-only
 ```
+
+Components come from the hosted registry at
+<https://tsirosgeorge.github.io/bootcn>. Pin a version with
+`--registry https://tsirosgeorge.github.io/bootcn/v/0.2.0` (stored in
+`bootcn.json`), or point `--registry` at your own registry directory or URL.
+
+Exit codes: `0` success, `1` user or configuration error, `2` registry or
+network error, `3` partial install.
+
+Documentation, the component list and the source:
+<https://github.com/tsirosgeorge/bootcn>.
 
 Global flags: `--cwd <path>`, `--registry <https-url-or-path>`, `--yes`,
 `--overwrite`, `--dry-run`, `--verbose`, `--version`, `--help`.
@@ -29,4 +42,4 @@ Runtime dependencies: `commander` (argument parsing), `@clack/prompts`
 (interactive prompts), `ajv` + `ajv-formats` (JSON Schema validation of the
 config and registry items), `diff` (unified diffs for changed files).
 
-MIT License.
+MIT © George Tsiros.

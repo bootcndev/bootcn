@@ -173,6 +173,7 @@ contents inlined), which the CLI reads. Previews load the same source files.
 ## Known limitations
 
 - The CLI is not on npm yet, so `npx bootcn` does not work; run the built file.
+  Publishing is set up; see [RELEASING.md](RELEASING.md).
 - The registry is on a GitHub Pages URL until a custom domain is set up.
 - No `doctor` or `update` commands. `diff` compares with the current registry
   only; installed versions are not recorded.

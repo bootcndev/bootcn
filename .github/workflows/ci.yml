@@ -26,3 +26,39 @@ jobs:
       - run: pnpm exec playwright install --with-deps chromium firefox webkit
       - run: php --version
       - run: pnpm test:e2e
+
+  # Packs the CLI as npm would publish it and runs it on every supported Node.
+  package:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node: [20, 22, 24]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 11.10.0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: pnpm
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm build
+      - run: npm pack --pack-destination "$RUNNER_TEMP"
+        working-directory: packages/cli
+      - uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node }}
+      - name: Install the tarball and run it
+        run: |
+          set -euo pipefail
+          registry="$GITHUB_WORKSPACE/packages/registry/dist"
+          project="$(mktemp -d)"
+          cp -R examples/plain-html/. "$project/"
+          cd "$project"
+          npm init -y >/dev/null
+          npm install --no-audit --no-fund "$RUNNER_TEMP"/bootcn-*.tgz
+          npx bootcn --version
+          npx bootcn init --yes --registry "$registry"
+          npx bootcn add dialog --yes
+          test -s assets/js/dialog.js

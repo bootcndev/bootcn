@@ -1,0 +1,68 @@
+name: Release CLI
+
+# Publishes packages/cli to npm when a cli-v<version> tag is pushed.
+# Authentication is npm trusted publishing (OIDC): no token is stored here.
+# npm adds provenance attestations automatically.
+on:
+  push:
+    tags: ['cli-v*']
+
+permissions:
+  contents: read
+
+concurrency:
+  group: release-cli
+  cancel-in-progress: false
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      id-token: write # npm trusted publishing
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 11.10.0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: pnpm
+          registry-url: https://registry.npmjs.org
+      - name: Tag matches package version and is not published yet
+        run: |
+          set -euo pipefail
+          version="$(node -p "require('./packages/cli/package.json').version")"
+          if [ "${GITHUB_REF_NAME}" != "cli-v${version}" ]; then
+            echo "::error::Tag ${GITHUB_REF_NAME} does not match packages/cli version ${version}."
+            exit 1
+          fi
+          if npm view "bootcn@${version}" version >/dev/null 2>&1; then
+            echo "::error::bootcn@${version} is already on npm."
+            exit 1
+          fi
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm lint
+      - run: pnpm typecheck
+      - run: pnpm registry:validate
+      - run: pnpm build
+      - run: pnpm test
+      # Trusted publishing needs npm 11.5.1 or newer.
+      - run: npm install -g npm@11.6.2
+      - name: Publish
+        working-directory: packages/cli
+        run: npm publish
+
+  github-release:
+    needs: publish
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - run: |
+          gh release create "$GITHUB_REF_NAME" --repo "$GITHUB_REPOSITORY" \
+            --title "bootcn ${GITHUB_REF_NAME#cli-v}" --generate-notes \
+            --notes "Published to npm: https://www.npmjs.com/package/bootcn/v/${GITHUB_REF_NAME#cli-v}"
+        env:
+          GH_TOKEN: ${{ github.token }}

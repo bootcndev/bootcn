@@ -1,15 +1,24 @@
 {
   "name": "bootcn",
   "version": "0.1.0",
-  "private": true,
   "description": "Install copy-paste Bootstrap 5.3 components (HTML, CSS, vanilla JS) into your project.",
   "license": "MIT",
+  "author": "George Tsiros",
+  "homepage": "https://github.com/tsirosgeorge/bootcn#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tsirosgeorge/bootcn.git",
+    "directory": "packages/cli"
+  },
+  "bugs": {
+    "url": "https://github.com/tsirosgeorge/bootcn/issues"
+  },
   "type": "module",
   "bin": {
     "bootcn": "dist/index.js"
   },
   "files": [
-    "dist"
+    "dist/index.js"
   ],
   "engines": {
     "node": ">=20"
@@ -39,5 +48,8 @@
     "tsup": "9.0.0",
     "typescript": "5.9.3",
     "vitest": "4.1.12"
+  },
+  "publishConfig": {
+    "access": "public"
   }
 }
