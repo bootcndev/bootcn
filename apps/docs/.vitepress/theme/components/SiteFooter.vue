@@ -96,7 +96,6 @@ const columns = [
           >MIT License</a
         >.
       </p>
-      <p>An independent project, not affiliated with Bootstrap or shadcn/ui.</p>
     </div>
   </footer>
 </template>

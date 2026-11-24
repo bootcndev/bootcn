@@ -79,7 +79,7 @@ test('home page links to the guide and the components', async ({ page }) => {
   await expect(
     page.locator('.bootcn-landing__lead').getByRole('link', { name: 'Bootstrap' }),
   ).toHaveAttribute('href', 'https://getbootstrap.com/');
-  await expect(page.getByRole('contentinfo')).toContainText('not affiliated');
+  await expect(page.getByRole('contentinfo')).toContainText('MIT License');
   await expect(page.getByRole('navigation', { name: 'Footer' })).toBeVisible();
   await page.getByRole('link', { name: 'Browse components' }).click();
   await expect(page).toHaveURL(/127\.0\.0\.1:\d+\/components\/$/);
