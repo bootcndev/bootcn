@@ -20,12 +20,44 @@
   height: var(--bootcn-switch-height);
   margin: 0;
   margin-left: 0;
-  border-color: var(--bootcn-border-color);
+  /* Off: a muted track with a visible border (3:1). */
+  border-color: var(--bootcn-ring);
+  background-color: var(--bootcn-input);
   cursor: pointer;
 }
 
+.bootcn-switch .bootcn-switch__input:checked {
+  border-color: var(--bootcn-primary);
+  background-color: var(--bootcn-primary);
+}
+
+/*
+ * Thumb color. Bootstrap draws the thumb from --bs-form-switch-bg and sets it
+ * in several state rules (checked, focus, dark + unchecked), so these
+ * selectors repeat the classes to win in every state: light thumb, except
+ * when on in dark mode, where the track is light and the thumb dark.
+ */
+.form-switch.bootcn-switch .form-check-input.bootcn-switch__input,
+.form-switch.bootcn-switch .form-check-input.bootcn-switch__input:focus,
+.form-switch.bootcn-switch .form-check-input.bootcn-switch__input:checked {
+  --bs-form-switch-bg: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'%3e%3ccircle r='3' fill='%23fff'/%3e%3c/svg%3e");
+}
+
+[data-bs-theme='dark']
+  .form-switch.bootcn-switch
+  .form-check-input.bootcn-switch__input:not(:checked),
+[data-bs-theme='dark']
+  .form-switch.bootcn-switch
+  .form-check-input.bootcn-switch__input:not(:checked):focus {
+  --bs-form-switch-bg: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'%3e%3ccircle r='3' fill='%23fafafa'/%3e%3c/svg%3e");
+}
+
+[data-bs-theme='dark'] .form-switch.bootcn-switch .form-check-input.bootcn-switch__input:checked {
+  --bs-form-switch-bg: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'%3e%3ccircle r='3' fill='%2318181b'/%3e%3c/svg%3e");
+}
+
 .bootcn-switch .bootcn-switch__input:focus-visible {
-  border-color: var(--bs-primary);
+  border-color: var(--bootcn-primary);
   outline: 0;
   box-shadow: var(--bootcn-focus-ring);
 }
@@ -41,6 +73,7 @@
 .bootcn-switch__label {
   grid-column: 2;
   align-self: center;
+  font-size: 0.875rem;
   font-weight: 500;
   cursor: pointer;
 }

@@ -1,23 +1,31 @@
 .bootcn-dialog .modal-content {
   border: var(--bootcn-border-width) solid var(--bootcn-border-color);
   border-radius: var(--bootcn-dialog-radius);
+  background-color: var(--bootcn-background);
   box-shadow: var(--bootcn-dialog-shadow);
 }
 
+/* No dividers: header, body and footer share one padded surface. */
 .bootcn-dialog .modal-header {
-  padding: var(--bootcn-dialog-padding);
-  border-bottom: var(--bootcn-border-width) solid var(--bootcn-border-color);
+  align-items: flex-start;
+  padding: var(--bootcn-dialog-padding) var(--bootcn-dialog-padding) 0;
+  border-bottom: 0;
 }
 
 .bootcn-dialog .modal-body {
-  padding: var(--bootcn-dialog-padding);
+  padding: 0.5rem var(--bootcn-dialog-padding) 0;
+  font-size: 0.875rem;
 }
 
 .bootcn-dialog .modal-footer {
   flex-wrap: wrap;
   gap: 0.5rem;
   padding: var(--bootcn-dialog-padding);
-  border-top: var(--bootcn-border-width) solid var(--bootcn-border-color);
+  border-top: 0;
+}
+
+.bootcn-dialog .modal-footer > * {
+  margin: 0;
 }
 
 .bootcn-dialog__title {
@@ -29,5 +37,5 @@
 
 .bootcn-dialog__description {
   margin: 0;
-  color: var(--bs-secondary-color);
+  color: var(--bootcn-muted-foreground);
 }

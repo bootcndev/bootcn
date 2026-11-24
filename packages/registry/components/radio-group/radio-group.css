@@ -1,5 +1,5 @@
 .bootcn-radio-group {
-  --bootcn-radio-size: 1.125rem;
+  --bootcn-radio-size: 1rem;
   --bootcn-radio-gap: 0.625rem;
 
   display: grid;
@@ -15,7 +15,7 @@
   width: auto;
   margin-bottom: 0.25rem;
   padding: 0;
-  font-size: 1rem;
+  font-size: 0.875rem;
   font-weight: 600;
 }
 
@@ -32,15 +32,27 @@
   width: var(--bootcn-radio-size);
   height: var(--bootcn-radio-size);
   margin: 0.125rem 0 0;
-  border-color: var(--bootcn-border-color);
+  border-color: var(--bootcn-primary);
+  background-color: transparent;
+  box-shadow: var(--bootcn-shadow-sm);
   transition:
     background-color var(--bootcn-transition),
     border-color var(--bootcn-transition),
     box-shadow var(--bootcn-transition);
 }
 
+.bootcn-radio-group__item > .form-check-input:checked {
+  border-color: var(--bootcn-primary);
+  background-color: var(--bootcn-primary);
+}
+
+/* In dark mode the primary is light, so the dot turns dark. */
+[data-bs-theme='dark'] .bootcn-radio-group__item > .form-check-input:checked {
+  --bs-form-check-bg-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'%3e%3ccircle r='2' fill='%2318181b'/%3e%3c/svg%3e");
+}
+
 .bootcn-radio-group__item > .form-check-input:focus-visible {
-  border-color: var(--bs-primary);
+  border-color: var(--bootcn-primary);
   outline: 0;
   box-shadow: var(--bootcn-focus-ring);
 }
@@ -51,6 +63,8 @@
 
 .bootcn-radio-group__item > .form-check-label {
   grid-column: 2;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
 }
 
 .bootcn-radio-group__description {
@@ -73,7 +87,7 @@
   position: relative;
   padding: 1rem;
   border: var(--bootcn-border-width) solid var(--bootcn-border-color);
-  border-radius: var(--bootcn-radius);
+  border-radius: var(--bootcn-radius-lg);
   transition:
     border-color var(--bootcn-transition),
     background-color var(--bootcn-transition);
@@ -92,8 +106,8 @@
 }
 
 .bootcn-radio-group--cards .bootcn-radio-group__item:has(> .form-check-input:checked) {
-  border-color: var(--bs-primary);
-  background-color: var(--bs-primary-bg-subtle);
+  border-color: var(--bootcn-primary);
+  background-color: var(--bootcn-accent);
 }
 
 .bootcn-radio-group--cards .bootcn-radio-group__item:has(> .form-check-input:disabled) {

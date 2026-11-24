@@ -2,7 +2,11 @@
   --bootcn-textarea-min-height: 5rem;
 
   min-height: var(--bootcn-textarea-min-height);
+  border-color: var(--bootcn-input);
   border-radius: var(--bootcn-radius);
+  background-color: transparent;
+  box-shadow: var(--bootcn-shadow-sm);
+  font-size: 1rem;
   resize: vertical;
   transition:
     border-color var(--bootcn-transition),
@@ -10,9 +14,9 @@
 }
 
 .bootcn-textarea:focus {
-  border-color: var(--bs-primary);
   outline: 0;
-  box-shadow: var(--bootcn-focus-ring);
+  border-color: var(--bootcn-ring);
+  box-shadow: 0 0 0 3px var(--bs-focus-ring-color);
 }
 
 .bootcn-textarea[aria-invalid='true'] {
@@ -21,7 +25,7 @@
 
 .bootcn-textarea[aria-invalid='true']:focus {
   border-color: var(--bs-danger);
-  box-shadow: 0 0 0 var(--bootcn-focus-ring-width) rgba(var(--bs-danger-rgb, 220, 53, 69), 0.25);
+  box-shadow: 0 0 0 3px rgba(var(--bs-danger-rgb), 0.2);
 }
 
 .bootcn-textarea[aria-invalid='true'] ~ .invalid-feedback {
@@ -32,4 +36,11 @@
 .bootcn-textarea--autosize {
   field-sizing: content;
   max-height: 20rem;
+}
+
+/* text-base on phones (no zoom on focus in iOS Safari), text-sm from md. */
+@media (min-width: 768px) {
+  .bootcn-textarea {
+    font-size: var(--bootcn-control-font-size);
+  }
 }

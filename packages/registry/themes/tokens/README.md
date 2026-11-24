@@ -1,8 +1,9 @@
 # Design tokens
 
-`tokens.css` defines the shared `--bootcn-*` custom properties every Bootcn
-component reads: radius, borders, shadows, focus ring, motion and component
-dimensions. Load it **after** Bootstrap's CSS and **before** any component CSS.
+`tokens.css` gives Bootstrap 5.3 a neutral, Tailwind-like look and defines the
+`--bootcn-*` tokens every Bootcn component reads. Everything stays Bootstrap:
+no Tailwind, no build step. Load it **after** Bootstrap's CSS and **before**
+any component CSS.
 
 ```html
 <link
@@ -16,19 +17,50 @@ dimensions. Load it **after** Bootstrap's CSS and **before** any component CSS.
 The CLI installs this item automatically the first time you run `bootcn init`
 or `bootcn add`.
 
+## What it changes
+
+- **Palette roles**, in light and dark mode, on a zinc scale:
+  `--bootcn-background`, `--bootcn-foreground`, `--bootcn-primary` (near-black
+  in light mode, near-white in dark mode) and `--bootcn-primary-foreground`,
+  `--bootcn-secondary`, `--bootcn-muted`, `--bootcn-muted-foreground`,
+  `--bootcn-accent`, `--bootcn-destructive`, `--bootcn-border-color`,
+  `--bootcn-input` and `--bootcn-ring`.
+- **Bootstrap's own variables** (`--bs-body-bg`, `--bs-body-color`,
+  `--bs-secondary-color`, `--bs-border-color`, `--bs-primary`,
+  `--bs-link-color`, `--bs-border-radius`…) point at those roles, so plain
+  Bootstrap classes such as `.text-body-secondary`, `.border` or `.bg-primary`
+  match the components.
+- **Shape and type:** a system font stack, `rounded-md` corners (0.375rem),
+  Tailwind's shadow scale (`--bootcn-shadow-sm` to `--bootcn-shadow-lg`),
+  controls 2.25rem high with `text-sm`, and a focus ring offset from the
+  element.
+
+Muted text is `#6b6b73` rather than zinc-500, so it keeps 4.5:1 contrast on the
+muted background as well as on white.
+
 ## Customizing
 
-Override any token in your own stylesheet, loaded after `tokens.css`:
+Override roles in your own stylesheet, loaded after `tokens.css`. For example,
+a blue primary and rounder corners:
 
 ```css
-:root {
-  --bootcn-radius: 0.25rem;
-  --bootcn-transition-duration: 100ms;
+:root,
+[data-bs-theme='light'] {
+  --bootcn-primary: #2563eb;
+  --bootcn-primary-foreground: #fff;
+  --bs-primary-rgb: 37, 99, 235;
+  --bs-border-radius: 0.5rem;
+}
+
+[data-bs-theme='dark'] {
+  --bootcn-primary: #3b82f6;
+  --bootcn-primary-foreground: #fff;
+  --bs-primary-rgb: 59, 130, 246;
 }
 ```
 
-Tokens build on Bootstrap's `--bs-*` variables where possible, so changing the
-Bootstrap theme also changes Bootcn components.
+Check the contrast of any pair you change (text on its background should be at
+least 4.5:1).
 
 ## Dark mode
 

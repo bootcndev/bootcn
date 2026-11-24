@@ -1,6 +1,10 @@
 .bootcn-select {
   min-height: var(--bootcn-control-height);
+  border-color: var(--bootcn-input);
   border-radius: var(--bootcn-radius);
+  background-color: transparent;
+  box-shadow: var(--bootcn-shadow-sm);
+  font-size: 1rem;
   cursor: pointer;
   transition:
     border-color var(--bootcn-transition),
@@ -8,9 +12,9 @@
 }
 
 .bootcn-select:focus {
-  border-color: var(--bs-primary);
   outline: 0;
-  box-shadow: var(--bootcn-focus-ring);
+  border-color: var(--bootcn-ring);
+  box-shadow: 0 0 0 3px var(--bs-focus-ring-color);
 }
 
 .bootcn-select:disabled {
@@ -23,9 +27,16 @@
 
 .bootcn-select[aria-invalid='true']:focus {
   border-color: var(--bs-danger);
-  box-shadow: 0 0 0 var(--bootcn-focus-ring-width) rgba(var(--bs-danger-rgb, 220, 53, 69), 0.25);
+  box-shadow: 0 0 0 3px rgba(var(--bs-danger-rgb), 0.2);
 }
 
 .bootcn-select[aria-invalid='true'] ~ .invalid-feedback {
   display: block;
+}
+
+/* text-base on phones (no zoom on focus in iOS Safari), text-sm from md. */
+@media (min-width: 768px) {
+  .bootcn-select {
+    font-size: var(--bootcn-control-font-size);
+  }
 }

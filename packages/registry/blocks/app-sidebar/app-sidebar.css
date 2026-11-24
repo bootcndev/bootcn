@@ -71,7 +71,7 @@
   padding: 0.5rem;
   border-radius: var(--bootcn-radius);
   color: var(--bs-body-color);
-  font-size: 0.9375rem;
+  font-size: 0.875rem;
   font-weight: 500;
   text-decoration: none;
 }
@@ -82,7 +82,7 @@
 }
 
 .bootcn-sidebar__link:hover {
-  background-color: var(--bs-secondary-bg);
+  background-color: var(--bootcn-accent);
   color: var(--bs-emphasis-color);
 }
 

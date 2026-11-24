@@ -1,5 +1,5 @@
 .bootcn-tabs {
-  --bootcn-tabs-list-bg: var(--bs-secondary-bg);
+  --bootcn-tabs-list-bg: var(--bootcn-muted);
   --bootcn-tabs-list-padding: 0.25rem;
   --bootcn-tabs-trigger-color: var(--bs-secondary-color);
   --bootcn-tabs-trigger-active-bg: var(--bs-body-bg);
@@ -15,15 +15,17 @@
   max-width: 100%;
   padding: var(--bootcn-tabs-list-padding);
   overflow-x: auto;
-  border-radius: var(--bootcn-radius);
+  border-radius: var(--bootcn-radius-lg);
   background-color: var(--bootcn-tabs-list-bg);
 }
 
 .bootcn-tabs__list > .nav-link {
   flex-shrink: 0;
-  padding: 0.375rem 0.875rem;
+  padding: 0.25rem 0.75rem;
   border: 0;
-  border-radius: var(--bootcn-radius-sm);
+  border-radius: var(--bootcn-radius);
+  font-size: 0.875rem;
+  line-height: 1.25rem;
   background: transparent;
   color: var(--bootcn-tabs-trigger-color);
   font-weight: 500;

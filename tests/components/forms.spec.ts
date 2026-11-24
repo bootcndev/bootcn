@@ -37,3 +37,28 @@ test('checkbox: the label toggles the input', async ({ page }) => {
   await page.getByText('Accept terms and conditions').first().click();
   await expect(page.locator('#bootcn-checkbox-terms')).toBeChecked();
 });
+
+test.describe('checked controls stay visible in dark mode', () => {
+  // The primary is light in dark mode, so check marks, dots and switch thumbs
+  // must turn dark (zinc-900, %2318181b) instead of Bootstrap's white.
+  for (const [name, selector] of [
+    ['checkbox', '.bootcn-checkbox__input:checked'],
+    ['radio-group', '.bootcn-radio-group__item > .form-check-input:checked'],
+    ['switch', '.bootcn-switch__input:checked'],
+  ] as const) {
+    test(name, async ({ page }) => {
+      await openPreview(page, name);
+      const light = await page
+        .locator(selector)
+        .first()
+        .evaluate((el) => getComputedStyle(el).backgroundImage);
+      expect(light).toContain('fff');
+      await page.evaluate(() => document.documentElement.setAttribute('data-bs-theme', 'dark'));
+      const dark = await page
+        .locator(selector)
+        .first()
+        .evaluate((el) => getComputedStyle(el).backgroundImage);
+      expect(dark).toContain('18181b');
+    });
+  }
+});

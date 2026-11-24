@@ -4,7 +4,7 @@
   "type": "registry:ui",
   "title": "Skeleton",
   "description": "Loading placeholders built on Bootstrap placeholders, with a reduced-motion-aware pulse.",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "categories": ["feedback", "loading"],
   "dependencies": [],
   "registryDependencies": [],

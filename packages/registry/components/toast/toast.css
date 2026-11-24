@@ -13,10 +13,10 @@
 
 .bootcn-toast {
   --bs-toast-max-width: 22rem;
-  --bs-toast-bg: var(--bs-body-bg);
-  --bs-toast-color: var(--bs-body-color);
+  --bs-toast-bg: var(--bootcn-background);
+  --bs-toast-color: var(--bootcn-foreground);
   --bs-toast-border-color: var(--bootcn-border-color);
-  --bs-toast-border-radius: var(--bootcn-radius);
+  --bs-toast-border-radius: var(--bootcn-radius-lg);
   --bs-toast-box-shadow: var(--bootcn-shadow-lg);
   --bs-toast-font-size: 0.875rem;
 
@@ -37,7 +37,7 @@
   display: flex;
   align-items: flex-start;
   gap: 0.75rem;
-  padding: 0.875rem 1rem;
+  padding: 1rem;
 }
 
 .bootcn-toast__text {

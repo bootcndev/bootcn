@@ -1,7 +1,7 @@
 .bootcn-avatar {
   --bootcn-avatar-size: 2.5rem;
   --bootcn-avatar-radius: 50%;
-  --bootcn-avatar-bg: var(--bs-secondary-bg);
+  --bootcn-avatar-bg: var(--bootcn-muted);
   --bootcn-avatar-color: var(--bs-emphasis-color);
 
   position: relative;
@@ -15,8 +15,8 @@
   border-radius: var(--bootcn-avatar-radius);
   background-color: var(--bootcn-avatar-bg);
   color: var(--bootcn-avatar-color);
-  font-size: calc(var(--bootcn-avatar-size) * 0.4);
-  font-weight: 600;
+  font-size: calc(var(--bootcn-avatar-size) * 0.35);
+  font-weight: 500;
   line-height: 1;
   vertical-align: middle;
   user-select: none;

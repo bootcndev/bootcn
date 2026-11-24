@@ -20,7 +20,8 @@
 
 .bootcn-transactions__table {
   --bs-table-bg: transparent;
-  font-size: 0.9375rem;
+  --bs-table-border-color: var(--bootcn-border-color);
+  font-size: 0.875rem;
 }
 
 .bootcn-transactions__table th {
@@ -65,6 +66,11 @@
 .bootcn-transactions__footer {
   align-items: center;
   justify-content: space-between;
+  padding-top: 1rem;
+}
+
+.bootcn-transactions__table thead th {
+  border-top: var(--bootcn-border-width) solid var(--bootcn-border-color);
 }
 
 .bootcn-transactions__summary {

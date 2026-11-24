@@ -6,7 +6,9 @@
 
 .bootcn-field__label {
   margin: 0;
+  font-size: 0.875rem;
   font-weight: 500;
+  line-height: 1.25rem;
 }
 
 .bootcn-field__help {
@@ -17,7 +19,12 @@
 
 .bootcn-input {
   min-height: var(--bootcn-control-height);
+  padding: var(--bootcn-control-padding-y) var(--bootcn-control-padding-x);
+  border-color: var(--bootcn-input);
   border-radius: var(--bootcn-radius);
+  background-color: transparent;
+  box-shadow: var(--bootcn-shadow-sm);
+  font-size: 1rem;
   transition:
     border-color var(--bootcn-transition),
     box-shadow var(--bootcn-transition);
@@ -25,8 +32,13 @@
 
 .bootcn-input:focus {
   outline: 0;
-  border-color: var(--bs-primary);
-  box-shadow: var(--bootcn-focus-ring);
+  border-color: var(--bootcn-ring);
+  box-shadow: 0 0 0 3px var(--bs-focus-ring-color);
+}
+
+.bootcn-input:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
 }
 
 .bootcn-input[aria-invalid='true'] {
@@ -35,7 +47,7 @@
 
 .bootcn-input[aria-invalid='true']:focus {
   border-color: var(--bs-danger);
-  box-shadow: 0 0 0 var(--bootcn-focus-ring-width) rgba(var(--bs-danger-rgb, 220, 53, 69), 0.25);
+  box-shadow: 0 0 0 3px rgba(var(--bs-danger-rgb), 0.2);
 }
 
 .bootcn-input[aria-invalid='true'] ~ .invalid-feedback {
@@ -43,3 +55,10 @@
 }
 
 /* Inside .input-group, Bootstrap's own rules square the inner corners. */
+
+/* text-base on phones (no zoom on focus in iOS Safari), text-sm from md. */
+@media (min-width: 768px) {
+  .bootcn-input {
+    font-size: var(--bootcn-control-font-size);
+  }
+}

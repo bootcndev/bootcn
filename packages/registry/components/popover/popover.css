@@ -2,13 +2,15 @@
   --bs-popover-border-color: var(--bootcn-border-color);
   --bs-popover-border-radius: var(--bootcn-radius);
   --bs-popover-inner-border-radius: calc(var(--bootcn-radius) - var(--bootcn-border-width));
-  --bs-popover-box-shadow: var(--bootcn-shadow-lg);
+  --bs-popover-box-shadow: var(--bootcn-shadow-md);
+  --bs-popover-bg: var(--bootcn-background);
   --bs-popover-header-bg: transparent;
   --bs-popover-header-padding-x: 1rem;
   --bs-popover-header-padding-y: 0.75rem;
   --bs-popover-body-padding-x: 1rem;
   --bs-popover-body-padding-y: 0.75rem;
-  --bs-popover-body-color: var(--bs-secondary-color);
+  --bs-popover-body-color: var(--bootcn-muted-foreground);
+  --bs-popover-header-color: var(--bootcn-foreground);
   --bs-popover-font-size: 0.875rem;
 
   box-shadow: var(--bs-popover-box-shadow);

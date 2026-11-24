@@ -33,7 +33,8 @@
 
 .bootcn-navbar__link {
   border-radius: var(--bootcn-radius);
-  color: var(--bs-secondary-color);
+  color: var(--bootcn-muted-foreground);
+  font-size: 0.875rem;
   font-weight: 500;
 }
 

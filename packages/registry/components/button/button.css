@@ -1,23 +1,26 @@
 /*
  * Variants set Bootstrap's own --bs-btn-* variables on the bootcn-button
  * element, so every Bootstrap state rule (.btn:hover, :focus-visible, :active,
- * .active, .show, :disabled) keeps the variant's colors.
+ * .active, .show, :disabled) keeps the variant's colors. Sizes and colors
+ * follow the Tailwind-like tokens (h-9, text-sm, rounded-md).
  */
 .bootcn-button {
-  --bs-btn-padding-x: var(--bootcn-control-padding-x);
-  --bs-btn-padding-y: var(--bootcn-control-padding-y);
+  --bs-btn-padding-x: 1rem;
+  --bs-btn-padding-y: 0.5rem;
+  --bs-btn-font-size: var(--bootcn-control-font-size);
   --bs-btn-font-weight: 500;
-  --bs-btn-line-height: 1.2;
+  --bs-btn-line-height: 1.25rem;
   --bs-btn-border-width: var(--bootcn-border-width);
   --bs-btn-border-radius: var(--bootcn-radius);
   --bs-btn-focus-box-shadow: var(--bootcn-focus-ring);
-  --bs-btn-disabled-opacity: 0.65;
+  --bs-btn-disabled-opacity: 0.5;
 
   display: inline-flex;
   align-items: center;
   justify-content: center;
   gap: 0.5rem;
   min-height: var(--bootcn-control-height);
+  white-space: nowrap;
   text-decoration: none;
   transition:
     background-color var(--bootcn-transition),
@@ -26,78 +29,99 @@
     box-shadow var(--bootcn-transition);
 }
 
+.bootcn-button:focus-visible {
+  outline: 0;
+}
+
 .bootcn-button[aria-disabled='true'] {
   opacity: var(--bs-btn-disabled-opacity);
   pointer-events: none;
 }
 
-/* Solid variants: the same color in every state; hover and press darken it
-   with an overlay, so no extra shade tokens are needed. */
+/* Solid variants: --bootcn-button-bg and -fg; hover is the color at 90%
+   over the page background (Tailwind's bg-primary/90). */
 .bootcn-button--default {
-  --bootcn-button-solid: var(--bs-primary);
+  --bootcn-button-bg: var(--bootcn-primary);
+  --bootcn-button-fg: var(--bootcn-primary-foreground);
 }
 
 .bootcn-button--secondary {
-  --bootcn-button-solid: var(--bs-secondary);
+  --bootcn-button-bg: var(--bootcn-secondary);
+  --bootcn-button-fg: var(--bootcn-secondary-foreground);
 }
 
 .bootcn-button--destructive {
-  --bootcn-button-solid: var(--bs-danger);
+  --bootcn-button-bg: var(--bootcn-destructive);
+  --bootcn-button-fg: var(--bootcn-destructive-foreground);
 }
 
 .bootcn-button--default,
 .bootcn-button--secondary,
 .bootcn-button--destructive {
-  --bs-btn-color: var(--bs-white, #fff);
-  --bs-btn-bg: var(--bootcn-button-solid);
-  --bs-btn-border-color: var(--bootcn-button-solid);
-  --bs-btn-hover-color: var(--bs-white, #fff);
-  --bs-btn-hover-bg: var(--bootcn-button-solid);
-  --bs-btn-hover-border-color: var(--bootcn-button-solid);
-  --bs-btn-active-color: var(--bs-white, #fff);
-  --bs-btn-active-bg: var(--bootcn-button-solid);
-  --bs-btn-active-border-color: var(--bootcn-button-solid);
-  --bs-btn-disabled-color: var(--bs-white, #fff);
-  --bs-btn-disabled-bg: var(--bootcn-button-solid);
-  --bs-btn-disabled-border-color: var(--bootcn-button-solid);
+  --bootcn-button-hover-bg: var(--bootcn-button-bg);
+  --bs-btn-color: var(--bootcn-button-fg);
+  --bs-btn-bg: var(--bootcn-button-bg);
+  --bs-btn-border-color: var(--bootcn-button-bg);
+  --bs-btn-hover-color: var(--bootcn-button-fg);
+  --bs-btn-hover-bg: var(--bootcn-button-hover-bg);
+  --bs-btn-hover-border-color: var(--bootcn-button-hover-bg);
+  --bs-btn-active-color: var(--bootcn-button-fg);
+  --bs-btn-active-bg: var(--bootcn-button-bg);
+  --bs-btn-active-border-color: var(--bootcn-button-bg);
+  --bs-btn-disabled-color: var(--bootcn-button-fg);
+  --bs-btn-disabled-bg: var(--bootcn-button-bg);
+  --bs-btn-disabled-border-color: var(--bootcn-button-bg);
+
+  box-shadow: var(--bootcn-shadow-sm);
 }
 
-.bootcn-button--default:hover,
-.bootcn-button--secondary:hover,
-.bootcn-button--destructive:hover {
-  background-image: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1));
+@supports (color: color-mix(in srgb, red, blue)) {
+  .bootcn-button--default,
+  .bootcn-button--secondary,
+  .bootcn-button--destructive {
+    --bootcn-button-hover-bg: color-mix(
+      in srgb,
+      var(--bootcn-button-bg) 90%,
+      var(--bootcn-background)
+    );
+  }
+
+  .bootcn-button--secondary {
+    --bootcn-button-hover-bg: color-mix(
+      in srgb,
+      var(--bootcn-button-bg) 80%,
+      var(--bootcn-background)
+    );
+  }
+
+  /* Lightening red would drop white text below 4.5:1, so darken instead. */
+  .bootcn-button--destructive {
+    --bootcn-button-hover-bg: color-mix(in srgb, var(--bootcn-button-bg) 88%, #000);
+  }
 }
 
-.bootcn-button--default:active,
-.bootcn-button--default.active,
-.bootcn-button--default.show,
-.bootcn-button--secondary:active,
-.bootcn-button--secondary.active,
-.bootcn-button--secondary.show,
-.bootcn-button--destructive:active,
-.bootcn-button--destructive.active,
-.bootcn-button--destructive.show {
-  background-image: linear-gradient(rgba(0, 0, 0, 0.18), rgba(0, 0, 0, 0.18));
-}
-
-/* Quiet variants: body text color, subtle background on hover and press. */
+/* Quiet variants: foreground text, the accent color on hover and when open. */
 .bootcn-button--outline,
 .bootcn-button--ghost {
-  --bs-btn-color: var(--bs-body-color);
+  --bs-btn-color: var(--bootcn-foreground);
   --bs-btn-bg: transparent;
-  --bs-btn-hover-color: var(--bs-emphasis-color);
-  --bs-btn-hover-bg: var(--bs-secondary-bg);
-  --bs-btn-active-color: var(--bs-emphasis-color);
-  --bs-btn-active-bg: var(--bs-tertiary-bg);
-  --bs-btn-disabled-color: var(--bs-body-color);
+  --bs-btn-hover-color: var(--bootcn-accent-foreground);
+  --bs-btn-hover-bg: var(--bootcn-accent);
+  --bs-btn-active-color: var(--bootcn-accent-foreground);
+  --bs-btn-active-bg: var(--bootcn-accent);
+  --bs-btn-disabled-color: var(--bootcn-foreground);
   --bs-btn-disabled-bg: transparent;
 }
 
 .bootcn-button--outline {
-  --bs-btn-border-color: var(--bootcn-border-color);
-  --bs-btn-hover-border-color: var(--bootcn-border-color);
-  --bs-btn-active-border-color: var(--bootcn-border-color);
-  --bs-btn-disabled-border-color: var(--bootcn-border-color);
+  --bs-btn-bg: var(--bootcn-background);
+  --bs-btn-border-color: var(--bootcn-input);
+  --bs-btn-hover-border-color: var(--bootcn-input);
+  --bs-btn-active-border-color: var(--bootcn-input);
+  --bs-btn-disabled-bg: var(--bootcn-background);
+  --bs-btn-disabled-border-color: var(--bootcn-input);
+
+  box-shadow: var(--bootcn-shadow-sm);
 }
 
 .bootcn-button--ghost {
@@ -108,37 +132,39 @@
 }
 
 .bootcn-button--link {
-  --bs-btn-color: var(--bs-link-color);
+  --bs-btn-color: var(--bootcn-primary);
   --bs-btn-bg: transparent;
   --bs-btn-border-color: transparent;
-  --bs-btn-hover-color: var(--bs-link-hover-color);
+  --bs-btn-hover-color: var(--bootcn-primary);
   --bs-btn-hover-bg: transparent;
   --bs-btn-hover-border-color: transparent;
-  --bs-btn-active-color: var(--bs-link-hover-color);
+  --bs-btn-active-color: var(--bootcn-primary);
   --bs-btn-active-bg: transparent;
   --bs-btn-active-border-color: transparent;
-  --bs-btn-disabled-color: var(--bs-link-color);
+  --bs-btn-disabled-color: var(--bootcn-primary);
   --bs-btn-disabled-bg: transparent;
   --bs-btn-disabled-border-color: transparent;
+
+  text-underline-offset: 4px;
 }
 
 .bootcn-button--link:hover {
   text-decoration: underline;
 }
 
-/* Sizes */
+/* Sizes (Tailwind h-8 / h-9 / h-10) */
 .bootcn-button--sm {
-  --bs-btn-padding-y: calc(var(--bootcn-control-padding-y) * 0.5);
-  --bs-btn-padding-x: calc(var(--bootcn-control-padding-x) * 0.75);
-  --bs-btn-font-size: 0.875rem;
+  --bs-btn-padding-y: 0.25rem;
+  --bs-btn-padding-x: 0.75rem;
+  --bs-btn-font-size: 0.8125rem;
 
+  gap: 0.375rem;
   min-height: var(--bootcn-control-height-sm);
 }
 
 .bootcn-button--lg {
-  --bs-btn-padding-y: calc(var(--bootcn-control-padding-y) * 1.5);
-  --bs-btn-padding-x: calc(var(--bootcn-control-padding-x) * 1.25);
-  --bs-btn-font-size: 1.125rem;
+  --bs-btn-padding-y: 0.5rem;
+  --bs-btn-padding-x: 1.5rem;
 
   min-height: var(--bootcn-control-height-lg);
 }
@@ -160,6 +186,12 @@
 .bootcn-button--icon.bootcn-button--lg {
   width: var(--bootcn-control-height-lg);
   min-width: var(--bootcn-control-height-lg);
+}
+
+.bootcn-button svg {
+  flex-shrink: 0;
+  width: 1rem;
+  height: 1rem;
 }
 
 /* Loading state */

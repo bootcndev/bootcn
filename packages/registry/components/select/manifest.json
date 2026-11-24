@@ -4,7 +4,7 @@
   "type": "registry:ui",
   "title": "Select",
   "description": "A native select with label, help text, option groups, invalid and disabled states.",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "categories": ["forms", "inputs"],
   "dependencies": [],
   "registryDependencies": ["input"],

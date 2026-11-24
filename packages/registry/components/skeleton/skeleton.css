@@ -1,10 +1,10 @@
 .bootcn-skeleton {
-  --bootcn-skeleton-bg: var(--bs-secondary-bg);
+  --bootcn-skeleton-bg: var(--bootcn-muted);
   --bootcn-skeleton-duration: 1.6s;
 
   display: block;
   min-height: 1em;
-  border-radius: var(--bootcn-radius-sm);
+  border-radius: var(--bootcn-radius);
   background-color: var(--bootcn-skeleton-bg);
   opacity: 1;
   cursor: progress;

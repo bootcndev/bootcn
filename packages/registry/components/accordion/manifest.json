@@ -4,7 +4,7 @@
   "type": "registry:ui",
   "title": "Accordion",
   "description": "Collapsible sections built on Bootstrap Collapse, styled as a flush list.",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "categories": ["navigation", "disclosure"],
   "dependencies": [],
   "registryDependencies": [],
