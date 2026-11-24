@@ -1,0 +1,114 @@
+.bootcn-rail-layout {
+  display: flex;
+  min-height: 24rem;
+}
+
+.bootcn-rail {
+  display: flex;
+  flex: none;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+  width: 3.5rem;
+  padding: 0.75rem 0;
+  border-inline-end: var(--bootcn-border-width) solid var(--bootcn-border-color);
+  background-color: var(--bs-tertiary-bg);
+}
+
+.bootcn-rail__brand,
+.bootcn-rail__link {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: var(--bootcn-radius);
+  color: var(--bootcn-muted-foreground);
+  text-decoration: none;
+}
+
+.bootcn-rail__brand {
+  margin-bottom: 0.25rem;
+  color: var(--bootcn-foreground);
+}
+
+.bootcn-rail__brand .bootcn-icon {
+  width: 1.25rem;
+  height: 1.25rem;
+}
+
+.bootcn-rail__link:hover {
+  background-color: var(--bootcn-accent);
+  color: var(--bootcn-foreground);
+}
+
+.bootcn-rail__link[aria-current='page'] {
+  background-color: var(--bootcn-secondary);
+  color: var(--bootcn-foreground);
+}
+
+.bootcn-rail__brand:focus-visible,
+.bootcn-rail__link:focus-visible {
+  outline: 0;
+  box-shadow: var(--bootcn-focus-ring);
+}
+
+/* The label as a tooltip on hover and keyboard focus (the link's name is
+   the visually hidden text, so this is only visual). */
+.bootcn-rail__brand::after,
+.bootcn-rail__link::after {
+  position: absolute;
+  z-index: 1070;
+  top: 50%;
+  inset-inline-start: calc(100% + 0.5rem);
+  padding: 0.25rem 0.5rem;
+  border-radius: var(--bootcn-radius-sm);
+  background-color: var(--bootcn-primary);
+  color: var(--bootcn-primary-foreground);
+  font-size: 0.75rem;
+  font-weight: 500;
+  white-space: nowrap;
+  content: attr(data-label);
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(-50%);
+  transition: opacity var(--bootcn-transition);
+}
+
+.bootcn-rail__brand:hover::after,
+.bootcn-rail__brand:focus-visible::after,
+.bootcn-rail__link:hover::after,
+.bootcn-rail__link:focus-visible::after {
+  opacity: 1;
+}
+
+.bootcn-rail__list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.bootcn-rail__list--end {
+  margin-top: auto;
+}
+
+.bootcn-rail-layout__main {
+  flex: 1;
+  min-width: 0;
+  padding: 1.5rem;
+}
+
+.bootcn-rail-layout__title {
+  margin: 0 0 0.25rem;
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+
+.bootcn-rail-layout__text {
+  margin: 0;
+  color: var(--bootcn-muted-foreground);
+}

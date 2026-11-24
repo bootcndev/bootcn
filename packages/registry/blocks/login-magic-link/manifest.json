@@ -1,0 +1,28 @@
+{
+  "$schema": "../../schema/registry-item.schema.json",
+  "name": "login-magic-link",
+  "type": "registry:block",
+  "title": "Login with email link",
+  "description": "A passwordless sign-in card: enter an email and receive a one-time sign-in link, with a password fallback.",
+  "version": "1.0.0",
+  "categories": ["authentication"],
+  "dependencies": [],
+  "registryDependencies": ["card", "input", "button", "label"],
+  "compatibility": {
+    "bootstrap": "5.3",
+    "platform": ["Bootstrap CSS"]
+  },
+  "license": "MIT",
+  "files": [
+    {
+      "path": "login-magic-link.html",
+      "target": "login-magic-link.html",
+      "type": "registry:component"
+    },
+    {
+      "path": "login-magic-link.css",
+      "target": "login-magic-link.css",
+      "type": "registry:style"
+    }
+  ]
+}

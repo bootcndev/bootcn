@@ -6,6 +6,13 @@ each published version stays available under `/v/<version>/`) and the **CLI**
 
 ## Registry
 
+### 0.20.0
+
+- Blocks: Stacked bar chart, Login with email link, Sidebar rail (icons
+  with tooltips), Floating sidebar and Booking (calendar, time slots and a
+  summary).
+- Docs: an AI section with the AI chat and its pieces in one place.
+
 ### 0.19.0
 
 - Date input: segmented date, time and date-time fields (day, month, year,

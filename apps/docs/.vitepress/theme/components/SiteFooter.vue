@@ -24,6 +24,7 @@ const columns = [
       { text: 'Components', href: withBase('/components/') },
       { text: 'Blocks', href: withBase('/blocks/') },
       { text: 'Charts', href: withBase('/charts/') },
+      { text: 'AI', href: withBase('/ai/') },
       { text: 'Templates', href: withBase('/templates/') },
       { text: 'Theme builder', href: withBase('/themes/') },
     ],

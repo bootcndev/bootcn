@@ -147,6 +147,7 @@ for (const theme of ['light', 'dark'] as const) {
     'templates/admin-dashboard',
     'themes/',
     'guide/dark-mode',
+    'ai/',
   ]) {
     test(`axe (${theme}): ${path}`, async ({ page }) => {
       await page.emulateMedia({ reducedMotion: 'reduce' });

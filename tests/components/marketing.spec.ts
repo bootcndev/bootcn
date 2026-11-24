@@ -80,3 +80,27 @@ test('app sidebar: links keep their inset on desktop', async ({ page }) => {
   expect(inset.start).toBeGreaterThanOrEqual(8);
   expect(inset.end).toBeGreaterThanOrEqual(8);
 });
+
+test('booking: the summary follows the day and the time', async ({ page }) => {
+  await openPreview(page, 'booking', 'blocks');
+  const summary = page.locator('[data-bootcn-booking-summary]');
+  await expect(summary).toHaveText('Thursday, November 26 at 10:00');
+  await page.getByText('14:30', { exact: true }).click();
+  await expect(summary).toHaveText('Thursday, November 26 at 14:30');
+  await expect(page.getByRole('radio', { name: '11:30' })).toBeDisabled();
+  await page.locator('[data-date="2026-11-27"]').click();
+  await expect(summary).toHaveText('Friday, November 27 at 14:30');
+});
+
+test('sidebar rail: icon links have names and show their label on focus', async ({ page }) => {
+  await openPreview(page, 'sidebar-rail', 'blocks');
+  const inbox = page.getByRole('link', { name: 'Inbox' });
+  await expect(page.getByRole('link', { name: 'Dashboard' })).toHaveAttribute(
+    'aria-current',
+    'page',
+  );
+  await inbox.focus();
+  await expect
+    .poll(() => inbox.evaluate((el) => getComputedStyle(el, '::after').opacity))
+    .toBe('1');
+});

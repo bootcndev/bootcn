@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Bootcn Login with email link preview</title>
+    <script>
+      // Preview theme: ?theme=dark|light, else the docs page around the frame, else light.
+      (function () {
+        var theme = new URLSearchParams(location.search).get('theme');
+        if (!theme) {
+          try {
+            theme =
+              window.parent !== window &&
+              window.parent.document.documentElement.classList.contains('dark')
+                ? 'dark'
+                : 'light';
+          } catch (error) {
+            theme = 'light';
+          }
+        }
+        document.documentElement.setAttribute('data-bs-theme', theme === 'dark' ? 'dark' : 'light');
+        // ?dir=rtl: right to left, with Bootstrap's RTL stylesheet.
+        if (new URLSearchParams(location.search).get('dir') === 'rtl') {
+          document.documentElement.setAttribute('dir', 'rtl');
+          new MutationObserver(function (records, observer) {
+            var link = document.querySelector('link[href*="bootstrap.min.css"]');
+            if (!link) return;
+            link.href = link.href.replace('bootstrap.min.css', 'bootstrap.rtl.min.css');
+            observer.disconnect();
+          }).observe(document.documentElement, { childList: true, subtree: true });
+        }
+      })();
+    </script>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.9/dist/css/bootstrap.min.css"
+    />
+    <link rel="stylesheet" href="../../themes/tokens/tokens.css" />
+    <link rel="stylesheet" href="../../components/button/button.css" />
+    <link rel="stylesheet" href="../../components/card/card.css" />
+    <link rel="stylesheet" href="../../components/input/input.css" />
+    <link rel="stylesheet" href="../../components/label/label.css" />
+    <link rel="stylesheet" href="login-magic-link.css" />
+  </head>
+  <body>
+    <main class="container py-4">
+      <h1 class="h4 mb-4">Login with email link</h1>
+      <section class="bootcn-login-magic" aria-labelledby="bootcn-login-magic-title">
+        <div class="card bootcn-card">
+          <header class="bootcn-card__header bootcn-login-magic__header">
+            <span class="bootcn-login-magic__icon" aria-hidden="true"
+              ><svg
+                class="bootcn-icon"
+                width="16"
+                height="16"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+                focusable="false"
+              >
+                <rect x="3" y="5" width="18" height="14" rx="2" />
+                <path d="m3 7 9 6 9-6" /></svg
+            ></span>
+            <h2 class="bootcn-card__title" id="bootcn-login-magic-title">Sign in with email</h2>
+            <p class="bootcn-card__description">
+              We'll email you a link that signs you in. No password needed.
+            </p>
+          </header>
+          <form class="bootcn-card__content bootcn-login-magic__form" action="#" method="post">
+            <div class="bootcn-field">
+              <label class="bootcn-label" for="bootcn-login-magic-email">Email</label>
+              <input
+                class="form-control bootcn-input"
+                type="email"
+                id="bootcn-login-magic-email"
+                name="email"
+                autocomplete="email"
+                placeholder="you@example.com"
+                required
+                aria-describedby="bootcn-login-magic-help"
+              />
+              <p class="bootcn-field__help" id="bootcn-login-magic-help">
+                The link works once and expires in 15 minutes.
+              </p>
+            </div>
+            <button type="submit" class="btn bootcn-button bootcn-button--default w-100">
+              Email me a sign-in link
+            </button>
+          </form>
+          <footer class="bootcn-card__footer bootcn-login-magic__footer">
+            <a href="#password">Use a password instead</a>
+          </footer>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>

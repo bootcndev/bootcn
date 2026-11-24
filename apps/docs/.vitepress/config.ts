@@ -77,6 +77,7 @@ export default defineConfig({
       { text: 'Components', link: '/components/', activeMatch: '^/components/' },
       { text: 'Blocks', link: '/blocks/', activeMatch: '^/blocks/' },
       { text: 'Charts', link: '/charts/', activeMatch: '^/charts/' },
+      { text: 'AI', link: '/ai/', activeMatch: '^/ai/' },
       { text: 'Themes', link: '/themes/', activeMatch: '^/themes/' },
       { text: 'Templates', link: '/templates/', activeMatch: '^/templates/' },
       {

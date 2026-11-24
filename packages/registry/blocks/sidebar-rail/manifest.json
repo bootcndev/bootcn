@@ -1,0 +1,28 @@
+{
+  "$schema": "../../schema/registry-item.schema.json",
+  "name": "sidebar-rail",
+  "type": "registry:block",
+  "title": "Sidebar rail",
+  "description": "A narrow icon-only navigation rail with labels in tooltips, beside the page content.",
+  "version": "1.0.0",
+  "categories": ["navigation"],
+  "dependencies": [],
+  "registryDependencies": [],
+  "compatibility": {
+    "bootstrap": "5.3",
+    "platform": ["Bootstrap CSS"]
+  },
+  "license": "MIT",
+  "files": [
+    {
+      "path": "sidebar-rail.html",
+      "target": "sidebar-rail.html",
+      "type": "registry:component"
+    },
+    {
+      "path": "sidebar-rail.css",
+      "target": "sidebar-rail.css",
+      "type": "registry:style"
+    }
+  ]
+}

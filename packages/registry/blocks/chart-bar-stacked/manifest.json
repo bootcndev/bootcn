@@ -1,0 +1,28 @@
+{
+  "$schema": "../../schema/registry-item.schema.json",
+  "name": "chart-bar-stacked",
+  "type": "registry:block",
+  "title": "Stacked bar chart",
+  "description": "A bar chart card that stacks three series per month, with the total, a legend and a data table.",
+  "version": "1.0.0",
+  "categories": ["charts"],
+  "dependencies": [],
+  "registryDependencies": ["chart", "card"],
+  "compatibility": {
+    "bootstrap": "5.3",
+    "platform": ["Bootstrap CSS"]
+  },
+  "license": "MIT",
+  "files": [
+    {
+      "path": "chart-bar-stacked.html",
+      "target": "chart-bar-stacked.html",
+      "type": "registry:component"
+    },
+    {
+      "path": "chart-bar-stacked.css",
+      "target": "chart-bar-stacked.css",
+      "type": "registry:style"
+    }
+  ]
+}

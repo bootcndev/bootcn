@@ -1,0 +1,28 @@
+{
+  "$schema": "../../schema/registry-item.schema.json",
+  "name": "sidebar-floating",
+  "type": "registry:block",
+  "title": "Floating sidebar",
+  "description": "A sidebar that floats as a rounded card with a shadow, inset from the window edges, with grouped links.",
+  "version": "1.0.0",
+  "categories": ["navigation"],
+  "dependencies": [],
+  "registryDependencies": [],
+  "compatibility": {
+    "bootstrap": "5.3",
+    "platform": ["Bootstrap CSS"]
+  },
+  "license": "MIT",
+  "files": [
+    {
+      "path": "sidebar-floating.html",
+      "target": "sidebar-floating.html",
+      "type": "registry:component"
+    },
+    {
+      "path": "sidebar-floating.css",
+      "target": "sidebar-floating.css",
+      "type": "registry:style"
+    }
+  ]
+}

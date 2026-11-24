@@ -1,0 +1,212 @@
+<section
+  class="card bootcn-card bootcn-booking"
+  aria-labelledby="bootcn-booking-title"
+  data-bootcn-booking
+>
+  <header class="bootcn-card__header">
+    <h2 class="bootcn-card__title" id="bootcn-booking-title">Book a call</h2>
+    <p class="bootcn-card__description">
+      <svg
+        class="bootcn-icon"
+        width="16"
+        height="16"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        aria-hidden="true"
+        focusable="false"
+      >
+        <circle cx="12" cy="12" r="9" />
+        <path d="M12 7v5l3 2" />
+      </svg>
+      30 minutes ·
+      <svg
+        class="bootcn-icon"
+        width="16"
+        height="16"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        aria-hidden="true"
+        focusable="false"
+      >
+        <rect x="2" y="6" width="14" height="12" rx="2" />
+        <path d="m16 10 6-3v10l-6-3z" />
+      </svg>
+      Video call
+    </p>
+  </header>
+  <form class="bootcn-card__content bootcn-booking__body" action="#" method="post">
+    <div class="bootcn-booking__calendar">
+      <div
+        class="bootcn-calendar"
+        data-bootcn-calendar
+        data-value="2026-11-26"
+        data-min="2026-11-24"
+        data-max="2027-12-31"
+      >
+        <div class="bootcn-calendar__header">
+          <button
+            type="button"
+            class="bootcn-calendar__nav"
+            data-bootcn-calendar-prev
+            aria-label="Previous month"
+          >
+            <svg
+              class="bootcn-icon bootcn-rtl-flip"
+              width="16"
+              height="16"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              aria-hidden="true"
+              focusable="false"
+            >
+              <path d="m15 18-6-6 6-6" />
+            </svg>
+          </button>
+          <h2 class="bootcn-calendar__title" id="bootcn-booking-calendar-title" aria-live="polite">
+            November 2026
+          </h2>
+          <button
+            type="button"
+            class="bootcn-calendar__nav"
+            data-bootcn-calendar-next
+            aria-label="Next month"
+          >
+            <svg
+              class="bootcn-icon bootcn-rtl-flip"
+              width="16"
+              height="16"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              aria-hidden="true"
+              focusable="false"
+            >
+              <path d="m9 18 6-6-6-6" />
+            </svg>
+          </button>
+        </div>
+        <table
+          class="bootcn-calendar__grid"
+          role="grid"
+          aria-labelledby="bootcn-booking-calendar-title"
+        >
+          <thead>
+            <tr></tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+        <input type="hidden" name="date" value="2026-11-26" data-bootcn-calendar-input />
+      </div>
+    </div>
+    <fieldset class="bootcn-booking__times">
+      <legend class="bootcn-booking__legend">Available times</legend>
+      <div class="bootcn-booking__grid">
+        <div class="bootcn-booking__slot">
+          <input
+            class="btn-check"
+            type="radio"
+            name="time"
+            id="bootcn-booking-0900"
+            value="09:00"
+          />
+          <label class="bootcn-booking__time" for="bootcn-booking-0900">09:00</label>
+        </div>
+        <div class="bootcn-booking__slot">
+          <input
+            class="btn-check"
+            type="radio"
+            name="time"
+            id="bootcn-booking-0930"
+            value="09:30"
+          />
+          <label class="bootcn-booking__time" for="bootcn-booking-0930">09:30</label>
+        </div>
+        <div class="bootcn-booking__slot">
+          <input
+            class="btn-check"
+            type="radio"
+            name="time"
+            id="bootcn-booking-1000"
+            value="10:00"
+            checked
+          />
+          <label class="bootcn-booking__time" for="bootcn-booking-1000">10:00</label>
+        </div>
+        <div class="bootcn-booking__slot">
+          <input
+            class="btn-check"
+            type="radio"
+            name="time"
+            id="bootcn-booking-1130"
+            value="11:30"
+            disabled
+          />
+          <label class="bootcn-booking__time" for="bootcn-booking-1130">11:30</label>
+        </div>
+        <div class="bootcn-booking__slot">
+          <input
+            class="btn-check"
+            type="radio"
+            name="time"
+            id="bootcn-booking-1300"
+            value="13:00"
+          />
+          <label class="bootcn-booking__time" for="bootcn-booking-1300">13:00</label>
+        </div>
+        <div class="bootcn-booking__slot">
+          <input
+            class="btn-check"
+            type="radio"
+            name="time"
+            id="bootcn-booking-1430"
+            value="14:30"
+          />
+          <label class="bootcn-booking__time" for="bootcn-booking-1430">14:30</label>
+        </div>
+        <div class="bootcn-booking__slot">
+          <input
+            class="btn-check"
+            type="radio"
+            name="time"
+            id="bootcn-booking-1500"
+            value="15:00"
+          />
+          <label class="bootcn-booking__time" for="bootcn-booking-1500">15:00</label>
+        </div>
+        <div class="bootcn-booking__slot">
+          <input
+            class="btn-check"
+            type="radio"
+            name="time"
+            id="bootcn-booking-1630"
+            value="16:30"
+          />
+          <label class="bootcn-booking__time" for="bootcn-booking-1630">16:30</label>
+        </div>
+      </div>
+    </fieldset>
+    <div class="bootcn-booking__summary">
+      <p class="bootcn-booking__choice" aria-live="polite" data-bootcn-booking-summary>
+        Thursday, November 26 at 10:00
+      </p>
+      <button type="submit" class="btn bootcn-button bootcn-button--default">
+        Confirm booking
+      </button>
+    </div>
+  </form>
+</section>

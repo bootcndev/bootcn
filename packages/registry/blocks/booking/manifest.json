@@ -1,0 +1,33 @@
+{
+  "$schema": "../../schema/registry-item.schema.json",
+  "name": "booking",
+  "type": "registry:block",
+  "title": "Booking",
+  "description": "Book an appointment: a calendar for the day, a grid of available times and a summary with the confirm button.",
+  "version": "1.0.0",
+  "categories": ["dashboard"],
+  "dependencies": [],
+  "registryDependencies": ["calendar", "card", "button"],
+  "compatibility": {
+    "bootstrap": "5.3",
+    "platform": ["Bootstrap CSS"]
+  },
+  "license": "MIT",
+  "files": [
+    {
+      "path": "booking.html",
+      "target": "booking.html",
+      "type": "registry:component"
+    },
+    {
+      "path": "booking.css",
+      "target": "booking.css",
+      "type": "registry:style"
+    },
+    {
+      "path": "booking.js",
+      "target": "booking.js",
+      "type": "registry:script"
+    }
+  ]
+}

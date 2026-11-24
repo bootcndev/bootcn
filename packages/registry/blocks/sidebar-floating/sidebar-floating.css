@@ -1,0 +1,114 @@
+.bootcn-floating-layout {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  min-height: 26rem;
+  padding: 0.75rem;
+  background-color: var(--bs-tertiary-bg);
+}
+
+@media (min-width: 768px) {
+  .bootcn-floating-layout {
+    flex-direction: row;
+  }
+}
+
+.bootcn-floating {
+  display: flex;
+  flex: none;
+  flex-direction: column;
+  gap: 1rem;
+  padding: 0.75rem;
+  border: var(--bootcn-border-width) solid var(--bootcn-border-color);
+  border-radius: var(--bootcn-radius-xl);
+  background-color: var(--bootcn-background);
+  box-shadow: var(--bootcn-shadow-md);
+}
+
+@media (min-width: 768px) {
+  .bootcn-floating {
+    width: 15rem;
+  }
+}
+
+.bootcn-floating__brand {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.25rem 0.5rem;
+  color: var(--bootcn-foreground);
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.bootcn-floating__brand .bootcn-icon {
+  width: 1.25rem;
+  height: 1.25rem;
+}
+
+.bootcn-floating__heading {
+  margin: 0 0 0.25rem;
+  padding: 0 0.5rem;
+  color: var(--bootcn-muted-foreground);
+  font-size: 0.75rem;
+  font-weight: 500;
+}
+
+.bootcn-floating__list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.125rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.bootcn-floating__link {
+  display: flex;
+  align-items: center;
+  gap: 0.625rem;
+  padding: 0.5rem;
+  border-radius: var(--bootcn-radius);
+  color: var(--bootcn-foreground);
+  font-size: 0.875rem;
+  font-weight: 500;
+  text-decoration: none;
+}
+
+.bootcn-floating__link .bootcn-icon {
+  color: var(--bootcn-muted-foreground);
+}
+
+.bootcn-floating__link:hover {
+  background-color: var(--bootcn-accent);
+}
+
+.bootcn-floating__link[aria-current='page'] {
+  background-color: var(--bootcn-secondary);
+}
+
+.bootcn-floating__brand:focus-visible,
+.bootcn-floating__link:focus-visible {
+  outline: 0;
+  box-shadow: var(--bootcn-focus-ring);
+}
+
+.bootcn-floating-layout__main {
+  flex: 1;
+  min-width: 0;
+  padding: 1.5rem;
+  border: var(--bootcn-border-width) solid var(--bootcn-border-color);
+  border-radius: var(--bootcn-radius-xl);
+  background-color: var(--bootcn-background);
+}
+
+.bootcn-floating-layout__title {
+  margin: 0 0 0.25rem;
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+
+.bootcn-floating-layout__text {
+  margin: 0;
+  color: var(--bootcn-muted-foreground);
+}
