@@ -1,0 +1,57 @@
+.bootcn-carousel {
+  max-width: 20rem;
+  margin: 0 3rem;
+}
+
+.bootcn-carousel__slide {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  aspect-ratio: 1 / 1;
+  padding: 1.5rem;
+  border: var(--bootcn-border-width) solid var(--bootcn-border-color);
+  border-radius: var(--bootcn-radius-xl);
+  background-color: var(--bootcn-background);
+  box-shadow: var(--bootcn-shadow-sm);
+  font-size: 2.25rem;
+  font-weight: 600;
+}
+
+.bootcn-carousel__control {
+  position: absolute;
+  top: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2rem;
+  height: 2rem;
+  border: var(--bootcn-border-width) solid var(--bootcn-input);
+  border-radius: 9999px;
+  background-color: var(--bootcn-background);
+  color: var(--bootcn-foreground);
+  box-shadow: var(--bootcn-shadow-sm);
+  transform: translateY(-50%);
+}
+
+.bootcn-carousel__control:hover {
+  background-color: var(--bootcn-accent);
+}
+
+.bootcn-carousel__control:focus-visible {
+  outline: 0;
+  box-shadow: var(--bootcn-focus-ring);
+}
+
+.bootcn-carousel__control--prev {
+  left: -3rem;
+}
+
+.bootcn-carousel__control--next {
+  right: -3rem;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .bootcn-carousel .carousel-item {
+    transition: none;
+  }
+}

@@ -1,0 +1,115 @@
+.bootcn-otp {
+  position: relative;
+  display: inline-flex;
+}
+
+/* Without JavaScript: a normal input with spaced digits. */
+.bootcn-otp__input {
+  width: 12rem;
+  height: var(--bootcn-control-height);
+  padding: 0 0.75rem;
+  border: var(--bootcn-border-width) solid var(--bootcn-input);
+  border-radius: var(--bootcn-radius);
+  background: transparent;
+  color: var(--bootcn-foreground);
+  font-family: var(--bs-font-monospace);
+  font-size: 1rem;
+  letter-spacing: 0.5em;
+}
+
+.bootcn-otp__slots {
+  display: none;
+}
+
+/* With input-otp.js: the input stays on top (for typing, paste and SMS
+   autofill) but is transparent; the slots show the digits. */
+.bootcn-otp.is-enhanced .bootcn-otp__input {
+  position: absolute;
+  z-index: 1;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+  background: transparent;
+  color: transparent;
+  caret-color: transparent;
+  letter-spacing: normal;
+  outline: 0;
+  opacity: 0;
+}
+
+.bootcn-otp.is-enhanced .bootcn-otp__slots {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.bootcn-otp__group {
+  display: flex;
+  border-radius: var(--bootcn-radius);
+  box-shadow: var(--bootcn-shadow-sm);
+}
+
+.bootcn-otp__slot {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.25rem;
+  height: 2.25rem;
+  border: var(--bootcn-border-width) solid var(--bootcn-input);
+  background-color: var(--bootcn-background);
+  color: var(--bootcn-foreground);
+  font-size: 0.875rem;
+  font-weight: 500;
+  transition:
+    border-color var(--bootcn-transition),
+    box-shadow var(--bootcn-transition);
+}
+
+.bootcn-otp__slot + .bootcn-otp__slot {
+  border-left: 0;
+}
+
+.bootcn-otp__slot:first-child {
+  border-radius: var(--bootcn-radius) 0 0 var(--bootcn-radius);
+}
+
+.bootcn-otp__slot:last-child {
+  border-radius: 0 var(--bootcn-radius) var(--bootcn-radius) 0;
+}
+
+.bootcn-otp__separator {
+  color: var(--bootcn-muted-foreground);
+}
+
+/* The slot where the next digit goes, while the input has focus. */
+.bootcn-otp:focus-within .bootcn-otp__slot.is-active {
+  z-index: 1;
+  border-color: var(--bootcn-ring);
+  box-shadow: 0 0 0 3px var(--bs-focus-ring-color);
+}
+
+.bootcn-otp:focus-within .bootcn-otp__slot.is-active:empty::after {
+  content: '';
+  width: 1px;
+  height: 1rem;
+  background-color: var(--bootcn-foreground);
+  animation: bootcn-otp-caret 1s step-end infinite;
+}
+
+@keyframes bootcn-otp-caret {
+  50% {
+    opacity: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .bootcn-otp:focus-within .bootcn-otp__slot.is-active:empty::after {
+    animation: none;
+  }
+}
+
+.bootcn-otp__input[aria-invalid='true'] + .bootcn-otp__slots .bootcn-otp__slot {
+  border-color: var(--bootcn-destructive);
+}

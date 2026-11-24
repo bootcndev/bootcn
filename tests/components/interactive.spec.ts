@@ -165,3 +165,86 @@ test('menubar: one tab stop, arrows between menus, checkable items', async ({ pa
   await expect(page.getByRole('menu', { name: 'File' })).toBeHidden();
   expect(errors).toEqual([]);
 });
+
+test('navigation menu: panels open from buttons, Escape returns focus', async ({ page }) => {
+  const errors = collectErrors(page);
+  await page.emulateMedia({ reducedMotion: 'reduce' });
+  await openPreview(page, 'navigation-menu');
+  const trigger = page.getByRole('button', { name: 'Components' });
+  await trigger.click();
+  await expect(trigger).toHaveAttribute('aria-expanded', 'true');
+  const link = page.getByRole('link', { name: /Hover card/ });
+  await expect(link).toBeVisible();
+  await expectNoAxeViolations(page);
+  await link.focus();
+  await page.keyboard.press('Escape');
+  await expect(trigger).toHaveAttribute('aria-expanded', 'false');
+  await expect(trigger).toBeFocused();
+  expect(errors).toEqual([]);
+});
+
+test('carousel: next and previous change the labelled slide', async ({ page }) => {
+  await page.emulateMedia({ reducedMotion: 'reduce' });
+  await openPreview(page, 'carousel');
+  const carousel = page.locator('section[aria-roledescription="carousel"]');
+  await expect(carousel).toHaveAccessibleName('Featured numbers');
+  await expect(carousel.locator('.carousel-item.active')).toHaveAttribute('aria-label', '1 of 5');
+  await page.getByRole('button', { name: 'Next slide' }).click();
+  await expect(carousel.locator('.carousel-item.active')).toHaveAttribute('aria-label', '2 of 5');
+  await page.getByRole('button', { name: 'Previous slide' }).click();
+  await expect(carousel.locator('.carousel-item.active')).toHaveAttribute('aria-label', '1 of 5');
+  await expect(carousel.locator('.carousel-inner')).toHaveAttribute('aria-live', 'polite');
+});
+
+test('input OTP: one input, digits only, slots mirror it, complete event', async ({ page }) => {
+  const errors = collectErrors(page);
+  await openPreview(page, 'input-otp');
+  const input = page.getByRole('textbox', { name: 'Verification code' });
+  await expect(input).toHaveAccessibleDescription(/6-digit code/);
+  await expect(input).toHaveAttribute('autocomplete', 'one-time-code');
+  await page.evaluate(() => {
+    document.addEventListener('bootcn:otp:complete', (event) => {
+      document.body.dataset.otp = (event as CustomEvent<{ value: string }>).detail.value;
+    });
+  });
+
+  await input.click();
+  await page.keyboard.type('12a3');
+  await expect(input).toHaveValue('123');
+  await expect(page.locator('.bootcn-otp__slot')).toHaveText(['1', '2', '3', '', '', '']);
+  await expect(page.locator('.bootcn-otp__slot.is-active')).toHaveCount(1);
+  await expectNoAxeViolations(page);
+
+  await input.fill('987654'); // paste or SMS autofill fills every slot at once
+  await expect(page.locator('.bootcn-otp__slot')).toHaveText(['9', '8', '7', '6', '5', '4']);
+  await expect(page.locator('body')).toHaveAttribute('data-otp', '987654');
+  expect(errors).toEqual([]);
+});
+
+test('resizable: keyboard and pointer resize the controlled panel', async ({ page }) => {
+  await openPreview(page, 'resizable');
+  const handle = page.getByRole('separator', { name: 'Resize sidebar' });
+  const panel = page.locator('#bootcn-resizable-sidebar');
+  await handle.focus();
+  await page.keyboard.press('ArrowRight');
+  await expect(handle).toHaveAttribute('aria-valuenow', '55');
+  expect(await panel.evaluate((el) => el.style.flexBasis)).toBe('55%');
+  await page.keyboard.press('End');
+  await expect(handle).toHaveAttribute('aria-valuenow', '80');
+  await page.keyboard.press('Home');
+  await expect(handle).toHaveAttribute('aria-valuenow', '20');
+
+  const vertical = page.getByRole('separator', { name: 'Resize header' });
+  await vertical.focus();
+  await page.keyboard.press('ArrowDown');
+  await expect(vertical).toHaveAttribute('aria-valuenow', '35');
+
+  const group = await page.locator('[data-bootcn-resizable]').first().boundingBox();
+  const box = await handle.boundingBox();
+  if (!group || !box) throw new Error('no layout');
+  await page.mouse.move(box.x + box.width / 2, box.y + box.height / 2);
+  await page.mouse.down();
+  await page.mouse.move(group.x + group.width * 0.6, box.y + box.height / 2, { steps: 4 });
+  await page.mouse.up();
+  await expect(handle).toHaveAttribute('aria-valuenow', '60');
+});

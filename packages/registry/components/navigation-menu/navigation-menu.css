@@ -1,0 +1,107 @@
+.bootcn-nav-menu__list {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.25rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.bootcn-nav-menu__trigger {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  height: var(--bootcn-control-height);
+  padding: 0 1rem;
+  border: 0;
+  border-radius: var(--bootcn-radius);
+  background: transparent;
+  color: var(--bootcn-foreground);
+  font-size: 0.875rem;
+  font-weight: 500;
+  text-decoration: none;
+  transition: background-color var(--bootcn-transition);
+}
+
+.bootcn-nav-menu__trigger:hover,
+.bootcn-nav-menu__trigger[aria-expanded='true'] {
+  background-color: var(--bootcn-accent);
+  color: var(--bootcn-accent-foreground);
+}
+
+.bootcn-nav-menu__trigger:focus-visible {
+  outline: 0;
+  box-shadow: var(--bootcn-focus-ring);
+}
+
+.bootcn-nav-menu__chevron {
+  width: 0.75rem;
+  height: 0.75rem;
+  transition: transform var(--bootcn-transition);
+}
+
+.bootcn-nav-menu__trigger[aria-expanded='true'] .bootcn-nav-menu__chevron {
+  transform: rotate(180deg);
+}
+
+.bootcn-nav-menu__panel {
+  --bs-dropdown-bg: var(--bootcn-background);
+  --bs-dropdown-border-color: var(--bootcn-border-color);
+  --bs-dropdown-border-radius: var(--bootcn-radius-lg);
+  --bs-dropdown-padding-x: 0.5rem;
+  --bs-dropdown-padding-y: 0.5rem;
+
+  width: min(24rem, calc(100vw - 2rem));
+  box-shadow: var(--bootcn-shadow-md);
+}
+
+.bootcn-nav-menu__panel--wide {
+  width: min(36rem, calc(100vw - 2rem));
+}
+
+.bootcn-nav-menu__grid {
+  display: grid;
+  gap: 0.25rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+@media (min-width: 576px) {
+  .bootcn-nav-menu__panel--wide .bootcn-nav-menu__grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+.bootcn-nav-menu__link {
+  display: block;
+  padding: 0.625rem 0.75rem;
+  border-radius: var(--bootcn-radius);
+  color: var(--bootcn-foreground);
+  text-decoration: none;
+  transition: background-color var(--bootcn-transition);
+}
+
+.bootcn-nav-menu__link:hover {
+  background-color: var(--bootcn-accent);
+}
+
+.bootcn-nav-menu__link:focus-visible {
+  outline: 0;
+  box-shadow: var(--bootcn-focus-ring);
+}
+
+.bootcn-nav-menu__title {
+  display: block;
+  font-size: 0.875rem;
+  font-weight: 500;
+}
+
+.bootcn-nav-menu__text {
+  display: block;
+  margin-top: 0.125rem;
+  color: var(--bootcn-muted-foreground);
+  font-size: 0.8125rem;
+  line-height: 1.4;
+}

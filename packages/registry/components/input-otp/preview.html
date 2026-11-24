@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Bootcn Input OTP preview</title>
+    <script>
+      // Preview theme: ?theme=dark|light, else the docs page around the frame, else light.
+      (function () {
+        var theme = new URLSearchParams(location.search).get('theme');
+        if (!theme) {
+          try {
+            theme =
+              window.parent !== window &&
+              window.parent.document.documentElement.classList.contains('dark')
+                ? 'dark'
+                : 'light';
+          } catch (error) {
+            theme = 'light';
+          }
+        }
+        document.documentElement.setAttribute('data-bs-theme', theme === 'dark' ? 'dark' : 'light');
+      })();
+    </script>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.9/dist/css/bootstrap.min.css"
+    />
+    <link rel="stylesheet" href="../../themes/tokens/tokens.css" />
+    <link rel="stylesheet" href="../input/input.css" />
+    <link rel="stylesheet" href="../label/label.css" />
+    <link rel="stylesheet" href="input-otp.css" />
+  </head>
+  <body>
+    <main class="container py-4">
+      <h1 class="h4 mb-4">Input OTP</h1>
+      <div class="bootcn-field">
+        <label class="bootcn-label" for="bootcn-otp-code">Verification code</label>
+        <div class="bootcn-otp" data-bootcn-otp>
+          <input
+            class="bootcn-otp__input"
+            id="bootcn-otp-code"
+            name="code"
+            type="text"
+            inputmode="numeric"
+            autocomplete="one-time-code"
+            pattern="[0-9]*"
+            maxlength="6"
+            aria-describedby="bootcn-otp-code-help"
+          />
+          <div class="bootcn-otp__slots" aria-hidden="true">
+            <div class="bootcn-otp__group">
+              <span class="bootcn-otp__slot"></span>
+              <span class="bootcn-otp__slot"></span>
+              <span class="bootcn-otp__slot"></span>
+            </div>
+            <span class="bootcn-otp__separator">–</span>
+            <div class="bootcn-otp__group">
+              <span class="bootcn-otp__slot"></span>
+              <span class="bootcn-otp__slot"></span>
+              <span class="bootcn-otp__slot"></span>
+            </div>
+          </div>
+        </div>
+        <p class="bootcn-field__help" id="bootcn-otp-code-help">
+          Enter the 6-digit code we sent to your phone.
+        </p>
+      </div>
+    </main>
+    <script src="input-otp.js"></script>
+  </body>
+</html>

@@ -1,0 +1,33 @@
+{
+  "$schema": "../../schema/registry-item.schema.json",
+  "name": "resizable",
+  "type": "registry:ui",
+  "title": "Resizable",
+  "description": "Panels with a draggable divider that also resizes from the keyboard, horizontally or vertically.",
+  "version": "1.0.0",
+  "categories": ["layout"],
+  "dependencies": [],
+  "registryDependencies": [],
+  "compatibility": {
+    "bootstrap": "5.3",
+    "platform": ["Bootstrap CSS"]
+  },
+  "license": "MIT",
+  "files": [
+    {
+      "path": "resizable.html",
+      "target": "resizable.html",
+      "type": "registry:component"
+    },
+    {
+      "path": "resizable.css",
+      "target": "resizable.css",
+      "type": "registry:style"
+    },
+    {
+      "path": "resizable.js",
+      "target": "resizable.js",
+      "type": "registry:script"
+    }
+  ]
+}

@@ -1,0 +1,28 @@
+{
+  "$schema": "../../schema/registry-item.schema.json",
+  "name": "navigation-menu",
+  "type": "registry:ui",
+  "title": "Navigation menu",
+  "description": "Site navigation with panels of links and descriptions that open from the top bar, built on Bootstrap Dropdown.",
+  "version": "1.0.0",
+  "categories": ["navigation"],
+  "dependencies": [],
+  "registryDependencies": [],
+  "compatibility": {
+    "bootstrap": "5.3",
+    "platform": ["Bootstrap CSS", "Bootstrap JS bundle"]
+  },
+  "license": "MIT",
+  "files": [
+    {
+      "path": "navigation-menu.html",
+      "target": "navigation-menu.html",
+      "type": "registry:component"
+    },
+    {
+      "path": "navigation-menu.css",
+      "target": "navigation-menu.css",
+      "type": "registry:style"
+    }
+  ]
+}

@@ -1,0 +1,33 @@
+{
+  "$schema": "../../schema/registry-item.schema.json",
+  "name": "input-otp",
+  "type": "registry:ui",
+  "title": "Input OTP",
+  "description": "A one-time code field shown as separate boxes, backed by one real input that autofills from SMS and accepts paste.",
+  "version": "1.0.0",
+  "categories": ["forms"],
+  "dependencies": [],
+  "registryDependencies": ["label"],
+  "compatibility": {
+    "bootstrap": "5.3",
+    "platform": ["Bootstrap CSS"]
+  },
+  "license": "MIT",
+  "files": [
+    {
+      "path": "input-otp.html",
+      "target": "input-otp.html",
+      "type": "registry:component"
+    },
+    {
+      "path": "input-otp.css",
+      "target": "input-otp.css",
+      "type": "registry:style"
+    },
+    {
+      "path": "input-otp.js",
+      "target": "input-otp.js",
+      "type": "registry:script"
+    }
+  ]
+}

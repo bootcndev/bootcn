@@ -7,7 +7,7 @@ build with plain HTML and native PHP. Components are installed as editable
 HTML, CSS and JavaScript source files that you own. No React, Vue, jQuery,
 bundler or Node.js is required at runtime.
 
-> **Status:** early (0.x). 47 components, 16 blocks (authentication,
+> **Status:** early (0.x). 51 components, 16 blocks (authentication,
 > dashboard, navigation, marketing), an admin dashboard template and design
 > tokens, with a Tailwind-like look built on Bootstrap. The CLI is on
 > [npm](https://www.npmjs.com/package/bootcn); documentation, live previews and
@@ -39,56 +39,60 @@ the `<link>` and `<script>` tags to add to your layout.
 
 ## What is available
 
-| Item           | Type  | Files         | Requires                  | Depends on                           |
-| -------------- | ----- | ------------- | ------------------------- | ------------------------------------ |
-| `tokens`       | theme | CSS           | Bootstrap CSS             | —                                    |
-| `accordion`    | ui    | HTML, CSS     | Bootstrap CSS + JS bundle | —                                    |
-| `alert-dialog` | ui    | HTML, CSS, JS | Bootstrap CSS + JS bundle | `dialog`, `button`                   |
-| `alert`        | ui    | HTML, CSS     | Bootstrap CSS + JS bundle | —                                    |
-| `aspect-ratio` | ui    | HTML, CSS     | Bootstrap CSS             | —                                    |
-| `avatar`       | ui    | HTML, CSS     | Bootstrap CSS             | —                                    |
-| `badge`        | ui    | HTML, CSS     | Bootstrap CSS             | —                                    |
-| `breadcrumb`   | ui    | HTML, CSS     | Bootstrap CSS             | —                                    |
-| `button-group` | ui    | HTML, CSS     | Bootstrap CSS             | `button`                             |
-| `button`       | ui    | HTML, CSS     | Bootstrap CSS             | —                                    |
-| `card`         | ui    | HTML, CSS     | Bootstrap CSS             | `button`                             |
-| `checkbox`     | ui    | HTML, CSS     | Bootstrap CSS             | —                                    |
-| `collapsible`  | ui    | HTML, CSS     | Bootstrap CSS + JS bundle | `button`                             |
-| `combobox`     | ui    | HTML, CSS, JS | Bootstrap CSS             | `label`                              |
-| `command`      | ui    | HTML, CSS, JS | Bootstrap CSS + JS bundle | `kbd`, `button`                      |
-| `context-menu` | ui    | HTML, CSS, JS | Bootstrap CSS             | `dropdown`                           |
-| `dialog`       | ui    | HTML, CSS, JS | Bootstrap CSS + JS bundle | `button`                             |
-| `drawer`       | ui    | HTML, CSS     | Bootstrap CSS + JS bundle | `button`, `input`                    |
-| `dropdown`     | ui    | HTML, CSS     | Bootstrap CSS + JS bundle | `button`                             |
-| `empty`        | ui    | HTML, CSS     | Bootstrap CSS             | `button`                             |
-| `field`        | ui    | HTML, CSS     | Bootstrap CSS             | `input`, `select`, `switch`, `label` |
-| `hover-card`   | ui    | HTML, CSS, JS | Bootstrap CSS + JS bundle | `avatar`                             |
-| `input-group`  | ui    | HTML, CSS     | Bootstrap CSS             | `button`, `label`                    |
-| `input`        | ui    | HTML, CSS     | Bootstrap CSS             | —                                    |
-| `item`         | ui    | HTML, CSS     | Bootstrap CSS             | `button`, `avatar`                   |
-| `kbd`          | ui    | HTML, CSS     | Bootstrap CSS             | —                                    |
-| `label`        | ui    | HTML, CSS     | Bootstrap CSS             | `input`                              |
-| `menubar`      | ui    | HTML, CSS, JS | Bootstrap CSS             | `dropdown`                           |
-| `pagination`   | ui    | HTML, CSS     | Bootstrap CSS             | —                                    |
-| `popover`      | ui    | HTML, CSS, JS | Bootstrap CSS + JS bundle | `button`                             |
-| `progress`     | ui    | HTML, CSS     | Bootstrap CSS             | —                                    |
-| `radio-group`  | ui    | HTML, CSS     | Bootstrap CSS             | —                                    |
-| `scroll-area`  | ui    | HTML, CSS     | Bootstrap CSS             | —                                    |
-| `select`       | ui    | HTML, CSS     | Bootstrap CSS             | `input`                              |
-| `separator`    | ui    | HTML, CSS     | Bootstrap CSS             | —                                    |
-| `sheet`        | ui    | HTML, CSS     | Bootstrap CSS + JS bundle | `button`, `input`                    |
-| `skeleton`     | ui    | HTML, CSS     | Bootstrap CSS             | —                                    |
-| `slider`       | ui    | HTML, CSS, JS | Bootstrap CSS             | `label`                              |
-| `spinner`      | ui    | HTML, CSS     | Bootstrap CSS             | —                                    |
-| `switch`       | ui    | HTML, CSS     | Bootstrap CSS             | —                                    |
-| `table`        | ui    | HTML, CSS     | Bootstrap CSS             | —                                    |
-| `tabs`         | ui    | HTML, CSS     | Bootstrap CSS + JS bundle | —                                    |
-| `textarea`     | ui    | HTML, CSS     | Bootstrap CSS             | `input`                              |
-| `toast`        | ui    | HTML, CSS, JS | Bootstrap CSS + JS bundle | `button`                             |
-| `toggle-group` | ui    | HTML, CSS     | Bootstrap CSS             | `toggle`                             |
-| `toggle`       | ui    | HTML, CSS     | Bootstrap CSS             | —                                    |
-| `tooltip`      | ui    | HTML, CSS, JS | Bootstrap CSS + JS bundle | `button`                             |
-| `typography`   | ui    | HTML, CSS     | Bootstrap CSS             | —                                    |
+| Item              | Type  | Files         | Requires                  | Depends on                           |
+| ----------------- | ----- | ------------- | ------------------------- | ------------------------------------ |
+| `tokens`          | theme | CSS           | Bootstrap CSS             | —                                    |
+| `accordion`       | ui    | HTML, CSS     | Bootstrap CSS + JS bundle | —                                    |
+| `alert-dialog`    | ui    | HTML, CSS, JS | Bootstrap CSS + JS bundle | `dialog`, `button`                   |
+| `alert`           | ui    | HTML, CSS     | Bootstrap CSS + JS bundle | —                                    |
+| `aspect-ratio`    | ui    | HTML, CSS     | Bootstrap CSS             | —                                    |
+| `avatar`          | ui    | HTML, CSS     | Bootstrap CSS             | —                                    |
+| `badge`           | ui    | HTML, CSS     | Bootstrap CSS             | —                                    |
+| `breadcrumb`      | ui    | HTML, CSS     | Bootstrap CSS             | —                                    |
+| `button-group`    | ui    | HTML, CSS     | Bootstrap CSS             | `button`                             |
+| `button`          | ui    | HTML, CSS     | Bootstrap CSS             | —                                    |
+| `card`            | ui    | HTML, CSS     | Bootstrap CSS             | `button`                             |
+| `carousel`        | ui    | HTML, CSS     | Bootstrap CSS + JS bundle | —                                    |
+| `checkbox`        | ui    | HTML, CSS     | Bootstrap CSS             | —                                    |
+| `collapsible`     | ui    | HTML, CSS     | Bootstrap CSS + JS bundle | `button`                             |
+| `combobox`        | ui    | HTML, CSS, JS | Bootstrap CSS             | `label`                              |
+| `command`         | ui    | HTML, CSS, JS | Bootstrap CSS + JS bundle | `kbd`, `button`                      |
+| `context-menu`    | ui    | HTML, CSS, JS | Bootstrap CSS             | `dropdown`                           |
+| `dialog`          | ui    | HTML, CSS, JS | Bootstrap CSS + JS bundle | `button`                             |
+| `drawer`          | ui    | HTML, CSS     | Bootstrap CSS + JS bundle | `button`, `input`                    |
+| `dropdown`        | ui    | HTML, CSS     | Bootstrap CSS + JS bundle | `button`                             |
+| `empty`           | ui    | HTML, CSS     | Bootstrap CSS             | `button`                             |
+| `field`           | ui    | HTML, CSS     | Bootstrap CSS             | `input`, `select`, `switch`, `label` |
+| `hover-card`      | ui    | HTML, CSS, JS | Bootstrap CSS + JS bundle | `avatar`                             |
+| `input-group`     | ui    | HTML, CSS     | Bootstrap CSS             | `button`, `label`                    |
+| `input-otp`       | ui    | HTML, CSS, JS | Bootstrap CSS             | `label`                              |
+| `input`           | ui    | HTML, CSS     | Bootstrap CSS             | —                                    |
+| `item`            | ui    | HTML, CSS     | Bootstrap CSS             | `button`, `avatar`                   |
+| `kbd`             | ui    | HTML, CSS     | Bootstrap CSS             | —                                    |
+| `label`           | ui    | HTML, CSS     | Bootstrap CSS             | `input`                              |
+| `menubar`         | ui    | HTML, CSS, JS | Bootstrap CSS             | `dropdown`                           |
+| `navigation-menu` | ui    | HTML, CSS     | Bootstrap CSS + JS bundle | —                                    |
+| `pagination`      | ui    | HTML, CSS     | Bootstrap CSS             | —                                    |
+| `popover`         | ui    | HTML, CSS, JS | Bootstrap CSS + JS bundle | `button`                             |
+| `progress`        | ui    | HTML, CSS     | Bootstrap CSS             | —                                    |
+| `radio-group`     | ui    | HTML, CSS     | Bootstrap CSS             | —                                    |
+| `resizable`       | ui    | HTML, CSS, JS | Bootstrap CSS             | —                                    |
+| `scroll-area`     | ui    | HTML, CSS     | Bootstrap CSS             | —                                    |
+| `select`          | ui    | HTML, CSS     | Bootstrap CSS             | `input`                              |
+| `separator`       | ui    | HTML, CSS     | Bootstrap CSS             | —                                    |
+| `sheet`           | ui    | HTML, CSS     | Bootstrap CSS + JS bundle | `button`, `input`                    |
+| `skeleton`        | ui    | HTML, CSS     | Bootstrap CSS             | —                                    |
+| `slider`          | ui    | HTML, CSS, JS | Bootstrap CSS             | `label`                              |
+| `spinner`         | ui    | HTML, CSS     | Bootstrap CSS             | —                                    |
+| `switch`          | ui    | HTML, CSS     | Bootstrap CSS             | —                                    |
+| `table`           | ui    | HTML, CSS     | Bootstrap CSS             | —                                    |
+| `tabs`            | ui    | HTML, CSS     | Bootstrap CSS + JS bundle | —                                    |
+| `textarea`        | ui    | HTML, CSS     | Bootstrap CSS             | `input`                              |
+| `toast`           | ui    | HTML, CSS, JS | Bootstrap CSS + JS bundle | `button`                             |
+| `toggle-group`    | ui    | HTML, CSS     | Bootstrap CSS             | `toggle`                             |
+| `toggle`          | ui    | HTML, CSS     | Bootstrap CSS             | —                                    |
+| `tooltip`         | ui    | HTML, CSS, JS | Bootstrap CSS + JS bundle | `button`                             |
+| `typography`      | ui    | HTML, CSS     | Bootstrap CSS             | —                                    |
 
 Each component lives in `packages/registry/components/<name>/` with a
 `README.md` (usage, accessibility, API) and a `preview.html` you can open

@@ -1,0 +1,85 @@
+.bootcn-resizable {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  border: var(--bootcn-border-width) solid var(--bootcn-border-color);
+  border-radius: var(--bootcn-radius-lg);
+}
+
+.bootcn-resizable .bootcn-resizable {
+  border: 0;
+  border-radius: 0;
+}
+
+.bootcn-resizable--vertical {
+  flex-direction: column;
+}
+
+.bootcn-resizable__panel {
+  display: flex;
+  flex: 0 0 auto;
+  align-items: center;
+  justify-content: center;
+  min-width: 0;
+  min-height: 0;
+  overflow: auto;
+  font-size: 0.875rem;
+  font-weight: 600;
+}
+
+.bootcn-resizable__panel--fill {
+  flex: 1 1 0;
+}
+
+.bootcn-resizable__handle {
+  position: relative;
+  display: flex;
+  flex: none;
+  align-items: center;
+  justify-content: center;
+  width: 1px;
+  background-color: var(--bootcn-border-color);
+  cursor: col-resize;
+  touch-action: none;
+}
+
+.bootcn-resizable--vertical > .bootcn-resizable__handle {
+  width: auto;
+  height: 1px;
+  cursor: row-resize;
+}
+
+/* A wider invisible hit area for the pointer. */
+.bootcn-resizable__handle::before {
+  content: '';
+  position: absolute;
+  inset: 0 -0.375rem;
+}
+
+.bootcn-resizable--vertical > .bootcn-resizable__handle::before {
+  inset: -0.375rem 0;
+}
+
+.bootcn-resizable__grip {
+  z-index: 1;
+  width: 0.75rem;
+  height: 1.25rem;
+  border: var(--bootcn-border-width) solid var(--bootcn-border-color);
+  border-radius: var(--bootcn-radius-sm);
+  background-color: var(--bootcn-muted);
+}
+
+.bootcn-resizable--vertical > .bootcn-resizable__handle .bootcn-resizable__grip {
+  width: 1.25rem;
+  height: 0.75rem;
+}
+
+.bootcn-resizable__handle:focus-visible {
+  outline: 0;
+  background-color: var(--bootcn-ring);
+}
+
+.bootcn-resizable__handle:focus-visible .bootcn-resizable__grip {
+  box-shadow: var(--bootcn-focus-ring);
+}
