@@ -232,6 +232,8 @@ test.describe('AI chat block', () => {
   });
 
   test('Stop cancels the reply', async ({ page }) => {
+    // A controlled clock: the sample reply (900 ms) cannot arrive before Stop.
+    await page.clock.install();
     await openPreview(page, 'ai-chat', 'blocks');
     const log = page.getByRole('log', { name: 'Messages' });
     const box = page.getByRole('textbox', { name: 'Message' });
@@ -240,7 +242,7 @@ test.describe('AI chat block', () => {
     await box.press('Enter');
     await page.getByRole('button', { name: 'Stop' }).click();
     await expect(page.getByRole('button', { name: 'Send' })).toBeVisible();
-    await page.waitForTimeout(1200);
+    await page.clock.runFor(2000);
     await expect(log.locator('.bootcn-message--assistant:not([hidden])')).toHaveCount(before);
   });
 });
