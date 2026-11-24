@@ -68,11 +68,12 @@ pnpm exec playwright install chromium
 
 ### Try the CLI on your own project
 
-Until the CLI is published, run the built file with Node and point it at the
-local registry build:
+Until the CLI is published on npm, run the built file with Node. It installs
+from the hosted registry by default; pass `--registry packages/registry/dist`
+to use your local build instead.
 
 ```bash
-node packages/cli/dist/index.js init --cwd ../my-site --registry packages/registry/dist
+node packages/cli/dist/index.js init --cwd ../my-site
 node packages/cli/dist/index.js add button dialog --cwd ../my-site
 node packages/cli/dist/index.js list --cwd ../my-site
 node packages/cli/dist/index.js info dialog --cwd ../my-site
@@ -109,8 +110,8 @@ network error, `3` partial install.
 
 ```json
 {
-  "$schema": "https://bootcn.dev/schema/config.json",
-  "registry": "https://registry.bootcn.dev",
+  "$schema": "https://tsirosgeorge.github.io/bootcn/schema/config.schema.json",
+  "registry": "https://tsirosgeorge.github.io/bootcn",
   "style": "default",
   "bootstrap": "5.3",
   "paths": {
@@ -123,8 +124,26 @@ network error, `3` partial install.
 ```
 
 Paths are relative to the project root. For PHP projects with a `public/`
-directory, `init` proposes `public/assets/...` for CSS and JavaScript. The
-`$schema` and registry URLs are placeholders until the domain exists.
+directory, `init` proposes `public/assets/...` for CSS and JavaScript.
+
+### Hosted registry
+
+The registry is published to GitHub Pages by
+[`deploy-registry.yml`](.github/workflows/deploy-registry.yml) whenever
+`packages/registry` changes on `main`:
+
+| URL                                                   | Contents                        |
+| ----------------------------------------------------- | ------------------------------- |
+| `https://tsirosgeorge.github.io/bootcn/`              | Latest registry (`main`)        |
+| `https://tsirosgeorge.github.io/bootcn/v/<version>`   | A frozen version, never changes |
+| `https://tsirosgeorge.github.io/bootcn/versions.json` | `{ latest, versions }`          |
+
+To pin a project to a version, set `"registry"` in `bootcn.json` to its
+`/v/<version>` URL. To publish a version, bump `version` in
+`packages/registry/registry.json` and push a `registry-v<version>` tag; every
+deploy rebuilds each tagged version from its own sources (`pnpm site:build`).
+After deploying, the workflow installs `button` and `dialog` from the live site
+with the CLI's default URL.
 
 ## Repository layout
 
@@ -153,10 +172,8 @@ contents inlined), which the CLI reads. Previews load the same source files.
 
 ## Known limitations
 
-- The CLI is not on npm and there is no hosted registry; `npx bootcn` and the
-  default `https://registry.bootcn.dev` do not work yet. Pass `--registry`.
-- Only the stable registry is supported; there is no `latest`/`stable` channel
-  selection or pinning of a registry version yet.
+- The CLI is not on npm yet, so `npx bootcn` does not work; run the built file.
+- The registry is on a GitHub Pages URL until a custom domain is set up.
 - No `doctor` or `update` commands. `diff` compares with the current registry
   only; installed versions are not recorded.
 - Plain HTML projects must copy the markup from `components/ui/*.html` into

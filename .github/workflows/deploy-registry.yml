@@ -1,0 +1,86 @@
+name: Deploy registry
+
+# Publishes the registry to GitHub Pages:
+#   latest:   https://tsirosgeorge.github.io/bootcn/
+#   frozen:   https://tsirosgeorge.github.io/bootcn/v/<version>/  (one per registry-v<version> tag)
+on:
+  push:
+    branches: [main]
+    tags: ['registry-v*']
+    paths:
+      - 'packages/registry/**'
+      - 'scripts/build-site.ts'
+      - '.github/workflows/deploy-registry.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0 # tagged versions are rebuilt from their tags
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 11.10.0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: pnpm
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm registry:validate
+      - run: pnpm --filter @bootcn/registry test
+      - run: pnpm site:build
+      - uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v4
+        with:
+          path: _site
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4
+
+  # Installs from the live site with the CLI built from this commit, using its
+  # default registry URL (no --registry), so the URL in the CLI is checked too.
+  smoke:
+    needs: deploy
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 11.10.0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: pnpm
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm --filter bootcn build
+      - name: Install from the hosted registry
+        run: |
+          set -euo pipefail
+          project="$(mktemp -d)"
+          cp -R examples/plain-html/. "$project/"
+          cd "$project"
+          cli="$GITHUB_WORKSPACE/packages/cli/dist/index.js"
+          node "$cli" init --yes
+          node "$cli" add button dialog --yes
+          node "$cli" diff
+          test -s assets/js/dialog.js
+          test -s components/ui/dialog.html

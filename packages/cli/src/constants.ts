@@ -7,11 +7,14 @@ export const BRAND_TITLE = 'Bootcn';
 /** Project configuration file name. */
 export const CONFIG_FILE = `${BRAND}.json`;
 
-/** Placeholder until the public registry is hosted. */
-export const DEFAULT_REGISTRY = `https://registry.${BRAND}.dev`;
+/**
+ * Hosted registry (GitHub Pages, latest version). Frozen versions live under
+ * `${DEFAULT_REGISTRY}/v/<version>`. Moves to a custom domain later.
+ */
+export const DEFAULT_REGISTRY = `https://tsirosgeorge.github.io/${BRAND}`;
 
-/** Placeholder schema URL until the domain exists. */
-export const CONFIG_SCHEMA_URL = `https://${BRAND}.dev/schema/config.json`;
+/** JSON schema for bootcn.json, served next to the registry. */
+export const CONFIG_SCHEMA_URL = `${DEFAULT_REGISTRY}/schema/config.schema.json`;
 
 /** Item installed by `init` and implicitly by every `add`. */
 export const TOKENS_ITEM = 'tokens';
