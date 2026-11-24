@@ -4,7 +4,7 @@ import { extname, join, normalize, resolve, sep } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 const testsDir = fileURLToPath(new URL('.', import.meta.url));
-const root = resolve(testsDir, '..');
+const root = resolve(process.env.ROOT ?? resolve(testsDir, '..'));
 const port = Number(process.env.PORT ?? 4517);
 
 const contentTypes = {
