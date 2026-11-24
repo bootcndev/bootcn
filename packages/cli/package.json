@@ -1,22 +1,31 @@
 {
   "name": "bootcn",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "private": true,
+  "description": "Install copy-paste Bootstrap 5.3 components (HTML, CSS, vanilla JS) into your project.",
+  "license": "MIT",
   "type": "module",
-  "description": "Bootcn CLI: initialize projects and install copy-paste components.",
   "bin": {
     "bootcn": "dist/index.js"
   },
+  "files": [
+    "dist"
+  ],
+  "engines": {
+    "node": ">=20"
+  },
+  "keywords": [
+    "bootstrap",
+    "components",
+    "copy-paste",
+    "cli",
+    "vanilla-js",
+    "php"
+  ],
   "scripts": {
     "build": "tsup",
     "test": "vitest run",
     "typecheck": "tsc --noEmit"
-  },
-  "devDependencies": {
-    "@types/node": "24.19.2",
-    "tsup": "9.0.0",
-    "typescript": "5.9.3",
-    "vitest": "4.1.12"
   },
   "dependencies": {
     "@clack/prompts": "1.9.0",
@@ -24,5 +33,11 @@
     "ajv-formats": "3.0.1",
     "commander": "15.1.0",
     "diff": "9.0.0"
+  },
+  "devDependencies": {
+    "@types/node": "24.19.2",
+    "tsup": "9.0.0",
+    "typescript": "5.9.3",
+    "vitest": "4.1.12"
   }
 }
