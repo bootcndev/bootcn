@@ -1,0 +1,33 @@
+{
+  "$schema": "../../schema/registry-item.schema.json",
+  "name": "tooltip",
+  "type": "registry:ui",
+  "title": "Tooltip",
+  "description": "Short hints on hover and focus, built on Bootstrap Tooltip, dismissible with Escape.",
+  "version": "1.0.0",
+  "categories": ["overlays", "feedback"],
+  "dependencies": [],
+  "registryDependencies": ["button"],
+  "compatibility": {
+    "bootstrap": "5.3",
+    "platform": ["Bootstrap CSS", "Bootstrap JS bundle"]
+  },
+  "license": "MIT",
+  "files": [
+    {
+      "path": "tooltip.html",
+      "target": "tooltip.html",
+      "type": "registry:component"
+    },
+    {
+      "path": "tooltip.css",
+      "target": "tooltip.css",
+      "type": "registry:style"
+    },
+    {
+      "path": "tooltip.js",
+      "target": "tooltip.js",
+      "type": "registry:script"
+    }
+  ]
+}

@@ -39,8 +39,11 @@ export async function openPreview(page: Page, name: string): Promise<void> {
   await page.goto(previewUrl(name));
 }
 
-export async function expectNoAxeViolations(page: Page): Promise<void> {
-  const results = await new AxeBuilder({ page }).analyze();
+export async function expectNoAxeViolations(
+  page: Page,
+  options: { disableRules?: string[] } = {},
+): Promise<void> {
+  const results = await new AxeBuilder({ page }).disableRules(options.disableRules ?? []).analyze();
   const summary = results.violations
     .map((violation) => `${violation.id}: ${violation.help} (${violation.nodes.length} nodes)`)
     .join('\n');

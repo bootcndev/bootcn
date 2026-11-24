@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Bootcn Toast preview</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.9/dist/css/bootstrap.min.css"
+    />
+    <link rel="stylesheet" href="../../themes/tokens/tokens.css" />
+    <link rel="stylesheet" href="../button/button.css" />
+    <link rel="stylesheet" href="toast.css" />
+  </head>
+  <body>
+    <main class="container py-4">
+      <h1 class="h4 mb-4">Toast</h1>
+      <div class="d-flex flex-wrap gap-2">
+        <button
+          type="button"
+          class="btn bootcn-button bootcn-button--outline"
+          data-bootcn-toast-target="#bootcn-toast-saved"
+        >
+          Show saved toast
+        </button>
+        <button
+          type="button"
+          class="btn bootcn-button bootcn-button--outline"
+          data-bootcn-toast-create
+          data-bootcn-toast-title="Invitation sent"
+          data-bootcn-toast-message="We emailed nikos@example.com."
+          data-bootcn-toast-variant="success"
+        >
+          Create toast
+        </button>
+        <button
+          type="button"
+          class="btn bootcn-button bootcn-button--destructive"
+          data-bootcn-toast-create
+          data-bootcn-toast-title="Upload failed"
+          data-bootcn-toast-message="The file is larger than 10 MB."
+          data-bootcn-toast-variant="destructive"
+        >
+          Create error toast
+        </button>
+      </div>
+
+      <div
+        class="toast-container position-fixed bottom-0 end-0 p-3 bootcn-toast-container"
+        data-bootcn-toast-container
+      >
+        <div
+          class="toast bootcn-toast bootcn-toast--default"
+          id="bootcn-toast-saved"
+          role="status"
+          aria-live="polite"
+          aria-atomic="true"
+        >
+          <div class="bootcn-toast__body">
+            <div class="bootcn-toast__text">
+              <p class="bootcn-toast__title">Changes saved</p>
+              <p class="bootcn-toast__description">Your profile was updated.</p>
+            </div>
+            <button
+              type="button"
+              class="btn-close bootcn-toast__close"
+              data-bs-dismiss="toast"
+              aria-label="Close notification"
+            ></button>
+          </div>
+        </div>
+      </div>
+    </main>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.9/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="toast.js"></script>
+  </body>
+</html>

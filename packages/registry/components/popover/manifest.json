@@ -1,0 +1,33 @@
+{
+  "$schema": "../../schema/registry-item.schema.json",
+  "name": "popover",
+  "type": "registry:ui",
+  "title": "Popover",
+  "description": "Rich click-triggered overlays built on Bootstrap Popover, closable with Escape.",
+  "version": "1.0.0",
+  "categories": ["overlays"],
+  "dependencies": [],
+  "registryDependencies": ["button"],
+  "compatibility": {
+    "bootstrap": "5.3",
+    "platform": ["Bootstrap CSS", "Bootstrap JS bundle"]
+  },
+  "license": "MIT",
+  "files": [
+    {
+      "path": "popover.html",
+      "target": "popover.html",
+      "type": "registry:component"
+    },
+    {
+      "path": "popover.css",
+      "target": "popover.css",
+      "type": "registry:style"
+    },
+    {
+      "path": "popover.js",
+      "target": "popover.js",
+      "type": "registry:script"
+    }
+  ]
+}

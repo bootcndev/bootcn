@@ -1,0 +1,33 @@
+{
+  "$schema": "../../schema/registry-item.schema.json",
+  "name": "toast",
+  "type": "registry:ui",
+  "title": "Toast",
+  "description": "Notifications built on Bootstrap Toast, with declarative triggers and a safe create() API.",
+  "version": "1.0.0",
+  "categories": ["feedback", "overlays"],
+  "dependencies": [],
+  "registryDependencies": ["button"],
+  "compatibility": {
+    "bootstrap": "5.3",
+    "platform": ["Bootstrap CSS", "Bootstrap JS bundle"]
+  },
+  "license": "MIT",
+  "files": [
+    {
+      "path": "toast.html",
+      "target": "toast.html",
+      "type": "registry:component"
+    },
+    {
+      "path": "toast.css",
+      "target": "toast.css",
+      "type": "registry:style"
+    },
+    {
+      "path": "toast.js",
+      "target": "toast.js",
+      "type": "registry:script"
+    }
+  ]
+}
