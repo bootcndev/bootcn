@@ -20,7 +20,7 @@ const ROOT = resolve(REGISTRY_DIR, '..', '..');
 const OUT_DIR = resolve(ROOT, '_site');
 const DOCS_DIST = resolve(ROOT, 'apps', 'docs', '.vitepress', 'dist');
 /** Paths the registry owns at the site root; the docs build must not contain them. */
-const REGISTRY_PATHS = ['index.json', 'versions.json', 'r', 'v', 'schema'];
+const REGISTRY_PATHS = ['index.json', 'versions.json', 'r', 'v', 'schema', 'llms.txt'];
 const TAG_PREFIX = 'registry-v';
 const SEMVER = /^\d+\.\d+\.\d+(?:-[0-9A-Za-z.-]+)?$/;
 
@@ -85,10 +85,54 @@ async function main(): Promise<void> {
   // Serve files as they are (no Jekyll processing on GitHub Pages).
   await writeFile(resolve(OUT_DIR, '.nojekyll'), '', 'utf8');
   await copyDocs();
+  await writeLlmsTxt();
 
   process.stdout.write(
     `Built ${itemCount} item(s) (latest ${latest}) and ${versions.length} tagged version(s) plus the docs into ${relative(process.cwd(), OUT_DIR) || '.'}.\n`,
   );
+}
+
+const SITE_URL = 'https://tsirosgeorge.github.io/bootcn';
+
+/** llms.txt (https://llmstxt.org): the docs and every item, for AI tools. */
+async function writeLlmsTxt(): Promise<void> {
+  const index = JSON.parse(await readFile(resolve(OUT_DIR, 'index.json'), 'utf8')) as {
+    version: string;
+    items: { name: string; type: string; title: string; description: string }[];
+  };
+  const sections: [string, string, string][] = [
+    ['Components', 'registry:ui', 'components'],
+    ['Blocks', 'registry:block', 'blocks'],
+    ['Templates', 'registry:template', 'templates'],
+  ];
+  const guide = [
+    ['Introduction', 'guide/introduction', 'What Bootcn is and how the registry works.'],
+    ['Installation', 'guide/installation', 'Install components into a PHP or plain HTML project.'],
+    ['CLI', 'guide/cli', 'Commands, options, updating and exit codes.'],
+    ['Configuration', 'guide/configuration', 'bootcn.json, paths and pinning a registry version.'],
+    ['Theming', 'guide/theming', 'Design tokens and how to change them.'],
+    ['Dark mode', 'guide/dark-mode', 'Color modes, saving the choice and a toggle.'],
+  ];
+  const lines = [
+    '# Bootcn',
+    '',
+    `> Copy-paste UI components, blocks and templates for Bootstrap 5.3 and vanilla JavaScript, with a Tailwind-like look. Install with \`npx bootcn add <name>\`. Registry ${index.version}.`,
+    '',
+    'Each item below links to its documentation; its machine-readable source (all files inlined) is at `r/<name>.json`.',
+    '',
+    '## Docs',
+    '',
+    ...guide.map(([title, path, text]) => `- [${title}](${SITE_URL}/${path}): ${text}`),
+  ];
+  for (const [title, type, dir] of sections) {
+    lines.push('', `## ${title}`, '');
+    for (const item of index.items.filter((entry) => entry.type === type)) {
+      lines.push(
+        `- [${item.title}](${SITE_URL}/${dir}/${item.name}): ${item.description} Source: ${SITE_URL}/r/${item.name}.json`,
+      );
+    }
+  }
+  await writeFile(resolve(OUT_DIR, 'llms.txt'), `${lines.join('\n')}\n`, 'utf8');
 }
 
 async function copyDocs(): Promise<void> {

@@ -58,6 +58,7 @@ export default defineConfig({
       { text: 'Components', link: '/components/', activeMatch: '^/components/' },
       { text: 'Blocks', link: '/blocks/', activeMatch: '^/blocks/' },
       { text: 'Charts', link: '/charts/', activeMatch: '^/charts/' },
+      { text: 'Themes', link: '/themes/', activeMatch: '^/themes/' },
       { text: 'Templates', link: '/templates/', activeMatch: '^/templates/' },
       {
         text: `v${index.version}`,
@@ -76,7 +77,8 @@ export default defineConfig({
           { text: 'Installation', link: '/guide/installation' },
           { text: 'CLI', link: '/guide/cli' },
           { text: 'Configuration', link: '/guide/configuration' },
-          { text: 'Theming and dark mode', link: '/guide/theming' },
+          { text: 'Theming', link: '/guide/theming' },
+          { text: 'Dark mode', link: '/guide/dark-mode' },
         ],
       },
       ...kindSidebar('components'),
@@ -85,6 +87,8 @@ export default defineConfig({
       {
         text: 'Resources',
         items: [
+          { text: 'Theme builder', link: '/themes/' },
+          { text: 'Changelog', link: '/changelog' },
           { text: 'Contributing', link: '/guide/contributing' },
           { text: 'Report an issue', link: `${GITHUB_URL}/issues` },
         ],

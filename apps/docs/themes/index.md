@@ -1,0 +1,13 @@
+---
+title: Theme builder
+aside: false
+---
+
+# Theme builder
+
+<p class="bootcn-lead">Pick a neutral scale, a primary color and a radius. See them on a full page, then copy the CSS.</p>
+
+Every combination keeps text at 4.5:1 and focus rings at 3:1 against their
+backgrounds, in light and dark mode. Switch the site theme to see both.
+
+<ThemeBuilder />

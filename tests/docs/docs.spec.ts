@@ -134,6 +134,8 @@ for (const theme of ['light', 'dark'] as const) {
     'blocks/',
     'blocks/transactions-table',
     'templates/admin-dashboard',
+    'themes/',
+    'guide/dark-mode',
   ]) {
     test(`axe (${theme}): ${path}`, async ({ page }) => {
       await page.emulateMedia({ reducedMotion: 'reduce' });
@@ -412,4 +414,50 @@ test('analytics dashboard: collapsible sidebar, date picker, charts and table', 
   await page.getByRole('searchbox', { name: 'Filter payments' }).fill('failed');
   await expect(page.locator('[data-bootcn-data-table-status]')).toHaveText('Showing 1–3 of 3');
   expect(errors).toEqual([]);
+});
+
+test('theme builder: choices restyle the preview and the CSS can be copied', async ({ page }) => {
+  const errors = collectErrors(page);
+  await page.addInitScript(() => {
+    const copied: string[] = [];
+    (window as unknown as { copied: string[] }).copied = copied;
+    Object.defineProperty(navigator, 'clipboard', {
+      configurable: true,
+      value: { writeText: (text: string) => (copied.push(text), Promise.resolve()) },
+    });
+  });
+  await page.goto('themes/');
+  const frame = page.frameLocator('.bootcn-theme-builder__preview');
+  await expect(frame.locator('h1')).toHaveText('Dashboard');
+
+  await page.getByRole('radio', { name: 'slate' }).check();
+  await page.getByRole('radio', { name: 'violet' }).check();
+  await page.getByRole('radio', { name: '1rem' }).check();
+  const root = page.locator('.bootcn-theme-builder__preview');
+  await expect
+    .poll(() =>
+      root.evaluate((el: HTMLIFrameElement) =>
+        getComputedStyle(el.contentDocument!.documentElement)
+          .getPropertyValue('--bootcn-primary')
+          .trim(),
+      ),
+    )
+    .toBe('#7c3aed');
+
+  await page.getByRole('button', { name: 'Copy CSS' }).click();
+  await expect(page.getByRole('button', { name: 'Copied' })).toBeVisible();
+  const copied = await page.evaluate(() => (window as unknown as { copied: string[] }).copied);
+  expect(copied[0]).toContain('slate base, violet primary, 1rem radius');
+  expect(copied[0]).toContain('--bs-border-radius-lg: 1rem;');
+  expect(errors).toEqual([]);
+});
+
+test('llms.txt lists the docs and every item with its source', async ({ request }) => {
+  const response = await request.get('llms.txt');
+  expect(response.ok()).toBe(true);
+  const text = await response.text();
+  expect(text.startsWith('# Bootcn')).toBe(true);
+  for (const item of index.items.filter((entry) => entry.type !== 'registry:theme')) {
+    expect(text).toContain(`/r/${item.name}.json`);
+  }
 });
