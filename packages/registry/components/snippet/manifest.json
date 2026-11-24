@@ -1,0 +1,33 @@
+{
+  "$schema": "../../schema/registry-item.schema.json",
+  "name": "snippet",
+  "type": "registry:ui",
+  "title": "Snippet",
+  "description": "A short command or value with a copy button: one line, or several lines with a prompt sign each.",
+  "version": "1.0.0",
+  "categories": ["data-display"],
+  "dependencies": [],
+  "registryDependencies": [],
+  "compatibility": {
+    "bootstrap": "5.3",
+    "platform": ["Bootstrap CSS"]
+  },
+  "license": "MIT",
+  "files": [
+    {
+      "path": "snippet.html",
+      "target": "snippet.html",
+      "type": "registry:component"
+    },
+    {
+      "path": "snippet.css",
+      "target": "snippet.css",
+      "type": "registry:style"
+    },
+    {
+      "path": "snippet.js",
+      "target": "snippet.js",
+      "type": "registry:script"
+    }
+  ]
+}

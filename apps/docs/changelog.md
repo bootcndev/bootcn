@@ -6,6 +6,12 @@ each published version stays available under `/v/<version>/`) and the **CLI**
 
 ## Registry
 
+### 0.21.0
+
+- Range slider (two thumbs, a minimum and a maximum), User (avatar, name
+  and a second line), Snippet (commands with a copy button) and Image
+  (fades in, shows its description if it fails, optional zoom).
+
 ### 0.20.0
 
 - Blocks: Stacked bar chart, Login with email link, Sidebar rail (icons

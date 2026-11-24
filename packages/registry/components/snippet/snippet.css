@@ -1,0 +1,76 @@
+.bootcn-snippet {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.5rem;
+  width: 22rem;
+  max-width: 100%;
+  padding: 0.375rem 0.375rem 0.375rem 0.875rem;
+  border: var(--bootcn-border-width) solid var(--bootcn-border-color);
+  border-radius: var(--bootcn-radius-lg);
+  background-color: var(--bootcn-muted);
+  color: var(--bootcn-foreground);
+}
+
+.bootcn-snippet--secondary {
+  border-color: transparent;
+  background-color: var(--bootcn-secondary);
+}
+
+.bootcn-snippet__pre {
+  flex: 1;
+  min-width: 0;
+  margin: 0;
+  padding-block: 0.3125rem;
+  overflow-x: auto;
+  font-size: 0.8125rem;
+  line-height: 1.6;
+}
+
+.bootcn-snippet__pre code {
+  color: inherit;
+  font-size: inherit;
+}
+
+.bootcn-snippet__line {
+  display: block;
+}
+
+/* The prompt sign is drawn by CSS, so it is never copied. */
+.bootcn-snippet__line::before {
+  margin-inline-end: 0.625rem;
+  color: var(--bootcn-muted-foreground);
+  content: '$';
+  user-select: none;
+}
+
+.bootcn-snippet__copy {
+  display: inline-flex;
+  flex: none;
+  align-items: center;
+  justify-content: center;
+  width: 2rem;
+  height: 2rem;
+  border: 0;
+  border-radius: var(--bootcn-radius);
+  background: transparent;
+  color: var(--bootcn-muted-foreground);
+}
+
+.bootcn-snippet__copy:hover {
+  background-color: var(--bootcn-accent);
+  color: var(--bootcn-foreground);
+}
+
+.bootcn-snippet__copy:focus-visible {
+  outline: 0;
+  box-shadow: var(--bootcn-focus-ring);
+}
+
+.bootcn-snippet__done-icon,
+.bootcn-snippet__copy.is-copied .bootcn-snippet__copy-icon {
+  display: none;
+}
+
+.bootcn-snippet__copy.is-copied .bootcn-snippet__done-icon {
+  display: inline-block;
+}

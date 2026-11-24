@@ -1,0 +1,33 @@
+{
+  "$schema": "../../schema/registry-item.schema.json",
+  "name": "image",
+  "type": "registry:ui",
+  "title": "Image",
+  "description": "An image that fades in once loaded over a placeholder, shows its description if it fails, and can zoom on hover.",
+  "version": "1.0.0",
+  "categories": ["data-display"],
+  "dependencies": [],
+  "registryDependencies": [],
+  "compatibility": {
+    "bootstrap": "5.3",
+    "platform": ["Bootstrap CSS"]
+  },
+  "license": "MIT",
+  "files": [
+    {
+      "path": "image.html",
+      "target": "image.html",
+      "type": "registry:component"
+    },
+    {
+      "path": "image.css",
+      "target": "image.css",
+      "type": "registry:style"
+    },
+    {
+      "path": "image.js",
+      "target": "image.js",
+      "type": "registry:script"
+    }
+  ]
+}

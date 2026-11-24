@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Bootcn Range slider preview</title>
+    <script>
+      // Preview theme: ?theme=dark|light, else the docs page around the frame, else light.
+      (function () {
+        var theme = new URLSearchParams(location.search).get('theme');
+        if (!theme) {
+          try {
+            theme =
+              window.parent !== window &&
+              window.parent.document.documentElement.classList.contains('dark')
+                ? 'dark'
+                : 'light';
+          } catch (error) {
+            theme = 'light';
+          }
+        }
+        document.documentElement.setAttribute('data-bs-theme', theme === 'dark' ? 'dark' : 'light');
+        // ?dir=rtl: right to left, with Bootstrap's RTL stylesheet.
+        if (new URLSearchParams(location.search).get('dir') === 'rtl') {
+          document.documentElement.setAttribute('dir', 'rtl');
+          new MutationObserver(function (records, observer) {
+            var link = document.querySelector('link[href*="bootstrap.min.css"]');
+            if (!link) return;
+            link.href = link.href.replace('bootstrap.min.css', 'bootstrap.rtl.min.css');
+            observer.disconnect();
+          }).observe(document.documentElement, { childList: true, subtree: true });
+        }
+      })();
+    </script>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.9/dist/css/bootstrap.min.css"
+    />
+    <link rel="stylesheet" href="../../themes/tokens/tokens.css" />
+    <link rel="stylesheet" href="../input/input.css" />
+    <link rel="stylesheet" href="../label/label.css" />
+    <link rel="stylesheet" href="range-slider.css" />
+  </head>
+  <body>
+    <main class="container py-4">
+      <h1 class="h4 mb-4">Range slider</h1>
+      <div
+        class="bootcn-range"
+        data-bootcn-range
+        data-format="€{value}"
+        role="group"
+        aria-labelledby="bootcn-range-price-label"
+      >
+        <div class="bootcn-range__header">
+          <p class="bootcn-label" id="bootcn-range-price-label">Price</p>
+          <output class="bootcn-range__value" data-bootcn-range-output>€20 – €80</output>
+        </div>
+        <div class="bootcn-range__track" style="--bootcn-range-low: 20%; --bootcn-range-high: 80%">
+          <input
+            class="bootcn-range__input"
+            type="range"
+            name="price_min"
+            min="0"
+            max="100"
+            step="5"
+            value="20"
+            aria-label="Minimum price"
+            data-bootcn-range-min
+          />
+          <input
+            class="bootcn-range__input"
+            type="range"
+            name="price_max"
+            min="0"
+            max="100"
+            step="5"
+            value="80"
+            aria-label="Maximum price"
+            data-bootcn-range-max
+          />
+        </div>
+        <div class="bootcn-range__scale" aria-hidden="true">
+          <span>€0</span>
+          <span>€100</span>
+        </div>
+      </div>
+    </main>
+    <script src="range-slider.js"></script>
+  </body>
+</html>

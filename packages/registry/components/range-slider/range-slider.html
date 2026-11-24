@@ -1,0 +1,40 @@
+<div
+  class="bootcn-range"
+  data-bootcn-range
+  data-format="€{value}"
+  role="group"
+  aria-labelledby="bootcn-range-price-label"
+>
+  <div class="bootcn-range__header">
+    <p class="bootcn-label" id="bootcn-range-price-label">Price</p>
+    <output class="bootcn-range__value" data-bootcn-range-output>€20 – €80</output>
+  </div>
+  <div class="bootcn-range__track" style="--bootcn-range-low: 20%; --bootcn-range-high: 80%">
+    <input
+      class="bootcn-range__input"
+      type="range"
+      name="price_min"
+      min="0"
+      max="100"
+      step="5"
+      value="20"
+      aria-label="Minimum price"
+      data-bootcn-range-min
+    />
+    <input
+      class="bootcn-range__input"
+      type="range"
+      name="price_max"
+      min="0"
+      max="100"
+      step="5"
+      value="80"
+      aria-label="Maximum price"
+      data-bootcn-range-max
+    />
+  </div>
+  <div class="bootcn-range__scale" aria-hidden="true">
+    <span>€0</span>
+    <span>€100</span>
+  </div>
+</div>

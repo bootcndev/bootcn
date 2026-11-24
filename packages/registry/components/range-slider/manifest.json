@@ -1,0 +1,33 @@
+{
+  "$schema": "../../schema/registry-item.schema.json",
+  "name": "range-slider",
+  "type": "registry:ui",
+  "title": "Range slider",
+  "description": "A slider with two thumbs for choosing a range (a minimum and a maximum), built on two native range inputs.",
+  "version": "1.0.0",
+  "categories": ["forms"],
+  "dependencies": [],
+  "registryDependencies": ["label"],
+  "compatibility": {
+    "bootstrap": "5.3",
+    "platform": ["Bootstrap CSS"]
+  },
+  "license": "MIT",
+  "files": [
+    {
+      "path": "range-slider.html",
+      "target": "range-slider.html",
+      "type": "registry:component"
+    },
+    {
+      "path": "range-slider.css",
+      "target": "range-slider.css",
+      "type": "registry:style"
+    },
+    {
+      "path": "range-slider.js",
+      "target": "range-slider.js",
+      "type": "registry:script"
+    }
+  ]
+}
