@@ -96,10 +96,7 @@ const columns = [
           >MIT License</a
         >.
       </p>
-      <p>
-        An independent project, not affiliated with or endorsed by the Bootstrap team or shadcn/ui.
-        Bootstrap is a trademark of its respective owners.
-      </p>
+      <p>An independent project, not affiliated with Bootstrap or shadcn/ui.</p>
     </div>
   </footer>
 </template>
