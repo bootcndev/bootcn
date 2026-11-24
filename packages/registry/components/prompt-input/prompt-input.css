@@ -113,7 +113,8 @@
 .bootcn-prompt-input__model {
   width: auto;
   height: 2rem;
-  padding: 0 2rem 0 0.625rem;
+  padding-block: 0;
+  padding-inline: 0.625rem 2rem;
   border-color: transparent;
   background-color: transparent;
   background-position: right 0.5rem center;
@@ -138,7 +139,7 @@
   justify-content: center;
   width: 2rem;
   height: 2rem;
-  margin-left: auto;
+  margin-inline-start: auto;
   border: 0;
   border-radius: 9999px;
   background-color: var(--bootcn-primary);
@@ -193,7 +194,8 @@
   align-items: center;
   gap: 0.5rem;
   max-width: 16rem;
-  padding: 0.25rem 0.25rem 0.25rem 0.625rem;
+  padding-block: 0.25rem;
+  padding-inline: 0.625rem 0.25rem;
   border: var(--bootcn-border-width) solid var(--bootcn-border-color);
   border-radius: var(--bootcn-radius);
   background-color: var(--bootcn-muted);
@@ -244,4 +246,8 @@
   .bootcn-prompt-input__box {
     transition: none;
   }
+}
+
+[dir='rtl'] .bootcn-prompt-input__model {
+  background-position: left 0.5rem center;
 }

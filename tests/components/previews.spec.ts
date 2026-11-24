@@ -3,7 +3,9 @@
  * a new item is covered as soon as its directory exists:
  * - no console errors;
  * - zero axe violations in light mode and with the whole page in dark mode;
- * - no horizontal overflow at 320, 768 and 1280px.
+ * - no horizontal overflow at 320, 768 and 1280px;
+ * - right to left (?dir=rtl, Bootstrap's RTL CSS): no errors, no axe
+ *   violations, no horizontal overflow.
  */
 import { readdirSync } from 'node:fs';
 import { dirname, resolve } from 'node:path';
@@ -34,6 +36,24 @@ for (const { kind, name } of previews) {
       await expectNoAxeViolations(page);
 
       await page.evaluate(() => document.documentElement.setAttribute('data-bs-theme', 'dark'));
+      await expectNoAxeViolations(page);
+      expect(errors).toEqual([]);
+    });
+
+    test('works right to left', async ({ page }) => {
+      const errors = collectErrors(page);
+      await page.emulateMedia({ reducedMotion: 'reduce' });
+      for (const width of [320, 1280]) {
+        await page.setViewportSize({ width, height: 800 });
+        await openPreview(page, name, kind, '?dir=rtl');
+        await expect(page.locator('html')).toHaveAttribute('dir', 'rtl');
+        await expect(page.locator('link[href*="bootstrap.rtl.min.css"]')).toHaveCount(1);
+        const overflow = await page.evaluate(() => ({
+          scrollWidth: document.documentElement.scrollWidth,
+          innerWidth: window.innerWidth,
+        }));
+        expect(overflow.scrollWidth, `at ${width}px`).toBeLessThanOrEqual(overflow.innerWidth + 1);
+      }
       await expectNoAxeViolations(page);
       expect(errors).toEqual([]);
     });

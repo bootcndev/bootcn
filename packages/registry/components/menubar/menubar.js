@@ -88,16 +88,26 @@
     );
   }
 
+  // In right-to-left text, the left and right arrow keys swap meaning.
+  function logicalKey(event, element) {
+    if (getComputedStyle(element).direction !== 'rtl') return event.key;
+    if (event.key === 'ArrowLeft') return 'ArrowRight';
+    if (event.key === 'ArrowRight') return 'ArrowLeft';
+    return event.key;
+  }
+
   function onKeydown(event) {
     const bar = event.target.closest && event.target.closest(BAR);
     if (!bar) return;
     const trigger = event.target.closest('.bootcn-menubar__trigger');
     const menu = event.target.closest('[role="menu"]');
 
+    const key = logicalKey(event, bar);
+
     if (trigger) {
-      if (event.key === 'ArrowRight' || event.key === 'ArrowLeft') {
+      if (key === 'ArrowRight' || key === 'ArrowLeft') {
         event.preventDefault();
-        const next = adjacent(bar, trigger, event.key === 'ArrowRight' ? 1 : -1);
+        const next = adjacent(bar, trigger, key === 'ArrowRight' ? 1 : -1);
         if (openTrigger(bar)) open(bar, next, 'first');
         focusTrigger(bar, next);
         if (openTrigger(bar)) menuItems(menuOf(next))[0].focus();
@@ -122,9 +132,9 @@
     if (event.key === 'Escape') {
       event.preventDefault();
       close(bar, true);
-    } else if (event.key === 'ArrowRight' || event.key === 'ArrowLeft') {
+    } else if (key === 'ArrowRight' || key === 'ArrowLeft') {
       event.preventDefault();
-      const next = adjacent(bar, owner, event.key === 'ArrowRight' ? 1 : -1);
+      const next = adjacent(bar, owner, key === 'ArrowRight' ? 1 : -1);
       open(bar, next, 'first');
     } else if (event.key === 'Tab') {
       close(bar, false);

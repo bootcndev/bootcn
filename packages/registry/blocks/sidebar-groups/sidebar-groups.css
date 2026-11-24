@@ -23,7 +23,7 @@
   .bootcn-sidebar-groups {
     flex: 0 0 17rem;
     width: 17rem;
-    border-right: var(--bootcn-border-width) solid var(--bootcn-border-color);
+    border-inline-end: var(--bootcn-border-width) solid var(--bootcn-border-color);
     background-color: var(--bs-tertiary-bg);
   }
 }
@@ -46,7 +46,7 @@
   border-radius: var(--bootcn-radius);
   background: transparent;
   color: var(--bootcn-foreground);
-  text-align: left;
+  text-align: start;
 }
 
 .bootcn-sidebar-groups__team:hover,
@@ -129,7 +129,7 @@
   background: transparent;
   color: var(--bootcn-foreground);
   font-size: 0.875rem;
-  text-align: left;
+  text-align: start;
   text-decoration: none;
 }
 
@@ -146,7 +146,7 @@
 }
 
 .bootcn-sidebar-groups__chevron {
-  margin-left: auto;
+  margin-inline-start: auto;
   color: var(--bootcn-muted-foreground);
   transition: transform var(--bootcn-transition);
 }
@@ -156,9 +156,10 @@
 }
 
 .bootcn-sidebar-groups__sub {
-  margin: 0.125rem 0 0.25rem 1.125rem;
-  padding-left: 0.625rem;
-  border-left: var(--bootcn-border-width) solid var(--bootcn-border-color);
+  margin-block: 0.125rem 0.25rem;
+  margin-inline: 1.125rem 0;
+  padding-inline-start: 0.625rem;
+  border-inline-start: var(--bootcn-border-width) solid var(--bootcn-border-color);
 }
 
 .bootcn-sidebar-groups__sublink {
@@ -182,5 +183,5 @@
 }
 
 .bootcn-sidebar-groups__footer .bootcn-user-menu__chevron {
-  margin-left: auto;
+  margin-inline-start: auto;
 }

@@ -78,3 +78,12 @@
 .bootcn-slider__input:disabled {
   opacity: 0.5;
 }
+
+/* Right-to-left: the range runs from the right, so does the fill. */
+[dir='rtl'] .bootcn-slider__input::-webkit-slider-runnable-track {
+  background: linear-gradient(
+    to left,
+    var(--bootcn-primary) var(--bootcn-slider-fill, 50%),
+    var(--bootcn-muted) var(--bootcn-slider-fill, 50%)
+  );
+}

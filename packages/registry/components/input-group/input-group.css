@@ -50,13 +50,13 @@
 }
 
 .bootcn-input-group__addon + .bootcn-input-group__input {
-  padding-left: 0;
+  padding-inline-start: 0;
 }
 
 .bootcn-input-group__input + .bootcn-input-group__addon {
-  padding-left: 0;
+  padding-inline-start: 0;
 }
 
 .bootcn-input-group__button {
-  margin-right: 0.25rem;
+  margin-inline-end: 0.25rem;
 }

@@ -176,8 +176,8 @@
 
 .bootcn-reasoning__content {
   margin-top: 0.5rem;
-  padding-left: 0.75rem;
-  border-left: 2px solid var(--bootcn-border-color);
+  padding-inline-start: 0.75rem;
+  border-inline-start: 2px solid var(--bootcn-border-color);
 }
 
 .bootcn-reasoning__content p {
@@ -228,7 +228,7 @@
 .bootcn-message__actions {
   display: flex;
   gap: 0.125rem;
-  margin-left: -0.375rem;
+  margin-inline-start: -0.375rem;
 }
 
 .bootcn-message__action {

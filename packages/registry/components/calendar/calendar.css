@@ -109,13 +109,13 @@
 }
 
 [aria-selected='true'] > .bootcn-calendar__day.is-range-start:not(.is-range-end) {
-  border-top-right-radius: 0;
-  border-bottom-right-radius: 0;
+  border-start-end-radius: 0;
+  border-end-end-radius: 0;
 }
 
 [aria-selected='true'] > .bootcn-calendar__day.is-range-end:not(.is-range-start) {
-  border-top-left-radius: 0;
-  border-bottom-left-radius: 0;
+  border-start-start-radius: 0;
+  border-end-start-radius: 0;
 }
 
 .bootcn-calendar--range td {

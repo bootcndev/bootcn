@@ -126,7 +126,7 @@
 }
 
 .bootcn-chart__tooltip-value {
-  margin-left: auto;
+  margin-inline-start: auto;
   font-weight: 500;
   font-variant-numeric: tabular-nums;
 }
@@ -184,18 +184,18 @@
   caption-side: top;
   padding: 0 0 0.25rem;
   color: var(--bootcn-muted-foreground);
-  text-align: left;
+  text-align: start;
 }
 
 .bootcn-chart__table th,
 .bootcn-chart__table td {
   padding: 0.25rem 0.5rem;
   border-bottom: var(--bootcn-border-width) solid var(--bootcn-border-color);
-  text-align: right;
+  text-align: end;
 }
 
 .bootcn-chart__table th:first-child {
-  text-align: left;
+  text-align: start;
 }
 
 .bootcn-chart__table thead th {

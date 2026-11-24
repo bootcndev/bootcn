@@ -14,7 +14,7 @@
   .bootcn-sidebar {
     flex: 0 0 var(--bootcn-sidebar-width);
     width: var(--bootcn-sidebar-width);
-    border-right: var(--bootcn-border-width) solid var(--bootcn-border-color);
+    border-inline-end: var(--bootcn-border-width) solid var(--bootcn-border-color);
     background-color: var(--bs-tertiary-bg);
   }
 }
@@ -101,7 +101,7 @@
 }
 
 .bootcn-sidebar__count {
-  margin-left: auto;
+  margin-inline-start: auto;
 }
 
 .bootcn-sidebar__user {

@@ -15,7 +15,8 @@
   gap: 0.5rem;
   min-height: 2.5rem;
   margin: 0;
-  padding: 0.25rem 0.25rem 0.25rem 1rem;
+  padding-block: 0.25rem;
+  padding-inline: 1rem 0.25rem;
   border-bottom: var(--bootcn-border-width) solid var(--bootcn-border-color);
   color: var(--bootcn-muted-foreground);
   font-size: 0.8125rem;
@@ -89,9 +90,9 @@
 .bootcn-code-block--numbered .bootcn-code-block__line::before {
   display: inline-block;
   width: 2rem;
-  margin-right: 1rem;
+  margin-inline-end: 1rem;
   color: var(--bootcn-muted-foreground);
-  text-align: right;
+  text-align: end;
   content: counter(bootcn-line);
   counter-increment: bootcn-line;
   user-select: none;

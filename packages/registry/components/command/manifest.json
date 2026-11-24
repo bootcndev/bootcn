@@ -4,13 +4,21 @@
   "type": "registry:ui",
   "title": "Command",
   "description": "A fast, searchable list of actions: inline, or as a Ctrl/⌘ K command palette in a dialog.",
-  "version": "1.0.0",
-  "categories": ["navigation"],
+  "version": "1.0.1",
+  "categories": [
+    "navigation"
+  ],
   "dependencies": [],
-  "registryDependencies": ["kbd", "button"],
+  "registryDependencies": [
+    "kbd",
+    "button"
+  ],
   "compatibility": {
     "bootstrap": "5.3",
-    "platform": ["Bootstrap CSS", "Bootstrap JS bundle"]
+    "platform": [
+      "Bootstrap CSS",
+      "Bootstrap JS bundle"
+    ]
   },
   "license": "MIT",
   "files": [

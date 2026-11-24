@@ -19,6 +19,14 @@
     control.focus();
   }
 
+  // In right-to-left text, the left and right arrow keys swap meaning.
+  function logicalKey(event, element) {
+    if (getComputedStyle(element).direction !== 'rtl') return event.key;
+    if (event.key === 'ArrowLeft') return 'ArrowRight';
+    if (event.key === 'ArrowRight') return 'ArrowLeft';
+    return event.key;
+  }
+
   function onKeydown(event) {
     const toolbar = event.target.closest && event.target.closest(ROOT);
     if (!toolbar) return;
@@ -26,8 +34,9 @@
     const index = list.indexOf(event.target);
     if (index < 0) return;
     let next = null;
-    if (event.key === 'ArrowRight') next = list[(index + 1) % list.length];
-    else if (event.key === 'ArrowLeft') next = list[(index - 1 + list.length) % list.length];
+    const key = logicalKey(event, toolbar);
+    if (key === 'ArrowRight') next = list[(index + 1) % list.length];
+    else if (key === 'ArrowLeft') next = list[(index - 1 + list.length) % list.length];
     else if (event.key === 'Home') next = list[0];
     else if (event.key === 'End') next = list[list.length - 1];
     if (!next) return;

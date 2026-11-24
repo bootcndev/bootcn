@@ -4,13 +4,21 @@
   "type": "registry:ui",
   "title": "Color area",
   "description": "A two-dimensional saturation and brightness picker with a hue slider and a hex field, usable with the keyboard.",
-  "version": "1.0.0",
-  "categories": ["forms"],
+  "version": "1.0.1",
+  "categories": [
+    "forms"
+  ],
   "dependencies": [],
-  "registryDependencies": ["color-slider", "label", "input"],
+  "registryDependencies": [
+    "color-slider",
+    "label",
+    "input"
+  ],
   "compatibility": {
     "bootstrap": "5.3",
-    "platform": ["Bootstrap CSS"]
+    "platform": [
+      "Bootstrap CSS"
+    ]
   },
   "license": "MIT",
   "files": [

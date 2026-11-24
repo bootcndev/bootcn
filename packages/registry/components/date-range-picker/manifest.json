@@ -4,13 +4,22 @@
   "type": "registry:ui",
   "title": "Date range picker",
   "description": "A button that opens a range calendar and shows the chosen start and end dates.",
-  "version": "1.0.0",
-  "categories": ["forms"],
+  "version": "1.0.1",
+  "categories": [
+    "forms"
+  ],
   "dependencies": [],
-  "registryDependencies": ["calendar", "button", "label"],
+  "registryDependencies": [
+    "calendar",
+    "button",
+    "label"
+  ],
   "compatibility": {
     "bootstrap": "5.3",
-    "platform": ["Bootstrap CSS", "Bootstrap JS bundle"]
+    "platform": [
+      "Bootstrap CSS",
+      "Bootstrap JS bundle"
+    ]
   },
   "license": "MIT",
   "files": [

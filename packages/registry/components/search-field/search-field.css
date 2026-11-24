@@ -10,7 +10,8 @@
     border-color var(--bootcn-transition),
     box-shadow var(--bootcn-transition);
   max-width: 20rem;
-  padding: 0 0.25rem 0 0.75rem;
+  padding-block: 0;
+  padding-inline: 0.75rem 0.25rem;
 }
 
 .bootcn-search-field:focus-within {

@@ -15,7 +15,7 @@
   height: auto;
   margin: 0 var(--bootcn-separator-spacing);
   border-top: 0;
-  border-left: var(--bootcn-border-width) solid var(--bootcn-separator-color);
+  border-inline-start: var(--bootcn-border-width) solid var(--bootcn-separator-color);
 }
 
 .bootcn-separator-label {

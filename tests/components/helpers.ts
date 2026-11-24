@@ -8,6 +8,7 @@ const here = dirname(fileURLToPath(import.meta.url));
 const bootstrapRoot = resolve(here, '../../node_modules/bootstrap/dist');
 
 const CDN_CSS = '**/bootstrap@5.3.9/dist/css/bootstrap.min.css';
+const CDN_RTL_CSS = '**/bootstrap@5.3.9/dist/css/bootstrap.rtl.min.css';
 const CDN_JS = '**/bootstrap@5.3.9/dist/js/bootstrap.bundle.min.js';
 
 export type PreviewKind = 'components' | 'blocks';
@@ -25,14 +26,22 @@ export function collectErrors(page: Page): string[] {
   return errors;
 }
 
+/** Opens a preview; `query` is e.g. '?dir=rtl' or '?theme=dark'. */
 export async function openPreview(
   page: Page,
   name: string,
   kind: PreviewKind = 'components',
+  query = '',
 ): Promise<void> {
   await page.route(CDN_CSS, (route) =>
     route.fulfill({
       path: resolve(bootstrapRoot, 'css/bootstrap.min.css'),
+      contentType: 'text/css',
+    }),
+  );
+  await page.route(CDN_RTL_CSS, (route) =>
+    route.fulfill({
+      path: resolve(bootstrapRoot, 'css/bootstrap.rtl.min.css'),
       contentType: 'text/css',
     }),
   );
@@ -42,7 +51,7 @@ export async function openPreview(
       contentType: 'text/javascript',
     }),
   );
-  await page.goto(previewUrl(name, kind));
+  await page.goto(previewUrl(name, kind) + query);
 }
 
 export async function expectNoAxeViolations(

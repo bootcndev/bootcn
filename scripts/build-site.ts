@@ -112,6 +112,11 @@ async function writeLlmsTxt(): Promise<void> {
     ['Configuration', 'guide/configuration', 'bootcn.json, paths and pinning a registry version.'],
     ['Theming', 'guide/theming', 'Design tokens and how to change them.'],
     ['Dark mode', 'guide/dark-mode', 'Color modes, saving the choice and a toggle.'],
+    [
+      'Right to left',
+      'guide/rtl',
+      'dir="rtl", Bootstrap\'s RTL CSS, logical properties and mirrored icons.',
+    ],
   ];
   const lines = [
     '# Bootcn',

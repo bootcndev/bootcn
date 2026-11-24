@@ -31,7 +31,8 @@
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
-  padding: 0.25rem 0.75rem 0.25rem 0.25rem;
+  padding-block: 0.25rem;
+  padding-inline: 0.25rem 0.75rem;
   border: var(--bootcn-border-width) solid var(--bootcn-border-color);
   border-radius: var(--bootcn-radius-pill);
   background-color: var(--bootcn-background);

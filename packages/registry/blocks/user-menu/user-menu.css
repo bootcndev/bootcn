@@ -3,7 +3,8 @@
   align-items: center;
   gap: 0.5rem;
   min-height: var(--bootcn-control-height);
-  padding: 0.25rem 0.5rem 0.25rem 0.25rem;
+  padding-block: 0.25rem;
+  padding-inline: 0.25rem 0.5rem;
   border: var(--bootcn-border-width) solid transparent;
   border-radius: var(--bootcn-radius-pill);
   color: var(--bs-body-color);

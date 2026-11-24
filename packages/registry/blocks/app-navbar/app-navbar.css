@@ -60,6 +60,7 @@
 @media (min-width: 992px) {
   .bootcn-navbar__search {
     width: 14rem;
-    margin: 0 0.75rem 0 0;
+    margin-block: 0;
+    margin-inline: 0 0.75rem;
   }
 }

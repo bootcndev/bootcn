@@ -7,7 +7,7 @@
   grid-template-columns: var(--bootcn-switch-width) 1fr;
   column-gap: var(--bootcn-switch-gap);
   align-items: start;
-  padding-left: 0;
+  padding-inline-start: 0;
 }
 
 .bootcn-switch--lg {
@@ -19,7 +19,7 @@
   width: var(--bootcn-switch-width);
   height: var(--bootcn-switch-height);
   margin: 0;
-  margin-left: 0;
+  margin-inline-start: 0;
   /* Off: a muted track with a visible border (3:1). */
   border-color: var(--bootcn-ring);
   background-color: var(--bootcn-input);

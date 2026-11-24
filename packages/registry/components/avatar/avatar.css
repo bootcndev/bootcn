@@ -56,5 +56,5 @@
 }
 
 .bootcn-avatar-group > .bootcn-avatar + .bootcn-avatar {
-  margin-left: var(--bootcn-avatar-group-overlap);
+  margin-inline-start: var(--bootcn-avatar-group-overlap);
 }

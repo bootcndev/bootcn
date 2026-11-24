@@ -43,11 +43,11 @@
 }
 
 .bootcn-carousel__control--prev {
-  left: -3rem;
+  inset-inline-start: -3rem;
 }
 
 .bootcn-carousel__control--next {
-  right: -3rem;
+  inset-inline-end: -3rem;
 }
 
 @media (prefers-reduced-motion: reduce) {

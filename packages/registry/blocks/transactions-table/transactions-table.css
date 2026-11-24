@@ -33,12 +33,12 @@
 
 .bootcn-transactions__table th:first-child,
 .bootcn-transactions__table td:first-child {
-  padding-left: var(--bootcn-card-padding);
+  padding-inline-start: var(--bootcn-card-padding);
 }
 
 .bootcn-transactions__table th:last-child,
 .bootcn-transactions__table td:last-child {
-  padding-right: var(--bootcn-card-padding);
+  padding-inline-end: var(--bootcn-card-padding);
 }
 
 .bootcn-transactions__table td {

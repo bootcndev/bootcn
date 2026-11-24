@@ -158,3 +158,8 @@
     ),
     var(--bootcn-color-slider-checker);
 }
+
+/* Color channels read left to right in every language. */
+.bootcn-color-slider__input {
+  direction: ltr;
+}

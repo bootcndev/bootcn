@@ -37,7 +37,7 @@
 }
 
 .bootcn-ai-chat__new {
-  margin-left: auto;
+  margin-inline-start: auto;
 }
 
 .bootcn-ai-chat .bootcn-conversation {

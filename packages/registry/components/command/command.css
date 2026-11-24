@@ -69,7 +69,7 @@
 }
 
 .bootcn-command__shortcut {
-  margin-left: auto;
+  margin-inline-start: auto;
   color: var(--bootcn-muted-foreground);
   font-size: 0.75rem;
   letter-spacing: 0.1em;

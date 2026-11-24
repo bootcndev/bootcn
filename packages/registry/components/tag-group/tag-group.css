@@ -28,7 +28,8 @@
   align-items: center;
   gap: 0.25rem;
   min-height: 1.75rem;
-  padding: 0.125rem 0.25rem 0.125rem 0.625rem;
+  padding-block: 0.125rem;
+  padding-inline: 0.625rem 0.25rem;
   border: var(--bootcn-border-width) solid var(--bootcn-border-color);
   border-radius: var(--bootcn-radius-pill);
   background-color: var(--bootcn-secondary);
@@ -66,7 +67,7 @@
 
 /* Selectable tags: a .btn-check checkbox before each label. */
 .bootcn-tag--selectable {
-  padding-right: 0.75rem;
+  padding-inline-end: 0.75rem;
   background-color: transparent;
   color: var(--bootcn-foreground);
   cursor: pointer;

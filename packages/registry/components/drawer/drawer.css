@@ -5,8 +5,8 @@
   --bs-offcanvas-border-color: var(--bootcn-border-color);
 
   max-height: 85vh;
-  border-top-left-radius: var(--bootcn-radius-xl);
-  border-top-right-radius: var(--bootcn-radius-xl);
+  border-start-start-radius: var(--bootcn-radius-xl);
+  border-start-end-radius: var(--bootcn-radius-xl);
   box-shadow: var(--bootcn-shadow-lg);
 }
 

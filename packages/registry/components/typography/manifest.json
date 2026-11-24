@@ -4,13 +4,17 @@
   "type": "registry:ui",
   "title": "Typography",
   "description": "Readable styles for long-form text: headings, paragraphs, lists, quotes, inline code and tables.",
-  "version": "1.0.0",
-  "categories": ["layout"],
+  "version": "1.0.1",
+  "categories": [
+    "layout"
+  ],
   "dependencies": [],
   "registryDependencies": [],
   "compatibility": {
     "bootstrap": "5.3",
-    "platform": ["Bootstrap CSS"]
+    "platform": [
+      "Bootstrap CSS"
+    ]
   },
   "license": "MIT",
   "files": [

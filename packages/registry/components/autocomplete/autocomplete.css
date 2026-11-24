@@ -44,8 +44,8 @@
   position: absolute;
   z-index: 1000;
   top: calc(1.25rem + var(--bootcn-control-height) + 0.75rem);
-  right: 0;
-  left: 0;
+  inset-inline-end: 0;
+  inset-inline-start: 0;
   max-height: 15rem;
   margin: 0;
   padding: 0.25rem;

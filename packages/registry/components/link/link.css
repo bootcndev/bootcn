@@ -38,6 +38,6 @@
 .bootcn-link__external {
   width: 0.875em;
   height: 0.875em;
-  margin-left: 0.125em;
+  margin-inline-start: 0.125em;
   vertical-align: -0.0625em;
 }

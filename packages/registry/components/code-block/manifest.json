@@ -4,13 +4,17 @@
   "type": "registry:ui",
   "title": "Code block",
   "description": "A titled block of code with a copy button and optional line numbers.",
-  "version": "1.0.0",
-  "categories": ["data-display"],
+  "version": "1.0.1",
+  "categories": [
+    "data-display"
+  ],
   "dependencies": [],
   "registryDependencies": [],
   "compatibility": {
     "bootstrap": "5.3",
-    "platform": ["Bootstrap CSS"]
+    "platform": [
+      "Bootstrap CSS"
+    ]
   },
   "license": "MIT",
   "files": [

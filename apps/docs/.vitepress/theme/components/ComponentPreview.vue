@@ -26,10 +26,16 @@ const props = withDefaults(
 );
 
 const { isDark } = useData();
-const src = withBase(
+const base = withBase(
   props.src ? `/${props.src}` : `/previews/${props.kind}/${props.name}/preview.html`,
 );
-const newTabHref = computed(() => `${src}?theme=${isDark.value ? 'dark' : 'light'}`);
+// Right to left: registry previews switch to Bootstrap's RTL CSS with ?dir=rtl.
+const canRtl = !props.src;
+const rtl = ref(false);
+const src = computed(() => (rtl.value ? `${base}?dir=rtl` : base));
+const newTabHref = computed(
+  () => `${base}?theme=${isDark.value ? 'dark' : 'light'}${rtl.value ? '&dir=rtl' : ''}`,
+);
 const frame = ref<HTMLIFrameElement | null>(null);
 const frameHeight = ref(props.fixed ? props.height : 360);
 let observer: ResizeObserver | undefined;
@@ -155,6 +161,15 @@ onBeforeUnmount(() => {
   </figure>
   <DocsTabs v-else :labels="['Preview', 'Code']" :label="`${title} preview and code`">
     <template #actions>
+      <button
+        v-if="canRtl"
+        type="button"
+        class="bootcn-preview__rtl"
+        :aria-pressed="rtl"
+        @click="rtl = !rtl"
+      >
+        RTL
+      </button>
       <a :href="newTabHref" target="_blank" rel="noreferrer">Open in a new tab</a>
     </template>
     <template #tab-0>

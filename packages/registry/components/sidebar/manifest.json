@@ -4,13 +4,20 @@
   "type": "registry:ui",
   "title": "Sidebar",
   "description": "An app sidebar that collapses to icons on desktop (remembered, Ctrl/⌘ B) and becomes a drawer on phones.",
-  "version": "1.0.0",
-  "categories": ["navigation"],
+  "version": "1.0.1",
+  "categories": [
+    "navigation"
+  ],
   "dependencies": [],
-  "registryDependencies": ["avatar"],
+  "registryDependencies": [
+    "avatar"
+  ],
   "compatibility": {
     "bootstrap": "5.3",
-    "platform": ["Bootstrap CSS", "Bootstrap JS bundle"]
+    "platform": [
+      "Bootstrap CSS",
+      "Bootstrap JS bundle"
+    ]
   },
   "license": "MIT",
   "files": [

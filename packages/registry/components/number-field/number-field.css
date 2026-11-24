@@ -62,12 +62,12 @@
 }
 
 .bootcn-number-field__step:first-child {
-  border-right: var(--bootcn-border-width) solid var(--bootcn-input);
+  border-inline-end: var(--bootcn-border-width) solid var(--bootcn-input);
   border-radius: var(--bootcn-radius) 0 0 var(--bootcn-radius);
 }
 
 .bootcn-number-field__step:last-child {
-  border-left: var(--bootcn-border-width) solid var(--bootcn-input);
+  border-inline-start: var(--bootcn-border-width) solid var(--bootcn-input);
   border-radius: 0 var(--bootcn-radius) var(--bootcn-radius) 0;
 }
 

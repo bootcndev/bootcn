@@ -4,8 +4,10 @@
   "type": "registry:template",
   "title": "Analytics dashboard",
   "description": "An analytics page with the collapsible sidebar, a report date picker, metric cards, four charts and a sortable, filterable payments table.",
-  "version": "1.0.0",
-  "categories": ["dashboard"],
+  "version": "1.0.1",
+  "categories": [
+    "dashboard"
+  ],
   "dependencies": [],
   "registryDependencies": [
     "sidebar",
@@ -21,7 +23,10 @@
   ],
   "compatibility": {
     "bootstrap": "5.3",
-    "platform": ["Bootstrap CSS", "Bootstrap JS bundle"]
+    "platform": [
+      "Bootstrap CSS",
+      "Bootstrap JS bundle"
+    ]
   },
   "license": "MIT",
   "files": [

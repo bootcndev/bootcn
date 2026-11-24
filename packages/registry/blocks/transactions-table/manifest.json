@@ -4,13 +4,22 @@
   "type": "registry:block",
   "title": "Transactions table",
   "description": "A card with a searchable, responsive table of payments, status badges and pagination.",
-  "version": "1.1.0",
-  "categories": ["dashboard"],
+  "version": "1.1.1",
+  "categories": [
+    "dashboard"
+  ],
   "dependencies": [],
-  "registryDependencies": ["card", "badge", "button", "input"],
+  "registryDependencies": [
+    "card",
+    "badge",
+    "button",
+    "input"
+  ],
   "compatibility": {
     "bootstrap": "5.3",
-    "platform": ["Bootstrap CSS"]
+    "platform": [
+      "Bootstrap CSS"
+    ]
   },
   "license": "MIT",
   "files": [

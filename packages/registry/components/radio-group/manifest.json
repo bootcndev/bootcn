@@ -4,13 +4,18 @@
   "type": "registry:ui",
   "title": "Radio group",
   "description": "A labeled group of radio options, as a list or as selectable cards.",
-  "version": "1.1.0",
-  "categories": ["forms", "selection"],
+  "version": "1.1.1",
+  "categories": [
+    "forms",
+    "selection"
+  ],
   "dependencies": [],
   "registryDependencies": [],
   "compatibility": {
     "bootstrap": "5.3",
-    "platform": ["Bootstrap CSS"]
+    "platform": [
+      "Bootstrap CSS"
+    ]
   },
   "license": "MIT",
   "files": [

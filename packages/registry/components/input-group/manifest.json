@@ -4,13 +4,20 @@
   "type": "registry:ui",
   "title": "Input group",
   "description": "An input with icons, text or buttons inside the same border, such as a search box or a URL field.",
-  "version": "1.0.0",
-  "categories": ["forms"],
+  "version": "1.0.1",
+  "categories": [
+    "forms"
+  ],
   "dependencies": [],
-  "registryDependencies": ["button", "label"],
+  "registryDependencies": [
+    "button",
+    "label"
+  ],
   "compatibility": {
     "bootstrap": "5.3",
-    "platform": ["Bootstrap CSS"]
+    "platform": [
+      "Bootstrap CSS"
+    ]
   },
   "license": "MIT",
   "files": [

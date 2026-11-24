@@ -35,7 +35,7 @@
 
 .bootcn-menubar__content {
   top: calc(100% + 0.5rem);
-  left: -0.25rem;
+  inset-inline-start: -0.25rem;
 }
 
 .bootcn-menubar__content.show {

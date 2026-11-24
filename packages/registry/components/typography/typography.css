@@ -56,8 +56,8 @@
 
 .bootcn-typography blockquote {
   margin: 1.5rem 0 0;
-  padding-left: 1.5rem;
-  border-left: 2px solid var(--bootcn-border-color);
+  padding-inline-start: 1.5rem;
+  border-inline-start: 2px solid var(--bootcn-border-color);
   font-style: italic;
 }
 
@@ -68,7 +68,7 @@
 .bootcn-typography ul,
 .bootcn-typography ol {
   margin: 1.5rem 0 0;
-  padding-left: 1.5rem;
+  padding-inline-start: 1.5rem;
 }
 
 .bootcn-typography li + li {
@@ -95,7 +95,7 @@
 .bootcn-typography td {
   padding: 0.5rem 1rem;
   border: var(--bootcn-border-width) solid var(--bootcn-border-color);
-  text-align: left;
+  text-align: start;
 }
 
 .bootcn-typography th {

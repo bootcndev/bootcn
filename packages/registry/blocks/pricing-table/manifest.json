@@ -4,13 +4,20 @@
   "type": "registry:block",
   "title": "Pricing table",
   "description": "Three plans with a monthly/yearly switch, a highlighted plan, prices, calls to action and feature lists.",
-  "version": "1.0.0",
-  "categories": ["marketing"],
+  "version": "1.0.1",
+  "categories": [
+    "marketing"
+  ],
   "dependencies": [],
-  "registryDependencies": ["button", "badge"],
+  "registryDependencies": [
+    "button",
+    "badge"
+  ],
   "compatibility": {
     "bootstrap": "5.3",
-    "platform": ["Bootstrap CSS"]
+    "platform": [
+      "Bootstrap CSS"
+    ]
   },
   "license": "MIT",
   "files": [

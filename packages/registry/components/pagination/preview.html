@@ -20,6 +20,16 @@
           }
         }
         document.documentElement.setAttribute('data-bs-theme', theme === 'dark' ? 'dark' : 'light');
+        // ?dir=rtl: right to left, with Bootstrap's RTL stylesheet.
+        if (new URLSearchParams(location.search).get('dir') === 'rtl') {
+          document.documentElement.setAttribute('dir', 'rtl');
+          new MutationObserver(function (records, observer) {
+            var link = document.querySelector('link[href*="bootstrap.min.css"]');
+            if (!link) return;
+            link.href = link.href.replace('bootstrap.min.css', 'bootstrap.rtl.min.css');
+            observer.disconnect();
+          }).observe(document.documentElement, { childList: true, subtree: true });
+        }
       })();
     </script>
     <link
@@ -37,7 +47,7 @@
           <li class="page-item">
             <a class="page-link bootcn-pagination__step" href="#page-1" aria-label="Previous page">
               <svg
-                class="bootcn-icon"
+                class="bootcn-icon bootcn-rtl-flip"
                 width="16"
                 height="16"
                 viewBox="0 0 24 24"
@@ -67,7 +77,7 @@
             <a class="page-link bootcn-pagination__step" href="#page-3" aria-label="Next page">
               <span class="bootcn-pagination__step-text">Next</span>
               <svg
-                class="bootcn-icon"
+                class="bootcn-icon bootcn-rtl-flip"
                 width="16"
                 height="16"
                 viewBox="0 0 24 24"

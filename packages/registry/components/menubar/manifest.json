@@ -4,13 +4,19 @@
   "type": "registry:ui",
   "title": "Menubar",
   "description": "A horizontal bar of menus, like a desktop application, with full arrow-key navigation and checkable items.",
-  "version": "1.0.0",
-  "categories": ["navigation"],
+  "version": "1.1.0",
+  "categories": [
+    "navigation"
+  ],
   "dependencies": [],
-  "registryDependencies": ["dropdown"],
+  "registryDependencies": [
+    "dropdown"
+  ],
   "compatibility": {
     "bootstrap": "5.3",
-    "platform": ["Bootstrap CSS"]
+    "platform": [
+      "Bootstrap CSS"
+    ]
   },
   "license": "MIT",
   "files": [

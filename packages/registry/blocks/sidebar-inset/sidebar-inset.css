@@ -5,12 +5,13 @@
 
 @media (min-width: 992px) {
   .bootcn-sidenav-layout--inset .bootcn-sidenav {
-    border-right: 0;
+    border-inline-end: 0;
     background-color: transparent;
   }
 
   .bootcn-sidenav-layout--inset .bootcn-sidenav-layout__main {
-    margin: 0.5rem 0.5rem 0.5rem 0;
+    margin-block: 0.5rem;
+    margin-inline: 0 0.5rem;
     overflow: hidden;
     border: var(--bootcn-border-width) solid var(--bootcn-border-color);
     border-radius: var(--bootcn-radius-xl);

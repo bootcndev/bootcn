@@ -98,6 +98,7 @@ export default defineConfig({
           { text: 'Configuration', link: '/guide/configuration' },
           { text: 'Theming', link: '/guide/theming' },
           { text: 'Dark mode', link: '/guide/dark-mode' },
+          { text: 'Right to left', link: '/guide/rtl' },
         ],
       },
       ...kindSidebar('components'),

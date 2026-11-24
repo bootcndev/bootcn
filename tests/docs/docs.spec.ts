@@ -480,3 +480,21 @@ test('item pages copy a prompt for AI assistants', async ({ page }) => {
   expect(text).toContain('npx bootcn add combobox');
   expect(text).toContain('/r/combobox.json');
 });
+
+test('previews switch to right to left', async ({ page }) => {
+  await page.goto('components/toolbar');
+  const frame = page.locator('.bootcn-preview iframe').first();
+  const rtl = page.getByRole('button', { name: 'RTL' });
+  await expect(rtl).toHaveAttribute('aria-pressed', 'false');
+  await rtl.click();
+  await expect(rtl).toHaveAttribute('aria-pressed', 'true');
+  await expect(frame).toHaveAttribute('src', /\?dir=rtl$/);
+  await expect(page.frameLocator('.bootcn-preview iframe').first().locator('html')).toHaveAttribute(
+    'dir',
+    'rtl',
+  );
+  await expect(page.getByRole('link', { name: 'Open in a new tab' })).toHaveAttribute(
+    'href',
+    /&dir=rtl$/,
+  );
+});

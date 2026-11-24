@@ -4,13 +4,17 @@
   "type": "registry:ui",
   "title": "Prompt input",
   "description": "The message box of an AI chat: a growing textarea, file attachments, a model choice, suggestions and a send button that turns into stop.",
-  "version": "1.0.0",
-  "categories": ["ai"],
+  "version": "1.0.1",
+  "categories": [
+    "ai"
+  ],
   "dependencies": [],
   "registryDependencies": [],
   "compatibility": {
     "bootstrap": "5.3",
-    "platform": ["Bootstrap CSS"]
+    "platform": [
+      "Bootstrap CSS"
+    ]
   },
   "license": "MIT",
   "files": [

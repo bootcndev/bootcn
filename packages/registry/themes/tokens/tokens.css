@@ -247,6 +247,12 @@ h6,
   letter-spacing: -0.015em;
 }
 
+/* Right-to-left: directional icons (chevrons, arrows) point the other way.
+   `scale` composes with any rotation a component sets with `transform`. */
+[dir='rtl'] .bootcn-rtl-flip {
+  scale: -1 1;
+}
+
 @media (prefers-reduced-motion: reduce) {
   :root {
     --bootcn-transition-duration: 0ms;

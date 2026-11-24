@@ -68,7 +68,7 @@
 }
 
 .bootcn-otp__slot + .bootcn-otp__slot {
-  border-left: 0;
+  border-inline-start: 0;
 }
 
 .bootcn-otp__slot:first-child {

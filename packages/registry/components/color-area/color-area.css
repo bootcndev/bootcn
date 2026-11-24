@@ -91,3 +91,9 @@
   font-family: var(--bs-font-monospace);
   text-transform: lowercase;
 }
+
+/* A color space, not text: it stays left to right in every language. */
+.bootcn-color-area__area,
+.bootcn-color-area .bootcn-color-slider__input {
+  direction: ltr;
+}

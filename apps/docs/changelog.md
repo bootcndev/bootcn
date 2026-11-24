@@ -6,6 +6,14 @@ each published version stays available under `/v/<version>/`) and the **CLI**
 
 ## Registry
 
+### 0.16.0
+
+- Right to left: every component, block and template uses logical CSS
+  properties; directional icons carry `bootcn-rtl-flip` (mirrored by
+  `tokens.css` 2.2.0); toolbar, menubar, calendar and resizable swap ← and →;
+  sliders fill from the right. Guide: [Right to left](./guide/rtl).
+- Docs: an RTL button on every preview.
+
 ### 0.15.0
 
 - Form: validation with the browser's rules, messages under each field, an

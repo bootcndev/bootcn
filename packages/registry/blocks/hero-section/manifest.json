@@ -4,13 +4,20 @@
   "type": "registry:block",
   "title": "Hero section",
   "description": "A centered landing-page hero: announcement link, headline, lead text, two calls to action and a note, over a subtle dot pattern.",
-  "version": "1.0.0",
-  "categories": ["marketing"],
+  "version": "1.0.1",
+  "categories": [
+    "marketing"
+  ],
   "dependencies": [],
-  "registryDependencies": ["button", "badge"],
+  "registryDependencies": [
+    "button",
+    "badge"
+  ],
   "compatibility": {
     "bootstrap": "5.3",
-    "platform": ["Bootstrap CSS"]
+    "platform": [
+      "Bootstrap CSS"
+    ]
   },
   "license": "MIT",
   "files": [

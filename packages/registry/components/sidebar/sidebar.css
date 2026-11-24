@@ -22,7 +22,7 @@
     width: var(--bootcn-sidenav-width);
     height: 100vh;
     overflow-x: hidden;
-    border-right: var(--bootcn-border-width) solid var(--bootcn-border-color);
+    border-inline-end: var(--bootcn-border-width) solid var(--bootcn-border-color);
     background-color: var(--bs-tertiary-bg);
     transition:
       width var(--bootcn-transition),
@@ -65,7 +65,7 @@
 .bootcn-sidenav__footer .bootcn-avatar {
   --bootcn-avatar-size: 1.75rem;
 
-  margin-left: -0.125rem;
+  margin-inline-start: -0.125rem;
 }
 
 .bootcn-sidenav__logo {

@@ -230,6 +230,14 @@
     }
   }
 
+  // In right-to-left text, the left and right arrow keys swap meaning.
+  function logicalKey(event, element) {
+    if (getComputedStyle(element).direction !== 'rtl') return event.key;
+    if (event.key === 'ArrowLeft') return 'ArrowRight';
+    if (event.key === 'ArrowRight') return 'ArrowLeft';
+    return event.key;
+  }
+
   function onKeydown(event) {
     const day = event.target.closest && event.target.closest('.bootcn-calendar__day');
     const root = day && day.closest(ROOT);
@@ -237,7 +245,7 @@
     const current = parse(day.getAttribute('data-date'));
     const start = weekStart(root);
     let next;
-    switch (event.key) {
+    switch (logicalKey(event, root)) {
       case 'ArrowLeft':
         next = addDays(current, -1);
         break;

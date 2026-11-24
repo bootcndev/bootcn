@@ -20,6 +20,16 @@
           }
         }
         document.documentElement.setAttribute('data-bs-theme', theme === 'dark' ? 'dark' : 'light');
+        // ?dir=rtl: right to left, with Bootstrap's RTL stylesheet.
+        if (new URLSearchParams(location.search).get('dir') === 'rtl') {
+          document.documentElement.setAttribute('dir', 'rtl');
+          new MutationObserver(function (records, observer) {
+            var link = document.querySelector('link[href*="bootstrap.min.css"]');
+            if (!link) return;
+            link.href = link.href.replace('bootstrap.min.css', 'bootstrap.rtl.min.css');
+            observer.disconnect();
+          }).observe(document.documentElement, { childList: true, subtree: true });
+        }
       })();
     </script>
     <link
@@ -177,7 +187,7 @@
                   </svg>
                   <span>Playground</span>
                   <svg
-                    class="bootcn-icon bootcn-sidebar-groups__chevron"
+                    class="bootcn-icon bootcn-sidebar-groups__chevron bootcn-rtl-flip"
                     width="16"
                     height="16"
                     viewBox="0 0 24 24"
@@ -233,7 +243,7 @@
                   </svg>
                   <span>Models</span>
                   <svg
-                    class="bootcn-icon bootcn-sidebar-groups__chevron"
+                    class="bootcn-icon bootcn-sidebar-groups__chevron bootcn-rtl-flip"
                     width="16"
                     height="16"
                     viewBox="0 0 24 24"
@@ -281,7 +291,7 @@
                   </svg>
                   <span>Documentation</span>
                   <svg
-                    class="bootcn-icon bootcn-sidebar-groups__chevron"
+                    class="bootcn-icon bootcn-sidebar-groups__chevron bootcn-rtl-flip"
                     width="16"
                     height="16"
                     viewBox="0 0 24 24"

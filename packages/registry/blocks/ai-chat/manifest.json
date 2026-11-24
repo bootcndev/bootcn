@@ -4,13 +4,21 @@
   "type": "registry:block",
   "title": "AI chat",
   "description": "A complete chat panel: a header with \"New chat\", the conversation and the prompt input with suggestions and attachments, wired together.",
-  "version": "1.0.0",
-  "categories": ["ai"],
+  "version": "1.0.1",
+  "categories": [
+    "ai"
+  ],
   "dependencies": [],
-  "registryDependencies": ["conversation", "prompt-input", "button"],
+  "registryDependencies": [
+    "conversation",
+    "prompt-input",
+    "button"
+  ],
   "compatibility": {
     "bootstrap": "5.3",
-    "platform": ["Bootstrap CSS"]
+    "platform": [
+      "Bootstrap CSS"
+    ]
   },
   "license": "MIT",
   "files": [

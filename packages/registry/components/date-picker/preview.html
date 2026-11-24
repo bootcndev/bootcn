@@ -20,6 +20,16 @@
           }
         }
         document.documentElement.setAttribute('data-bs-theme', theme === 'dark' ? 'dark' : 'light');
+        // ?dir=rtl: right to left, with Bootstrap's RTL stylesheet.
+        if (new URLSearchParams(location.search).get('dir') === 'rtl') {
+          document.documentElement.setAttribute('dir', 'rtl');
+          new MutationObserver(function (records, observer) {
+            var link = document.querySelector('link[href*="bootstrap.min.css"]');
+            if (!link) return;
+            link.href = link.href.replace('bootstrap.min.css', 'bootstrap.rtl.min.css');
+            observer.disconnect();
+          }).observe(document.documentElement, { childList: true, subtree: true });
+        }
       })();
     </script>
     <link
@@ -79,7 +89,7 @@
                 aria-label="Previous month"
               >
                 <svg
-                  class="bootcn-icon"
+                  class="bootcn-icon bootcn-rtl-flip"
                   width="16"
                   height="16"
                   viewBox="0 0 24 24"
@@ -108,7 +118,7 @@
                 aria-label="Next month"
               >
                 <svg
-                  class="bootcn-icon"
+                  class="bootcn-icon bootcn-rtl-flip"
                   width="16"
                   height="16"
                   viewBox="0 0 24 24"

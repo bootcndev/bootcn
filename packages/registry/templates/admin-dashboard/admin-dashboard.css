@@ -11,7 +11,7 @@
   position: absolute;
   z-index: 1080;
   top: 0.5rem;
-  left: 0.5rem;
+  inset-inline-start: 0.5rem;
   padding: 0.5rem 0.75rem;
   border-radius: var(--bootcn-radius);
   background-color: var(--bs-body-bg);
@@ -61,7 +61,7 @@
   display: flex;
   align-items: center;
   gap: 0.25rem;
-  margin-left: auto;
+  margin-inline-start: auto;
 }
 
 /* Theme toggle: the moon offers dark mode, the sun offers light mode. */

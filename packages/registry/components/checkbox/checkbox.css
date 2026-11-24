@@ -6,7 +6,7 @@
   grid-template-columns: var(--bootcn-checkbox-size) 1fr;
   column-gap: var(--bootcn-checkbox-gap);
   align-items: start;
-  padding-left: 0;
+  padding-inline-start: 0;
 }
 
 .bootcn-checkbox .bootcn-checkbox__input {
