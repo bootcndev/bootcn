@@ -133,3 +133,30 @@ A component is not done until all of these hold:
 - Responsive at 320px, 768px and 1280px.
 - Respects `prefers-reduced-motion`.
 - Documented dependencies and accessibility notes in the component `README.md`.
+
+## 9. Manifest and install targets
+
+Every item directory has a `manifest.json` validated against
+`schema/registry-item.schema.json`. Each file entry has:
+
+- `path`: the source file, relative to the item directory.
+- `target`: the install path, **relative to the directory configured for the
+  file type** in the user's `bootcn.json`:
+
+| File `type`          | Installs under     | Allowed extensions |
+| -------------------- | ------------------ | ------------------ |
+| `registry:component` | `paths.components` | `.html`, `.php`    |
+| `registry:style`     | `paths.css`        | `.css`             |
+| `registry:script`    | `paths.js`         | `.js`              |
+| `registry:lib`       | `paths.lib`        | `.js`              |
+
+So `{ "path": "button.css", "target": "button.css", "type": "registry:style" }`
+installs to `assets/css/button.css` with the default config. A target keeps the
+source extension. Two items may not install the same target.
+
+`registryDependencies` lists other items to install first. The `tokens` theme is
+always installed and does not need to be listed. Platform requirements
+(Bootstrap CSS, Bootstrap JS bundle) go in `compatibility.platform`; npm-style
+packages go in `dependencies` and are only displayed, never installed.
+
+Run `pnpm registry:validate` after any change; CI runs it too.
