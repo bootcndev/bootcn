@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Bootcn Sign-up card preview</title>
+    <script>
+      // Preview theme: ?theme=dark|light, else the docs page around the frame, else light.
+      (function () {
+        var theme = new URLSearchParams(location.search).get('theme');
+        if (!theme) {
+          try {
+            theme =
+              window.parent !== window &&
+              window.parent.document.documentElement.classList.contains('dark')
+                ? 'dark'
+                : 'light';
+          } catch (error) {
+            theme = 'light';
+          }
+        }
+        document.documentElement.setAttribute('data-bs-theme', theme === 'dark' ? 'dark' : 'light');
+      })();
+    </script>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.9/dist/css/bootstrap.min.css"
+    />
+    <link rel="stylesheet" href="../../themes/tokens/tokens.css" />
+    <link rel="stylesheet" href="../../components/button/button.css" />
+    <link rel="stylesheet" href="../../components/card/card.css" />
+    <link rel="stylesheet" href="../../components/input/input.css" />
+    <link rel="stylesheet" href="../../components/checkbox/checkbox.css" />
+    <link rel="stylesheet" href="signup-card.css" />
+  </head>
+  <body>
+    <main class="container py-4">
+      <h1 class="h4 mb-4">Sign-up card</h1>
+      <section class="bootcn-signup-card" aria-labelledby="bootcn-signup-card-title">
+        <div class="card bootcn-card">
+          <header class="bootcn-card__header">
+            <h2 class="bootcn-card__title" id="bootcn-signup-card-title">Create an account</h2>
+            <p class="bootcn-card__description">It takes less than a minute.</p>
+          </header>
+          <form class="bootcn-card__content bootcn-signup-card__form" action="#" method="post">
+            <div class="bootcn-field">
+              <label for="bootcn-signup-card-name" class="form-label bootcn-field__label"
+                >Full name</label
+              >
+              <input
+                type="text"
+                class="form-control bootcn-input"
+                id="bootcn-signup-card-name"
+                name="name"
+                autocomplete="name"
+                required
+              />
+            </div>
+            <div class="bootcn-field">
+              <label for="bootcn-signup-card-email" class="form-label bootcn-field__label"
+                >Email</label
+              >
+              <input
+                type="email"
+                class="form-control bootcn-input"
+                id="bootcn-signup-card-email"
+                name="email"
+                autocomplete="email"
+                placeholder="you@example.com"
+                required
+              />
+            </div>
+            <div class="bootcn-field">
+              <label for="bootcn-signup-card-password" class="form-label bootcn-field__label"
+                >Password</label
+              >
+              <input
+                type="password"
+                class="form-control bootcn-input"
+                id="bootcn-signup-card-password"
+                name="password"
+                autocomplete="new-password"
+                required
+                minlength="8"
+                aria-describedby="bootcn-signup-card-password-help"
+              />
+              <p class="bootcn-field__help" id="bootcn-signup-card-password-help">
+                At least 8 characters.
+              </p>
+            </div>
+            <div class="form-check bootcn-checkbox">
+              <input
+                class="form-check-input bootcn-checkbox__input"
+                type="checkbox"
+                id="bootcn-signup-card-terms"
+                name="terms"
+                required
+              />
+              <label class="form-check-label bootcn-checkbox__label" for="bootcn-signup-card-terms">
+                I agree to the <a class="bootcn-signup-card__link" href="#terms">terms</a> and
+                <a class="bootcn-signup-card__link" href="#privacy">privacy policy</a>
+              </label>
+            </div>
+            <button type="submit" class="btn bootcn-button bootcn-button--default w-100">
+              Create account
+            </button>
+          </form>
+          <footer class="bootcn-card__footer bootcn-signup-card__footer">
+            <p class="mb-0">
+              Already registered? <a class="bootcn-signup-card__link" href="#sign-in">Sign in</a>
+            </p>
+          </footer>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>

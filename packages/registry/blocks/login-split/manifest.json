@@ -1,0 +1,28 @@
+{
+  "$schema": "../../schema/registry-item.schema.json",
+  "name": "login-split",
+  "type": "registry:block",
+  "title": "Login split screen",
+  "description": "A two-column sign-in page: a brand panel with a quote beside the form, stacking on small screens.",
+  "version": "1.0.0",
+  "categories": ["authentication"],
+  "dependencies": [],
+  "registryDependencies": ["input", "checkbox", "button"],
+  "compatibility": {
+    "bootstrap": "5.3",
+    "platform": ["Bootstrap CSS"]
+  },
+  "license": "MIT",
+  "files": [
+    {
+      "path": "login-split.html",
+      "target": "login-split.html",
+      "type": "registry:component"
+    },
+    {
+      "path": "login-split.css",
+      "target": "login-split.css",
+      "type": "registry:style"
+    }
+  ]
+}

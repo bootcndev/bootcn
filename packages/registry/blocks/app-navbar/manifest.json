@@ -1,0 +1,28 @@
+{
+  "$schema": "../../schema/registry-item.schema.json",
+  "name": "app-navbar",
+  "type": "registry:block",
+  "title": "App navbar",
+  "description": "A responsive top navigation bar with brand, links, search and a user menu that collapses on small screens.",
+  "version": "1.0.0",
+  "categories": ["navigation"],
+  "dependencies": [],
+  "registryDependencies": ["user-menu", "input"],
+  "compatibility": {
+    "bootstrap": "5.3",
+    "platform": ["Bootstrap CSS", "Bootstrap JS bundle"]
+  },
+  "license": "MIT",
+  "files": [
+    {
+      "path": "app-navbar.html",
+      "target": "app-navbar.html",
+      "type": "registry:component"
+    },
+    {
+      "path": "app-navbar.css",
+      "target": "app-navbar.css",
+      "type": "registry:style"
+    }
+  ]
+}

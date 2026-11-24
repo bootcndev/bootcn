@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Bootcn Activity feed preview</title>
+    <script>
+      // Preview theme: ?theme=dark|light, else the docs page around the frame, else light.
+      (function () {
+        var theme = new URLSearchParams(location.search).get('theme');
+        if (!theme) {
+          try {
+            theme =
+              window.parent !== window &&
+              window.parent.document.documentElement.classList.contains('dark')
+                ? 'dark'
+                : 'light';
+          } catch (error) {
+            theme = 'light';
+          }
+        }
+        document.documentElement.setAttribute('data-bs-theme', theme === 'dark' ? 'dark' : 'light');
+      })();
+    </script>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.9/dist/css/bootstrap.min.css"
+    />
+    <link rel="stylesheet" href="../../themes/tokens/tokens.css" />
+    <link rel="stylesheet" href="../../components/button/button.css" />
+    <link rel="stylesheet" href="../../components/card/card.css" />
+    <link rel="stylesheet" href="../../components/avatar/avatar.css" />
+    <link rel="stylesheet" href="activity-feed.css" />
+  </head>
+  <body>
+    <main class="container py-4">
+      <h1 class="h4 mb-4">Activity feed</h1>
+      <section class="card bootcn-card bootcn-activity" aria-labelledby="bootcn-activity-title">
+        <header class="bootcn-card__header">
+          <h2 class="bootcn-card__title" id="bootcn-activity-title">Recent activity</h2>
+          <p class="bootcn-card__description">What your team did in the last day.</p>
+        </header>
+        <ol class="bootcn-card__content bootcn-activity__list">
+          <li class="bootcn-activity__item">
+            <span class="bootcn-avatar bootcn-avatar--sm" aria-hidden="true"
+              ><span class="bootcn-avatar__fallback">MP</span></span
+            >
+            <div class="bootcn-activity__body">
+              <p class="bootcn-activity__text">
+                <strong>Maria Papadopoulou</strong> merged <a href="#">Release 2.4</a>
+              </p>
+              <time class="bootcn-activity__time" datetime="2026-11-24T09:12">12 minutes ago</time>
+            </div>
+          </li>
+          <li class="bootcn-activity__item">
+            <span class="bootcn-avatar bootcn-avatar--sm" aria-hidden="true"
+              ><span class="bootcn-avatar__fallback">NG</span></span
+            >
+            <div class="bootcn-activity__body">
+              <p class="bootcn-activity__text">
+                <strong>Nikos Georgiou</strong> commented on <a href="#">Checkout redesign</a>
+              </p>
+              <time class="bootcn-activity__time" datetime="2026-11-24T08:40">44 minutes ago</time>
+            </div>
+          </li>
+          <li class="bootcn-activity__item">
+            <span class="bootcn-avatar bootcn-avatar--sm" aria-hidden="true"
+              ><span class="bootcn-avatar__fallback">EK</span></span
+            >
+            <div class="bootcn-activity__body">
+              <p class="bootcn-activity__text">
+                <strong>Eleni Kosta</strong> invited <a href="#">two new members</a>
+              </p>
+              <time class="bootcn-activity__time" datetime="2026-11-24T07:05">2 hours ago</time>
+            </div>
+          </li>
+          <li class="bootcn-activity__item">
+            <span class="bootcn-avatar bootcn-avatar--sm" aria-hidden="true"
+              ><span class="bootcn-avatar__fallback">AI</span></span
+            >
+            <div class="bootcn-activity__body">
+              <p class="bootcn-activity__text">
+                <strong>Alex Ioannou</strong> closed <a href="#">Issue #182</a>
+              </p>
+              <time class="bootcn-activity__time" datetime="2026-11-23T16:30">Yesterday</time>
+            </div>
+          </li>
+        </ol>
+        <footer class="bootcn-card__footer bootcn-activity__footer">
+          <a href="#activity">View all activity</a>
+        </footer>
+      </section>
+    </main>
+  </body>
+</html>

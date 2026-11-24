@@ -6,7 +6,8 @@ import { HtmlValidate, type Report } from 'html-validate';
 import { describe, expect, it } from 'vitest';
 
 const here = dirname(fileURLToPath(import.meta.url));
-const componentsDir = resolve(here, '../components');
+/** Kinds whose items have a snippet (<name>.html) and a preview.html. */
+const KINDS = ['components', 'blocks'];
 
 const htmlvalidate = new HtmlValidate({
   extends: ['html-validate:recommended'],
@@ -32,19 +33,23 @@ function describeReport(report: Report): string {
     .join('\n');
 }
 
-async function componentNames(): Promise<string[]> {
-  const entries = await readdir(componentsDir, { withFileTypes: true });
-  return entries
-    .filter((entry) => entry.isDirectory())
-    .map((entry) => entry.name)
-    .sort();
+async function itemDirs(): Promise<{ name: string; dir: string }[]> {
+  const found: { name: string; dir: string }[] = [];
+  for (const kind of KINDS) {
+    const kindDir = resolve(here, '..', kind);
+    const entries = await readdir(kindDir, { withFileTypes: true }).catch(() => []);
+    for (const entry of entries) {
+      if (entry.isDirectory()) found.push({ name: entry.name, dir: resolve(kindDir, entry.name) });
+    }
+  }
+  return found.sort((a, b) => a.name.localeCompare(b.name));
 }
 
-describe('component HTML', () => {
+describe('component and block HTML', () => {
   it('previews and snippets are valid HTML', async () => {
-    for (const name of await componentNames()) {
-      const dir = resolve(componentsDir, name);
-
+    const items = await itemDirs();
+    expect(items.length).toBeGreaterThan(20);
+    for (const { name, dir } of items) {
       const preview = await readFile(resolve(dir, 'preview.html'), 'utf8');
       const previewReport = await htmlvalidate.validateString(preview, `${name}/preview.html`);
       expect(previewReport.valid, describeReport(previewReport)).toBe(true);
@@ -55,6 +60,28 @@ describe('component HTML', () => {
         `${name}/${name}.html`,
       );
       expect(snippetReport.valid, describeReport(snippetReport)).toBe(true);
+    }
+  });
+});
+
+describe('template pages', () => {
+  it('are valid HTML once placeholders are replaced', async () => {
+    const templatesDir = resolve(here, '../templates');
+    const entries = await readdir(templatesDir, { withFileTypes: true }).catch(() => []);
+    const names = entries.filter((entry) => entry.isDirectory()).map((entry) => entry.name);
+    expect(names.length).toBeGreaterThan(0);
+    for (const name of names) {
+      const manifest = JSON.parse(
+        await readFile(resolve(templatesDir, name, 'manifest.json'), 'utf8'),
+      ) as { files: { path: string; type: string }[] };
+      for (const file of manifest.files.filter((entry) => entry.type === 'registry:page')) {
+        const page = (await readFile(resolve(templatesDir, name, file.path), 'utf8')).replace(
+          /\{\{bootcn:(\w+)\}\}/g,
+          'assets/$1',
+        );
+        const report = await htmlvalidate.validateString(page, `${name}/${file.path}`);
+        expect(report.valid, describeReport(report)).toBe(true);
+      }
     }
   });
 });

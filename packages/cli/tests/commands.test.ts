@@ -396,3 +396,54 @@ describe('global flags', () => {
     expect((await runCli(['explode'])).code).toBe(EXIT.user);
   });
 });
+
+describe('templates (registry:page)', () => {
+  /** Local href/src values in an HTML page (no URLs, no fragments). */
+  function localRefs(html: string): string[] {
+    return [...html.matchAll(/\s(?:href|src)="([^"#][^"]*)"/g)]
+      .map((match) => match[1] ?? '')
+      .filter((ref) => !/^[a-z]+:/i.test(ref));
+  }
+
+  it('installs the page at the project root with working asset links', async () => {
+    const root = await initProject();
+    const result = await runCli(['add', 'admin-dashboard', '--yes', '--cwd', root]);
+    expect(result.code, result.output).toBe(EXIT.ok);
+
+    const page = await read(root, 'admin-dashboard.html');
+    expect(page).not.toMatch(/\{\{\s*bootcn:/);
+    const refs = localRefs(page);
+    expect(refs).toContain('assets/css/tokens.css');
+    expect(refs).toContain('assets/js/admin-dashboard.js');
+    for (const ref of refs) expect(await exists(resolve(root, ref)), ref).toBe(true);
+
+    // Blocks and components the page uses come along.
+    expect(await exists(resolve(root, 'components/ui/app-sidebar.html'))).toBe(true);
+    expect(await exists(resolve(root, 'assets/css/dropdown.css'))).toBe(true);
+    expect(result.output).toMatch(/Open the page[^\n]*\n\s+admin-dashboard\.html/);
+  });
+
+  it('installs into public/ for PHP projects, with links relative to the page', async () => {
+    const root = await tempDir();
+    await writeFiles(root, { 'composer.json': '{}', 'public/index.php': '<?php' });
+    expect((await runCli(['init', '--yes', '--cwd', root, '--registry', registry])).code).toBe(
+      EXIT.ok,
+    );
+    const result = await runCli(['add', 'admin-dashboard', '--yes', '--cwd', root]);
+    expect(result.code, result.output).toBe(EXIT.ok);
+
+    const page = await read(root, 'public/admin-dashboard.html');
+    const refs = localRefs(page);
+    expect(refs).toContain('assets/css/tokens.css');
+    for (const ref of refs) expect(await exists(resolve(root, 'public', ref)), ref).toBe(true);
+  });
+
+  it('diff and a second add treat the rendered page as unchanged', async () => {
+    const root = await initProject();
+    await runCli(['add', 'admin-dashboard', '--yes', '--cwd', root]);
+    const diff = await runCli(['diff', 'admin-dashboard', '--cwd', root]);
+    expect(diff.output).toMatch(/0 file\(s\) differ/);
+    const again = await runCli(['add', 'admin-dashboard', '--yes', '--cwd', root]);
+    expect(again.output).not.toMatch(/skipped/i);
+  });
+});

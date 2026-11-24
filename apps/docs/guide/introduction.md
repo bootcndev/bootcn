@@ -13,6 +13,10 @@ A command-line tool, `bootcn`, downloads those files from the
 After that the files are yours: change them, rename them, or delete what you
 do not need.
 
+Besides components there are [blocks](../blocks/) (sections such as a sign-in
+card or a transactions table, built from components) and
+[templates](../templates/) (complete pages, such as an admin dashboard).
+
 ## Who it is for
 
 - PHP and plain HTML sites that already use Bootstrap.

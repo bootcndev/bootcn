@@ -1,0 +1,79 @@
+.bootcn-transactions__header {
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.bootcn-transactions__tools {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.bootcn-transactions__search {
+  width: auto;
+  min-width: 12rem;
+  flex: 1 1 12rem;
+}
+
+.bootcn-transactions__table {
+  --bs-table-bg: transparent;
+  font-size: 0.9375rem;
+}
+
+.bootcn-transactions__table th {
+  color: var(--bs-secondary-color);
+  font-size: 0.8125rem;
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+.bootcn-transactions__table th:first-child,
+.bootcn-transactions__table td:first-child {
+  padding-left: var(--bootcn-card-padding);
+}
+
+.bootcn-transactions__table th:last-child,
+.bootcn-transactions__table td:last-child {
+  padding-right: var(--bootcn-card-padding);
+}
+
+.bootcn-transactions__table td {
+  vertical-align: middle;
+  white-space: nowrap;
+}
+
+.bootcn-transactions__name {
+  display: block;
+  color: var(--bs-emphasis-color);
+  font-weight: 500;
+}
+
+.bootcn-transactions__email {
+  display: block;
+  color: var(--bs-secondary-color);
+  font-size: 0.8125rem;
+}
+
+.bootcn-transactions__amount {
+  font-variant-numeric: tabular-nums;
+  font-weight: 500;
+}
+
+.bootcn-transactions__footer {
+  align-items: center;
+  justify-content: space-between;
+}
+
+.bootcn-transactions__summary {
+  margin: 0;
+  color: var(--bs-secondary-color);
+  font-size: 0.875rem;
+}
+
+.bootcn-transactions__pages {
+  display: flex;
+  gap: 0.5rem;
+}

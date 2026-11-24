@@ -1,0 +1,28 @@
+{
+  "$schema": "../../schema/registry-item.schema.json",
+  "name": "stats-cards",
+  "type": "registry:block",
+  "title": "Stats cards",
+  "description": "A responsive row of metric cards with a value, an icon and the change since the last period.",
+  "version": "1.0.0",
+  "categories": ["dashboard"],
+  "dependencies": [],
+  "registryDependencies": [],
+  "compatibility": {
+    "bootstrap": "5.3",
+    "platform": ["Bootstrap CSS"]
+  },
+  "license": "MIT",
+  "files": [
+    {
+      "path": "stats-cards.html",
+      "target": "stats-cards.html",
+      "type": "registry:component"
+    },
+    {
+      "path": "stats-cards.css",
+      "target": "stats-cards.css",
+      "type": "registry:style"
+    }
+  ]
+}

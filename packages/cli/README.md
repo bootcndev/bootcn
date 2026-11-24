@@ -13,11 +13,13 @@ npx bootcn add button dialog  # copies the files, asks before overwriting
 npx bootcn list               # registry items, installed ones marked
 npx bootcn info dialog        # files, dependencies, accessibility notes
 npx bootcn diff               # your copies vs the registry, read-only
+npx bootcn add login-card     # blocks: sections built from components
+npx bootcn add admin-dashboard # templates: a complete page with working links
 ```
 
 Components come from the hosted registry at
 <https://tsirosgeorge.github.io/bootcn>. Pin a version with
-`--registry https://tsirosgeorge.github.io/bootcn/v/0.2.0` (stored in
+`--registry https://tsirosgeorge.github.io/bootcn/v/0.3.0` (stored in
 `bootcn.json`), or point `--registry` at your own registry directory or URL.
 
 Exit codes: `0` success, `1` user or configuration error, `2` registry or

@@ -1,0 +1,40 @@
+{
+  "$schema": "../../schema/registry-item.schema.json",
+  "name": "admin-dashboard",
+  "type": "registry:template",
+  "title": "Admin dashboard",
+  "description": "A complete admin page: responsive sidebar, top bar with search, theme toggle and user menu, metric cards, a revenue chart, recent activity and a transactions table.",
+  "version": "1.0.0",
+  "categories": ["dashboard"],
+  "dependencies": [],
+  "registryDependencies": [
+    "app-sidebar",
+    "user-menu",
+    "page-header",
+    "stats-cards",
+    "activity-feed",
+    "transactions-table"
+  ],
+  "compatibility": {
+    "bootstrap": "5.3",
+    "platform": ["Bootstrap CSS", "Bootstrap JS bundle"]
+  },
+  "license": "MIT",
+  "files": [
+    {
+      "path": "admin-dashboard.html",
+      "target": "admin-dashboard.html",
+      "type": "registry:page"
+    },
+    {
+      "path": "admin-dashboard.css",
+      "target": "admin-dashboard.css",
+      "type": "registry:style"
+    },
+    {
+      "path": "admin-dashboard.js",
+      "target": "admin-dashboard.js",
+      "type": "registry:script"
+    }
+  ]
+}

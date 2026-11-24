@@ -4,9 +4,11 @@ import {
   GITHUB_URL,
   NPM_URL,
   REGISTRY_URL,
+  KINDS,
+  type Kind,
   componentSearchSections,
   copyPreviews,
-  groupedComponents,
+  grouped,
   readIndex,
 } from './registry';
 
@@ -14,6 +16,30 @@ import {
 copyPreviews();
 
 const index = readIndex();
+
+/** Sidebar sections for one kind: an overview link, then one group per category. */
+function kindSidebar(kind: Kind) {
+  const link = (item: { name: string; title: string }) => ({
+    text: item.title,
+    link: `/${kind}/${item.name}`,
+  });
+  const overview = { text: 'Overview', link: `/${kind}/` };
+  if (kind === 'templates') {
+    // Few templates: one section, no category groups.
+    return [
+      {
+        text: KINDS[kind].title,
+        items: [overview, ...grouped(kind).flatMap((g) => g.items.map(link))],
+      },
+    ];
+  }
+  return [
+    { text: KINDS[kind].title, items: [overview] },
+    // Not collapsible: VitePress renders collapsible headers as a role="button"
+    // that contains links (axe: nested-interactive).
+    ...grouped(kind).map((group) => ({ text: group.label, items: group.items.map(link) })),
+  ];
+}
 
 export default defineConfig({
   title: 'Bootcn',
@@ -30,6 +56,8 @@ export default defineConfig({
     nav: [
       { text: 'Guide', link: '/guide/introduction', activeMatch: '^/guide/' },
       { text: 'Components', link: '/components/', activeMatch: '^/components/' },
+      { text: 'Blocks', link: '/blocks/', activeMatch: '^/blocks/' },
+      { text: 'Templates', link: '/templates/', activeMatch: '^/templates/' },
       {
         text: `v${index.version}`,
         items: [
@@ -50,16 +78,9 @@ export default defineConfig({
           { text: 'Theming and dark mode', link: '/guide/theming' },
         ],
       },
-      {
-        text: 'Components',
-        items: [{ text: 'Overview', link: '/components/' }],
-      },
-      ...groupedComponents().map((group) => ({
-        // Not collapsible: VitePress renders collapsible headers as a
-        // role="button" that contains links (axe: nested-interactive).
-        text: group.label,
-        items: group.items.map((item) => ({ text: item.title, link: `/components/${item.name}` })),
-      })),
+      ...kindSidebar('components'),
+      ...kindSidebar('blocks'),
+      ...kindSidebar('templates'),
       {
         text: 'Resources',
         items: [
@@ -76,10 +97,10 @@ export default defineConfig({
       provider: 'local',
       options: {
         miniSearch: {
-          // Generated component pages have no file on disk for the indexer to
+          // Generated item pages have no file on disk for the indexer to
           // read; index them from the registry. Other pages: default splitter.
           _splitIntoSections(file: string, html: string) {
-            const match = /[\\/]components[\\/]([a-z0-9-]+)\.md$/.exec(file);
+            const match = /[\\/](?:components|blocks|templates)[\\/]([a-z0-9-]+)\.md$/.exec(file);
             if (!match?.[1] || html) return undefined as never;
             return Promise.resolve(componentSearchSections(match[1]));
           },

@@ -1,0 +1,206 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Bootcn Stats cards preview</title>
+    <script>
+      // Preview theme: ?theme=dark|light, else the docs page around the frame, else light.
+      (function () {
+        var theme = new URLSearchParams(location.search).get('theme');
+        if (!theme) {
+          try {
+            theme =
+              window.parent !== window &&
+              window.parent.document.documentElement.classList.contains('dark')
+                ? 'dark'
+                : 'light';
+          } catch (error) {
+            theme = 'light';
+          }
+        }
+        document.documentElement.setAttribute('data-bs-theme', theme === 'dark' ? 'dark' : 'light');
+      })();
+    </script>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.9/dist/css/bootstrap.min.css"
+    />
+    <link rel="stylesheet" href="../../themes/tokens/tokens.css" />
+    <link rel="stylesheet" href="stats-cards.css" />
+  </head>
+  <body>
+    <main class="container py-4">
+      <h1 class="h4 mb-4">Stats cards</h1>
+      <section class="bootcn-stats" aria-labelledby="bootcn-stats-title">
+        <h2 class="visually-hidden" id="bootcn-stats-title">Key metrics</h2>
+        <div class="bootcn-stats__grid">
+          <article class="bootcn-stats__card">
+            <div class="bootcn-stats__head">
+              <h3 class="bootcn-stats__label">Revenue</h3>
+              <svg
+                class="bootcn-stats__icon"
+                width="16"
+                height="16"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+                focusable="false"
+              >
+                <path d="M12 3v18" />
+                <path
+                  d="M17 7c-1-1.5-3-2-5-2-3 0-4 1.5-4 3s1 2.5 4 3 4 1.5 4 3-1 3-4 3c-2 0-4-.5-5-2"
+                />
+              </svg>
+            </div>
+            <p class="bootcn-stats__value">€45,231.89</p>
+            <p class="bootcn-stats__change bootcn-stats__change--up">
+              <svg
+                class="bootcn-icon"
+                width="16"
+                height="16"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+                focusable="false"
+              >
+                <path d="M7 14l5-5 5 5" />
+              </svg>
+              <span>+20.1%</span> since last month
+            </p>
+          </article>
+          <article class="bootcn-stats__card">
+            <div class="bootcn-stats__head">
+              <h3 class="bootcn-stats__label">Subscriptions</h3>
+              <svg
+                class="bootcn-stats__icon"
+                width="16"
+                height="16"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+                focusable="false"
+              >
+                <circle cx="9" cy="8" r="4" />
+                <path d="M2 21c0-4 3-7 7-7s7 3 7 7" />
+                <path d="M17 4a4 4 0 0 1 0 8" />
+                <path d="M22 21c0-3-2-6-5-7" />
+              </svg>
+            </div>
+            <p class="bootcn-stats__value">2,350</p>
+            <p class="bootcn-stats__change bootcn-stats__change--up">
+              <svg
+                class="bootcn-icon"
+                width="16"
+                height="16"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+                focusable="false"
+              >
+                <path d="M7 14l5-5 5 5" />
+              </svg>
+              <span>+180</span> since last month
+            </p>
+          </article>
+          <article class="bootcn-stats__card">
+            <div class="bootcn-stats__head">
+              <h3 class="bootcn-stats__label">Orders</h3>
+              <svg
+                class="bootcn-stats__icon"
+                width="16"
+                height="16"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+                focusable="false"
+              >
+                <circle cx="9" cy="20" r="1" />
+                <circle cx="18" cy="20" r="1" />
+                <path d="M2 3h3l3 12h11l2-8H6" />
+              </svg>
+            </div>
+            <p class="bootcn-stats__value">12,234</p>
+            <p class="bootcn-stats__change bootcn-stats__change--down">
+              <svg
+                class="bootcn-icon"
+                width="16"
+                height="16"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+                focusable="false"
+              >
+                <path d="M7 10l5 5 5-5" />
+              </svg>
+              <span>−4.3%</span> since last month
+            </p>
+          </article>
+          <article class="bootcn-stats__card">
+            <div class="bootcn-stats__head">
+              <h3 class="bootcn-stats__label">Active now</h3>
+              <svg
+                class="bootcn-stats__icon"
+                width="16"
+                height="16"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+                focusable="false"
+              >
+                <path d="M3 12h4l3 8 4-16 3 8h4" />
+              </svg>
+            </div>
+            <p class="bootcn-stats__value">573</p>
+            <p class="bootcn-stats__change bootcn-stats__change--up">
+              <svg
+                class="bootcn-icon"
+                width="16"
+                height="16"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+                focusable="false"
+              >
+                <path d="M7 14l5-5 5 5" />
+              </svg>
+              <span>+201</span> since last month
+            </p>
+          </article>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>

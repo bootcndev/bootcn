@@ -2,8 +2,18 @@
  * Reads the built registry (packages/registry/dist), the same JSON the CLI
  * installs from. Component prose comes from each item's README.md.
  */
-import { cpSync, existsSync, mkdirSync, readFileSync, rmSync } from 'node:fs';
-import { dirname, extname, resolve } from 'node:path';
+import { execFileSync } from 'node:child_process';
+import {
+  cpSync,
+  existsSync,
+  mkdirSync,
+  mkdtempSync,
+  readFileSync,
+  rmSync,
+  writeFileSync,
+} from 'node:fs';
+import { tmpdir } from 'node:os';
+import { dirname, extname, join, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 const HERE = dirname(fileURLToPath(import.meta.url));
@@ -72,14 +82,28 @@ export function readItem(name: string): RegistryItem {
   return readJson<RegistryItem>(resolve(REGISTRY_DIST, 'r', `${name}.json`));
 }
 
-/** Registry items shown as component pages (everything except themes). */
+/** The three kinds of documented items, each with its own section of the site. */
+export const KINDS = {
+  components: { type: 'registry:ui', dir: 'components', title: 'Components' },
+  blocks: { type: 'registry:block', dir: 'blocks', title: 'Blocks' },
+  templates: { type: 'registry:template', dir: 'templates', title: 'Templates' },
+} as const;
+
+export type Kind = keyof typeof KINDS;
+
+export function itemsOf(kind: Kind): RegistryIndex['items'] {
+  return readIndex().items.filter((item) => item.type === KINDS[kind].type);
+}
+
+/** Registry items shown as component pages. */
 export function componentItems(): RegistryIndex['items'] {
-  return readIndex().items.filter((item) => item.type === 'registry:ui');
+  return itemsOf('components');
 }
 
 /** Directory of an item's sources inside packages/registry. */
 export function sourceDir(name: string, type: string): string {
-  return resolve(REGISTRY_SRC, type === 'registry:theme' ? 'themes' : 'components', name);
+  const kind = (Object.keys(KINDS) as Kind[]).find((key) => KINDS[key].type === type);
+  return resolve(REGISTRY_SRC, kind ? KINDS[kind].dir : 'themes', name);
 }
 
 export function readReadme(name: string, type: string): string {
@@ -87,50 +111,98 @@ export function readReadme(name: string, type: string): string {
   return existsSync(file) ? readFileSync(file, 'utf8') : '';
 }
 
-/** Sidebar groups, chosen by an item's first category. */
-const GROUPS: [label: string, categories: string[]][] = [
-  ['Actions', ['buttons', 'actions']],
-  ['Forms', ['forms']],
-  ['Navigation', ['navigation']],
-  ['Overlays', ['overlays']],
-  ['Feedback', ['feedback']],
-  ['Data display', ['data-display']],
-  ['Layout', ['layout']],
-];
+/** Sidebar groups per kind, chosen by an item's first category. */
+const GROUPS: Record<Kind, [label: string, categories: string[]][]> = {
+  components: [
+    ['Actions', ['buttons', 'actions']],
+    ['Forms', ['forms']],
+    ['Navigation', ['navigation']],
+    ['Overlays', ['overlays']],
+    ['Feedback', ['feedback']],
+    ['Data display', ['data-display']],
+    ['Layout', ['layout']],
+  ],
+  blocks: [
+    ['Authentication', ['authentication']],
+    ['Dashboard', ['dashboard']],
+    ['Navigation', ['navigation']],
+    ['Marketing', ['marketing']],
+  ],
+  templates: [['Templates', []]],
+};
 
-export function groupOf(categories: string[] = []): string {
+export function groupOf(categories: string[] = [], kind: Kind = 'components'): string {
+  const groups = GROUPS[kind];
+  if (kind === 'templates') return groups[0]![0];
   const first = categories[0];
-  const group = GROUPS.find(([, cats]) => first !== undefined && cats.includes(first));
+  const group = groups.find(([, cats]) => first !== undefined && cats.includes(first));
   return group ? group[0] : 'Other';
 }
 
-export function groupedComponents(): { label: string; items: RegistryIndex['items'] }[] {
-  const items = componentItems();
-  const labels = [...GROUPS.map(([label]) => label), 'Other'];
+export function grouped(kind: Kind): { label: string; items: RegistryIndex['items'] }[] {
+  const items = itemsOf(kind);
+  const labels = [...GROUPS[kind].map(([label]) => label), 'Other'];
   return labels
     .map((label) => ({
       label,
       items: items
-        .filter((item) => groupOf(item.categories) === label)
+        .filter((item) => groupOf(item.categories, kind) === label)
         .sort((a, b) => a.title.localeCompare(b.title)),
     }))
     .filter((group) => group.items.length > 0);
 }
 
+export function groupedComponents(): { label: string; items: RegistryIndex['items'] }[] {
+  return grouped('components');
+}
+
+/** Where the docs serve a template's installed page, relative to the site base. */
+export function templatePreviewPath(name: string): string {
+  const page = readItem(name).files.find((file) => file.type === 'registry:page');
+  if (!page) throw new Error(`Template "${name}" has no registry:page file.`);
+  return `previews/templates/${name}/${page.target}`;
+}
+
 /**
- * Copies the registry sources the previews load (preview.html plus CSS/JS,
- * and the tokens theme) into public/previews, keeping the relative paths
- * preview.html files use (../../themes/tokens/tokens.css, ../button/button.css).
+ * Previews, written to public/previews:
+ * - components and blocks: the registry sources as they are (preview.html
+ *   plus CSS/JS, and the tokens theme), so their relative links keep working;
+ * - templates: installed with the real CLI into a fresh project, so the
+ *   preview is exactly what `bootcn add <template>` produces.
  */
 export function copyPreviews(): void {
   const out = resolve(DOCS_DIR, 'public', 'previews');
   rmSync(out, { recursive: true, force: true });
   mkdirSync(out, { recursive: true });
-  for (const kind of ['components', 'themes']) {
-    cpSync(resolve(REGISTRY_SRC, kind), resolve(out, kind), {
+  for (const kind of ['components', 'blocks', 'themes']) {
+    const from = resolve(REGISTRY_SRC, kind);
+    if (!existsSync(from)) continue;
+    cpSync(from, resolve(out, kind), {
       recursive: true,
       filter: (src) => !['.md', '.json'].includes(extname(src)),
     });
+  }
+
+  const cli = resolve(REPO_DIR, 'packages', 'cli', 'dist', 'index.js');
+  if (!existsSync(cli)) {
+    throw new Error(`${cli} is missing. Run "pnpm build" at the repository root first.`);
+  }
+  for (const item of itemsOf('templates')) {
+    const project = mkdtempSync(join(tmpdir(), 'bootcn-docs-'));
+    try {
+      const run = (args: string[]) =>
+        execFileSync(process.execPath, [cli, ...args, '--yes', '--cwd', project], {
+          stdio: 'pipe',
+        });
+      writeFileSync(join(project, 'index.html'), '<!doctype html>\n');
+      run(['init', '--registry', REGISTRY_DIST]);
+      run(['add', item.name]);
+      rmSync(join(project, 'index.html'));
+      rmSync(join(project, 'bootcn.json'));
+      cpSync(project, resolve(out, 'templates', item.name), { recursive: true });
+    } finally {
+      rmSync(project, { recursive: true, force: true });
+    }
   }
 }
 
@@ -142,7 +214,7 @@ export function copyPreviews(): void {
 export function componentSearchSections(
   name: string,
 ): { anchor: string; titles: string[]; text: string }[] {
-  const entry = componentItems().find((item) => item.name === name);
+  const entry = readIndex().items.find((item) => item.name === name);
   if (!entry) return [];
   const readme = readReadme(name, entry.type)
     .replace(/```[\s\S]*?```/g, ' ')

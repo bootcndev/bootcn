@@ -1,23 +1,30 @@
 <script setup lang="ts">
 /**
- * Live preview: the component's own preview.html from the registry, in an
- * iframe so its CSS and JavaScript never touch the docs page (spec 11.3).
- * The frame grows to fit its content (same origin) and follows the docs
- * theme: preview.html reads it on load, and toggles are mirrored here.
+ * Live preview in an iframe, so its CSS and JavaScript never touch the docs
+ * page (spec 11.3). Components and blocks show their registry preview.html;
+ * templates show the page the CLI installed (`src`). The frame follows the
+ * docs theme (set on load and on every toggle). It grows to fit its content,
+ * except `fixed` frames (full pages), which keep a fixed height and scroll.
  */
 import { computed, onBeforeUnmount, onMounted, ref, watch } from 'vue';
 import { useData, withBase } from 'vitepress';
 
-const props = defineProps<{ name: string; title: string }>();
+const props = withDefaults(
+  defineProps<{ name: string; title: string; kind?: string; src?: string; fixed?: boolean }>(),
+  { kind: 'components', src: undefined, fixed: false },
+);
 
 const { isDark } = useData();
-const src = withBase(`/previews/components/${props.name}/preview.html`);
+const src = withBase(
+  props.src ? `/${props.src}` : `/previews/${props.kind}/${props.name}/preview.html`,
+);
 const newTabHref = computed(() => `${src}?theme=${isDark.value ? 'dark' : 'light'}`);
 const frame = ref<HTMLIFrameElement | null>(null);
-const height = ref(320);
+const height = ref(props.fixed ? 720 : 320);
 let observer: ResizeObserver | undefined;
 
 function fit(): void {
+  if (props.fixed) return;
   const doc = frame.value?.contentDocument;
   if (!doc?.documentElement) return;
   height.value = Math.max(320, Math.ceil(doc.documentElement.scrollHeight));
@@ -52,7 +59,7 @@ onBeforeUnmount(() => observer?.disconnect());
 </script>
 
 <template>
-  <figure class="bootcn-preview">
+  <figure class="bootcn-preview" :class="{ 'bootcn-preview--fixed': fixed }">
     <iframe
       ref="frame"
       :src="src"
@@ -62,7 +69,7 @@ onBeforeUnmount(() => observer?.disconnect());
       @load="onLoad"
     />
     <figcaption>
-      Live preview of the registry source.
+      {{ fixed ? 'Live preview of the installed page.' : 'Live preview of the registry source.' }}
       <a :href="newTabHref" target="_blank" rel="noreferrer">Open in a new tab</a>
     </figcaption>
   </figure>

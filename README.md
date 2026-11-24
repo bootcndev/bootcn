@@ -7,7 +7,8 @@ build with plain HTML and native PHP. Components are installed as editable
 HTML, CSS and JavaScript source files that you own. No React, Vue, jQuery,
 bundler or Node.js is required at runtime.
 
-> **Status:** early (0.x). 20 components plus design tokens. The CLI is on
+> **Status:** early (0.x). 20 components, 11 blocks, an admin dashboard
+> template and design tokens. The CLI is on
 > [npm](https://www.npmjs.com/package/bootcn); documentation, live previews and
 > the registry are at <https://tsirosgeorge.github.io/bootcn/>.
 
@@ -64,6 +65,32 @@ the `<link>` and `<script>` tags to add to your layout.
 Each component lives in `packages/registry/components/<name>/` with a
 `README.md` (usage, accessibility, API) and a `preview.html` you can open
 directly in a browser.
+
+### Blocks and templates
+
+Blocks are larger sections built from components; templates are complete
+pages. `bootcn add` installs the components a block or template uses.
+
+| Item                   | Type     | Files                | Requires                  | Depends on                                                                                      |
+| ---------------------- | -------- | -------------------- | ------------------------- | ----------------------------------------------------------------------------------------------- |
+| `activity-feed`        | block    | HTML, CSS            | Bootstrap CSS             | `card`, `avatar`                                                                                |
+| `app-navbar`           | block    | HTML, CSS            | Bootstrap CSS + JS bundle | `user-menu`, `input`                                                                            |
+| `app-sidebar`          | block    | HTML, CSS            | Bootstrap CSS + JS bundle | `button`, `badge`, `avatar`                                                                     |
+| `forgot-password-card` | block    | HTML, CSS            | Bootstrap CSS             | `card`, `input`, `button`                                                                       |
+| `login-card`           | block    | HTML, CSS            | Bootstrap CSS             | `card`, `input`, `checkbox`, `button`                                                           |
+| `login-split`          | block    | HTML, CSS            | Bootstrap CSS             | `input`, `checkbox`, `button`                                                                   |
+| `page-header`          | block    | HTML, CSS            | Bootstrap CSS             | `button`                                                                                        |
+| `signup-card`          | block    | HTML, CSS            | Bootstrap CSS             | `card`, `input`, `checkbox`, `button`                                                           |
+| `stats-cards`          | block    | HTML, CSS            | Bootstrap CSS             | —                                                                                               |
+| `transactions-table`   | block    | HTML, CSS            | Bootstrap CSS             | `card`, `badge`, `button`, `input`                                                              |
+| `user-menu`            | block    | HTML, CSS            | Bootstrap CSS + JS bundle | `dropdown`, `avatar`                                                                            |
+| `admin-dashboard`      | template | page (HTML), CSS, JS | Bootstrap CSS + JS bundle | `app-sidebar`, `user-menu`, `page-header`, `stats-cards`, `activity-feed`, `transactions-table` |
+
+A template is installed as a page (`registry:page`) at the project root, or
+under `paths.pages` in `bootcn.json` (`public/` for PHP projects with a
+`public/` folder). Its links use placeholders such as `{{bootcn:css}}`, which
+the CLI replaces with the path from the page to your asset folders. Templates
+need `bootcn` 0.2.0 or newer.
 
 ## Development
 
@@ -198,6 +225,10 @@ contents inlined), which the CLI reads. Previews load the same source files.
 - Dark mode and contrast are checked by axe on every preview (whole page in
   dark mode), not by visual regression tests.
 - No searchable multi-select, date picker, data table or command palette yet.
+- No marketing blocks (hero, pricing, testimonials) yet.
+- `bootcn` 0.1.x cannot read registry 0.3.0's index (it does not know the
+  `registry:page` file type); use `npx bootcn@latest`, or pin the registry to
+  `/v/0.2.0`. From this version on, the index accepts new file types.
 
 ## License
 

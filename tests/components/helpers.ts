@@ -10,8 +10,10 @@ const bootstrapRoot = resolve(here, '../../node_modules/bootstrap/dist');
 const CDN_CSS = '**/bootstrap@5.3.9/dist/css/bootstrap.min.css';
 const CDN_JS = '**/bootstrap@5.3.9/dist/js/bootstrap.bundle.min.js';
 
-export function previewUrl(name: string): string {
-  return `/packages/registry/components/${name}/preview.html`;
+export type PreviewKind = 'components' | 'blocks';
+
+export function previewUrl(name: string, kind: PreviewKind = 'components'): string {
+  return `/packages/registry/${kind}/${name}/preview.html`;
 }
 
 export function collectErrors(page: Page): string[] {
@@ -23,7 +25,11 @@ export function collectErrors(page: Page): string[] {
   return errors;
 }
 
-export async function openPreview(page: Page, name: string): Promise<void> {
+export async function openPreview(
+  page: Page,
+  name: string,
+  kind: PreviewKind = 'components',
+): Promise<void> {
   await page.route(CDN_CSS, (route) =>
     route.fulfill({
       path: resolve(bootstrapRoot, 'css/bootstrap.min.css'),
@@ -36,7 +42,7 @@ export async function openPreview(page: Page, name: string): Promise<void> {
       contentType: 'text/javascript',
     }),
   );
-  await page.goto(previewUrl(name));
+  await page.goto(previewUrl(name, kind));
 }
 
 export async function expectNoAxeViolations(

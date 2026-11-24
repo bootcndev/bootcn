@@ -1,0 +1,28 @@
+{
+  "$schema": "../../schema/registry-item.schema.json",
+  "name": "user-menu",
+  "type": "registry:block",
+  "title": "User menu",
+  "description": "An avatar button that opens an account menu with the user's name, email, links and sign out.",
+  "version": "1.0.0",
+  "categories": ["navigation"],
+  "dependencies": [],
+  "registryDependencies": ["dropdown", "avatar"],
+  "compatibility": {
+    "bootstrap": "5.3",
+    "platform": ["Bootstrap CSS", "Bootstrap JS bundle"]
+  },
+  "license": "MIT",
+  "files": [
+    {
+      "path": "user-menu.html",
+      "target": "user-menu.html",
+      "type": "registry:component"
+    },
+    {
+      "path": "user-menu.css",
+      "target": "user-menu.css",
+      "type": "registry:style"
+    }
+  ]
+}

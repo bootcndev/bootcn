@@ -1,0 +1,28 @@
+{
+  "$schema": "../../schema/registry-item.schema.json",
+  "name": "activity-feed",
+  "type": "registry:block",
+  "title": "Activity feed",
+  "description": "A card listing recent team activity with avatars, links and relative times.",
+  "version": "1.0.0",
+  "categories": ["dashboard"],
+  "dependencies": [],
+  "registryDependencies": ["card", "avatar"],
+  "compatibility": {
+    "bootstrap": "5.3",
+    "platform": ["Bootstrap CSS"]
+  },
+  "license": "MIT",
+  "files": [
+    {
+      "path": "activity-feed.html",
+      "target": "activity-feed.html",
+      "type": "registry:component"
+    },
+    {
+      "path": "activity-feed.css",
+      "target": "activity-feed.css",
+      "type": "registry:style"
+    }
+  ]
+}

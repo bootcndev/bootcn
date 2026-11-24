@@ -1,0 +1,28 @@
+{
+  "$schema": "../../schema/registry-item.schema.json",
+  "name": "app-sidebar",
+  "type": "registry:block",
+  "title": "App sidebar",
+  "description": "A sidebar with grouped navigation, counts and the signed-in user; it becomes an off-canvas drawer below 992px.",
+  "version": "1.0.0",
+  "categories": ["navigation"],
+  "dependencies": [],
+  "registryDependencies": ["button", "badge", "avatar"],
+  "compatibility": {
+    "bootstrap": "5.3",
+    "platform": ["Bootstrap CSS", "Bootstrap JS bundle"]
+  },
+  "license": "MIT",
+  "files": [
+    {
+      "path": "app-sidebar.html",
+      "target": "app-sidebar.html",
+      "type": "registry:component"
+    },
+    {
+      "path": "app-sidebar.css",
+      "target": "app-sidebar.css",
+      "type": "registry:style"
+    }
+  ]
+}

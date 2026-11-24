@@ -1,0 +1,69 @@
+/* One column on phones, two on tablets, four on wide screens. */
+.bootcn-stats__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 13rem), 1fr));
+  gap: 1rem;
+}
+
+.bootcn-stats__card {
+  padding: var(--bootcn-card-padding);
+  border: var(--bootcn-border-width) solid var(--bootcn-border-color);
+  border-radius: var(--bootcn-radius-lg);
+  background-color: var(--bs-body-bg);
+  box-shadow: var(--bootcn-shadow-sm);
+}
+
+.bootcn-stats__head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.bootcn-stats__label {
+  margin: 0;
+  color: var(--bs-secondary-color);
+  font-size: 0.875rem;
+  font-weight: 500;
+}
+
+.bootcn-stats__icon {
+  color: var(--bs-secondary-color);
+}
+
+.bootcn-stats__value {
+  margin: 0;
+  color: var(--bs-emphasis-color);
+  font-size: 1.75rem;
+  font-weight: 700;
+  line-height: 1.2;
+  font-variant-numeric: tabular-nums;
+}
+
+.bootcn-stats__change {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  margin: 0.25rem 0 0;
+  color: var(--bs-secondary-color);
+  font-size: 0.8125rem;
+}
+
+.bootcn-stats__change--up span {
+  color: var(--bs-success-text-emphasis);
+  font-weight: 600;
+}
+
+.bootcn-stats__change--down span {
+  color: var(--bs-danger-text-emphasis);
+  font-weight: 600;
+}
+
+.bootcn-stats__change--up .bootcn-icon {
+  color: var(--bs-success-text-emphasis);
+}
+
+.bootcn-stats__change--down .bootcn-icon {
+  color: var(--bs-danger-text-emphasis);
+}

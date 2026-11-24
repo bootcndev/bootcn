@@ -1,0 +1,129 @@
+<nav class="navbar navbar-expand-lg bootcn-navbar" aria-label="Main">
+  <div class="container-fluid">
+    <a class="navbar-brand bootcn-navbar__brand" href="#">
+      <svg
+        class="bootcn-icon"
+        width="16"
+        height="16"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        aria-hidden="true"
+        focusable="false"
+      >
+        <rect x="3" y="3" width="8" height="8" rx="2" />
+        <rect x="13" y="13" width="8" height="8" rx="2" />
+        <path d="M13 7h8M17 3v8M3 17h8" />
+      </svg>
+      Acme
+    </a>
+    <button
+      class="navbar-toggler bootcn-navbar__toggler"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#bootcn-navbar-menu"
+      aria-controls="bootcn-navbar-menu"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <svg
+        class="bootcn-icon"
+        width="16"
+        height="16"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        aria-hidden="true"
+        focusable="false"
+      >
+        <path d="M4 6h16M4 12h16M4 18h16" />
+      </svg>
+    </button>
+    <div class="collapse navbar-collapse" id="bootcn-navbar-menu">
+      <ul class="navbar-nav me-auto">
+        <li class="nav-item">
+          <a class="nav-link bootcn-navbar__link active" aria-current="page" href="#">Dashboard</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link bootcn-navbar__link" href="#">Projects</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link bootcn-navbar__link" href="#">Team</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link bootcn-navbar__link" href="#">Reports</a>
+        </li>
+      </ul>
+      <form class="bootcn-navbar__search" role="search" aria-label="Site" action="#">
+        <label class="visually-hidden" for="bootcn-navbar-search">Search</label>
+        <input
+          class="form-control bootcn-input"
+          type="search"
+          id="bootcn-navbar-search"
+          name="q"
+          placeholder="Search…"
+        />
+        <button type="submit" class="visually-hidden">Search</button>
+      </form>
+      <div class="dropdown bootcn-dropdown bootcn-user-menu">
+        <button
+          class="btn bootcn-user-menu__trigger"
+          type="button"
+          id="bootcn-navbar-user-trigger"
+          data-bs-toggle="dropdown"
+          aria-expanded="false"
+        >
+          <span class="bootcn-avatar bootcn-avatar--sm" aria-hidden="true"
+            ><span class="bootcn-avatar__fallback">MP</span></span
+          >
+          <span class="bootcn-user-menu__name">Maria Papadopoulou</span>
+          <svg
+            class="bootcn-user-menu__chevron"
+            width="16"
+            height="16"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            aria-hidden="true"
+            focusable="false"
+          >
+            <path d="M6 9l6 6 6-6" />
+          </svg>
+        </button>
+        <ul
+          class="dropdown-menu dropdown-menu-end bootcn-dropdown__menu"
+          aria-labelledby="bootcn-navbar-user-trigger"
+        >
+          <li>
+            <p class="dropdown-header bootcn-user-menu__header">
+              <span class="bootcn-user-menu__header-name">Maria Papadopoulou</span>
+              <span class="bootcn-user-menu__email">maria@example.com</span>
+            </p>
+          </li>
+          <li><hr class="dropdown-divider bootcn-dropdown__divider" /></li>
+          <li><a class="dropdown-item bootcn-dropdown__item" href="#profile">Profile</a></li>
+          <li><a class="dropdown-item bootcn-dropdown__item" href="#billing">Billing</a></li>
+          <li><a class="dropdown-item bootcn-dropdown__item" href="#settings">Settings</a></li>
+          <li><hr class="dropdown-divider bootcn-dropdown__divider" /></li>
+          <li>
+            <button
+              class="dropdown-item bootcn-dropdown__item bootcn-dropdown__item--destructive"
+              type="button"
+            >
+              Sign out
+            </button>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</nav>

@@ -1,0 +1,28 @@
+{
+  "$schema": "../../schema/registry-item.schema.json",
+  "name": "transactions-table",
+  "type": "registry:block",
+  "title": "Transactions table",
+  "description": "A card with a searchable, responsive table of payments, status badges and pagination.",
+  "version": "1.0.0",
+  "categories": ["dashboard"],
+  "dependencies": [],
+  "registryDependencies": ["card", "badge", "button", "input"],
+  "compatibility": {
+    "bootstrap": "5.3",
+    "platform": ["Bootstrap CSS"]
+  },
+  "license": "MIT",
+  "files": [
+    {
+      "path": "transactions-table.html",
+      "target": "transactions-table.html",
+      "type": "registry:component"
+    },
+    {
+      "path": "transactions-table.css",
+      "target": "transactions-table.css",
+      "type": "registry:style"
+    }
+  ]
+}

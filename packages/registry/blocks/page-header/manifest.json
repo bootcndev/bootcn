@@ -1,0 +1,28 @@
+{
+  "$schema": "../../schema/registry-item.schema.json",
+  "name": "page-header",
+  "type": "registry:block",
+  "title": "Page header",
+  "description": "A page title with breadcrumb navigation, a short description and primary actions.",
+  "version": "1.0.0",
+  "categories": ["navigation"],
+  "dependencies": [],
+  "registryDependencies": ["button"],
+  "compatibility": {
+    "bootstrap": "5.3",
+    "platform": ["Bootstrap CSS"]
+  },
+  "license": "MIT",
+  "files": [
+    {
+      "path": "page-header.html",
+      "target": "page-header.html",
+      "type": "registry:component"
+    },
+    {
+      "path": "page-header.css",
+      "target": "page-header.css",
+      "type": "registry:style"
+    }
+  ]
+}

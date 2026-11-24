@@ -14,7 +14,7 @@ interface IndexItem {
   title: string;
 }
 interface Item {
-  files: { path: string }[];
+  files: { path: string; type: string }[];
 }
 
 const SITE = resolve(import.meta.dirname, '../../_site');
@@ -22,6 +22,12 @@ const index = JSON.parse(readFileSync(resolve(SITE, 'index.json'), 'utf8')) as {
   items: IndexItem[];
 };
 const components = index.items.filter((item) => item.type === 'registry:ui');
+const blocks = index.items.filter((item) => item.type === 'registry:block');
+const templates = index.items.filter((item) => item.type === 'registry:template');
+const sized = [
+  ...components.map((item) => ({ item, kind: 'components' })),
+  ...blocks.map((item) => ({ item, kind: 'blocks' })),
+];
 
 function readItem(name: string): Item {
   return JSON.parse(readFileSync(resolve(SITE, 'r', `${name}.json`), 'utf8')) as Item;
@@ -69,10 +75,10 @@ test('home page links to the guide and the components', async ({ page }) => {
   expect(errors).toEqual([]);
 });
 
-for (const item of components) {
-  test(`component page: ${item.name}`, async ({ page }) => {
+for (const { item, kind } of sized) {
+  test(`${kind} page: ${item.name}`, async ({ page }) => {
     const errors = collectErrors(page);
-    await page.goto(`components/${item.name}`);
+    await page.goto(`${kind}/${item.name}`);
     await expect(page.getByRole('heading', { level: 1 })).toHaveText(item.title);
     await expect(page.locator('.vp-doc')).toContainText(`npx bootcn add ${item.name}`);
 
@@ -100,7 +106,15 @@ for (const item of components) {
 }
 
 for (const theme of ['light', 'dark'] as const) {
-  for (const path of ['./', 'guide/installation', 'components/', 'components/dialog']) {
+  for (const path of [
+    './',
+    'guide/installation',
+    'components/',
+    'components/dialog',
+    'blocks/',
+    'blocks/transactions-table',
+    'templates/admin-dashboard',
+  ]) {
     test(`axe (${theme}): ${path}`, async ({ page }) => {
       await page.emulateMedia({ reducedMotion: 'reduce' });
       await setTheme(page, theme);
@@ -201,3 +215,98 @@ test('every internal link resolves', async ({ page, request }) => {
   expect(broken).toEqual([]);
   expect(seen.size).toBeGreaterThan(components.length);
 });
+
+test('blocks overview lists every block', async ({ page }) => {
+  await page.goto('blocks/');
+  for (const item of blocks) {
+    await expect(
+      page.locator('.vp-doc').getByRole('link', { name: item.title, exact: true }),
+    ).toBeVisible();
+  }
+});
+
+test('search finds a block', async ({ page }) => {
+  await page.goto('guide/introduction');
+  await page
+    .getByRole('button', { name: /search/i })
+    .first()
+    .click();
+  await page.getByRole('searchbox').fill('transactions');
+  await expect(
+    page.locator('.VPLocalSearchBox .result').filter({ hasText: 'Transactions table' }).first(),
+  ).toBeVisible();
+});
+
+for (const item of templates) {
+  const pageFile = readItem(item.name).files.find((file) => file.type === 'registry:page');
+  const pageUrl = `previews/templates/${item.name}/${pageFile?.path ?? ''}`;
+
+  test(`template page: ${item.name} shows the installed page`, async ({ page }) => {
+    const errors = collectErrors(page);
+    await setTheme(page, 'dark');
+    await page.goto(`templates/${item.name}`);
+    await expect(page.getByRole('heading', { level: 1 })).toHaveText(item.title);
+    // Placeholders appear literally in the docs text, not as Vue expressions.
+    await expect(page.locator('.vp-doc')).toContainText('{{bootcn:css}}');
+
+    const frame = page.frameLocator('.bootcn-preview iframe');
+    await expect(frame.locator('h1')).toBeVisible();
+    await expect(frame.locator('html')).toHaveAttribute('data-bs-theme', 'dark');
+    const html = await frame.locator('html').evaluate((el) => el.outerHTML);
+    expect(html).not.toContain('{{bootcn:');
+    expect(errors).toEqual([]);
+  });
+
+  test.describe(`${item.name} as a full page`, () => {
+    for (const theme of ['light', 'dark'] as const) {
+      test(`no axe violations or console errors (${theme})`, async ({ page }) => {
+        const errors = collectErrors(page);
+        await page.emulateMedia({ reducedMotion: 'reduce', colorScheme: theme });
+        await page.goto(pageUrl);
+        await expect(page.locator('html')).toHaveAttribute('data-bs-theme', theme);
+        const results = await new AxeBuilder({ page }).analyze();
+        expect(results.violations.map((v) => `${v.id}: ${v.help}`)).toEqual([]);
+        expect(errors).toEqual([]);
+      });
+    }
+
+    for (const width of [320, 768, 1280]) {
+      test(`no horizontal overflow at ${width}px`, async ({ page }) => {
+        await page.setViewportSize({ width, height: 800 });
+        await page.goto(pageUrl);
+        const overflow = await page.evaluate(
+          () => document.documentElement.scrollWidth > window.innerWidth,
+        );
+        expect(overflow).toBe(false);
+      });
+    }
+
+    test('the sidebar is a drawer on phones and closes with Escape', async ({ page }) => {
+      await page.setViewportSize({ width: 375, height: 800 });
+      await page.goto(pageUrl);
+      // Bootstrap turns the <aside> into a dialog while it is a drawer.
+      const sidebar = page.locator('#bootcn-sidebar');
+      const open = page.getByRole('button', { name: 'Menu' });
+      await expect(page.getByRole('link', { name: 'Projects' })).toBeHidden();
+      await open.click();
+      await expect(sidebar.getByRole('link', { name: 'Projects' })).toBeVisible();
+      // Bootstrap moves focus into the drawer when it has finished opening.
+      await expect(sidebar).toBeFocused();
+      await page.keyboard.press('Escape');
+      await expect(sidebar.getByRole('link', { name: 'Projects' })).toBeHidden();
+      await expect(open).toBeFocused();
+    });
+
+    test('the theme toggle switches and remembers the theme', async ({ page }) => {
+      await page.emulateMedia({ colorScheme: 'light' });
+      await page.goto(pageUrl);
+      const toggle = page.getByRole('button', { name: 'Dark mode' });
+      await expect(toggle).toHaveAttribute('aria-pressed', 'false');
+      await toggle.click();
+      await expect(page.locator('html')).toHaveAttribute('data-bs-theme', 'dark');
+      await expect(toggle).toHaveAttribute('aria-pressed', 'true');
+      await page.reload();
+      await expect(page.locator('html')).toHaveAttribute('data-bs-theme', 'dark');
+    });
+  });
+}

@@ -1,0 +1,134 @@
+/*
+ * Admin dashboard layout: a sidebar column from 992px (an off-canvas drawer
+ * below), a sticky top bar, and the page content. Blocks bring their own CSS.
+ */
+.bootcn-admin {
+  min-height: 100vh;
+  background-color: var(--bs-body-bg);
+}
+
+.bootcn-admin__skip {
+  position: absolute;
+  z-index: 1080;
+  top: 0.5rem;
+  left: 0.5rem;
+  padding: 0.5rem 0.75rem;
+  border-radius: var(--bootcn-radius);
+  background-color: var(--bs-body-bg);
+  box-shadow: var(--bootcn-focus-ring);
+}
+
+.bootcn-admin__layout {
+  display: flex;
+  min-height: 100vh;
+}
+
+@media (min-width: 992px) {
+  .bootcn-admin .bootcn-sidebar {
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    overflow-y: auto;
+  }
+}
+
+.bootcn-admin__main {
+  display: flex;
+  flex: 1 1 auto;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.bootcn-admin__topbar {
+  position: sticky;
+  z-index: 1020;
+  top: 0;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.625rem 1rem;
+  border-bottom: var(--bootcn-border-width) solid var(--bootcn-border-color);
+  background-color: var(--bs-body-bg);
+}
+
+.bootcn-admin__search {
+  flex: 1 1 auto;
+  min-width: 0;
+  max-width: 24rem;
+}
+
+.bootcn-admin__topbar-end {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  margin-left: auto;
+}
+
+/* Theme toggle: the moon offers dark mode, the sun offers light mode. */
+[data-bs-theme='dark'] .bootcn-admin__when-light,
+[data-bs-theme='light'] .bootcn-admin__when-dark {
+  display: none;
+}
+
+.bootcn-admin__content {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  padding: 1.5rem 1rem 3rem;
+  outline: 0;
+}
+
+@media (min-width: 768px) {
+  .bootcn-admin__content {
+    padding-inline: 2rem;
+  }
+}
+
+.bootcn-admin__grid {
+  display: grid;
+  gap: 1.5rem;
+}
+
+@media (min-width: 1200px) {
+  .bootcn-admin__grid {
+    grid-template-columns: minmax(0, 2fr) minmax(0, 1fr);
+  }
+}
+
+/* Bar chart: decorative; the same data is in a visually hidden table. */
+.bootcn-bar-chart {
+  display: flex;
+  align-items: stretch;
+  gap: 0.375rem;
+  height: 14rem;
+}
+
+.bootcn-bar-chart__col {
+  display: flex;
+  flex: 1 1 0;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 0.375rem;
+  min-width: 0;
+}
+
+.bootcn-bar-chart__bar {
+  width: 100%;
+  max-width: 2.5rem;
+  height: calc(var(--bootcn-bar-value, 0) * (100% - 1.5rem));
+  border-radius: var(--bootcn-radius-sm) var(--bootcn-radius-sm) 0 0;
+  background-color: var(--bs-primary);
+}
+
+.bootcn-bar-chart__label {
+  color: var(--bs-secondary-color);
+  font-size: 0.75rem;
+  line-height: 1;
+}
+
+@media (max-width: 575.98px) {
+  .bootcn-bar-chart__col:nth-child(even) .bootcn-bar-chart__label {
+    visibility: hidden;
+  }
+}

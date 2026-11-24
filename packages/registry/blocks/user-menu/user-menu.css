@@ -1,0 +1,55 @@
+.bootcn-user-menu__trigger {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  min-height: var(--bootcn-control-height);
+  padding: 0.25rem 0.5rem 0.25rem 0.25rem;
+  border: var(--bootcn-border-width) solid transparent;
+  border-radius: var(--bootcn-radius-pill);
+  color: var(--bs-body-color);
+  font-weight: 500;
+}
+
+.bootcn-user-menu__trigger:hover,
+.bootcn-user-menu__trigger[aria-expanded='true'] {
+  background-color: var(--bs-secondary-bg);
+}
+
+.bootcn-user-menu__trigger:focus-visible {
+  outline: 0;
+  box-shadow: var(--bootcn-focus-ring);
+}
+
+.bootcn-user-menu__chevron {
+  color: var(--bs-secondary-color);
+}
+
+.bootcn-user-menu__header {
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  white-space: normal;
+}
+
+.bootcn-user-menu__header-name {
+  color: var(--bs-emphasis-color);
+  font-weight: 600;
+}
+
+.bootcn-user-menu__email {
+  color: var(--bs-secondary-color);
+  font-size: 0.8125rem;
+}
+
+/* On narrow screens show only the avatar; the name stays the button's
+   accessible name. */
+@media (max-width: 575.98px) {
+  .bootcn-user-menu__name {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+  }
+}

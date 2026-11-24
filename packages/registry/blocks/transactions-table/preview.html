@@ -1,0 +1,166 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Bootcn Transactions table preview</title>
+    <script>
+      // Preview theme: ?theme=dark|light, else the docs page around the frame, else light.
+      (function () {
+        var theme = new URLSearchParams(location.search).get('theme');
+        if (!theme) {
+          try {
+            theme =
+              window.parent !== window &&
+              window.parent.document.documentElement.classList.contains('dark')
+                ? 'dark'
+                : 'light';
+          } catch (error) {
+            theme = 'light';
+          }
+        }
+        document.documentElement.setAttribute('data-bs-theme', theme === 'dark' ? 'dark' : 'light');
+      })();
+    </script>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.9/dist/css/bootstrap.min.css"
+    />
+    <link rel="stylesheet" href="../../themes/tokens/tokens.css" />
+    <link rel="stylesheet" href="../../components/button/button.css" />
+    <link rel="stylesheet" href="../../components/card/card.css" />
+    <link rel="stylesheet" href="../../components/badge/badge.css" />
+    <link rel="stylesheet" href="../../components/input/input.css" />
+    <link rel="stylesheet" href="transactions-table.css" />
+  </head>
+  <body>
+    <main class="container py-4">
+      <h1 class="h4 mb-4">Transactions table</h1>
+      <section
+        class="card bootcn-card bootcn-transactions"
+        aria-labelledby="bootcn-transactions-title"
+      >
+        <header class="bootcn-card__header bootcn-transactions__header">
+          <div>
+            <h2 class="bootcn-card__title" id="bootcn-transactions-title">Recent transactions</h2>
+            <p class="bootcn-card__description">Payments from the last 30 days.</p>
+          </div>
+          <form
+            class="bootcn-transactions__tools"
+            role="search"
+            aria-label="Transactions"
+            action="#"
+          >
+            <label class="visually-hidden" for="bootcn-transactions-search"
+              >Search transactions</label
+            >
+            <input
+              type="search"
+              class="form-control bootcn-input bootcn-transactions__search"
+              id="bootcn-transactions-search"
+              name="q"
+              placeholder="Search customers"
+            />
+            <button type="submit" class="visually-hidden">Search</button>
+            <button type="button" class="btn bootcn-button bootcn-button--outline">
+              <svg
+                class="bootcn-icon"
+                width="16"
+                height="16"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+                focusable="false"
+              >
+                <path d="M12 4v12" />
+                <path d="M7 11l5 5 5-5" />
+                <path d="M5 20h14" />
+              </svg>
+              Export
+            </button>
+          </form>
+        </header>
+        <div class="table-responsive">
+          <table class="table bootcn-transactions__table mb-0">
+            <caption class="visually-hidden">
+              Recent transactions, newest first
+            </caption>
+            <thead>
+              <tr>
+                <th scope="col">Customer</th>
+                <th scope="col">Status</th>
+                <th scope="col">Date</th>
+                <th scope="col" class="text-end">Amount</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>
+                  <span class="bootcn-transactions__name">Maria Papadopoulou</span>
+                  <span class="bootcn-transactions__email">maria@example.com</span>
+                </td>
+                <td><span class="badge bootcn-badge bootcn-badge--default">Paid</span></td>
+                <td><time datetime="2026-11-23">23 Nov 2026</time></td>
+                <td class="text-end bootcn-transactions__amount">€250.00</td>
+              </tr>
+              <tr>
+                <td>
+                  <span class="bootcn-transactions__name">Nikos Georgiou</span>
+                  <span class="bootcn-transactions__email">nikos@example.com</span>
+                </td>
+                <td><span class="badge bootcn-badge bootcn-badge--secondary">Pending</span></td>
+                <td><time datetime="2026-11-22">22 Nov 2026</time></td>
+                <td class="text-end bootcn-transactions__amount">€1,120.00</td>
+              </tr>
+              <tr>
+                <td>
+                  <span class="bootcn-transactions__name">Eleni Kosta</span>
+                  <span class="bootcn-transactions__email">eleni@example.com</span>
+                </td>
+                <td><span class="badge bootcn-badge bootcn-badge--outline">Refunded</span></td>
+                <td><time datetime="2026-11-21">21 Nov 2026</time></td>
+                <td class="text-end bootcn-transactions__amount">€89.90</td>
+              </tr>
+              <tr>
+                <td>
+                  <span class="bootcn-transactions__name">Alex Ioannou</span>
+                  <span class="bootcn-transactions__email">alex@example.com</span>
+                </td>
+                <td><span class="badge bootcn-badge bootcn-badge--destructive">Failed</span></td>
+                <td><time datetime="2026-11-20">20 Nov 2026</time></td>
+                <td class="text-end bootcn-transactions__amount">€430.00</td>
+              </tr>
+              <tr>
+                <td>
+                  <span class="bootcn-transactions__name">Sofia Dimou</span>
+                  <span class="bootcn-transactions__email">sofia@example.com</span>
+                </td>
+                <td><span class="badge bootcn-badge bootcn-badge--default">Paid</span></td>
+                <td><time datetime="2026-11-19">19 Nov 2026</time></td>
+                <td class="text-end bootcn-transactions__amount">€72.50</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <footer class="bootcn-card__footer bootcn-transactions__footer">
+          <p class="bootcn-transactions__summary">Showing 1–5 of 42</p>
+          <nav class="bootcn-transactions__pages" aria-label="Transactions pages">
+            <a
+              class="btn bootcn-button bootcn-button--outline bootcn-button--sm"
+              aria-disabled="true"
+              tabindex="-1"
+              >Previous</a
+            >
+            <a class="btn bootcn-button bootcn-button--outline bootcn-button--sm" href="#page-2"
+              >Next</a
+            >
+          </nav>
+        </footer>
+      </section>
+    </main>
+  </body>
+</html>

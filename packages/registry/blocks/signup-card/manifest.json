@@ -1,0 +1,28 @@
+{
+  "$schema": "../../schema/registry-item.schema.json",
+  "name": "signup-card",
+  "type": "registry:block",
+  "title": "Sign-up card",
+  "description": "A registration card with name, email, password rules and a terms checkbox.",
+  "version": "1.0.0",
+  "categories": ["authentication"],
+  "dependencies": [],
+  "registryDependencies": ["card", "input", "checkbox", "button"],
+  "compatibility": {
+    "bootstrap": "5.3",
+    "platform": ["Bootstrap CSS"]
+  },
+  "license": "MIT",
+  "files": [
+    {
+      "path": "signup-card.html",
+      "target": "signup-card.html",
+      "type": "registry:component"
+    },
+    {
+      "path": "signup-card.css",
+      "target": "signup-card.css",
+      "type": "registry:style"
+    }
+  ]
+}

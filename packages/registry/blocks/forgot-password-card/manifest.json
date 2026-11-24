@@ -1,0 +1,28 @@
+{
+  "$schema": "../../schema/registry-item.schema.json",
+  "name": "forgot-password-card",
+  "type": "registry:block",
+  "title": "Forgot password card",
+  "description": "Asks for an email address to send a reset link, with a status message and a way back to sign in.",
+  "version": "1.0.0",
+  "categories": ["authentication"],
+  "dependencies": [],
+  "registryDependencies": ["card", "input", "button"],
+  "compatibility": {
+    "bootstrap": "5.3",
+    "platform": ["Bootstrap CSS"]
+  },
+  "license": "MIT",
+  "files": [
+    {
+      "path": "forgot-password-card.html",
+      "target": "forgot-password-card.html",
+      "type": "registry:component"
+    },
+    {
+      "path": "forgot-password-card.css",
+      "target": "forgot-password-card.css",
+      "type": "registry:style"
+    }
+  ]
+}

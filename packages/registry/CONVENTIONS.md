@@ -147,12 +147,13 @@ Every item directory has a `manifest.json` validated against
 - `target`: the install path, **relative to the directory configured for the
   file type** in the user's `bootcn.json`:
 
-| File `type`          | Installs under     | Allowed extensions |
-| -------------------- | ------------------ | ------------------ |
-| `registry:component` | `paths.components` | `.html`, `.php`    |
-| `registry:style`     | `paths.css`        | `.css`             |
-| `registry:script`    | `paths.js`         | `.js`              |
-| `registry:lib`       | `paths.lib`        | `.js`              |
+| File `type`          | Installs under                       | Allowed extensions |
+| -------------------- | ------------------------------------ | ------------------ |
+| `registry:component` | `paths.components`                   | `.html`, `.php`    |
+| `registry:style`     | `paths.css`                          | `.css`             |
+| `registry:script`    | `paths.js`                           | `.js`              |
+| `registry:lib`       | `paths.lib`                          | `.js`              |
+| `registry:page`      | `paths.pages`, else the project root | `.html`, `.php`    |
 
 So `{ "path": "button.css", "target": "button.css", "type": "registry:style" }`
 installs to `assets/css/button.css` with the default config. A target keeps the
@@ -164,3 +165,22 @@ always installed and does not need to be listed. Platform requirements
 packages go in `dependencies` and are only displayed, never installed.
 
 Run `pnpm registry:validate` after any change; CI runs it too.
+
+## 10. Blocks and templates
+
+- **Blocks** (`blocks/<name>/`, `registry:block`) are sections built from
+  components: an HTML snippet, a CSS file, a README and a `preview.html`, like a
+  component. List the components they use in `registryDependencies`. Prefix
+  their classes with the block name (`bootcn-login-card__…`), so blocks stay
+  independent of each other. Blocks that hold a search form name it
+  (`aria-label`), so two of them on one page are distinct landmarks.
+- **Templates** (`templates/<name>/`, `registry:template`) are complete pages.
+  The page is a `registry:page` file and refers to the user's folders only
+  through `{{bootcn:css}}`, `{{bootcn:js}}`, `{{bootcn:components}}` and
+  `{{bootcn:lib}}`; the CLI replaces them with relative paths on install.
+  Validation rejects unknown placeholders and placeholders in other file types.
+  Templates have no `preview.html`: the docs site installs the template with the
+  CLI and previews the result, and the docs tests check it (axe in both themes,
+  overflow at 320/768/1280px).
+- A template's dark mode must work before first paint (inline script in
+  `<head>`) and follow the system setting unless the user picked a theme.

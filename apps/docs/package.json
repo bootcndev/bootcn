@@ -3,13 +3,14 @@
   "version": "0.0.0",
   "private": true,
   "type": "module",
-  "description": "Bootcn documentation site (VitePress), built from the registry output.",
+  "description": "Bootcn documentation site (VitePress), built from the registry output. Template previews are installed with the workspace CLI, so it builds after it.",
   "scripts": {
     "dev": "vitepress dev",
     "build": "vitepress build",
     "preview": "vitepress preview"
   },
   "devDependencies": {
+    "bootcn": "workspace:*",
     "vitepress": "1.6.4",
     "vue": "3.5.46"
   }

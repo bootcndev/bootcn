@@ -1,0 +1,133 @@
+/* A static column from 992px (Bootstrap's offcanvas-lg); an off-canvas
+   drawer below it. Set the width with --bootcn-sidebar-width. */
+.bootcn-sidebar {
+  --bootcn-sidebar-width: 16rem;
+  --bs-offcanvas-width: var(--bootcn-sidebar-width);
+  --bs-offcanvas-bg: var(--bs-body-bg);
+}
+
+.bootcn-sidebar__open {
+  gap: 0.375rem;
+}
+
+@media (min-width: 992px) {
+  .bootcn-sidebar {
+    flex: 0 0 var(--bootcn-sidebar-width);
+    width: var(--bootcn-sidebar-width);
+    border-right: var(--bootcn-border-width) solid var(--bootcn-border-color);
+    background-color: var(--bs-tertiary-bg);
+  }
+}
+
+.bootcn-sidebar__body {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  height: 100%;
+  padding: 1rem 0.75rem;
+}
+
+.bootcn-sidebar__brand {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin: 0;
+  padding: 0.25rem 0.5rem;
+  color: var(--bs-emphasis-color);
+  font-weight: 600;
+  font-size: 1.0625rem;
+  text-decoration: none;
+}
+
+.bootcn-sidebar__brand .bootcn-icon {
+  width: 1.25rem;
+  height: 1.25rem;
+}
+
+.bootcn-sidebar__nav {
+  flex: 1 1 auto;
+}
+
+.bootcn-sidebar__heading {
+  margin: 0.75rem 0 0.25rem;
+  padding: 0 0.5rem;
+  color: var(--bs-secondary-color);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.bootcn-sidebar__list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.bootcn-sidebar__link {
+  display: flex;
+  align-items: center;
+  gap: 0.625rem;
+  padding: 0.5rem;
+  border-radius: var(--bootcn-radius);
+  color: var(--bs-body-color);
+  font-size: 0.9375rem;
+  font-weight: 500;
+  text-decoration: none;
+}
+
+.bootcn-sidebar__link .bootcn-icon {
+  flex: none;
+  color: var(--bs-secondary-color);
+}
+
+.bootcn-sidebar__link:hover {
+  background-color: var(--bs-secondary-bg);
+  color: var(--bs-emphasis-color);
+}
+
+.bootcn-sidebar__link[aria-current='page'] {
+  background-color: var(--bs-secondary-bg);
+  color: var(--bs-emphasis-color);
+}
+
+.bootcn-sidebar__link[aria-current='page'] .bootcn-icon {
+  color: var(--bs-emphasis-color);
+}
+
+.bootcn-sidebar__link:focus-visible {
+  outline: 0;
+  box-shadow: var(--bootcn-focus-ring);
+}
+
+.bootcn-sidebar__count {
+  margin-left: auto;
+}
+
+.bootcn-sidebar__user {
+  display: flex;
+  align-items: center;
+  gap: 0.625rem;
+  padding: 0.75rem 0.5rem 0;
+  border-top: var(--bootcn-border-width) solid var(--bootcn-border-color);
+}
+
+.bootcn-sidebar__user-text {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.bootcn-sidebar__user-name {
+  color: var(--bs-emphasis-color);
+  font-size: 0.875rem;
+  font-weight: 600;
+}
+
+.bootcn-sidebar__user-email {
+  overflow: hidden;
+  color: var(--bs-secondary-color);
+  font-size: 0.8125rem;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}

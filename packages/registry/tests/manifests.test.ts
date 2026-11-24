@@ -8,7 +8,7 @@ import { describe, expect, it } from 'vitest';
 
 const here = dirname(fileURLToPath(import.meta.url));
 const registryRoot = resolve(here, '..');
-const componentsDir = resolve(registryRoot, 'components');
+const KINDS = ['components', 'blocks', 'templates'];
 const schemaPath = resolve(registryRoot, 'schema/registry-item.schema.json');
 
 interface ManifestFile {
@@ -20,12 +20,16 @@ interface Manifest {
   files: ManifestFile[];
 }
 
-async function componentNames(): Promise<string[]> {
-  const entries = await readdir(componentsDir, { withFileTypes: true });
-  return entries
-    .filter((entry) => entry.isDirectory())
-    .map((entry) => entry.name)
-    .sort();
+async function itemDirs(): Promise<Map<string, string>> {
+  const found = new Map<string, string>();
+  for (const kind of KINDS) {
+    const kindDir = resolve(registryRoot, kind);
+    const entries = await readdir(kindDir, { withFileTypes: true }).catch(() => []);
+    for (const entry of entries) {
+      if (entry.isDirectory()) found.set(entry.name, resolve(kindDir, entry.name));
+    }
+  }
+  return found;
 }
 
 async function fileExists(filePath: string): Promise<boolean> {
@@ -33,18 +37,19 @@ async function fileExists(filePath: string): Promise<boolean> {
   return Boolean(info?.isFile());
 }
 
-describe('component manifests', () => {
+describe('component, block and template manifests', () => {
   it('validate against the schema and reference existing files', async () => {
     const ajv = new Ajv2020({ allErrors: true, strict: true });
     addFormats(ajv);
     const schema = JSON.parse(await readFile(schemaPath, 'utf8'));
     const validate = ajv.compile(schema);
 
-    const names = await componentNames();
-    expect(names).toEqual(expect.arrayContaining(['badge', 'button', 'card', 'dialog', 'input']));
+    const dirs = await itemDirs();
+    expect([...dirs.keys()]).toEqual(
+      expect.arrayContaining(['badge', 'button', 'card', 'dialog', 'input', 'login-card']),
+    );
 
-    for (const name of names) {
-      const dir = resolve(componentsDir, name);
+    for (const [name, dir] of dirs) {
       const manifest = JSON.parse(
         await readFile(resolve(dir, 'manifest.json'), 'utf8'),
       ) as Manifest;

@@ -24,7 +24,9 @@
 | `paths`     | Where each kind of file is written, relative to the project root |
 
 For PHP projects with a `public/` directory, `init` proposes
-`public/assets/...` for CSS and JavaScript.
+`public/assets/...` for CSS and JavaScript, and `"pages": "public"` for
+[templates](../templates/). Without `paths.pages`, template pages go to the
+project root.
 
 ## Pinning a registry version
 

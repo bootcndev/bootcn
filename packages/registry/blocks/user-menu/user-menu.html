@@ -1,0 +1,53 @@
+<div class="dropdown bootcn-dropdown bootcn-user-menu">
+  <button
+    class="btn bootcn-user-menu__trigger"
+    type="button"
+    id="bootcn-user-menu-trigger"
+    data-bs-toggle="dropdown"
+    aria-expanded="false"
+  >
+    <span class="bootcn-avatar bootcn-avatar--sm" aria-hidden="true"
+      ><span class="bootcn-avatar__fallback">MP</span></span
+    >
+    <span class="bootcn-user-menu__name">Maria Papadopoulou</span>
+    <svg
+      class="bootcn-user-menu__chevron"
+      width="16"
+      height="16"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      stroke-width="2"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+      aria-hidden="true"
+      focusable="false"
+    >
+      <path d="M6 9l6 6 6-6" />
+    </svg>
+  </button>
+  <ul
+    class="dropdown-menu dropdown-menu-end bootcn-dropdown__menu"
+    aria-labelledby="bootcn-user-menu-trigger"
+  >
+    <li>
+      <p class="dropdown-header bootcn-user-menu__header">
+        <span class="bootcn-user-menu__header-name">Maria Papadopoulou</span>
+        <span class="bootcn-user-menu__email">maria@example.com</span>
+      </p>
+    </li>
+    <li><hr class="dropdown-divider bootcn-dropdown__divider" /></li>
+    <li><a class="dropdown-item bootcn-dropdown__item" href="#profile">Profile</a></li>
+    <li><a class="dropdown-item bootcn-dropdown__item" href="#billing">Billing</a></li>
+    <li><a class="dropdown-item bootcn-dropdown__item" href="#settings">Settings</a></li>
+    <li><hr class="dropdown-divider bootcn-dropdown__divider" /></li>
+    <li>
+      <button
+        class="dropdown-item bootcn-dropdown__item bootcn-dropdown__item--destructive"
+        type="button"
+      >
+        Sign out
+      </button>
+    </li>
+  </ul>
+</div>

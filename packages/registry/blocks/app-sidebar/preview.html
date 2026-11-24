@@ -1,0 +1,306 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Bootcn App sidebar preview</title>
+    <script>
+      // Preview theme: ?theme=dark|light, else the docs page around the frame, else light.
+      (function () {
+        var theme = new URLSearchParams(location.search).get('theme');
+        if (!theme) {
+          try {
+            theme =
+              window.parent !== window &&
+              window.parent.document.documentElement.classList.contains('dark')
+                ? 'dark'
+                : 'light';
+          } catch (error) {
+            theme = 'light';
+          }
+        }
+        document.documentElement.setAttribute('data-bs-theme', theme === 'dark' ? 'dark' : 'light');
+      })();
+    </script>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.9/dist/css/bootstrap.min.css"
+    />
+    <link rel="stylesheet" href="../../themes/tokens/tokens.css" />
+    <link rel="stylesheet" href="../../components/button/button.css" />
+    <link rel="stylesheet" href="../../components/badge/badge.css" />
+    <link rel="stylesheet" href="../../components/avatar/avatar.css" />
+    <link rel="stylesheet" href="app-sidebar.css" />
+  </head>
+  <body>
+    <header class="d-lg-none border-bottom p-2">
+      <button
+        class="btn bootcn-button bootcn-button--outline bootcn-button--sm d-lg-none bootcn-sidebar__open"
+        type="button"
+        data-bs-toggle="offcanvas"
+        data-bs-target="#bootcn-sidebar"
+        aria-controls="bootcn-sidebar"
+      >
+        <svg
+          class="bootcn-icon"
+          width="16"
+          height="16"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          aria-hidden="true"
+          focusable="false"
+        >
+          <path d="M4 6h16M4 12h16M4 18h16" />
+        </svg>
+        Menu
+      </button>
+    </header>
+    <div class="d-lg-flex" style="min-height: 34rem">
+      <aside
+        class="offcanvas-lg offcanvas-start bootcn-sidebar"
+        tabindex="-1"
+        id="bootcn-sidebar"
+        aria-label="Sidebar"
+      >
+        <div class="offcanvas-header bootcn-sidebar__header">
+          <p class="offcanvas-title bootcn-sidebar__brand">
+            <svg
+              class="bootcn-icon"
+              width="16"
+              height="16"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              aria-hidden="true"
+              focusable="false"
+            >
+              <rect x="3" y="3" width="8" height="8" rx="2" />
+              <rect x="13" y="13" width="8" height="8" rx="2" />
+              <path d="M13 7h8M17 3v8M3 17h8" />
+            </svg>
+            Acme
+          </p>
+          <button
+            type="button"
+            class="btn-close"
+            data-bs-dismiss="offcanvas"
+            data-bs-target="#bootcn-sidebar"
+            aria-label="Close menu"
+          ></button>
+        </div>
+        <div class="offcanvas-body bootcn-sidebar__body">
+          <a class="bootcn-sidebar__brand d-none d-lg-flex" href="#">
+            <svg
+              class="bootcn-icon"
+              width="16"
+              height="16"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              aria-hidden="true"
+              focusable="false"
+            >
+              <rect x="3" y="3" width="8" height="8" rx="2" />
+              <rect x="13" y="13" width="8" height="8" rx="2" />
+              <path d="M13 7h8M17 3v8M3 17h8" />
+            </svg>
+            Acme
+          </a>
+          <nav class="bootcn-sidebar__nav" aria-label="Main">
+            <p class="bootcn-sidebar__heading" id="bootcn-sidebar-workspace">Workspace</p>
+            <ul class="bootcn-sidebar__list" aria-labelledby="bootcn-sidebar-workspace">
+              <li>
+                <a class="bootcn-sidebar__link" href="#" aria-current="page">
+                  <svg
+                    class="bootcn-icon"
+                    width="16"
+                    height="16"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    aria-hidden="true"
+                    focusable="false"
+                  >
+                    <path d="M3 11l9-8 9 8" />
+                    <path d="M5 10v10h14V10" />
+                  </svg>
+                  <span>Dashboard</span>
+                </a>
+              </li>
+              <li>
+                <a class="bootcn-sidebar__link" href="#">
+                  <svg
+                    class="bootcn-icon"
+                    width="16"
+                    height="16"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    aria-hidden="true"
+                    focusable="false"
+                  >
+                    <path d="M3 6h6l2 2h10v11H3z" />
+                  </svg>
+                  <span>Projects</span>
+                </a>
+              </li>
+              <li>
+                <a class="bootcn-sidebar__link" href="#">
+                  <svg
+                    class="bootcn-icon"
+                    width="16"
+                    height="16"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    aria-hidden="true"
+                    focusable="false"
+                  >
+                    <path d="M3 13h5l2 3h4l2-3h5" />
+                    <path d="M5 5h14l2 8v6H3v-6z" />
+                  </svg>
+                  <span>Inbox</span>
+                  <span class="badge bootcn-badge bootcn-badge--secondary bootcn-sidebar__count"
+                    >4<span class="visually-hidden"> unread</span></span
+                  >
+                </a>
+              </li>
+              <li>
+                <a class="bootcn-sidebar__link" href="#">
+                  <svg
+                    class="bootcn-icon"
+                    width="16"
+                    height="16"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    aria-hidden="true"
+                    focusable="false"
+                  >
+                    <path d="M4 20V10" />
+                    <path d="M10 20V4" />
+                    <path d="M16 20v-7" />
+                    <path d="M2 20h20" />
+                  </svg>
+                  <span>Reports</span>
+                </a>
+              </li>
+            </ul>
+            <p class="bootcn-sidebar__heading" id="bootcn-sidebar-account">Account</p>
+            <ul class="bootcn-sidebar__list" aria-labelledby="bootcn-sidebar-account">
+              <li>
+                <a class="bootcn-sidebar__link" href="#">
+                  <svg
+                    class="bootcn-icon"
+                    width="16"
+                    height="16"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    aria-hidden="true"
+                    focusable="false"
+                  >
+                    <circle cx="9" cy="8" r="4" />
+                    <path d="M2 21c0-4 3-7 7-7s7 3 7 7" />
+                    <path d="M17 4a4 4 0 0 1 0 8" />
+                    <path d="M22 21c0-3-2-6-5-7" />
+                  </svg>
+                  <span>Team</span>
+                </a>
+              </li>
+              <li>
+                <a class="bootcn-sidebar__link" href="#">
+                  <svg
+                    class="bootcn-icon"
+                    width="16"
+                    height="16"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    aria-hidden="true"
+                    focusable="false"
+                  >
+                    <path d="M4 6h9" />
+                    <path d="M19 6h1" />
+                    <circle cx="16" cy="6" r="2" />
+                    <path d="M4 18h3" />
+                    <path d="M13 18h7" />
+                    <circle cx="10" cy="18" r="2" />
+                    <path d="M4 12h1" />
+                    <path d="M11 12h9" />
+                    <circle cx="8" cy="12" r="2" />
+                  </svg>
+                  <span>Settings</span>
+                </a>
+              </li>
+              <li>
+                <a class="bootcn-sidebar__link" href="#">
+                  <svg
+                    class="bootcn-icon"
+                    width="16"
+                    height="16"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    aria-hidden="true"
+                    focusable="false"
+                  >
+                    <circle cx="12" cy="12" r="9" />
+                    <path d="M9.5 9a2.5 2.5 0 1 1 3.5 2.3c-.6.3-1 .9-1 1.7" />
+                    <path d="M12 17h.01" />
+                  </svg>
+                  <span>Help</span>
+                </a>
+              </li>
+            </ul>
+          </nav>
+          <div class="bootcn-sidebar__user">
+            <span class="bootcn-avatar bootcn-avatar--sm" aria-hidden="true"
+              ><span class="bootcn-avatar__fallback">MP</span></span
+            >
+            <div class="bootcn-sidebar__user-text">
+              <span class="bootcn-sidebar__user-name">Maria Papadopoulou</span>
+              <span class="bootcn-sidebar__user-email">maria@example.com</span>
+            </div>
+          </div>
+        </div>
+      </aside>
+      <main class="flex-grow-1 p-4">
+        <h1 class="h4">Dashboard</h1>
+        <p class="text-body-secondary">Main content goes here.</p>
+      </main>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.9/dist/js/bootstrap.bundle.min.js"></script>
+  </body>
+</html>

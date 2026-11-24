@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Bootcn Login card preview</title>
+    <script>
+      // Preview theme: ?theme=dark|light, else the docs page around the frame, else light.
+      (function () {
+        var theme = new URLSearchParams(location.search).get('theme');
+        if (!theme) {
+          try {
+            theme =
+              window.parent !== window &&
+              window.parent.document.documentElement.classList.contains('dark')
+                ? 'dark'
+                : 'light';
+          } catch (error) {
+            theme = 'light';
+          }
+        }
+        document.documentElement.setAttribute('data-bs-theme', theme === 'dark' ? 'dark' : 'light');
+      })();
+    </script>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.9/dist/css/bootstrap.min.css"
+    />
+    <link rel="stylesheet" href="../../themes/tokens/tokens.css" />
+    <link rel="stylesheet" href="../../components/button/button.css" />
+    <link rel="stylesheet" href="../../components/card/card.css" />
+    <link rel="stylesheet" href="../../components/input/input.css" />
+    <link rel="stylesheet" href="../../components/checkbox/checkbox.css" />
+    <link rel="stylesheet" href="login-card.css" />
+  </head>
+  <body>
+    <main class="container py-4">
+      <h1 class="h4 mb-4">Login card</h1>
+      <section class="bootcn-login-card" aria-labelledby="bootcn-login-card-title">
+        <div class="card bootcn-card">
+          <header class="bootcn-card__header">
+            <h2 class="bootcn-card__title" id="bootcn-login-card-title">Sign in to your account</h2>
+            <p class="bootcn-card__description">Enter your email and password to continue.</p>
+          </header>
+          <form class="bootcn-card__content bootcn-login-card__form" action="#" method="post">
+            <div class="bootcn-field">
+              <label for="bootcn-login-card-email" class="form-label bootcn-field__label"
+                >Email</label
+              >
+              <input
+                type="email"
+                class="form-control bootcn-input"
+                id="bootcn-login-card-email"
+                name="email"
+                autocomplete="email"
+                placeholder="you@example.com"
+                required
+              />
+            </div>
+            <div class="bootcn-field">
+              <div class="bootcn-login-card__label-row">
+                <label for="bootcn-login-card-password" class="form-label bootcn-field__label"
+                  >Password</label
+                >
+                <a class="bootcn-login-card__link" href="#forgot-password">Forgot password?</a>
+              </div>
+              <input
+                type="password"
+                class="form-control bootcn-input"
+                id="bootcn-login-card-password"
+                name="password"
+                autocomplete="current-password"
+                required
+              />
+            </div>
+            <div class="form-check bootcn-checkbox">
+              <input
+                class="form-check-input bootcn-checkbox__input"
+                type="checkbox"
+                id="bootcn-login-card-remember"
+                name="remember"
+              />
+              <label
+                class="form-check-label bootcn-checkbox__label"
+                for="bootcn-login-card-remember"
+                >Keep me signed in</label
+              >
+            </div>
+            <button type="submit" class="btn bootcn-button bootcn-button--default w-100">
+              Sign in
+            </button>
+          </form>
+          <footer class="bootcn-card__footer bootcn-login-card__footer">
+            <p class="mb-0">
+              No account yet? <a class="bootcn-login-card__link" href="#sign-up">Create one</a>
+            </p>
+          </footer>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>
