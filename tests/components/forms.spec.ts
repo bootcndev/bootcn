@@ -6,7 +6,12 @@ test('radio card: clicking anywhere on the card selects it', async ({ page }) =>
   await openPreview(page, 'radio-group');
   const team = page.locator('#bootcn-plan-team');
   await expect(team).not.toBeChecked();
-  await page.locator('#bootcn-plan-team-description').click();
+  // The label is stretched over the card, so a click on the card's lower
+  // right corner (outside the radio and the label text) still selects it.
+  const card = page.locator('.bootcn-radio-group__item', { has: team });
+  const box = await card.boundingBox();
+  if (!box) throw new Error('card is not visible');
+  await page.mouse.click(box.x + box.width - 8, box.y + box.height - 8);
   await expect(team).toBeChecked();
   await expect(page.locator('#bootcn-plan-starter')).not.toBeChecked();
 });
