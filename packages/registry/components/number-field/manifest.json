@@ -1,0 +1,33 @@
+{
+  "$schema": "../../schema/registry-item.schema.json",
+  "name": "number-field",
+  "type": "registry:ui",
+  "title": "Number field",
+  "description": "A number input with decrement and increment buttons that respect min, max and step.",
+  "version": "1.0.0",
+  "categories": ["forms"],
+  "dependencies": [],
+  "registryDependencies": ["label", "input"],
+  "compatibility": {
+    "bootstrap": "5.3",
+    "platform": ["Bootstrap CSS"]
+  },
+  "license": "MIT",
+  "files": [
+    {
+      "path": "number-field.html",
+      "target": "number-field.html",
+      "type": "registry:component"
+    },
+    {
+      "path": "number-field.css",
+      "target": "number-field.css",
+      "type": "registry:style"
+    },
+    {
+      "path": "number-field.js",
+      "target": "number-field.js",
+      "type": "registry:script"
+    }
+  ]
+}

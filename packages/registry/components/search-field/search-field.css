@@ -1,0 +1,79 @@
+.bootcn-search-field {
+  display: flex;
+  align-items: center;
+  min-height: var(--bootcn-control-height);
+  border: var(--bootcn-border-width) solid var(--bootcn-input);
+  border-radius: var(--bootcn-radius);
+  background-color: transparent;
+  box-shadow: var(--bootcn-shadow-sm);
+  transition:
+    border-color var(--bootcn-transition),
+    box-shadow var(--bootcn-transition);
+  max-width: 20rem;
+  padding: 0 0.25rem 0 0.75rem;
+}
+
+.bootcn-search-field:focus-within {
+  border-color: var(--bootcn-ring);
+  box-shadow: 0 0 0 3px var(--bs-focus-ring-color);
+}
+
+.bootcn-search-field__icon {
+  flex: none;
+  color: var(--bootcn-muted-foreground);
+}
+
+.bootcn-search-field__input {
+  flex: 1 1 auto;
+  min-width: 0;
+  height: 100%;
+  border: 0;
+  background: transparent;
+  color: var(--bootcn-foreground);
+  font-size: 1rem;
+  outline: 0;
+  padding: 0 0.5rem;
+  appearance: none;
+}
+
+.bootcn-search-field__input::placeholder {
+  color: var(--bootcn-muted-foreground);
+}
+
+/* The clear button replaces the browser's own. */
+.bootcn-search-field__input::-webkit-search-cancel-button {
+  appearance: none;
+}
+
+@media (min-width: 768px) {
+  .bootcn-search-field__input {
+    font-size: var(--bootcn-control-font-size);
+  }
+}
+
+.bootcn-search-field__clear {
+  display: inline-flex;
+  flex: none;
+  align-items: center;
+  justify-content: center;
+  width: 1.75rem;
+  height: 1.75rem;
+  border: 0;
+  border-radius: var(--bootcn-radius-sm);
+  background: transparent;
+  color: var(--bootcn-muted-foreground);
+}
+
+.bootcn-search-field__clear:hover {
+  background-color: var(--bootcn-accent);
+  color: var(--bootcn-foreground);
+}
+
+.bootcn-search-field__clear:focus-visible {
+  outline: 0;
+  box-shadow: var(--bootcn-focus-ring);
+}
+
+.bootcn-search-field__clear[hidden] {
+  display: none;
+}

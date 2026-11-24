@@ -1,0 +1,33 @@
+{
+  "$schema": "../../schema/registry-item.schema.json",
+  "name": "search-field",
+  "type": "registry:ui",
+  "title": "Search field",
+  "description": "A search input with an icon and a clear button that appears when there is text; Escape clears it too.",
+  "version": "1.0.0",
+  "categories": ["forms"],
+  "dependencies": [],
+  "registryDependencies": ["label"],
+  "compatibility": {
+    "bootstrap": "5.3",
+    "platform": ["Bootstrap CSS"]
+  },
+  "license": "MIT",
+  "files": [
+    {
+      "path": "search-field.html",
+      "target": "search-field.html",
+      "type": "registry:component"
+    },
+    {
+      "path": "search-field.css",
+      "target": "search-field.css",
+      "type": "registry:style"
+    },
+    {
+      "path": "search-field.js",
+      "target": "search-field.js",
+      "type": "registry:script"
+    }
+  ]
+}

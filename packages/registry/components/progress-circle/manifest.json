@@ -1,0 +1,28 @@
+{
+  "$schema": "../../schema/registry-item.schema.json",
+  "name": "progress-circle",
+  "type": "registry:ui",
+  "title": "Progress circle",
+  "description": "A circular progress indicator with the percentage inside, or an indeterminate spinner, on a native progress element.",
+  "version": "1.0.0",
+  "categories": ["feedback"],
+  "dependencies": [],
+  "registryDependencies": [],
+  "compatibility": {
+    "bootstrap": "5.3",
+    "platform": ["Bootstrap CSS"]
+  },
+  "license": "MIT",
+  "files": [
+    {
+      "path": "progress-circle.html",
+      "target": "progress-circle.html",
+      "type": "registry:component"
+    },
+    {
+      "path": "progress-circle.css",
+      "target": "progress-circle.css",
+      "type": "registry:style"
+    }
+  ]
+}

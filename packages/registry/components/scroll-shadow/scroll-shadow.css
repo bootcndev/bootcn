@@ -1,0 +1,44 @@
+.bootcn-scroll-shadow {
+  --bootcn-scroll-shadow-color: rgba(0, 0, 0, 0.14);
+  --bootcn-scroll-shadow-cover: var(--bootcn-background);
+
+  overflow: auto;
+  padding: 0 1rem;
+  border: var(--bootcn-border-width) solid var(--bootcn-border-color);
+  border-radius: var(--bootcn-radius-lg);
+  /* Covers scroll with the content (local); shadows stay at the edges
+     (scroll). A shadow shows only where content hides behind an edge. */
+  background:
+    linear-gradient(var(--bootcn-scroll-shadow-cover) 30%, transparent) center top,
+    linear-gradient(transparent, var(--bootcn-scroll-shadow-cover) 70%) center bottom,
+    radial-gradient(farthest-side at 50% 0, var(--bootcn-scroll-shadow-color), transparent) center
+      top,
+    radial-gradient(farthest-side at 50% 100%, var(--bootcn-scroll-shadow-color), transparent)
+      center bottom;
+  background-repeat: no-repeat;
+  background-size:
+    100% 2.5rem,
+    100% 2.5rem,
+    100% 0.875rem,
+    100% 0.875rem;
+  background-attachment: local, local, scroll, scroll;
+  font-size: 0.875rem;
+}
+
+[data-bs-theme='dark'] .bootcn-scroll-shadow {
+  --bootcn-scroll-shadow-color: rgba(255, 255, 255, 0.16);
+}
+
+.bootcn-scroll-shadow:focus-visible {
+  outline: 0;
+  box-shadow: var(--bootcn-focus-ring);
+}
+
+.bootcn-scroll-shadow > p {
+  margin: 0;
+  padding: 0.625rem 0;
+}
+
+.bootcn-scroll-shadow > p + p {
+  border-top: var(--bootcn-border-width) solid var(--bootcn-border-color);
+}

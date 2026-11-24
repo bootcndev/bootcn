@@ -1,0 +1,72 @@
+.bootcn-progress-circle {
+  --bootcn-progress: 0;
+  --bootcn-progress-size: 3.5rem;
+
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--bootcn-progress-size);
+  height: var(--bootcn-progress-size);
+}
+
+.bootcn-progress-circle--sm {
+  --bootcn-progress-size: 2.5rem;
+}
+
+.bootcn-progress-circle--lg {
+  --bootcn-progress-size: 5rem;
+}
+
+.bootcn-progress-circle svg {
+  width: 100%;
+  height: 100%;
+  transform: rotate(-90deg);
+}
+
+.bootcn-progress-circle circle {
+  fill: none;
+  stroke-width: 3.5;
+}
+
+.bootcn-progress-circle__track {
+  stroke: var(--bootcn-muted);
+}
+
+.bootcn-progress-circle__value {
+  stroke: var(--bootcn-primary);
+  stroke-linecap: round;
+  stroke-dasharray: var(--bootcn-progress) 100;
+  transition: stroke-dasharray var(--bootcn-transition);
+}
+
+.bootcn-progress-circle__label {
+  position: absolute;
+  font-size: calc(var(--bootcn-progress-size) * 0.24);
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+}
+
+.bootcn-progress-circle--indeterminate .bootcn-progress-circle__value {
+  stroke-dasharray: 25 100;
+}
+
+.bootcn-progress-circle--indeterminate svg {
+  animation: bootcn-progress-circle-spin 1s linear infinite;
+}
+
+@keyframes bootcn-progress-circle-spin {
+  from {
+    transform: rotate(-90deg);
+  }
+
+  to {
+    transform: rotate(270deg);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .bootcn-progress-circle--indeterminate svg {
+    animation-duration: 3s;
+  }
+}

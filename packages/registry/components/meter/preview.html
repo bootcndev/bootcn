@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Bootcn Meter preview</title>
+    <script>
+      // Preview theme: ?theme=dark|light, else the docs page around the frame, else light.
+      (function () {
+        var theme = new URLSearchParams(location.search).get('theme');
+        if (!theme) {
+          try {
+            theme =
+              window.parent !== window &&
+              window.parent.document.documentElement.classList.contains('dark')
+                ? 'dark'
+                : 'light';
+          } catch (error) {
+            theme = 'light';
+          }
+        }
+        document.documentElement.setAttribute('data-bs-theme', theme === 'dark' ? 'dark' : 'light');
+      })();
+    </script>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.9/dist/css/bootstrap.min.css"
+    />
+    <link rel="stylesheet" href="../../themes/tokens/tokens.css" />
+    <link rel="stylesheet" href="meter.css" />
+  </head>
+  <body>
+    <main class="container py-4">
+      <h1 class="h4 mb-4">Meter</h1>
+      <div class="bootcn-meter">
+        <div class="bootcn-meter__head">
+          <label for="bootcn-meter-storage">Storage used</label>
+          <span aria-hidden="true">72%</span>
+        </div>
+        <meter
+          class="bootcn-meter__bar"
+          id="bootcn-meter-storage"
+          min="0"
+          max="100"
+          low="60"
+          high="85"
+          optimum="20"
+          value="72"
+        >
+          72%
+        </meter>
+      </div>
+
+      <div class="bootcn-meter">
+        <div class="bootcn-meter__head">
+          <label for="bootcn-meter-battery">Battery</label>
+          <span aria-hidden="true">18%</span>
+        </div>
+        <meter
+          class="bootcn-meter__bar"
+          id="bootcn-meter-battery"
+          min="0"
+          max="100"
+          low="25"
+          high="60"
+          optimum="100"
+          value="18"
+        >
+          18%
+        </meter>
+      </div>
+
+      <div class="bootcn-meter">
+        <div class="bootcn-meter__head">
+          <label for="bootcn-meter-signal">Signal strength</label>
+          <span aria-hidden="true">90%</span>
+        </div>
+        <meter
+          class="bootcn-meter__bar"
+          id="bootcn-meter-signal"
+          min="0"
+          max="100"
+          low="30"
+          high="70"
+          optimum="100"
+          value="90"
+        >
+          90%
+        </meter>
+      </div>
+    </main>
+  </body>
+</html>

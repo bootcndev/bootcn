@@ -470,3 +470,60 @@ test.describe('charts', () => {
     await expect(figure.locator('.bootcn-chart__legend li')).toHaveText(['Sales']);
   });
 });
+
+test.describe('HeroUI-style fields and indicators', () => {
+  test('number field: buttons step within min and max', async ({ page }) => {
+    await openPreview(page, 'number-field');
+    const guests = page.getByRole('spinbutton', { name: 'Guests' });
+    const more = page.getByRole('button', { name: 'Increase guests' });
+    const less = page.getByRole('button', { name: 'Decrease guests' });
+    await more.click();
+    await expect(guests).toHaveValue('3');
+    await less.click();
+    await less.click();
+    await expect(guests).toHaveValue('1');
+    await expect(less).toBeDisabled();
+    await guests.fill('12');
+    await expect(more).toBeDisabled();
+    await expect(more).toHaveAttribute('tabindex', '-1');
+
+    const width = page.getByRole('spinbutton', { name: 'Width in centimetres' });
+    await page.getByRole('button', { name: 'Increase width in centimetres' }).click();
+    await expect(width).toHaveValue('43');
+  });
+
+  test('search field: clear button and Escape empty it and keep focus', async ({ page }) => {
+    await openPreview(page, 'search-field');
+    const input = page.getByRole('searchbox', { name: 'Search the docs' });
+    const clear = page.getByRole('button', { name: 'Clear search' });
+    await expect(page.getByRole('search', { name: 'Documentation' })).toBeVisible();
+    await expect(clear).toBeVisible();
+    await clear.click();
+    await expect(input).toHaveValue('');
+    await expect(input).toBeFocused();
+    await expect(clear).toBeHidden();
+    await input.fill('calendar');
+    await expect(clear).toBeVisible();
+    await page.keyboard.press('Escape');
+    await expect(input).toHaveValue('');
+  });
+
+  test('meter and progress circle carry their values natively', async ({ page }) => {
+    await openPreview(page, 'meter');
+    await expect(page.getByRole('meter', { name: 'Storage used' })).toHaveAttribute('value', '72');
+    await openPreview(page, 'progress-circle');
+    await expect(page.getByRole('progressbar', { name: 'Course completed' })).toHaveAttribute(
+      'value',
+      '65',
+    );
+    const busy = page.getByRole('progressbar', { name: 'Loading report' });
+    expect(await busy.evaluate((el) => (el as HTMLProgressElement).position)).toBe(-1);
+  });
+
+  test('link: a new-tab link says so', async ({ page }) => {
+    await openPreview(page, 'link');
+    await expect(
+      page.getByRole('link', { name: 'Example documentation (opens in a new tab)' }),
+    ).toHaveAttribute('target', '_blank');
+  });
+});

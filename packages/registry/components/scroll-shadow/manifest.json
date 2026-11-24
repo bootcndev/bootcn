@@ -1,0 +1,28 @@
+{
+  "$schema": "../../schema/registry-item.schema.json",
+  "name": "scroll-shadow",
+  "type": "registry:ui",
+  "title": "Scroll shadow",
+  "description": "A scrollable area that shows soft shadows at the edges while there is more content, in pure CSS.",
+  "version": "1.0.0",
+  "categories": ["layout"],
+  "dependencies": [],
+  "registryDependencies": [],
+  "compatibility": {
+    "bootstrap": "5.3",
+    "platform": ["Bootstrap CSS"]
+  },
+  "license": "MIT",
+  "files": [
+    {
+      "path": "scroll-shadow.html",
+      "target": "scroll-shadow.html",
+      "type": "registry:component"
+    },
+    {
+      "path": "scroll-shadow.css",
+      "target": "scroll-shadow.css",
+      "type": "registry:style"
+    }
+  ]
+}

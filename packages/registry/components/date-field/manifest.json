@@ -1,0 +1,28 @@
+{
+  "$schema": "../../schema/registry-item.schema.json",
+  "name": "date-field",
+  "type": "registry:ui",
+  "title": "Date and time fields",
+  "description": "Native date, time and date-time inputs styled to match, with the browser picker in the right theme.",
+  "version": "1.0.0",
+  "categories": ["forms"],
+  "dependencies": [],
+  "registryDependencies": ["label", "input"],
+  "compatibility": {
+    "bootstrap": "5.3",
+    "platform": ["Bootstrap CSS"]
+  },
+  "license": "MIT",
+  "files": [
+    {
+      "path": "date-field.html",
+      "target": "date-field.html",
+      "type": "registry:component"
+    },
+    {
+      "path": "date-field.css",
+      "target": "date-field.css",
+      "type": "registry:style"
+    }
+  ]
+}

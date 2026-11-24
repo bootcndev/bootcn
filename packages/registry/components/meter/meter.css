@@ -1,0 +1,70 @@
+.bootcn-meter {
+  max-width: 24rem;
+}
+
+.bootcn-meter + .bootcn-meter {
+  margin-top: 1rem;
+}
+
+.bootcn-meter__head {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 0.5rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+}
+
+.bootcn-meter__head label {
+  margin: 0;
+}
+
+/* Good, average and poor: each at least 3:1 against the background. */
+.bootcn-meter__bar {
+  --bootcn-meter-good: var(--bootcn-success-text);
+  --bootcn-meter-average: var(--bootcn-chart-3);
+  --bootcn-meter-poor: var(--bootcn-destructive-text);
+
+  display: block;
+  width: 100%;
+  height: 0.5rem;
+  border: 0;
+  border-radius: 9999px;
+  background: var(--bootcn-muted);
+  appearance: none;
+}
+
+.bootcn-meter__bar::-webkit-meter-bar {
+  height: 0.5rem;
+  border: 0;
+  border-radius: 9999px;
+  background: var(--bootcn-muted);
+}
+
+.bootcn-meter__bar::-webkit-meter-optimum-value {
+  border-radius: 9999px;
+  background: var(--bootcn-meter-good);
+}
+
+.bootcn-meter__bar::-webkit-meter-suboptimum-value {
+  border-radius: 9999px;
+  background: var(--bootcn-meter-average);
+}
+
+.bootcn-meter__bar::-webkit-meter-even-less-good-value {
+  border-radius: 9999px;
+  background: var(--bootcn-meter-poor);
+}
+
+.bootcn-meter__bar::-moz-meter-bar {
+  border-radius: 9999px;
+  background: var(--bootcn-meter-good);
+}
+
+.bootcn-meter__bar:-moz-meter-sub-optimum::-moz-meter-bar {
+  background: var(--bootcn-meter-average);
+}
+
+.bootcn-meter__bar:-moz-meter-sub-sub-optimum::-moz-meter-bar {
+  background: var(--bootcn-meter-poor);
+}

@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Bootcn Progress circle preview</title>
+    <script>
+      // Preview theme: ?theme=dark|light, else the docs page around the frame, else light.
+      (function () {
+        var theme = new URLSearchParams(location.search).get('theme');
+        if (!theme) {
+          try {
+            theme =
+              window.parent !== window &&
+              window.parent.document.documentElement.classList.contains('dark')
+                ? 'dark'
+                : 'light';
+          } catch (error) {
+            theme = 'light';
+          }
+        }
+        document.documentElement.setAttribute('data-bs-theme', theme === 'dark' ? 'dark' : 'light');
+      })();
+    </script>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.9/dist/css/bootstrap.min.css"
+    />
+    <link rel="stylesheet" href="../../themes/tokens/tokens.css" />
+    <link rel="stylesheet" href="progress-circle.css" />
+  </head>
+  <body>
+    <main class="container py-4">
+      <h1 class="h4 mb-4">Progress circle</h1>
+      <div class="d-flex flex-wrap align-items-center gap-4">
+        <div
+          class="bootcn-progress-circle bootcn-progress-circle--sm"
+          style="--bootcn-progress: 25"
+        >
+          <progress class="visually-hidden" max="100" value="25" aria-label="Upload">25%</progress>
+          <svg viewBox="0 0 36 36" aria-hidden="true" focusable="false">
+            <circle
+              class="bootcn-progress-circle__track"
+              cx="18"
+              cy="18"
+              r="15.9155"
+              pathLength="100"
+            />
+            <circle
+              class="bootcn-progress-circle__value"
+              cx="18"
+              cy="18"
+              r="15.9155"
+              pathLength="100"
+            />
+          </svg>
+          <span class="bootcn-progress-circle__label" aria-hidden="true">25%</span>
+        </div>
+        <div class="bootcn-progress-circle" style="--bootcn-progress: 65">
+          <progress class="visually-hidden" max="100" value="65" aria-label="Course completed">
+            65%
+          </progress>
+          <svg viewBox="0 0 36 36" aria-hidden="true" focusable="false">
+            <circle
+              class="bootcn-progress-circle__track"
+              cx="18"
+              cy="18"
+              r="15.9155"
+              pathLength="100"
+            />
+            <circle
+              class="bootcn-progress-circle__value"
+              cx="18"
+              cy="18"
+              r="15.9155"
+              pathLength="100"
+            />
+          </svg>
+          <span class="bootcn-progress-circle__label" aria-hidden="true">65%</span>
+        </div>
+        <div
+          class="bootcn-progress-circle bootcn-progress-circle--lg"
+          style="--bootcn-progress: 90"
+        >
+          <progress class="visually-hidden" max="100" value="90" aria-label="Profile">90%</progress>
+          <svg viewBox="0 0 36 36" aria-hidden="true" focusable="false">
+            <circle
+              class="bootcn-progress-circle__track"
+              cx="18"
+              cy="18"
+              r="15.9155"
+              pathLength="100"
+            />
+            <circle
+              class="bootcn-progress-circle__value"
+              cx="18"
+              cy="18"
+              r="15.9155"
+              pathLength="100"
+            />
+          </svg>
+          <span class="bootcn-progress-circle__label" aria-hidden="true">90%</span>
+        </div>
+        <div class="bootcn-progress-circle bootcn-progress-circle--indeterminate">
+          <progress class="visually-hidden" aria-label="Loading report">Loading</progress>
+          <svg viewBox="0 0 36 36" aria-hidden="true" focusable="false">
+            <circle
+              class="bootcn-progress-circle__track"
+              cx="18"
+              cy="18"
+              r="15.9155"
+              pathLength="100"
+            />
+            <circle
+              class="bootcn-progress-circle__value"
+              cx="18"
+              cy="18"
+              r="15.9155"
+              pathLength="100"
+            />
+          </svg>
+        </div>
+      </div>
+    </main>
+  </body>
+</html>

@@ -1,0 +1,20 @@
+.bootcn-date-field-row {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 11rem), 1fr));
+  gap: 1rem;
+  max-width: 40rem;
+}
+
+.bootcn-date-field {
+  font-variant-numeric: tabular-nums;
+}
+
+/* The browser's picker and icon follow the theme. */
+[data-bs-theme='dark'] .bootcn-date-field {
+  color-scheme: dark;
+}
+
+.bootcn-date-field::-webkit-calendar-picker-indicator {
+  border-radius: var(--bootcn-radius-sm);
+  cursor: pointer;
+}

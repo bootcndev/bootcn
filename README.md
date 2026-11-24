@@ -7,7 +7,7 @@ build with plain HTML and native PHP. Components are installed as editable
 HTML, CSS and JavaScript source files that you own. No React, Vue, jQuery,
 bundler or Node.js is required at runtime.
 
-> **Status:** early (0.x). 56 components, 29 blocks (authentication, dashboard, navigation, marketing, charts), admin and analytics dashboard templates and design
+> **Status:** early (0.x). 63 components, 29 blocks (authentication, dashboard, navigation, marketing, charts), admin and analytics dashboard templates and design
 > tokens, with a Tailwind-like look built on Bootstrap. The CLI is on
 > [npm](https://www.npmjs.com/package/bootcn); documentation, live previews and
 > the registry are at <https://tsirosgeorge.github.io/bootcn/>.
@@ -60,6 +60,7 @@ the `<link>` and `<script>` tags to add to your layout.
 | `command`         | ui    | HTML, CSS, JS | Bootstrap CSS + JS bundle | `kbd`, `button`                        |
 | `context-menu`    | ui    | HTML, CSS, JS | Bootstrap CSS             | `dropdown`                             |
 | `data-table`      | ui    | HTML, CSS, JS | Bootstrap CSS             | `table`, `input`, `button`, `checkbox` |
+| `date-field`      | ui    | HTML, CSS     | Bootstrap CSS             | `label`, `input`                       |
 | `date-picker`     | ui    | HTML, CSS, JS | Bootstrap CSS + JS bundle | `calendar`, `button`, `label`          |
 | `dialog`          | ui    | HTML, CSS, JS | Bootstrap CSS + JS bundle | `button`                               |
 | `drawer`          | ui    | HTML, CSS     | Bootstrap CSS + JS bundle | `button`, `input`                      |
@@ -73,14 +74,20 @@ the `<link>` and `<script>` tags to add to your layout.
 | `item`            | ui    | HTML, CSS     | Bootstrap CSS             | `button`, `avatar`                     |
 | `kbd`             | ui    | HTML, CSS     | Bootstrap CSS             | —                                      |
 | `label`           | ui    | HTML, CSS     | Bootstrap CSS             | `input`                                |
+| `link`            | ui    | HTML, CSS     | Bootstrap CSS             | —                                      |
 | `menubar`         | ui    | HTML, CSS, JS | Bootstrap CSS             | `dropdown`                             |
+| `meter`           | ui    | HTML, CSS     | Bootstrap CSS             | —                                      |
 | `navigation-menu` | ui    | HTML, CSS     | Bootstrap CSS + JS bundle | —                                      |
+| `number-field`    | ui    | HTML, CSS, JS | Bootstrap CSS             | `label`, `input`                       |
 | `pagination`      | ui    | HTML, CSS     | Bootstrap CSS             | —                                      |
 | `popover`         | ui    | HTML, CSS, JS | Bootstrap CSS + JS bundle | `button`                               |
+| `progress-circle` | ui    | HTML, CSS     | Bootstrap CSS             | —                                      |
 | `progress`        | ui    | HTML, CSS     | Bootstrap CSS             | —                                      |
 | `radio-group`     | ui    | HTML, CSS     | Bootstrap CSS             | —                                      |
 | `resizable`       | ui    | HTML, CSS, JS | Bootstrap CSS             | —                                      |
 | `scroll-area`     | ui    | HTML, CSS     | Bootstrap CSS             | —                                      |
+| `scroll-shadow`   | ui    | HTML, CSS     | Bootstrap CSS             | —                                      |
+| `search-field`    | ui    | HTML, CSS, JS | Bootstrap CSS             | `label`                                |
 | `select`          | ui    | HTML, CSS     | Bootstrap CSS             | `input`                                |
 | `separator`       | ui    | HTML, CSS     | Bootstrap CSS             | —                                      |
 | `sheet`           | ui    | HTML, CSS     | Bootstrap CSS + JS bundle | `button`, `input`                      |

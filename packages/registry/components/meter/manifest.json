@@ -1,0 +1,28 @@
+{
+  "$schema": "../../schema/registry-item.schema.json",
+  "name": "meter",
+  "type": "registry:ui",
+  "title": "Meter",
+  "description": "A gauge for a value within a known range, colored good, average or poor on the native meter element.",
+  "version": "1.0.0",
+  "categories": ["feedback"],
+  "dependencies": [],
+  "registryDependencies": [],
+  "compatibility": {
+    "bootstrap": "5.3",
+    "platform": ["Bootstrap CSS"]
+  },
+  "license": "MIT",
+  "files": [
+    {
+      "path": "meter.html",
+      "target": "meter.html",
+      "type": "registry:component"
+    },
+    {
+      "path": "meter.css",
+      "target": "meter.css",
+      "type": "registry:style"
+    }
+  ]
+}

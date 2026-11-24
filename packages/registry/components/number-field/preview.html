@@ -1,0 +1,171 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Bootcn Number field preview</title>
+    <script>
+      // Preview theme: ?theme=dark|light, else the docs page around the frame, else light.
+      (function () {
+        var theme = new URLSearchParams(location.search).get('theme');
+        if (!theme) {
+          try {
+            theme =
+              window.parent !== window &&
+              window.parent.document.documentElement.classList.contains('dark')
+                ? 'dark'
+                : 'light';
+          } catch (error) {
+            theme = 'light';
+          }
+        }
+        document.documentElement.setAttribute('data-bs-theme', theme === 'dark' ? 'dark' : 'light');
+      })();
+    </script>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.9/dist/css/bootstrap.min.css"
+    />
+    <link rel="stylesheet" href="../../themes/tokens/tokens.css" />
+    <link rel="stylesheet" href="../input/input.css" />
+    <link rel="stylesheet" href="../label/label.css" />
+    <link rel="stylesheet" href="number-field.css" />
+  </head>
+  <body>
+    <main class="container py-4">
+      <h1 class="h4 mb-4">Number field</h1>
+      <div class="bootcn-field">
+        <label class="bootcn-label" for="bootcn-number-field-guests">Guests</label>
+        <div class="bootcn-number-field" data-bootcn-number-field>
+          <button
+            type="button"
+            class="bootcn-number-field__step"
+            data-bootcn-step="down"
+            aria-label="Decrease guests"
+            aria-controls="bootcn-number-field-guests"
+            tabindex="-1"
+          >
+            <svg
+              class="bootcn-icon"
+              width="16"
+              height="16"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              aria-hidden="true"
+              focusable="false"
+            >
+              <path d="M5 12h14" />
+            </svg>
+          </button>
+          <input
+            class="bootcn-number-field__input"
+            type="number"
+            id="bootcn-number-field-guests"
+            name="guests"
+            value="2"
+            min="1"
+            max="12"
+            step="1"
+            inputmode="decimal"
+          />
+          <button
+            type="button"
+            class="bootcn-number-field__step"
+            data-bootcn-step="up"
+            aria-label="Increase guests"
+            aria-controls="bootcn-number-field-guests"
+            tabindex="-1"
+          >
+            <svg
+              class="bootcn-icon"
+              width="16"
+              height="16"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              aria-hidden="true"
+              focusable="false"
+            >
+              <path d="M12 5v14M5 12h14" />
+            </svg>
+          </button>
+        </div>
+      </div>
+
+      <div class="mt-3">
+        <div class="bootcn-field">
+          <label class="bootcn-label" for="bootcn-number-field-width">Width in centimetres</label>
+          <div class="bootcn-number-field" data-bootcn-number-field>
+            <button
+              type="button"
+              class="bootcn-number-field__step"
+              data-bootcn-step="down"
+              aria-label="Decrease width in centimetres"
+              aria-controls="bootcn-number-field-width"
+              tabindex="-1"
+            >
+              <svg
+                class="bootcn-icon"
+                width="16"
+                height="16"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+                focusable="false"
+              >
+                <path d="M5 12h14" />
+              </svg>
+            </button>
+            <input
+              class="bootcn-number-field__input"
+              type="number"
+              id="bootcn-number-field-width"
+              name="width"
+              value="42.5"
+              min="10"
+              max="200"
+              step="0.5"
+              inputmode="decimal"
+            />
+            <button
+              type="button"
+              class="bootcn-number-field__step"
+              data-bootcn-step="up"
+              aria-label="Increase width in centimetres"
+              aria-controls="bootcn-number-field-width"
+              tabindex="-1"
+            >
+              <svg
+                class="bootcn-icon"
+                width="16"
+                height="16"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+                focusable="false"
+              >
+                <path d="M12 5v14M5 12h14" />
+              </svg>
+            </button>
+          </div>
+        </div>
+      </div>
+    </main>
+    <script src="number-field.js"></script>
+  </body>
+</html>

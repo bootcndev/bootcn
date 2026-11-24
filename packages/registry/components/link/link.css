@@ -1,0 +1,43 @@
+.bootcn-link {
+  color: var(--bootcn-foreground);
+  font-weight: 500;
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 4px;
+  transition: text-decoration-color var(--bootcn-transition);
+}
+
+.bootcn-link:hover {
+  text-decoration-thickness: 2px;
+}
+
+.bootcn-link:focus-visible {
+  border-radius: var(--bootcn-radius-sm);
+  outline: 0;
+  box-shadow: var(--bootcn-focus-ring);
+}
+
+.bootcn-link--muted {
+  color: var(--bootcn-muted-foreground);
+}
+
+.bootcn-link--muted:hover {
+  color: var(--bootcn-foreground);
+}
+
+/* Plain: no underline at rest. Use only where links are obviously links
+   (navigation lists), never inside running text. */
+.bootcn-link--plain {
+  text-decoration: none;
+}
+
+.bootcn-link--plain:hover {
+  text-decoration: underline;
+}
+
+.bootcn-link__external {
+  width: 0.875em;
+  height: 0.875em;
+  margin-left: 0.125em;
+  vertical-align: -0.0625em;
+}

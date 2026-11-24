@@ -1,0 +1,28 @@
+{
+  "$schema": "../../schema/registry-item.schema.json",
+  "name": "link",
+  "type": "registry:ui",
+  "title": "Link",
+  "description": "Text links in default, muted and plain styles, with a clear marker for links that open in a new tab.",
+  "version": "1.0.0",
+  "categories": ["navigation"],
+  "dependencies": [],
+  "registryDependencies": [],
+  "compatibility": {
+    "bootstrap": "5.3",
+    "platform": ["Bootstrap CSS"]
+  },
+  "license": "MIT",
+  "files": [
+    {
+      "path": "link.html",
+      "target": "link.html",
+      "type": "registry:component"
+    },
+    {
+      "path": "link.css",
+      "target": "link.css",
+      "type": "registry:style"
+    }
+  ]
+}
