@@ -55,3 +55,16 @@ export async function expectNoAxeViolations(
     .join('\n');
   expect(results.violations, summary).toEqual([]);
 }
+
+/**
+ * Waits until no CSS transition is running (Bootstrap's fade and slide of
+ * modals, offcanvas and popovers), so axe measures final colors. Firefox can
+ * report an overlay as shown while its fade is still in progress.
+ */
+export async function settleTransitions(page: Page): Promise<void> {
+  await page.waitForFunction(
+    () =>
+      document.getAnimations().filter((animation) => animation instanceof CSSTransition).length ===
+        0 && !document.querySelector('.showing, .hiding, .collapsing'),
+  );
+}

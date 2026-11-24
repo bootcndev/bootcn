@@ -5,7 +5,7 @@
  */
 import { expect, test } from '@playwright/test';
 
-import { collectErrors, expectNoAxeViolations, openPreview } from './helpers.js';
+import { collectErrors, expectNoAxeViolations, openPreview, settleTransitions } from './helpers.js';
 
 // Bootstrap appends floating overlays to <body>, outside the page landmarks.
 const FLOATING = { disableRules: ['region'] };
@@ -29,6 +29,7 @@ test('alert dialog: alertdialog role, Cancel focused, backdrop does not close it
   await expect(dialog).toBeVisible();
   await expect(dialog).toHaveAccessibleDescription(/permanently deletes/);
   await expect(dialog.getByRole('button', { name: 'Cancel' })).toBeFocused();
+  await settleTransitions(page);
   await expectNoAxeViolations(page);
 
   await page.mouse.click(5, 5); // the static backdrop
@@ -60,6 +61,7 @@ test.describe('hover card', () => {
     await expect(card).toBeVisible();
     await expect(card).toContainText('Open-source tools');
     await expect(trigger).toHaveAccessibleDescription(/Open-source tools/);
+    await settleTransitions(page);
     await expectNoAxeViolations(page, FLOATING);
 
     await card.hover(); // WCAG 1.4.13: hoverable
@@ -125,6 +127,7 @@ for (const [name, button, title] of [
     const dialog = page.getByRole('dialog', { name: title });
     await expect(dialog).toBeVisible();
     await expect(dialog).toHaveAttribute('aria-modal', 'true');
+    await settleTransitions(page);
     await expectNoAxeViolations(page);
     await page.keyboard.press('Escape');
     await expect(dialog).toBeHidden();
