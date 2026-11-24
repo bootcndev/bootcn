@@ -42,7 +42,4 @@
   display: block;
 }
 
-.input-group > .bootcn-input {
-  border-top-left-radius: 0;
-  border-bottom-left-radius: 0;
-}
+/* Inside .input-group, Bootstrap's own rules square the inner corners. */

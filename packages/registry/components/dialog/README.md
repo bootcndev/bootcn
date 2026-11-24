@@ -23,7 +23,6 @@ declarative confirm behavior and a focus-return safety net.
   tabindex="-1"
   aria-labelledby="example-dialog-title"
   aria-describedby="example-dialog-description"
-  aria-hidden="true"
 >
   <div class="modal-dialog modal-dialog-centered">
     <div class="modal-content">
@@ -96,6 +95,11 @@ The event bubbles. Example:
 window.Bootcn.dialog.init(); // idempotent; runs automatically on load
 window.Bootcn.dialog.destroy(); // removes listeners
 ```
+
+`dialog.js` uses event delegation on `document`, so dialogs added to the page
+after load (for example by `fetch` + `innerHTML`) work without calling `init`
+again. Both methods accept an optional `root` argument for consistency with
+other components, but always act on the whole document.
 
 ## Dependencies
 

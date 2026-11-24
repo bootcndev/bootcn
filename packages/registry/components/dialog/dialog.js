@@ -66,6 +66,9 @@
     }
   }
 
+  // Behavior is attached once with event delegation on `document`, so it
+  // covers dialogs added later too. `root` is accepted for API consistency
+  // with other components; init/destroy always act on the whole document.
   function init(root = document) {
     if (!root) return;
     if (!ensureBootstrap()) return;
