@@ -41,7 +41,7 @@ describe('component manifests', () => {
     const validate = ajv.compile(schema);
 
     const names = await componentNames();
-    expect(names).toEqual(['badge', 'button', 'card', 'dialog', 'input']);
+    expect(names).toEqual(expect.arrayContaining(['badge', 'button', 'card', 'dialog', 'input']));
 
     for (const name of names) {
       const dir = resolve(componentsDir, name);

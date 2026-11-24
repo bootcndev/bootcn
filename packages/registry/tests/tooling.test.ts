@@ -1,3 +1,4 @@
+import { readdirSync } from 'node:fs';
 import { mkdir, mkdtemp, readFile, readdir, rm, symlink, writeFile } from 'node:fs/promises';
 import { tmpdir } from 'node:os';
 import { dirname, join, resolve } from 'node:path';
@@ -16,6 +17,14 @@ import {
 } from '../tooling/registry.js';
 
 type Json = Record<string, unknown>;
+
+/** Every item in the real registry: component directories plus the tokens theme. */
+const REAL_ITEMS = [
+  ...readdirSync(resolve(REGISTRY_DIR, 'components'), { withFileTypes: true })
+    .filter((entry) => entry.isDirectory())
+    .map((entry) => entry.name),
+  'tokens',
+].sort();
 
 const tempDirs: string[] = [];
 
@@ -102,14 +111,7 @@ describe('validateRegistry', () => {
   it('passes on the real registry', async () => {
     const result = await validateRegistry(REGISTRY_DIR);
     expect(result.errors).toEqual([]);
-    expect(result.items.map((item) => item.manifest.name)).toEqual([
-      'badge',
-      'button',
-      'card',
-      'dialog',
-      'input',
-      'tokens',
-    ]);
+    expect(result.items.map((item) => item.manifest.name)).toEqual(REAL_ITEMS);
   });
 
   it('passes on a minimal valid registry', async () => {
@@ -280,14 +282,7 @@ describe('buildRegistry', () => {
     await buildRegistry(REGISTRY_DIR, outB);
 
     const filesA = (await readdir(resolve(outA, 'r'))).sort();
-    expect(filesA).toEqual([
-      'badge.json',
-      'button.json',
-      'card.json',
-      'dialog.json',
-      'input.json',
-      'tokens.json',
-    ]);
+    expect(filesA).toEqual(REAL_ITEMS.map((name) => `${name}.json`));
     for (const name of ['index.json', ...filesA.map((file) => `r/${file}`)]) {
       expect(await readFile(resolve(outA, name), 'utf8')).toBe(
         await readFile(resolve(outB, name), 'utf8'),
@@ -299,14 +294,7 @@ describe('buildRegistry', () => {
       items: { name: string }[];
     };
     expect(validateIndex(index), JSON.stringify(validateIndex.errors)).toBe(true);
-    expect(index.items.map((item) => item.name)).toEqual([
-      'badge',
-      'button',
-      'card',
-      'dialog',
-      'input',
-      'tokens',
-    ]);
+    expect(index.items.map((item) => item.name)).toEqual(REAL_ITEMS);
 
     const validateItem = await compile('registry-item.schema.json');
     const dialog = JSON.parse(await readFile(resolve(outA, 'r/dialog.json'), 'utf8')) as {

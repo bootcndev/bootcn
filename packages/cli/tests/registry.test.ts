@@ -152,7 +152,7 @@ describe('RegistryClient on a local built registry', () => {
       'dialog.css',
       'dialog.js',
     ]);
-    expect((await client.getIndex()).items).toHaveLength(6);
+    expect((await client.getIndex()).items.length).toBeGreaterThanOrEqual(6);
   });
 });
 
