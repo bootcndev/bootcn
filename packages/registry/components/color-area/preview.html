@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Bootcn Color area preview</title>
+    <script>
+      // Preview theme: ?theme=dark|light, else the docs page around the frame, else light.
+      (function () {
+        var theme = new URLSearchParams(location.search).get('theme');
+        if (!theme) {
+          try {
+            theme =
+              window.parent !== window &&
+              window.parent.document.documentElement.classList.contains('dark')
+                ? 'dark'
+                : 'light';
+          } catch (error) {
+            theme = 'light';
+          }
+        }
+        document.documentElement.setAttribute('data-bs-theme', theme === 'dark' ? 'dark' : 'light');
+      })();
+    </script>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.9/dist/css/bootstrap.min.css"
+    />
+    <link rel="stylesheet" href="../../themes/tokens/tokens.css" />
+    <link rel="stylesheet" href="../input/input.css" />
+    <link rel="stylesheet" href="../label/label.css" />
+    <link rel="stylesheet" href="../color-slider/color-slider.css" />
+    <link rel="stylesheet" href="color-area.css" />
+  </head>
+  <body>
+    <main class="container py-4">
+      <h1 class="h4 mb-4">Color area</h1>
+      <div
+        class="bootcn-color-area"
+        data-bootcn-color-area
+        role="group"
+        aria-labelledby="bootcn-color-area-title"
+      >
+        <p class="bootcn-label" id="bootcn-color-area-title">Accent color</p>
+        <div class="bootcn-color-area__area" data-bootcn-color-area-area>
+          <div class="bootcn-color-area__thumb" data-bootcn-color-area-thumb>
+            <input
+              class="bootcn-color-area__input"
+              type="range"
+              min="0"
+              max="100"
+              value="84"
+              aria-label="Saturation"
+              aria-roledescription="2D slider"
+              data-axis="x"
+            />
+            <input
+              class="bootcn-color-area__input"
+              type="range"
+              min="0"
+              max="100"
+              value="92"
+              tabindex="-1"
+              aria-label="Brightness"
+              aria-roledescription="2D slider"
+              data-axis="y"
+            />
+          </div>
+        </div>
+        <label class="visually-hidden" for="bootcn-color-area-hue">Hue</label>
+        <input
+          class="bootcn-color-slider__input bootcn-color-slider__input--hue"
+          type="range"
+          id="bootcn-color-area-hue"
+          min="0"
+          max="360"
+          value="221"
+          data-bootcn-color-area-hue
+        />
+        <div class="bootcn-color-area__footer">
+          <span class="bootcn-color-area__swatch" aria-hidden="true"></span>
+          <label class="bootcn-color-area__hex-label" for="bootcn-color-area-hex">Hex</label>
+          <input
+            class="form-control bootcn-input bootcn-color-area__hex"
+            type="text"
+            id="bootcn-color-area-hex"
+            value="#2563eb"
+            maxlength="7"
+            spellcheck="false"
+            autocomplete="off"
+            data-bootcn-color-area-hex
+          />
+        </div>
+        <input type="hidden" name="accent" value="#2563eb" data-bootcn-color-area-value />
+      </div>
+    </main>
+    <script src="../color-slider/color-slider.js"></script>
+    <script src="color-area.js"></script>
+  </body>
+</html>

@@ -1,0 +1,72 @@
+<div
+  class="bootcn-color-slider"
+  data-bootcn-color-slider
+  role="group"
+  aria-labelledby="bootcn-color-slider-title"
+  style="--bootcn-color-h: 262; --bootcn-color-s: 83%; --bootcn-color-l: 58%; --bootcn-color-a: 1"
+>
+  <div class="bootcn-color-slider__head">
+    <p class="bootcn-label" id="bootcn-color-slider-title">Highlight color</p>
+    <span class="bootcn-color-slider__swatch" aria-hidden="true"></span>
+  </div>
+  <div class="bootcn-color-slider__row">
+    <label class="bootcn-color-slider__label" for="bootcn-color-slider-hue">Hue</label>
+    <output class="bootcn-color-slider__output" for="bootcn-color-slider-hue">262°</output>
+    <input
+      class="bootcn-color-slider__input bootcn-color-slider__input--hue"
+      type="range"
+      id="bootcn-color-slider-hue"
+      min="0"
+      max="360"
+      value="262"
+      data-channel="h"
+    />
+  </div>
+  <div class="bootcn-color-slider__row">
+    <label class="bootcn-color-slider__label" for="bootcn-color-slider-saturation"
+      >Saturation</label
+    >
+    <output class="bootcn-color-slider__output" for="bootcn-color-slider-saturation">83%</output>
+    <input
+      class="bootcn-color-slider__input bootcn-color-slider__input--saturation"
+      type="range"
+      id="bootcn-color-slider-saturation"
+      min="0"
+      max="100"
+      value="83"
+      data-channel="s"
+    />
+  </div>
+  <div class="bootcn-color-slider__row">
+    <label class="bootcn-color-slider__label" for="bootcn-color-slider-lightness">Lightness</label>
+    <output class="bootcn-color-slider__output" for="bootcn-color-slider-lightness">58%</output>
+    <input
+      class="bootcn-color-slider__input bootcn-color-slider__input--lightness"
+      type="range"
+      id="bootcn-color-slider-lightness"
+      min="0"
+      max="100"
+      value="58"
+      data-channel="l"
+    />
+  </div>
+  <div class="bootcn-color-slider__row">
+    <label class="bootcn-color-slider__label" for="bootcn-color-slider-alpha">Opacity</label>
+    <output class="bootcn-color-slider__output" for="bootcn-color-slider-alpha">100%</output>
+    <input
+      class="bootcn-color-slider__input bootcn-color-slider__input--alpha"
+      type="range"
+      id="bootcn-color-slider-alpha"
+      min="0"
+      max="100"
+      value="100"
+      data-channel="a"
+    />
+  </div>
+  <input
+    type="hidden"
+    name="highlight"
+    value="hsl(262 83% 58% / 1)"
+    data-bootcn-color-slider-value
+  />
+</div>

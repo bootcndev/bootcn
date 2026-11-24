@@ -1,0 +1,59 @@
+.bootcn-checkbox-group {
+  min-width: 0;
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+.bootcn-checkbox-group__legend {
+  float: none;
+  width: auto;
+  margin: 0 0 0.25rem;
+  padding: 0;
+  font-size: 0.875rem;
+  font-weight: 500;
+}
+
+.bootcn-checkbox-group__help {
+  margin: 0 0 0.75rem;
+  color: var(--bootcn-muted-foreground);
+  font-size: 0.875rem;
+}
+
+.bootcn-checkbox-group__items {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+/* "Select all" sits above the items, separated by a rule. */
+.bootcn-checkbox-group > .bootcn-checkbox {
+  margin-bottom: 0.75rem;
+  padding-bottom: 0.75rem;
+  border-bottom: var(--bootcn-border-width) solid var(--bootcn-border-color);
+}
+
+.bootcn-checkbox-group__items .bootcn-checkbox {
+  margin: 0;
+}
+
+.bootcn-checkbox-group--horizontal .bootcn-checkbox-group__items {
+  flex-flow: row wrap;
+  gap: 0.75rem 1.5rem;
+}
+
+.bootcn-checkbox-group__error {
+  margin: 0.75rem 0 0;
+  color: var(--bootcn-destructive-text);
+  font-size: 0.875rem;
+}
+
+.bootcn-checkbox-group.is-invalid .bootcn-checkbox__input {
+  border-color: var(--bs-danger);
+}
+
+/* Preview layout only. */
+.bootcn-checkbox-group-demo {
+  width: 20rem;
+  max-width: 100%;
+}

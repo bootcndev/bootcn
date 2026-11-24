@@ -1,0 +1,160 @@
+.bootcn-color-slider {
+  --bootcn-color-h: 0;
+  --bootcn-color-s: 100%;
+  --bootcn-color-l: 50%;
+  --bootcn-color-a: 1;
+  --bootcn-color-slider-checker: repeating-conic-gradient(#d4d4d8 0% 25%, #fff 0% 50%) 50% / 0.75rem
+    0.75rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  width: 20rem;
+  max-width: 100%;
+}
+
+.bootcn-color-slider__head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.bootcn-color-slider__head .bootcn-label {
+  margin: 0;
+}
+
+.bootcn-color-slider__swatch {
+  width: 2rem;
+  height: 2rem;
+  border: var(--bootcn-border-width) solid var(--bootcn-border-color);
+  border-radius: var(--bootcn-radius);
+  background:
+    linear-gradient(
+      hsl(
+        var(--bootcn-color-h) var(--bootcn-color-s) var(--bootcn-color-l) / var(--bootcn-color-a)
+      ),
+      hsl(var(--bootcn-color-h) var(--bootcn-color-s) var(--bootcn-color-l) / var(--bootcn-color-a))
+    ),
+    var(--bootcn-color-slider-checker);
+}
+
+.bootcn-color-slider__row {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 0.375rem 1rem;
+}
+
+.bootcn-color-slider__label {
+  font-size: 0.875rem;
+  font-weight: 500;
+}
+
+.bootcn-color-slider__output {
+  color: var(--bootcn-muted-foreground);
+  font-size: 0.875rem;
+  font-variant-numeric: tabular-nums;
+}
+
+/* The input: a painted track and a white ring thumb. */
+.bootcn-color-slider__input {
+  --bootcn-color-slider-track: linear-gradient(to right, #000, #fff);
+  grid-column: 1 / -1;
+  width: 100%;
+  height: 1.25rem;
+  margin: 0;
+  background: transparent;
+  appearance: none;
+}
+
+.bootcn-color-slider__input:focus {
+  outline: 0;
+}
+
+.bootcn-color-slider__input::-webkit-slider-runnable-track {
+  height: 0.75rem;
+  border-radius: 9999px;
+  background: var(--bootcn-color-slider-track);
+  box-shadow: inset 0 0 0 1px rgb(0 0 0 / 0.1);
+}
+
+.bootcn-color-slider__input::-moz-range-track {
+  height: 0.75rem;
+  border-radius: 9999px;
+  background: var(--bootcn-color-slider-track);
+  box-shadow: inset 0 0 0 1px rgb(0 0 0 / 0.1);
+}
+
+.bootcn-color-slider__input::-webkit-slider-thumb {
+  width: 1.25rem;
+  height: 1.25rem;
+  margin-top: -0.25rem;
+  border: 3px solid #fff;
+  border-radius: 9999px;
+  background: hsl(var(--bootcn-color-h) var(--bootcn-color-s) var(--bootcn-color-l));
+  box-shadow:
+    0 0 0 1px rgb(0 0 0 / 0.25),
+    var(--bootcn-shadow-sm);
+  appearance: none;
+}
+
+.bootcn-color-slider__input::-moz-range-thumb {
+  width: 0.875rem;
+  height: 0.875rem;
+  border: 3px solid #fff;
+  border-radius: 9999px;
+  background: hsl(var(--bootcn-color-h) var(--bootcn-color-s) var(--bootcn-color-l));
+  box-shadow:
+    0 0 0 1px rgb(0 0 0 / 0.25),
+    var(--bootcn-shadow-sm);
+}
+
+.bootcn-color-slider__input:focus-visible::-webkit-slider-thumb {
+  box-shadow:
+    0 0 0 1px rgb(0 0 0 / 0.25),
+    var(--bootcn-focus-ring);
+}
+
+.bootcn-color-slider__input:focus-visible::-moz-range-thumb {
+  box-shadow:
+    0 0 0 1px rgb(0 0 0 / 0.25),
+    var(--bootcn-focus-ring);
+}
+
+.bootcn-color-slider__input--hue {
+  --bootcn-color-slider-track: linear-gradient(
+    to right,
+    hsl(0 100% 50%),
+    hsl(60 100% 50%),
+    hsl(120 100% 50%),
+    hsl(180 100% 50%),
+    hsl(240 100% 50%),
+    hsl(300 100% 50%),
+    hsl(360 100% 50%)
+  );
+}
+
+.bootcn-color-slider__input--saturation {
+  --bootcn-color-slider-track: linear-gradient(
+    to right,
+    hsl(var(--bootcn-color-h) 0% var(--bootcn-color-l)),
+    hsl(var(--bootcn-color-h) 100% var(--bootcn-color-l))
+  );
+}
+
+.bootcn-color-slider__input--lightness {
+  --bootcn-color-slider-track: linear-gradient(
+    to right,
+    hsl(var(--bootcn-color-h) var(--bootcn-color-s) 0%),
+    hsl(var(--bootcn-color-h) var(--bootcn-color-s) 50%),
+    hsl(var(--bootcn-color-h) var(--bootcn-color-s) 100%)
+  );
+}
+
+.bootcn-color-slider__input--alpha {
+  --bootcn-color-slider-track:
+    linear-gradient(
+      to right,
+      hsl(var(--bootcn-color-h) var(--bootcn-color-s) var(--bootcn-color-l) / 0),
+      hsl(var(--bootcn-color-h) var(--bootcn-color-s) var(--bootcn-color-l) / 1)
+    ),
+    var(--bootcn-color-slider-checker);
+}

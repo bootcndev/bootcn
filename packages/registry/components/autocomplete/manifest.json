@@ -1,0 +1,33 @@
+{
+  "$schema": "../../schema/registry-item.schema.json",
+  "name": "autocomplete",
+  "type": "registry:ui",
+  "title": "Autocomplete",
+  "description": "A text input that suggests values as you type, from the page or from your server, and still accepts any text.",
+  "version": "1.0.0",
+  "categories": ["forms"],
+  "dependencies": [],
+  "registryDependencies": ["label"],
+  "compatibility": {
+    "bootstrap": "5.3",
+    "platform": ["Bootstrap CSS"]
+  },
+  "license": "MIT",
+  "files": [
+    {
+      "path": "autocomplete.html",
+      "target": "autocomplete.html",
+      "type": "registry:component"
+    },
+    {
+      "path": "autocomplete.css",
+      "target": "autocomplete.css",
+      "type": "registry:style"
+    },
+    {
+      "path": "autocomplete.js",
+      "target": "autocomplete.js",
+      "type": "registry:script"
+    }
+  ]
+}

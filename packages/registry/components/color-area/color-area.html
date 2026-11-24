@@ -1,0 +1,58 @@
+<div
+  class="bootcn-color-area"
+  data-bootcn-color-area
+  role="group"
+  aria-labelledby="bootcn-color-area-title"
+>
+  <p class="bootcn-label" id="bootcn-color-area-title">Accent color</p>
+  <div class="bootcn-color-area__area" data-bootcn-color-area-area>
+    <div class="bootcn-color-area__thumb" data-bootcn-color-area-thumb>
+      <input
+        class="bootcn-color-area__input"
+        type="range"
+        min="0"
+        max="100"
+        value="84"
+        aria-label="Saturation"
+        aria-roledescription="2D slider"
+        data-axis="x"
+      />
+      <input
+        class="bootcn-color-area__input"
+        type="range"
+        min="0"
+        max="100"
+        value="92"
+        tabindex="-1"
+        aria-label="Brightness"
+        aria-roledescription="2D slider"
+        data-axis="y"
+      />
+    </div>
+  </div>
+  <label class="visually-hidden" for="bootcn-color-area-hue">Hue</label>
+  <input
+    class="bootcn-color-slider__input bootcn-color-slider__input--hue"
+    type="range"
+    id="bootcn-color-area-hue"
+    min="0"
+    max="360"
+    value="221"
+    data-bootcn-color-area-hue
+  />
+  <div class="bootcn-color-area__footer">
+    <span class="bootcn-color-area__swatch" aria-hidden="true"></span>
+    <label class="bootcn-color-area__hex-label" for="bootcn-color-area-hex">Hex</label>
+    <input
+      class="form-control bootcn-input bootcn-color-area__hex"
+      type="text"
+      id="bootcn-color-area-hex"
+      value="#2563eb"
+      maxlength="7"
+      spellcheck="false"
+      autocomplete="off"
+      data-bootcn-color-area-hex
+    />
+  </div>
+  <input type="hidden" name="accent" value="#2563eb" data-bootcn-color-area-value />
+</div>

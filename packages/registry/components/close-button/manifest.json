@@ -1,0 +1,28 @@
+{
+  "$schema": "../../schema/registry-item.schema.json",
+  "name": "close-button",
+  "type": "registry:ui",
+  "title": "Close button",
+  "description": "An icon button that closes dialogs, sheets, alerts and banners, in three sizes.",
+  "version": "1.0.0",
+  "categories": ["actions"],
+  "dependencies": [],
+  "registryDependencies": [],
+  "compatibility": {
+    "bootstrap": "5.3",
+    "platform": ["Bootstrap CSS"]
+  },
+  "license": "MIT",
+  "files": [
+    {
+      "path": "close-button.html",
+      "target": "close-button.html",
+      "type": "registry:component"
+    },
+    {
+      "path": "close-button.css",
+      "target": "close-button.css",
+      "type": "registry:style"
+    }
+  ]
+}

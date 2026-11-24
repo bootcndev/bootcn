@@ -1,0 +1,83 @@
+.bootcn-autocomplete {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  width: 20rem;
+  max-width: 100%;
+}
+
+.bootcn-autocomplete__input {
+  height: var(--bootcn-control-height);
+  padding: var(--bootcn-control-padding-y) var(--bootcn-control-padding-x);
+  border-color: var(--bootcn-input);
+  border-radius: var(--bootcn-radius);
+  background-color: transparent;
+  box-shadow: var(--bootcn-shadow-sm);
+  color: var(--bootcn-foreground);
+}
+
+.bootcn-autocomplete__input:focus {
+  border-color: var(--bootcn-ring);
+  background-color: transparent;
+  box-shadow: 0 0 0 3px var(--bs-focus-ring-color);
+  color: var(--bootcn-foreground);
+}
+
+.bootcn-autocomplete__input::placeholder {
+  color: var(--bootcn-muted-foreground);
+}
+
+@media (min-width: 768px) {
+  .bootcn-autocomplete__input {
+    font-size: var(--bootcn-control-font-size);
+  }
+}
+
+.bootcn-autocomplete__help {
+  margin: 0;
+  color: var(--bootcn-muted-foreground);
+  font-size: 0.875rem;
+}
+
+.bootcn-autocomplete__list {
+  position: absolute;
+  z-index: 1000;
+  top: calc(1.25rem + var(--bootcn-control-height) + 0.75rem);
+  right: 0;
+  left: 0;
+  max-height: 15rem;
+  margin: 0;
+  padding: 0.25rem;
+  overflow-y: auto;
+  border: var(--bootcn-border-width) solid var(--bootcn-border-color);
+  border-radius: var(--bootcn-radius);
+  background-color: var(--bootcn-background);
+  box-shadow: var(--bootcn-shadow-md);
+  font-size: 0.875rem;
+  list-style: none;
+}
+
+.bootcn-autocomplete__list[hidden],
+.bootcn-autocomplete__option[hidden] {
+  display: none;
+}
+
+.bootcn-autocomplete__option {
+  padding: 0.375rem 0.5rem;
+  border-radius: var(--bootcn-radius-sm);
+  cursor: default;
+}
+
+.bootcn-autocomplete__option:hover,
+.bootcn-autocomplete__option[aria-selected='true'] {
+  background-color: var(--bootcn-accent);
+  color: var(--bootcn-accent-foreground);
+}
+
+.bootcn-autocomplete__option mark {
+  padding: 0;
+  background: transparent;
+  color: inherit;
+  font-weight: 600;
+}

@@ -1,0 +1,33 @@
+{
+  "$schema": "../../schema/registry-item.schema.json",
+  "name": "checkbox-group",
+  "type": "registry:ui",
+  "title": "Checkbox group",
+  "description": "Related checkboxes in a fieldset, with a \"Select all\" box, a minimum selection and an error message.",
+  "version": "1.0.0",
+  "categories": ["forms"],
+  "dependencies": [],
+  "registryDependencies": ["checkbox"],
+  "compatibility": {
+    "bootstrap": "5.3",
+    "platform": ["Bootstrap CSS"]
+  },
+  "license": "MIT",
+  "files": [
+    {
+      "path": "checkbox-group.html",
+      "target": "checkbox-group.html",
+      "type": "registry:component"
+    },
+    {
+      "path": "checkbox-group.css",
+      "target": "checkbox-group.css",
+      "type": "registry:style"
+    },
+    {
+      "path": "checkbox-group.js",
+      "target": "checkbox-group.js",
+      "type": "registry:script"
+    }
+  ]
+}

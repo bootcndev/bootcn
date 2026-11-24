@@ -1,0 +1,33 @@
+{
+  "$schema": "../../schema/registry-item.schema.json",
+  "name": "color-slider",
+  "type": "registry:ui",
+  "title": "Color slider",
+  "description": "Sliders for one color channel each (hue, saturation, lightness, opacity), with the channel painted on the track and a live swatch.",
+  "version": "1.0.0",
+  "categories": ["forms"],
+  "dependencies": [],
+  "registryDependencies": ["label"],
+  "compatibility": {
+    "bootstrap": "5.3",
+    "platform": ["Bootstrap CSS"]
+  },
+  "license": "MIT",
+  "files": [
+    {
+      "path": "color-slider.html",
+      "target": "color-slider.html",
+      "type": "registry:component"
+    },
+    {
+      "path": "color-slider.css",
+      "target": "color-slider.css",
+      "type": "registry:style"
+    },
+    {
+      "path": "color-slider.js",
+      "target": "color-slider.js",
+      "type": "registry:script"
+    }
+  ]
+}

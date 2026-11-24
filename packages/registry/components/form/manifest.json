@@ -1,0 +1,33 @@
+{
+  "$schema": "../../schema/registry-item.schema.json",
+  "name": "form",
+  "type": "registry:ui",
+  "title": "Form",
+  "description": "Form validation with the browser's own rules: messages under each field, an error summary that takes focus, and live checks after the first attempt.",
+  "version": "1.0.0",
+  "categories": ["forms"],
+  "dependencies": [],
+  "registryDependencies": ["field", "label", "input", "select", "checkbox", "button"],
+  "compatibility": {
+    "bootstrap": "5.3",
+    "platform": ["Bootstrap CSS"]
+  },
+  "license": "MIT",
+  "files": [
+    {
+      "path": "form.html",
+      "target": "form.html",
+      "type": "registry:component"
+    },
+    {
+      "path": "form.css",
+      "target": "form.css",
+      "type": "registry:style"
+    },
+    {
+      "path": "form.js",
+      "target": "form.js",
+      "type": "registry:script"
+    }
+  ]
+}

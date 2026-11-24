@@ -1,0 +1,115 @@
+<form class="bootcn-form" data-bootcn-form novalidate aria-labelledby="bootcn-form-title">
+  <h2 class="bootcn-form__title" id="bootcn-form-title">Create an account</h2>
+  <div
+    class="bootcn-form__summary"
+    tabindex="-1"
+    aria-labelledby="bootcn-form-summary-title"
+    data-bootcn-form-summary
+    hidden
+  >
+    <h3 class="bootcn-form__summary-title" id="bootcn-form-summary-title">
+      <svg
+        class="bootcn-icon"
+        width="16"
+        height="16"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        aria-hidden="true"
+        focusable="false"
+      >
+        <circle cx="12" cy="12" r="9" />
+        <path d="M12 8v4" />
+        <path d="M12 16h.01" />
+      </svg>
+      <span data-bootcn-form-summary-count>Fix the following:</span>
+    </h3>
+    <ul class="bootcn-form__summary-list" data-bootcn-form-summary-list></ul>
+  </div>
+  <div class="bootcn-field">
+    <label class="bootcn-label" for="bootcn-form-name">Full name</label>
+    <input
+      class="form-control bootcn-input"
+      type="text"
+      id="bootcn-form-name"
+      name="name"
+      autocomplete="name"
+      aria-describedby="bootcn-form-name-error"
+      required
+      data-error-value-missing="Enter your full name."
+    />
+    <p class="bootcn-field__error" id="bootcn-form-name-error" hidden></p>
+  </div>
+  <div class="bootcn-field">
+    <label class="bootcn-label" for="bootcn-form-email">Email</label>
+    <input
+      class="form-control bootcn-input"
+      type="email"
+      id="bootcn-form-email"
+      name="email"
+      autocomplete="email"
+      aria-describedby="bootcn-form-email-error"
+      required
+      data-error-value-missing="Enter your email address."
+      data-error-type-mismatch="Enter an email address like name@example.com."
+    />
+    <p class="bootcn-field__error" id="bootcn-form-email-error" hidden></p>
+  </div>
+  <div class="bootcn-field">
+    <label class="bootcn-label" for="bootcn-form-password">Password</label>
+    <input
+      class="form-control bootcn-input"
+      type="password"
+      id="bootcn-form-password"
+      name="password"
+      autocomplete="new-password"
+      aria-describedby="bootcn-form-password-error bootcn-form-password-help"
+      required
+      minlength="8"
+      data-error-value-missing="Choose a password."
+      data-error-too-short="Use at least 8 characters."
+    />
+    <p class="bootcn-field__error" id="bootcn-form-password-error" hidden></p>
+    <p class="bootcn-field__help" id="bootcn-form-password-help">At least 8 characters.</p>
+  </div>
+  <div class="bootcn-field">
+    <label class="bootcn-label" for="bootcn-form-plan">Plan</label>
+    <select
+      class="form-select bootcn-select"
+      id="bootcn-form-plan"
+      name="plan"
+      required
+      aria-describedby="bootcn-form-plan-error"
+      data-error-value-missing="Choose a plan."
+    >
+      <option value="">Choose a plan</option>
+      <option value="hobby">Hobby</option>
+      <option value="pro">Pro</option>
+      <option value="team">Team</option>
+    </select>
+    <p class="bootcn-field__error" id="bootcn-form-plan-error" hidden></p>
+  </div>
+  <div class="bootcn-field">
+    <div class="form-check bootcn-checkbox">
+      <input
+        class="form-check-input bootcn-checkbox__input"
+        type="checkbox"
+        id="bootcn-form-terms"
+        name="terms"
+        value="1"
+        required
+        aria-describedby="bootcn-form-terms-error"
+        data-error-value-missing="Accept the terms to continue."
+      />
+      <label class="form-check-label bootcn-checkbox__label" for="bootcn-form-terms">
+        I accept the terms and conditions
+      </label>
+    </div>
+    <p class="bootcn-field__error" id="bootcn-form-terms-error" hidden></p>
+  </div>
+  <button type="submit" class="btn bootcn-button bootcn-button--default">Create account</button>
+  <p class="bootcn-form__success" role="status" data-bootcn-form-success></p>
+</form>

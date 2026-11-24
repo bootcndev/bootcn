@@ -1,0 +1,217 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Bootcn Autocomplete preview</title>
+    <script>
+      // Preview theme: ?theme=dark|light, else the docs page around the frame, else light.
+      (function () {
+        var theme = new URLSearchParams(location.search).get('theme');
+        if (!theme) {
+          try {
+            theme =
+              window.parent !== window &&
+              window.parent.document.documentElement.classList.contains('dark')
+                ? 'dark'
+                : 'light';
+          } catch (error) {
+            theme = 'light';
+          }
+        }
+        document.documentElement.setAttribute('data-bs-theme', theme === 'dark' ? 'dark' : 'light');
+      })();
+    </script>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.9/dist/css/bootstrap.min.css"
+    />
+    <link rel="stylesheet" href="../../themes/tokens/tokens.css" />
+    <link rel="stylesheet" href="../input/input.css" />
+    <link rel="stylesheet" href="../label/label.css" />
+    <link rel="stylesheet" href="autocomplete.css" />
+  </head>
+  <body>
+    <main class="container py-4" style="min-height: 22rem">
+      <h1 class="h4 mb-4">Autocomplete</h1>
+      <div class="bootcn-autocomplete" data-bootcn-autocomplete>
+        <label
+          class="bootcn-label"
+          id="bootcn-autocomplete-city-label"
+          for="bootcn-autocomplete-city"
+          >City</label
+        >
+        <input
+          class="form-control bootcn-autocomplete__input"
+          id="bootcn-autocomplete-city"
+          name="city"
+          type="text"
+          role="combobox"
+          aria-autocomplete="list"
+          aria-expanded="false"
+          aria-controls="bootcn-autocomplete-city-list"
+          aria-describedby="bootcn-autocomplete-city-help"
+          autocomplete="off"
+          placeholder="Start typing a city…"
+        />
+        <p class="bootcn-autocomplete__help" id="bootcn-autocomplete-city-help">
+          Choose a suggestion or type any city.
+        </p>
+        <ul
+          class="bootcn-autocomplete__list"
+          id="bootcn-autocomplete-city-list"
+          role="listbox"
+          aria-labelledby="bootcn-autocomplete-city-label"
+          hidden
+        >
+          <li
+            class="bootcn-autocomplete__option"
+            id="bootcn-autocomplete-city-amsterdam"
+            role="option"
+            aria-selected="false"
+          >
+            Amsterdam
+          </li>
+          <li
+            class="bootcn-autocomplete__option"
+            id="bootcn-autocomplete-city-athens"
+            role="option"
+            aria-selected="false"
+          >
+            Athens
+          </li>
+          <li
+            class="bootcn-autocomplete__option"
+            id="bootcn-autocomplete-city-barcelona"
+            role="option"
+            aria-selected="false"
+          >
+            Barcelona
+          </li>
+          <li
+            class="bootcn-autocomplete__option"
+            id="bootcn-autocomplete-city-berlin"
+            role="option"
+            aria-selected="false"
+          >
+            Berlin
+          </li>
+          <li
+            class="bootcn-autocomplete__option"
+            id="bootcn-autocomplete-city-brussels"
+            role="option"
+            aria-selected="false"
+          >
+            Brussels
+          </li>
+          <li
+            class="bootcn-autocomplete__option"
+            id="bootcn-autocomplete-city-copenhagen"
+            role="option"
+            aria-selected="false"
+          >
+            Copenhagen
+          </li>
+          <li
+            class="bootcn-autocomplete__option"
+            id="bootcn-autocomplete-city-dublin"
+            role="option"
+            aria-selected="false"
+          >
+            Dublin
+          </li>
+          <li
+            class="bootcn-autocomplete__option"
+            id="bootcn-autocomplete-city-lisbon"
+            role="option"
+            aria-selected="false"
+          >
+            Lisbon
+          </li>
+          <li
+            class="bootcn-autocomplete__option"
+            id="bootcn-autocomplete-city-london"
+            role="option"
+            aria-selected="false"
+          >
+            London
+          </li>
+          <li
+            class="bootcn-autocomplete__option"
+            id="bootcn-autocomplete-city-madrid"
+            role="option"
+            aria-selected="false"
+          >
+            Madrid
+          </li>
+          <li
+            class="bootcn-autocomplete__option"
+            id="bootcn-autocomplete-city-milan"
+            role="option"
+            aria-selected="false"
+          >
+            Milan
+          </li>
+          <li
+            class="bootcn-autocomplete__option"
+            id="bootcn-autocomplete-city-paris"
+            role="option"
+            aria-selected="false"
+          >
+            Paris
+          </li>
+          <li
+            class="bootcn-autocomplete__option"
+            id="bootcn-autocomplete-city-prague"
+            role="option"
+            aria-selected="false"
+          >
+            Prague
+          </li>
+          <li
+            class="bootcn-autocomplete__option"
+            id="bootcn-autocomplete-city-rome"
+            role="option"
+            aria-selected="false"
+          >
+            Rome
+          </li>
+          <li
+            class="bootcn-autocomplete__option"
+            id="bootcn-autocomplete-city-stockholm"
+            role="option"
+            aria-selected="false"
+          >
+            Stockholm
+          </li>
+          <li
+            class="bootcn-autocomplete__option"
+            id="bootcn-autocomplete-city-thessaloniki"
+            role="option"
+            aria-selected="false"
+          >
+            Thessaloniki
+          </li>
+          <li
+            class="bootcn-autocomplete__option"
+            id="bootcn-autocomplete-city-vienna"
+            role="option"
+            aria-selected="false"
+          >
+            Vienna
+          </li>
+          <li
+            class="bootcn-autocomplete__option"
+            id="bootcn-autocomplete-city-warsaw"
+            role="option"
+            aria-selected="false"
+          >
+            Warsaw
+          </li>
+        </ul>
+        <p class="visually-hidden" role="status" data-bootcn-autocomplete-status></p>
+      </div>
+    </main>
+    <script src="autocomplete.js"></script>
+  </body>
+</html>

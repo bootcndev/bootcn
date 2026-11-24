@@ -1,0 +1,189 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Bootcn Checkbox group preview</title>
+    <script>
+      // Preview theme: ?theme=dark|light, else the docs page around the frame, else light.
+      (function () {
+        var theme = new URLSearchParams(location.search).get('theme');
+        if (!theme) {
+          try {
+            theme =
+              window.parent !== window &&
+              window.parent.document.documentElement.classList.contains('dark')
+                ? 'dark'
+                : 'light';
+          } catch (error) {
+            theme = 'light';
+          }
+        }
+        document.documentElement.setAttribute('data-bs-theme', theme === 'dark' ? 'dark' : 'light');
+      })();
+    </script>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.9/dist/css/bootstrap.min.css"
+    />
+    <link rel="stylesheet" href="../../themes/tokens/tokens.css" />
+    <link rel="stylesheet" href="../checkbox/checkbox.css" />
+    <link rel="stylesheet" href="checkbox-group.css" />
+  </head>
+  <body>
+    <main class="container py-4">
+      <h1 class="h4 mb-4">Checkbox group</h1>
+      <form class="bootcn-checkbox-group-demo" action="#">
+        <fieldset
+          class="bootcn-checkbox-group"
+          data-bootcn-checkbox-group
+          data-min="1"
+          data-error="Choose at least one channel."
+          aria-describedby="bootcn-checkbox-group-help"
+        >
+          <legend class="bootcn-checkbox-group__legend">Notifications</legend>
+          <p class="bootcn-checkbox-group__help" id="bootcn-checkbox-group-help">
+            Where should we send updates about your orders?
+          </p>
+          <div class="form-check bootcn-checkbox">
+            <input
+              class="form-check-input bootcn-checkbox__input"
+              type="checkbox"
+              id="bootcn-checkbox-group-all"
+              data-bootcn-checkbox-group-all
+              aria-controls="bootcn-checkbox-group-email bootcn-checkbox-group-sms bootcn-checkbox-group-push bootcn-checkbox-group-slack"
+            />
+            <label class="form-check-label bootcn-checkbox__label" for="bootcn-checkbox-group-all"
+              >Select all</label
+            >
+          </div>
+          <div class="bootcn-checkbox-group__items">
+            <div class="form-check bootcn-checkbox">
+              <input
+                class="form-check-input bootcn-checkbox__input"
+                type="checkbox"
+                id="bootcn-checkbox-group-email"
+                name="notify[]"
+                value="email"
+                checked
+              />
+              <label
+                class="form-check-label bootcn-checkbox__label"
+                for="bootcn-checkbox-group-email"
+                >Email</label
+              >
+            </div>
+            <div class="form-check bootcn-checkbox">
+              <input
+                class="form-check-input bootcn-checkbox__input"
+                type="checkbox"
+                id="bootcn-checkbox-group-sms"
+                name="notify[]"
+                value="sms"
+              />
+              <label class="form-check-label bootcn-checkbox__label" for="bootcn-checkbox-group-sms"
+                >Text message</label
+              >
+            </div>
+            <div class="form-check bootcn-checkbox">
+              <input
+                class="form-check-input bootcn-checkbox__input"
+                type="checkbox"
+                id="bootcn-checkbox-group-push"
+                name="notify[]"
+                value="push"
+                checked
+              />
+              <label
+                class="form-check-label bootcn-checkbox__label"
+                for="bootcn-checkbox-group-push"
+                >Push notification</label
+              >
+            </div>
+            <div class="form-check bootcn-checkbox">
+              <input
+                class="form-check-input bootcn-checkbox__input"
+                type="checkbox"
+                id="bootcn-checkbox-group-slack"
+                name="notify[]"
+                value="slack"
+              />
+              <label
+                class="form-check-label bootcn-checkbox__label"
+                for="bootcn-checkbox-group-slack"
+                >Slack</label
+              >
+            </div>
+          </div>
+          <p class="bootcn-checkbox-group__error" id="bootcn-checkbox-group-error" hidden></p>
+        </fieldset>
+
+        <fieldset class="bootcn-checkbox-group bootcn-checkbox-group--horizontal mt-4">
+          <legend class="bootcn-checkbox-group__legend">Sizes</legend>
+          <div class="bootcn-checkbox-group__items">
+            <div class="form-check bootcn-checkbox">
+              <input
+                class="form-check-input bootcn-checkbox__input"
+                type="checkbox"
+                id="bootcn-checkbox-group-size-s"
+                name="size[]"
+                value="s"
+              />
+              <label
+                class="form-check-label bootcn-checkbox__label"
+                for="bootcn-checkbox-group-size-s"
+                >S</label
+              >
+            </div>
+            <div class="form-check bootcn-checkbox">
+              <input
+                class="form-check-input bootcn-checkbox__input"
+                type="checkbox"
+                id="bootcn-checkbox-group-size-m"
+                name="size[]"
+                value="m"
+                checked
+              />
+              <label
+                class="form-check-label bootcn-checkbox__label"
+                for="bootcn-checkbox-group-size-m"
+                >M</label
+              >
+            </div>
+            <div class="form-check bootcn-checkbox">
+              <input
+                class="form-check-input bootcn-checkbox__input"
+                type="checkbox"
+                id="bootcn-checkbox-group-size-l"
+                name="size[]"
+                value="l"
+              />
+              <label
+                class="form-check-label bootcn-checkbox__label"
+                for="bootcn-checkbox-group-size-l"
+                >L</label
+              >
+            </div>
+            <div class="form-check bootcn-checkbox">
+              <input
+                class="form-check-input bootcn-checkbox__input"
+                type="checkbox"
+                id="bootcn-checkbox-group-size-xl"
+                name="size[]"
+                value="xl"
+              />
+              <label
+                class="form-check-label bootcn-checkbox__label"
+                for="bootcn-checkbox-group-size-xl"
+                >XL</label
+              >
+            </div>
+          </div>
+        </fieldset>
+
+        <button type="submit" class="btn bootcn-button bootcn-button--default mt-4">Save</button>
+      </form>
+    </main>
+    <script src="checkbox-group.js"></script>
+  </body>
+</html>

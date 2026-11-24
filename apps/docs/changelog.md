@@ -6,6 +6,14 @@ each published version stays available under `/v/<version>/`) and the **CLI**
 
 ## Registry
 
+### 0.15.0
+
+- Form: validation with the browser's rules, messages under each field, an
+  error summary that takes focus and live checks after the first attempt.
+- Autocomplete (free text with suggestions, from the page or a URL),
+  Checkbox group ("Select all", minimum), Close button, Color slider (hue,
+  saturation, lightness, opacity) and Color area (2D picker with hue and hex).
+
 ### 0.14.0
 
 - AI chat: Conversation (messages, reasoning, sources, copy and feedback
