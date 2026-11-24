@@ -1,0 +1,33 @@
+{
+  "$schema": "../../schema/registry-item.schema.json",
+  "name": "date-range-input",
+  "type": "registry:ui",
+  "title": "Date range input",
+  "description": "A start and an end date typed in one segmented field, with a check that the end is not before the start.",
+  "version": "1.0.0",
+  "categories": ["forms"],
+  "dependencies": [],
+  "registryDependencies": ["date-input", "label"],
+  "compatibility": {
+    "bootstrap": "5.3",
+    "platform": ["Bootstrap CSS"]
+  },
+  "license": "MIT",
+  "files": [
+    {
+      "path": "date-range-input.html",
+      "target": "date-range-input.html",
+      "type": "registry:component"
+    },
+    {
+      "path": "date-range-input.css",
+      "target": "date-range-input.css",
+      "type": "registry:style"
+    },
+    {
+      "path": "date-range-input.js",
+      "target": "date-range-input.js",
+      "type": "registry:script"
+    }
+  ]
+}

@@ -6,6 +6,11 @@ each published version stays available under `/v/<version>/`) and the **CLI**
 
 ## Registry
 
+### 0.22.0
+
+- Date range input: a start and an end date typed in one segmented field,
+  with an order check and the length announced.
+
 ### 0.21.0
 
 - Range slider (two thumbs, a minimum and a maximum), User (avatar, name

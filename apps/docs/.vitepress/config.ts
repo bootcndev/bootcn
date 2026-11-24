@@ -60,13 +60,32 @@ export default defineConfig({
     ['link', { rel: 'icon', href: `${BASE}favicon.ico`, sizes: '48x48' }],
     ['link', { rel: 'icon', type: 'image/png', href: `${BASE}icon-192.png`, sizes: '192x192' }],
     ['link', { rel: 'apple-touch-icon', href: `${BASE}apple-touch-icon.png` }],
-    ['meta', { property: 'og:image', content: `${SITE_URL}/icon-512.png` }],
+    // Link previews (X, Slack, LinkedIn...): a large card with og-image.png.
+    ['meta', { property: 'og:type', content: 'website' }],
+    ['meta', { property: 'og:site_name', content: 'Bootcn' }],
+    ['meta', { property: 'og:image', content: `${SITE_URL}/og-image.png` }],
+    ['meta', { property: 'og:image:width', content: '1200' }],
+    ['meta', { property: 'og:image:height', content: '630' }],
+    ['meta', { property: 'og:image:alt', content: 'Bootcn: build better with Bootstrap.' }],
+    ['meta', { name: 'twitter:card', content: 'summary_large_image' }],
     ['meta', { name: 'twitter:site', content: '@bootcndev' }],
+    ['meta', { name: 'twitter:image', content: `${SITE_URL}/og-image.png` }],
   ],
   // bootcn.dev is the canonical site, also for the GitHub Pages mirror.
-  transformHead({ pageData }) {
+  transformHead({ pageData, siteData }) {
     const path = pageData.relativePath.replace(/(^|\/)index\.md$/, '$1').replace(/\.md$/, '');
-    return [['link', { rel: 'canonical', href: `${SITE_URL}/${path}` }]];
+    const url = `${SITE_URL}/${path}`;
+    const title =
+      path === '' ? 'Bootcn: build better with Bootstrap' : `${pageData.title} | Bootcn`;
+    const description = pageData.description || siteData.description;
+    return [
+      ['link', { rel: 'canonical', href: url }],
+      ['meta', { property: 'og:url', content: url }],
+      ['meta', { property: 'og:title', content: title }],
+      ['meta', { property: 'og:description', content: description }],
+      ['meta', { name: 'twitter:title', content: title }],
+      ['meta', { name: 'twitter:description', content: description }],
+    ];
   },
   // The default github themes have colours below 4.5:1 on the code background.
   markdown: { theme: { light: 'github-light-high-contrast', dark: 'github-dark-high-contrast' } },

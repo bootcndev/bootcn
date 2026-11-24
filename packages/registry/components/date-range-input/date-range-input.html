@@ -1,0 +1,50 @@
+<div
+  class="bootcn-date-range-input"
+  data-bootcn-date-range-input
+  role="group"
+  aria-labelledby="bootcn-date-range-input-label"
+  aria-describedby="bootcn-date-range-input-help bootcn-date-range-input-error"
+  data-error="The end date is before the start date."
+>
+  <p class="bootcn-label" id="bootcn-date-range-input-label">Stay</p>
+  <div class="bootcn-date-range-input__control">
+    <div
+      class="bootcn-date-input bootcn-date-range-input__part"
+      data-bootcn-date-input
+      data-locale="en-GB"
+    >
+      <label class="visually-hidden" for="bootcn-date-range-input-start">Check-in</label>
+      <input
+        class="form-control bootcn-input"
+        type="date"
+        id="bootcn-date-range-input-start"
+        name="check_in"
+        value="2026-12-18"
+        min="2026-11-01"
+        data-bootcn-date-input-native
+      />
+    </div>
+    <span class="bootcn-date-range-input__separator" aria-hidden="true">–</span>
+    <div
+      class="bootcn-date-input bootcn-date-range-input__part"
+      data-bootcn-date-input
+      data-locale="en-GB"
+    >
+      <label class="visually-hidden" for="bootcn-date-range-input-end">Check-out</label>
+      <input
+        class="form-control bootcn-input"
+        type="date"
+        id="bootcn-date-range-input-end"
+        name="check_out"
+        value="2026-12-22"
+        min="2026-11-01"
+        data-bootcn-date-input-native
+      />
+    </div>
+  </div>
+  <p class="bootcn-field__help" id="bootcn-date-range-input-help">
+    Check-in and check-out, day/month/year.
+  </p>
+  <p class="bootcn-date-range-input__error" id="bootcn-date-range-input-error" hidden></p>
+  <p class="visually-hidden" role="status" data-bootcn-date-range-input-status></p>
+</div>

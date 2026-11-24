@@ -1,0 +1,68 @@
+.bootcn-date-range-input {
+  width: 22rem;
+  max-width: 100%;
+}
+
+.bootcn-date-range-input > .bootcn-label {
+  margin: 0 0 0.5rem;
+}
+
+/* One field around both dates: the inner controls lose their own frame. */
+.bootcn-date-range-input__control {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  min-height: var(--bootcn-control-height);
+  border: var(--bootcn-border-width) solid var(--bootcn-input);
+  border-radius: var(--bootcn-radius);
+  box-shadow: var(--bootcn-shadow-sm);
+  transition:
+    border-color var(--bootcn-transition),
+    box-shadow var(--bootcn-transition);
+}
+
+.bootcn-date-range-input__control:focus-within {
+  border-color: var(--bootcn-ring);
+  box-shadow: 0 0 0 3px var(--bs-focus-ring-color);
+}
+
+.bootcn-date-range-input.is-invalid .bootcn-date-range-input__control {
+  border-color: var(--bs-danger);
+}
+
+.bootcn-date-range-input__part {
+  width: auto;
+  margin: 0;
+}
+
+.bootcn-date-range-input__part .bootcn-date-input__control,
+.bootcn-date-range-input__part .bootcn-date-input__control:focus-within {
+  min-height: 0;
+  border-color: transparent;
+  box-shadow: none;
+}
+
+/* Native inputs (phones, no JavaScript) also lose their own frame. */
+.bootcn-date-range-input__part > .bootcn-input {
+  border-color: transparent;
+  box-shadow: none;
+}
+
+.bootcn-date-range-input__part .bootcn-date-input__error {
+  display: none;
+}
+
+.bootcn-date-range-input__separator {
+  padding-inline: 0.125rem;
+  color: var(--bootcn-muted-foreground);
+}
+
+.bootcn-date-range-input__error {
+  margin: 0.375rem 0 0;
+  color: var(--bootcn-destructive-text);
+  font-size: 0.875rem;
+}
+
+.bootcn-date-range-input__error[hidden] {
+  display: none;
+}

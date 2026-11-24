@@ -92,3 +92,35 @@ test('the label focuses the first segment', async ({ page }) => {
     page.getByRole('group', { name: 'Opening time' }).getByRole('spinbutton', { name: 'hour' }),
   ).toBeFocused();
 });
+
+test('date range input: one field, order check, typing moves on', async ({ page }) => {
+  const errors = collectErrors(page);
+  await openPreview(page, 'date-range-input');
+  const stay = page.getByRole('group', { name: 'Stay' });
+  const checkIn = stay.getByRole('group', { name: 'Check-in' });
+  const checkOut = stay.getByRole('group', { name: 'Check-out' });
+  await expect(checkIn.getByRole('spinbutton')).toHaveText(['18', '12', '2026']);
+  await expect(checkOut.getByRole('spinbutton')).toHaveText(['22', '12', '2026']);
+  await expectNoAxeViolations(page);
+
+  // End before start: flagged and explained.
+  const outDay = checkOut.getByRole('spinbutton', { name: 'day' });
+  await outDay.focus();
+  await page.keyboard.type('10');
+  await expect(page.locator('input[name="check_out"]')).toHaveValue('2026-12-10');
+  await expect(stay).toHaveAccessibleDescription(/The end date is before the start date\./);
+  await expect(outDay).toHaveAttribute('aria-invalid', 'true');
+
+  await outDay.focus();
+  await page.keyboard.type('28');
+  await expect(stay.locator('.bootcn-date-range-input__error')).toBeHidden();
+  await expect(page.locator('[data-bootcn-date-range-input-status]')).toHaveText(
+    '10 days selected.',
+  );
+
+  // A full year in the start date moves on to the end date.
+  await checkIn.getByRole('spinbutton', { name: 'year' }).focus();
+  await page.keyboard.type('2026');
+  await expect(outDay).toBeFocused();
+  expect(errors).toEqual([]);
+});

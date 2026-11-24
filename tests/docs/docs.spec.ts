@@ -541,3 +541,16 @@ test('on phones, code blocks line up with the text', async ({ page }) => {
   expect(Math.round(group!.x)).toBe(Math.round(heading!.x));
   expect(Math.round(group!.x + group!.width)).toBeLessThanOrEqual(375 - Math.round(heading!.x));
 });
+
+test('pages have link preview tags for X and Open Graph', async ({ page, request }) => {
+  await page.goto('components/dialog');
+  const meta = (selector: string) => page.locator(`head meta[${selector}]`).getAttribute('content');
+  expect(await meta('name="twitter:card"')).toBe('summary_large_image');
+  expect(await meta('property="og:image"')).toBe('https://bootcn.dev/og-image.png');
+  expect(await meta('property="og:title"')).toBe('Dialog | Bootcn');
+  expect(await meta('property="og:url"')).toBe('https://bootcn.dev/components/dialog');
+  expect(await meta('property="og:description"')).toBeTruthy();
+  const image = await request.get('og-image.png');
+  expect(image.ok()).toBe(true);
+  expect(image.headers()['content-type']).toContain('image/png');
+});
