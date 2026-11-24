@@ -16,12 +16,12 @@
   "files": [
     {
       "path": "button.html",
-      "target": "components/ui/button.html",
+      "target": "button.html",
       "type": "registry:component"
     },
     {
       "path": "button.css",
-      "target": "assets/css/button.css",
+      "target": "button.css",
       "type": "registry:style"
     }
   ]

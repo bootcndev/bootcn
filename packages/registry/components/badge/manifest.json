@@ -16,12 +16,12 @@
   "files": [
     {
       "path": "badge.html",
-      "target": "components/ui/badge.html",
+      "target": "badge.html",
       "type": "registry:component"
     },
     {
       "path": "badge.css",
-      "target": "assets/css/badge.css",
+      "target": "badge.css",
       "type": "registry:style"
     }
   ]

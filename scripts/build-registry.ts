@@ -1,33 +1,13 @@
-import { mkdir, readFile, writeFile } from 'node:fs/promises';
-import { dirname, resolve } from 'node:path';
-import { fileURLToPath } from 'node:url';
+import { relative, resolve } from 'node:path';
 
-const repoRoot = resolve(dirname(fileURLToPath(import.meta.url)), '..');
-const registryDir = resolve(repoRoot, 'packages/registry');
-const registryPath = resolve(registryDir, 'registry.json');
-const distDir = resolve(registryDir, 'dist');
-
-interface RegistrySeed {
-  name?: string;
-  version?: string;
-  items?: unknown[];
-}
+import { REGISTRY_DIR, buildRegistry } from '../packages/registry/tooling/registry.js';
 
 async function main(): Promise<void> {
-  const raw = await readFile(registryPath, 'utf8');
-  const data = JSON.parse(raw) as RegistrySeed;
-
-  const index = {
-    name: data.name ?? 'bootcn',
-    version: data.version ?? '0.0.0',
-    items: [] as unknown[],
-  };
-
-  await mkdir(distDir, { recursive: true });
-  const outputPath = resolve(distDir, 'index.json');
-  await writeFile(outputPath, `${JSON.stringify(index, null, 2)}\n`, 'utf8');
-
-  process.stdout.write(`Wrote ${outputPath} (${index.items.length} item(s)).\n`);
+  const outDir = resolve(REGISTRY_DIR, 'dist');
+  const { itemCount } = await buildRegistry(REGISTRY_DIR, outDir);
+  process.stdout.write(
+    `Built ${itemCount} item(s) into ${relative(process.cwd(), outDir) || '.'}.\n`,
+  );
 }
 
 main().catch((error: unknown) => {

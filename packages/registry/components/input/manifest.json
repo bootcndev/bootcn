@@ -16,12 +16,12 @@
   "files": [
     {
       "path": "input.html",
-      "target": "components/ui/input.html",
+      "target": "input.html",
       "type": "registry:component"
     },
     {
       "path": "input.css",
-      "target": "assets/css/input.css",
+      "target": "input.css",
       "type": "registry:style"
     }
   ]

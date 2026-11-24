@@ -16,17 +16,17 @@
   "files": [
     {
       "path": "dialog.html",
-      "target": "components/ui/dialog.html",
+      "target": "dialog.html",
       "type": "registry:component"
     },
     {
       "path": "dialog.css",
-      "target": "assets/css/dialog.css",
+      "target": "dialog.css",
       "type": "registry:style"
     },
     {
       "path": "dialog.js",
-      "target": "assets/js/dialog.js",
+      "target": "dialog.js",
       "type": "registry:script"
     }
   ]

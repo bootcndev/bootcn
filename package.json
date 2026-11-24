@@ -10,7 +10,7 @@
     "node": ">=20"
   },
   "scripts": {
-    "build": "pnpm -r --if-present run build",
+    "build": "pnpm registry:build && pnpm -r --if-present run build",
     "test": "pnpm -r --if-present run test",
     "lint": "eslint .",
     "format": "prettier --write .",

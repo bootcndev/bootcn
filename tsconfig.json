@@ -9,6 +9,7 @@
     "packages/cli/src/**/*.ts",
     "packages/cli/tests/**/*.ts",
     "packages/cli/tsup.config.ts",
-    "packages/registry/tests/**/*.ts"
+    "packages/registry/tests/**/*.ts",
+    "packages/registry/tooling/**/*.ts"
   ]
 }

@@ -1,26 +1,17 @@
-import { readFile } from 'node:fs/promises';
-import { dirname, resolve } from 'node:path';
-import { fileURLToPath } from 'node:url';
-
-const repoRoot = resolve(dirname(fileURLToPath(import.meta.url)), '..');
-const registryPath = resolve(repoRoot, 'packages/registry/registry.json');
-
-interface RegistrySeed {
-  name?: string;
-  version?: string;
-  items?: unknown[];
-}
+import { REGISTRY_DIR, validateRegistry } from '../packages/registry/tooling/registry.js';
 
 async function main(): Promise<void> {
-  const raw = await readFile(registryPath, 'utf8');
-  const data = JSON.parse(raw) as RegistrySeed;
-  const items = Array.isArray(data.items) ? data.items : [];
-
-  if (typeof data.name !== 'string' || data.name.length === 0) {
-    throw new Error('Registry is missing a non-empty "name" field.');
+  const { meta, items, errors } = await validateRegistry(REGISTRY_DIR);
+  if (errors.length > 0) {
+    process.stderr.write(`registry:validate found ${errors.length} problem(s):\n`);
+    for (const error of errors) process.stderr.write(`  - ${error}\n`);
+    process.exit(1);
   }
-
-  process.stdout.write(`Registry "${data.name}" is valid (${items.length} item(s)).\n`);
+  process.stdout.write(
+    `Registry "${meta?.name}" ${meta?.version} is valid (${items.length} item(s): ${items
+      .map((item) => item.manifest.name)
+      .join(', ')}).\n`,
+  );
 }
 
 main().catch((error: unknown) => {

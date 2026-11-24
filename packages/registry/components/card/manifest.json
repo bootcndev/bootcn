@@ -16,12 +16,12 @@
   "files": [
     {
       "path": "card.html",
-      "target": "components/ui/card.html",
+      "target": "card.html",
       "type": "registry:component"
     },
     {
       "path": "card.css",
-      "target": "assets/css/card.css",
+      "target": "card.css",
       "type": "registry:style"
     }
   ]

@@ -1,0 +1,23 @@
+{
+  "$schema": "../../schema/registry-item.schema.json",
+  "name": "tokens",
+  "type": "registry:theme",
+  "title": "Design tokens",
+  "description": "Shared --bootcn-* custom properties for radius, borders, shadows, focus ring, motion and component dimensions, with dark-mode values.",
+  "version": "1.0.0",
+  "categories": ["theming", "tokens"],
+  "dependencies": [],
+  "registryDependencies": [],
+  "compatibility": {
+    "bootstrap": "5.3",
+    "platform": ["Bootstrap CSS"]
+  },
+  "license": "MIT",
+  "files": [
+    {
+      "path": "tokens.css",
+      "target": "tokens.css",
+      "type": "registry:style"
+    }
+  ]
+}
