@@ -213,25 +213,27 @@ test('sidebar marks the current page', async ({ page }) => {
   await expect(page.locator('.VPSidebar .is-active').first()).toContainText('Tabs');
 });
 
-test('every internal link resolves', async ({ page, request }) => {
+test('every internal link resolves', async ({ request, browserName }) => {
+  // Link checking does not depend on the browser: read the static HTML once.
+  test.skip(browserName !== 'chromium', 'browser-independent; runs in Chromium');
+  test.setTimeout(120_000);
+  const base = new URL('http://127.0.0.1:4518/bootcn/');
   const seen = new Set<string>();
-  const queue = ['./'];
+  const queue = [base.href];
   const broken: string[] = [];
   while (queue.length > 0) {
-    const path = queue.shift()!;
-    await page.goto(path);
-    const hrefs = await page.$$eval('a[href]', (links) =>
-      links.map((a) => (a as HTMLAnchorElement).href),
-    );
-    for (const href of hrefs) {
-      const url = new URL(href);
-      if (url.origin !== new URL(page.url()).origin) continue;
-      const key = url.pathname;
-      if (seen.has(key)) continue;
-      seen.add(key);
+    const pageUrl = queue.shift()!;
+    const html = await (await request.get(pageUrl)).text();
+    for (const match of html.matchAll(/href="([^"#]+)/g)) {
+      const url = new URL(match[1]!, pageUrl);
+      if (url.origin !== base.origin || !url.pathname.startsWith(base.pathname)) continue;
+      if (seen.has(url.pathname)) continue;
+      seen.add(url.pathname);
       const response = await request.get(url.href);
-      if (!response.ok()) broken.push(`${key} (from ${path})`);
-      else if (!/\.(json|html?)$/.test(key) && !key.includes('/previews/')) queue.push(url.href);
+      if (!response.ok()) broken.push(`${url.pathname} (from ${new URL(pageUrl).pathname})`);
+      else if (!/\.[a-z0-9]+$/i.test(url.pathname) || url.pathname.endsWith('.html')) {
+        if (!url.pathname.includes('/previews/')) queue.push(url.href);
+      }
     }
   }
   expect(broken).toEqual([]);
