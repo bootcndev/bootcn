@@ -32,17 +32,20 @@
     window.Bootcn.promptInput.setBusy(p.form, true);
     pending.set(
       chat,
-      setTimeout(function () {
-        window.Bootcn.conversation.setTyping(p.conversation, false);
-        window.Bootcn.conversation.append(p.conversation, {
-          role: 'assistant',
-          text:
-            'This is a sample reply to "' +
-            text +
-            '".\n\nConnect the chat to your server in ai-chat.js to get real answers.',
-        });
-        finish(chat);
-      }, 900),
+      setTimeout(
+        function () {
+          window.Bootcn.conversation.setTyping(p.conversation, false);
+          window.Bootcn.conversation.append(p.conversation, {
+            role: 'assistant',
+            text:
+              'This is a sample reply to "' +
+              text +
+              '".\n\nConnect the chat to your server in ai-chat.js to get real answers.',
+          });
+          finish(chat);
+        },
+        Number(chat.getAttribute('data-delay')) || 900,
+      ),
     );
   }
 

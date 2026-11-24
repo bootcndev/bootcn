@@ -227,8 +227,11 @@
     return Array.from(root.querySelectorAll(SEGMENT));
   }
 
+  // Next or previous segment; inside a date range, it continues into the
+  // other date.
   function focusSibling(el, delta) {
-    const list = segments(el.closest(ROOT));
+    const range = el.closest('[data-bootcn-date-range-input]');
+    const list = Array.from((range || el.closest(ROOT)).querySelectorAll(SEGMENT));
     const next = list[list.indexOf(el) + delta];
     if (next) next.focus();
   }

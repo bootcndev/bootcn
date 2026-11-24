@@ -118,9 +118,15 @@ test('date range input: one field, order check, typing moves on', async ({ page 
     '10 days selected.',
   );
 
-  // A full year in the start date moves on to the end date.
-  await checkIn.getByRole('spinbutton', { name: 'year' }).focus();
-  await page.keyboard.type('2026');
+  // A complete start date moves on to the end date (not before).
+  const inYear = checkIn.getByRole('spinbutton', { name: 'year' });
+  await inYear.focus();
+  await page.keyboard.type('20');
+  await expect(inYear).toBeFocused();
+  await page.keyboard.type('26');
   await expect(outDay).toBeFocused();
+  // Arrows cross between the two dates.
+  await page.keyboard.press('ArrowLeft');
+  await expect(inYear).toBeFocused();
   expect(errors).toEqual([]);
 });

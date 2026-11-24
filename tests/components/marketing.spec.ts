@@ -116,11 +116,13 @@ test('site header: hides while scrolling down, returns on scroll up and focus', 
     spacer.style.height = '3000px';
     document.body.appendChild(spacer);
   });
-  await page.mouse.wheel(0, 800);
+  // Scroll positions set directly: wheel scrolling is asynchronous in WebKit.
+  const scrollTo = (y: number) => page.evaluate((top) => window.scrollTo(0, top), y);
+  await scrollTo(800);
   await expect(header).toHaveClass(/is-hidden/);
-  await page.mouse.wheel(0, -200);
+  await scrollTo(600);
   await expect(header).not.toHaveClass(/is-hidden/);
-  await page.mouse.wheel(0, 600);
+  await scrollTo(1400);
   await expect(header).toHaveClass(/is-hidden/);
   await page.getByRole('link', { name: 'Pricing' }).focus();
   await expect(header).not.toHaveClass(/is-hidden/);

@@ -232,9 +232,11 @@ test.describe('AI chat block', () => {
   });
 
   test('Stop cancels the reply', async ({ page }) => {
-    // A controlled clock: the sample reply (900 ms) cannot arrive before Stop.
-    await page.clock.install();
     await openPreview(page, 'ai-chat', 'blocks');
+    // A slow sample reply, so Stop always comes first, in every browser.
+    await page
+      .locator('[data-bootcn-ai-chat]')
+      .evaluate((el) => el.setAttribute('data-delay', '1500'));
     const log = page.getByRole('log', { name: 'Messages' });
     const box = page.getByRole('textbox', { name: 'Message' });
     const before = await log.locator('.bootcn-message--assistant:not([hidden])').count();
@@ -242,7 +244,7 @@ test.describe('AI chat block', () => {
     await box.press('Enter');
     await page.getByRole('button', { name: 'Stop' }).click();
     await expect(page.getByRole('button', { name: 'Send' })).toBeVisible();
-    await page.clock.runFor(2000);
+    await page.waitForTimeout(2000);
     await expect(log.locator('.bootcn-message--assistant:not([hidden])')).toHaveCount(before);
   });
 });

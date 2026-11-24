@@ -85,33 +85,9 @@
     if (root) check(root, true);
   }
 
-  // Typing past the start date's last segment moves on to the end date.
-  function onKeydown(event) {
-    if (!/^\d$/.test(event.key)) return;
-    const segment = event.target.closest && event.target.closest(ROOT + ' [role="spinbutton"]');
-    if (!segment) return;
-    const part = segment.closest('[data-bootcn-date-input]');
-    const segments = part.querySelectorAll('[role="spinbutton"]');
-    if (segment !== segments[segments.length - 1]) return;
-    const root = part.closest(ROOT);
-    const parts = root.querySelectorAll('[data-bootcn-date-input]');
-    if (part !== parts[0]) return;
-    // Let the date input take the digit first, then move when it is complete.
-    setTimeout(function () {
-      if (document.activeElement === segment && !segment.classList.contains('is-placeholder')) {
-        const value = segment.textContent.trim();
-        if (value.length >= 4) {
-          const first = parts[1] && parts[1].querySelector('[role="spinbutton"]');
-          if (first) first.focus();
-        }
-      }
-    }, 0);
-  }
-
   function init() {
     if (!listening) {
       document.addEventListener('bootcn:date-input:change', onChange);
-      document.addEventListener('keydown', onKeydown);
       listening = true;
     }
     document.querySelectorAll(ROOT).forEach(function (root) {
@@ -122,7 +98,6 @@
   function destroy() {
     if (!listening) return;
     document.removeEventListener('bootcn:date-input:change', onChange);
-    document.removeEventListener('keydown', onKeydown);
     listening = false;
   }
 

@@ -18,7 +18,8 @@ use the Date range picker; this field is for typing.
 - When the end date is before the start date, the segments are marked
   `aria-invalid` and `data-error` is shown. A valid range announces its
   length ("4 days selected.").
-- Typing a full year in the start date moves on to the end date.
+- Typing a complete start date moves on to the end date, and ←/→ cross from
+  one date to the other (Date input 1.2.0 or newer).
 - Event `bootcn:date-range-input:change` (bubbles),
   `detail: { start, end, valid }`.
 - `Bootcn.dateRangeInput.init()` / `destroy()`; the parts are Date inputs
