@@ -1,0 +1,26 @@
+.bootcn-date-picker {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.5rem;
+}
+
+.bootcn-date-picker__trigger {
+  justify-content: flex-start;
+  min-width: 15rem;
+  font-weight: 400;
+}
+
+.bootcn-date-picker__trigger[data-empty] {
+  color: var(--bootcn-muted-foreground);
+}
+
+.bootcn-date-picker__popover {
+  padding: 0;
+  border: 0;
+  background: transparent;
+}
+
+.bootcn-date-picker__popover .bootcn-calendar {
+  box-shadow: var(--bootcn-shadow-md);
+}

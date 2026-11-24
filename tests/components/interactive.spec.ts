@@ -527,3 +527,101 @@ test.describe('HeroUI-style fields and indicators', () => {
     ).toHaveAttribute('target', '_blank');
   });
 });
+
+test.describe('HeroUI-style choosers', () => {
+  test('date range picker: start, then end, then the popover closes', async ({ page }) => {
+    await page.clock.setFixedTime(new Date('2026-11-24T10:00:00'));
+    await page.emulateMedia({ reducedMotion: 'reduce' });
+    await openPreview(page, 'date-range-picker');
+    await page.getByRole('button', { name: /Stay Pick check-in/ }).click();
+    const dialog = page.getByRole('dialog', { name: 'Choose check-in and check-out dates' });
+    await expect(page.getByRole('button', { name: 'Tuesday, November 24, 2026' })).toBeFocused();
+    await page.keyboard.press('Enter'); // start
+    await expect(dialog).toBeVisible();
+    await page.keyboard.press('ArrowRight');
+    await page.keyboard.press('ArrowRight');
+    await page.keyboard.press('Enter'); // end
+    await expect(dialog).toBeHidden();
+    await expect(page.locator('input[name="check-in"]')).toHaveValue('2026-11-24');
+    await expect(page.locator('input[name="check-out"]')).toHaveValue('2026-11-26');
+    await expect(page.locator('td[aria-selected="true"]')).toHaveCount(3);
+    await expect(page.getByRole('button', { name: /^Stay Nov 24/ })).toBeFocused();
+  });
+
+  test('tag group: removing keeps focus and announces it', async ({ page }) => {
+    await openPreview(page, 'tag-group');
+    await page.getByRole('button', { name: 'Remove CSS' }).click();
+    await expect(page.getByRole('button', { name: 'Remove CSS' })).toHaveCount(0);
+    await expect(page.getByRole('button', { name: 'Remove JavaScript' })).toBeFocused();
+    await expect(page.locator('[data-bootcn-tag-group-status]')).toHaveText('CSS removed.');
+    await page.keyboard.press('Delete');
+    await expect(page.getByRole('button', { name: 'Remove PHP' })).toBeFocused();
+    await expect(page.getByRole('checkbox', { name: 'Design' })).toBeChecked();
+  });
+
+  test('toolbar: one tab stop, arrows, toggles and exclusive groups', async ({ page }) => {
+    await openPreview(page, 'toolbar');
+    const bold = page.getByRole('button', { name: 'Bold' });
+    await bold.focus();
+    await page.keyboard.press('ArrowRight');
+    const italic = page.getByRole('button', { name: 'Italic' });
+    await expect(italic).toBeFocused();
+    await expect(italic).toHaveAttribute('tabindex', '0');
+    await expect(bold).toHaveAttribute('tabindex', '-1');
+    await page.keyboard.press('Enter');
+    await expect(italic).toHaveAttribute('aria-pressed', 'false');
+    await page.getByRole('button', { name: 'Align center' }).click();
+    await expect(page.getByRole('button', { name: 'Align center' })).toHaveAttribute(
+      'aria-pressed',
+      'true',
+    );
+    await expect(page.getByRole('button', { name: 'Align left' })).toHaveAttribute(
+      'aria-pressed',
+      'false',
+    );
+    await page.keyboard.press('End');
+    await expect(page.getByRole('button', { name: 'Delete' })).toBeFocused();
+  });
+
+  test('listbox: arrows, typeahead and selection with form values', async ({ page }) => {
+    await openPreview(page, 'listbox');
+    const box = page.getByRole('listbox', { name: 'Notification sound' });
+    await box.focus();
+    await expect(box).toHaveAttribute('aria-activedescendant', 'bootcn-listbox-chime');
+    await page.keyboard.press('ArrowDown');
+    await page.keyboard.press('Space');
+    await expect(box.getByRole('option', { name: /Bell/ })).toHaveAttribute(
+      'aria-selected',
+      'true',
+    );
+    await expect(box.getByRole('option', { name: /Chime/ })).toHaveAttribute(
+      'aria-selected',
+      'false',
+    );
+    await expect(page.locator('input[name="sound"]')).toHaveValue('bell');
+    await page.keyboard.press('w');
+    await expect(box).toHaveAttribute('aria-activedescendant', 'bootcn-listbox-wave');
+
+    const days = page.getByRole('listbox', { name: 'Working days' });
+    await days.getByRole('option', { name: 'Wednesday' }).click();
+    await expect(page.locator('input[name="days[]"]')).toHaveCount(4);
+  });
+
+  test('color picker: swatches, hex and system picker stay in sync', async ({ page }) => {
+    await openPreview(page, 'color-picker');
+    const hex = page.getByRole('textbox', { name: 'Hex' });
+    await page.getByRole('radio', { name: 'Violet' }).check();
+    await expect(hex).toHaveValue('#7c3aed');
+    await expect(page.locator('input[name="brand-color"]')).toHaveValue('#7c3aed');
+    await hex.fill('#0d948');
+    await expect(hex).toHaveAttribute('aria-invalid', 'true');
+    await hex.fill('#0d9488');
+    await expect(hex).toHaveAttribute('aria-invalid', 'false');
+    await expect(page.getByRole('radio', { name: 'Teal' })).toBeChecked();
+    await expect(
+      page
+        .getByRole('button', { name: 'Choose a custom color' })
+        .or(page.getByLabel('Choose a custom color')),
+    ).toHaveValue('#0d9488');
+  });
+});

@@ -1,0 +1,105 @@
+<div class="dropdown bootcn-date-picker bootcn-date-range-picker" data-bootcn-date-range-picker>
+  <span class="bootcn-label" id="bootcn-date-range-picker-label">Stay</span>
+  <button
+    type="button"
+    class="btn bootcn-button bootcn-button--outline bootcn-date-picker__trigger"
+    data-bs-toggle="dropdown"
+    data-bs-auto-close="outside"
+    aria-expanded="false"
+    aria-haspopup="dialog"
+    aria-labelledby="bootcn-date-range-picker-label bootcn-date-range-picker-text"
+  >
+    <svg
+      class="bootcn-icon"
+      width="16"
+      height="16"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      stroke-width="2"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+      aria-hidden="true"
+      focusable="false"
+    >
+      <rect x="3" y="5" width="18" height="16" rx="2" />
+      <path d="M16 3v4M8 3v4M3 11h18" />
+    </svg>
+    <span id="bootcn-date-range-picker-text" data-bootcn-date-range-picker-text
+      >Pick check-in and check-out</span
+    >
+  </button>
+  <div
+    class="dropdown-menu bootcn-date-picker__popover"
+    role="dialog"
+    aria-label="Choose check-in and check-out dates"
+  >
+    <div class="bootcn-calendar bootcn-calendar--range" data-bootcn-calendar data-mode="range">
+      <div class="bootcn-calendar__header">
+        <button
+          type="button"
+          class="bootcn-calendar__nav"
+          data-bootcn-calendar-prev
+          aria-label="Previous month"
+        >
+          <svg
+            class="bootcn-icon"
+            width="16"
+            height="16"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            aria-hidden="true"
+            focusable="false"
+          >
+            <path d="m15 18-6-6 6-6" />
+          </svg>
+        </button>
+        <h2
+          class="bootcn-calendar__title"
+          id="bootcn-date-range-picker-calendar-title"
+          aria-live="polite"
+        >
+          Calendar
+        </h2>
+        <button
+          type="button"
+          class="bootcn-calendar__nav"
+          data-bootcn-calendar-next
+          aria-label="Next month"
+        >
+          <svg
+            class="bootcn-icon"
+            width="16"
+            height="16"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            aria-hidden="true"
+            focusable="false"
+          >
+            <path d="m9 18 6-6-6-6" />
+          </svg>
+        </button>
+      </div>
+      <table
+        class="bootcn-calendar__grid"
+        role="grid"
+        aria-labelledby="bootcn-date-range-picker-calendar-title"
+      >
+        <thead>
+          <tr></tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+      <input type="hidden" name="check-in" data-bootcn-calendar-input="start" />
+      <input type="hidden" name="check-out" data-bootcn-calendar-input="end" />
+    </div>
+  </div>
+</div>

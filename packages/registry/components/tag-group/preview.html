@@ -1,0 +1,282 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Bootcn Tag group preview</title>
+    <script>
+      // Preview theme: ?theme=dark|light, else the docs page around the frame, else light.
+      (function () {
+        var theme = new URLSearchParams(location.search).get('theme');
+        if (!theme) {
+          try {
+            theme =
+              window.parent !== window &&
+              window.parent.document.documentElement.classList.contains('dark')
+                ? 'dark'
+                : 'light';
+          } catch (error) {
+            theme = 'light';
+          }
+        }
+        document.documentElement.setAttribute('data-bs-theme', theme === 'dark' ? 'dark' : 'light');
+      })();
+    </script>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.9/dist/css/bootstrap.min.css"
+    />
+    <link rel="stylesheet" href="../../themes/tokens/tokens.css" />
+    <link rel="stylesheet" href="tag-group.css" />
+  </head>
+  <body>
+    <main class="container py-4">
+      <h1 class="h4 mb-4">Tag group</h1>
+      <div class="bootcn-tag-group" data-bootcn-tag-group>
+        <p class="bootcn-tag-group__label" id="bootcn-tag-group-skills">Skills</p>
+        <ul class="bootcn-tag-group__list" aria-labelledby="bootcn-tag-group-skills">
+          <li class="bootcn-tag">
+            <span>HTML</span>
+            <button type="button" class="bootcn-tag__remove" aria-label="Remove HTML">
+              <svg
+                class="bootcn-icon"
+                width="16"
+                height="16"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+                focusable="false"
+              >
+                <path d="M18 6 6 18" />
+                <path d="m6 6 12 12" />
+              </svg>
+            </button>
+          </li>
+          <li class="bootcn-tag">
+            <span>CSS</span>
+            <button type="button" class="bootcn-tag__remove" aria-label="Remove CSS">
+              <svg
+                class="bootcn-icon"
+                width="16"
+                height="16"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+                focusable="false"
+              >
+                <path d="M18 6 6 18" />
+                <path d="m6 6 12 12" />
+              </svg>
+            </button>
+          </li>
+          <li class="bootcn-tag">
+            <span>JavaScript</span>
+            <button type="button" class="bootcn-tag__remove" aria-label="Remove JavaScript">
+              <svg
+                class="bootcn-icon"
+                width="16"
+                height="16"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+                focusable="false"
+              >
+                <path d="M18 6 6 18" />
+                <path d="m6 6 12 12" />
+              </svg>
+            </button>
+          </li>
+          <li class="bootcn-tag">
+            <span>PHP</span>
+            <button type="button" class="bootcn-tag__remove" aria-label="Remove PHP">
+              <svg
+                class="bootcn-icon"
+                width="16"
+                height="16"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+                focusable="false"
+              >
+                <path d="M18 6 6 18" />
+                <path d="m6 6 12 12" />
+              </svg>
+            </button>
+          </li>
+          <li class="bootcn-tag">
+            <span>Bootstrap</span>
+            <button type="button" class="bootcn-tag__remove" aria-label="Remove Bootstrap">
+              <svg
+                class="bootcn-icon"
+                width="16"
+                height="16"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+                focusable="false"
+              >
+                <path d="M18 6 6 18" />
+                <path d="m6 6 12 12" />
+              </svg>
+            </button>
+          </li>
+        </ul>
+        <p class="visually-hidden" role="status" data-bootcn-tag-group-status></p>
+      </div>
+
+      <fieldset class="bootcn-tag-group mt-4">
+        <legend class="bootcn-tag-group__label">Interests</legend>
+        <div class="bootcn-tag-group__list">
+          <input
+            type="checkbox"
+            class="btn-check"
+            id="bootcn-tag-group-design"
+            name="interests[]"
+            value="design"
+            checked
+          />
+          <label class="bootcn-tag bootcn-tag--selectable" for="bootcn-tag-group-design">
+            <svg
+              class="bootcn-icon bootcn-tag__check"
+              width="16"
+              height="16"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              aria-hidden="true"
+              focusable="false"
+            >
+              <path d="M20 6 9 17l-5-5" />
+            </svg>
+            Design
+          </label>
+          <input
+            type="checkbox"
+            class="btn-check"
+            id="bootcn-tag-group-frontend"
+            name="interests[]"
+            value="frontend"
+            checked
+          />
+          <label class="bootcn-tag bootcn-tag--selectable" for="bootcn-tag-group-frontend">
+            <svg
+              class="bootcn-icon bootcn-tag__check"
+              width="16"
+              height="16"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              aria-hidden="true"
+              focusable="false"
+            >
+              <path d="M20 6 9 17l-5-5" />
+            </svg>
+            Front-end
+          </label>
+          <input
+            type="checkbox"
+            class="btn-check"
+            id="bootcn-tag-group-backend"
+            name="interests[]"
+            value="backend"
+          />
+          <label class="bootcn-tag bootcn-tag--selectable" for="bootcn-tag-group-backend">
+            <svg
+              class="bootcn-icon bootcn-tag__check"
+              width="16"
+              height="16"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              aria-hidden="true"
+              focusable="false"
+            >
+              <path d="M20 6 9 17l-5-5" />
+            </svg>
+            Back-end
+          </label>
+          <input
+            type="checkbox"
+            class="btn-check"
+            id="bootcn-tag-group-devops"
+            name="interests[]"
+            value="devops"
+          />
+          <label class="bootcn-tag bootcn-tag--selectable" for="bootcn-tag-group-devops">
+            <svg
+              class="bootcn-icon bootcn-tag__check"
+              width="16"
+              height="16"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              aria-hidden="true"
+              focusable="false"
+            >
+              <path d="M20 6 9 17l-5-5" />
+            </svg>
+            DevOps
+          </label>
+          <input
+            type="checkbox"
+            class="btn-check"
+            id="bootcn-tag-group-writing"
+            name="interests[]"
+            value="writing"
+          />
+          <label class="bootcn-tag bootcn-tag--selectable" for="bootcn-tag-group-writing">
+            <svg
+              class="bootcn-icon bootcn-tag__check"
+              width="16"
+              height="16"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              aria-hidden="true"
+              focusable="false"
+            >
+              <path d="M20 6 9 17l-5-5" />
+            </svg>
+            Writing
+          </label>
+        </div>
+      </fieldset>
+    </main>
+    <script src="tag-group.js"></script>
+  </body>
+</html>

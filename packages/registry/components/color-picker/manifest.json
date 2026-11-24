@@ -1,0 +1,33 @@
+{
+  "$schema": "../../schema/registry-item.schema.json",
+  "name": "color-picker",
+  "type": "registry:ui",
+  "title": "Color picker",
+  "description": "Preset swatches, a custom color from the system picker and a hex field, kept in sync with one form value.",
+  "version": "1.0.0",
+  "categories": ["forms"],
+  "dependencies": [],
+  "registryDependencies": ["label"],
+  "compatibility": {
+    "bootstrap": "5.3",
+    "platform": ["Bootstrap CSS"]
+  },
+  "license": "MIT",
+  "files": [
+    {
+      "path": "color-picker.html",
+      "target": "color-picker.html",
+      "type": "registry:component"
+    },
+    {
+      "path": "color-picker.css",
+      "target": "color-picker.css",
+      "type": "registry:style"
+    },
+    {
+      "path": "color-picker.js",
+      "target": "color-picker.js",
+      "type": "registry:script"
+    }
+  ]
+}

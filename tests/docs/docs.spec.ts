@@ -463,3 +463,20 @@ test('llms.txt lists the docs and every item with its source', async ({ request 
     expect(text).toContain(`/r/${item.name}.json`);
   }
 });
+
+test('item pages copy a prompt for AI assistants', async ({ page }) => {
+  await page.addInitScript(() => {
+    const copied: string[] = [];
+    (window as unknown as { copied: string[] }).copied = copied;
+    Object.defineProperty(navigator, 'clipboard', {
+      configurable: true,
+      value: { writeText: (text: string) => (copied.push(text), Promise.resolve()) },
+    });
+  });
+  await page.goto('components/combobox');
+  await page.getByRole('button', { name: 'Copy prompt' }).click();
+  await expect(page.getByRole('button', { name: 'Copied' })).toBeVisible();
+  const [text] = await page.evaluate(() => (window as unknown as { copied: string[] }).copied);
+  expect(text).toContain('npx bootcn add combobox');
+  expect(text).toContain('/r/combobox.json');
+});

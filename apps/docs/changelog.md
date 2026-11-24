@@ -6,6 +6,17 @@ each published version stays available under `/v/<version>/`) and the **CLI**
 
 ## Registry
 
+### 0.13.0
+
+- Date range picker, Tag group, Toolbar, Listbox and Color picker.
+- Calendar 1.1.0: range mode (`data-mode="range"`).
+- Docs: "Copy prompt" on every item page.
+
+### 0.12.0
+
+- Number field, Search field, Date and time fields, Meter, Progress circle,
+  Link and Scroll shadow.
+
 ### 0.11.0
 
 - Blocks: Login with SSO, Verify with a code, Login with image, Sign-up split

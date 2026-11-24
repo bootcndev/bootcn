@@ -1,0 +1,33 @@
+{
+  "$schema": "../../schema/registry-item.schema.json",
+  "name": "toolbar",
+  "type": "registry:ui",
+  "title": "Toolbar",
+  "description": "A row of related controls with one tab stop and arrow-key navigation, with toggles and grouped choices.",
+  "version": "1.0.0",
+  "categories": ["actions"],
+  "dependencies": [],
+  "registryDependencies": [],
+  "compatibility": {
+    "bootstrap": "5.3",
+    "platform": ["Bootstrap CSS"]
+  },
+  "license": "MIT",
+  "files": [
+    {
+      "path": "toolbar.html",
+      "target": "toolbar.html",
+      "type": "registry:component"
+    },
+    {
+      "path": "toolbar.css",
+      "target": "toolbar.css",
+      "type": "registry:style"
+    },
+    {
+      "path": "toolbar.js",
+      "target": "toolbar.js",
+      "type": "registry:script"
+    }
+  ]
+}

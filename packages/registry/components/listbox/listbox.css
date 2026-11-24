@@ -1,0 +1,54 @@
+.bootcn-listbox {
+  max-width: 18rem;
+  margin: 0;
+  padding: 0.25rem;
+  border: var(--bootcn-border-width) solid var(--bootcn-border-color);
+  border-radius: var(--bootcn-radius-lg);
+  background-color: var(--bootcn-background);
+  font-size: 0.875rem;
+  list-style: none;
+}
+
+.bootcn-listbox:focus-visible {
+  outline: 0;
+  box-shadow: var(--bootcn-focus-ring);
+}
+
+.bootcn-listbox__option {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  padding: 0.375rem 0.5rem;
+  border-radius: var(--bootcn-radius-sm);
+  cursor: pointer;
+}
+
+.bootcn-listbox__option:hover,
+.bootcn-listbox__option.is-active {
+  background-color: var(--bootcn-accent);
+  color: var(--bootcn-accent-foreground);
+}
+
+.bootcn-listbox:focus-visible .bootcn-listbox__option.is-active {
+  box-shadow: inset 0 0 0 2px var(--bootcn-ring);
+}
+
+.bootcn-listbox__text {
+  display: flex;
+  flex-direction: column;
+}
+
+.bootcn-listbox__description {
+  color: var(--bootcn-muted-foreground);
+  font-size: 0.75rem;
+}
+
+.bootcn-listbox__check {
+  flex: none;
+  visibility: hidden;
+}
+
+.bootcn-listbox__option[aria-selected='true'] .bootcn-listbox__check {
+  visibility: visible;
+}

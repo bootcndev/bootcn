@@ -1,0 +1,33 @@
+{
+  "$schema": "../../schema/registry-item.schema.json",
+  "name": "tag-group",
+  "type": "registry:ui",
+  "title": "Tag group",
+  "description": "A list of tags (chips) that can be removed, or a set of selectable tags built on native checkboxes.",
+  "version": "1.0.0",
+  "categories": ["data-display"],
+  "dependencies": [],
+  "registryDependencies": [],
+  "compatibility": {
+    "bootstrap": "5.3",
+    "platform": ["Bootstrap CSS"]
+  },
+  "license": "MIT",
+  "files": [
+    {
+      "path": "tag-group.html",
+      "target": "tag-group.html",
+      "type": "registry:component"
+    },
+    {
+      "path": "tag-group.css",
+      "target": "tag-group.css",
+      "type": "registry:style"
+    },
+    {
+      "path": "tag-group.js",
+      "target": "tag-group.js",
+      "type": "registry:script"
+    }
+  ]
+}

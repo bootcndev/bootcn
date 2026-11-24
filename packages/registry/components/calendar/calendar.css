@@ -100,3 +100,24 @@
   text-decoration: line-through;
   cursor: not-allowed;
 }
+
+/* Range mode: the days between start and end share a band. */
+[aria-selected='true'] > .bootcn-calendar__day.is-range-middle {
+  border-radius: 0;
+  background-color: var(--bootcn-accent);
+  color: var(--bootcn-accent-foreground);
+}
+
+[aria-selected='true'] > .bootcn-calendar__day.is-range-start:not(.is-range-end) {
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+[aria-selected='true'] > .bootcn-calendar__day.is-range-end:not(.is-range-start) {
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+}
+
+.bootcn-calendar--range td {
+  padding-inline: 0;
+}

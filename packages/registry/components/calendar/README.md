@@ -20,6 +20,12 @@ Date picker.
   (YYYY-MM-DD) for forms.
 - Event `bootcn:calendar:select` (bubbles), `detail.value` and
   `detail.date`.
+- Range mode: `data-mode="range"` (add the class `bootcn-calendar--range`),
+  with `data-start` / `data-end` and two hidden inputs marked
+  `data-bootcn-calendar-input="start"` and `="end"`. The first pick sets the
+  start, the next the end (a pick before the start starts over). The event's
+  `detail` is `{ start, end, complete }`; every day in the range has
+  `aria-selected="true"`.
 - `Bootcn.calendar.setValue(root, 'YYYY-MM-DD')`, `focus(root)`,
   `init(root)` / `destroy(root)`.
 

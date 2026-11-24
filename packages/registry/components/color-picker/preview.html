@@ -1,0 +1,142 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Bootcn Color picker preview</title>
+    <script>
+      // Preview theme: ?theme=dark|light, else the docs page around the frame, else light.
+      (function () {
+        var theme = new URLSearchParams(location.search).get('theme');
+        if (!theme) {
+          try {
+            theme =
+              window.parent !== window &&
+              window.parent.document.documentElement.classList.contains('dark')
+                ? 'dark'
+                : 'light';
+          } catch (error) {
+            theme = 'light';
+          }
+        }
+        document.documentElement.setAttribute('data-bs-theme', theme === 'dark' ? 'dark' : 'light');
+      })();
+    </script>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.9/dist/css/bootstrap.min.css"
+    />
+    <link rel="stylesheet" href="../../themes/tokens/tokens.css" />
+    <link rel="stylesheet" href="../input/input.css" />
+    <link rel="stylesheet" href="../label/label.css" />
+    <link rel="stylesheet" href="color-picker.css" />
+  </head>
+  <body>
+    <main class="container py-4">
+      <h1 class="h4 mb-4">Color picker</h1>
+      <fieldset class="bootcn-color-picker" data-bootcn-color-picker>
+        <legend class="bootcn-label">Brand color</legend>
+        <div class="bootcn-color-picker__swatches">
+          <label class="bootcn-color-swatch" title="Blue">
+            <input type="radio" name="bootcn-color-picker-swatch" value="#2563eb" checked />
+            <span
+              class="bootcn-color-swatch__chip"
+              style="--bootcn-swatch: #2563eb"
+              aria-hidden="true"
+            ></span>
+            <span class="visually-hidden">Blue</span>
+          </label>
+          <label class="bootcn-color-swatch" title="Teal">
+            <input type="radio" name="bootcn-color-picker-swatch" value="#0d9488" />
+            <span
+              class="bootcn-color-swatch__chip"
+              style="--bootcn-swatch: #0d9488"
+              aria-hidden="true"
+            ></span>
+            <span class="visually-hidden">Teal</span>
+          </label>
+          <label class="bootcn-color-swatch" title="Green">
+            <input type="radio" name="bootcn-color-picker-swatch" value="#16a34a" />
+            <span
+              class="bootcn-color-swatch__chip"
+              style="--bootcn-swatch: #16a34a"
+              aria-hidden="true"
+            ></span>
+            <span class="visually-hidden">Green</span>
+          </label>
+          <label class="bootcn-color-swatch" title="Amber">
+            <input type="radio" name="bootcn-color-picker-swatch" value="#d97706" />
+            <span
+              class="bootcn-color-swatch__chip"
+              style="--bootcn-swatch: #d97706"
+              aria-hidden="true"
+            ></span>
+            <span class="visually-hidden">Amber</span>
+          </label>
+          <label class="bootcn-color-swatch" title="Red">
+            <input type="radio" name="bootcn-color-picker-swatch" value="#dc2626" />
+            <span
+              class="bootcn-color-swatch__chip"
+              style="--bootcn-swatch: #dc2626"
+              aria-hidden="true"
+            ></span>
+            <span class="visually-hidden">Red</span>
+          </label>
+          <label class="bootcn-color-swatch" title="Pink">
+            <input type="radio" name="bootcn-color-picker-swatch" value="#db2777" />
+            <span
+              class="bootcn-color-swatch__chip"
+              style="--bootcn-swatch: #db2777"
+              aria-hidden="true"
+            ></span>
+            <span class="visually-hidden">Pink</span>
+          </label>
+          <label class="bootcn-color-swatch" title="Violet">
+            <input type="radio" name="bootcn-color-picker-swatch" value="#7c3aed" />
+            <span
+              class="bootcn-color-swatch__chip"
+              style="--bootcn-swatch: #7c3aed"
+              aria-hidden="true"
+            ></span>
+            <span class="visually-hidden">Violet</span>
+          </label>
+          <label class="bootcn-color-swatch" title="Black">
+            <input type="radio" name="bootcn-color-picker-swatch" value="#18181b" />
+            <span
+              class="bootcn-color-swatch__chip"
+              style="--bootcn-swatch: #18181b"
+              aria-hidden="true"
+            ></span>
+            <span class="visually-hidden">Black</span>
+          </label>
+        </div>
+        <div class="bootcn-color-picker__custom">
+          <input
+            class="bootcn-color-picker__native"
+            type="color"
+            value="#2563eb"
+            aria-label="Choose a custom color"
+          />
+          <div class="bootcn-field">
+            <label class="bootcn-label" for="bootcn-color-picker-hex">Hex</label>
+            <input
+              class="bootcn-color-picker__hex"
+              type="text"
+              id="bootcn-color-picker-hex"
+              value="#2563eb"
+              maxlength="7"
+              spellcheck="false"
+              autocomplete="off"
+              aria-describedby="bootcn-color-picker-hex-help"
+            />
+            <p class="bootcn-field__help" id="bootcn-color-picker-hex-help">
+              Six digits, for example #2563eb.
+            </p>
+          </div>
+        </div>
+        <input type="hidden" name="brand-color" value="#2563eb" data-bootcn-color-picker-value />
+      </fieldset>
+    </main>
+    <script src="color-picker.js"></script>
+  </body>
+</html>

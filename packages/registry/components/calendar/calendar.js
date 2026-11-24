@@ -62,6 +62,9 @@
     const loc = locale(root);
     const start = weekStart(root);
     const selected = parse(root.getAttribute('data-value'));
+    const range = isRange(root);
+    const rangeStart = parse(root.getAttribute('data-start'));
+    const rangeEnd = parse(root.getAttribute('data-end'));
     const today = new Date();
     const { min, max } = bounds(root);
     const title = root.querySelector('.bootcn-calendar__title');
@@ -104,7 +107,20 @@
         if (cursor.getMonth() !== s.month.getMonth()) button.classList.add('is-outside');
         if (sameDay(cursor, today)) button.setAttribute('aria-current', 'date');
         if ((min && cursor < min) || (max && cursor > max)) button.disabled = true;
-        cell.setAttribute('aria-selected', String(sameDay(cursor, selected)));
+        if (range) {
+          const inside =
+            !!rangeStart &&
+            (sameDay(cursor, rangeStart) ||
+              (!!rangeEnd && cursor >= rangeStart && cursor <= rangeEnd));
+          cell.setAttribute('aria-selected', String(inside));
+          if (sameDay(cursor, rangeStart)) button.classList.add('is-range-start');
+          if (sameDay(cursor, rangeEnd)) button.classList.add('is-range-end');
+          if (inside && !sameDay(cursor, rangeStart) && !sameDay(cursor, rangeEnd)) {
+            button.classList.add('is-range-middle');
+          }
+        } else {
+          cell.setAttribute('aria-selected', String(sameDay(cursor, selected)));
+        }
         cell.appendChild(button);
         row.appendChild(cell);
         cursor = addDays(cursor, 1);
@@ -127,7 +143,43 @@
     }
   }
 
+  // Range mode: data-mode="range"; the first pick is the start, the next the
+  // end (a pick before the start becomes the new start).
+  function isRange(root) {
+    return root.getAttribute('data-mode') === 'range';
+  }
+
+  function selectRange(root, date) {
+    const start = parse(root.getAttribute('data-start'));
+    const end = parse(root.getAttribute('data-end'));
+    if (!start || end || date < start) {
+      root.setAttribute('data-start', iso(date));
+      root.removeAttribute('data-end');
+    } else {
+      root.setAttribute('data-end', iso(date));
+    }
+    const startInput = root.querySelector('[data-bootcn-calendar-input="start"]');
+    const endInput = root.querySelector('[data-bootcn-calendar-input="end"]');
+    if (startInput) startInput.value = root.getAttribute('data-start') || '';
+    if (endInput) endInput.value = root.getAttribute('data-end') || '';
+    focusDate(root, date, true);
+    root.dispatchEvent(
+      new CustomEvent('bootcn:calendar:select', {
+        bubbles: true,
+        detail: {
+          start: root.getAttribute('data-start'),
+          end: root.getAttribute('data-end'),
+          complete: root.hasAttribute('data-end'),
+        },
+      }),
+    );
+  }
+
   function select(root, date) {
+    if (isRange(root)) {
+      selectRange(root, date);
+      return;
+    }
     const value = iso(date);
     root.setAttribute('data-value', value);
     const input = root.querySelector('[data-bootcn-calendar-input]');
@@ -149,11 +201,18 @@
   }
 
   function setup(root) {
-    const selected = parse(root.getAttribute('data-value'));
+    const selected = parse(root.getAttribute(isRange(root) ? 'data-start' : 'data-value'));
     const base = selected || clamp(root, new Date());
     state.set(root, { month: new Date(base.getFullYear(), base.getMonth(), 1), focus: base });
-    const input = root.querySelector('[data-bootcn-calendar-input]');
-    if (input && selected) input.value = iso(selected);
+    if (isRange(root)) {
+      const startInput = root.querySelector('[data-bootcn-calendar-input="start"]');
+      const endInput = root.querySelector('[data-bootcn-calendar-input="end"]');
+      if (startInput) startInput.value = root.getAttribute('data-start') || '';
+      if (endInput) endInput.value = root.getAttribute('data-end') || '';
+    } else {
+      const input = root.querySelector('[data-bootcn-calendar-input]');
+      if (input && selected) input.value = iso(selected);
+    }
     root.setAttribute(INIT, '');
     render(root);
   }

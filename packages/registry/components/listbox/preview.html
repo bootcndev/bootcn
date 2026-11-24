@@ -1,0 +1,316 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Bootcn Listbox preview</title>
+    <script>
+      // Preview theme: ?theme=dark|light, else the docs page around the frame, else light.
+      (function () {
+        var theme = new URLSearchParams(location.search).get('theme');
+        if (!theme) {
+          try {
+            theme =
+              window.parent !== window &&
+              window.parent.document.documentElement.classList.contains('dark')
+                ? 'dark'
+                : 'light';
+          } catch (error) {
+            theme = 'light';
+          }
+        }
+        document.documentElement.setAttribute('data-bs-theme', theme === 'dark' ? 'dark' : 'light');
+      })();
+    </script>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.9/dist/css/bootstrap.min.css"
+    />
+    <link rel="stylesheet" href="../../themes/tokens/tokens.css" />
+    <link rel="stylesheet" href="../input/input.css" />
+    <link rel="stylesheet" href="../label/label.css" />
+    <link rel="stylesheet" href="listbox.css" />
+  </head>
+  <body>
+    <main class="container py-4">
+      <h1 class="h4 mb-4">Listbox</h1>
+      <p class="bootcn-label" id="bootcn-listbox-sound-label">Notification sound</p>
+      <ul
+        class="bootcn-listbox mt-2"
+        role="listbox"
+        tabindex="0"
+        aria-labelledby="bootcn-listbox-sound-label"
+        data-bootcn-listbox
+        data-bootcn-listbox-name="sound"
+      >
+        <li
+          class="bootcn-listbox__option"
+          role="option"
+          id="bootcn-listbox-none"
+          data-value="none"
+          aria-selected="false"
+        >
+          <span class="bootcn-listbox__text">
+            <span>None</span>
+          </span>
+          <svg
+            class="bootcn-icon bootcn-listbox__check"
+            width="16"
+            height="16"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            aria-hidden="true"
+            focusable="false"
+          >
+            <path d="M20 6 9 17l-5-5" />
+          </svg>
+        </li>
+        <li
+          class="bootcn-listbox__option"
+          role="option"
+          id="bootcn-listbox-chime"
+          data-value="chime"
+          aria-selected="true"
+        >
+          <span class="bootcn-listbox__text">
+            <span>Chime</span>
+            <span class="bootcn-listbox__description">Two soft notes</span>
+          </span>
+          <svg
+            class="bootcn-icon bootcn-listbox__check"
+            width="16"
+            height="16"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            aria-hidden="true"
+            focusable="false"
+          >
+            <path d="M20 6 9 17l-5-5" />
+          </svg>
+        </li>
+        <li
+          class="bootcn-listbox__option"
+          role="option"
+          id="bootcn-listbox-bell"
+          data-value="bell"
+          aria-selected="false"
+        >
+          <span class="bootcn-listbox__text">
+            <span>Bell</span>
+            <span class="bootcn-listbox__description">A single ring</span>
+          </span>
+          <svg
+            class="bootcn-icon bootcn-listbox__check"
+            width="16"
+            height="16"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            aria-hidden="true"
+            focusable="false"
+          >
+            <path d="M20 6 9 17l-5-5" />
+          </svg>
+        </li>
+        <li
+          class="bootcn-listbox__option"
+          role="option"
+          id="bootcn-listbox-pulse"
+          data-value="pulse"
+          aria-selected="false"
+        >
+          <span class="bootcn-listbox__text">
+            <span>Pulse</span>
+            <span class="bootcn-listbox__description">Three short beeps</span>
+          </span>
+          <svg
+            class="bootcn-icon bootcn-listbox__check"
+            width="16"
+            height="16"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            aria-hidden="true"
+            focusable="false"
+          >
+            <path d="M20 6 9 17l-5-5" />
+          </svg>
+        </li>
+        <li
+          class="bootcn-listbox__option"
+          role="option"
+          id="bootcn-listbox-wave"
+          data-value="wave"
+          aria-selected="false"
+        >
+          <span class="bootcn-listbox__text">
+            <span>Wave</span>
+            <span class="bootcn-listbox__description">A rising tone</span>
+          </span>
+          <svg
+            class="bootcn-icon bootcn-listbox__check"
+            width="16"
+            height="16"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            aria-hidden="true"
+            focusable="false"
+          >
+            <path d="M20 6 9 17l-5-5" />
+          </svg>
+        </li>
+      </ul>
+
+      <p class="bootcn-label mt-4" id="bootcn-listbox-days-label">Working days</p>
+      <ul
+        class="bootcn-listbox mt-2"
+        role="listbox"
+        tabindex="0"
+        aria-labelledby="bootcn-listbox-days-label"
+        aria-multiselectable="true"
+        data-bootcn-listbox
+        data-bootcn-listbox-name="days"
+      >
+        <li
+          class="bootcn-listbox__option"
+          role="option"
+          id="bootcn-listbox-day-mon"
+          data-value="mon"
+          aria-selected="true"
+        >
+          <span class="bootcn-listbox__text">Monday</span>
+          <svg
+            class="bootcn-icon bootcn-listbox__check"
+            width="16"
+            height="16"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            aria-hidden="true"
+            focusable="false"
+          >
+            <path d="M20 6 9 17l-5-5" />
+          </svg>
+        </li>
+        <li
+          class="bootcn-listbox__option"
+          role="option"
+          id="bootcn-listbox-day-tue"
+          data-value="tue"
+          aria-selected="true"
+        >
+          <span class="bootcn-listbox__text">Tuesday</span>
+          <svg
+            class="bootcn-icon bootcn-listbox__check"
+            width="16"
+            height="16"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            aria-hidden="true"
+            focusable="false"
+          >
+            <path d="M20 6 9 17l-5-5" />
+          </svg>
+        </li>
+        <li
+          class="bootcn-listbox__option"
+          role="option"
+          id="bootcn-listbox-day-wed"
+          data-value="wed"
+          aria-selected="false"
+        >
+          <span class="bootcn-listbox__text">Wednesday</span>
+          <svg
+            class="bootcn-icon bootcn-listbox__check"
+            width="16"
+            height="16"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            aria-hidden="true"
+            focusable="false"
+          >
+            <path d="M20 6 9 17l-5-5" />
+          </svg>
+        </li>
+        <li
+          class="bootcn-listbox__option"
+          role="option"
+          id="bootcn-listbox-day-thu"
+          data-value="thu"
+          aria-selected="true"
+        >
+          <span class="bootcn-listbox__text">Thursday</span>
+          <svg
+            class="bootcn-icon bootcn-listbox__check"
+            width="16"
+            height="16"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            aria-hidden="true"
+            focusable="false"
+          >
+            <path d="M20 6 9 17l-5-5" />
+          </svg>
+        </li>
+        <li
+          class="bootcn-listbox__option"
+          role="option"
+          id="bootcn-listbox-day-fri"
+          data-value="fri"
+          aria-selected="false"
+        >
+          <span class="bootcn-listbox__text">Friday</span>
+          <svg
+            class="bootcn-icon bootcn-listbox__check"
+            width="16"
+            height="16"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            aria-hidden="true"
+            focusable="false"
+          >
+            <path d="M20 6 9 17l-5-5" />
+          </svg>
+        </li>
+      </ul>
+    </main>
+    <script src="listbox.js"></script>
+  </body>
+</html>

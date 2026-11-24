@@ -97,7 +97,7 @@ ${fileRows}`;
 
 <p class="bootcn-lead">${item.description}</p>
 
-<ComponentMeta version="${item.version ?? ''}" bootstrap="${item.compatibility?.bootstrap ?? '5.3'}" requires="${requirements(item)}" source="${sourceUrl}" />
+<ComponentMeta version="${item.version ?? ''}" bootstrap="${item.compatibility?.bootstrap ?? '5.3'}" requires="${requirements(item)}" source="${sourceUrl}" name="${item.name}" title="${item.title}" kind="${kind}" />
 
 <ComponentPreview name="${item.name}" title="${item.title}" ${previewProps}>
 <template #code>

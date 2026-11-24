@@ -1,0 +1,97 @@
+.bootcn-color-picker {
+  min-width: 0;
+  max-width: 20rem;
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+.bootcn-color-picker > legend {
+  float: none;
+  margin-bottom: 0.75rem;
+  padding: 0;
+}
+
+.bootcn-color-picker__swatches {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.bootcn-color-swatch {
+  position: relative;
+  cursor: pointer;
+}
+
+.bootcn-color-swatch input {
+  position: absolute;
+  opacity: 0;
+}
+
+.bootcn-color-swatch__chip {
+  display: block;
+  width: 1.75rem;
+  height: 1.75rem;
+  border: var(--bootcn-border-width) solid var(--bootcn-border-color);
+  border-radius: 9999px;
+  background-color: var(--bootcn-swatch);
+}
+
+/* Selected: a ring in the foreground color, offset by the background. */
+.bootcn-color-swatch input:checked + .bootcn-color-swatch__chip {
+  box-shadow:
+    0 0 0 2px var(--bootcn-background),
+    0 0 0 4px var(--bootcn-foreground);
+}
+
+.bootcn-color-swatch input:focus-visible + .bootcn-color-swatch__chip {
+  box-shadow:
+    0 0 0 2px var(--bootcn-background),
+    0 0 0 4px var(--bootcn-ring);
+}
+
+.bootcn-color-picker__custom {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  margin-top: 1rem;
+}
+
+.bootcn-color-picker__native {
+  flex: none;
+  width: var(--bootcn-control-height);
+  height: var(--bootcn-control-height);
+  margin-top: 1.625rem;
+  padding: 0.25rem;
+  border: var(--bootcn-border-width) solid var(--bootcn-input);
+  border-radius: var(--bootcn-radius);
+  background: transparent;
+  cursor: pointer;
+}
+
+.bootcn-color-picker__native:focus-visible {
+  outline: 0;
+  box-shadow: var(--bootcn-focus-ring);
+}
+
+.bootcn-color-picker__hex {
+  width: 8rem;
+  min-height: var(--bootcn-control-height);
+  padding: 0 0.75rem;
+  border: var(--bootcn-border-width) solid var(--bootcn-input);
+  border-radius: var(--bootcn-radius);
+  background: transparent;
+  color: var(--bootcn-foreground);
+  font-family: var(--bs-font-monospace);
+  font-size: 0.875rem;
+}
+
+.bootcn-color-picker__hex:focus {
+  border-color: var(--bootcn-ring);
+  outline: 0;
+  box-shadow: 0 0 0 3px var(--bs-focus-ring-color);
+}
+
+.bootcn-color-picker__hex[aria-invalid='true'] {
+  border-color: var(--bootcn-destructive);
+}
