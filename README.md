@@ -1,3 +1,5 @@
+<p><img src="apps/docs/public/icon-192.png" alt="" width="64" height="64"></p>
+
 # Bootcn
 
 Copy-paste UI components for Bootstrap 5.3+ and vanilla JavaScript.
@@ -10,7 +12,7 @@ bundler or Node.js is required at runtime.
 > **Status:** early (0.x). 68 components, 29 blocks (authentication, dashboard, navigation, marketing, charts), admin and analytics dashboard templates and design
 > tokens, with a Tailwind-like look built on Bootstrap. The CLI is on
 > [npm](https://www.npmjs.com/package/bootcn); documentation, live previews and
-> the registry are at <https://tsirosgeorge.github.io/bootcn/>.
+> the registry are at <https://bootcn.dev/>.
 
 ## Quick start
 
@@ -217,8 +219,8 @@ network error, `3` partial install.
 
 ```json
 {
-  "$schema": "https://tsirosgeorge.github.io/bootcn/schema/config.schema.json",
-  "registry": "https://tsirosgeorge.github.io/bootcn",
+  "$schema": "https://bootcn.dev/schema/config.schema.json",
+  "registry": "https://bootcn.dev",
   "style": "default",
   "bootstrap": "5.3",
   "paths": {
@@ -239,11 +241,11 @@ The registry is published to GitHub Pages by
 [`deploy-registry.yml`](.github/workflows/deploy-registry.yml) whenever
 `packages/registry` changes on `main`:
 
-| URL                                                   | Contents                        |
-| ----------------------------------------------------- | ------------------------------- |
-| `https://tsirosgeorge.github.io/bootcn/`              | Latest registry (`main`)        |
-| `https://tsirosgeorge.github.io/bootcn/v/<version>`   | A frozen version, never changes |
-| `https://tsirosgeorge.github.io/bootcn/versions.json` | `{ latest, versions }`          |
+| URL                                | Contents                        |
+| ---------------------------------- | ------------------------------- |
+| `https://bootcn.dev/`              | Latest registry (`main`)        |
+| `https://bootcn.dev/v/<version>`   | A frozen version, never changes |
+| `https://bootcn.dev/versions.json` | `{ latest, versions }`          |
 
 To pin a project to a version, set `"registry"` in `bootcn.json` to its
 `/v/<version>` URL. To publish a version, bump `version` in

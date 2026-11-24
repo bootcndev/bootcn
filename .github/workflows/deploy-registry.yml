@@ -1,8 +1,11 @@
 name: Deploy registry
 
-# Publishes the registry to GitHub Pages:
-#   latest:   https://tsirosgeorge.github.io/bootcn/
-#   frozen:   https://tsirosgeorge.github.io/bootcn/v/<version>/  (one per registry-v<version> tag)
+# Publishes the docs and the registry:
+#   latest:   https://bootcn.dev/
+#   frozen:   https://bootcn.dev/v/<version>/  (one per registry-v<version> tag)
+# to the server (rsync over SSH, restricted to the site folder by rrsync), and
+# a mirror at https://tsirosgeorge.github.io/bootcn/ (GitHub Pages) for
+# projects whose bootcn.json still points there.
 on:
   push:
     branches: [main]
@@ -51,7 +54,26 @@ jobs:
       - run: pnpm install --frozen-lockfile
       - run: pnpm registry:validate
       - run: pnpm --filter @bootcn/registry test
-      - run: pnpm build # registry, CLI and docs site
+      - run: pnpm build # registry, CLI and docs site (base /)
+      - run: pnpm site:build
+      - name: Upload to bootcn.dev
+        env:
+          DEPLOY_KEY: ${{ secrets.BOOTCN_DEPLOY_KEY }}
+          KNOWN_HOSTS: ${{ vars.BOOTCN_DEPLOY_KNOWN_HOSTS }}
+        run: |
+          set -euo pipefail
+          install -d -m 700 ~/.ssh
+          printf '%s\n' "$DEPLOY_KEY" > ~/.ssh/deploy_key
+          chmod 600 ~/.ssh/deploy_key
+          printf '%s\n' "$KNOWN_HOSTS" > ~/.ssh/known_hosts
+          rsync -rlz --delete --checksum \
+            -e 'ssh -i ~/.ssh/deploy_key -o IdentitiesOnly=yes -o BatchMode=yes' \
+            _site/ bootcn-deploy@159.173.131.208:/
+          rm -f ~/.ssh/deploy_key
+      # The GitHub Pages mirror is served under /bootcn/.
+      - run: pnpm --filter @bootcn/docs build
+        env:
+          DOCS_BASE: /bootcn/
       - run: pnpm site:build
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v4
@@ -71,7 +93,7 @@ jobs:
       - id: deployment
         uses: actions/deploy-pages@v4
 
-  # Installs from the live site with the CLI built from this commit, using its
+  # Installs from bootcn.dev with the CLI built from this commit, using its
   # default registry URL (no --registry), so the URL in the CLI is checked too.
   smoke:
     needs: deploy
@@ -103,5 +125,6 @@ jobs:
         run: |
           set -euo pipefail
           for page in "" guide/installation components/dialog previews/components/dialog/preview.html; do
+            curl -fsS -o /dev/null "https://bootcn.dev/$page"
             curl -fsS -o /dev/null "https://tsirosgeorge.github.io/bootcn/$page"
           done

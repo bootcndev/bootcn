@@ -6,6 +6,11 @@ each published version stays available under `/v/<version>/`) and the **CLI**
 
 ## Registry
 
+### Site
+
+- The docs and the registry moved to <https://bootcn.dev>, with a logo and
+  icons. The GitHub Pages address stays as a mirror.
+
 ### 0.13.0
 
 - Date range picker, Tag group, Toolbar, Listbox and Color picker.
@@ -70,6 +75,12 @@ each published version stays available under `/v/<version>/`) and the **CLI**
 - The first public registry: 20 components and the design tokens.
 
 ## CLI
+
+### 0.3.0
+
+- The default registry is now `https://bootcn.dev`. Projects whose
+  `bootcn.json` points to `https://tsirosgeorge.github.io/bootcn` keep working:
+  that address stays as a mirror.
 
 ### 0.2.0
 

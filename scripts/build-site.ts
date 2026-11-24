@@ -92,7 +92,7 @@ async function main(): Promise<void> {
   );
 }
 
-const SITE_URL = 'https://tsirosgeorge.github.io/bootcn';
+const SITE_URL = 'https://bootcn.dev';
 
 /** llms.txt (https://llmstxt.org): the docs and every item, for AI tools. */
 async function writeLlmsTxt(): Promise<void> {

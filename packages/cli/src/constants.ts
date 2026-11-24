@@ -8,10 +8,10 @@ export const BRAND_TITLE = 'Bootcn';
 export const CONFIG_FILE = `${BRAND}.json`;
 
 /**
- * Hosted registry (GitHub Pages, latest version). Frozen versions live under
- * `${DEFAULT_REGISTRY}/v/<version>`. Moves to a custom domain later.
+ * Hosted registry (latest version). Frozen versions live under
+ * `${DEFAULT_REGISTRY}/v/<version>`. tsirosgeorge.github.io/bootcn stays as a mirror.
  */
-export const DEFAULT_REGISTRY = `https://tsirosgeorge.github.io/${BRAND}`;
+export const DEFAULT_REGISTRY = `https://${BRAND}.dev`;
 
 /** JSON schema for bootcn.json, served next to the registry. */
 export const CONFIG_SCHEMA_URL = `${DEFAULT_REGISTRY}/schema/config.schema.json`;

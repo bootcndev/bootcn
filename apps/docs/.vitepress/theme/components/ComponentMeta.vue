@@ -16,7 +16,7 @@ const props = defineProps<{
   kind: string;
 }>();
 
-const SITE = 'https://tsirosgeorge.github.io/bootcn';
+const SITE = 'https://bootcn.dev';
 const copied = ref(false);
 
 function prompt(): string {

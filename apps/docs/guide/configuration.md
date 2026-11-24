@@ -4,8 +4,8 @@
 
 ```json
 {
-  "$schema": "https://tsirosgeorge.github.io/bootcn/schema/config.schema.json",
-  "registry": "https://tsirosgeorge.github.io/bootcn",
+  "$schema": "https://bootcn.dev/schema/config.schema.json",
+  "registry": "https://bootcn.dev",
   "style": "default",
   "bootstrap": "5.3",
   "paths": {
@@ -35,12 +35,12 @@ on a fixed set, point `registry` at a published version:
 
 ```json
 {
-  "registry": "https://tsirosgeorge.github.io/bootcn/v/0.2.0"
+  "registry": "https://bootcn.dev/v/0.2.0"
 }
 ```
 
 The list of versions is in
-[versions.json](https://tsirosgeorge.github.io/bootcn/versions.json).
+[versions.json](https://bootcn.dev/versions.json).
 
 ## Your own registry
 

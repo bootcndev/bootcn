@@ -39,7 +39,7 @@ card or a transactions table, built from components) and
 The registry is a set of static JSON files: an index of every item and one
 file per component with its sources inlined. The CLI and this site read the
 same registry. It is hosted at
-[tsirosgeorge.github.io/bootcn](https://tsirosgeorge.github.io/bootcn/index.json),
+[bootcn.dev](https://bootcn.dev/index.json),
 and every published version stays available under `/v/<version>/`.
 
 Next: [install the CLI and your first component](./installation).

@@ -1,6 +1,6 @@
 /**
  * Docs site (apps/docs) as deployed: built into _site next to the registry
- * JSON and served under /bootcn/.
+ * JSON and served at the root, as on https://bootcn.dev.
  */
 import { readFileSync } from 'node:fs';
 import { resolve } from 'node:path';
@@ -71,7 +71,7 @@ test('home page links to the guide and the components', async ({ page }) => {
     'Dashboard',
   );
   await page.getByRole('link', { name: 'Browse components' }).click();
-  await expect(page).toHaveURL(/\/bootcn\/components\/$/);
+  await expect(page).toHaveURL(/127\.0\.0\.1:\d+\/components\/$/);
   for (const item of components) {
     // Each card is a link whose title is the item name.
     await expect(
@@ -217,7 +217,7 @@ test('every internal link resolves', async ({ request, browserName }) => {
   // Link checking does not depend on the browser: read the static HTML once.
   test.skip(browserName !== 'chromium', 'browser-independent; runs in Chromium');
   test.setTimeout(120_000);
-  const base = new URL('http://127.0.0.1:4518/bootcn/');
+  const base = new URL('http://127.0.0.1:4518/');
   const seen = new Set<string>();
   const queue = [base.href];
   const broken: string[] = [];

@@ -4,6 +4,7 @@ import {
   GITHUB_URL,
   NPM_URL,
   REGISTRY_URL,
+  SITE_URL,
   KINDS,
   type Kind,
   componentSearchSections,
@@ -41,18 +42,34 @@ function kindSidebar(kind: Kind) {
   ];
 }
 
+const BASE = process.env.DOCS_BASE ?? '/';
+
 export default defineConfig({
   title: 'Bootcn',
   description: 'Copy-paste UI components for Bootstrap 5.3 and vanilla JavaScript.',
   lang: 'en-US',
-  // Served from GitHub Pages next to the registry JSON.
-  base: process.env.DOCS_BASE ?? '/bootcn/',
+  // Served from https://bootcn.dev next to the registry JSON. The GitHub Pages
+  // mirror builds with DOCS_BASE=/bootcn/.
+  base: BASE,
   cleanUrls: true,
   srcExclude: ['README.md'],
-  head: [['meta', { name: 'theme-color', content: '#5b45d6' }]],
+  sitemap: { hostname: SITE_URL },
+  head: [
+    ['meta', { name: 'theme-color', content: '#5b45d6' }],
+    ['link', { rel: 'icon', href: `${BASE}favicon.ico`, sizes: '48x48' }],
+    ['link', { rel: 'icon', type: 'image/png', href: `${BASE}icon-192.png`, sizes: '192x192' }],
+    ['link', { rel: 'apple-touch-icon', href: `${BASE}apple-touch-icon.png` }],
+    ['meta', { property: 'og:image', content: `${SITE_URL}/icon-512.png` }],
+  ],
+  // bootcn.dev is the canonical site, also for the GitHub Pages mirror.
+  transformHead({ pageData }) {
+    const path = pageData.relativePath.replace(/(^|\/)index\.md$/, '$1').replace(/\.md$/, '');
+    return [['link', { rel: 'canonical', href: `${SITE_URL}/${path}` }]];
+  },
   // The default github themes have colours below 4.5:1 on the code background.
   markdown: { theme: { light: 'github-light-high-contrast', dark: 'github-dark-high-contrast' } },
   themeConfig: {
+    logo: { light: '/logo-light.png', dark: '/logo-dark.png', alt: '' },
     nav: [
       { text: 'Guide', link: '/guide/introduction', activeMatch: '^/guide/' },
       { text: 'Components', link: '/components/', activeMatch: '^/components/' },
