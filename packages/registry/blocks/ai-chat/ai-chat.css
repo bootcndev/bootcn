@@ -1,0 +1,53 @@
+.bootcn-ai-chat {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 48rem;
+  margin-inline: auto;
+  overflow: hidden;
+  border: var(--bootcn-border-width) solid var(--bootcn-border-color);
+  border-radius: var(--bootcn-radius-xl);
+  background-color: var(--bootcn-background);
+  box-shadow: var(--bootcn-shadow-sm);
+}
+
+.bootcn-ai-chat__header {
+  display: flex;
+  align-items: center;
+  gap: 0.625rem;
+  padding: 0.75rem 1rem;
+  border-bottom: var(--bootcn-border-width) solid var(--bootcn-border-color);
+}
+
+.bootcn-ai-chat__logo {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2rem;
+  height: 2rem;
+  border-radius: var(--bootcn-radius);
+  background-color: var(--bootcn-primary);
+  color: var(--bootcn-primary-foreground);
+}
+
+.bootcn-ai-chat__title {
+  margin: 0;
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.bootcn-ai-chat__new {
+  margin-left: auto;
+}
+
+.bootcn-ai-chat .bootcn-conversation {
+  width: 100%;
+}
+
+.bootcn-ai-chat__composer {
+  padding: 0 1rem 1rem;
+}
+
+.bootcn-ai-chat .bootcn-prompt-input {
+  width: 100%;
+}

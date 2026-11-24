@@ -9,7 +9,7 @@ build with plain HTML and native PHP. Components are installed as editable
 HTML, CSS and JavaScript source files that you own. No React, Vue, jQuery,
 bundler or Node.js is required at runtime.
 
-> **Status:** early (0.x). 68 components, 29 blocks (authentication, dashboard, navigation, marketing, charts), admin and analytics dashboard templates and design
+> **Status:** early (0.x). 71 components, 30 blocks (authentication, dashboard, navigation, marketing, charts, AI chat), admin and analytics dashboard templates and design
 > tokens, with a Tailwind-like look built on Bootstrap. The CLI is on
 > [npm](https://www.npmjs.com/package/bootcn); documentation, live previews and
 > the registry are at <https://bootcn.dev/>. News: [@bootcndev](https://x.com/bootcndev) on X.
@@ -57,11 +57,13 @@ the `<link>` and `<script>` tags to add to your layout.
 | `carousel`          | ui    | HTML, CSS     | Bootstrap CSS + JS bundle | —                                      |
 | `chart`             | ui    | HTML, CSS, JS | Bootstrap CSS             | —                                      |
 | `checkbox`          | ui    | HTML, CSS     | Bootstrap CSS             | —                                      |
+| `code-block`        | ui    | HTML, CSS, JS | Bootstrap CSS             | —                                      |
 | `collapsible`       | ui    | HTML, CSS     | Bootstrap CSS + JS bundle | `button`                               |
 | `color-picker`      | ui    | HTML, CSS, JS | Bootstrap CSS             | `label`                                |
 | `combobox`          | ui    | HTML, CSS, JS | Bootstrap CSS             | `label`                                |
 | `command`           | ui    | HTML, CSS, JS | Bootstrap CSS + JS bundle | `kbd`, `button`                        |
 | `context-menu`      | ui    | HTML, CSS, JS | Bootstrap CSS             | `dropdown`                             |
+| `conversation`      | ui    | HTML, CSS, JS | Bootstrap CSS             | `code-block`                           |
 | `data-table`        | ui    | HTML, CSS, JS | Bootstrap CSS             | `table`, `input`, `button`, `checkbox` |
 | `date-field`        | ui    | HTML, CSS     | Bootstrap CSS             | `label`, `input`                       |
 | `date-picker`       | ui    | HTML, CSS, JS | Bootstrap CSS + JS bundle | `calendar`, `button`, `label`          |
@@ -88,6 +90,7 @@ the `<link>` and `<script>` tags to add to your layout.
 | `popover`           | ui    | HTML, CSS, JS | Bootstrap CSS + JS bundle | `button`                               |
 | `progress-circle`   | ui    | HTML, CSS     | Bootstrap CSS             | —                                      |
 | `progress`          | ui    | HTML, CSS     | Bootstrap CSS             | —                                      |
+| `prompt-input`      | ui    | HTML, CSS, JS | Bootstrap CSS             | —                                      |
 | `radio-group`       | ui    | HTML, CSS     | Bootstrap CSS             | —                                      |
 | `resizable`         | ui    | HTML, CSS, JS | Bootstrap CSS             | —                                      |
 | `scroll-area`       | ui    | HTML, CSS     | Bootstrap CSS             | —                                      |
@@ -124,6 +127,7 @@ pages. `bootcn add` installs the components a block or template uses.
 | Item                   | Type     | Files                | Requires                  | Depends on                                                                                                                            |
 | ---------------------- | -------- | -------------------- | ------------------------- | ------------------------------------------------------------------------------------------------------------------------------------- |
 | `activity-feed`        | block    | HTML, CSS            | Bootstrap CSS             | `card`, `avatar`                                                                                                                      |
+| `ai-chat`              | block    | HTML, CSS, JS        | Bootstrap CSS             | `conversation`, `prompt-input`, `button`                                                                                              |
 | `app-navbar`           | block    | HTML, CSS            | Bootstrap CSS + JS bundle | `user-menu`, `input`                                                                                                                  |
 | `app-sidebar`          | block    | HTML, CSS            | Bootstrap CSS + JS bundle | `button`, `badge`, `avatar`                                                                                                           |
 | `call-to-action`       | block    | HTML, CSS            | Bootstrap CSS             | `button`                                                                                                                              |

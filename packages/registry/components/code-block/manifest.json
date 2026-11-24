@@ -1,0 +1,33 @@
+{
+  "$schema": "../../schema/registry-item.schema.json",
+  "name": "code-block",
+  "type": "registry:ui",
+  "title": "Code block",
+  "description": "A titled block of code with a copy button and optional line numbers.",
+  "version": "1.0.0",
+  "categories": ["data-display"],
+  "dependencies": [],
+  "registryDependencies": [],
+  "compatibility": {
+    "bootstrap": "5.3",
+    "platform": ["Bootstrap CSS"]
+  },
+  "license": "MIT",
+  "files": [
+    {
+      "path": "code-block.html",
+      "target": "code-block.html",
+      "type": "registry:component"
+    },
+    {
+      "path": "code-block.css",
+      "target": "code-block.css",
+      "type": "registry:style"
+    },
+    {
+      "path": "code-block.js",
+      "target": "code-block.js",
+      "type": "registry:script"
+    }
+  ]
+}

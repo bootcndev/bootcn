@@ -6,6 +6,14 @@ each published version stays available under `/v/<version>/`) and the **CLI**
 
 ## Registry
 
+### 0.14.0
+
+- AI chat: Conversation (messages, reasoning, sources, copy and feedback
+  actions, typing indicator, scroll to latest), Prompt input (growing
+  textarea, attachments, model choice, suggestions, send and stop) and Code
+  block (copy, line numbers).
+- Block: AI chat, which connects the prompt input to the conversation.
+
 ### Site
 
 - The docs and the registry moved to <https://bootcn.dev>, with a logo and

@@ -1,0 +1,514 @@
+<section class="bootcn-ai-chat" aria-labelledby="bootcn-ai-chat-title" data-bootcn-ai-chat>
+  <header class="bootcn-ai-chat__header">
+    <span class="bootcn-ai-chat__logo" aria-hidden="true"
+      ><svg
+        class="bootcn-icon"
+        width="16"
+        height="16"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        aria-hidden="true"
+        focusable="false"
+      >
+        <path d="M12 3l1.9 5.1L19 10l-5.1 1.9L12 17l-1.9-5.1L5 10l5.1-1.9z" />
+        <path d="M19 15l.8 2.2L22 18l-2.2.8L19 21l-.8-2.2L16 18l2.2-.8z" /></svg
+    ></span>
+    <h2 class="bootcn-ai-chat__title" id="bootcn-ai-chat-title">Assistant</h2>
+    <button
+      type="button"
+      class="btn bootcn-button bootcn-button--ghost bootcn-button--sm bootcn-ai-chat__new"
+      data-bootcn-ai-chat-new
+    >
+      <svg
+        class="bootcn-icon"
+        width="16"
+        height="16"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        aria-hidden="true"
+        focusable="false"
+      >
+        <path d="M12 5v14M5 12h14" />
+      </svg>
+      New chat
+    </button>
+  </header>
+  <section
+    class="bootcn-conversation"
+    aria-label="Chat with the assistant"
+    data-bootcn-conversation
+    style="--bootcn-conversation-height: 22rem"
+  >
+    <div
+      class="bootcn-conversation__log"
+      role="log"
+      aria-label="Messages"
+      tabindex="0"
+      data-bootcn-conversation-log
+    >
+      <article class="bootcn-message bootcn-message--user">
+        <div class="bootcn-message__body">
+          <p class="bootcn-message__author visually-hidden">You</p>
+          <div class="bootcn-message__content">
+            <p>What can you help me with?</p>
+          </div>
+        </div>
+      </article>
+      <article class="bootcn-message bootcn-message--assistant">
+        <span class="bootcn-message__avatar" aria-hidden="true"
+          ><svg
+            class="bootcn-icon"
+            width="16"
+            height="16"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            aria-hidden="true"
+            focusable="false"
+          >
+            <path d="M12 3l1.9 5.1L19 10l-5.1 1.9L12 17l-1.9-5.1L5 10l5.1-1.9z" />
+            <path d="M19 15l.8 2.2L22 18l-2.2.8L19 21l-.8-2.2L16 18l2.2-.8z" /></svg
+        ></span>
+        <div class="bootcn-message__body">
+          <p class="bootcn-message__author">Assistant</p>
+          <div class="bootcn-message__content">
+            <p>
+              I can write Bootstrap markup with Bootcn components, explain how a component works, or
+              turn a sketch into a page. Try one of the suggestions below.
+            </p>
+          </div>
+          <div class="bootcn-message__actions" role="group" aria-label="Message actions">
+            <button
+              type="button"
+              class="bootcn-message__action"
+              aria-label="Copy"
+              data-bootcn-message-copy
+            >
+              <svg
+                class="bootcn-icon bootcn-message__copy-icon"
+                width="16"
+                height="16"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+                focusable="false"
+              >
+                <rect x="8" y="8" width="13" height="13" rx="2" />
+                <path d="M16 8V5a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h3" />
+              </svg>
+              <svg
+                class="bootcn-icon bootcn-message__done-icon"
+                width="16"
+                height="16"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+                focusable="false"
+              >
+                <path d="M20 6 9 17l-5-5" />
+              </svg>
+            </button>
+            <button
+              type="button"
+              class="bootcn-message__action"
+              aria-label="Regenerate"
+              data-bootcn-message-regenerate
+            >
+              <svg
+                class="bootcn-icon"
+                width="16"
+                height="16"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+                focusable="false"
+              >
+                <path d="M21 12a9 9 0 0 1-15.5 6.2L3 16" />
+                <path d="M3 21v-5h5" />
+                <path d="M3 12a9 9 0 0 1 15.5-6.2L21 8" />
+                <path d="M21 3v5h-5" />
+              </svg>
+            </button>
+            <button
+              type="button"
+              class="bootcn-message__action"
+              aria-label="Good response"
+              aria-pressed="false"
+              data-bootcn-message-feedback="up"
+            >
+              <svg
+                class="bootcn-icon"
+                width="16"
+                height="16"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+                focusable="false"
+              >
+                <path d="M7 10v11" />
+                <path
+                  d="M15 5.9 14 10h5.8a2 2 0 0 1 2 2.3l-1.4 7A2 2 0 0 1 18.4 21H7V10l4-8a3 3 0 0 1 4 3.9z"
+                />
+                <path d="M3 10h4v11H3z" />
+              </svg>
+            </button>
+            <button
+              type="button"
+              class="bootcn-message__action"
+              aria-label="Bad response"
+              aria-pressed="false"
+              data-bootcn-message-feedback="down"
+            >
+              <svg
+                class="bootcn-icon"
+                width="16"
+                height="16"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+                focusable="false"
+              >
+                <path d="M17 14V3" />
+                <path
+                  d="M9 18.1 10 14H4.2a2 2 0 0 1-2-2.3l1.4-7A2 2 0 0 1 5.6 3H17v11l-4 8a3 3 0 0 1-4-3.9z"
+                />
+                <path d="M21 14h-4V3h4z" />
+              </svg>
+            </button>
+          </div>
+        </div>
+      </article>
+      <div
+        class="bootcn-message bootcn-message--assistant bootcn-message--typing"
+        data-bootcn-conversation-typing
+        hidden
+      >
+        <span class="bootcn-message__avatar" aria-hidden="true"></span>
+        <div class="bootcn-message__body">
+          <span class="bootcn-typing" aria-hidden="true"
+            ><span></span><span></span><span></span
+          ></span>
+          <span class="visually-hidden">Assistant is typing</span>
+        </div>
+      </div>
+    </div>
+    <button
+      type="button"
+      class="bootcn-conversation__latest"
+      data-bootcn-conversation-latest
+      hidden
+    >
+      <svg
+        class="bootcn-icon"
+        width="16"
+        height="16"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        aria-hidden="true"
+        focusable="false"
+      >
+        <path d="M12 5v14" />
+        <path d="m19 12-7 7-7-7" />
+      </svg>
+      <span class="visually-hidden">Scroll to the latest message</span>
+    </button>
+    <p class="visually-hidden" role="status" data-bootcn-conversation-status></p>
+    <template data-bootcn-conversation-template="user">
+      <article class="bootcn-message bootcn-message--user">
+        <div class="bootcn-message__body">
+          <p class="bootcn-message__author visually-hidden">You</p>
+          <div class="bootcn-message__content"></div>
+        </div>
+      </article>
+    </template>
+    <template data-bootcn-conversation-template="assistant">
+      <article class="bootcn-message bootcn-message--assistant">
+        <span class="bootcn-message__avatar" aria-hidden="true"
+          ><svg
+            class="bootcn-icon"
+            width="16"
+            height="16"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            aria-hidden="true"
+            focusable="false"
+          >
+            <path d="M12 3l1.9 5.1L19 10l-5.1 1.9L12 17l-1.9-5.1L5 10l5.1-1.9z" />
+            <path d="M19 15l.8 2.2L22 18l-2.2.8L19 21l-.8-2.2L16 18l2.2-.8z" /></svg
+        ></span>
+        <div class="bootcn-message__body">
+          <p class="bootcn-message__author">Assistant</p>
+          <div class="bootcn-message__content"></div>
+          <div class="bootcn-message__actions" role="group" aria-label="Message actions">
+            <button
+              type="button"
+              class="bootcn-message__action"
+              aria-label="Copy"
+              data-bootcn-message-copy
+            >
+              <svg
+                class="bootcn-icon bootcn-message__copy-icon"
+                width="16"
+                height="16"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+                focusable="false"
+              >
+                <rect x="8" y="8" width="13" height="13" rx="2" />
+                <path d="M16 8V5a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h3" />
+              </svg>
+              <svg
+                class="bootcn-icon bootcn-message__done-icon"
+                width="16"
+                height="16"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+                focusable="false"
+              >
+                <path d="M20 6 9 17l-5-5" />
+              </svg>
+            </button>
+            <button
+              type="button"
+              class="bootcn-message__action"
+              aria-label="Regenerate"
+              data-bootcn-message-regenerate
+            >
+              <svg
+                class="bootcn-icon"
+                width="16"
+                height="16"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+                focusable="false"
+              >
+                <path d="M21 12a9 9 0 0 1-15.5 6.2L3 16" />
+                <path d="M3 21v-5h5" />
+                <path d="M3 12a9 9 0 0 1 15.5-6.2L21 8" />
+                <path d="M21 3v5h-5" />
+              </svg>
+            </button>
+            <button
+              type="button"
+              class="bootcn-message__action"
+              aria-label="Good response"
+              aria-pressed="false"
+              data-bootcn-message-feedback="up"
+            >
+              <svg
+                class="bootcn-icon"
+                width="16"
+                height="16"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+                focusable="false"
+              >
+                <path d="M7 10v11" />
+                <path
+                  d="M15 5.9 14 10h5.8a2 2 0 0 1 2 2.3l-1.4 7A2 2 0 0 1 18.4 21H7V10l4-8a3 3 0 0 1 4 3.9z"
+                />
+                <path d="M3 10h4v11H3z" />
+              </svg>
+            </button>
+            <button
+              type="button"
+              class="bootcn-message__action"
+              aria-label="Bad response"
+              aria-pressed="false"
+              data-bootcn-message-feedback="down"
+            >
+              <svg
+                class="bootcn-icon"
+                width="16"
+                height="16"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+                focusable="false"
+              >
+                <path d="M17 14V3" />
+                <path
+                  d="M9 18.1 10 14H4.2a2 2 0 0 1-2-2.3l1.4-7A2 2 0 0 1 5.6 3H17v11l-4 8a3 3 0 0 1-4-3.9z"
+                />
+                <path d="M21 14h-4V3h4z" />
+              </svg>
+            </button>
+          </div>
+        </div>
+      </article>
+    </template>
+  </section>
+  <div class="bootcn-ai-chat__composer">
+    <form class="bootcn-prompt-input" data-bootcn-prompt-input>
+      <div class="bootcn-prompt-suggestions" role="group" aria-label="Suggestions">
+        <button type="button" class="bootcn-prompt-suggestion" data-bootcn-prompt-suggestion>
+          Write a sign-up form
+        </button>
+        <button type="button" class="bootcn-prompt-suggestion" data-bootcn-prompt-suggestion>
+          Explain dark mode
+        </button>
+        <button type="button" class="bootcn-prompt-suggestion" data-bootcn-prompt-suggestion>
+          Build a pricing table
+        </button>
+      </div>
+      <div class="bootcn-prompt-input__box">
+        <ul
+          class="bootcn-prompt-input__attachments"
+          aria-label="Attachments"
+          data-bootcn-prompt-attachments
+          hidden
+        ></ul>
+        <label class="visually-hidden" for="bootcn-ai-chat-message">Message</label>
+        <textarea
+          class="bootcn-prompt-input__textarea"
+          id="bootcn-ai-chat-message"
+          name="message"
+          rows="1"
+          placeholder="Ask anything…"
+          aria-describedby="bootcn-ai-chat-hint"
+          data-bootcn-prompt-textarea
+        ></textarea>
+        <div class="bootcn-prompt-input__toolbar">
+          <input
+            class="bootcn-prompt-input__file"
+            type="file"
+            id="bootcn-ai-chat-files"
+            name="files[]"
+            multiple
+            data-bootcn-prompt-file
+          />
+          <label class="bootcn-prompt-input__tool" for="bootcn-ai-chat-files">
+            <svg
+              class="bootcn-icon"
+              width="16"
+              height="16"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              aria-hidden="true"
+              focusable="false"
+            >
+              <path
+                d="m21 11-8.6 8.6a5 5 0 0 1-7.1-7.1l8.6-8.6a3.3 3.3 0 0 1 4.7 4.7l-8.6 8.6a1.7 1.7 0 0 1-2.4-2.4L16 7.4"
+              />
+            </svg>
+            <span class="visually-hidden">Attach files</span>
+          </label>
+          <select class="form-select bootcn-prompt-input__model" name="model" aria-label="Model">
+            <option value="fast">Fast</option>
+            <option value="balanced" selected>Balanced</option>
+            <option value="deep">Deep thinking</option>
+          </select>
+          <button
+            type="submit"
+            class="bootcn-prompt-input__submit"
+            aria-label="Send"
+            data-bootcn-prompt-submit
+          >
+            <svg
+              class="bootcn-icon bootcn-prompt-input__send-icon"
+              width="16"
+              height="16"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              aria-hidden="true"
+              focusable="false"
+            >
+              <path d="m5 12 7-7 7 7" />
+              <path d="M12 19V5" />
+            </svg>
+            <svg
+              class="bootcn-icon bootcn-prompt-input__stop-icon"
+              width="16"
+              height="16"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              aria-hidden="true"
+              focusable="false"
+            >
+              <rect x="6" y="6" width="12" height="12" rx="1.5" fill="currentColor" />
+            </svg>
+          </button>
+        </div>
+      </div>
+      <p class="bootcn-prompt-input__hint" id="bootcn-ai-chat-hint">
+        Enter to send, Shift + Enter for a new line.
+      </p>
+      <p class="visually-hidden" role="status" data-bootcn-prompt-status></p>
+    </form>
+  </div>
+</section>

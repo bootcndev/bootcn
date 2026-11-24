@@ -1,0 +1,98 @@
+.bootcn-code-block {
+  width: 36rem;
+  max-width: 100%;
+  margin: 0;
+  overflow: hidden;
+  border: var(--bootcn-border-width) solid var(--bootcn-border-color);
+  border-radius: var(--bootcn-radius-lg);
+  background-color: var(--bootcn-muted);
+}
+
+.bootcn-code-block__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  min-height: 2.5rem;
+  margin: 0;
+  padding: 0.25rem 0.25rem 0.25rem 1rem;
+  border-bottom: var(--bootcn-border-width) solid var(--bootcn-border-color);
+  color: var(--bootcn-muted-foreground);
+  font-size: 0.8125rem;
+}
+
+.bootcn-code-block__title {
+  overflow: hidden;
+  font-family: var(--bs-font-monospace);
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.bootcn-code-block__copy {
+  display: inline-flex;
+  flex: none;
+  align-items: center;
+  justify-content: center;
+  width: 2rem;
+  height: 2rem;
+  border: 0;
+  border-radius: var(--bootcn-radius);
+  background: transparent;
+  color: var(--bootcn-muted-foreground);
+}
+
+.bootcn-code-block__copy:hover {
+  background-color: var(--bootcn-accent);
+  color: var(--bootcn-foreground);
+}
+
+.bootcn-code-block__copy:focus-visible {
+  outline: 0;
+  box-shadow: var(--bootcn-focus-ring);
+}
+
+.bootcn-code-block__done-icon,
+.bootcn-code-block__copy.is-copied .bootcn-code-block__copy-icon {
+  display: none;
+}
+
+.bootcn-code-block__copy.is-copied .bootcn-code-block__done-icon {
+  display: inline-block;
+}
+
+.bootcn-code-block__pre {
+  margin: 0;
+  padding: 1rem;
+  overflow: auto;
+  background-color: var(--bootcn-background);
+  color: var(--bootcn-foreground);
+  font-size: 0.8125rem;
+  line-height: 1.7;
+  tab-size: 2;
+}
+
+.bootcn-code-block__pre:focus-visible {
+  outline: 0;
+  box-shadow: inset 0 0 0 var(--bootcn-focus-ring-width) var(--bootcn-focus-ring-color);
+}
+
+.bootcn-code-block__pre code {
+  color: inherit;
+  font-size: inherit;
+}
+
+/* Line numbers: one .bootcn-code-block__line per line. */
+.bootcn-code-block--numbered .bootcn-code-block__pre code {
+  counter-reset: bootcn-line;
+}
+
+.bootcn-code-block--numbered .bootcn-code-block__line::before {
+  display: inline-block;
+  width: 2rem;
+  margin-right: 1rem;
+  color: var(--bootcn-muted-foreground);
+  text-align: right;
+  content: counter(bootcn-line);
+  counter-increment: bootcn-line;
+  user-select: none;
+}

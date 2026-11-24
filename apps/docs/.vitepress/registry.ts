@@ -123,6 +123,7 @@ const GROUPS: Record<Kind, [label: string, categories: string[]][]> = {
     ['Feedback', ['feedback']],
     ['Data display', ['data-display']],
     ['Layout', ['layout']],
+    ['AI', ['ai']],
   ],
   blocks: [
     ['Authentication', ['authentication']],
@@ -130,6 +131,7 @@ const GROUPS: Record<Kind, [label: string, categories: string[]][]> = {
     ['Navigation', ['navigation']],
     ['Marketing', ['marketing']],
     ['Charts', ['charts']],
+    ['AI', ['ai']],
   ],
   templates: [['Templates', []]],
 };

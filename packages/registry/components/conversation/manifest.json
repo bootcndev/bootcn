@@ -1,0 +1,33 @@
+{
+  "$schema": "../../schema/registry-item.schema.json",
+  "name": "conversation",
+  "type": "registry:ui",
+  "title": "Conversation",
+  "description": "A chat transcript for AI assistants: user and assistant messages, reasoning, sources, copy and feedback actions, a typing indicator and a \"scroll to latest\" button.",
+  "version": "1.0.0",
+  "categories": ["ai"],
+  "dependencies": [],
+  "registryDependencies": ["code-block"],
+  "compatibility": {
+    "bootstrap": "5.3",
+    "platform": ["Bootstrap CSS"]
+  },
+  "license": "MIT",
+  "files": [
+    {
+      "path": "conversation.html",
+      "target": "conversation.html",
+      "type": "registry:component"
+    },
+    {
+      "path": "conversation.css",
+      "target": "conversation.css",
+      "type": "registry:style"
+    },
+    {
+      "path": "conversation.js",
+      "target": "conversation.js",
+      "type": "registry:script"
+    }
+  ]
+}

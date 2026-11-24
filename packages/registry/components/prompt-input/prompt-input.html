@@ -1,0 +1,108 @@
+<form class="bootcn-prompt-input" data-bootcn-prompt-input>
+  <div class="bootcn-prompt-suggestions" role="group" aria-label="Suggestions">
+    <button type="button" class="bootcn-prompt-suggestion" data-bootcn-prompt-suggestion>
+      Write a sign-up form
+    </button>
+    <button type="button" class="bootcn-prompt-suggestion" data-bootcn-prompt-suggestion>
+      Explain dark mode
+    </button>
+    <button type="button" class="bootcn-prompt-suggestion" data-bootcn-prompt-suggestion>
+      Build a pricing table
+    </button>
+  </div>
+  <div class="bootcn-prompt-input__box">
+    <ul
+      class="bootcn-prompt-input__attachments"
+      aria-label="Attachments"
+      data-bootcn-prompt-attachments
+      hidden
+    ></ul>
+    <label class="visually-hidden" for="bootcn-prompt-message">Message</label>
+    <textarea
+      class="bootcn-prompt-input__textarea"
+      id="bootcn-prompt-message"
+      name="message"
+      rows="1"
+      placeholder="Ask anything…"
+      aria-describedby="bootcn-prompt-hint"
+      data-bootcn-prompt-textarea
+    ></textarea>
+    <div class="bootcn-prompt-input__toolbar">
+      <input
+        class="bootcn-prompt-input__file"
+        type="file"
+        id="bootcn-prompt-files"
+        name="files[]"
+        multiple
+        data-bootcn-prompt-file
+      />
+      <label class="bootcn-prompt-input__tool" for="bootcn-prompt-files">
+        <svg
+          class="bootcn-icon"
+          width="16"
+          height="16"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          aria-hidden="true"
+          focusable="false"
+        >
+          <path
+            d="m21 11-8.6 8.6a5 5 0 0 1-7.1-7.1l8.6-8.6a3.3 3.3 0 0 1 4.7 4.7l-8.6 8.6a1.7 1.7 0 0 1-2.4-2.4L16 7.4"
+          />
+        </svg>
+        <span class="visually-hidden">Attach files</span>
+      </label>
+      <select class="form-select bootcn-prompt-input__model" name="model" aria-label="Model">
+        <option value="fast">Fast</option>
+        <option value="balanced" selected>Balanced</option>
+        <option value="deep">Deep thinking</option>
+      </select>
+      <button
+        type="submit"
+        class="bootcn-prompt-input__submit"
+        aria-label="Send"
+        data-bootcn-prompt-submit
+      >
+        <svg
+          class="bootcn-icon bootcn-prompt-input__send-icon"
+          width="16"
+          height="16"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          aria-hidden="true"
+          focusable="false"
+        >
+          <path d="m5 12 7-7 7 7" />
+          <path d="M12 19V5" />
+        </svg>
+        <svg
+          class="bootcn-icon bootcn-prompt-input__stop-icon"
+          width="16"
+          height="16"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          aria-hidden="true"
+          focusable="false"
+        >
+          <rect x="6" y="6" width="12" height="12" rx="1.5" fill="currentColor" />
+        </svg>
+      </button>
+    </div>
+  </div>
+  <p class="bootcn-prompt-input__hint" id="bootcn-prompt-hint">
+    Enter to send, Shift + Enter for a new line.
+  </p>
+  <p class="visually-hidden" role="status" data-bootcn-prompt-status></p>
+</form>

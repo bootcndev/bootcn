@@ -1,0 +1,324 @@
+.bootcn-conversation {
+  --bootcn-conversation-height: 32rem;
+  position: relative;
+  width: 42rem;
+  max-width: 100%;
+}
+
+.bootcn-conversation__log {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  height: var(--bootcn-conversation-height);
+  padding: 1rem;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  border-radius: var(--bootcn-radius-lg);
+  outline: 0;
+}
+
+.bootcn-conversation__log:focus-visible {
+  box-shadow: var(--bootcn-focus-ring);
+}
+
+.bootcn-conversation__latest {
+  position: absolute;
+  bottom: 1rem;
+  left: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2rem;
+  height: 2rem;
+  border: var(--bootcn-border-width) solid var(--bootcn-border-color);
+  border-radius: 9999px;
+  background-color: var(--bootcn-background);
+  box-shadow: var(--bootcn-shadow-md);
+  color: var(--bootcn-foreground);
+  transform: translateX(-50%);
+}
+
+.bootcn-conversation__latest[hidden] {
+  display: none;
+}
+
+.bootcn-conversation__latest:hover {
+  background-color: var(--bootcn-accent);
+}
+
+.bootcn-conversation__latest:focus-visible {
+  outline: 0;
+  box-shadow: var(--bootcn-focus-ring);
+}
+
+/* Messages */
+.bootcn-message {
+  display: flex;
+  gap: 0.75rem;
+  min-width: 0;
+}
+
+.bootcn-message[hidden] {
+  display: none;
+}
+
+.bootcn-message__body {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  min-width: 0;
+}
+
+.bootcn-message--assistant .bootcn-message__body {
+  flex: 1;
+}
+
+.bootcn-message--user {
+  justify-content: flex-end;
+}
+
+.bootcn-message--user .bootcn-message__body {
+  max-width: 80%;
+  padding: 0.625rem 1rem;
+  border-radius: var(--bootcn-radius-xl);
+  background-color: var(--bootcn-secondary);
+  color: var(--bootcn-secondary-foreground);
+}
+
+.bootcn-message__avatar {
+  display: inline-flex;
+  flex: none;
+  align-items: center;
+  justify-content: center;
+  width: 2rem;
+  height: 2rem;
+  border: var(--bootcn-border-width) solid var(--bootcn-border-color);
+  border-radius: 9999px;
+  background-color: var(--bootcn-background);
+  color: var(--bootcn-foreground);
+}
+
+.bootcn-message__author {
+  margin: 0.375rem 0 0;
+  font-size: 0.875rem;
+  font-weight: 600;
+  line-height: 1.25rem;
+}
+
+.bootcn-message__content {
+  font-size: 0.9375rem;
+  line-height: 1.65;
+  overflow-wrap: anywhere;
+}
+
+.bootcn-message__content > :first-child {
+  margin-top: 0;
+}
+
+.bootcn-message__content > :last-child {
+  margin-bottom: 0;
+}
+
+.bootcn-message__content p,
+.bootcn-message__content ul,
+.bootcn-message__content ol {
+  margin: 0 0 0.75rem;
+}
+
+.bootcn-message__content :not(pre) > code {
+  padding: 0.125rem 0.375rem;
+  border-radius: var(--bootcn-radius-sm);
+  background-color: var(--bootcn-muted);
+  color: inherit;
+  font-size: 0.85em;
+}
+
+.bootcn-message__content .bootcn-code-block {
+  width: 100%;
+  margin: 0 0 0.75rem;
+}
+
+/* Reasoning: a native disclosure. */
+.bootcn-reasoning {
+  color: var(--bootcn-muted-foreground);
+  font-size: 0.875rem;
+}
+
+.bootcn-reasoning__summary {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  border-radius: var(--bootcn-radius-sm);
+  cursor: pointer;
+  list-style: none;
+}
+
+.bootcn-reasoning__summary::-webkit-details-marker {
+  display: none;
+}
+
+.bootcn-reasoning__summary:hover {
+  color: var(--bootcn-foreground);
+}
+
+.bootcn-reasoning__summary:focus-visible {
+  outline: 0;
+  box-shadow: var(--bootcn-focus-ring);
+}
+
+.bootcn-reasoning__chevron {
+  transition: transform var(--bootcn-transition-duration) var(--bootcn-transition-timing);
+}
+
+.bootcn-reasoning[open] .bootcn-reasoning__chevron {
+  transform: rotate(180deg);
+}
+
+.bootcn-reasoning__content {
+  margin-top: 0.5rem;
+  padding-left: 0.75rem;
+  border-left: 2px solid var(--bootcn-border-color);
+}
+
+.bootcn-reasoning__content p {
+  margin: 0;
+}
+
+/* Sources */
+.bootcn-message__sources {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.8125rem;
+}
+
+.bootcn-message__sources-label {
+  color: var(--bootcn-muted-foreground);
+}
+
+.bootcn-message__source-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.375rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.bootcn-message__source {
+  display: inline-flex;
+  padding: 0.125rem 0.625rem;
+  border: var(--bootcn-border-width) solid var(--bootcn-border-color);
+  border-radius: 9999px;
+  color: var(--bootcn-foreground);
+  text-decoration: none;
+}
+
+.bootcn-message__source:hover {
+  background-color: var(--bootcn-accent);
+}
+
+.bootcn-message__source:focus-visible {
+  outline: 0;
+  box-shadow: var(--bootcn-focus-ring);
+}
+
+/* Actions */
+.bootcn-message__actions {
+  display: flex;
+  gap: 0.125rem;
+  margin-left: -0.375rem;
+}
+
+.bootcn-message__action {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2rem;
+  height: 2rem;
+  border: 0;
+  border-radius: var(--bootcn-radius);
+  background: transparent;
+  color: var(--bootcn-muted-foreground);
+}
+
+.bootcn-message__action:hover {
+  background-color: var(--bootcn-accent);
+  color: var(--bootcn-foreground);
+}
+
+.bootcn-message__action:focus-visible {
+  outline: 0;
+  box-shadow: var(--bootcn-focus-ring);
+}
+
+.bootcn-message__action[aria-pressed='true'] {
+  color: var(--bootcn-foreground);
+}
+
+.bootcn-message__action[aria-pressed='true'] .bootcn-icon {
+  fill: currentColor;
+  fill-opacity: 0.2;
+}
+
+.bootcn-message__done-icon,
+.bootcn-message__action.is-copied .bootcn-message__copy-icon {
+  display: none;
+}
+
+.bootcn-message__action.is-copied .bootcn-message__done-icon {
+  display: inline-block;
+}
+
+/* Typing indicator */
+.bootcn-message--typing .bootcn-message__avatar {
+  visibility: hidden;
+}
+
+.bootcn-typing {
+  display: inline-flex;
+  gap: 0.25rem;
+  align-items: center;
+  height: 2rem;
+}
+
+.bootcn-typing span {
+  width: 0.375rem;
+  height: 0.375rem;
+  border-radius: 9999px;
+  background-color: var(--bootcn-muted-foreground);
+  animation: bootcn-typing 1.2s infinite ease-in-out;
+}
+
+.bootcn-typing span:nth-child(2) {
+  animation-delay: 0.15s;
+}
+
+.bootcn-typing span:nth-child(3) {
+  animation-delay: 0.3s;
+}
+
+@keyframes bootcn-typing {
+  0%,
+  80%,
+  100% {
+    opacity: 0.3;
+    transform: translateY(0);
+  }
+
+  40% {
+    opacity: 1;
+    transform: translateY(-0.125rem);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .bootcn-typing span {
+    animation: none;
+  }
+
+  .bootcn-reasoning__chevron {
+    transition: none;
+  }
+}
