@@ -1,0 +1,166 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Bootcn Accordion preview</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.9/dist/css/bootstrap.min.css"
+    />
+    <link rel="stylesheet" href="../../themes/tokens/tokens.css" />
+    <link rel="stylesheet" href="accordion.css" />
+  </head>
+  <body>
+    <main class="container py-4">
+      <h1 class="h4 mb-4">Accordion</h1>
+      <div class="accordion bootcn-accordion" id="bootcn-accordion-faq">
+        <div class="accordion-item">
+          <h2 class="accordion-header">
+            <button
+              class="accordion-button"
+              type="button"
+              data-bs-toggle="collapse"
+              data-bs-target="#bootcn-accordion-faq-one"
+              aria-expanded="true"
+              aria-controls="bootcn-accordion-faq-one"
+            >
+              Is it accessible?
+            </button>
+          </h2>
+          <div
+            id="bootcn-accordion-faq-one"
+            class="accordion-collapse collapse show"
+            data-bs-parent="#bootcn-accordion-faq"
+          >
+            <div class="accordion-body">
+              Yes. It uses buttons with aria-expanded and Bootstrap's Collapse plugin.
+            </div>
+          </div>
+        </div>
+        <div class="accordion-item">
+          <h2 class="accordion-header">
+            <button
+              class="accordion-button collapsed"
+              type="button"
+              data-bs-toggle="collapse"
+              data-bs-target="#bootcn-accordion-faq-two"
+              aria-expanded="false"
+              aria-controls="bootcn-accordion-faq-two"
+            >
+              Does it need a framework?
+            </button>
+          </h2>
+          <div
+            id="bootcn-accordion-faq-two"
+            class="accordion-collapse collapse"
+            data-bs-parent="#bootcn-accordion-faq"
+          >
+            <div class="accordion-body">No. Bootstrap's JavaScript bundle is all it needs.</div>
+          </div>
+        </div>
+        <div class="accordion-item">
+          <h2 class="accordion-header">
+            <button
+              class="accordion-button collapsed"
+              type="button"
+              data-bs-toggle="collapse"
+              data-bs-target="#bootcn-accordion-faq-three"
+              aria-expanded="false"
+              aria-controls="bootcn-accordion-faq-three"
+            >
+              Can I open several at once?
+            </button>
+          </h2>
+          <div
+            id="bootcn-accordion-faq-three"
+            class="accordion-collapse collapse"
+            data-bs-parent="#bootcn-accordion-faq"
+          >
+            <div class="accordion-body">
+              Remove data-bs-parent from the panels to let them open independently.
+            </div>
+          </div>
+        </div>
+      </div>
+      <section
+        class="mt-5 p-3 rounded"
+        data-bs-theme="dark"
+        aria-label="Dark theme"
+        style="background-color: var(--bs-body-bg); color: var(--bs-body-color)"
+      >
+        <h2 class="h6 mb-3">Dark theme</h2>
+        <div class="accordion bootcn-accordion" id="bootcn-accordion-faq-dark">
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button
+                class="accordion-button"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#bootcn-accordion-faq-one-dark"
+                aria-expanded="true"
+                aria-controls="bootcn-accordion-faq-one-dark"
+              >
+                Is it accessible?
+              </button>
+            </h2>
+            <div
+              id="bootcn-accordion-faq-one-dark"
+              class="accordion-collapse collapse show"
+              data-bs-parent="#bootcn-accordion-faq-dark"
+            >
+              <div class="accordion-body">
+                Yes. It uses buttons with aria-expanded and Bootstrap's Collapse plugin.
+              </div>
+            </div>
+          </div>
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button
+                class="accordion-button collapsed"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#bootcn-accordion-faq-two-dark"
+                aria-expanded="false"
+                aria-controls="bootcn-accordion-faq-two-dark"
+              >
+                Does it need a framework?
+              </button>
+            </h2>
+            <div
+              id="bootcn-accordion-faq-two-dark"
+              class="accordion-collapse collapse"
+              data-bs-parent="#bootcn-accordion-faq-dark"
+            >
+              <div class="accordion-body">No. Bootstrap's JavaScript bundle is all it needs.</div>
+            </div>
+          </div>
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button
+                class="accordion-button collapsed"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#bootcn-accordion-faq-three-dark"
+                aria-expanded="false"
+                aria-controls="bootcn-accordion-faq-three-dark"
+              >
+                Can I open several at once?
+              </button>
+            </h2>
+            <div
+              id="bootcn-accordion-faq-three-dark"
+              class="accordion-collapse collapse"
+              data-bs-parent="#bootcn-accordion-faq-dark"
+            >
+              <div class="accordion-body">
+                Remove data-bs-parent from the panels to let them open independently.
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.9/dist/js/bootstrap.bundle.min.js"></script>
+  </body>
+</html>

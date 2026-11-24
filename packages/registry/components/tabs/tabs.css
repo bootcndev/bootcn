@@ -1,0 +1,60 @@
+.bootcn-tabs {
+  --bootcn-tabs-list-bg: var(--bs-secondary-bg);
+  --bootcn-tabs-list-padding: 0.25rem;
+  --bootcn-tabs-trigger-color: var(--bs-secondary-color);
+  --bootcn-tabs-trigger-active-bg: var(--bs-body-bg);
+  --bootcn-tabs-trigger-active-color: var(--bs-emphasis-color);
+
+  min-width: 0;
+}
+
+.bootcn-tabs__list {
+  display: inline-flex;
+  flex-wrap: nowrap;
+  gap: 0.25rem;
+  max-width: 100%;
+  padding: var(--bootcn-tabs-list-padding);
+  overflow-x: auto;
+  border-radius: var(--bootcn-radius);
+  background-color: var(--bootcn-tabs-list-bg);
+}
+
+.bootcn-tabs__list > .nav-link {
+  flex-shrink: 0;
+  padding: 0.375rem 0.875rem;
+  border: 0;
+  border-radius: var(--bootcn-radius-sm);
+  background: transparent;
+  color: var(--bootcn-tabs-trigger-color);
+  font-weight: 500;
+  white-space: nowrap;
+  transition:
+    background-color var(--bootcn-transition),
+    color var(--bootcn-transition),
+    box-shadow var(--bootcn-transition);
+}
+
+.bootcn-tabs__list > .nav-link:hover {
+  color: var(--bootcn-tabs-trigger-active-color);
+}
+
+.bootcn-tabs__list > .nav-link.active {
+  background-color: var(--bootcn-tabs-trigger-active-bg);
+  color: var(--bootcn-tabs-trigger-active-color);
+  box-shadow: var(--bootcn-shadow-sm);
+}
+
+.bootcn-tabs__list > .nav-link:focus-visible {
+  outline: 0;
+  box-shadow: var(--bootcn-focus-ring);
+}
+
+.bootcn-tabs__panel {
+  padding-top: 1rem;
+}
+
+.bootcn-tabs__panel:focus-visible {
+  outline: 0;
+  border-radius: var(--bootcn-radius-sm);
+  box-shadow: var(--bootcn-focus-ring);
+}

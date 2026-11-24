@@ -1,0 +1,170 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Bootcn Tabs preview</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.9/dist/css/bootstrap.min.css"
+    />
+    <link rel="stylesheet" href="../../themes/tokens/tokens.css" />
+    <link rel="stylesheet" href="tabs.css" />
+  </head>
+  <body>
+    <main class="container py-4">
+      <h1 class="h4 mb-4">Tabs</h1>
+      <div class="bootcn-tabs">
+        <div class="nav bootcn-tabs__list" role="tablist" aria-label="Account settings">
+          <button
+            class="nav-link active"
+            id="bootcn-tab-account"
+            type="button"
+            role="tab"
+            data-bs-toggle="tab"
+            data-bs-target="#bootcn-tabpanel-account"
+            aria-controls="bootcn-tabpanel-account"
+            aria-selected="true"
+          >
+            Account
+          </button>
+          <button
+            class="nav-link"
+            id="bootcn-tab-password"
+            type="button"
+            role="tab"
+            data-bs-toggle="tab"
+            data-bs-target="#bootcn-tabpanel-password"
+            aria-controls="bootcn-tabpanel-password"
+            aria-selected="false"
+            tabindex="-1"
+          >
+            Password
+          </button>
+          <button
+            class="nav-link"
+            id="bootcn-tab-team"
+            type="button"
+            role="tab"
+            data-bs-toggle="tab"
+            data-bs-target="#bootcn-tabpanel-team"
+            aria-controls="bootcn-tabpanel-team"
+            aria-selected="false"
+            tabindex="-1"
+          >
+            Team
+          </button>
+        </div>
+        <div class="tab-content">
+          <div
+            class="tab-pane fade show active bootcn-tabs__panel"
+            id="bootcn-tabpanel-account"
+            role="tabpanel"
+            aria-labelledby="bootcn-tab-account"
+            tabindex="0"
+          >
+            <p class="mb-0">Change your name, email and profile picture.</p>
+          </div>
+          <div
+            class="tab-pane fade bootcn-tabs__panel"
+            id="bootcn-tabpanel-password"
+            role="tabpanel"
+            aria-labelledby="bootcn-tab-password"
+            tabindex="0"
+          >
+            <p class="mb-0">Update your password and two-factor authentication.</p>
+          </div>
+          <div
+            class="tab-pane fade bootcn-tabs__panel"
+            id="bootcn-tabpanel-team"
+            role="tabpanel"
+            aria-labelledby="bootcn-tab-team"
+            tabindex="0"
+          >
+            <p class="mb-0">Invite people and manage their roles.</p>
+          </div>
+        </div>
+      </div>
+      <section
+        class="mt-5 p-3 rounded"
+        data-bs-theme="dark"
+        aria-label="Dark theme"
+        style="background-color: var(--bs-body-bg); color: var(--bs-body-color)"
+      >
+        <h2 class="h6 mb-3">Dark theme</h2>
+        <div class="bootcn-tabs">
+          <div class="nav bootcn-tabs__list" role="tablist" aria-label="Account settings">
+            <button
+              class="nav-link active"
+              id="bootcn-tab-account-dark"
+              type="button"
+              role="tab"
+              data-bs-toggle="tab"
+              data-bs-target="#bootcn-tabpanel-account-dark"
+              aria-controls="bootcn-tabpanel-account-dark"
+              aria-selected="true"
+            >
+              Account
+            </button>
+            <button
+              class="nav-link"
+              id="bootcn-tab-password-dark"
+              type="button"
+              role="tab"
+              data-bs-toggle="tab"
+              data-bs-target="#bootcn-tabpanel-password-dark"
+              aria-controls="bootcn-tabpanel-password-dark"
+              aria-selected="false"
+              tabindex="-1"
+            >
+              Password
+            </button>
+            <button
+              class="nav-link"
+              id="bootcn-tab-team-dark"
+              type="button"
+              role="tab"
+              data-bs-toggle="tab"
+              data-bs-target="#bootcn-tabpanel-team-dark"
+              aria-controls="bootcn-tabpanel-team-dark"
+              aria-selected="false"
+              tabindex="-1"
+            >
+              Team
+            </button>
+          </div>
+          <div class="tab-content">
+            <div
+              class="tab-pane fade show active bootcn-tabs__panel"
+              id="bootcn-tabpanel-account-dark"
+              role="tabpanel"
+              aria-labelledby="bootcn-tab-account-dark"
+              tabindex="0"
+            >
+              <p class="mb-0">Change your name, email and profile picture.</p>
+            </div>
+            <div
+              class="tab-pane fade bootcn-tabs__panel"
+              id="bootcn-tabpanel-password-dark"
+              role="tabpanel"
+              aria-labelledby="bootcn-tab-password-dark"
+              tabindex="0"
+            >
+              <p class="mb-0">Update your password and two-factor authentication.</p>
+            </div>
+            <div
+              class="tab-pane fade bootcn-tabs__panel"
+              id="bootcn-tabpanel-team-dark"
+              role="tabpanel"
+              aria-labelledby="bootcn-tab-team-dark"
+              tabindex="0"
+            >
+              <p class="mb-0">Invite people and manage their roles.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.9/dist/js/bootstrap.bundle.min.js"></script>
+  </body>
+</html>

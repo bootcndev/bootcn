@@ -1,0 +1,41 @@
+.bootcn-accordion {
+  --bs-accordion-bg: transparent;
+  --bs-accordion-border-color: var(--bootcn-border-color);
+  --bs-accordion-border-radius: 0;
+  --bs-accordion-inner-border-radius: 0;
+  --bs-accordion-btn-padding-x: 0;
+  --bs-accordion-btn-padding-y: 1rem;
+  --bs-accordion-btn-bg: transparent;
+  --bs-accordion-active-bg: transparent;
+  --bs-accordion-active-color: var(--bs-emphasis-color);
+  --bs-accordion-btn-focus-box-shadow: var(--bootcn-focus-ring);
+  --bs-accordion-body-padding-x: 0;
+  --bs-accordion-body-padding-y: 0;
+  --bs-accordion-transition:
+    color var(--bootcn-transition), background-color var(--bootcn-transition),
+    border-color var(--bootcn-transition), box-shadow var(--bootcn-transition),
+    border-radius var(--bootcn-transition);
+}
+
+.bootcn-accordion > .accordion-item {
+  border-width: 0 0 var(--bootcn-border-width);
+}
+
+.bootcn-accordion .accordion-button {
+  font-weight: 500;
+  box-shadow: none;
+}
+
+.bootcn-accordion .accordion-button:hover {
+  text-decoration: underline;
+}
+
+.bootcn-accordion .accordion-button:focus-visible {
+  border-radius: var(--bootcn-radius-sm);
+  box-shadow: var(--bootcn-focus-ring);
+}
+
+.bootcn-accordion .accordion-body {
+  padding-bottom: 1rem;
+  color: var(--bs-secondary-color);
+}

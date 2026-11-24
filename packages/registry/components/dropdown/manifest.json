@@ -1,0 +1,28 @@
+{
+  "$schema": "../../schema/registry-item.schema.json",
+  "name": "dropdown",
+  "type": "registry:ui",
+  "title": "Dropdown",
+  "description": "A menu of actions built on the Bootstrap Dropdown plugin, with labels, shortcuts and a destructive item.",
+  "version": "1.0.0",
+  "categories": ["navigation", "menus", "overlays"],
+  "dependencies": [],
+  "registryDependencies": ["button"],
+  "compatibility": {
+    "bootstrap": "5.3",
+    "platform": ["Bootstrap CSS", "Bootstrap JS bundle"]
+  },
+  "license": "MIT",
+  "files": [
+    {
+      "path": "dropdown.html",
+      "target": "dropdown.html",
+      "type": "registry:component"
+    },
+    {
+      "path": "dropdown.css",
+      "target": "dropdown.css",
+      "type": "registry:style"
+    }
+  ]
+}

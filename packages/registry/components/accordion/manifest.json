@@ -1,0 +1,28 @@
+{
+  "$schema": "../../schema/registry-item.schema.json",
+  "name": "accordion",
+  "type": "registry:ui",
+  "title": "Accordion",
+  "description": "Collapsible sections built on Bootstrap Collapse, styled as a flush list.",
+  "version": "1.0.0",
+  "categories": ["navigation", "disclosure"],
+  "dependencies": [],
+  "registryDependencies": [],
+  "compatibility": {
+    "bootstrap": "5.3",
+    "platform": ["Bootstrap CSS", "Bootstrap JS bundle"]
+  },
+  "license": "MIT",
+  "files": [
+    {
+      "path": "accordion.html",
+      "target": "accordion.html",
+      "type": "registry:component"
+    },
+    {
+      "path": "accordion.css",
+      "target": "accordion.css",
+      "type": "registry:style"
+    }
+  ]
+}
