@@ -53,3 +53,26 @@ No JavaScript.
 - For `<a>` elements used as buttons, add `role="button"` when the link does not
   navigate, and keep the loading pattern to `<button>` where `disabled` applies.
 - Spinner animation is disabled under `prefers-reduced-motion: reduce`.
+
+## Customizing
+
+Variants set Bootstrap's own `--bs-btn-*` variables on the element, so
+Bootstrap's hover, focus, active, open (`.show`) and disabled rules keep the
+variant's colors. To make a custom variant, set the same variables:
+
+```css
+.bootcn-button--brand {
+  --bs-btn-color: #fff;
+  --bs-btn-bg: #6f42c1;
+  --bs-btn-border-color: #6f42c1;
+  --bs-btn-hover-color: #fff;
+  --bs-btn-hover-bg: #5a32a3;
+  --bs-btn-hover-border-color: #5a32a3;
+  --bs-btn-active-color: #fff;
+  --bs-btn-active-bg: #4c2a8a;
+  --bs-btn-active-border-color: #4c2a8a;
+  --bs-btn-disabled-color: #fff;
+  --bs-btn-disabled-bg: #6f42c1;
+  --bs-btn-disabled-border-color: #6f42c1;
+}
+```
