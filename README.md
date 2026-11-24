@@ -12,7 +12,7 @@ bundler or Node.js is required at runtime.
 > **Status:** early (0.x). 68 components, 29 blocks (authentication, dashboard, navigation, marketing, charts), admin and analytics dashboard templates and design
 > tokens, with a Tailwind-like look built on Bootstrap. The CLI is on
 > [npm](https://www.npmjs.com/package/bootcn); documentation, live previews and
-> the registry are at <https://bootcn.dev/>.
+> the registry are at <https://bootcn.dev/>. News: [@bootcndev](https://x.com/bootcndev) on X.
 
 ## Quick start
 

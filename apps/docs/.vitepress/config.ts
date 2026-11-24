@@ -3,6 +3,7 @@ import { defineConfig } from 'vitepress';
 import {
   GITHUB_URL,
   NPM_URL,
+  X_URL,
   REGISTRY_URL,
   SITE_URL,
   KINDS,
@@ -60,6 +61,7 @@ export default defineConfig({
     ['link', { rel: 'icon', type: 'image/png', href: `${BASE}icon-192.png`, sizes: '192x192' }],
     ['link', { rel: 'apple-touch-icon', href: `${BASE}apple-touch-icon.png` }],
     ['meta', { property: 'og:image', content: `${SITE_URL}/icon-512.png` }],
+    ['meta', { name: 'twitter:site', content: '@bootcndev' }],
   ],
   // bootcn.dev is the canonical site, also for the GitHub Pages mirror.
   transformHead({ pageData }) {
@@ -114,6 +116,7 @@ export default defineConfig({
     socialLinks: [
       { icon: 'github', link: GITHUB_URL },
       { icon: 'npm', link: NPM_URL },
+      { icon: 'x', link: X_URL, ariaLabel: 'Bootcn on X' },
     ],
     search: {
       provider: 'local',
