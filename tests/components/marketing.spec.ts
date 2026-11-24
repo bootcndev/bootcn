@@ -43,3 +43,27 @@ test('hero: one h1 and two calls to action', async ({ page }) => {
   await expect(page.getByRole('link', { name: 'Start for free' })).toBeVisible();
   await expect(page.getByRole('link', { name: 'Book a demo' })).toBeVisible();
 });
+
+test('site header: the menu collapses on phones and opens with its button', async ({ page }) => {
+  await page.setViewportSize({ width: 375, height: 800 });
+  await openPreview(page, 'site-header', 'blocks');
+  const menu = page.getByRole('button', { name: 'Menu' });
+  const pricing = page.getByRole('link', { name: 'Pricing' });
+  await expect(pricing).toBeHidden();
+  await menu.click();
+  await expect(menu).toHaveAttribute('aria-expanded', 'true');
+  await expect(pricing).toBeVisible();
+  await page.setViewportSize({ width: 1280, height: 800 });
+  await expect(menu).toBeHidden();
+  await expect(pricing).toBeVisible();
+});
+
+test('FAQ section: one answer open at a time', async ({ page }) => {
+  await openPreview(page, 'faq-section', 'blocks');
+  const first = page.getByRole('button', { name: 'Do I need Node.js or a build step?' });
+  const second = page.getByRole('button', { name: 'Is it accessible?' });
+  await expect(first).toHaveAttribute('aria-expanded', 'true');
+  await second.click();
+  await expect(second).toHaveAttribute('aria-expanded', 'true');
+  await expect(first).toHaveAttribute('aria-expanded', 'false');
+});

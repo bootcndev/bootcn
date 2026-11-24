@@ -1,0 +1,46 @@
+{
+  "$schema": "../../schema/registry-item.schema.json",
+  "name": "settings-page",
+  "type": "registry:template",
+  "title": "Settings page",
+  "description": "Account settings for a SaaS app: a section nav, profile and password forms with validation, notification choices, billing with invoices and a confirmed account deletion.",
+  "version": "1.0.0",
+  "categories": ["dashboard"],
+  "dependencies": [],
+  "registryDependencies": [
+    "card",
+    "avatar",
+    "field",
+    "input",
+    "textarea",
+    "button",
+    "form",
+    "checkbox-group",
+    "switch",
+    "table",
+    "badge",
+    "alert-dialog"
+  ],
+  "compatibility": {
+    "bootstrap": "5.3",
+    "platform": ["Bootstrap CSS", "Bootstrap JS bundle"]
+  },
+  "license": "MIT",
+  "files": [
+    {
+      "path": "settings-page.html",
+      "target": "settings-page.html",
+      "type": "registry:page"
+    },
+    {
+      "path": "settings-page.css",
+      "target": "settings-page.css",
+      "type": "registry:style"
+    },
+    {
+      "path": "settings-page.js",
+      "target": "settings-page.js",
+      "type": "registry:script"
+    }
+  ]
+}

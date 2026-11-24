@@ -1,0 +1,34 @@
+.bootcn-skip {
+  position: absolute;
+  z-index: 1080;
+  top: 0.5rem;
+  inset-inline-start: 0.5rem;
+  padding: 0.5rem 0.75rem;
+  border-radius: var(--bootcn-radius);
+  background-color: var(--bootcn-background);
+  box-shadow: var(--bootcn-focus-ring);
+}
+
+[data-bs-theme='dark'] .bootcn-theme-when-light,
+[data-bs-theme='light'] .bootcn-theme-when-dark {
+  display: none;
+}
+
+.bootcn-landing {
+  outline: 0;
+}
+
+/* In-page links land below the sticky header. */
+html {
+  scroll-padding-top: 4.5rem;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+.bootcn-landing > section:nth-of-type(even) {
+  background-color: var(--bootcn-muted);
+}

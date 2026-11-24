@@ -1,0 +1,44 @@
+{
+  "$schema": "../../schema/registry-item.schema.json",
+  "name": "landing-page",
+  "type": "registry:template",
+  "title": "Landing page",
+  "description": "A product landing page: sticky header, hero, customer logos, features, testimonials, pricing, FAQ, a call to action and the footer, with dark mode.",
+  "version": "1.0.0",
+  "categories": ["marketing"],
+  "dependencies": [],
+  "registryDependencies": [
+    "site-header",
+    "hero-section",
+    "logo-cloud",
+    "feature-grid",
+    "testimonials",
+    "pricing-table",
+    "faq-section",
+    "call-to-action",
+    "site-footer",
+    "button"
+  ],
+  "compatibility": {
+    "bootstrap": "5.3",
+    "platform": ["Bootstrap CSS", "Bootstrap JS bundle"]
+  },
+  "license": "MIT",
+  "files": [
+    {
+      "path": "landing-page.html",
+      "target": "landing-page.html",
+      "type": "registry:page"
+    },
+    {
+      "path": "landing-page.css",
+      "target": "landing-page.css",
+      "type": "registry:style"
+    },
+    {
+      "path": "landing-page.js",
+      "target": "landing-page.js",
+      "type": "registry:script"
+    }
+  ]
+}

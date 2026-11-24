@@ -1,0 +1,28 @@
+{
+  "$schema": "../../schema/registry-item.schema.json",
+  "name": "faq-section",
+  "type": "registry:block",
+  "title": "FAQ section",
+  "description": "Frequently asked questions in an accordion, beside a heading and a contact link.",
+  "version": "1.0.0",
+  "categories": ["marketing"],
+  "dependencies": [],
+  "registryDependencies": ["accordion"],
+  "compatibility": {
+    "bootstrap": "5.3",
+    "platform": ["Bootstrap CSS", "Bootstrap JS bundle"]
+  },
+  "license": "MIT",
+  "files": [
+    {
+      "path": "faq-section.html",
+      "target": "faq-section.html",
+      "type": "registry:component"
+    },
+    {
+      "path": "faq-section.css",
+      "target": "faq-section.css",
+      "type": "registry:style"
+    }
+  ]
+}

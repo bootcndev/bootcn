@@ -1,0 +1,130 @@
+.bootcn-site-footer {
+  border-top: var(--bootcn-border-width) solid var(--bootcn-border-color);
+  font-size: 0.875rem;
+}
+
+.bootcn-site-footer__inner,
+.bootcn-site-footer__bottom {
+  max-width: 72rem;
+  margin-inline: auto;
+  padding-inline: 1rem;
+}
+
+.bootcn-site-footer__inner {
+  display: grid;
+  gap: 2.5rem;
+  padding-block: 3rem;
+}
+
+@media (min-width: 992px) {
+  .bootcn-site-footer__inner {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1.5fr);
+    gap: 4rem;
+  }
+}
+
+.bootcn-site-footer__brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--bootcn-foreground);
+  font-size: 1rem;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.bootcn-site-footer__brand .bootcn-icon {
+  width: 1.25rem;
+  height: 1.25rem;
+}
+
+.bootcn-site-footer__text {
+  margin: 0.75rem 0 1.5rem;
+  color: var(--bootcn-muted-foreground);
+}
+
+.bootcn-site-footer__news-title {
+  margin: 0 0 0.5rem;
+  font-weight: 500;
+}
+
+.bootcn-site-footer__news-row {
+  display: flex;
+  gap: 0.5rem;
+  max-width: 24rem;
+}
+
+.bootcn-site-footer__news-row .bootcn-input {
+  min-width: 0;
+}
+
+.bootcn-site-footer__nav {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(8rem, 1fr));
+  gap: 2rem;
+}
+
+.bootcn-site-footer__heading {
+  margin: 0 0 0.75rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+}
+
+.bootcn-site-footer__links {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.bootcn-site-footer__links a,
+.bootcn-site-footer__social-link {
+  color: var(--bootcn-muted-foreground);
+  text-decoration: none;
+}
+
+.bootcn-site-footer__links a:hover,
+.bootcn-site-footer__social-link:hover {
+  color: var(--bootcn-foreground);
+}
+
+.bootcn-site-footer__links a:focus-visible,
+.bootcn-site-footer__social-link:focus-visible,
+.bootcn-site-footer__brand:focus-visible {
+  border-radius: var(--bootcn-radius-sm);
+  outline: 0;
+  box-shadow: var(--bootcn-focus-ring);
+}
+
+.bootcn-site-footer__bottom {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding-block: 1.5rem;
+  border-top: var(--bootcn-border-width) solid var(--bootcn-border-color);
+}
+
+.bootcn-site-footer__copyright {
+  margin: 0;
+  color: var(--bootcn-muted-foreground);
+}
+
+.bootcn-site-footer__social {
+  display: flex;
+  gap: 0.5rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.bootcn-site-footer__social-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2rem;
+  height: 2rem;
+}

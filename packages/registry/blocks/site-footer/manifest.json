@@ -1,0 +1,28 @@
+{
+  "$schema": "../../schema/registry-item.schema.json",
+  "name": "site-footer",
+  "type": "registry:block",
+  "title": "Site footer",
+  "description": "A footer with the logo, a newsletter sign-up, three columns of links, the copyright and social links.",
+  "version": "1.0.0",
+  "categories": ["marketing"],
+  "dependencies": [],
+  "registryDependencies": ["input", "button"],
+  "compatibility": {
+    "bootstrap": "5.3",
+    "platform": ["Bootstrap CSS"]
+  },
+  "license": "MIT",
+  "files": [
+    {
+      "path": "site-footer.html",
+      "target": "site-footer.html",
+      "type": "registry:component"
+    },
+    {
+      "path": "site-footer.css",
+      "target": "site-footer.css",
+      "type": "registry:style"
+    }
+  ]
+}

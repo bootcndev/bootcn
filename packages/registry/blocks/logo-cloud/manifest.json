@@ -1,0 +1,28 @@
+{
+  "$schema": "../../schema/registry-item.schema.json",
+  "name": "logo-cloud",
+  "type": "registry:block",
+  "title": "Logo cloud",
+  "description": "A row of customer logos under a short line of social proof, wrapping on small screens.",
+  "version": "1.0.0",
+  "categories": ["marketing"],
+  "dependencies": [],
+  "registryDependencies": [],
+  "compatibility": {
+    "bootstrap": "5.3",
+    "platform": ["Bootstrap CSS"]
+  },
+  "license": "MIT",
+  "files": [
+    {
+      "path": "logo-cloud.html",
+      "target": "logo-cloud.html",
+      "type": "registry:component"
+    },
+    {
+      "path": "logo-cloud.css",
+      "target": "logo-cloud.css",
+      "type": "registry:style"
+    }
+  ]
+}

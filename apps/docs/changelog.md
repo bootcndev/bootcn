@@ -6,6 +6,13 @@ each published version stays available under `/v/<version>/`) and the **CLI**
 
 ## Registry
 
+### 0.17.0
+
+- Templates: Landing page (header, hero, logos, features, testimonials,
+  pricing, FAQ, call to action, footer) and Settings page (profile and
+  password forms with validation, notifications, billing, account deletion).
+- Blocks: Site header, Logo cloud, FAQ section and Site footer.
+
 ### 0.16.0
 
 - Right to left: every component, block and template uses logical CSS

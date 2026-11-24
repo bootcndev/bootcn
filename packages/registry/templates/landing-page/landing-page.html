@@ -1,0 +1,1179 @@
+<!doctype html>
+<html lang="en" data-bs-theme="light">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Acme · Ship your product site in an afternoon</title>
+    <script>
+      // Theme before the first paint: the saved choice, else the system setting.
+      (function () {
+        var theme = null;
+        try {
+          theme = localStorage.getItem('bootcn-theme');
+        } catch (error) {
+          theme = null;
+        }
+        if (theme !== 'dark' && theme !== 'light') {
+          theme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+        }
+        document.documentElement.setAttribute('data-bs-theme', theme);
+      })();
+    </script>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.9/dist/css/bootstrap.min.css"
+      integrity="sha384-yEPZ7jP9S0QKiUQ0m3jjsO4ProIW7wvR9gXkI7JOGa2XVsw53Yke2bsdkBbjmmiX"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="{{bootcn:css}}/tokens.css" />
+    <link rel="stylesheet" href="{{bootcn:css}}/button.css" />
+    <link rel="stylesheet" href="{{bootcn:css}}/site-header.css" />
+    <link rel="stylesheet" href="{{bootcn:css}}/badge.css" />
+    <link rel="stylesheet" href="{{bootcn:css}}/hero-section.css" />
+    <link rel="stylesheet" href="{{bootcn:css}}/logo-cloud.css" />
+    <link rel="stylesheet" href="{{bootcn:css}}/feature-grid.css" />
+    <link rel="stylesheet" href="{{bootcn:css}}/avatar.css" />
+    <link rel="stylesheet" href="{{bootcn:css}}/testimonials.css" />
+    <link rel="stylesheet" href="{{bootcn:css}}/pricing-table.css" />
+    <link rel="stylesheet" href="{{bootcn:css}}/accordion.css" />
+    <link rel="stylesheet" href="{{bootcn:css}}/faq-section.css" />
+    <link rel="stylesheet" href="{{bootcn:css}}/call-to-action.css" />
+    <link rel="stylesheet" href="{{bootcn:css}}/input.css" />
+    <link rel="stylesheet" href="{{bootcn:css}}/site-footer.css" />
+    <link rel="stylesheet" href="{{bootcn:css}}/landing-page.css" />
+  </head>
+  <body>
+    <a class="visually-hidden-focusable bootcn-skip" href="#main">Skip to content</a>
+    <header class="bootcn-site-header">
+      <nav class="navbar navbar-expand-md bootcn-site-header__nav" aria-label="Main">
+        <div class="container bootcn-site-header__inner">
+          <a class="navbar-brand bootcn-site-header__brand" href="#">
+            <svg
+              class="bootcn-icon"
+              width="16"
+              height="16"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              aria-hidden="true"
+              focusable="false"
+            >
+              <rect x="3" y="3" width="8" height="8" rx="2" />
+              <rect x="13" y="13" width="8" height="8" rx="2" />
+              <path d="M13 7h8M17 3v8M3 17h8" />
+            </svg>
+            Acme
+          </a>
+          <button
+            class="navbar-toggler bootcn-site-header__toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#bootcn-site-header-menu"
+            aria-controls="bootcn-site-header-menu"
+            aria-expanded="false"
+          >
+            <svg
+              class="bootcn-icon"
+              width="16"
+              height="16"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              aria-hidden="true"
+              focusable="false"
+            >
+              <path d="M4 6h16M4 12h16M4 18h16" />
+            </svg>
+            <span class="visually-hidden">Menu</span>
+          </button>
+          <div
+            class="collapse navbar-collapse bootcn-site-header__menu"
+            id="bootcn-site-header-menu"
+          >
+            <ul class="navbar-nav bootcn-site-header__links">
+              <li class="nav-item">
+                <a class="nav-link bootcn-site-header__link" href="#features">Features</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link bootcn-site-header__link" href="#customers">Customers</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link bootcn-site-header__link" href="#pricing">Pricing</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link bootcn-site-header__link" href="#faq">FAQ</a>
+              </li>
+            </ul>
+            <div class="bootcn-site-header__actions">
+              <button
+                type="button"
+                class="btn bootcn-button bootcn-button--ghost bootcn-button--icon bootcn-landing__theme"
+                data-bootcn-theme-toggle
+                aria-pressed="false"
+              >
+                <span class="visually-hidden">Dark mode</span>
+                <svg
+                  class="bootcn-icon bootcn-theme-when-light"
+                  width="16"
+                  height="16"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  aria-hidden="true"
+                  focusable="false"
+                >
+                  <path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5z" />
+                </svg>
+                <svg
+                  class="bootcn-icon bootcn-theme-when-dark"
+                  width="16"
+                  height="16"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  aria-hidden="true"
+                  focusable="false"
+                >
+                  <circle cx="12" cy="12" r="4" />
+                  <path
+                    d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"
+                  />
+                </svg>
+              </button>
+              <a class="btn bootcn-button bootcn-button--ghost" href="#sign-in">Sign in</a>
+              <a class="btn bootcn-button bootcn-button--default" href="#sign-up">Get started</a>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+    <main id="main" tabindex="-1" class="bootcn-landing">
+      <section class="bootcn-hero" aria-labelledby="bootcn-hero-title">
+        <div class="bootcn-hero__inner">
+          <a class="bootcn-hero__announcement" href="#changelog">
+            <span class="badge bootcn-badge bootcn-badge--secondary">New</span>
+            Version 2.0 is here: see what changed
+            <svg
+              class="bootcn-icon bootcn-rtl-flip"
+              width="16"
+              height="16"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              aria-hidden="true"
+              focusable="false"
+            >
+              <path d="M5 12h14" />
+              <path d="m13 6 6 6-6 6" />
+            </svg>
+          </a>
+          <h1 class="bootcn-hero__title" id="bootcn-hero-title">
+            Ship your product site in an afternoon
+          </h1>
+          <p class="bootcn-hero__lead">
+            Acme gives your team the pages, forms and dashboards you need, ready to edit and fast to
+            load.
+          </p>
+          <div class="bootcn-hero__actions">
+            <a class="btn bootcn-button bootcn-button--default bootcn-button--lg" href="#sign-up">
+              Start for free
+            </a>
+            <a class="btn bootcn-button bootcn-button--outline bootcn-button--lg" href="#demo">
+              Book a demo
+            </a>
+          </div>
+          <p class="bootcn-hero__note">No credit card required · Cancel any time</p>
+        </div>
+      </section>
+      <section class="bootcn-logo-cloud" aria-labelledby="bootcn-logo-cloud-title">
+        <div class="bootcn-logo-cloud__inner">
+          <h2 class="bootcn-logo-cloud__title" id="bootcn-logo-cloud-title">
+            Trusted by product teams at
+          </h2>
+          <ul class="bootcn-logo-cloud__list">
+            <li class="bootcn-logo-cloud__logo">
+              <svg
+                class="bootcn-logo-cloud__mark"
+                width="16"
+                height="16"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+                focusable="false"
+              >
+                <path d="M12 2 21 7v10l-9 5-9-5V7z" />
+              </svg>
+              <span>Northwind</span>
+            </li>
+            <li class="bootcn-logo-cloud__logo">
+              <svg
+                class="bootcn-logo-cloud__mark"
+                width="16"
+                height="16"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+                focusable="false"
+              >
+                <circle cx="12" cy="12" r="9" />
+              </svg>
+              <span>Contoso</span>
+            </li>
+            <li class="bootcn-logo-cloud__logo">
+              <svg
+                class="bootcn-logo-cloud__mark"
+                width="16"
+                height="16"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+                focusable="false"
+              >
+                <path d="M12 3 22 20H2z" />
+              </svg>
+              <span>Fabrikam</span>
+            </li>
+            <li class="bootcn-logo-cloud__logo">
+              <svg
+                class="bootcn-logo-cloud__mark"
+                width="16"
+                height="16"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+                focusable="false"
+              >
+                <path d="M2 12c3-6 6-6 10 0s7 6 10 0" />
+              </svg>
+              <span>Tailspin</span>
+            </li>
+            <li class="bootcn-logo-cloud__logo">
+              <svg
+                class="bootcn-logo-cloud__mark"
+                width="16"
+                height="16"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+                focusable="false"
+              >
+                <path d="M12 2 22 12 12 22 2 12z" />
+              </svg>
+              <span>Litware</span>
+            </li>
+            <li class="bootcn-logo-cloud__logo">
+              <svg
+                class="bootcn-logo-cloud__mark"
+                width="16"
+                height="16"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+                focusable="false"
+              >
+                <rect x="4" y="4" width="16" height="16" rx="3" />
+              </svg>
+              <span>Proseware</span>
+            </li>
+          </ul>
+        </div>
+      </section>
+      <section id="features" class="bootcn-features" aria-labelledby="bootcn-features-title">
+        <div class="bootcn-features__header">
+          <p class="bootcn-features__eyebrow">Features</p>
+          <h2 class="bootcn-features__title" id="bootcn-features-title">
+            Everything you need to launch
+          </h2>
+          <p class="bootcn-features__lead">
+            Build pages people enjoy using, without fighting your tools.
+          </p>
+        </div>
+        <ul class="bootcn-features__grid">
+          <li class="bootcn-features__item">
+            <span class="bootcn-features__icon"
+              ><svg
+                class="bootcn-icon"
+                width="16"
+                height="16"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+                focusable="false"
+              >
+                <path d="M13 2 3 14h9l-1 8 10-12h-9z" /></svg
+            ></span>
+            <h3 class="bootcn-features__name">Fast by default</h3>
+            <p class="bootcn-features__text">
+              Static HTML and a few kilobytes of CSS. Pages load before anyone notices.
+            </p>
+          </li>
+          <li class="bootcn-features__item">
+            <span class="bootcn-features__icon"
+              ><svg
+                class="bootcn-icon"
+                width="16"
+                height="16"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+                focusable="false"
+              >
+                <circle cx="12" cy="12" r="9" />
+                <path d="m8 12 3 3 5-6" /></svg
+            ></span>
+            <h3 class="bootcn-features__name">Accessible</h3>
+            <p class="bootcn-features__text">
+              Keyboard support, labels and contrast are part of every component, in both themes.
+            </p>
+          </li>
+          <li class="bootcn-features__item">
+            <span class="bootcn-features__icon"
+              ><svg
+                class="bootcn-icon"
+                width="16"
+                height="16"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+                focusable="false"
+              >
+                <path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5z" /></svg
+            ></span>
+            <h3 class="bootcn-features__name">Dark mode built in</h3>
+            <p class="bootcn-features__text">
+              Every color is a token with a light and a dark value. Switch with one attribute.
+            </p>
+          </li>
+          <li class="bootcn-features__item">
+            <span class="bootcn-features__icon"
+              ><svg
+                class="bootcn-icon"
+                width="16"
+                height="16"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+                focusable="false"
+              >
+                <path d="m16 18 6-6-6-6" />
+                <path d="m8 6-6 6 6 6" /></svg
+            ></span>
+            <h3 class="bootcn-features__name">Code you own</h3>
+            <p class="bootcn-features__text">
+              Copy the files into your project and change anything. No package to update.
+            </p>
+          </li>
+          <li class="bootcn-features__item">
+            <span class="bootcn-features__icon"
+              ><svg
+                class="bootcn-icon"
+                width="16"
+                height="16"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+                focusable="false"
+              >
+                <rect x="3" y="4" width="18" height="16" rx="2" />
+                <path d="M3 10h18M9 10v10" /></svg
+            ></span>
+            <h3 class="bootcn-features__name">Responsive layouts</h3>
+            <p class="bootcn-features__text">
+              Grids and navigation adapt from phones to wide screens without extra work.
+            </p>
+          </li>
+          <li class="bootcn-features__item">
+            <span class="bootcn-features__icon"
+              ><svg
+                class="bootcn-icon"
+                width="16"
+                height="16"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+                focusable="false"
+              >
+                <path d="M12 3 4 6v6c0 5 3.5 8 8 9 4.5-1 8-4 8-9V6z" /></svg
+            ></span>
+            <h3 class="bootcn-features__name">No runtime surprises</h3>
+            <p class="bootcn-features__text">
+              No framework and no build step in production, so nothing breaks on upgrade.
+            </p>
+          </li>
+        </ul>
+      </section>
+      <section
+        id="customers"
+        class="bootcn-testimonials"
+        aria-labelledby="bootcn-testimonials-title"
+      >
+        <div class="bootcn-testimonials__header">
+          <h2 class="bootcn-testimonials__title" id="bootcn-testimonials-title">
+            Loved by teams who ship
+          </h2>
+          <p class="bootcn-testimonials__lead">
+            Developers and designers use Acme to build faster, with fewer surprises.
+          </p>
+        </div>
+        <ul class="bootcn-testimonials__grid">
+          <li class="bootcn-testimonials__item">
+            <figure class="bootcn-testimonials__card">
+              <blockquote class="bootcn-testimonials__quote">
+                <p>
+                  “We moved our admin area to plain PHP with these blocks and shipped it in a week.
+                  The dark mode just worked.”
+                </p>
+              </blockquote>
+              <figcaption class="bootcn-testimonials__author">
+                <span class="bootcn-avatar bootcn-avatar--sm" aria-hidden="true"
+                  ><span class="bootcn-avatar__fallback">EK</span></span
+                >
+                <span class="bootcn-testimonials__who">
+                  <span class="bootcn-testimonials__name">Eleni Kosta</span>
+                  <span class="bootcn-testimonials__role">CTO, Lumen Studio</span>
+                </span>
+              </figcaption>
+            </figure>
+          </li>
+          <li class="bootcn-testimonials__item">
+            <figure class="bootcn-testimonials__card">
+              <blockquote class="bootcn-testimonials__quote">
+                <p>
+                  “I finally have components I can paste into client projects without a build step.”
+                </p>
+              </blockquote>
+              <figcaption class="bootcn-testimonials__author">
+                <span class="bootcn-avatar bootcn-avatar--sm" aria-hidden="true"
+                  ><span class="bootcn-avatar__fallback">NG</span></span
+                >
+                <span class="bootcn-testimonials__who">
+                  <span class="bootcn-testimonials__name">Nikos Georgiou</span>
+                  <span class="bootcn-testimonials__role">Freelance developer</span>
+                </span>
+              </figcaption>
+            </figure>
+          </li>
+          <li class="bootcn-testimonials__item">
+            <figure class="bootcn-testimonials__card">
+              <blockquote class="bootcn-testimonials__quote">
+                <p>
+                  “It looks like the design files. Spacing, borders and focus states are all there.”
+                </p>
+              </blockquote>
+              <figcaption class="bootcn-testimonials__author">
+                <span class="bootcn-avatar bootcn-avatar--sm" aria-hidden="true"
+                  ><span class="bootcn-avatar__fallback">SD</span></span
+                >
+                <span class="bootcn-testimonials__who">
+                  <span class="bootcn-testimonials__name">Sofia Dimou</span>
+                  <span class="bootcn-testimonials__role">Product designer, Kappa Labs</span>
+                </span>
+              </figcaption>
+            </figure>
+          </li>
+          <li class="bootcn-testimonials__item">
+            <figure class="bootcn-testimonials__card">
+              <blockquote class="bootcn-testimonials__quote">
+                <p>
+                  “Our landing page scores 100 on performance and accessibility. Nothing else to
+                  configure.”
+                </p>
+              </blockquote>
+              <figcaption class="bootcn-testimonials__author">
+                <span class="bootcn-avatar bootcn-avatar--sm" aria-hidden="true"
+                  ><span class="bootcn-avatar__fallback">AI</span></span
+                >
+                <span class="bootcn-testimonials__who">
+                  <span class="bootcn-testimonials__name">Alex Ioannou</span>
+                  <span class="bootcn-testimonials__role">Founder, Harbor &amp; Co</span>
+                </span>
+              </figcaption>
+            </figure>
+          </li>
+          <li class="bootcn-testimonials__item">
+            <figure class="bootcn-testimonials__card">
+              <blockquote class="bootcn-testimonials__quote">
+                <p>
+                  “Because the code lives in our repository, reviews are simple and nothing changes
+                  under us.”
+                </p>
+              </blockquote>
+              <figcaption class="bootcn-testimonials__author">
+                <span class="bootcn-avatar bootcn-avatar--sm" aria-hidden="true"
+                  ><span class="bootcn-avatar__fallback">MP</span></span
+                >
+                <span class="bootcn-testimonials__who">
+                  <span class="bootcn-testimonials__name">Maria Papadopoulou</span>
+                  <span class="bootcn-testimonials__role">Engineering lead, Orbit</span>
+                </span>
+              </figcaption>
+            </figure>
+          </li>
+          <li class="bootcn-testimonials__item">
+            <figure class="bootcn-testimonials__card">
+              <blockquote class="bootcn-testimonials__quote">
+                <p>
+                  “The pricing table and the forms saved us days. Keyboard support was a nice
+                  surprise.”
+                </p>
+              </blockquote>
+              <figcaption class="bootcn-testimonials__author">
+                <span class="bootcn-avatar bootcn-avatar--sm" aria-hidden="true"
+                  ><span class="bootcn-avatar__fallback">KT</span></span
+                >
+                <span class="bootcn-testimonials__who">
+                  <span class="bootcn-testimonials__name">Kostas Tsakalos</span>
+                  <span class="bootcn-testimonials__role">Web developer, Mosaic</span>
+                </span>
+              </figcaption>
+            </figure>
+          </li>
+        </ul>
+      </section>
+      <section id="pricing" class="bootcn-pricing" aria-labelledby="bootcn-pricing-title">
+        <div class="bootcn-pricing__header">
+          <h2 class="bootcn-pricing__title" id="bootcn-pricing-title">
+            Simple, transparent pricing
+          </h2>
+          <p class="bootcn-pricing__lead">Start free. Upgrade when your team grows.</p>
+          <fieldset class="bootcn-pricing__billing">
+            <legend class="visually-hidden">Billing period</legend>
+            <input
+              class="btn-check bootcn-pricing__toggle"
+              type="radio"
+              name="bootcn-pricing-billing"
+              id="bootcn-pricing-monthly"
+              value="monthly"
+              checked
+            />
+            <label class="bootcn-pricing__period" for="bootcn-pricing-monthly">Monthly</label>
+            <input
+              class="btn-check bootcn-pricing__toggle"
+              type="radio"
+              name="bootcn-pricing-billing"
+              id="bootcn-pricing-yearly"
+              value="yearly"
+            />
+            <label class="bootcn-pricing__period" for="bootcn-pricing-yearly"
+              >Yearly (save 20%)</label
+            >
+          </fieldset>
+        </div>
+        <ul class="bootcn-pricing__plans">
+          <li class="bootcn-pricing__plan">
+            <h3 class="bootcn-pricing__name" id="bootcn-pricing-starter">Starter</h3>
+            <p class="bootcn-pricing__description">For individuals and side projects.</p>
+            <p class="bootcn-pricing__price">
+              <span class="bootcn-pricing__amount bootcn-pricing__monthly">€0</span>
+              <span class="bootcn-pricing__amount bootcn-pricing__yearly">€0</span>
+              <span class="bootcn-pricing__unit bootcn-pricing__monthly">per month</span>
+              <span class="bootcn-pricing__unit bootcn-pricing__yearly"
+                >per month, billed yearly</span
+              >
+            </p>
+            <a
+              class="btn bootcn-button bootcn-button--outline w-100"
+              href="#starter"
+              aria-describedby="bootcn-pricing-starter"
+            >
+              Get started
+            </a>
+            <ul class="bootcn-pricing__list" aria-label="Starter includes">
+              <li>
+                <svg
+                  class="bootcn-icon"
+                  width="16"
+                  height="16"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  aria-hidden="true"
+                  focusable="false"
+                >
+                  <path d="M20 6 9 17l-5-5" />
+                </svg>
+                1 project
+              </li>
+              <li>
+                <svg
+                  class="bootcn-icon"
+                  width="16"
+                  height="16"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  aria-hidden="true"
+                  focusable="false"
+                >
+                  <path d="M20 6 9 17l-5-5" />
+                </svg>
+                Community support
+              </li>
+              <li>
+                <svg
+                  class="bootcn-icon"
+                  width="16"
+                  height="16"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  aria-hidden="true"
+                  focusable="false"
+                >
+                  <path d="M20 6 9 17l-5-5" />
+                </svg>
+                All components and blocks
+              </li>
+            </ul>
+          </li>
+          <li class="bootcn-pricing__plan bootcn-pricing__plan--featured">
+            <h3 class="bootcn-pricing__name" id="bootcn-pricing-pro">Pro</h3>
+            <span class="badge bootcn-badge bootcn-badge--default bootcn-pricing__badge"
+              >Most popular</span
+            >
+            <p class="bootcn-pricing__description">For freelancers and small teams.</p>
+            <p class="bootcn-pricing__price">
+              <span class="bootcn-pricing__amount bootcn-pricing__monthly">€19</span>
+              <span class="bootcn-pricing__amount bootcn-pricing__yearly">€15</span>
+              <span class="bootcn-pricing__unit bootcn-pricing__monthly">per month</span>
+              <span class="bootcn-pricing__unit bootcn-pricing__yearly"
+                >per month, billed yearly</span
+              >
+            </p>
+            <a
+              class="btn bootcn-button bootcn-button--default w-100"
+              href="#pro"
+              aria-describedby="bootcn-pricing-pro"
+            >
+              Start free trial
+            </a>
+            <ul class="bootcn-pricing__list" aria-label="Pro includes">
+              <li>
+                <svg
+                  class="bootcn-icon"
+                  width="16"
+                  height="16"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  aria-hidden="true"
+                  focusable="false"
+                >
+                  <path d="M20 6 9 17l-5-5" />
+                </svg>
+                Unlimited projects
+              </li>
+              <li>
+                <svg
+                  class="bootcn-icon"
+                  width="16"
+                  height="16"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  aria-hidden="true"
+                  focusable="false"
+                >
+                  <path d="M20 6 9 17l-5-5" />
+                </svg>
+                Email support
+              </li>
+              <li>
+                <svg
+                  class="bootcn-icon"
+                  width="16"
+                  height="16"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  aria-hidden="true"
+                  focusable="false"
+                >
+                  <path d="M20 6 9 17l-5-5" />
+                </svg>
+                Premium templates
+              </li>
+              <li>
+                <svg
+                  class="bootcn-icon"
+                  width="16"
+                  height="16"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  aria-hidden="true"
+                  focusable="false"
+                >
+                  <path d="M20 6 9 17l-5-5" />
+                </svg>
+                Early access to new blocks
+              </li>
+            </ul>
+          </li>
+          <li class="bootcn-pricing__plan">
+            <h3 class="bootcn-pricing__name" id="bootcn-pricing-team">Team</h3>
+            <p class="bootcn-pricing__description">For companies with several products.</p>
+            <p class="bootcn-pricing__price">
+              <span class="bootcn-pricing__amount bootcn-pricing__monthly">€49</span>
+              <span class="bootcn-pricing__amount bootcn-pricing__yearly">€39</span>
+              <span class="bootcn-pricing__unit bootcn-pricing__monthly">per month</span>
+              <span class="bootcn-pricing__unit bootcn-pricing__yearly"
+                >per month, billed yearly</span
+              >
+            </p>
+            <a
+              class="btn bootcn-button bootcn-button--outline w-100"
+              href="#team"
+              aria-describedby="bootcn-pricing-team"
+            >
+              Contact sales
+            </a>
+            <ul class="bootcn-pricing__list" aria-label="Team includes">
+              <li>
+                <svg
+                  class="bootcn-icon"
+                  width="16"
+                  height="16"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  aria-hidden="true"
+                  focusable="false"
+                >
+                  <path d="M20 6 9 17l-5-5" />
+                </svg>
+                Everything in Pro
+              </li>
+              <li>
+                <svg
+                  class="bootcn-icon"
+                  width="16"
+                  height="16"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  aria-hidden="true"
+                  focusable="false"
+                >
+                  <path d="M20 6 9 17l-5-5" />
+                </svg>
+                Up to 20 seats
+              </li>
+              <li>
+                <svg
+                  class="bootcn-icon"
+                  width="16"
+                  height="16"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  aria-hidden="true"
+                  focusable="false"
+                >
+                  <path d="M20 6 9 17l-5-5" />
+                </svg>
+                Shared design tokens
+              </li>
+              <li>
+                <svg
+                  class="bootcn-icon"
+                  width="16"
+                  height="16"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  aria-hidden="true"
+                  focusable="false"
+                >
+                  <path d="M20 6 9 17l-5-5" />
+                </svg>
+                Priority support
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </section>
+      <section id="faq" class="bootcn-faq" aria-labelledby="bootcn-faq-title">
+        <div class="bootcn-faq__inner">
+          <div class="bootcn-faq__intro">
+            <h2 class="bootcn-faq__title" id="bootcn-faq-title">Frequently asked questions</h2>
+            <p class="bootcn-faq__lead">
+              Can't find what you are looking for?
+              <a href="#contact">Talk to our team</a>.
+            </p>
+          </div>
+          <div class="accordion bootcn-accordion bootcn-faq__list" id="bootcn-faq-list">
+            <div class="accordion-item">
+              <h3 class="accordion-header">
+                <button
+                  class="accordion-button"
+                  type="button"
+                  data-bs-toggle="collapse"
+                  data-bs-target="#bootcn-faq-0"
+                  aria-expanded="true"
+                  aria-controls="bootcn-faq-0"
+                >
+                  Do I need Node.js or a build step?
+                </button>
+              </h3>
+              <div
+                id="bootcn-faq-0"
+                class="accordion-collapse collapse show"
+                data-bs-parent="#bootcn-faq-list"
+              >
+                <div class="accordion-body">
+                  No. The CLI copies plain HTML, CSS and JavaScript files into your project; your
+                  pages only load Bootstrap and those files.
+                </div>
+              </div>
+            </div>
+            <div class="accordion-item">
+              <h3 class="accordion-header">
+                <button
+                  class="accordion-button collapsed"
+                  type="button"
+                  data-bs-toggle="collapse"
+                  data-bs-target="#bootcn-faq-1"
+                  aria-expanded="false"
+                  aria-controls="bootcn-faq-1"
+                >
+                  Can I use it with PHP, Laravel or WordPress?
+                </button>
+              </h3>
+              <div
+                id="bootcn-faq-1"
+                class="accordion-collapse collapse"
+                data-bs-parent="#bootcn-faq-list"
+              >
+                <div class="accordion-body">
+                  Yes. Components are HTML snippets you can include from any template engine, and
+                  the CSS and JavaScript work on any page.
+                </div>
+              </div>
+            </div>
+            <div class="accordion-item">
+              <h3 class="accordion-header">
+                <button
+                  class="accordion-button collapsed"
+                  type="button"
+                  data-bs-toggle="collapse"
+                  data-bs-target="#bootcn-faq-2"
+                  aria-expanded="false"
+                  aria-controls="bootcn-faq-2"
+                >
+                  Is it accessible?
+                </button>
+              </h3>
+              <div
+                id="bootcn-faq-2"
+                class="accordion-collapse collapse"
+                data-bs-parent="#bootcn-faq-list"
+              >
+                <div class="accordion-body">
+                  Every component follows the WAI-ARIA patterns, keeps 4.5:1 text contrast in light
+                  and dark mode, and is tested with axe in three browsers.
+                </div>
+              </div>
+            </div>
+            <div class="accordion-item">
+              <h3 class="accordion-header">
+                <button
+                  class="accordion-button collapsed"
+                  type="button"
+                  data-bs-toggle="collapse"
+                  data-bs-target="#bootcn-faq-3"
+                  aria-expanded="false"
+                  aria-controls="bootcn-faq-3"
+                >
+                  What happens when you release an update?
+                </button>
+              </h3>
+              <div
+                id="bootcn-faq-3"
+                class="accordion-collapse collapse"
+                data-bs-parent="#bootcn-faq-list"
+              >
+                <div class="accordion-body">
+                  The files in your project never change by themselves. Run the diff command to see
+                  what changed upstream and update what you want.
+                </div>
+              </div>
+            </div>
+            <div class="accordion-item">
+              <h3 class="accordion-header">
+                <button
+                  class="accordion-button collapsed"
+                  type="button"
+                  data-bs-toggle="collapse"
+                  data-bs-target="#bootcn-faq-4"
+                  aria-expanded="false"
+                  aria-controls="bootcn-faq-4"
+                >
+                  Can I change the colors?
+                </button>
+              </h3>
+              <div
+                id="bootcn-faq-4"
+                class="accordion-collapse collapse"
+                data-bs-parent="#bootcn-faq-list"
+              >
+                <div class="accordion-body">
+                  Yes. Pick a base color, a primary color and a radius in the theme builder and
+                  paste the CSS after the tokens.
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="bootcn-cta" aria-labelledby="bootcn-cta-title">
+        <div class="bootcn-cta__panel">
+          <h2 class="bootcn-cta__title" id="bootcn-cta-title">
+            Ready to build something people love?
+          </h2>
+          <p class="bootcn-cta__text">
+            Join thousands of teams who launch faster with Acme. Free for your first project.
+          </p>
+          <div class="bootcn-cta__actions">
+            <a class="btn bootcn-button bootcn-button--default bootcn-button--lg" href="#sign-up">
+              Get started
+            </a>
+            <a class="btn bootcn-button bootcn-button--outline bootcn-button--lg" href="#contact">
+              Talk to us
+            </a>
+          </div>
+        </div>
+      </section>
+    </main>
+    <footer class="bootcn-site-footer">
+      <div class="bootcn-site-footer__inner">
+        <div class="bootcn-site-footer__about">
+          <a class="bootcn-site-footer__brand" href="#">
+            <svg
+              class="bootcn-icon"
+              width="16"
+              height="16"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              aria-hidden="true"
+              focusable="false"
+            >
+              <rect x="3" y="3" width="8" height="8" rx="2" />
+              <rect x="13" y="13" width="8" height="8" rx="2" />
+              <path d="M13 7h8M17 3v8M3 17h8" />
+            </svg>
+            Acme
+          </a>
+          <p class="bootcn-site-footer__text">Pages, forms and dashboards your team can edit.</p>
+          <form
+            class="bootcn-site-footer__newsletter"
+            action="#"
+            aria-labelledby="bootcn-site-footer-news"
+          >
+            <p class="bootcn-site-footer__news-title" id="bootcn-site-footer-news">
+              Get product updates
+            </p>
+            <div class="bootcn-site-footer__news-row">
+              <label class="visually-hidden" for="bootcn-site-footer-email">Email address</label>
+              <input
+                class="form-control bootcn-input"
+                type="email"
+                id="bootcn-site-footer-email"
+                name="email"
+                autocomplete="email"
+                placeholder="you@example.com"
+                required
+              />
+              <button type="submit" class="btn bootcn-button bootcn-button--default">
+                Subscribe
+              </button>
+            </div>
+          </form>
+        </div>
+        <nav class="bootcn-site-footer__nav" aria-label="Footer">
+          <div class="bootcn-site-footer__column">
+            <h2 class="bootcn-site-footer__heading">Product</h2>
+            <ul class="bootcn-site-footer__links">
+              <li><a href="#">Features</a></li>
+              <li><a href="#">Pricing</a></li>
+              <li><a href="#">Changelog</a></li>
+              <li><a href="#">Roadmap</a></li>
+            </ul>
+          </div>
+          <div class="bootcn-site-footer__column">
+            <h2 class="bootcn-site-footer__heading">Company</h2>
+            <ul class="bootcn-site-footer__links">
+              <li><a href="#">About</a></li>
+              <li><a href="#">Customers</a></li>
+              <li><a href="#">Careers</a></li>
+              <li><a href="#">Contact</a></li>
+            </ul>
+          </div>
+          <div class="bootcn-site-footer__column">
+            <h2 class="bootcn-site-footer__heading">Resources</h2>
+            <ul class="bootcn-site-footer__links">
+              <li><a href="#">Documentation</a></li>
+              <li><a href="#">Guides</a></li>
+              <li><a href="#">Status</a></li>
+              <li><a href="#">Privacy</a></li>
+            </ul>
+          </div>
+        </nav>
+      </div>
+      <div class="bootcn-site-footer__bottom">
+        <p class="bootcn-site-footer__copyright">© 2026 Acme, Inc. All rights reserved.</p>
+        <ul class="bootcn-site-footer__social">
+          <li>
+            <a href="#" class="bootcn-site-footer__social-link">
+              <svg
+                class="bootcn-icon"
+                width="16"
+                height="16"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+                focusable="false"
+              >
+                <path d="M4 4l16 16M20 4 4 20" />
+              </svg>
+              <span class="visually-hidden">Acme on X</span>
+            </a>
+          </li>
+          <li>
+            <a href="#" class="bootcn-site-footer__social-link">
+              <svg
+                class="bootcn-icon"
+                width="16"
+                height="16"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+                focusable="false"
+              >
+                <path
+                  d="M9 19c-4.3 1.4-4.3-2.5-6-3m12 5v-3.5c0-1 .1-1.4-.5-2 2.8-.3 5.5-1.4 5.5-6a4.6 4.6 0 0 0-1.3-3.2 4.2 4.2 0 0 0-.1-3.2s-1.1-.3-3.5 1.3a12.3 12.3 0 0 0-6.2 0C6.5 2.8 5.4 3.1 5.4 3.1a4.2 4.2 0 0 0-.1 3.2A4.6 4.6 0 0 0 4 9.5c0 4.6 2.7 5.7 5.5 6-.6.6-.6 1.2-.5 2V21"
+                />
+              </svg>
+              <span class="visually-hidden">Acme on GitHub</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </footer>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.9/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-WyOxWvTyr1QaMPfiPJSv76iReVthorl5uWlFtZPyK0IEB0hGzo9y5Bp9mYanr8Bu"
+      crossorigin="anonymous"
+    ></script>
+
+    <script src="{{bootcn:js}}/landing-page.js"></script>
+  </body>
+</html>

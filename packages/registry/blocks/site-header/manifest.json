@@ -1,0 +1,28 @@
+{
+  "$schema": "../../schema/registry-item.schema.json",
+  "name": "site-header",
+  "type": "registry:block",
+  "title": "Site header",
+  "description": "A marketing site header: logo, section links and sign-in buttons, collapsing into a menu on phones; sticky with a blurred background.",
+  "version": "1.0.0",
+  "categories": ["marketing"],
+  "dependencies": [],
+  "registryDependencies": ["button"],
+  "compatibility": {
+    "bootstrap": "5.3",
+    "platform": ["Bootstrap CSS", "Bootstrap JS bundle"]
+  },
+  "license": "MIT",
+  "files": [
+    {
+      "path": "site-header.html",
+      "target": "site-header.html",
+      "type": "registry:component"
+    },
+    {
+      "path": "site-header.css",
+      "target": "site-header.css",
+      "type": "registry:style"
+    }
+  ]
+}
