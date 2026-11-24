@@ -19,7 +19,11 @@
         "components": { "$ref": "#/$defs/safePath" },
         "css": { "$ref": "#/$defs/safePath" },
         "js": { "$ref": "#/$defs/safePath" },
-        "lib": { "$ref": "#/$defs/safePath" }
+        "lib": { "$ref": "#/$defs/safePath" },
+        "pages": {
+          "$ref": "#/$defs/safePath",
+          "description": "Where registry:page files (templates) go. Omit to use the project root."
+        }
       }
     }
   },

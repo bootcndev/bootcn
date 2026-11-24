@@ -63,12 +63,14 @@ function printManualSteps(ctx: Context, config: Config, items: readonly Registry
   const styles: string[] = [];
   const scripts: string[] = [];
   const snippets: string[] = [];
+  const pages: string[] = [];
   for (const item of items) {
     for (const file of item.files) {
       const path = targetPath(config, file);
       if (file.type === 'registry:style') styles.push(path);
       else if (file.type === 'registry:script' || file.type === 'registry:lib') scripts.push(path);
       else if (file.type === 'registry:component') snippets.push(path);
+      else if (file.type === 'registry:page') pages.push(path);
     }
   }
   const needsBootstrapJs = items.some((item) =>
@@ -77,6 +79,11 @@ function printManualSteps(ctx: Context, config: Config, items: readonly Registry
 
   out.info('');
   out.info('Next steps:');
+  if (pages.length > 0) {
+    out.info('  Open the page (it already links its CSS and JavaScript):');
+    for (const path of pages) out.info(`    ${path}`);
+    out.info('  For your other pages:');
+  }
   if (styles.length > 0) {
     out.info('  In <head>, after the Bootstrap CSS link (tokens first):');
     for (const path of styles) out.info(`    <link rel="stylesheet" href="${href(path)}">`);

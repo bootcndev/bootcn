@@ -5,7 +5,7 @@ import { createTwoFilesPatch } from 'diff';
 import { BRAND, EXIT, TOKENS_ITEM } from '../constants.js';
 import { loadConfig } from '../config.js';
 import type { Context } from '../context.js';
-import { targetPath } from '../installer.js';
+import { renderContent, targetPath } from '../installer.js';
 import { resolveInsideRoot } from '../paths.js';
 import { clientFor } from './add.js';
 import { installState } from './list.js';
@@ -49,7 +49,8 @@ export async function diffCommand(ctx: Context, names: readonly string[]): Promi
         continue;
       }
       const installed = await readFile(absPath, 'utf8');
-      if (installed === file.content) {
+      const expected = renderContent(config, file);
+      if (installed === expected) {
         same += 1;
         continue;
       }
@@ -59,7 +60,7 @@ export async function diffCommand(ctx: Context, names: readonly string[]): Promi
           `installed/${relPath}`,
           `registry/${relPath}`,
           installed,
-          file.content,
+          expected,
           'your copy',
           `${item.name}@${item.version ?? 'unversioned'}`,
         ),

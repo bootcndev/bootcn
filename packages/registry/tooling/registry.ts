@@ -39,7 +39,11 @@ export const FILE_TYPE_EXTENSIONS: Record<string, readonly string[]> = {
   'registry:style': ['.css'],
   'registry:script': ['.js'],
   'registry:lib': ['.js'],
+  'registry:page': ['.html', '.php'],
 };
+
+/** Placeholders a registry:page may use; the CLI replaces them on install. */
+export const PAGE_PLACEHOLDERS = ['components', 'css', 'js', 'lib'] as const;
 
 const SEMVER =
   /^(0|[1-9]\d*)\.(0|[1-9]\d*)\.(0|[1-9]\d*)(?:-[0-9A-Za-z-.]+)?(?:\+[0-9A-Za-z-.]+)?$/;
@@ -319,6 +323,21 @@ export async function validateRegistry(registryDir: string): Promise<ValidationR
           const info = await lstat(source).catch(() => null);
           if (!info) errors.push(`${label}: file "${file.path}" does not exist.`);
           else if (!info.isFile()) errors.push(`${label}: "${file.path}" is not a regular file.`);
+          else {
+            const text = await readFile(source, 'utf8');
+            for (const match of text.matchAll(/\{\{\s*bootcn:([^}]*)\}\}/g)) {
+              const key = match[1] ?? '';
+              if (file.type !== 'registry:page') {
+                errors.push(
+                  `${label}: "${file.path}" uses ${match[0]}, but placeholders are only replaced in registry:page files.`,
+                );
+              } else if (!(PAGE_PLACEHOLDERS as readonly string[]).includes(key)) {
+                errors.push(
+                  `${label}: "${file.path}" uses unknown placeholder ${match[0]} (use ${PAGE_PLACEHOLDERS.map((k) => `{{bootcn:${k}}}`).join(', ')}).`,
+                );
+              }
+            }
+          }
         }
       }
 

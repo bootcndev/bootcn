@@ -34,7 +34,29 @@ export interface InstallReport {
 export function targetPath(config: Config, file: { type: string; target: string }): string {
   const key = FILE_TYPE_TO_PATH[file.type];
   if (!key) throw registryError(`Unknown registry file type "${file.type}".`);
-  return posix.join(config.paths[key], file.target);
+  const base = config.paths[key];
+  // Pages without a configured directory go to the project root.
+  return base ? posix.join(base, file.target) : posix.normalize(file.target);
+}
+
+/** `{{bootcn:css}}` and friends, allowed in registry:page files only. */
+const PAGE_PLACEHOLDER = /\{\{bootcn:(components|css|js|lib)\}\}/g;
+
+/**
+ * Content to write for a registry file. Pages reference the project's
+ * directories through placeholders, replaced with paths relative to the
+ * page, so the page works with any bootcn.json paths.
+ */
+export function renderContent(
+  config: Config,
+  file: { type: string; target: string; content: string },
+): string {
+  if (file.type !== 'registry:page') return file.content;
+  const pageDir = posix.dirname(targetPath(config, file));
+  return file.content.replace(PAGE_PLACEHOLDER, (_match, key: keyof Config['paths']) => {
+    const dir = config.paths[key] ?? '.';
+    return posix.relative(pageDir, dir) || '.';
+  });
 }
 
 /** Computes what would be written, without touching the file system. */
@@ -51,9 +73,10 @@ export async function planInstall(
       const relPath = targetPath(config, file);
       const absPath = await resolveInsideRoot(root, relPath);
 
+      const content = renderContent(config, file);
       const previous = byPath.get(relPath);
       if (previous) {
-        if (previous.content !== file.content) {
+        if (previous.content !== content) {
           throw registryError(
             `Items "${previous.item}" and "${item.name}" both install "${relPath}" with different content.`,
           );
@@ -72,7 +95,7 @@ export async function planInstall(
           );
         }
         existing = await readFile(absPath, 'utf8');
-        status = existing === file.content ? 'unchanged' : 'conflict';
+        status = existing === content ? 'unchanged' : 'conflict';
       }
 
       const entry: PlannedFile = {
@@ -80,7 +103,7 @@ export async function planInstall(
         type: file.type,
         relPath,
         absPath,
-        content: file.content,
+        content,
         status,
         existing,
       };

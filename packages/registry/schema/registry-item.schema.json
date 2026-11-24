@@ -132,7 +132,13 @@
     },
     "fileType": {
       "type": "string",
-      "enum": ["registry:component", "registry:style", "registry:script", "registry:lib"]
+      "enum": [
+        "registry:component",
+        "registry:style",
+        "registry:script",
+        "registry:lib",
+        "registry:page"
+      ]
     },
     "safePath": {
       "type": "string",
@@ -150,7 +156,7 @@
         },
         "target": {
           "$ref": "#/$defs/safePath",
-          "description": "Install path, relative to the project directory configured for this file type in bootcn.json (registry:component -> paths.components, registry:style -> paths.css, registry:script -> paths.js, registry:lib -> paths.lib)."
+          "description": "Install path, relative to the project directory configured for this file type in bootcn.json (registry:component -> paths.components, registry:style -> paths.css, registry:script -> paths.js, registry:lib -> paths.lib, registry:page -> paths.pages or the project root). Pages may use {{bootcn:components}}, {{bootcn:css}}, {{bootcn:js}} and {{bootcn:lib}}, replaced on install with the path from the page to that directory."
         },
         "type": {
           "$ref": "#/$defs/fileType"

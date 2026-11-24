@@ -8,20 +8,24 @@ import { formatSchemaErrors, validateConfigSchema } from './schemas.js';
 
 export type PathKey = 'components' | 'css' | 'js' | 'lib';
 
+/** Where `registry:page` files (templates) go. Optional; absent = project root. */
+export type ProjectPaths = Record<PathKey, string> & { pages?: string };
+
 export interface Config {
   $schema?: string;
   registry: string;
   style: string;
   bootstrap: string;
-  paths: Record<PathKey, string>;
+  paths: ProjectPaths;
 }
 
 /** Maps a registry file type to the bootcn.json path key it installs into. */
-export const FILE_TYPE_TO_PATH: Record<string, PathKey> = {
+export const FILE_TYPE_TO_PATH: Record<string, PathKey | 'pages'> = {
   'registry:component': 'components',
   'registry:style': 'css',
   'registry:script': 'js',
   'registry:lib': 'lib',
+  'registry:page': 'pages',
 };
 
 export function configPath(root: string): string {
@@ -59,17 +63,19 @@ export async function loadConfig(root: string): Promise<Config> {
   return parseConfig(parsed);
 }
 
-export function createConfig(
-  registry: string,
-  bootstrap: string,
-  paths: Record<PathKey, string>,
-): Config {
+export function createConfig(registry: string, bootstrap: string, paths: ProjectPaths): Config {
   return {
     $schema: CONFIG_SCHEMA_URL,
     registry,
     style: 'default',
     bootstrap,
-    paths: { components: paths.components, css: paths.css, js: paths.js, lib: paths.lib },
+    paths: {
+      components: paths.components,
+      css: paths.css,
+      js: paths.js,
+      lib: paths.lib,
+      ...(paths.pages ? { pages: paths.pages } : {}),
+    },
   };
 }
 

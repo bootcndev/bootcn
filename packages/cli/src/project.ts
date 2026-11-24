@@ -1,7 +1,7 @@
 import { lstat, readFile, readdir } from 'node:fs/promises';
 import { extname, join } from 'node:path';
 
-import type { PathKey } from './config.js';
+import type { ProjectPaths } from './config.js';
 
 export type ProjectType = 'php' | 'html';
 
@@ -58,14 +58,16 @@ export async function detectProject(root: string): Promise<ProjectInfo> {
   return { type: null, hasPublicDir };
 }
 
-/** Default install paths for a project. */
-export function defaultPaths(type: ProjectType, hasPublicDir: boolean): Record<PathKey, string> {
-  const assets = type === 'php' && hasPublicDir ? 'public/assets' : 'assets';
+/** Default install paths for a project. Pages go to the web root. */
+export function defaultPaths(type: ProjectType, hasPublicDir: boolean): ProjectPaths {
+  const webRoot = type === 'php' && hasPublicDir;
+  const assets = webRoot ? 'public/assets' : 'assets';
   return {
     components: 'components/ui',
     css: `${assets}/css`,
     js: `${assets}/js`,
     lib: `${assets}/js/lib`,
+    ...(webRoot ? { pages: 'public' } : {}),
   };
 }
 

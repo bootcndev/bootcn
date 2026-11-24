@@ -18,13 +18,18 @@ import {
 
 type Json = Record<string, unknown>;
 
-/** Every item in the real registry: component directories plus the tokens theme. */
-const REAL_ITEMS = [
-  ...readdirSync(resolve(REGISTRY_DIR, 'components'), { withFileTypes: true })
-    .filter((entry) => entry.isDirectory())
-    .map((entry) => entry.name),
-  'tokens',
-].sort();
+/** Every item in the real registry: one directory per item in each kind directory. */
+const REAL_ITEMS = ['components', 'blocks', 'templates', 'themes', 'lib']
+  .flatMap((kind) => {
+    try {
+      return readdirSync(resolve(REGISTRY_DIR, kind), { withFileTypes: true })
+        .filter((entry) => entry.isDirectory())
+        .map((entry) => entry.name);
+    } catch {
+      return [];
+    }
+  })
+  .sort();
 
 const tempDirs: string[] = [];
 
@@ -236,6 +241,37 @@ describe('validateRegistry', () => {
       }),
     );
     expect(errors.join('\n')).toMatch(/has type registry:script, which expects .js/);
+  });
+
+  it('accepts page placeholders in a registry:page file', async () => {
+    const errors = await errorsFor({
+      'templates/shell/manifest.json': manifest('shell', {
+        type: 'registry:template',
+        files: [{ path: 'shell.html', target: 'shell.html', type: 'registry:page' }],
+      }),
+      'templates/shell/shell.html':
+        '<link rel="stylesheet" href="{{bootcn:css}}/tokens.css"><script src="{{bootcn:js}}/a.js"></script>\n',
+    });
+    expect(errors).toEqual([]);
+  });
+
+  it('fails on an unknown page placeholder', async () => {
+    const errors = await errorsFor({
+      'templates/shell/manifest.json': manifest('shell', {
+        type: 'registry:template',
+        files: [{ path: 'shell.html', target: 'shell.html', type: 'registry:page' }],
+      }),
+      'templates/shell/shell.html': '<img src="{{bootcn:images}}/a.png" alt="">\n',
+    });
+    expect(errors.join('\n')).toMatch(/unknown placeholder \{\{bootcn:images\}\}/);
+  });
+
+  it('fails on placeholders outside registry:page files', async () => {
+    const files = component('alpha');
+    files['components/alpha/alpha.css'] = '.a { background: url({{bootcn:css}}/x.png); }\n';
+    expect((await errorsFor(files)).join('\n')).toMatch(
+      /placeholders are only replaced in registry:page files/,
+    );
   });
 
   it('fails when the target changes the extension', async () => {

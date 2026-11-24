@@ -75,7 +75,8 @@
             "properties": {
               "type": {
                 "type": "string",
-                "enum": ["registry:component", "registry:style", "registry:script", "registry:lib"]
+                "description": "A registry file type. A pattern, not a list, so clients keep reading indexes that add new file types.",
+                "pattern": "^registry:[a-z]+$"
               },
               "target": {
                 "type": "string",
