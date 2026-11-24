@@ -7,7 +7,7 @@ build with plain HTML and native PHP. Components are installed as editable
 HTML, CSS and JavaScript source files that you own. No React, Vue, jQuery,
 bundler or Node.js is required at runtime.
 
-> **Status:** Milestone 1 is complete for local development. The CLI is not
+> **Status:** 20 components plus design tokens, usable for local development. The CLI is not
 > published to npm and the registry is not hosted yet, so `npx bootcn` does not
 > work yet. Use the local commands below.
 
@@ -20,14 +20,29 @@ bundler or Node.js is required at runtime.
 
 ## What is available
 
-| Item     | Type  | Files         | Requires                  |
-| -------- | ----- | ------------- | ------------------------- |
-| `tokens` | theme | CSS           | Bootstrap CSS             |
-| `badge`  | ui    | HTML, CSS     | Bootstrap CSS             |
-| `button` | ui    | HTML, CSS     | Bootstrap CSS             |
-| `card`   | ui    | HTML, CSS     | Bootstrap CSS             |
-| `input`  | ui    | HTML, CSS     | Bootstrap CSS             |
-| `dialog` | ui    | HTML, CSS, JS | Bootstrap CSS + JS bundle |
+| Item          | Type  | Files         | Requires                  | Depends on |
+| ------------- | ----- | ------------- | ------------------------- | ---------- |
+| `tokens`      | theme | CSS           | Bootstrap CSS             | —          |
+| `accordion`   | ui    | HTML, CSS     | Bootstrap CSS + JS bundle | —          |
+| `avatar`      | ui    | HTML, CSS     | Bootstrap CSS             | —          |
+| `badge`       | ui    | HTML, CSS     | Bootstrap CSS             | —          |
+| `button`      | ui    | HTML, CSS     | Bootstrap CSS             | —          |
+| `card`        | ui    | HTML, CSS     | Bootstrap CSS             | `button`   |
+| `checkbox`    | ui    | HTML, CSS     | Bootstrap CSS             | —          |
+| `dialog`      | ui    | HTML, CSS, JS | Bootstrap CSS + JS bundle | `button`   |
+| `dropdown`    | ui    | HTML, CSS     | Bootstrap CSS + JS bundle | `button`   |
+| `input`       | ui    | HTML, CSS     | Bootstrap CSS             | —          |
+| `popover`     | ui    | HTML, CSS, JS | Bootstrap CSS + JS bundle | `button`   |
+| `radio-group` | ui    | HTML, CSS     | Bootstrap CSS             | —          |
+| `select`      | ui    | HTML, CSS     | Bootstrap CSS             | `input`    |
+| `separator`   | ui    | HTML, CSS     | Bootstrap CSS             | —          |
+| `skeleton`    | ui    | HTML, CSS     | Bootstrap CSS             | —          |
+| `spinner`     | ui    | HTML, CSS     | Bootstrap CSS             | —          |
+| `switch`      | ui    | HTML, CSS     | Bootstrap CSS             | —          |
+| `tabs`        | ui    | HTML, CSS     | Bootstrap CSS + JS bundle | —          |
+| `textarea`    | ui    | HTML, CSS     | Bootstrap CSS             | `input`    |
+| `toast`       | ui    | HTML, CSS, JS | Bootstrap CSS + JS bundle | `button`   |
+| `tooltip`     | ui    | HTML, CSS, JS | Bootstrap CSS + JS bundle | `button`   |
 
 Each component lives in `packages/registry/components/<name>/` with a
 `README.md` (usage, accessibility, API) and a `preview.html` you can open
@@ -125,6 +140,7 @@ packages/
 examples/
   plain-html/          Static page fixture
   native-php/          PHP fixture (header/footer includes)
+  vite/                Vite fixture (bundles the installed CSS/JS)
 scripts/               registry:validate and registry:build entry points
 tests/
   components/          Playwright + axe tests for every preview
@@ -145,9 +161,12 @@ contents inlined), which the CLI reads. Previews load the same source files.
   only; installed versions are not recorded.
 - Plain HTML projects must copy the markup from `components/ui/*.html` into
   their pages by hand (PHP can `include` it).
-- Browser tests run on Chromium only; Firefox, Safari and Edge are untested.
-- Dark mode is checked by axe on the previews' dark sections, not by visual
-  regression tests.
+- CI runs the browser tests on Chromium, Firefox and WebKit; locally only
+  Chromium runs unless `PW_ALL_BROWSERS=1` (after `pnpm exec playwright install`).
+  Edge is covered through Chromium only.
+- Dark mode and contrast are checked by axe on every preview (whole page in
+  dark mode), not by visual regression tests.
+- No searchable multi-select, date picker, data table or command palette yet.
 
 ## License
 
