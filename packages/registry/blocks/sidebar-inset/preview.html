@@ -1,0 +1,230 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Bootcn Inset sidebar preview</title>
+    <script>
+      // Preview theme: ?theme=dark|light, else the docs page around the frame, else light.
+      (function () {
+        var theme = new URLSearchParams(location.search).get('theme');
+        if (!theme) {
+          try {
+            theme =
+              window.parent !== window &&
+              window.parent.document.documentElement.classList.contains('dark')
+                ? 'dark'
+                : 'light';
+          } catch (error) {
+            theme = 'light';
+          }
+        }
+        document.documentElement.setAttribute('data-bs-theme', theme === 'dark' ? 'dark' : 'light');
+      })();
+    </script>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.9/dist/css/bootstrap.min.css"
+    />
+    <link rel="stylesheet" href="../../themes/tokens/tokens.css" />
+    <link rel="stylesheet" href="../../components/avatar/avatar.css" />
+    <link rel="stylesheet" href="../../components/sidebar/sidebar.css" />
+    <link rel="stylesheet" href="sidebar-inset.css" />
+  </head>
+  <body>
+    <div class="bootcn-sidenav-layout bootcn-sidenav-layout--inset" data-bootcn-sidenav-layout>
+      <aside
+        class="offcanvas-lg offcanvas-start bootcn-sidenav"
+        id="bootcn-sidenav-inset"
+        tabindex="-1"
+        aria-label="Sidebar"
+      >
+        <div class="bootcn-sidenav__header">
+          <svg
+            class="bootcn-icon bootcn-sidenav__logo"
+            width="16"
+            height="16"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            aria-hidden="true"
+            focusable="false"
+          >
+            <rect x="3" y="3" width="8" height="8" rx="2" />
+            <rect x="13" y="13" width="8" height="8" rx="2" />
+            <path d="M13 7h8M17 3v8M3 17h8" />
+          </svg>
+          <span class="bootcn-sidenav__label bootcn-sidenav__brand">Acme Inc.</span>
+        </div>
+        <nav class="bootcn-sidenav__nav" aria-label="Main">
+          <ul class="bootcn-sidenav__list">
+            <li>
+              <a class="bootcn-sidenav__link" href="#" aria-current="page" title="Dashboard">
+                <svg
+                  class="bootcn-icon"
+                  width="16"
+                  height="16"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  aria-hidden="true"
+                  focusable="false"
+                >
+                  <path d="M3 11l9-8 9 8" />
+                  <path d="M5 10v10h14V10" />
+                </svg>
+                <span class="bootcn-sidenav__label">Dashboard</span>
+              </a>
+            </li>
+            <li>
+              <a class="bootcn-sidenav__link" href="#" title="Inbox">
+                <svg
+                  class="bootcn-icon"
+                  width="16"
+                  height="16"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  aria-hidden="true"
+                  focusable="false"
+                >
+                  <path d="M3 13h5l2 3h4l2-3h5" />
+                  <path d="M5 5h14l2 8v6H3v-6z" />
+                </svg>
+                <span class="bootcn-sidenav__label">Inbox</span>
+              </a>
+            </li>
+            <li>
+              <a class="bootcn-sidenav__link" href="#" title="Reports">
+                <svg
+                  class="bootcn-icon"
+                  width="16"
+                  height="16"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  aria-hidden="true"
+                  focusable="false"
+                >
+                  <path d="M4 20V10" />
+                  <path d="M10 20V4" />
+                  <path d="M16 20v-7" />
+                  <path d="M2 20h20" />
+                </svg>
+                <span class="bootcn-sidenav__label">Reports</span>
+              </a>
+            </li>
+            <li>
+              <a class="bootcn-sidenav__link" href="#" title="Team">
+                <svg
+                  class="bootcn-icon"
+                  width="16"
+                  height="16"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  aria-hidden="true"
+                  focusable="false"
+                >
+                  <circle cx="9" cy="8" r="4" />
+                  <path d="M2 21c0-4 3-7 7-7s7 3 7 7" />
+                  <path d="M17 4a4 4 0 0 1 0 8" />
+                  <path d="M22 21c0-3-2-6-5-7" />
+                </svg>
+                <span class="bootcn-sidenav__label">Team</span>
+              </a>
+            </li>
+            <li>
+              <a class="bootcn-sidenav__link" href="#" title="Settings">
+                <svg
+                  class="bootcn-icon"
+                  width="16"
+                  height="16"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  aria-hidden="true"
+                  focusable="false"
+                >
+                  <path d="M4 6h9" />
+                  <path d="M19 6h1" />
+                  <circle cx="16" cy="6" r="2" />
+                  <path d="M4 18h3" />
+                  <path d="M13 18h7" />
+                  <circle cx="10" cy="18" r="2" />
+                  <path d="M4 12h1" />
+                  <path d="M11 12h9" />
+                  <circle cx="8" cy="12" r="2" />
+                </svg>
+                <span class="bootcn-sidenav__label">Settings</span>
+              </a>
+            </li>
+          </ul>
+        </nav>
+        <div class="bootcn-sidenav__footer">
+          <span class="bootcn-avatar bootcn-avatar--sm" aria-hidden="true"
+            ><span class="bootcn-avatar__fallback">MP</span></span
+          >
+          <span class="bootcn-sidenav__label">Maria Papadopoulou</span>
+        </div>
+      </aside>
+      <div class="bootcn-sidenav-layout__main">
+        <header class="bootcn-sidenav-layout__header">
+          <button
+            type="button"
+            class="bootcn-sidenav__toggle"
+            data-bootcn-sidenav-toggle
+            aria-controls="bootcn-sidenav-inset"
+            aria-expanded="true"
+          >
+            <svg
+              class="bootcn-icon"
+              width="16"
+              height="16"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              aria-hidden="true"
+              focusable="false"
+            >
+              <rect x="3" y="3" width="18" height="18" rx="2" />
+              <path d="M9 3v18" />
+            </svg>
+            <span class="visually-hidden">Toggle sidebar</span>
+          </button>
+          <span class="bootcn-sidenav-layout__title">Dashboard</span>
+        </header>
+        <main class="bootcn-sidenav-layout__content">
+          <h1 class="h4">Dashboard</h1>
+          <p class="text-body-secondary">
+            Collapse the sidebar with the button or Ctrl+B (⌘B); on small screens it opens as a
+            drawer.
+          </p>
+        </main>
+      </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.9/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../../components/sidebar/sidebar.js"></script>
+  </body>
+</html>

@@ -236,16 +236,21 @@ test('every internal link resolves', async ({ page, request }) => {
   expect(seen.size).toBeGreaterThan(components.length);
 });
 
-test('blocks overview lists every block', async ({ page }) => {
+test('blocks page: a live gallery with one tab per category', async ({ page }) => {
   await page.goto('blocks/');
-  for (const item of blocks) {
-    // Each card is a link whose title is the item name.
-    await expect(
-      page.locator('.bootcn-grid a').filter({
-        has: page.locator('strong').getByText(item.title, { exact: true }),
-      }),
-    ).toBeVisible();
-  }
+  const tabs = page.getByRole('tablist', { name: 'Block categories' }).getByRole('tab');
+  await expect(tabs.first()).toHaveText('Authentication');
+  await expect(page.locator('.bootcn-block-gallery__item')).toHaveCount(blocks.length);
+  await expect(page.getByRole('heading', { name: 'Login card', exact: true })).toBeVisible();
+
+  await page.getByRole('tab', { name: 'Charts' }).click();
+  const area = page.locator('.bootcn-block-gallery__item', { hasText: 'Area chart' });
+  await expect(area).toBeVisible();
+  await expect(area.getByRole('link', { name: 'Code and install' })).toHaveAttribute(
+    'href',
+    /chart-area/,
+  );
+  await expect(page.getByRole('heading', { name: 'Login card', exact: true })).toBeHidden();
 });
 
 test('search finds a block', async ({ page }) => {
@@ -305,6 +310,7 @@ for (const item of templates) {
     }
 
     test('the sidebar is a drawer on phones and closes with Escape', async ({ page }) => {
+      test.skip(item.name !== 'admin-dashboard', 'admin dashboard markup (app-sidebar block)');
       await page.setViewportSize({ width: 375, height: 800 });
       await page.goto(pageUrl);
       // Bootstrap turns the <aside> into a dialog while it is a drawer.
@@ -379,5 +385,31 @@ test('charts page shows every chart block live', async ({ page }) => {
     'href',
     /blocks\/chart-area/,
   );
+  expect(errors).toEqual([]);
+});
+
+test('analytics dashboard: collapsible sidebar, date picker, charts and table', async ({
+  page,
+}) => {
+  const errors = collectErrors(page);
+  await page.setViewportSize({ width: 1280, height: 900 });
+  await page.clock.setFixedTime(new Date('2026-11-24T10:00:00'));
+  await page.goto('previews/templates/analytics-dashboard/analytics-dashboard.html');
+  await expect(page.getByRole('heading', { level: 1, name: 'Analytics' })).toBeVisible();
+  await expect(page.locator('svg.bootcn-chart__svg')).toHaveCount(4);
+
+  const layout = page.locator('[data-bootcn-sidenav-layout]');
+  await page.keyboard.press('Control+b');
+  await expect(layout).toHaveClass(/is-collapsed/);
+  await page.keyboard.press('Control+b');
+  await expect(layout).not.toHaveClass(/is-collapsed/);
+
+  await page.getByRole('button', { name: 'Report date Pick a date' }).click();
+  await expect(page.getByRole('dialog', { name: 'Choose the report date' })).toBeVisible();
+  await page.keyboard.press('Enter');
+  await expect(page.getByRole('button', { name: 'Report date November 24, 2026' })).toBeFocused();
+
+  await page.getByRole('searchbox', { name: 'Filter payments' }).fill('failed');
+  await expect(page.locator('[data-bootcn-data-table-status]')).toHaveText('Showing 1–3 of 3');
   expect(errors).toEqual([]);
 });

@@ -1,0 +1,28 @@
+{
+  "$schema": "../../schema/registry-item.schema.json",
+  "name": "login-otp",
+  "type": "registry:block",
+  "title": "Verify with a code",
+  "description": "A second-step card that asks for the six-digit code sent by SMS or email, with resend.",
+  "version": "1.0.0",
+  "categories": ["authentication"],
+  "dependencies": [],
+  "registryDependencies": ["card", "input-otp", "button", "label"],
+  "compatibility": {
+    "bootstrap": "5.3",
+    "platform": ["Bootstrap CSS"]
+  },
+  "license": "MIT",
+  "files": [
+    {
+      "path": "login-otp.html",
+      "target": "login-otp.html",
+      "type": "registry:component"
+    },
+    {
+      "path": "login-otp.css",
+      "target": "login-otp.css",
+      "type": "registry:style"
+    }
+  ]
+}

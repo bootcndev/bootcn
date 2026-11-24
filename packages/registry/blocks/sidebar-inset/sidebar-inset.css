@@ -1,0 +1,24 @@
+/* The page sits on the sidebar's background; the main column is a panel. */
+.bootcn-sidenav-layout--inset {
+  background-color: var(--bs-tertiary-bg);
+}
+
+@media (min-width: 992px) {
+  .bootcn-sidenav-layout--inset .bootcn-sidenav {
+    border-right: 0;
+    background-color: transparent;
+  }
+
+  .bootcn-sidenav-layout--inset .bootcn-sidenav-layout__main {
+    margin: 0.5rem 0.5rem 0.5rem 0;
+    overflow: hidden;
+    border: var(--bootcn-border-width) solid var(--bootcn-border-color);
+    border-radius: var(--bootcn-radius-xl);
+    background-color: var(--bootcn-background);
+    box-shadow: var(--bootcn-shadow-sm);
+  }
+}
+
+.bootcn-sidenav-layout--inset .bootcn-sidenav-layout__main {
+  background-color: var(--bootcn-background);
+}

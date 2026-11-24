@@ -1,0 +1,28 @@
+{
+  "$schema": "../../schema/registry-item.schema.json",
+  "name": "sidebar-inset",
+  "type": "registry:block",
+  "title": "Inset sidebar",
+  "description": "The collapsible Sidebar with the page content raised in a rounded panel beside it.",
+  "version": "1.0.0",
+  "categories": ["navigation"],
+  "dependencies": [],
+  "registryDependencies": ["sidebar"],
+  "compatibility": {
+    "bootstrap": "5.3",
+    "platform": ["Bootstrap CSS", "Bootstrap JS bundle"]
+  },
+  "license": "MIT",
+  "files": [
+    {
+      "path": "sidebar-inset.html",
+      "target": "sidebar-inset.html",
+      "type": "registry:component"
+    },
+    {
+      "path": "sidebar-inset.css",
+      "target": "sidebar-inset.css",
+      "type": "registry:style"
+    }
+  ]
+}

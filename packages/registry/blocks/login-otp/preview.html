@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Bootcn Verify with a code preview</title>
+    <script>
+      // Preview theme: ?theme=dark|light, else the docs page around the frame, else light.
+      (function () {
+        var theme = new URLSearchParams(location.search).get('theme');
+        if (!theme) {
+          try {
+            theme =
+              window.parent !== window &&
+              window.parent.document.documentElement.classList.contains('dark')
+                ? 'dark'
+                : 'light';
+          } catch (error) {
+            theme = 'light';
+          }
+        }
+        document.documentElement.setAttribute('data-bs-theme', theme === 'dark' ? 'dark' : 'light');
+      })();
+    </script>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.9/dist/css/bootstrap.min.css"
+    />
+    <link rel="stylesheet" href="../../themes/tokens/tokens.css" />
+    <link rel="stylesheet" href="../../components/button/button.css" />
+    <link rel="stylesheet" href="../../components/card/card.css" />
+    <link rel="stylesheet" href="../../components/input/input.css" />
+    <link rel="stylesheet" href="../../components/label/label.css" />
+    <link rel="stylesheet" href="../../components/input-otp/input-otp.css" />
+    <link rel="stylesheet" href="login-otp.css" />
+  </head>
+  <body>
+    <main class="container py-4">
+      <h1 class="h4 mb-4">Verify with a code</h1>
+      <section class="bootcn-login-otp" aria-labelledby="bootcn-login-otp-title">
+        <div class="card bootcn-card">
+          <header class="bootcn-card__header bootcn-login-otp__header">
+            <h2 class="bootcn-card__title" id="bootcn-login-otp-title">Enter verification code</h2>
+            <p class="bootcn-card__description">
+              We sent a 6-digit code to your phone ending in 214.
+            </p>
+          </header>
+          <form class="bootcn-card__content bootcn-login-otp__form" action="#" method="post">
+            <div class="bootcn-field bootcn-login-otp__field">
+              <label class="bootcn-label" for="bootcn-login-otp-code">Verification code</label>
+              <div class="bootcn-otp" data-bootcn-otp>
+                <input
+                  class="bootcn-otp__input"
+                  id="bootcn-login-otp-code"
+                  name="code"
+                  type="text"
+                  inputmode="numeric"
+                  autocomplete="one-time-code"
+                  pattern="[0-9]*"
+                  maxlength="6"
+                  required
+                />
+                <div class="bootcn-otp__slots" aria-hidden="true">
+                  <div class="bootcn-otp__group">
+                    <span class="bootcn-otp__slot"></span>
+                    <span class="bootcn-otp__slot"></span>
+                    <span class="bootcn-otp__slot"></span>
+                  </div>
+                  <span class="bootcn-otp__separator">–</span>
+                  <div class="bootcn-otp__group">
+                    <span class="bootcn-otp__slot"></span>
+                    <span class="bootcn-otp__slot"></span>
+                    <span class="bootcn-otp__slot"></span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <button type="submit" class="btn bootcn-button bootcn-button--default w-100">
+              Verify
+            </button>
+            <p class="bootcn-login-otp__resend">
+              Didn’t get it?
+              <button type="button" class="btn bootcn-button bootcn-button--link bootcn-button--sm">
+                Send a new code
+              </button>
+            </p>
+          </form>
+        </div>
+      </section>
+    </main>
+    <script src="../../components/input-otp/input-otp.js"></script>
+  </body>
+</html>

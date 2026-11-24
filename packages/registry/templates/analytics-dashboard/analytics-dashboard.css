@@ -1,0 +1,85 @@
+/*
+ * Analytics dashboard layout. The Sidebar component provides the shell
+ * (collapsible on desktop, a drawer on phones); blocks bring their own CSS.
+ */
+.bootcn-analytics__skip {
+  position: absolute;
+  z-index: 1080;
+  top: 0.5rem;
+  left: 0.5rem;
+  padding: 0.5rem 0.75rem;
+  border-radius: var(--bootcn-radius);
+  background-color: var(--bootcn-background);
+  box-shadow: var(--bootcn-focus-ring);
+}
+
+.bootcn-analytics__header {
+  position: sticky;
+  z-index: 1020;
+  top: 0;
+  background-color: var(--bootcn-background);
+}
+
+.bootcn-analytics__divider {
+  width: 1px;
+  height: 1rem;
+  background-color: var(--bootcn-border-color);
+}
+
+.bootcn-analytics__theme {
+  margin-left: auto;
+}
+
+[data-bs-theme='dark'] .bootcn-analytics__when-light,
+[data-bs-theme='light'] .bootcn-analytics__when-dark {
+  display: none;
+}
+
+.bootcn-analytics {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  padding: 1.5rem 1rem 3rem;
+  outline: 0;
+}
+
+@media (min-width: 768px) {
+  .bootcn-analytics {
+    padding-inline: 2rem;
+  }
+}
+
+.bootcn-analytics__titlebar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.bootcn-analytics__title {
+  margin: 0;
+  font-size: 1.75rem;
+  font-weight: 700;
+  letter-spacing: -0.025em;
+}
+
+.bootcn-analytics__lead {
+  margin: 0.25rem 0 0;
+  color: var(--bootcn-muted-foreground);
+}
+
+.bootcn-analytics__grid {
+  display: grid;
+  gap: 1.5rem;
+}
+
+@media (min-width: 1200px) {
+  .bootcn-analytics__grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .bootcn-analytics__grid--wide {
+    grid-template-columns: minmax(0, 2fr) minmax(0, 1fr);
+  }
+}

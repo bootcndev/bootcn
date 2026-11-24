@@ -1,0 +1,28 @@
+{
+  "$schema": "../../schema/registry-item.schema.json",
+  "name": "login-sso",
+  "type": "registry:block",
+  "title": "Login with SSO",
+  "description": "A sign-in card offering single sign-on and an email link first, then email and password.",
+  "version": "1.0.0",
+  "categories": ["authentication"],
+  "dependencies": [],
+  "registryDependencies": ["card", "input", "button", "separator"],
+  "compatibility": {
+    "bootstrap": "5.3",
+    "platform": ["Bootstrap CSS"]
+  },
+  "license": "MIT",
+  "files": [
+    {
+      "path": "login-sso.html",
+      "target": "login-sso.html",
+      "type": "registry:component"
+    },
+    {
+      "path": "login-sso.css",
+      "target": "login-sso.css",
+      "type": "registry:style"
+    }
+  ]
+}

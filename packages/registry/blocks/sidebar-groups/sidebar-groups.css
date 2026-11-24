@@ -1,0 +1,186 @@
+.bootcn-sidebar-groups-layout {
+  min-height: 36rem;
+}
+
+@media (min-width: 992px) {
+  .bootcn-sidebar-groups-layout {
+    display: flex;
+  }
+}
+
+.bootcn-sidebar-groups-layout__main {
+  flex: 1 1 auto;
+  min-width: 0;
+  padding: 1.5rem;
+}
+
+.bootcn-sidebar-groups {
+  --bs-offcanvas-width: 17rem;
+  --bs-offcanvas-bg: var(--bs-tertiary-bg);
+}
+
+@media (min-width: 992px) {
+  .bootcn-sidebar-groups {
+    flex: 0 0 17rem;
+    width: 17rem;
+    border-right: var(--bootcn-border-width) solid var(--bootcn-border-color);
+    background-color: var(--bs-tertiary-bg);
+  }
+}
+
+.bootcn-sidebar-groups__body {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  height: 100%;
+  padding: 0.75rem;
+}
+
+.bootcn-sidebar-groups__team {
+  display: flex;
+  align-items: center;
+  gap: 0.625rem;
+  width: 100%;
+  padding: 0.375rem;
+  border: 0;
+  border-radius: var(--bootcn-radius);
+  background: transparent;
+  color: var(--bootcn-foreground);
+  text-align: left;
+}
+
+.bootcn-sidebar-groups__team:hover,
+.bootcn-sidebar-groups__team[aria-expanded='true'] {
+  background-color: var(--bootcn-accent);
+}
+
+.bootcn-sidebar-groups__team:focus-visible {
+  outline: 0;
+  box-shadow: var(--bootcn-focus-ring);
+}
+
+.bootcn-sidebar-groups__team-logo {
+  display: inline-flex;
+  flex: none;
+  align-items: center;
+  justify-content: center;
+  width: 2rem;
+  height: 2rem;
+  border-radius: var(--bootcn-radius);
+  background-color: var(--bootcn-primary);
+  color: var(--bootcn-primary-foreground);
+}
+
+.bootcn-sidebar-groups__team-text {
+  display: flex;
+  flex: 1 1 auto;
+  flex-direction: column;
+  min-width: 0;
+  line-height: 1.25;
+}
+
+.bootcn-sidebar-groups__team-name {
+  font-size: 0.875rem;
+  font-weight: 600;
+}
+
+.bootcn-sidebar-groups__team-plan {
+  color: var(--bootcn-muted-foreground);
+  font-size: 0.75rem;
+}
+
+.bootcn-sidebar-groups__team-chevron {
+  color: var(--bootcn-muted-foreground);
+}
+
+.bootcn-sidebar-groups__search .bootcn-input {
+  min-height: var(--bootcn-control-height-sm);
+  background-color: var(--bootcn-background);
+}
+
+.bootcn-sidebar-groups__nav {
+  flex: 1 1 auto;
+}
+
+.bootcn-sidebar-groups__heading {
+  margin: 0.75rem 0 0.25rem;
+  padding: 0 0.5rem;
+  color: var(--bootcn-muted-foreground);
+  font-size: 0.75rem;
+  font-weight: 500;
+}
+
+.bootcn-sidebar-groups__list,
+.bootcn-sidebar-groups__sub {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.bootcn-sidebar-groups__toggle,
+.bootcn-sidebar-groups__link {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  width: 100%;
+  padding: 0.375rem 0.5rem;
+  border: 0;
+  border-radius: var(--bootcn-radius);
+  background: transparent;
+  color: var(--bootcn-foreground);
+  font-size: 0.875rem;
+  text-align: left;
+  text-decoration: none;
+}
+
+.bootcn-sidebar-groups__toggle:hover,
+.bootcn-sidebar-groups__link:hover {
+  background-color: var(--bootcn-accent);
+}
+
+.bootcn-sidebar-groups__toggle:focus-visible,
+.bootcn-sidebar-groups__link:focus-visible,
+.bootcn-sidebar-groups__sublink:focus-visible {
+  outline: 0;
+  box-shadow: var(--bootcn-focus-ring);
+}
+
+.bootcn-sidebar-groups__chevron {
+  margin-left: auto;
+  color: var(--bootcn-muted-foreground);
+  transition: transform var(--bootcn-transition);
+}
+
+.bootcn-sidebar-groups__toggle[aria-expanded='true'] .bootcn-sidebar-groups__chevron {
+  transform: rotate(90deg);
+}
+
+.bootcn-sidebar-groups__sub {
+  margin: 0.125rem 0 0.25rem 1.125rem;
+  padding-left: 0.625rem;
+  border-left: var(--bootcn-border-width) solid var(--bootcn-border-color);
+}
+
+.bootcn-sidebar-groups__sublink {
+  display: block;
+  padding: 0.3125rem 0.5rem;
+  border-radius: var(--bootcn-radius);
+  color: var(--bootcn-muted-foreground);
+  font-size: 0.875rem;
+  text-decoration: none;
+}
+
+.bootcn-sidebar-groups__sublink:hover,
+.bootcn-sidebar-groups__sublink[aria-current='page'] {
+  background-color: var(--bootcn-accent);
+  color: var(--bootcn-foreground);
+}
+
+.bootcn-sidebar-groups__footer .bootcn-user-menu__trigger {
+  width: 100%;
+  border-radius: var(--bootcn-radius);
+}
+
+.bootcn-sidebar-groups__footer .bootcn-user-menu__chevron {
+  margin-left: auto;
+}

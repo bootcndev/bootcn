@@ -620,6 +620,43 @@
   line-height: 1.5rem;
 }
 
+/* Blocks page: one live preview per block, by category. */
+.bootcn-block-gallery {
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+  margin-top: 1rem;
+}
+
+.bootcn-block-gallery__head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 0.5rem 1rem;
+  margin-bottom: 0.75rem;
+}
+
+.vp-doc .bootcn-block-gallery__title {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 1.125rem;
+  font-weight: 600;
+}
+
+.vp-doc .bootcn-block-gallery__text {
+  margin: 0.25rem 0 0;
+  color: var(--vp-c-text-2);
+  font-size: 0.875rem;
+  line-height: 1.5;
+}
+
+.vp-doc .bootcn-block-gallery__link {
+  font-size: 0.875rem;
+  white-space: nowrap;
+}
+
 /* Charts page: a gallery of live chart cards. */
 .bootcn-chart-gallery {
   display: grid;

@@ -1,0 +1,44 @@
+{
+  "$schema": "../../schema/registry-item.schema.json",
+  "name": "analytics-dashboard",
+  "type": "registry:template",
+  "title": "Analytics dashboard",
+  "description": "An analytics page with the collapsible sidebar, a report date picker, metric cards, four charts and a sortable, filterable payments table.",
+  "version": "1.0.0",
+  "categories": ["dashboard"],
+  "dependencies": [],
+  "registryDependencies": [
+    "sidebar",
+    "breadcrumb",
+    "date-picker",
+    "stats-cards",
+    "chart-area",
+    "chart-pie",
+    "chart-bar",
+    "chart-radial",
+    "data-table",
+    "button"
+  ],
+  "compatibility": {
+    "bootstrap": "5.3",
+    "platform": ["Bootstrap CSS", "Bootstrap JS bundle"]
+  },
+  "license": "MIT",
+  "files": [
+    {
+      "path": "analytics-dashboard.html",
+      "target": "analytics-dashboard.html",
+      "type": "registry:page"
+    },
+    {
+      "path": "analytics-dashboard.css",
+      "target": "analytics-dashboard.css",
+      "type": "registry:style"
+    },
+    {
+      "path": "analytics-dashboard.js",
+      "target": "analytics-dashboard.js",
+      "type": "registry:script"
+    }
+  ]
+}

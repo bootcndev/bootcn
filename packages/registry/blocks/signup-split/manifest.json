@@ -1,0 +1,28 @@
+{
+  "$schema": "../../schema/registry-item.schema.json",
+  "name": "signup-split",
+  "type": "registry:block",
+  "title": "Sign-up split screen",
+  "description": "A two-column sign-up page: what you get on one side, the registration form on the other.",
+  "version": "1.0.0",
+  "categories": ["authentication"],
+  "dependencies": [],
+  "registryDependencies": ["input", "checkbox", "button"],
+  "compatibility": {
+    "bootstrap": "5.3",
+    "platform": ["Bootstrap CSS"]
+  },
+  "license": "MIT",
+  "files": [
+    {
+      "path": "signup-split.html",
+      "target": "signup-split.html",
+      "type": "registry:component"
+    },
+    {
+      "path": "signup-split.css",
+      "target": "signup-split.css",
+      "type": "registry:style"
+    }
+  ]
+}

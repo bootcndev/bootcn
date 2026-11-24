@@ -1,0 +1,391 @@
+<div class="bootcn-sidebar-groups-layout">
+  <header class="d-lg-none border-bottom p-2">
+    <button
+      class="btn bootcn-button bootcn-button--outline bootcn-button--sm"
+      type="button"
+      data-bs-toggle="offcanvas"
+      data-bs-target="#bootcn-sidebar-groups"
+      aria-controls="bootcn-sidebar-groups"
+    >
+      Menu
+    </button>
+  </header>
+  <aside
+    class="offcanvas-lg offcanvas-start bootcn-sidebar-groups"
+    id="bootcn-sidebar-groups"
+    tabindex="-1"
+    aria-label="Sidebar"
+  >
+    <div class="offcanvas-header d-lg-none">
+      <button
+        type="button"
+        class="btn-close ms-auto"
+        data-bs-dismiss="offcanvas"
+        data-bs-target="#bootcn-sidebar-groups"
+        aria-label="Close menu"
+      ></button>
+    </div>
+    <div class="bootcn-sidebar-groups__body">
+      <div class="dropdown bootcn-dropdown">
+        <button
+          class="bootcn-sidebar-groups__team"
+          type="button"
+          id="bootcn-sidebar-groups-team"
+          data-bs-toggle="dropdown"
+          aria-expanded="false"
+        >
+          <span class="bootcn-sidebar-groups__team-logo" aria-hidden="true"
+            ><svg
+              class="bootcn-icon"
+              width="16"
+              height="16"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              aria-hidden="true"
+              focusable="false"
+            >
+              <path d="M21 8 12 3 3 8v8l9 5 9-5z" />
+              <path d="m3 8 9 5 9-5M12 13v8" /></svg
+          ></span>
+          <span class="bootcn-sidebar-groups__team-text">
+            <span class="bootcn-sidebar-groups__team-name">Acme Inc.</span>
+            <span class="bootcn-sidebar-groups__team-plan">Enterprise</span>
+          </span>
+          <svg
+            class="bootcn-icon bootcn-sidebar-groups__team-chevron"
+            width="16"
+            height="16"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            aria-hidden="true"
+            focusable="false"
+          >
+            <path d="m7 15 5 5 5-5" />
+            <path d="m7 9 5-5 5 5" />
+          </svg>
+        </button>
+        <ul
+          class="dropdown-menu bootcn-dropdown__menu"
+          aria-labelledby="bootcn-sidebar-groups-team"
+        >
+          <li><span class="dropdown-header bootcn-dropdown__label">Teams</span></li>
+          <li>
+            <button class="dropdown-item bootcn-dropdown__item" type="button">Acme Inc.</button>
+          </li>
+          <li>
+            <button class="dropdown-item bootcn-dropdown__item" type="button">Acme Labs</button>
+          </li>
+          <li>
+            <button class="dropdown-item bootcn-dropdown__item" type="button">Evil Corp.</button>
+          </li>
+          <li><hr class="dropdown-divider bootcn-dropdown__divider" /></li>
+          <li>
+            <button class="dropdown-item bootcn-dropdown__item" type="button">Add team</button>
+          </li>
+        </ul>
+      </div>
+      <form class="bootcn-sidebar-groups__search" role="search" aria-label="Sidebar" action="#">
+        <label class="visually-hidden" for="bootcn-sidebar-groups-search">Search</label>
+        <input
+          class="form-control bootcn-input"
+          type="search"
+          id="bootcn-sidebar-groups-search"
+          name="q"
+          placeholder="Search…"
+        />
+        <button type="submit" class="visually-hidden">Search</button>
+      </form>
+      <nav class="bootcn-sidebar-groups__nav" aria-label="Main">
+        <p class="bootcn-sidebar-groups__heading" id="bootcn-sidebar-groups-platform">Platform</p>
+        <ul class="bootcn-sidebar-groups__list" aria-labelledby="bootcn-sidebar-groups-platform">
+          <li>
+            <button
+              class="bootcn-sidebar-groups__toggle"
+              type="button"
+              data-bs-toggle="collapse"
+              data-bs-target="#bootcn-sidebar-groups-playground"
+              aria-expanded="true"
+              aria-controls="bootcn-sidebar-groups-playground"
+            >
+              <svg
+                class="bootcn-icon"
+                width="16"
+                height="16"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+                focusable="false"
+              >
+                <path d="m4 17 6-6-6-6" />
+                <path d="M12 19h8" />
+              </svg>
+              <span>Playground</span>
+              <svg
+                class="bootcn-icon bootcn-sidebar-groups__chevron"
+                width="16"
+                height="16"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+                focusable="false"
+              >
+                <path d="m9 18 6-6-6-6" />
+              </svg>
+            </button>
+            <ul
+              class="collapse show bootcn-sidebar-groups__sub"
+              id="bootcn-sidebar-groups-playground"
+            >
+              <li>
+                <a class="bootcn-sidebar-groups__sublink" href="#" aria-current="page">History</a>
+              </li>
+              <li><a class="bootcn-sidebar-groups__sublink" href="#">Starred</a></li>
+              <li><a class="bootcn-sidebar-groups__sublink" href="#">Settings</a></li>
+            </ul>
+          </li>
+          <li>
+            <button
+              class="bootcn-sidebar-groups__toggle"
+              type="button"
+              data-bs-toggle="collapse"
+              data-bs-target="#bootcn-sidebar-groups-models"
+              aria-expanded="false"
+              aria-controls="bootcn-sidebar-groups-models"
+            >
+              <svg
+                class="bootcn-icon"
+                width="16"
+                height="16"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+                focusable="false"
+              >
+                <rect x="4" y="8" width="16" height="12" rx="2" />
+                <path d="M12 8V4" />
+                <path d="M9 14h.01M15 14h.01" />
+              </svg>
+              <span>Models</span>
+              <svg
+                class="bootcn-icon bootcn-sidebar-groups__chevron"
+                width="16"
+                height="16"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+                focusable="false"
+              >
+                <path d="m9 18 6-6-6-6" />
+              </svg>
+            </button>
+            <ul class="collapse bootcn-sidebar-groups__sub" id="bootcn-sidebar-groups-models">
+              <li><a class="bootcn-sidebar-groups__sublink" href="#">Genesis</a></li>
+              <li><a class="bootcn-sidebar-groups__sublink" href="#">Explorer</a></li>
+              <li><a class="bootcn-sidebar-groups__sublink" href="#">Quantum</a></li>
+            </ul>
+          </li>
+          <li>
+            <button
+              class="bootcn-sidebar-groups__toggle"
+              type="button"
+              data-bs-toggle="collapse"
+              data-bs-target="#bootcn-sidebar-groups-documentation"
+              aria-expanded="false"
+              aria-controls="bootcn-sidebar-groups-documentation"
+            >
+              <svg
+                class="bootcn-icon"
+                width="16"
+                height="16"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+                focusable="false"
+              >
+                <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20V3H6.5A2.5 2.5 0 0 0 4 5.5z" />
+                <path d="M4 19.5V21h16" />
+              </svg>
+              <span>Documentation</span>
+              <svg
+                class="bootcn-icon bootcn-sidebar-groups__chevron"
+                width="16"
+                height="16"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+                focusable="false"
+              >
+                <path d="m9 18 6-6-6-6" />
+              </svg>
+            </button>
+            <ul
+              class="collapse bootcn-sidebar-groups__sub"
+              id="bootcn-sidebar-groups-documentation"
+            >
+              <li><a class="bootcn-sidebar-groups__sublink" href="#">Introduction</a></li>
+              <li><a class="bootcn-sidebar-groups__sublink" href="#">Get started</a></li>
+              <li><a class="bootcn-sidebar-groups__sublink" href="#">Tutorials</a></li>
+              <li><a class="bootcn-sidebar-groups__sublink" href="#">Changelog</a></li>
+            </ul>
+          </li>
+        </ul>
+        <p class="bootcn-sidebar-groups__heading" id="bootcn-sidebar-groups-projects">Projects</p>
+        <ul class="bootcn-sidebar-groups__list" aria-labelledby="bootcn-sidebar-groups-projects">
+          <li>
+            <a class="bootcn-sidebar-groups__link" href="#">
+              <svg
+                class="bootcn-icon"
+                width="16"
+                height="16"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+                focusable="false"
+              >
+                <path d="M22 6H2M22 18H2M6 2v20M18 2v20" />
+              </svg>
+              <span>Design engineering</span>
+            </a>
+          </li>
+          <li>
+            <a class="bootcn-sidebar-groups__link" href="#">
+              <svg
+                class="bootcn-icon"
+                width="16"
+                height="16"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+                focusable="false"
+              >
+                <path d="M21 12A9 9 0 1 1 12 3v9z" />
+                <path d="M15 3.5A9 9 0 0 1 20.5 9H15z" />
+              </svg>
+              <span>Sales and marketing</span>
+            </a>
+          </li>
+          <li>
+            <a class="bootcn-sidebar-groups__link" href="#">
+              <svg
+                class="bootcn-icon"
+                width="16"
+                height="16"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+                focusable="false"
+              >
+                <path d="m3 6 6-3 6 3 6-3v15l-6 3-6-3-6 3z" />
+                <path d="M9 3v15M15 6v15" />
+              </svg>
+              <span>Travel</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+      <div class="bootcn-sidebar-groups__footer dropup">
+        <div class="bootcn-dropdown bootcn-user-menu">
+          <button
+            class="btn bootcn-user-menu__trigger"
+            type="button"
+            id="bootcn-sidebar-groups-user-trigger"
+            data-bs-toggle="dropdown"
+            aria-expanded="false"
+          >
+            <span class="bootcn-avatar bootcn-avatar--sm" aria-hidden="true"
+              ><span class="bootcn-avatar__fallback">MP</span></span
+            >
+            <span class="bootcn-user-menu__name">Maria Papadopoulou</span>
+            <svg
+              class="bootcn-user-menu__chevron"
+              width="16"
+              height="16"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              aria-hidden="true"
+              focusable="false"
+            >
+              <path d="M6 9l6 6 6-6" />
+            </svg>
+          </button>
+          <ul
+            class="dropdown-menu dropdown-menu-end bootcn-dropdown__menu"
+            aria-labelledby="bootcn-sidebar-groups-user-trigger"
+          >
+            <li>
+              <p class="dropdown-header bootcn-user-menu__header">
+                <span class="bootcn-user-menu__header-name">Maria Papadopoulou</span>
+                <span class="bootcn-user-menu__email">maria@example.com</span>
+              </p>
+            </li>
+            <li><hr class="dropdown-divider bootcn-dropdown__divider" /></li>
+            <li><a class="dropdown-item bootcn-dropdown__item" href="#profile">Profile</a></li>
+            <li><a class="dropdown-item bootcn-dropdown__item" href="#billing">Billing</a></li>
+            <li><a class="dropdown-item bootcn-dropdown__item" href="#settings">Settings</a></li>
+            <li><hr class="dropdown-divider bootcn-dropdown__divider" /></li>
+            <li>
+              <button
+                class="dropdown-item bootcn-dropdown__item bootcn-dropdown__item--destructive"
+                type="button"
+              >
+                Sign out
+              </button>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </aside>
+  <main class="bootcn-sidebar-groups-layout__main">
+    <h1 class="h4">Playground</h1>
+    <p class="text-body-secondary">Main content goes here.</p>
+  </main>
+</div>

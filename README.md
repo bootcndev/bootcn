@@ -7,7 +7,7 @@ build with plain HTML and native PHP. Components are installed as editable
 HTML, CSS and JavaScript source files that you own. No React, Vue, jQuery,
 bundler or Node.js is required at runtime.
 
-> **Status:** early (0.x). 56 components, 23 blocks (authentication, dashboard, navigation, marketing, charts), an admin dashboard template and design
+> **Status:** early (0.x). 56 components, 29 blocks (authentication, dashboard, navigation, marketing, charts), admin and analytics dashboard templates and design
 > tokens, with a Tailwind-like look built on Bootstrap. The CLI is on
 > [npm](https://www.npmjs.com/package/bootcn); documentation, live previews and
 > the registry are at <https://tsirosgeorge.github.io/bootcn/>.
@@ -107,32 +107,39 @@ directly in a browser.
 Blocks are larger sections built from components; templates are complete
 pages. `bootcn add` installs the components a block or template uses.
 
-| Item                   | Type     | Files                | Requires                  | Depends on                                                                                      |
-| ---------------------- | -------- | -------------------- | ------------------------- | ----------------------------------------------------------------------------------------------- |
-| `activity-feed`        | block    | HTML, CSS            | Bootstrap CSS             | `card`, `avatar`                                                                                |
-| `app-navbar`           | block    | HTML, CSS            | Bootstrap CSS + JS bundle | `user-menu`, `input`                                                                            |
-| `app-sidebar`          | block    | HTML, CSS            | Bootstrap CSS + JS bundle | `button`, `badge`, `avatar`                                                                     |
-| `call-to-action`       | block    | HTML, CSS            | Bootstrap CSS             | `button`                                                                                        |
-| `chart-area`           | block    | HTML, CSS            | Bootstrap CSS             | `chart`, `card`                                                                                 |
-| `chart-bar-horizontal` | block    | HTML, CSS            | Bootstrap CSS             | `chart`, `card`                                                                                 |
-| `chart-bar`            | block    | HTML, CSS            | Bootstrap CSS             | `chart`, `card`                                                                                 |
-| `chart-line`           | block    | HTML, CSS            | Bootstrap CSS             | `chart`, `card`                                                                                 |
-| `chart-pie`            | block    | HTML, CSS            | Bootstrap CSS             | `chart`, `card`                                                                                 |
-| `chart-radar`          | block    | HTML, CSS            | Bootstrap CSS             | `chart`, `card`                                                                                 |
-| `chart-radial`         | block    | HTML, CSS            | Bootstrap CSS             | `chart`, `card`                                                                                 |
-| `feature-grid`         | block    | HTML, CSS            | Bootstrap CSS             | —                                                                                               |
-| `forgot-password-card` | block    | HTML, CSS            | Bootstrap CSS             | `card`, `input`, `button`                                                                       |
-| `hero-section`         | block    | HTML, CSS            | Bootstrap CSS             | `button`, `badge`                                                                               |
-| `login-card`           | block    | HTML, CSS            | Bootstrap CSS             | `card`, `input`, `checkbox`, `button`                                                           |
-| `login-split`          | block    | HTML, CSS            | Bootstrap CSS             | `input`, `checkbox`, `button`                                                                   |
-| `page-header`          | block    | HTML, CSS            | Bootstrap CSS             | `button`                                                                                        |
-| `pricing-table`        | block    | HTML, CSS            | Bootstrap CSS             | `button`, `badge`                                                                               |
-| `signup-card`          | block    | HTML, CSS            | Bootstrap CSS             | `card`, `input`, `checkbox`, `button`                                                           |
-| `stats-cards`          | block    | HTML, CSS            | Bootstrap CSS             | —                                                                                               |
-| `testimonials`         | block    | HTML, CSS            | Bootstrap CSS             | `avatar`                                                                                        |
-| `transactions-table`   | block    | HTML, CSS            | Bootstrap CSS             | `card`, `badge`, `button`, `input`                                                              |
-| `user-menu`            | block    | HTML, CSS            | Bootstrap CSS + JS bundle | `dropdown`, `avatar`                                                                            |
-| `admin-dashboard`      | template | page (HTML), CSS, JS | Bootstrap CSS + JS bundle | `app-sidebar`, `user-menu`, `page-header`, `stats-cards`, `activity-feed`, `transactions-table` |
+| Item                   | Type     | Files                | Requires                  | Depends on                                                                                                                            |
+| ---------------------- | -------- | -------------------- | ------------------------- | ------------------------------------------------------------------------------------------------------------------------------------- |
+| `activity-feed`        | block    | HTML, CSS            | Bootstrap CSS             | `card`, `avatar`                                                                                                                      |
+| `app-navbar`           | block    | HTML, CSS            | Bootstrap CSS + JS bundle | `user-menu`, `input`                                                                                                                  |
+| `app-sidebar`          | block    | HTML, CSS            | Bootstrap CSS + JS bundle | `button`, `badge`, `avatar`                                                                                                           |
+| `call-to-action`       | block    | HTML, CSS            | Bootstrap CSS             | `button`                                                                                                                              |
+| `chart-area`           | block    | HTML, CSS            | Bootstrap CSS             | `chart`, `card`                                                                                                                       |
+| `chart-bar-horizontal` | block    | HTML, CSS            | Bootstrap CSS             | `chart`, `card`                                                                                                                       |
+| `chart-bar`            | block    | HTML, CSS            | Bootstrap CSS             | `chart`, `card`                                                                                                                       |
+| `chart-line`           | block    | HTML, CSS            | Bootstrap CSS             | `chart`, `card`                                                                                                                       |
+| `chart-pie`            | block    | HTML, CSS            | Bootstrap CSS             | `chart`, `card`                                                                                                                       |
+| `chart-radar`          | block    | HTML, CSS            | Bootstrap CSS             | `chart`, `card`                                                                                                                       |
+| `chart-radial`         | block    | HTML, CSS            | Bootstrap CSS             | `chart`, `card`                                                                                                                       |
+| `feature-grid`         | block    | HTML, CSS            | Bootstrap CSS             | —                                                                                                                                     |
+| `forgot-password-card` | block    | HTML, CSS            | Bootstrap CSS             | `card`, `input`, `button`                                                                                                             |
+| `hero-section`         | block    | HTML, CSS            | Bootstrap CSS             | `button`, `badge`                                                                                                                     |
+| `login-card`           | block    | HTML, CSS            | Bootstrap CSS             | `card`, `input`, `checkbox`, `button`                                                                                                 |
+| `login-image`          | block    | HTML, CSS            | Bootstrap CSS             | `card`, `input`, `button`                                                                                                             |
+| `login-otp`            | block    | HTML, CSS            | Bootstrap CSS             | `card`, `input-otp`, `button`, `label`                                                                                                |
+| `login-split`          | block    | HTML, CSS            | Bootstrap CSS             | `input`, `checkbox`, `button`                                                                                                         |
+| `login-sso`            | block    | HTML, CSS            | Bootstrap CSS             | `card`, `input`, `button`, `separator`                                                                                                |
+| `page-header`          | block    | HTML, CSS            | Bootstrap CSS             | `button`                                                                                                                              |
+| `pricing-table`        | block    | HTML, CSS            | Bootstrap CSS             | `button`, `badge`                                                                                                                     |
+| `sidebar-groups`       | block    | HTML, CSS            | Bootstrap CSS + JS bundle | `dropdown`, `input`, `user-menu`, `button`                                                                                            |
+| `sidebar-inset`        | block    | HTML, CSS            | Bootstrap CSS + JS bundle | `sidebar`                                                                                                                             |
+| `signup-card`          | block    | HTML, CSS            | Bootstrap CSS             | `card`, `input`, `checkbox`, `button`                                                                                                 |
+| `signup-split`         | block    | HTML, CSS            | Bootstrap CSS             | `input`, `checkbox`, `button`                                                                                                         |
+| `stats-cards`          | block    | HTML, CSS            | Bootstrap CSS             | —                                                                                                                                     |
+| `testimonials`         | block    | HTML, CSS            | Bootstrap CSS             | `avatar`                                                                                                                              |
+| `transactions-table`   | block    | HTML, CSS            | Bootstrap CSS             | `card`, `badge`, `button`, `input`                                                                                                    |
+| `user-menu`            | block    | HTML, CSS            | Bootstrap CSS + JS bundle | `dropdown`, `avatar`                                                                                                                  |
+| `admin-dashboard`      | template | page (HTML), CSS, JS | Bootstrap CSS + JS bundle | `app-sidebar`, `user-menu`, `page-header`, `stats-cards`, `activity-feed`, `transactions-table`                                       |
+| `analytics-dashboard`  | template | page (HTML), CSS, JS | Bootstrap CSS + JS bundle | `sidebar`, `breadcrumb`, `date-picker`, `stats-cards`, `chart-area`, `chart-pie`, `chart-bar`, `chart-radial`, `data-table`, `button` |
 
 A template is installed as a page (`registry:page`) at the project root, or
 under `paths.pages` in `bootcn.json` (`public/` for PHP projects with a

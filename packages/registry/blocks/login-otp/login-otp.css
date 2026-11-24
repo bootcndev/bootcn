@@ -1,0 +1,57 @@
+.bootcn-login-otp {
+  width: 100%;
+  max-width: 22rem;
+  margin-inline: auto;
+}
+
+.bootcn-login-otp__header {
+  align-items: center;
+  text-align: center;
+}
+
+.bootcn-login-otp__body,
+.bootcn-login-otp__form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.bootcn-login-otp__form .bootcn-field {
+  margin: 0;
+}
+
+.bootcn-login-otp__label-row {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.bootcn-login-otp__link {
+  color: var(--bs-link-color);
+  font-size: 0.875rem;
+  text-underline-offset: 0.2em;
+}
+
+.bootcn-login-otp__footer {
+  justify-content: center;
+  color: var(--bootcn-muted-foreground);
+  font-size: 0.875rem;
+}
+
+.bootcn-login-otp__field {
+  align-items: center;
+}
+
+.bootcn-login-otp__resend {
+  margin: 0;
+  color: var(--bootcn-muted-foreground);
+  font-size: 0.875rem;
+  text-align: center;
+}
+
+.bootcn-login-otp__resend .bootcn-button {
+  min-height: 0;
+  padding: 0;
+  vertical-align: baseline;
+}

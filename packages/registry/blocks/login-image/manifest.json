@@ -1,0 +1,28 @@
+{
+  "$schema": "../../schema/registry-item.schema.json",
+  "name": "login-image",
+  "type": "registry:block",
+  "title": "Login with image",
+  "description": "A wide sign-in card with the form on one side and an image on the other, which hides on phones.",
+  "version": "1.0.0",
+  "categories": ["authentication"],
+  "dependencies": [],
+  "registryDependencies": ["card", "input", "button"],
+  "compatibility": {
+    "bootstrap": "5.3",
+    "platform": ["Bootstrap CSS"]
+  },
+  "license": "MIT",
+  "files": [
+    {
+      "path": "login-image.html",
+      "target": "login-image.html",
+      "type": "registry:component"
+    },
+    {
+      "path": "login-image.css",
+      "target": "login-image.css",
+      "type": "registry:style"
+    }
+  ]
+}

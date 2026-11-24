@@ -1,0 +1,52 @@
+.bootcn-login-sso {
+  width: 100%;
+  max-width: 24rem;
+  margin-inline: auto;
+}
+
+.bootcn-login-sso__header {
+  align-items: center;
+  text-align: center;
+}
+
+.bootcn-login-sso__body,
+.bootcn-login-sso__form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.bootcn-login-sso__form .bootcn-field {
+  margin: 0;
+}
+
+.bootcn-login-sso__label-row {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.bootcn-login-sso__link {
+  color: var(--bs-link-color);
+  font-size: 0.875rem;
+  text-underline-offset: 0.2em;
+}
+
+.bootcn-login-sso__footer {
+  justify-content: center;
+  color: var(--bootcn-muted-foreground);
+  font-size: 0.875rem;
+}
+
+.bootcn-login-sso__legal {
+  margin: 1rem 0 0;
+  color: var(--bootcn-muted-foreground);
+  font-size: 0.75rem;
+  text-align: center;
+}
+
+.bootcn-login-sso__legal a {
+  color: inherit;
+  text-underline-offset: 0.2em;
+}
