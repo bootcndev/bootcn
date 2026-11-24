@@ -1,0 +1,29 @@
+<section class="card bootcn-card bootcn-chart-card" aria-labelledby="chart-radial-title">
+  <header class="bootcn-card__header">
+    <h2 class="bootcn-card__title" id="chart-radial-title">Radial chart</h2>
+    <p class="bootcn-card__description">Share of visitors by browser.</p>
+  </header>
+  <div class="bootcn-card__content">
+    <figure class="bootcn-chart" data-bootcn-chart>
+      <figcaption class="visually-hidden">Visitors by browser, June 2026.</figcaption>
+      <script type="application/json">
+        {
+          "type": "radial",
+          "max": 300,
+          "categoryLabel": "Browser",
+          "categories": ["Chrome", "Safari", "Firefox", "Edge", "Other"],
+          "series": [
+            {
+              "name": "Visitors",
+              "data": [275, 200, 187, 173, 90]
+            }
+          ]
+        }
+      </script>
+    </figure>
+  </div>
+  <footer class="bootcn-card__footer bootcn-chart-card__footer">
+    <p class="bootcn-chart-card__trend">Chrome leads with 30%</p>
+    <p class="bootcn-chart-card__note">June 2026</p>
+  </footer>
+</section>

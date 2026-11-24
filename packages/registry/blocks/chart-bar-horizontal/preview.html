@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Bootcn Horizontal bar chart preview</title>
+    <script>
+      // Preview theme: ?theme=dark|light, else the docs page around the frame, else light.
+      (function () {
+        var theme = new URLSearchParams(location.search).get('theme');
+        if (!theme) {
+          try {
+            theme =
+              window.parent !== window &&
+              window.parent.document.documentElement.classList.contains('dark')
+                ? 'dark'
+                : 'light';
+          } catch (error) {
+            theme = 'light';
+          }
+        }
+        document.documentElement.setAttribute('data-bs-theme', theme === 'dark' ? 'dark' : 'light');
+      })();
+    </script>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.9/dist/css/bootstrap.min.css"
+    />
+    <link rel="stylesheet" href="../../themes/tokens/tokens.css" />
+    <link rel="stylesheet" href="../../components/button/button.css" />
+    <link rel="stylesheet" href="../../components/card/card.css" />
+    <link rel="stylesheet" href="../../components/chart/chart.css" />
+    <link rel="stylesheet" href="chart-bar-horizontal.css" />
+  </head>
+  <body>
+    <main class="container py-4">
+      <h1 class="h4 mb-4">Horizontal bar chart</h1>
+      <div style="max-width: 32rem">
+        <section
+          class="card bootcn-card bootcn-chart-card"
+          aria-labelledby="chart-bar-horizontal-title"
+        >
+          <header class="bootcn-card__header">
+            <h2 class="bootcn-card__title" id="chart-bar-horizontal-title">Horizontal bar chart</h2>
+            <p class="bootcn-card__description">Revenue by channel this quarter.</p>
+          </header>
+          <div class="bootcn-card__content">
+            <figure class="bootcn-chart" data-bootcn-chart>
+              <figcaption class="visually-hidden">
+                Revenue by sales channel, third quarter of 2026, in euros.
+              </figcaption>
+              <script type="application/json">
+                {
+                  "type": "bar",
+                  "orientation": "horizontal",
+                  "categoryLabel": "Channel",
+                  "legend": false,
+                  "categories": ["Online shop", "Marketplace", "Retail", "Partners", "Wholesale"],
+                  "series": [
+                    {
+                      "name": "Revenue",
+                      "data": [48200, 31500, 22800, 14100, 9600]
+                    }
+                  ],
+                  "format": {
+                    "style": "currency",
+                    "currency": "EUR",
+                    "maximumFractionDigits": 0
+                  }
+                }
+              </script>
+            </figure>
+          </div>
+          <footer class="bootcn-card__footer bootcn-chart-card__footer">
+            <p class="bootcn-chart-card__trend">Online shop leads with 38%</p>
+            <p class="bootcn-chart-card__note">July – September 2026</p>
+          </footer>
+        </section>
+      </div>
+    </main>
+    <script src="../../components/chart/chart.js"></script>
+  </body>
+</html>

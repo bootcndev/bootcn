@@ -1,0 +1,28 @@
+{
+  "$schema": "../../schema/registry-item.schema.json",
+  "name": "chart-radar",
+  "type": "registry:block",
+  "title": "Radar chart",
+  "description": "A card with a radar chart built on the Chart component: desktop and mobile visitors across the months.",
+  "version": "1.0.0",
+  "categories": ["charts"],
+  "dependencies": [],
+  "registryDependencies": ["chart", "card"],
+  "compatibility": {
+    "bootstrap": "5.3",
+    "platform": ["Bootstrap CSS"]
+  },
+  "license": "MIT",
+  "files": [
+    {
+      "path": "chart-radar.html",
+      "target": "chart-radar.html",
+      "type": "registry:component"
+    },
+    {
+      "path": "chart-radar.css",
+      "target": "chart-radar.css",
+      "type": "registry:style"
+    }
+  ]
+}

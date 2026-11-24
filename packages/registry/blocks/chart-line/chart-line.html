@@ -1,0 +1,35 @@
+<section class="card bootcn-card bootcn-chart-card" aria-labelledby="chart-line-title">
+  <header class="bootcn-card__header">
+    <h2 class="bootcn-card__title" id="chart-line-title">Line chart</h2>
+    <p class="bootcn-card__description">Daily active users, desktop and mobile.</p>
+  </header>
+  <div class="bootcn-card__content">
+    <figure class="bootcn-chart" data-bootcn-chart>
+      <figcaption class="visually-hidden">
+        Desktop and mobile daily active users per month, January to June 2026.
+      </figcaption>
+      <script type="application/json">
+        {
+          "type": "line",
+          "dots": true,
+          "categoryLabel": "Month",
+          "categories": ["Jan", "Feb", "Mar", "Apr", "May", "Jun"],
+          "series": [
+            {
+              "name": "Desktop",
+              "data": [214, 312, 248, 96, 231, 276]
+            },
+            {
+              "name": "Mobile",
+              "data": [98, 186, 142, 171, 128, 165]
+            }
+          ]
+        }
+      </script>
+    </figure>
+  </div>
+  <footer class="bootcn-card__footer bootcn-chart-card__footer">
+    <p class="bootcn-chart-card__trend">Mobile grew 68% since January</p>
+    <p class="bootcn-chart-card__note">January – June 2026</p>
+  </footer>
+</section>

@@ -33,6 +33,13 @@
   --bootcn-ring: #71717a;
   --bootcn-border-color-translucent: rgba(9, 9, 11, 0.1);
 
+  /* Chart series: each at least 3:1 against the background (WCAG 1.4.11). */
+  --bootcn-chart-1: #2563eb;
+  --bootcn-chart-2: #0d9488;
+  --bootcn-chart-3: #d97706;
+  --bootcn-chart-4: #db2777;
+  --bootcn-chart-5: #7c3aed;
+
   /* Bootstrap, mapped to the palette */
   --bs-body-font-family:
     ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial,
@@ -154,6 +161,12 @@
   --bootcn-input: #3f3f46;
   --bootcn-ring: #a1a1aa;
   --bootcn-border-color-translucent: rgba(255, 255, 255, 0.1);
+
+  --bootcn-chart-1: #60a5fa;
+  --bootcn-chart-2: #2dd4bf;
+  --bootcn-chart-3: #fbbf24;
+  --bootcn-chart-4: #f472b6;
+  --bootcn-chart-5: #a78bfa;
 
   --bs-body-bg: var(--bootcn-background);
   --bs-body-bg-rgb: 9, 9, 11;

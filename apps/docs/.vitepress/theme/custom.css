@@ -620,6 +620,20 @@
   line-height: 1.5rem;
 }
 
+/* Charts page: a gallery of live chart cards. */
+.bootcn-chart-gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 22rem), 1fr));
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+
+.vp-doc .bootcn-chart-gallery__link {
+  display: inline-block;
+  margin-top: 0.5rem;
+  font-size: 0.875rem;
+}
+
 /* Overview pages: a grid of item links. */
 .vp-doc .bootcn-grid {
   display: grid;

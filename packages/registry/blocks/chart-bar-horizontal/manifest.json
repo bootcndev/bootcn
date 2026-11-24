@@ -1,0 +1,28 @@
+{
+  "$schema": "../../schema/registry-item.schema.json",
+  "name": "chart-bar-horizontal",
+  "type": "registry:block",
+  "title": "Horizontal bar chart",
+  "description": "A card with a horizontal bar chart built on the Chart component: revenue by channel this quarter.",
+  "version": "1.0.0",
+  "categories": ["charts"],
+  "dependencies": [],
+  "registryDependencies": ["chart", "card"],
+  "compatibility": {
+    "bootstrap": "5.3",
+    "platform": ["Bootstrap CSS"]
+  },
+  "license": "MIT",
+  "files": [
+    {
+      "path": "chart-bar-horizontal.html",
+      "target": "chart-bar-horizontal.html",
+      "type": "registry:component"
+    },
+    {
+      "path": "chart-bar-horizontal.css",
+      "target": "chart-bar-horizontal.css",
+      "type": "registry:style"
+    }
+  ]
+}

@@ -1,0 +1,28 @@
+{
+  "$schema": "../../schema/registry-item.schema.json",
+  "name": "chart-bar",
+  "type": "registry:block",
+  "title": "Bar chart",
+  "description": "A card with a bar chart built on the Chart component: desktop and mobile visitors side by side.",
+  "version": "1.0.0",
+  "categories": ["charts"],
+  "dependencies": [],
+  "registryDependencies": ["chart", "card"],
+  "compatibility": {
+    "bootstrap": "5.3",
+    "platform": ["Bootstrap CSS"]
+  },
+  "license": "MIT",
+  "files": [
+    {
+      "path": "chart-bar.html",
+      "target": "chart-bar.html",
+      "type": "registry:component"
+    },
+    {
+      "path": "chart-bar.css",
+      "target": "chart-bar.css",
+      "type": "registry:style"
+    }
+  ]
+}

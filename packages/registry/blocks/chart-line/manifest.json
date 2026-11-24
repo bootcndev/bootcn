@@ -1,0 +1,28 @@
+{
+  "$schema": "../../schema/registry-item.schema.json",
+  "name": "chart-line",
+  "type": "registry:block",
+  "title": "Line chart",
+  "description": "A card with a line chart built on the Chart component: daily active users, desktop and mobile.",
+  "version": "1.0.0",
+  "categories": ["charts"],
+  "dependencies": [],
+  "registryDependencies": ["chart", "card"],
+  "compatibility": {
+    "bootstrap": "5.3",
+    "platform": ["Bootstrap CSS"]
+  },
+  "license": "MIT",
+  "files": [
+    {
+      "path": "chart-line.html",
+      "target": "chart-line.html",
+      "type": "registry:component"
+    },
+    {
+      "path": "chart-line.css",
+      "target": "chart-line.css",
+      "type": "registry:style"
+    }
+  ]
+}

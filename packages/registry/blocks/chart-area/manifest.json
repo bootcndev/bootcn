@@ -1,0 +1,28 @@
+{
+  "$schema": "../../schema/registry-item.schema.json",
+  "name": "chart-area",
+  "type": "registry:block",
+  "title": "Area chart",
+  "description": "A card with a area chart built on the Chart component: visitors for the last six months, stacked by device.",
+  "version": "1.0.0",
+  "categories": ["charts"],
+  "dependencies": [],
+  "registryDependencies": ["chart", "card"],
+  "compatibility": {
+    "bootstrap": "5.3",
+    "platform": ["Bootstrap CSS"]
+  },
+  "license": "MIT",
+  "files": [
+    {
+      "path": "chart-area.html",
+      "target": "chart-area.html",
+      "type": "registry:component"
+    },
+    {
+      "path": "chart-area.css",
+      "target": "chart-area.css",
+      "type": "registry:style"
+    }
+  ]
+}

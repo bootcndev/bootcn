@@ -7,8 +7,7 @@ build with plain HTML and native PHP. Components are installed as editable
 HTML, CSS and JavaScript source files that you own. No React, Vue, jQuery,
 bundler or Node.js is required at runtime.
 
-> **Status:** early (0.x). 55 components, 16 blocks (authentication,
-> dashboard, navigation, marketing), an admin dashboard template and design
+> **Status:** early (0.x). 56 components, 23 blocks (authentication, dashboard, navigation, marketing, charts), an admin dashboard template and design
 > tokens, with a Tailwind-like look built on Bootstrap. The CLI is on
 > [npm](https://www.npmjs.com/package/bootcn); documentation, live previews and
 > the registry are at <https://tsirosgeorge.github.io/bootcn/>.
@@ -54,6 +53,7 @@ the `<link>` and `<script>` tags to add to your layout.
 | `calendar`        | ui    | HTML, CSS, JS | Bootstrap CSS             | —                                      |
 | `card`            | ui    | HTML, CSS     | Bootstrap CSS             | `button`                               |
 | `carousel`        | ui    | HTML, CSS     | Bootstrap CSS + JS bundle | —                                      |
+| `chart`           | ui    | HTML, CSS, JS | Bootstrap CSS             | —                                      |
 | `checkbox`        | ui    | HTML, CSS     | Bootstrap CSS             | —                                      |
 | `collapsible`     | ui    | HTML, CSS     | Bootstrap CSS + JS bundle | `button`                               |
 | `combobox`        | ui    | HTML, CSS, JS | Bootstrap CSS             | `label`                                |
@@ -113,6 +113,13 @@ pages. `bootcn add` installs the components a block or template uses.
 | `app-navbar`           | block    | HTML, CSS            | Bootstrap CSS + JS bundle | `user-menu`, `input`                                                                            |
 | `app-sidebar`          | block    | HTML, CSS            | Bootstrap CSS + JS bundle | `button`, `badge`, `avatar`                                                                     |
 | `call-to-action`       | block    | HTML, CSS            | Bootstrap CSS             | `button`                                                                                        |
+| `chart-area`           | block    | HTML, CSS            | Bootstrap CSS             | `chart`, `card`                                                                                 |
+| `chart-bar-horizontal` | block    | HTML, CSS            | Bootstrap CSS             | `chart`, `card`                                                                                 |
+| `chart-bar`            | block    | HTML, CSS            | Bootstrap CSS             | `chart`, `card`                                                                                 |
+| `chart-line`           | block    | HTML, CSS            | Bootstrap CSS             | `chart`, `card`                                                                                 |
+| `chart-pie`            | block    | HTML, CSS            | Bootstrap CSS             | `chart`, `card`                                                                                 |
+| `chart-radar`          | block    | HTML, CSS            | Bootstrap CSS             | `chart`, `card`                                                                                 |
+| `chart-radial`         | block    | HTML, CSS            | Bootstrap CSS             | `chart`, `card`                                                                                 |
 | `feature-grid`         | block    | HTML, CSS            | Bootstrap CSS             | —                                                                                               |
 | `forgot-password-card` | block    | HTML, CSS            | Bootstrap CSS             | `card`, `input`, `button`                                                                       |
 | `hero-section`         | block    | HTML, CSS            | Bootstrap CSS             | `button`, `badge`                                                                               |

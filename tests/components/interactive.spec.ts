@@ -406,3 +406,67 @@ test.describe('sidebar', () => {
     await expect(toggle).toHaveAttribute('aria-expanded', 'false');
   });
 });
+
+test.describe('charts', () => {
+  test('bar chart: bars, tooltip on hover, legend and data table', async ({ page }) => {
+    const errors = collectErrors(page);
+    await openPreview(page, 'chart-bar', 'blocks');
+    const figure = page.locator('[data-bootcn-chart]');
+    await expect(figure.locator('svg .bootcn-chart__bar')).toHaveCount(12);
+    await expect(figure.locator('.bootcn-chart__legend li')).toHaveText(['Desktop', 'Mobile']);
+
+    const svg = figure.locator('svg');
+    const box = await svg.boundingBox();
+    if (!box) throw new Error('no chart');
+    await page.mouse.move(box.x + box.width * 0.18, box.y + box.height * 0.5);
+    const tip = figure.locator('.bootcn-chart__tooltip');
+    await expect(tip).toBeVisible();
+    await expect(tip).toContainText('Jan');
+    await expect(tip).toContainText('214');
+    await page.mouse.move(box.x - 20, box.y - 20);
+    await expect(tip).toBeHidden();
+
+    await figure.getByText('Show data').click();
+    const table = figure.getByRole('table', { name: /Desktop and mobile visitors per month/ });
+    await expect(table).toBeVisible();
+    await expect(table.getByRole('row')).toHaveCount(7);
+    await expect(table.getByRole('row', { name: /Feb/ })).toContainText('312');
+    await expectNoAxeViolations(page);
+    expect(errors).toEqual([]);
+  });
+
+  test('donut chart: slice tooltip with a percentage, total in the middle', async ({ page }) => {
+    await openPreview(page, 'chart-pie', 'blocks');
+    const figure = page.locator('[data-bootcn-chart]');
+    await expect(figure.locator('.bootcn-chart__center-value')).toHaveText('925');
+    const box = await figure.locator('svg').boundingBox();
+    if (!box) throw new Error('no chart');
+    // The first slice (Search) starts at 12 o'clock and runs clockwise.
+    await page.mouse.move(box.x + box.width / 2 + 40, box.y + box.height / 2 - 70);
+    await expect(figure.locator('.bootcn-chart__tooltip')).toContainText('Search');
+    await expect(figure.locator('.bootcn-chart__tooltip')).toContainText('29.7%');
+  });
+
+  test('charts redraw on resize and on update()', async ({ page }) => {
+    await page.setViewportSize({ width: 1000, height: 800 });
+    await openPreview(page, 'chart');
+    const figure = page.locator('[data-bootcn-chart]');
+    const width = () => figure.locator('svg').evaluate((el) => Number(el.getAttribute('width')));
+    const wide = await width();
+    await page.setViewportSize({ width: 360, height: 800 });
+    await expect.poll(width).toBeLessThan(wide);
+
+    await page.evaluate(() => {
+      const root = document.querySelector('[data-bootcn-chart]')!;
+      (
+        window as unknown as { Bootcn: { chart: { update: (r: Element, c: object) => void } } }
+      ).Bootcn.chart.update(root, {
+        type: 'line',
+        categories: ['A', 'B'],
+        series: [{ name: 'Sales', data: [1, 2] }],
+      });
+    });
+    await expect(figure.locator('.bootcn-chart__line')).toHaveCount(1);
+    await expect(figure.locator('.bootcn-chart__legend li')).toHaveText(['Sales']);
+  });
+});

@@ -57,6 +57,7 @@ export default defineConfig({
       { text: 'Guide', link: '/guide/introduction', activeMatch: '^/guide/' },
       { text: 'Components', link: '/components/', activeMatch: '^/components/' },
       { text: 'Blocks', link: '/blocks/', activeMatch: '^/blocks/' },
+      { text: 'Charts', link: '/charts/', activeMatch: '^/charts/' },
       { text: 'Templates', link: '/templates/', activeMatch: '^/templates/' },
       {
         text: `v${index.version}`,

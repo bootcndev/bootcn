@@ -1,0 +1,28 @@
+{
+  "$schema": "../../schema/registry-item.schema.json",
+  "name": "chart-pie",
+  "type": "registry:block",
+  "title": "Donut chart",
+  "description": "A card with a donut chart built on the Chart component: where visitors came from this month.",
+  "version": "1.0.0",
+  "categories": ["charts"],
+  "dependencies": [],
+  "registryDependencies": ["chart", "card"],
+  "compatibility": {
+    "bootstrap": "5.3",
+    "platform": ["Bootstrap CSS"]
+  },
+  "license": "MIT",
+  "files": [
+    {
+      "path": "chart-pie.html",
+      "target": "chart-pie.html",
+      "type": "registry:component"
+    },
+    {
+      "path": "chart-pie.css",
+      "target": "chart-pie.css",
+      "type": "registry:style"
+    }
+  ]
+}

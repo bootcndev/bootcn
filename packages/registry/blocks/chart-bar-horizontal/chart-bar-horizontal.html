@@ -1,0 +1,37 @@
+<section class="card bootcn-card bootcn-chart-card" aria-labelledby="chart-bar-horizontal-title">
+  <header class="bootcn-card__header">
+    <h2 class="bootcn-card__title" id="chart-bar-horizontal-title">Horizontal bar chart</h2>
+    <p class="bootcn-card__description">Revenue by channel this quarter.</p>
+  </header>
+  <div class="bootcn-card__content">
+    <figure class="bootcn-chart" data-bootcn-chart>
+      <figcaption class="visually-hidden">
+        Revenue by sales channel, third quarter of 2026, in euros.
+      </figcaption>
+      <script type="application/json">
+        {
+          "type": "bar",
+          "orientation": "horizontal",
+          "categoryLabel": "Channel",
+          "legend": false,
+          "categories": ["Online shop", "Marketplace", "Retail", "Partners", "Wholesale"],
+          "series": [
+            {
+              "name": "Revenue",
+              "data": [48200, 31500, 22800, 14100, 9600]
+            }
+          ],
+          "format": {
+            "style": "currency",
+            "currency": "EUR",
+            "maximumFractionDigits": 0
+          }
+        }
+      </script>
+    </figure>
+  </div>
+  <footer class="bootcn-card__footer bootcn-chart-card__footer">
+    <p class="bootcn-chart-card__trend">Online shop leads with 38%</p>
+    <p class="bootcn-chart-card__note">July – September 2026</p>
+  </footer>
+</section>

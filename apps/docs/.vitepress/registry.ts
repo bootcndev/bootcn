@@ -127,6 +127,7 @@ const GROUPS: Record<Kind, [label: string, categories: string[]][]> = {
     ['Dashboard', ['dashboard']],
     ['Navigation', ['navigation']],
     ['Marketing', ['marketing']],
+    ['Charts', ['charts']],
   ],
   templates: [['Templates', []]],
 };

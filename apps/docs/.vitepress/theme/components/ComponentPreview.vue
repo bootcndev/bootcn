@@ -68,7 +68,8 @@ body > main.container:first-child[data-bootcn-docs-center] {
   min-width: min(100%, 20rem);
   max-width: 100%;
 }
-body > main.container:first-child[data-bootcn-docs-center] > h1:first-child {
+body > main.container:first-child[data-bootcn-docs-center] > h1:first-child,
+body > main.container:first-child[data-bootcn-docs-untitled] > h1:first-child {
   position: absolute;
   width: 1px;
   height: 1px;
@@ -85,6 +86,9 @@ function prepareFrame(): void {
   style.textContent = FRAME_CSS;
   doc.head.appendChild(style);
   const main = doc.body?.firstElementChild;
+  // Gallery tiles (bare) already show the item's own title.
+  if (props.bare && main?.matches('main.container'))
+    main.setAttribute('data-bootcn-docs-untitled', '');
   if (props.kind === 'components' && main?.matches('main.container')) {
     main.setAttribute('data-bootcn-docs-center', '');
     // Moving nodes keeps their listeners, ids and component state.

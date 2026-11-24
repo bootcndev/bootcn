@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Bootcn Donut chart preview</title>
+    <script>
+      // Preview theme: ?theme=dark|light, else the docs page around the frame, else light.
+      (function () {
+        var theme = new URLSearchParams(location.search).get('theme');
+        if (!theme) {
+          try {
+            theme =
+              window.parent !== window &&
+              window.parent.document.documentElement.classList.contains('dark')
+                ? 'dark'
+                : 'light';
+          } catch (error) {
+            theme = 'light';
+          }
+        }
+        document.documentElement.setAttribute('data-bs-theme', theme === 'dark' ? 'dark' : 'light');
+      })();
+    </script>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.9/dist/css/bootstrap.min.css"
+    />
+    <link rel="stylesheet" href="../../themes/tokens/tokens.css" />
+    <link rel="stylesheet" href="../../components/button/button.css" />
+    <link rel="stylesheet" href="../../components/card/card.css" />
+    <link rel="stylesheet" href="../../components/chart/chart.css" />
+    <link rel="stylesheet" href="chart-pie.css" />
+  </head>
+  <body>
+    <main class="container py-4">
+      <h1 class="h4 mb-4">Donut chart</h1>
+      <div style="max-width: 32rem">
+        <section class="card bootcn-card bootcn-chart-card" aria-labelledby="chart-pie-title">
+          <header class="bootcn-card__header">
+            <h2 class="bootcn-card__title" id="chart-pie-title">Donut chart</h2>
+            <p class="bootcn-card__description">Where visitors came from this month.</p>
+          </header>
+          <div class="bootcn-card__content">
+            <figure class="bootcn-chart" data-bootcn-chart>
+              <figcaption class="visually-hidden">
+                Visitors by traffic source, June 2026.
+              </figcaption>
+              <script type="application/json">
+                {
+                  "type": "pie",
+                  "donut": true,
+                  "centerLabel": "Visitors",
+                  "categoryLabel": "Source",
+                  "categories": ["Search", "Direct", "Social", "Email", "Other"],
+                  "series": [
+                    {
+                      "name": "Visitors",
+                      "data": [275, 200, 187, 173, 90]
+                    }
+                  ]
+                }
+              </script>
+            </figure>
+          </div>
+          <footer class="bootcn-card__footer bootcn-chart-card__footer">
+            <p class="bootcn-chart-card__trend">Search brings 30% of visitors</p>
+            <p class="bootcn-chart-card__note">June 2026</p>
+          </footer>
+        </section>
+      </div>
+    </main>
+    <script src="../../components/chart/chart.js"></script>
+  </body>
+</html>

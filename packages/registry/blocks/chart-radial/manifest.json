@@ -1,0 +1,28 @@
+{
+  "$schema": "../../schema/registry-item.schema.json",
+  "name": "chart-radial",
+  "type": "registry:block",
+  "title": "Radial chart",
+  "description": "A card with a radial chart built on the Chart component: share of visitors by browser.",
+  "version": "1.0.0",
+  "categories": ["charts"],
+  "dependencies": [],
+  "registryDependencies": ["chart", "card"],
+  "compatibility": {
+    "bootstrap": "5.3",
+    "platform": ["Bootstrap CSS"]
+  },
+  "license": "MIT",
+  "files": [
+    {
+      "path": "chart-radial.html",
+      "target": "chart-radial.html",
+      "type": "registry:component"
+    },
+    {
+      "path": "chart-radial.css",
+      "target": "chart-radial.css",
+      "type": "registry:style"
+    }
+  ]
+}

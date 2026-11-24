@@ -1,0 +1,30 @@
+<section class="card bootcn-card bootcn-chart-card" aria-labelledby="chart-pie-title">
+  <header class="bootcn-card__header">
+    <h2 class="bootcn-card__title" id="chart-pie-title">Donut chart</h2>
+    <p class="bootcn-card__description">Where visitors came from this month.</p>
+  </header>
+  <div class="bootcn-card__content">
+    <figure class="bootcn-chart" data-bootcn-chart>
+      <figcaption class="visually-hidden">Visitors by traffic source, June 2026.</figcaption>
+      <script type="application/json">
+        {
+          "type": "pie",
+          "donut": true,
+          "centerLabel": "Visitors",
+          "categoryLabel": "Source",
+          "categories": ["Search", "Direct", "Social", "Email", "Other"],
+          "series": [
+            {
+              "name": "Visitors",
+              "data": [275, 200, 187, 173, 90]
+            }
+          ]
+        }
+      </script>
+    </figure>
+  </div>
+  <footer class="bootcn-card__footer bootcn-chart-card__footer">
+    <p class="bootcn-chart-card__trend">Search brings 30% of visitors</p>
+    <p class="bootcn-chart-card__note">June 2026</p>
+  </footer>
+</section>

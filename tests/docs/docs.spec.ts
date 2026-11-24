@@ -12,6 +12,7 @@ interface IndexItem {
   name: string;
   type: string;
   title: string;
+  categories?: string[];
 }
 interface Item {
   files: { path: string; type: string }[];
@@ -361,4 +362,22 @@ test('installation offers CLI and manual tabs', async ({ page }) => {
   await expect(page.locator('.vp-doc')).toContainText('npx bootcn add login-card');
   await tabs.getByRole('tab', { name: 'Manual' }).click();
   await expect(page.getByRole('cell', { name: 'login-card.css', exact: true })).toBeVisible();
+});
+
+test('charts page shows every chart block live', async ({ page }) => {
+  const errors = collectErrors(page);
+  await page.goto('charts/');
+  const charts = index.items.filter((item) => (item.categories ?? []).includes('charts'));
+  expect(charts.length).toBeGreaterThanOrEqual(6);
+  const frames = page.locator('.bootcn-chart-gallery iframe');
+  await expect(frames).toHaveCount(charts.length);
+  await frames.first().scrollIntoViewIfNeeded();
+  await expect(
+    page.frameLocator('.bootcn-chart-gallery iframe').first().locator('svg.bootcn-chart__svg'),
+  ).toBeVisible();
+  await expect(page.getByRole('link', { name: /Area chart: code and options/ })).toHaveAttribute(
+    'href',
+    /blocks\/chart-area/,
+  );
+  expect(errors).toEqual([]);
 });

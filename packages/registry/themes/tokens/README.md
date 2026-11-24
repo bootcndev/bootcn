@@ -25,6 +25,9 @@ or `bootcn add`.
   `--bootcn-secondary`, `--bootcn-muted`, `--bootcn-muted-foreground`,
   `--bootcn-accent`, `--bootcn-destructive`, `--bootcn-border-color`,
   `--bootcn-input` and `--bootcn-ring`.
+- **Chart colors** `--bootcn-chart-1` … `--bootcn-chart-5` (blue, teal, amber,
+  pink, violet), each with at least 3:1 contrast against the background in
+  both themes, as WCAG 1.4.11 asks for graphics.
 - **Bootstrap's own variables** (`--bs-body-bg`, `--bs-body-color`,
   `--bs-secondary-color`, `--bs-border-color`, `--bs-primary`,
   `--bs-link-color`, `--bs-border-radius`…) point at those roles, so plain
