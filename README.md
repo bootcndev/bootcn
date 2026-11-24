@@ -70,12 +70,13 @@ the `<link>` and `<script>` tags to add to your layout.
 
 ### CLI reference
 
-| Command          | What it does                                             |
-| ---------------- | -------------------------------------------------------- |
-| `init`           | Create `bootcn.json`, the directories and install tokens |
-| `add <names...>` | Install items and their registry dependencies            |
-| `list`           | List registry items, marking the installed ones          |
-| `info <name>`    | Show an item's files, dependencies and requirements      |
+| Command           | What it does                                             |
+| ----------------- | -------------------------------------------------------- |
+| `init`            | Create `bootcn.json`, the directories and install tokens |
+| `add <names...>`  | Install items and their registry dependencies            |
+| `list`            | List registry items, marking the installed ones          |
+| `info <name>`     | Show an item's files, dependencies and requirements      |
+| `diff [names...]` | Compare installed files with the registry (read-only)    |
 
 | Flag                       | Meaning                                               |
 | -------------------------- | ----------------------------------------------------- |
@@ -140,8 +141,8 @@ contents inlined), which the CLI reads. Previews load the same source files.
   default `https://registry.bootcn.dev` do not work yet. Pass `--registry`.
 - Only the stable registry is supported; there is no `latest`/`stable` channel
   selection or pinning of a registry version yet.
-- No `diff`, `doctor` or `update` commands; `add` shows a diff only for files
-  that already exist.
+- No `doctor` or `update` commands. `diff` compares with the current registry
+  only; installed versions are not recorded.
 - Plain HTML projects must copy the markup from `components/ui/*.html` into
   their pages by hand (PHP can `include` it).
 - Browser tests run on Chromium only; Firefox, Safari and Edge are untested.
