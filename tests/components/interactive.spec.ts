@@ -4,7 +4,12 @@
  */
 import { expect, test } from '@playwright/test';
 
-import { collectErrors, expectNoAxeViolations, openPreview } from './helpers.js';
+import {
+  collectErrors,
+  expectNoAxeViolations,
+  expectNoAxeViolationsOnOverlay,
+  openPreview,
+} from './helpers.js';
 
 test.describe('combobox', () => {
   test('single choice: filter, choose with the keyboard, Escape closes', async ({ page }) => {
@@ -294,7 +299,10 @@ test.describe('calendar and date picker', () => {
     expect(errors).toEqual([]);
   });
 
-  test('date picker: opens on today, picks a date, returns focus', async ({ page }) => {
+  test('date picker: opens on today, picks a date, returns focus', async ({
+    page,
+    browserName,
+  }) => {
     const errors = collectErrors(page);
     await page.emulateMedia({ reducedMotion: 'reduce' });
     await openPreview(page, 'date-picker');
@@ -303,7 +311,7 @@ test.describe('calendar and date picker', () => {
     const dialog = page.getByRole('dialog', { name: 'Choose a delivery date' });
     await expect(dialog).toBeVisible();
     await expect(page.getByRole('button', { name: 'Tuesday, November 24, 2026' })).toBeFocused();
-    await expectNoAxeViolations(page);
+    await expectNoAxeViolationsOnOverlay(page, browserName);
 
     await page.keyboard.press('ArrowRight');
     await page.keyboard.press('Enter');

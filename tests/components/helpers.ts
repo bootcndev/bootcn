@@ -2,7 +2,7 @@ import { dirname, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 import { AxeBuilder } from '@axe-core/playwright';
-import { expect, type Page } from '@playwright/test';
+import { expect, test, type Page } from '@playwright/test';
 
 const here = dirname(fileURLToPath(import.meta.url));
 const bootstrapRoot = resolve(here, '../../node_modules/bootstrap/dist');
@@ -67,4 +67,26 @@ export async function settleTransitions(page: Page): Promise<void> {
       document.getAnimations().filter((animation) => animation instanceof CSSTransition).length ===
         0 && !document.querySelector('.showing, .hiding, .collapsing'),
   );
+}
+
+/**
+ * axe over an open Bootstrap modal, offcanvas or dropdown crashes Firefox's
+ * page in CI ("Page crashed", Playwright 1.65). The open state is checked
+ * with axe in Chromium and WebKit; Firefox still runs every behaviour
+ * assertion. The skip is recorded as a test annotation.
+ */
+export async function expectNoAxeViolationsOnOverlay(
+  page: Page,
+  browserName: string,
+  options: { disableRules?: string[] } = {},
+): Promise<void> {
+  if (browserName === 'firefox') {
+    test.info().annotations.push({
+      type: 'skip-axe',
+      description: 'axe on an open overlay crashes Firefox; covered in Chromium and WebKit',
+    });
+    return;
+  }
+  await settleTransitions(page);
+  await expectNoAxeViolations(page, options);
 }
