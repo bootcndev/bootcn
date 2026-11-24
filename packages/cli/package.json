@@ -1,5 +1,5 @@
 {
-  "name": "@bootcn/cli",
+  "name": "bootcn",
   "version": "0.0.0",
   "private": true,
   "type": "module",
