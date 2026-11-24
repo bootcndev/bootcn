@@ -67,3 +67,16 @@ test('FAQ section: one answer open at a time', async ({ page }) => {
   await expect(second).toHaveAttribute('aria-expanded', 'true');
   await expect(first).toHaveAttribute('aria-expanded', 'false');
 });
+
+test('app sidebar: links keep their inset on desktop', async ({ page }) => {
+  // Bootstrap's .offcanvas-lg .offcanvas-body sets padding: 0 from 992px.
+  await page.setViewportSize({ width: 1280, height: 800 });
+  await openPreview(page, 'app-sidebar', 'blocks');
+  const inset = await page.evaluate(() => {
+    const sidebar = document.querySelector('.bootcn-sidebar')!.getBoundingClientRect();
+    const link = document.querySelector('.bootcn-sidebar__link')!.getBoundingClientRect();
+    return { start: link.left - sidebar.left, end: sidebar.right - link.right };
+  });
+  expect(inset.start).toBeGreaterThanOrEqual(8);
+  expect(inset.end).toBeGreaterThanOrEqual(8);
+});

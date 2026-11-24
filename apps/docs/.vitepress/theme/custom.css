@@ -329,6 +329,16 @@
   border-radius: 0 0 var(--bootcn-docs-radius) var(--bootcn-docs-radius);
 }
 
+/* Phones: VitePress pulls code blocks to the screen edges (-24px); ours are
+   bordered cards, so they stay inside the text column. */
+@media (max-width: 639px) {
+  .vp-doc div[class*='language-'],
+  .vp-doc .vp-code-group .tabs {
+    margin-right: 0;
+    margin-left: 0;
+  }
+}
+
 /* Code block language label: VitePress's default grey is below 4.5:1. */
 .vp-doc [class*='language-'] > span.lang {
   color: var(--vp-c-text-2);

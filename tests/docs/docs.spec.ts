@@ -531,3 +531,12 @@ test('theme builder: the soft style fills fields and rounds corners', async ({ p
   await expect(page.getByRole('radio', { name: '0.5rem' })).toBeChecked();
   await expect.poll(async () => (await field()).border).not.toBe('rgba(0, 0, 0, 0)');
 });
+
+test('on phones, code blocks line up with the text', async ({ page }) => {
+  await page.setViewportSize({ width: 375, height: 800 });
+  await page.goto('components/toolbar');
+  const heading = await page.locator('.vp-doc h2').first().boundingBox();
+  const group = await page.locator('.vp-doc .vp-code-group').first().boundingBox();
+  expect(Math.round(group!.x)).toBe(Math.round(heading!.x));
+  expect(Math.round(group!.x + group!.width)).toBeLessThanOrEqual(375 - Math.round(heading!.x));
+});

@@ -19,7 +19,9 @@
   }
 }
 
-.bootcn-sidebar__body {
+/* Two classes: Bootstrap's .offcanvas-lg .offcanvas-body removes the
+   padding from 992px, which pushed the links against the sidebar's edges. */
+.bootcn-sidebar .bootcn-sidebar__body {
   display: flex;
   flex-direction: column;
   gap: 1rem;
