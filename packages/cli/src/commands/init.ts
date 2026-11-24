@@ -25,7 +25,7 @@ import { RegistryClient, parseRegistryLocation, registryConfigValue } from '../r
 import { installItems } from './add.js';
 
 const PATH_LABELS: Record<PathKey, string> = {
-  components: 'Where should HTML/PHP component snippets go?',
+  components: 'Where should component snippets (HTML, PHP or Blade) go?',
   css: 'Where should CSS files go?',
   js: 'Where should JavaScript files go?',
   lib: 'Where should shared JavaScript helpers go?',
@@ -57,14 +57,25 @@ export async function initCommand(ctx: Context): Promise<number> {
   // 2. Project type.
   const project = await detectProject(ctx.root);
   let type: ProjectType = project.type ?? 'html';
+  const TYPE_NAMES: Record<ProjectType, string> = {
+    php: 'native PHP',
+    html: 'plain HTML',
+    laravel: 'Laravel',
+  };
   if (project.type) {
-    out.info(`Detected a ${type === 'php' ? 'native PHP' : 'plain HTML'} project.`);
+    out.info(`Detected a ${TYPE_NAMES[type]} project.`);
+    if (type === 'laravel') {
+      out.info(
+        '  Components and pages will be Blade views; CSS and JS go under public/vendor/bootcn.',
+      );
+    }
   } else if (ctx.interactive) {
     type = await ctx.prompt.select<ProjectType>(
       'What kind of project is this?',
       [
         { value: 'html', label: 'Plain HTML' },
         { value: 'php', label: 'Native PHP' },
+        { value: 'laravel', label: 'Laravel (Blade)' },
       ],
       'html',
     );
@@ -98,7 +109,12 @@ export async function initCommand(ctx: Context): Promise<number> {
   // 5. Registry and config.
   const location = parseRegistryLocation(ctx.registry ?? DEFAULT_REGISTRY, ctx.launchDir);
   const config: Config = parseConfig(
-    createConfig(registryConfigValue(location, ctx.root), DEFAULT_BOOTSTRAP, paths),
+    createConfig(
+      registryConfigValue(location, ctx.root),
+      DEFAULT_BOOTSTRAP,
+      paths,
+      type === 'laravel' ? 'laravel' : undefined,
+    ),
   );
   const client = new RegistryClient(location, ctx.fetch);
 

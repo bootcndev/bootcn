@@ -3,7 +3,7 @@ import { extname, join } from 'node:path';
 
 import type { ProjectPaths } from './config.js';
 
-export type ProjectType = 'php' | 'html';
+export type ProjectType = 'php' | 'html' | 'laravel';
 
 const SKIP_DIRS = new Set(['node_modules', 'vendor', '.git', 'dist', 'build', '.cache']);
 const MAX_FILES = 300;
@@ -47,8 +47,22 @@ export interface ProjectInfo {
   hasPublicDir: boolean;
 }
 
+/** Laravel: an `artisan` file and laravel/framework in composer.json. */
+async function isLaravel(root: string): Promise<boolean> {
+  if (!(await exists(join(root, 'artisan')))) return false;
+  try {
+    const composer = JSON.parse(await readFile(join(root, 'composer.json'), 'utf8')) as {
+      require?: Record<string, string>;
+    };
+    return Boolean(composer.require?.['laravel/framework']);
+  } catch {
+    return false;
+  }
+}
+
 export async function detectProject(root: string): Promise<ProjectInfo> {
   const hasPublicDir = await isDirectory(join(root, 'public'));
+  if (await isLaravel(root)) return { type: 'laravel', hasPublicDir };
   const files = await markupFiles(root);
   const isPhp =
     (await exists(join(root, 'composer.json'))) ||
@@ -60,6 +74,17 @@ export async function detectProject(root: string): Promise<ProjectInfo> {
 
 /** Default install paths for a project. Pages go to the web root. */
 export function defaultPaths(type: ProjectType, hasPublicDir: boolean): ProjectPaths {
+  if (type === 'laravel') {
+    // Blade views under resources/views; static files under public/, so
+    // asset('vendor/bootcn/...') serves them without touching Vite.
+    return {
+      components: 'resources/views/components/ui',
+      css: 'public/vendor/bootcn/css',
+      js: 'public/vendor/bootcn/js',
+      lib: 'public/vendor/bootcn/js/lib',
+      pages: 'resources/views/bootcn',
+    };
+  }
   const webRoot = type === 'php' && hasPublicDir;
   const assets = webRoot ? 'public/assets' : 'assets';
   return {

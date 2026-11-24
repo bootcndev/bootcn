@@ -100,6 +100,7 @@ export default defineConfig({
           { text: 'Theming', link: '/guide/theming' },
           { text: 'Dark mode', link: '/guide/dark-mode' },
           { text: 'Right to left', link: '/guide/rtl' },
+          { text: 'Laravel', link: '/guide/laravel' },
         ],
       },
       ...kindSidebar('components'),

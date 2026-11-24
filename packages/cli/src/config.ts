@@ -11,11 +11,16 @@ export type PathKey = 'components' | 'css' | 'js' | 'lib';
 /** Where `registry:page` files (templates) go. Optional; absent = project root. */
 export type ProjectPaths = Record<PathKey, string> & { pages?: string };
 
+/** Frameworks with their own file conventions. */
+export type Framework = 'laravel';
+
 export interface Config {
   $schema?: string;
   registry: string;
   style: string;
   bootstrap: string;
+  /** Laravel: Blade views for components and pages. Absent: plain HTML/PHP. */
+  framework?: Framework;
   paths: ProjectPaths;
 }
 
@@ -63,12 +68,18 @@ export async function loadConfig(root: string): Promise<Config> {
   return parseConfig(parsed);
 }
 
-export function createConfig(registry: string, bootstrap: string, paths: ProjectPaths): Config {
+export function createConfig(
+  registry: string,
+  bootstrap: string,
+  paths: ProjectPaths,
+  framework?: Framework,
+): Config {
   return {
     $schema: CONFIG_SCHEMA_URL,
     registry,
     style: 'default',
     bootstrap,
+    ...(framework ? { framework } : {}),
     paths: {
       components: paths.components,
       css: paths.css,

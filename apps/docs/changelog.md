@@ -127,6 +127,15 @@ each published version stays available under `/v/<version>/`) and the **CLI**
 
 ## CLI
 
+### 0.4.0
+
+- Laravel: `init` recognizes a Laravel project and sets `"framework":
+"laravel"`. Components and templates are written as Blade views under
+  `resources/views` (Blade syntax in the markup is escaped), CSS and
+  JavaScript under `public/vendor/bootcn`, and templates link them with
+  `asset()`. `add` prints Blade usage (`<x-ui.dialog />`) and a route for
+  templates. Guide: [Laravel](./guide/laravel).
+
 ### 0.3.0
 
 - The default registry is now `https://bootcn.dev`. Projects whose

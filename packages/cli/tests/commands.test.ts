@@ -447,3 +447,67 @@ describe('templates (registry:page)', () => {
     expect(again.output).not.toMatch(/skipped/i);
   });
 });
+
+describe('Laravel projects', () => {
+  async function laravelProject() {
+    const root = await tempDir();
+    await writeFiles(root, {
+      artisan: '#!/usr/bin/env php',
+      'composer.json': JSON.stringify({ require: { 'laravel/framework': '^12.0' } }),
+      'package.json': JSON.stringify({ devDependencies: { bootstrap: '^5.3.0' } }),
+      'public/index.php': '<?php',
+      'resources/views/welcome.blade.php': '<html></html>',
+    });
+    const result = await runCli(['init', '--yes', '--cwd', root, '--registry', registry]);
+    expect(result.code, result.output).toBe(EXIT.ok);
+    expect(result.output).toMatch(/Detected a Laravel project/);
+    return root;
+  }
+
+  it('init writes the Laravel paths and framework', async () => {
+    const root = await laravelProject();
+    const config = JSON.parse(await read(root, 'bootcn.json')) as {
+      framework: string;
+      paths: Record<string, string>;
+    };
+    expect(config.framework).toBe('laravel');
+    expect(config.paths).toEqual({
+      components: 'resources/views/components/ui',
+      css: 'public/vendor/bootcn/css',
+      js: 'public/vendor/bootcn/js',
+      lib: 'public/vendor/bootcn/js/lib',
+      pages: 'resources/views/bootcn',
+    });
+    expect(await exists(resolve(root, 'public/vendor/bootcn/css/tokens.css'))).toBe(true);
+  });
+
+  it('add writes Blade views and prints Blade usage', async () => {
+    const root = await laravelProject();
+    const result = await runCli(['add', 'dialog', '--yes', '--cwd', root]);
+    expect(result.code, result.output).toBe(EXIT.ok);
+    expect(await exists(resolve(root, 'resources/views/components/ui/dialog.blade.php'))).toBe(
+      true,
+    );
+    expect(await exists(resolve(root, 'public/vendor/bootcn/js/dialog.js'))).toBe(true);
+    expect(result.output).toContain("{{ asset('vendor/bootcn/css/dialog.css') }}");
+    expect(result.output).toContain('<x-ui.dialog />');
+    const diff = await runCli(['diff', 'dialog', '--cwd', root]);
+    expect(diff.output).toMatch(/0 file\(s\) differ/);
+  });
+
+  it('templates become Blade pages with asset() links and a route', async () => {
+    const root = await laravelProject();
+    const result = await runCli(['add', 'admin-dashboard', '--yes', '--cwd', root]);
+    expect(result.code, result.output).toBe(EXIT.ok);
+    const page = await read(root, 'resources/views/bootcn/admin-dashboard.blade.php');
+    expect(page).not.toMatch(/bootcn:|bootcn-asset/);
+    expect(page).toContain('href="{{ asset(\'vendor/bootcn/css\') }}/tokens.css"');
+    // Every linked file exists under public/.
+    for (const match of page.matchAll(/\{\{ asset\('([^']+)'\) \}\}\/([\w.-]+)/g)) {
+      expect(await exists(resolve(root, 'public', match[1]!, match[2]!)), match[0]).toBe(true);
+    }
+    // No unescaped Blade echo is left in the markup.
+    expect(page.replace(/\{\{ asset\('[^']+'\) \}\}/g, '')).not.toMatch(/(^|[^@])\{\{/);
+    expect(result.output).toContain("Route::view('/admin-dashboard', 'bootcn.admin-dashboard');");
+  });
+});

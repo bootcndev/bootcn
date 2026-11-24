@@ -16,6 +16,7 @@ const columns = [
       { text: 'Theming', href: withBase('/guide/theming') },
       { text: 'Dark mode', href: withBase('/guide/dark-mode') },
       { text: 'Right to left', href: withBase('/guide/rtl') },
+      { text: 'Laravel', href: withBase('/guide/laravel') },
     ],
   },
   {

@@ -26,7 +26,7 @@ npx bootcn init
 npx bootcn add button dialog
 ```
 
-`init` detects a PHP or plain HTML project, checks for Bootstrap, asks where
+`init` detects a Laravel, PHP or plain HTML project, checks for Bootstrap, asks where
 files should go, writes `bootcn.json` and installs the design tokens. `add`
 shows the files it will create, asks before overwriting anything, and prints
 the `<link>` and `<script>` tags to add to your layout.

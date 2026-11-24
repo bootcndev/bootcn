@@ -48,3 +48,49 @@ describe('registry:page files', () => {
     ).toThrow();
   });
 });
+
+describe('Laravel (Blade)', () => {
+  const laravel = createConfig(
+    'https://example.test',
+    '5.3',
+    defaultPaths('laravel', true),
+    'laravel',
+  );
+
+  it('installs components and pages as Blade views, assets under public/vendor', () => {
+    expect(laravel.framework).toBe('laravel');
+    expect(targetPath(laravel, { type: 'registry:component', target: 'button.html' })).toBe(
+      'resources/views/components/ui/button.blade.php',
+    );
+    expect(targetPath(laravel, page('admin-dashboard.html', ''))).toBe(
+      'resources/views/bootcn/admin-dashboard.blade.php',
+    );
+    expect(targetPath(laravel, { type: 'registry:style', target: 'button.css' })).toBe(
+      'public/vendor/bootcn/css/button.css',
+    );
+  });
+
+  it('escapes Blade syntax in markup but keeps email addresses', () => {
+    const file = {
+      type: 'registry:component',
+      target: 'x.html',
+      content: '<p>{{ x }} {!! y !!} @include("z") (@bootcndev) ada@example.com</p>',
+    };
+    expect(renderContent(laravel, file)).toBe(
+      '<p>@{{ x }} @{!! y !!} @@include("z") (@@bootcndev) ada@example.com</p>',
+    );
+  });
+
+  it('links page assets with asset()', () => {
+    const content =
+      '<link href="{{bootcn:css}}/tokens.css"><script src="{{bootcn:js}}/a.js"></script>';
+    expect(renderContent(laravel, page('admin.html', content))).toBe(
+      `<link href="{{ asset('vendor/bootcn/css') }}/tokens.css"><script src="{{ asset('vendor/bootcn/js') }}/a.js"></script>`,
+    );
+  });
+
+  it('leaves CSS and JavaScript untouched', () => {
+    const file = { type: 'registry:style', target: 'a.css', content: '@media (x) { a { b: c } }' };
+    expect(renderContent(laravel, file)).toBe(file.content);
+  });
+});

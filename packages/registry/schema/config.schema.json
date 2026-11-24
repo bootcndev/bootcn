@@ -11,6 +11,10 @@
     "registry": { "type": "string", "minLength": 1 },
     "style": { "type": "string", "minLength": 1 },
     "bootstrap": { "type": "string", "pattern": "^5\\.\\d+(?:\\.\\d+)?$" },
+    "framework": {
+      "enum": ["laravel"],
+      "description": "Laravel: components and pages are written as Blade views (.blade.php) and pages link assets with asset()."
+    },
     "paths": {
       "type": "object",
       "additionalProperties": false,

@@ -17,6 +17,11 @@ npx bootcn add login-card     # blocks: sections built from components
 npx bootcn add admin-dashboard # templates: a complete page with working links
 ```
 
+In a Laravel project, `init` sets `"framework": "laravel"`: components and
+templates become Blade views under `resources/views`, CSS and JavaScript go
+to `public/vendor/bootcn`, and templates link them with `asset()`. See
+<https://bootcn.dev/guide/laravel>.
+
 Components come from the hosted registry at
 <https://bootcn.dev>. Pin a version with
 `--registry https://bootcn.dev/v/0.3.0` (stored in

@@ -35,8 +35,39 @@ export function targetPath(config: Config, file: { type: string; target: string 
   const key = FILE_TYPE_TO_PATH[file.type];
   if (!key) throw registryError(`Unknown registry file type "${file.type}".`);
   const base = config.paths[key];
+  const target = isBladeFile(config, file) ? bladeName(file.target) : file.target;
   // Pages without a configured directory go to the project root.
-  return base ? posix.join(base, file.target) : posix.normalize(file.target);
+  return base ? posix.join(base, target) : posix.normalize(target);
+}
+
+/** Laravel projects get components and pages as Blade views. */
+function isBladeFile(config: Config, file: { type: string }): boolean {
+  return (
+    config.framework === 'laravel' &&
+    (file.type === 'registry:component' || file.type === 'registry:page')
+  );
+}
+
+/** button.html -> button.blade.php */
+export function bladeName(target: string): string {
+  return target.replace(/\.html?$/i, '') + '.blade.php';
+}
+
+/**
+ * Markup made safe for Blade: `{{` and `{!!` print literally (`@{{`), and an
+ * `@word` that is not part of a word (an email address is) becomes `@@word`,
+ * which Blade prints as `@word` instead of running it as a directive.
+ */
+export function escapeBlade(content: string): string {
+  return content
+    .replace(/\{\{/g, '@{{')
+    .replace(/\{!!/g, '@{!!')
+    .replace(/(^|[^\w@])@(?=[A-Za-z_])/g, '$1@@');
+}
+
+/** The Laravel URL for a directory under public/ (else a root-relative path). */
+function bladeAsset(dir: string): string {
+  return dir.startsWith('public/') ? `{{ asset('${dir.slice('public/'.length)}') }}` : `/${dir}`;
 }
 
 /** `{{bootcn:css}}` and friends, allowed in registry:page files only. */
@@ -51,7 +82,17 @@ export function renderContent(
   config: Config,
   file: { type: string; target: string; content: string },
 ): string {
-  if (file.type !== 'registry:page') return file.content;
+  const blade = isBladeFile(config, file);
+  if (file.type !== 'registry:page') return blade ? escapeBlade(file.content) : file.content;
+  if (blade) {
+    // Placeholders become markers, the markup is escaped, then the markers
+    // become asset() expressions, which must stay live Blade.
+    const marked = file.content.replace(PAGE_PLACEHOLDER, '@@bootcn-asset:$1@@');
+    return escapeBlade(marked).replace(
+      /@@bootcn-asset:(components|css|js|lib)@@/g,
+      (_match, key: string) => bladeAsset(config.paths[key as keyof Config['paths']] ?? 'public'),
+    );
+  }
   const pageDir = posix.dirname(targetPath(config, file));
   return file.content.replace(PAGE_PLACEHOLDER, (_match, key: keyof Config['paths']) => {
     const dir = config.paths[key] ?? '.';

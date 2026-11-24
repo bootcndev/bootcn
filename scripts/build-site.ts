@@ -112,6 +112,7 @@ async function writeLlmsTxt(): Promise<void> {
     ['Configuration', 'guide/configuration', 'bootcn.json, paths and pinning a registry version.'],
     ['Theming', 'guide/theming', 'Design tokens and how to change them.'],
     ['Dark mode', 'guide/dark-mode', 'Color modes, saving the choice and a toggle.'],
+    ['Laravel', 'guide/laravel', 'Blade views, asset paths, Vite and Livewire.'],
     [
       'Right to left',
       'guide/rtl',

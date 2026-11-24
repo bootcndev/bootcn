@@ -58,6 +58,30 @@ function href(relPath: string): string {
   return relPath.startsWith('public/') ? relPath.slice('public/'.length) : relPath;
 }
 
+/** Laravel: asset('...') for files under public/. */
+function laravelHref(relPath: string): string {
+  return relPath.startsWith('public/')
+    ? `{{ asset('${relPath.slice('public/'.length)}') }}`
+    : `/${relPath}`;
+}
+
+/** Blade view name: resources/views/bootcn/x.blade.php -> bootcn.x */
+export function bladeView(relPath: string): string {
+  return relPath
+    .replace(/^resources\/views\//, '')
+    .replace(/\.blade\.php$/, '')
+    .split('/')
+    .join('.');
+}
+
+/** How to use a Blade view: <x-ui.button /> for components, else @include. */
+export function bladeUsage(relPath: string): string {
+  const view = bladeView(relPath);
+  return view.startsWith('components.')
+    ? `<x-${view.slice('components.'.length)} />`
+    : `@include('${view}')`;
+}
+
 function printManualSteps(ctx: Context, config: Config, items: readonly RegistryItem[]): void {
   const { out } = ctx;
   const styles: string[] = [];
@@ -79,6 +103,10 @@ function printManualSteps(ctx: Context, config: Config, items: readonly Registry
 
   out.info('');
   out.info('Next steps:');
+  if (config.framework === 'laravel') {
+    printLaravelSteps(ctx, { styles, scripts, snippets, pages, needsBootstrapJs });
+    return;
+  }
   if (pages.length > 0) {
     out.info('  Open the page (it already links its CSS and JavaScript):');
     for (const path of pages) out.info(`    ${path}`);
@@ -101,6 +129,42 @@ function printManualSteps(ctx: Context, config: Config, items: readonly Registry
     out.info(
       '  Paths under public/ are shown relative to your web root; adjust them to your layout.',
     );
+  }
+}
+
+function printLaravelSteps(
+  ctx: Context,
+  files: {
+    styles: string[];
+    scripts: string[];
+    snippets: string[];
+    pages: string[];
+    needsBootstrapJs: boolean;
+  },
+): void {
+  const { out } = ctx;
+  if (files.pages.length > 0) {
+    out.info('  Route to the page (it already links its CSS and JavaScript with asset()):');
+    for (const path of files.pages) {
+      const view = bladeView(path);
+      out.info(`    Route::view('/${view.split('.').pop()}', '${view}');`);
+    }
+    out.info('  For your other views:');
+  }
+  if (files.styles.length > 0) {
+    out.info('  In your layout <head>, after the Bootstrap CSS link (tokens first):');
+    for (const path of files.styles) {
+      out.info(`    <link rel="stylesheet" href="${laravelHref(path)}">`);
+    }
+  }
+  if (files.scripts.length > 0 || files.needsBootstrapJs) {
+    out.info('  Before </body> (Bootstrap bundle first):');
+    if (files.needsBootstrapJs) out.info(`    ${BOOTSTRAP_JS_TAG}`);
+    for (const path of files.scripts) out.info(`    <script src="${laravelHref(path)}"></script>`);
+  }
+  if (files.snippets.length > 0) {
+    out.info('  Use the markup in your Blade views (edit it like any other view):');
+    for (const path of files.snippets) out.info(`    ${bladeUsage(path)}`);
   }
 }
 
