@@ -1,0 +1,28 @@
+{
+  "$schema": "../../schema/registry-item.schema.json",
+  "name": "separator",
+  "type": "registry:ui",
+  "title": "Separator",
+  "description": "A horizontal or vertical divider, with an optional centered label.",
+  "version": "1.0.0",
+  "categories": ["layout", "separators"],
+  "dependencies": [],
+  "registryDependencies": [],
+  "compatibility": {
+    "bootstrap": "5.3",
+    "platform": ["Bootstrap CSS"]
+  },
+  "license": "MIT",
+  "files": [
+    {
+      "path": "separator.html",
+      "target": "separator.html",
+      "type": "registry:component"
+    },
+    {
+      "path": "separator.css",
+      "target": "separator.css",
+      "type": "registry:style"
+    }
+  ]
+}

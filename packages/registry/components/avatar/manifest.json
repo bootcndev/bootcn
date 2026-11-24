@@ -1,0 +1,28 @@
+{
+  "$schema": "../../schema/registry-item.schema.json",
+  "name": "avatar",
+  "type": "registry:ui",
+  "title": "Avatar",
+  "description": "A user image with an initials fallback, sizes and an overlapping group.",
+  "version": "1.0.0",
+  "categories": ["data-display", "avatars"],
+  "dependencies": [],
+  "registryDependencies": [],
+  "compatibility": {
+    "bootstrap": "5.3",
+    "platform": ["Bootstrap CSS"]
+  },
+  "license": "MIT",
+  "files": [
+    {
+      "path": "avatar.html",
+      "target": "avatar.html",
+      "type": "registry:component"
+    },
+    {
+      "path": "avatar.css",
+      "target": "avatar.css",
+      "type": "registry:style"
+    }
+  ]
+}

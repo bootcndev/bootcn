@@ -1,0 +1,42 @@
+.bootcn-separator {
+  --bootcn-separator-spacing: 1rem;
+  --bootcn-separator-color: var(--bootcn-border-color);
+
+  flex-shrink: 0;
+  margin: var(--bootcn-separator-spacing) 0;
+  border: 0;
+  border-top: var(--bootcn-border-width) solid var(--bootcn-separator-color);
+  opacity: 1;
+}
+
+.bootcn-separator--vertical {
+  align-self: stretch;
+  width: 0;
+  height: auto;
+  margin: 0 var(--bootcn-separator-spacing);
+  border-top: 0;
+  border-left: var(--bootcn-border-width) solid var(--bootcn-separator-color);
+}
+
+.bootcn-separator-label {
+  --bootcn-separator-spacing: 1rem;
+  --bootcn-separator-color: var(--bootcn-border-color);
+
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin: var(--bootcn-separator-spacing) 0;
+  color: var(--bs-secondary-color);
+  font-size: 0.875rem;
+}
+
+.bootcn-separator-label::before,
+.bootcn-separator-label::after {
+  content: '';
+  flex: 1 1 0;
+  border-top: var(--bootcn-border-width) solid var(--bootcn-separator-color);
+}
+
+.bootcn-separator-label__text {
+  white-space: nowrap;
+}

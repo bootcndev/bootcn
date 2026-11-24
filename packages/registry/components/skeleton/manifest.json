@@ -1,0 +1,28 @@
+{
+  "$schema": "../../schema/registry-item.schema.json",
+  "name": "skeleton",
+  "type": "registry:ui",
+  "title": "Skeleton",
+  "description": "Loading placeholders built on Bootstrap placeholders, with a reduced-motion-aware pulse.",
+  "version": "1.0.0",
+  "categories": ["feedback", "loading"],
+  "dependencies": [],
+  "registryDependencies": [],
+  "compatibility": {
+    "bootstrap": "5.3",
+    "platform": ["Bootstrap CSS"]
+  },
+  "license": "MIT",
+  "files": [
+    {
+      "path": "skeleton.html",
+      "target": "skeleton.html",
+      "type": "registry:component"
+    },
+    {
+      "path": "skeleton.css",
+      "target": "skeleton.css",
+      "type": "registry:style"
+    }
+  ]
+}

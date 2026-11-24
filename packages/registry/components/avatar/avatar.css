@@ -1,0 +1,60 @@
+.bootcn-avatar {
+  --bootcn-avatar-size: 2.5rem;
+  --bootcn-avatar-radius: 50%;
+  --bootcn-avatar-bg: var(--bs-secondary-bg);
+  --bootcn-avatar-color: var(--bs-emphasis-color);
+
+  position: relative;
+  display: inline-flex;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+  width: var(--bootcn-avatar-size);
+  height: var(--bootcn-avatar-size);
+  overflow: hidden;
+  border-radius: var(--bootcn-avatar-radius);
+  background-color: var(--bootcn-avatar-bg);
+  color: var(--bootcn-avatar-color);
+  font-size: calc(var(--bootcn-avatar-size) * 0.4);
+  font-weight: 600;
+  line-height: 1;
+  vertical-align: middle;
+  user-select: none;
+}
+
+.bootcn-avatar--sm {
+  --bootcn-avatar-size: 2rem;
+}
+
+.bootcn-avatar--lg {
+  --bootcn-avatar-size: 3.5rem;
+}
+
+.bootcn-avatar--square {
+  --bootcn-avatar-radius: var(--bootcn-radius);
+}
+
+.bootcn-avatar__image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.bootcn-avatar__fallback {
+  text-transform: uppercase;
+}
+
+.bootcn-avatar-group {
+  --bootcn-avatar-group-overlap: -0.5rem;
+
+  display: inline-flex;
+  align-items: center;
+}
+
+.bootcn-avatar-group > .bootcn-avatar {
+  box-shadow: 0 0 0 2px var(--bs-body-bg);
+}
+
+.bootcn-avatar-group > .bootcn-avatar + .bootcn-avatar {
+  margin-left: var(--bootcn-avatar-group-overlap);
+}

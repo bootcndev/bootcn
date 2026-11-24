@@ -1,0 +1,23 @@
+.bootcn-spinner {
+  --bs-spinner-width: 1.5rem;
+  --bs-spinner-height: 1.5rem;
+  --bs-spinner-border-width: 0.15em;
+
+  flex-shrink: 0;
+  color: var(--bs-primary);
+}
+
+.bootcn-spinner--sm {
+  --bs-spinner-width: 1rem;
+  --bs-spinner-height: 1rem;
+  --bs-spinner-border-width: 0.15em;
+}
+
+.bootcn-spinner--lg {
+  --bs-spinner-width: 2.5rem;
+  --bs-spinner-height: 2.5rem;
+}
+
+.bootcn-spinner--muted {
+  color: var(--bs-secondary-color);
+}

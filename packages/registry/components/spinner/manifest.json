@@ -1,0 +1,28 @@
+{
+  "$schema": "../../schema/registry-item.schema.json",
+  "name": "spinner",
+  "type": "registry:ui",
+  "title": "Spinner",
+  "description": "An accessible loading indicator built on Bootstrap spinners, with sizes and a muted variant.",
+  "version": "1.0.0",
+  "categories": ["feedback", "loading"],
+  "dependencies": [],
+  "registryDependencies": [],
+  "compatibility": {
+    "bootstrap": "5.3",
+    "platform": ["Bootstrap CSS"]
+  },
+  "license": "MIT",
+  "files": [
+    {
+      "path": "spinner.html",
+      "target": "spinner.html",
+      "type": "registry:component"
+    },
+    {
+      "path": "spinner.css",
+      "target": "spinner.css",
+      "type": "registry:style"
+    }
+  ]
+}
