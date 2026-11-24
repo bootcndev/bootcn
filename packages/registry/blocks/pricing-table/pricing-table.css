@@ -1,0 +1,168 @@
+.bootcn-pricing__header {
+  max-width: 40rem;
+  margin: 0 auto 3rem;
+  text-align: center;
+}
+
+.bootcn-pricing__eyebrow {
+  margin: 0 0 0.5rem;
+  color: var(--bootcn-muted-foreground);
+  font-size: 0.875rem;
+  font-weight: 600;
+}
+
+.bootcn-pricing__title {
+  margin: 0;
+  font-size: 1.875rem;
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: -0.025em;
+}
+
+@media (min-width: 768px) {
+  .bootcn-pricing__title {
+    font-size: 2.25rem;
+  }
+}
+
+.bootcn-pricing__lead {
+  margin: 1rem 0 0;
+  color: var(--bootcn-muted-foreground);
+  font-size: 1.125rem;
+  line-height: 1.75rem;
+}
+
+.bootcn-pricing {
+  padding: 4rem 0;
+}
+
+/* Billing switch: two radio buttons styled as a segmented control. */
+.bootcn-pricing__billing {
+  display: inline-flex;
+  gap: 0.25rem;
+  margin: 1.5rem 0 0;
+  padding: 0.25rem;
+  border: 0;
+  border-radius: var(--bootcn-radius-lg);
+  background-color: var(--bootcn-muted);
+}
+
+.bootcn-pricing__period {
+  padding: 0.25rem 0.75rem;
+  border-radius: var(--bootcn-radius);
+  color: var(--bootcn-muted-foreground);
+  font-size: 0.875rem;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.bootcn-pricing__toggle:checked + .bootcn-pricing__period {
+  background-color: var(--bootcn-background);
+  color: var(--bootcn-foreground);
+  box-shadow: var(--bootcn-shadow-sm);
+}
+
+.bootcn-pricing__toggle:focus-visible + .bootcn-pricing__period {
+  box-shadow: var(--bootcn-focus-ring);
+}
+
+/* Show one set of prices. Without :has() support, monthly prices stay. */
+.bootcn-pricing .bootcn-pricing__yearly {
+  display: none;
+}
+
+.bootcn-pricing:has(.bootcn-pricing__toggle[value='yearly']:checked) .bootcn-pricing__monthly {
+  display: none;
+}
+
+.bootcn-pricing:has(.bootcn-pricing__toggle[value='yearly']:checked) .bootcn-pricing__yearly {
+  display: inline;
+}
+
+.bootcn-pricing__plans {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 17rem), 1fr));
+  gap: 1.5rem;
+  align-items: start;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.bootcn-pricing__plan {
+  display: flex;
+  position: relative;
+  flex-direction: column;
+  gap: 1rem;
+  padding: 1.5rem;
+  border: var(--bootcn-border-width) solid var(--bootcn-border-color);
+  border-radius: var(--bootcn-radius-xl);
+  background-color: var(--bootcn-background);
+  box-shadow: var(--bootcn-shadow-sm);
+}
+
+.bootcn-pricing__plan--featured {
+  border-color: var(--bootcn-primary);
+  box-shadow:
+    0 0 0 1px var(--bootcn-primary),
+    var(--bootcn-shadow-md);
+}
+
+.bootcn-pricing__name {
+  margin: 0;
+  font-size: 1.125rem;
+  font-weight: 600;
+}
+
+.bootcn-pricing__badge {
+  position: absolute;
+  top: 1.5rem;
+  right: 1.5rem;
+}
+
+.bootcn-pricing__description {
+  margin: -0.5rem 0 0;
+  color: var(--bootcn-muted-foreground);
+  font-size: 0.875rem;
+}
+
+.bootcn-pricing__price {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.375rem;
+  margin: 0;
+}
+
+.bootcn-pricing__amount {
+  font-size: 2.25rem;
+  font-weight: 700;
+  letter-spacing: -0.025em;
+  font-variant-numeric: tabular-nums;
+}
+
+.bootcn-pricing__unit {
+  color: var(--bootcn-muted-foreground);
+  font-size: 0.875rem;
+}
+
+.bootcn-pricing__list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.625rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  font-size: 0.875rem;
+}
+
+.bootcn-pricing__list li {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.5rem;
+}
+
+.bootcn-pricing__list .bootcn-icon {
+  flex: none;
+  margin-top: 0.1875rem;
+}

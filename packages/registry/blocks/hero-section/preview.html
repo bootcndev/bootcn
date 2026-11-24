@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Bootcn Hero section preview</title>
+    <script>
+      // Preview theme: ?theme=dark|light, else the docs page around the frame, else light.
+      (function () {
+        var theme = new URLSearchParams(location.search).get('theme');
+        if (!theme) {
+          try {
+            theme =
+              window.parent !== window &&
+              window.parent.document.documentElement.classList.contains('dark')
+                ? 'dark'
+                : 'light';
+          } catch (error) {
+            theme = 'light';
+          }
+        }
+        document.documentElement.setAttribute('data-bs-theme', theme === 'dark' ? 'dark' : 'light');
+      })();
+    </script>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.9/dist/css/bootstrap.min.css"
+    />
+    <link rel="stylesheet" href="../../themes/tokens/tokens.css" />
+    <link rel="stylesheet" href="../../components/button/button.css" />
+    <link rel="stylesheet" href="../../components/badge/badge.css" />
+    <link rel="stylesheet" href="hero-section.css" />
+  </head>
+  <body>
+    <main class="container py-4">
+      <section class="bootcn-hero" aria-labelledby="bootcn-hero-title">
+        <div class="bootcn-hero__inner">
+          <a class="bootcn-hero__announcement" href="#changelog">
+            <span class="badge bootcn-badge bootcn-badge--secondary">New</span>
+            Version 2.0 is here: see what changed
+            <svg
+              class="bootcn-icon"
+              width="16"
+              height="16"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              aria-hidden="true"
+              focusable="false"
+            >
+              <path d="M5 12h14" />
+              <path d="m13 6 6 6-6 6" />
+            </svg>
+          </a>
+          <h1 class="bootcn-hero__title" id="bootcn-hero-title">
+            Ship your product site in an afternoon
+          </h1>
+          <p class="bootcn-hero__lead">
+            Acme gives your team the pages, forms and dashboards you need, ready to edit and fast to
+            load.
+          </p>
+          <div class="bootcn-hero__actions">
+            <a class="btn bootcn-button bootcn-button--default bootcn-button--lg" href="#sign-up">
+              Start for free
+            </a>
+            <a class="btn bootcn-button bootcn-button--outline bootcn-button--lg" href="#demo">
+              Book a demo
+            </a>
+          </div>
+          <p class="bootcn-hero__note">No credit card required · Cancel any time</p>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>

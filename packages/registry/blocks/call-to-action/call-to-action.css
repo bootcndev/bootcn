@@ -1,0 +1,53 @@
+.bootcn-cta {
+  padding: 4rem 0;
+}
+
+.bootcn-cta__panel {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  padding: 3rem 1.5rem;
+  border: var(--bootcn-border-width) solid var(--bootcn-border-color);
+  border-radius: var(--bootcn-radius-xl);
+  background-color: var(--bootcn-muted);
+  text-align: center;
+}
+
+/* Subtle grid lines behind the content. */
+.bootcn-cta__panel::before {
+  content: '';
+  position: absolute;
+  z-index: -1;
+  inset: 0;
+  background-image:
+    linear-gradient(var(--bootcn-border-color) 1px, transparent 1px),
+    linear-gradient(90deg, var(--bootcn-border-color) 1px, transparent 1px);
+  background-size: 2rem 2rem;
+  opacity: 0.6;
+  -webkit-mask-image: radial-gradient(ellipse at center, #000 20%, transparent 70%);
+  mask-image: radial-gradient(ellipse at center, #000 20%, transparent 70%);
+}
+
+.bootcn-cta__title {
+  max-width: 36rem;
+  margin: 0 auto;
+  font-size: 1.875rem;
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: -0.025em;
+}
+
+.bootcn-cta__text {
+  max-width: 32rem;
+  margin: 1rem auto 0;
+  color: var(--bootcn-muted-foreground);
+  font-size: 1.125rem;
+}
+
+.bootcn-cta__actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.75rem;
+  margin-top: 2rem;
+}

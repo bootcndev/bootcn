@@ -1,0 +1,92 @@
+.bootcn-testimonials__header {
+  max-width: 40rem;
+  margin: 0 auto 3rem;
+  text-align: center;
+}
+
+.bootcn-testimonials__eyebrow {
+  margin: 0 0 0.5rem;
+  color: var(--bootcn-muted-foreground);
+  font-size: 0.875rem;
+  font-weight: 600;
+}
+
+.bootcn-testimonials__title {
+  margin: 0;
+  font-size: 1.875rem;
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: -0.025em;
+}
+
+@media (min-width: 768px) {
+  .bootcn-testimonials__title {
+    font-size: 2.25rem;
+  }
+}
+
+.bootcn-testimonials__lead {
+  margin: 1rem 0 0;
+  color: var(--bootcn-muted-foreground);
+  font-size: 1.125rem;
+  line-height: 1.75rem;
+}
+
+.bootcn-testimonials {
+  padding: 4rem 0;
+}
+
+/* Masonry-style columns: as many 18rem columns as fit. */
+.bootcn-testimonials__grid {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  column-gap: 1rem;
+  columns: 18rem;
+}
+
+.bootcn-testimonials__item {
+  margin-bottom: 1rem;
+  break-inside: avoid;
+}
+
+.bootcn-testimonials__card {
+  margin: 0;
+  padding: 1.5rem;
+  border: var(--bootcn-border-width) solid var(--bootcn-border-color);
+  border-radius: var(--bootcn-radius-xl);
+  background-color: var(--bootcn-background);
+  box-shadow: var(--bootcn-shadow-sm);
+}
+
+.bootcn-testimonials__quote {
+  margin: 0 0 1.25rem;
+}
+
+.bootcn-testimonials__quote p {
+  margin: 0;
+  font-size: 0.9375rem;
+  line-height: 1.6;
+}
+
+.bootcn-testimonials__author {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.bootcn-testimonials__who {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.bootcn-testimonials__name {
+  font-size: 0.875rem;
+  font-weight: 600;
+}
+
+.bootcn-testimonials__role {
+  color: var(--bootcn-muted-foreground);
+  font-size: 0.8125rem;
+}

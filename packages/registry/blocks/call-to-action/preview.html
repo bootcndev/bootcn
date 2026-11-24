@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Bootcn Call to action preview</title>
+    <script>
+      // Preview theme: ?theme=dark|light, else the docs page around the frame, else light.
+      (function () {
+        var theme = new URLSearchParams(location.search).get('theme');
+        if (!theme) {
+          try {
+            theme =
+              window.parent !== window &&
+              window.parent.document.documentElement.classList.contains('dark')
+                ? 'dark'
+                : 'light';
+          } catch (error) {
+            theme = 'light';
+          }
+        }
+        document.documentElement.setAttribute('data-bs-theme', theme === 'dark' ? 'dark' : 'light');
+      })();
+    </script>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.9/dist/css/bootstrap.min.css"
+    />
+    <link rel="stylesheet" href="../../themes/tokens/tokens.css" />
+    <link rel="stylesheet" href="../../components/button/button.css" />
+    <link rel="stylesheet" href="call-to-action.css" />
+  </head>
+  <body>
+    <main class="container py-4">
+      <h1 class="h4 mb-4">Call to action</h1>
+      <section class="bootcn-cta" aria-labelledby="bootcn-cta-title">
+        <div class="bootcn-cta__panel">
+          <h2 class="bootcn-cta__title" id="bootcn-cta-title">
+            Ready to build something people love?
+          </h2>
+          <p class="bootcn-cta__text">
+            Join thousands of teams who launch faster with Acme. Free for your first project.
+          </p>
+          <div class="bootcn-cta__actions">
+            <a class="btn bootcn-button bootcn-button--default bootcn-button--lg" href="#sign-up">
+              Get started
+            </a>
+            <a class="btn bootcn-button bootcn-button--outline bootcn-button--lg" href="#contact">
+              Talk to us
+            </a>
+          </div>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>

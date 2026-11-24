@@ -1,0 +1,28 @@
+{
+  "$schema": "../../schema/registry-item.schema.json",
+  "name": "feature-grid",
+  "type": "registry:block",
+  "title": "Feature grid",
+  "description": "A section heading with a responsive grid of features, each with an icon, a title and a short description.",
+  "version": "1.0.0",
+  "categories": ["marketing"],
+  "dependencies": [],
+  "registryDependencies": [],
+  "compatibility": {
+    "bootstrap": "5.3",
+    "platform": ["Bootstrap CSS"]
+  },
+  "license": "MIT",
+  "files": [
+    {
+      "path": "feature-grid.html",
+      "target": "feature-grid.html",
+      "type": "registry:component"
+    },
+    {
+      "path": "feature-grid.css",
+      "target": "feature-grid.css",
+      "type": "registry:style"
+    }
+  ]
+}

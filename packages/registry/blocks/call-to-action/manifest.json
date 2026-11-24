@@ -1,0 +1,28 @@
+{
+  "$schema": "../../schema/registry-item.schema.json",
+  "name": "call-to-action",
+  "type": "registry:block",
+  "title": "Call to action",
+  "description": "A closing call-to-action panel with a headline, a short text and two buttons.",
+  "version": "1.0.0",
+  "categories": ["marketing"],
+  "dependencies": [],
+  "registryDependencies": ["button"],
+  "compatibility": {
+    "bootstrap": "5.3",
+    "platform": ["Bootstrap CSS"]
+  },
+  "license": "MIT",
+  "files": [
+    {
+      "path": "call-to-action.html",
+      "target": "call-to-action.html",
+      "type": "registry:component"
+    },
+    {
+      "path": "call-to-action.css",
+      "target": "call-to-action.css",
+      "type": "registry:style"
+    }
+  ]
+}

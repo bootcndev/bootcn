@@ -1,0 +1,28 @@
+{
+  "$schema": "../../schema/registry-item.schema.json",
+  "name": "testimonials",
+  "type": "registry:block",
+  "title": "Testimonials",
+  "description": "Customer quotes in a masonry-style grid of cards, each with the person's name, role and avatar.",
+  "version": "1.0.0",
+  "categories": ["marketing"],
+  "dependencies": [],
+  "registryDependencies": ["avatar"],
+  "compatibility": {
+    "bootstrap": "5.3",
+    "platform": ["Bootstrap CSS"]
+  },
+  "license": "MIT",
+  "files": [
+    {
+      "path": "testimonials.html",
+      "target": "testimonials.html",
+      "type": "registry:component"
+    },
+    {
+      "path": "testimonials.css",
+      "target": "testimonials.css",
+      "type": "registry:style"
+    }
+  ]
+}

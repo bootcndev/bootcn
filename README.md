@@ -7,8 +7,9 @@ build with plain HTML and native PHP. Components are installed as editable
 HTML, CSS and JavaScript source files that you own. No React, Vue, jQuery,
 bundler or Node.js is required at runtime.
 
-> **Status:** early (0.x). 20 components, 11 blocks, an admin dashboard
-> template and design tokens. The CLI is on
+> **Status:** early (0.x). 20 components, 16 blocks (authentication,
+> dashboard, navigation, marketing), an admin dashboard template and design
+> tokens, with a Tailwind-like look built on Bootstrap. The CLI is on
 > [npm](https://www.npmjs.com/package/bootcn); documentation, live previews and
 > the registry are at <https://tsirosgeorge.github.io/bootcn/>.
 
@@ -76,12 +77,17 @@ pages. `bootcn add` installs the components a block or template uses.
 | `activity-feed`        | block    | HTML, CSS            | Bootstrap CSS             | `card`, `avatar`                                                                                |
 | `app-navbar`           | block    | HTML, CSS            | Bootstrap CSS + JS bundle | `user-menu`, `input`                                                                            |
 | `app-sidebar`          | block    | HTML, CSS            | Bootstrap CSS + JS bundle | `button`, `badge`, `avatar`                                                                     |
+| `call-to-action`       | block    | HTML, CSS            | Bootstrap CSS             | `button`                                                                                        |
+| `feature-grid`         | block    | HTML, CSS            | Bootstrap CSS             | —                                                                                               |
 | `forgot-password-card` | block    | HTML, CSS            | Bootstrap CSS             | `card`, `input`, `button`                                                                       |
+| `hero-section`         | block    | HTML, CSS            | Bootstrap CSS             | `button`, `badge`                                                                               |
 | `login-card`           | block    | HTML, CSS            | Bootstrap CSS             | `card`, `input`, `checkbox`, `button`                                                           |
 | `login-split`          | block    | HTML, CSS            | Bootstrap CSS             | `input`, `checkbox`, `button`                                                                   |
 | `page-header`          | block    | HTML, CSS            | Bootstrap CSS             | `button`                                                                                        |
+| `pricing-table`        | block    | HTML, CSS            | Bootstrap CSS             | `button`, `badge`                                                                               |
 | `signup-card`          | block    | HTML, CSS            | Bootstrap CSS             | `card`, `input`, `checkbox`, `button`                                                           |
 | `stats-cards`          | block    | HTML, CSS            | Bootstrap CSS             | —                                                                                               |
+| `testimonials`         | block    | HTML, CSS            | Bootstrap CSS             | `avatar`                                                                                        |
 | `transactions-table`   | block    | HTML, CSS            | Bootstrap CSS             | `card`, `badge`, `button`, `input`                                                              |
 | `user-menu`            | block    | HTML, CSS            | Bootstrap CSS + JS bundle | `dropdown`, `avatar`                                                                            |
 | `admin-dashboard`      | template | page (HTML), CSS, JS | Bootstrap CSS + JS bundle | `app-sidebar`, `user-menu`, `page-header`, `stats-cards`, `activity-feed`, `transactions-table` |
@@ -225,7 +231,6 @@ contents inlined), which the CLI reads. Previews load the same source files.
 - Dark mode and contrast are checked by axe on every preview (whole page in
   dark mode), not by visual regression tests.
 - No searchable multi-select, date picker, data table or command palette yet.
-- No marketing blocks (hero, pricing, testimonials) yet.
 - `bootcn` 0.1.x cannot read registry 0.3.0's index (it does not know the
   `registry:page` file type); use `npx bootcn@latest`, or pin the registry to
   `/v/0.2.0`. From this version on, the index accepts new file types.
