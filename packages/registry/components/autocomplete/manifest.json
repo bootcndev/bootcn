@@ -4,7 +4,7 @@
   "type": "registry:ui",
   "title": "Autocomplete",
   "description": "A text input that suggests values as you type, from the page or from your server, and still accepts any text.",
-  "version": "1.0.1",
+  "version": "1.1.0",
   "categories": [
     "forms"
   ],

@@ -1,0 +1,6 @@
+# Bootcn: docs and registry. Everything is public, for people, search
+# engines and AI assistants alike.
+User-agent: *
+Allow: /
+
+Sitemap: https://bootcn.dev/sitemap.xml

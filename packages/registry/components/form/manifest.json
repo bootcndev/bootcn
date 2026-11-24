@@ -4,7 +4,7 @@
   "type": "registry:ui",
   "title": "Form",
   "description": "Form validation with the browser's own rules: messages under each field, an error summary that takes focus, and live checks after the first attempt.",
-  "version": "1.0.1",
+  "version": "1.1.0",
   "categories": [
     "forms"
   ],

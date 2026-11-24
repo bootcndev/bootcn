@@ -4,6 +4,18 @@
   const ns = (window.Bootcn = window.Bootcn || {});
   if (ns.tagGroup) return; // already loaded: idempotent
 
+  // Messages: override them for your language with window.Bootcn.messages,
+  // e.g. { 'copy.done': 'Αντιγράφηκε.' } (see the Translations guide).
+  // Plural keys end in .one, .other… as chosen by Intl.PluralRules.
+  function t(key, fallback, vars) {
+    const custom = window.Bootcn && window.Bootcn.messages && window.Bootcn.messages[key];
+    let text = typeof custom === 'string' ? custom : fallback;
+    Object.keys(vars || {}).forEach(function (name) {
+      text = text.split('{' + name + '}').join(String(vars[name]));
+    });
+    return text;
+  }
+
   const ROOT = '[data-bootcn-tag-group]';
   let listening = false;
 
@@ -28,7 +40,7 @@
       }
     }
     const status = root.querySelector('[data-bootcn-tag-group-status]');
-    if (status) status.textContent = name + ' removed.';
+    if (status) status.textContent = t('tag-group.removed', '{name} removed.', { name: name });
     root.dispatchEvent(
       new CustomEvent('bootcn:tag-group:remove', { bubbles: true, detail: { value: name } }),
     );

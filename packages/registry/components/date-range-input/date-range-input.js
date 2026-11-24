@@ -4,6 +4,31 @@
   const ns = (window.Bootcn = window.Bootcn || {});
   if (ns.dateRangeInput) return; // already loaded: idempotent
 
+  // Messages: override them for your language with window.Bootcn.messages,
+  // e.g. { 'copy.done': 'Αντιγράφηκε.' } (see the Translations guide).
+  // Plural keys end in .one, .other… as chosen by Intl.PluralRules.
+  function t(key, fallback, vars) {
+    const custom = window.Bootcn && window.Bootcn.messages && window.Bootcn.messages[key];
+    let text = typeof custom === 'string' ? custom : fallback;
+    Object.keys(vars || {}).forEach(function (name) {
+      text = text.split('{' + name + '}').join(String(vars[name]));
+    });
+    return text;
+  }
+
+  function tn(key, count, one, other, vars) {
+    let category = count === 1 ? 'one' : 'other';
+    try {
+      category = new Intl.PluralRules(document.documentElement.lang || undefined).select(count);
+    } catch {
+      // Unknown language tag: keep the English rule.
+    }
+    const messages = (window.Bootcn && window.Bootcn.messages) || {};
+    const own = messages[key + '.' + category];
+    const fallback = typeof own === 'string' ? own : count === 1 ? one : other;
+    return t(key + '.' + category, fallback, Object.assign({ count: count }, vars));
+  }
+
   const ROOT = '[data-bootcn-date-range-input]';
   let listening = false;
 
@@ -31,12 +56,19 @@
     const error = root.querySelector('.bootcn-date-range-input__error');
     if (error) {
       error.hidden = !invalid;
-      error.textContent = invalid ? root.getAttribute('data-error') || 'Check the dates.' : '';
+      error.textContent = invalid
+        ? root.getAttribute('data-error') || t('date-range-input.order', 'Check the dates.')
+        : '';
     }
     const status = root.querySelector('[data-bootcn-date-range-input-status]');
     if (status && v.start && v.end && !invalid) {
       const n = nights(v.start, v.end);
-      status.textContent = n === 1 ? '1 day selected.' : n + ' days selected.';
+      status.textContent = tn(
+        'date-range-input.count',
+        n,
+        '1 day selected.',
+        '{count} days selected.',
+      );
     }
     if (emit) {
       root.dispatchEvent(

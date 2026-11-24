@@ -4,7 +4,7 @@
   "type": "registry:ui",
   "title": "Conversation",
   "description": "A chat transcript for AI assistants: user and assistant messages, reasoning, sources, copy and feedback actions, a typing indicator and a \"scroll to latest\" button.",
-  "version": "1.0.1",
+  "version": "1.1.0",
   "categories": [
     "ai"
   ],

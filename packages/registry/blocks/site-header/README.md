@@ -10,6 +10,15 @@ other pages. On phones the links collapse behind the "Menu" button
 blurred background; remove `position: sticky` if you prefer it to scroll
 away.
 
+## Hide on scroll
+
+With `data-bootcn-site-header-autohide` on the `<header>` and `site-header.js`
+loaded, the header slides away while the page scrolls down and comes back
+on the first scroll up. It stays while it holds focus or while the phone
+menu is open, and it moves without animation under reduced motion. Remove
+the attribute to keep it always visible. Events: `bootcn:site-header:hide`
+and `bootcn:site-header:show`.
+
 ## Accessibility
 
 - A `<header>` landmark holding a `<nav aria-label="Main">`.

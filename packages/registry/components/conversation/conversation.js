@@ -4,6 +4,18 @@
   const ns = (window.Bootcn = window.Bootcn || {});
   if (ns.conversation) return; // already loaded: idempotent
 
+  // Messages: override them for your language with window.Bootcn.messages,
+  // e.g. { 'copy.done': 'Αντιγράφηκε.' } (see the Translations guide).
+  // Plural keys end in .one, .other… as chosen by Intl.PluralRules.
+  function t(key, fallback, vars) {
+    const custom = window.Bootcn && window.Bootcn.messages && window.Bootcn.messages[key];
+    let text = typeof custom === 'string' ? custom : fallback;
+    Object.keys(vars || {}).forEach(function (name) {
+      text = text.split('{' + name + '}').join(String(vars[name]));
+    });
+    return text;
+  }
+
   const ROOT = '[data-bootcn-conversation]';
   const LOG = '[data-bootcn-conversation-log]';
   const NEAR_BOTTOM = 48; // px: "at the latest message" below this distance
@@ -162,7 +174,10 @@
           button.classList.remove('is-copied');
         }, 2000),
       );
-      announce(root.querySelector('[data-bootcn-conversation-status]'), 'Copied to the clipboard.');
+      announce(
+        root.querySelector('[data-bootcn-conversation-status]'),
+        t('copy.done', 'Copied to the clipboard.'),
+      );
       message.dispatchEvent(
         new CustomEvent('bootcn:conversation:copy', { bubbles: true, detail: { text: text } }),
       );

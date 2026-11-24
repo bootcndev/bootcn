@@ -4,7 +4,7 @@
   "type": "registry:ui",
   "title": "Command",
   "description": "A fast, searchable list of actions: inline, or as a Ctrl/⌘ K command palette in a dialog.",
-  "version": "1.0.1",
+  "version": "1.1.0",
   "categories": [
     "navigation"
   ],

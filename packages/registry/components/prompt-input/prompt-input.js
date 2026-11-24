@@ -4,6 +4,31 @@
   const ns = (window.Bootcn = window.Bootcn || {});
   if (ns.promptInput) return; // already loaded: idempotent
 
+  // Messages: override them for your language with window.Bootcn.messages,
+  // e.g. { 'copy.done': 'Αντιγράφηκε.' } (see the Translations guide).
+  // Plural keys end in .one, .other… as chosen by Intl.PluralRules.
+  function t(key, fallback, vars) {
+    const custom = window.Bootcn && window.Bootcn.messages && window.Bootcn.messages[key];
+    let text = typeof custom === 'string' ? custom : fallback;
+    Object.keys(vars || {}).forEach(function (name) {
+      text = text.split('{' + name + '}').join(String(vars[name]));
+    });
+    return text;
+  }
+
+  function tn(key, count, one, other, vars) {
+    let category = count === 1 ? 'one' : 'other';
+    try {
+      category = new Intl.PluralRules(document.documentElement.lang || undefined).select(count);
+    } catch {
+      // Unknown language tag: keep the English rule.
+    }
+    const messages = (window.Bootcn && window.Bootcn.messages) || {};
+    const own = messages[key + '.' + category];
+    const fallback = typeof own === 'string' ? own : count === 1 ? one : other;
+    return t(key + '.' + category, fallback, Object.assign({ count: count }, vars));
+  }
+
   const ROOT = '[data-bootcn-prompt-input]';
   const REMOVE_ICON =
     '<svg class="bootcn-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" ' +
@@ -91,7 +116,10 @@
       const remove = document.createElement('button');
       remove.type = 'button';
       remove.className = 'bootcn-prompt-attachment__remove';
-      remove.setAttribute('aria-label', 'Remove ' + file.name);
+      remove.setAttribute(
+        'aria-label',
+        t('prompt-input.remove', 'Remove {name}', { name: file.name }),
+      );
       remove.setAttribute('data-bootcn-prompt-remove', String(index));
       remove.innerHTML = REMOVE_ICON;
       item.append(name, size, remove);
@@ -119,8 +147,19 @@
       }
     });
     render(form);
-    if (added.length === 1) announce(form, added[0] + ' attached.');
-    else if (added.length > 1) announce(form, added.length + ' files attached.');
+    if (added.length === 1)
+      announce(form, t('prompt-input.attached', '{name} attached.', { name: added[0] }));
+    else if (added.length > 1) {
+      announce(
+        form,
+        tn(
+          'prompt-input.attached-count',
+          added.length,
+          '1 file attached.',
+          '{count} files attached.',
+        ),
+      );
+    }
   }
 
   function removeFile(form, index) {
@@ -133,7 +172,7 @@
     const next = buttons[index] || buttons[index - 1];
     if (next) next.focus();
     else if (parts(form).file) parts(form).file.focus();
-    announce(form, file.name + ' removed.');
+    announce(form, t('prompt-input.removed', '{name} removed.', { name: file.name }));
   }
 
   function clear(form) {
@@ -150,7 +189,10 @@
     const p = parts(form);
     form.classList.toggle('is-busy', busy);
     if (p.submit) {
-      p.submit.setAttribute('aria-label', busy ? 'Stop' : 'Send');
+      p.submit.setAttribute(
+        'aria-label',
+        busy ? t('prompt-input.stop', 'Stop') : t('prompt-input.send', 'Send'),
+      );
       p.submit.type = busy ? 'button' : 'submit';
       if (busy) p.submit.disabled = false;
     }

@@ -4,6 +4,18 @@
   const ns = (window.Bootcn = window.Bootcn || {});
   if (ns.dateInput) return; // already loaded: idempotent
 
+  // Messages: override them for your language with window.Bootcn.messages,
+  // e.g. { 'copy.done': 'Αντιγράφηκε.' } (see the Translations guide).
+  // Plural keys end in .one, .other… as chosen by Intl.PluralRules.
+  function t(key, fallback, vars) {
+    const custom = window.Bootcn && window.Bootcn.messages && window.Bootcn.messages[key];
+    let text = typeof custom === 'string' ? custom : fallback;
+    Object.keys(vars || {}).forEach(function (name) {
+      text = text.split('{' + name + '}').join(String(vars[name]));
+    });
+    return text;
+  }
+
   const ROOT = '[data-bootcn-date-input]';
   const SEGMENT = '[data-segment]';
   const NAMES = {
@@ -114,10 +126,13 @@
       el.setAttribute('aria-valuemin', String(min));
       el.setAttribute('aria-valuemax', String(max));
       if (value === null) {
-        el.textContent = type === 'dayPeriod' ? s.periods[0] : PLACEHOLDERS[type];
+        el.textContent =
+          type === 'dayPeriod'
+            ? s.periods[0]
+            : t('date-input.placeholder.' + type, PLACEHOLDERS[type]);
         el.classList.add('is-placeholder');
         el.removeAttribute('aria-valuenow');
-        el.setAttribute('aria-valuetext', 'Empty');
+        el.setAttribute('aria-valuetext', t('date-input.empty', 'Empty'));
         return;
       }
       el.classList.remove('is-placeholder');
@@ -151,7 +166,7 @@
     if (error) {
       error.hidden = !invalid;
       error.textContent = invalid
-        ? root.getAttribute('data-error') || 'Choose a value in range.'
+        ? root.getAttribute('data-error') || t('date-input.range', 'Choose a value in range.')
         : '';
     }
     if (value !== before) {
@@ -362,7 +377,7 @@
       segment.className = 'bootcn-date-input__segment';
       segment.setAttribute('role', 'spinbutton');
       segment.setAttribute('tabindex', '0');
-      segment.setAttribute('aria-label', NAMES[part.type]);
+      segment.setAttribute('aria-label', t('date-input.' + part.type, NAMES[part.type]));
       segment.setAttribute('data-segment', part.type);
       control.appendChild(segment);
     });

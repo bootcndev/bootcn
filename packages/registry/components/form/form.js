@@ -4,6 +4,31 @@
   const ns = (window.Bootcn = window.Bootcn || {});
   if (ns.form) return; // already loaded: idempotent
 
+  // Messages: override them for your language with window.Bootcn.messages,
+  // e.g. { 'copy.done': 'Αντιγράφηκε.' } (see the Translations guide).
+  // Plural keys end in .one, .other… as chosen by Intl.PluralRules.
+  function t(key, fallback, vars) {
+    const custom = window.Bootcn && window.Bootcn.messages && window.Bootcn.messages[key];
+    let text = typeof custom === 'string' ? custom : fallback;
+    Object.keys(vars || {}).forEach(function (name) {
+      text = text.split('{' + name + '}').join(String(vars[name]));
+    });
+    return text;
+  }
+
+  function tn(key, count, one, other, vars) {
+    let category = count === 1 ? 'one' : 'other';
+    try {
+      category = new Intl.PluralRules(document.documentElement.lang || undefined).select(count);
+    } catch {
+      // Unknown language tag: keep the English rule.
+    }
+    const messages = (window.Bootcn && window.Bootcn.messages) || {};
+    const own = messages[key + '.' + category];
+    const fallback = typeof own === 'string' ? own : count === 1 ? one : other;
+    return t(key + '.' + category, fallback, Object.assign({ count: count }, vars));
+  }
+
   const ROOT = '[data-bootcn-form]';
   // ValidityState flags, in the order they are reported, and the
   // data-error-* attribute that overrides each message.
@@ -80,8 +105,12 @@
       });
     }
     if (count) {
-      count.textContent =
-        invalid.length === 1 ? 'There is 1 problem' : 'There are ' + invalid.length + ' problems';
+      count.textContent = tn(
+        'form.summary',
+        invalid.length,
+        'There is 1 problem',
+        'There are {count} problems',
+      );
     }
     summary.hidden = invalid.length === 0;
     return summary;
@@ -127,7 +156,8 @@
     const handled = !form.dispatchEvent(custom);
     if (handled || !form.hasAttribute('action')) {
       event.preventDefault();
-      if (success && !handled) success.textContent = form.getAttribute('data-success') || 'Saved.';
+      if (success && !handled)
+        success.textContent = form.getAttribute('data-success') || t('form.saved', 'Saved.');
     }
   }
 

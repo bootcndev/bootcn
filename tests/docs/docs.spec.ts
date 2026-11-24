@@ -554,3 +554,15 @@ test('pages have link preview tags for X and Open Graph', async ({ page, request
   expect(image.ok()).toBe(true);
   expect(image.headers()['content-type']).toContain('image/png');
 });
+
+test('the home page has structured data and the site has robots.txt', async ({ page, request }) => {
+  await page.goto('./');
+  const json = await page.locator('script[type="application/ld+json"]').textContent();
+  const data = JSON.parse(json!) as { '@graph': { '@type': string; sameAs?: string[] }[] };
+  const types = data['@graph'].map((node) => node['@type']);
+  expect(types).toEqual(['Organization', 'WebSite', 'SoftwareSourceCode']);
+  expect(data['@graph'][0]!.sameAs).toContain('https://x.com/bootcndev');
+  const robots = await request.get('robots.txt');
+  expect(robots.ok()).toBe(true);
+  expect(await robots.text()).toContain('Sitemap: https://bootcn.dev/sitemap.xml');
+});

@@ -1,4 +1,5 @@
 .bootcn-site-header {
+  transition: transform var(--bootcn-transition);
   position: sticky;
   z-index: 1030;
   top: 0;
@@ -77,4 +78,9 @@
   .bootcn-site-header__actions {
     padding: 0;
   }
+}
+
+/* Hidden while scrolling down (site-header.js, data-bootcn-site-header-autohide). */
+.bootcn-site-header.is-hidden {
+  transform: translateY(-100%);
 }

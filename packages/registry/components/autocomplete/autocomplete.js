@@ -4,6 +4,31 @@
   const ns = (window.Bootcn = window.Bootcn || {});
   if (ns.autocomplete) return; // already loaded: idempotent
 
+  // Messages: override them for your language with window.Bootcn.messages,
+  // e.g. { 'copy.done': 'Αντιγράφηκε.' } (see the Translations guide).
+  // Plural keys end in .one, .other… as chosen by Intl.PluralRules.
+  function t(key, fallback, vars) {
+    const custom = window.Bootcn && window.Bootcn.messages && window.Bootcn.messages[key];
+    let text = typeof custom === 'string' ? custom : fallback;
+    Object.keys(vars || {}).forEach(function (name) {
+      text = text.split('{' + name + '}').join(String(vars[name]));
+    });
+    return text;
+  }
+
+  function tn(key, count, one, other, vars) {
+    let category = count === 1 ? 'one' : 'other';
+    try {
+      category = new Intl.PluralRules(document.documentElement.lang || undefined).select(count);
+    } catch {
+      // Unknown language tag: keep the English rule.
+    }
+    const messages = (window.Bootcn && window.Bootcn.messages) || {};
+    const own = messages[key + '.' + category];
+    const fallback = typeof own === 'string' ? own : count === 1 ? one : other;
+    return t(key + '.' + category, fallback, Object.assign({ count: count }, vars));
+  }
+
   const ROOT = '[data-bootcn-autocomplete]';
   const OPTION = '[role="option"]';
   const state = new WeakMap(); // root -> { timer, controller }
@@ -97,7 +122,7 @@
     setActive(root, null);
     if (count) open(root);
     else close(root);
-    announce(root, count === 1 ? '1 suggestion.' : count + ' suggestions.');
+    announce(root, tn('autocomplete.count', count, '1 suggestion.', '{count} suggestions.'));
   }
 
   // Remote suggestions: data-bootcn-autocomplete-url + the encoded query

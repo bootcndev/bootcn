@@ -112,6 +112,8 @@ async function writeLlmsTxt(): Promise<void> {
     ['Configuration', 'guide/configuration', 'bootcn.json, paths and pinning a registry version.'],
     ['Theming', 'guide/theming', 'Design tokens and how to change them.'],
     ['Dark mode', 'guide/dark-mode', 'Color modes, saving the choice and a toggle.'],
+    ['Translations', 'guide/i18n', 'window.Bootcn.messages and plurals for announced texts.'],
+    ['Animations', 'guide/animations', 'Motion tokens, reduced motion and your own transitions.'],
     ['Laravel', 'guide/laravel', 'Blade views, asset paths, Vite and Livewire.'],
     ['AI assistants (MCP)', 'guide/mcp', 'The bootcn mcp server for Claude, Cursor and VS Code.'],
     [

@@ -104,3 +104,24 @@ test('sidebar rail: icon links have names and show their label on focus', async 
     .poll(() => inbox.evaluate((el) => getComputedStyle(el, '::after').opacity))
     .toBe('1');
 });
+
+test('site header: hides while scrolling down, returns on scroll up and focus', async ({
+  page,
+}) => {
+  await page.setViewportSize({ width: 1280, height: 600 });
+  await openPreview(page, 'site-header', 'blocks');
+  const header = page.locator('.bootcn-site-header');
+  await page.evaluate(() => {
+    const spacer = document.createElement('div');
+    spacer.style.height = '3000px';
+    document.body.appendChild(spacer);
+  });
+  await page.mouse.wheel(0, 800);
+  await expect(header).toHaveClass(/is-hidden/);
+  await page.mouse.wheel(0, -200);
+  await expect(header).not.toHaveClass(/is-hidden/);
+  await page.mouse.wheel(0, 600);
+  await expect(header).toHaveClass(/is-hidden/);
+  await page.getByRole('link', { name: 'Pricing' }).focus();
+  await expect(header).not.toHaveClass(/is-hidden/);
+});

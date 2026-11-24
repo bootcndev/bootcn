@@ -3,8 +3,8 @@
   "name": "site-header",
   "type": "registry:block",
   "title": "Site header",
-  "description": "A marketing site header: logo, section links and sign-in buttons, collapsing into a menu on phones; sticky with a blurred background.",
-  "version": "1.0.0",
+  "description": "A marketing site header: logo, section links and sign-in buttons, collapsing into a menu on phones; sticky with a blurred background, optionally hiding while you scroll down.",
+  "version": "1.1.0",
   "categories": ["marketing"],
   "dependencies": [],
   "registryDependencies": ["button"],
@@ -23,6 +23,11 @@
       "path": "site-header.css",
       "target": "site-header.css",
       "type": "registry:style"
+    },
+    {
+      "path": "site-header.js",
+      "target": "site-header.js",
+      "type": "registry:script"
     }
   ]
 }

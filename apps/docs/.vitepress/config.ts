@@ -1,4 +1,4 @@
-import { defineConfig } from 'vitepress';
+import { type HeadConfig, defineConfig } from 'vitepress';
 
 import {
   GITHUB_URL,
@@ -45,6 +45,43 @@ function kindSidebar(kind: Kind) {
 
 const BASE = process.env.DOCS_BASE ?? '/';
 
+const STRUCTURED_DATA = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'Organization',
+      '@id': `${SITE_URL}/#organization`,
+      name: 'Bootcn',
+      url: `${SITE_URL}/`,
+      logo: `${SITE_URL}/icon-512.png`,
+      description:
+        'Accessible copy-paste components, blocks and templates for Bootstrap 5.3, in plain HTML, CSS and vanilla JavaScript.',
+      sameAs: [GITHUB_URL, NPM_URL, X_URL],
+    },
+    {
+      '@type': 'WebSite',
+      '@id': `${SITE_URL}/#website`,
+      name: 'Bootcn',
+      url: `${SITE_URL}/`,
+      publisher: { '@id': `${SITE_URL}/#organization` },
+    },
+    {
+      '@type': 'SoftwareSourceCode',
+      '@id': `${SITE_URL}/#software`,
+      name: 'Bootcn',
+      description:
+        'A registry and CLI that copy Bootstrap 5.3 components, blocks and page templates into your project as plain HTML, CSS and JavaScript.',
+      url: `${SITE_URL}/`,
+      codeRepository: GITHUB_URL,
+      license: 'https://opensource.org/licenses/MIT',
+      programmingLanguage: ['HTML', 'CSS', 'JavaScript'],
+      runtimePlatform: 'Bootstrap 5.3',
+      author: { '@type': 'Person', name: 'George Tsiros' },
+      publisher: { '@id': `${SITE_URL}/#organization` },
+    },
+  ],
+};
+
 export default defineConfig({
   title: 'Bootcn',
   description: 'Copy-paste UI components for Bootstrap 5.3 and vanilla JavaScript.',
@@ -78,7 +115,7 @@ export default defineConfig({
     const title =
       path === '' ? 'Bootcn: build better with Bootstrap' : `${pageData.title} | Bootcn`;
     const description = pageData.description || siteData.description;
-    return [
+    const head: HeadConfig[] = [
       ['link', { rel: 'canonical', href: url }],
       ['meta', { property: 'og:url', content: url }],
       ['meta', { property: 'og:title', content: title }],
@@ -86,6 +123,10 @@ export default defineConfig({
       ['meta', { name: 'twitter:title', content: title }],
       ['meta', { name: 'twitter:description', content: description }],
     ];
+    // Structured data for search engines and AI answers, on the home page.
+    if (path === '')
+      head.push(['script', { type: 'application/ld+json' }, JSON.stringify(STRUCTURED_DATA)]);
+    return head;
   },
   // The default github themes have colours below 4.5:1 on the code background.
   markdown: { theme: { light: 'github-light-high-contrast', dark: 'github-dark-high-contrast' } },
@@ -119,6 +160,8 @@ export default defineConfig({
           { text: 'Theming', link: '/guide/theming' },
           { text: 'Dark mode', link: '/guide/dark-mode' },
           { text: 'Right to left', link: '/guide/rtl' },
+          { text: 'Translations', link: '/guide/i18n' },
+          { text: 'Animations', link: '/guide/animations' },
           { text: 'Laravel', link: '/guide/laravel' },
           { text: 'AI assistants (MCP)', link: '/guide/mcp' },
         ],

@@ -4,6 +4,18 @@
   const ns = (window.Bootcn = window.Bootcn || {});
   if (ns.image) return; // already loaded: idempotent
 
+  // Messages: override them for your language with window.Bootcn.messages,
+  // e.g. { 'copy.done': 'Αντιγράφηκε.' } (see the Translations guide).
+  // Plural keys end in .one, .other… as chosen by Intl.PluralRules.
+  function t(key, fallback, vars) {
+    const custom = window.Bootcn && window.Bootcn.messages && window.Bootcn.messages[key];
+    let text = typeof custom === 'string' ? custom : fallback;
+    Object.keys(vars || {}).forEach(function (name) {
+      text = text.split('{' + name + '}').join(String(vars[name]));
+    });
+    return text;
+  }
+
   const ROOT = '[data-bootcn-image]';
   const ICON =
     '<svg class="bootcn-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" ' +
@@ -18,11 +30,11 @@
     const fallback = document.createElement('div');
     fallback.className = 'bootcn-image__fallback';
     fallback.setAttribute('role', 'img');
-    fallback.setAttribute('aria-label', img.alt || 'Image unavailable');
+    fallback.setAttribute('aria-label', img.alt || t('image.unavailable', 'Image unavailable'));
     fallback.innerHTML = ICON;
     const text = document.createElement('span');
     text.setAttribute('aria-hidden', 'true');
-    text.textContent = img.alt || 'Image unavailable';
+    text.textContent = img.alt || t('image.unavailable', 'Image unavailable');
     fallback.appendChild(text);
     img.insertAdjacentElement('afterend', fallback);
     root.dispatchEvent(new CustomEvent('bootcn:image:error', { bubbles: true }));

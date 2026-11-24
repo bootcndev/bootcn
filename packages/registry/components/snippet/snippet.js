@@ -4,6 +4,18 @@
   const ns = (window.Bootcn = window.Bootcn || {});
   if (ns.snippet) return; // already loaded: idempotent
 
+  // Messages: override them for your language with window.Bootcn.messages,
+  // e.g. { 'copy.done': 'Αντιγράφηκε.' } (see the Translations guide).
+  // Plural keys end in .one, .other… as chosen by Intl.PluralRules.
+  function t(key, fallback, vars) {
+    const custom = window.Bootcn && window.Bootcn.messages && window.Bootcn.messages[key];
+    let text = typeof custom === 'string' ? custom : fallback;
+    Object.keys(vars || {}).forEach(function (name) {
+      text = text.split('{' + name + '}').join(String(vars[name]));
+    });
+    return text;
+  }
+
   const ROOT = '[data-bootcn-snippet]';
   const timers = new WeakMap();
   let listening = false;
@@ -65,7 +77,7 @@
       if (status) {
         status.textContent = '';
         setTimeout(function () {
-          status.textContent = 'Copied to the clipboard.';
+          status.textContent = t('copy.done', 'Copied to the clipboard.');
         }, 50);
       }
       root.dispatchEvent(

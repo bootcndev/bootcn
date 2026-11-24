@@ -6,6 +6,17 @@ each published version stays available under `/v/<version>/`) and the **CLI**
 
 ## Registry
 
+### 0.23.0
+
+- Translations: messages written by component scripts (announcements,
+  date segment names, a few button names) read `window.Bootcn.messages`,
+  with plurals from `Intl.PluralRules`. Guide: [Translations](./guide/i18n).
+- Site header 1.1.0: optionally hides while scrolling down
+  (`data-bootcn-site-header-autohide`).
+- Guide: [Animations](./guide/animations).
+- Site: structured data (Organization, WebSite, SoftwareSourceCode) and
+  robots.txt.
+
 ### 0.22.0
 
 - Date range input: a start and an end date typed in one segmented field,

@@ -4,6 +4,31 @@
   const ns = (window.Bootcn = window.Bootcn || {});
   if (ns.combobox) return; // already loaded: idempotent
 
+  // Messages: override them for your language with window.Bootcn.messages,
+  // e.g. { 'copy.done': 'Αντιγράφηκε.' } (see the Translations guide).
+  // Plural keys end in .one, .other… as chosen by Intl.PluralRules.
+  function t(key, fallback, vars) {
+    const custom = window.Bootcn && window.Bootcn.messages && window.Bootcn.messages[key];
+    let text = typeof custom === 'string' ? custom : fallback;
+    Object.keys(vars || {}).forEach(function (name) {
+      text = text.split('{' + name + '}').join(String(vars[name]));
+    });
+    return text;
+  }
+
+  function tn(key, count, one, other, vars) {
+    let category = count === 1 ? 'one' : 'other';
+    try {
+      category = new Intl.PluralRules(document.documentElement.lang || undefined).select(count);
+    } catch {
+      // Unknown language tag: keep the English rule.
+    }
+    const messages = (window.Bootcn && window.Bootcn.messages) || {};
+    const own = messages[key + '.' + category];
+    const fallback = typeof own === 'string' ? own : count === 1 ? one : other;
+    return t(key + '.' + category, fallback, Object.assign({ count: count }, vars));
+  }
+
   const ROOT = '[data-bootcn-combobox]';
   const INIT = 'data-bootcn-combobox-initialized';
   const cleanups = new Map();
@@ -55,7 +80,11 @@
         option.hidden = query !== '' && !fold(labelOf(option)).includes(query);
       });
       const count = visible().length;
-      announce(count === 0 ? 'No results.' : count + (count === 1 ? ' result.' : ' results.'));
+      announce(
+        count === 0
+          ? t('combobox.none', 'No results.')
+          : tn('combobox.count', count, '1 result.', '{count} results.'),
+      );
       return count;
     }
 
@@ -111,7 +140,11 @@
         const on = option.getAttribute('aria-selected') !== 'true';
         option.setAttribute('aria-selected', String(on));
         syncValue();
-        announce(labelOf(option) + (on ? ' selected.' : ' removed.'));
+        announce(
+          on
+            ? t('combobox.selected', '{label} selected.', { label: labelOf(option) })
+            : t('combobox.removed', '{label} removed.', { label: labelOf(option) }),
+        );
         input.value = '';
         open();
         setActive(option);
@@ -182,7 +215,7 @@
             const last = selected()[selected().length - 1];
             last.setAttribute('aria-selected', 'false');
             syncValue();
-            announce(labelOf(last) + ' removed.');
+            announce(t('combobox.removed', '{label} removed.', { label: labelOf(last) }));
           }
           break;
         default:
@@ -223,7 +256,7 @@
       if (!option) return;
       option.setAttribute('aria-selected', 'false');
       syncValue();
-      announce(labelOf(option) + ' removed.');
+      announce(t('combobox.removed', '{label} removed.', { label: labelOf(option) }));
       input.focus();
     }
 

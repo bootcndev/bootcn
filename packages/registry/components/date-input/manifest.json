@@ -4,13 +4,21 @@
   "type": "registry:ui",
   "title": "Date input",
   "description": "A segmented date, time or date-time field: day, month, year, hour and minute are separate spinbuttons, ordered for the locale, typed or changed with the arrow keys.",
-  "version": "1.0.0",
-  "categories": ["forms"],
+  "version": "1.1.0",
+  "categories": [
+    "forms"
+  ],
   "dependencies": [],
-  "registryDependencies": ["field", "label", "input"],
+  "registryDependencies": [
+    "field",
+    "label",
+    "input"
+  ],
   "compatibility": {
     "bootstrap": "5.3",
-    "platform": ["Bootstrap CSS"]
+    "platform": [
+      "Bootstrap CSS"
+    ]
   },
   "license": "MIT",
   "files": [

@@ -4,6 +4,18 @@
   const ns = (window.Bootcn = window.Bootcn || {});
   if (ns.checkboxGroup) return; // already loaded: idempotent
 
+  // Messages: override them for your language with window.Bootcn.messages,
+  // e.g. { 'copy.done': 'Αντιγράφηκε.' } (see the Translations guide).
+  // Plural keys end in .one, .other… as chosen by Intl.PluralRules.
+  function t(key, fallback, vars) {
+    const custom = window.Bootcn && window.Bootcn.messages && window.Bootcn.messages[key];
+    let text = typeof custom === 'string' ? custom : fallback;
+    Object.keys(vars || {}).forEach(function (name) {
+      text = text.split('{' + name + '}').join(String(vars[name]));
+    });
+    return text;
+  }
+
   const ROOT = '[data-bootcn-checkbox-group]';
   const ALL = '[data-bootcn-checkbox-group-all]';
   let listening = false;
@@ -36,7 +48,9 @@
       return box.checked;
     }).length;
     const valid = count >= min;
-    const message = group.getAttribute('data-error') || 'Choose at least ' + min + '.';
+    const message =
+      group.getAttribute('data-error') ||
+      t('checkbox-group.min', 'Choose at least {min}.', { min: min });
     if (list[0]) list[0].setCustomValidity(valid ? '' : message);
     const error = group.querySelector('.bootcn-checkbox-group__error');
     if (show || valid) {
