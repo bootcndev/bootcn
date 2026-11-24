@@ -26,6 +26,8 @@ jobs:
       - run: pnpm exec playwright install --with-deps chromium firefox webkit
       - run: php --version
       - run: pnpm test:e2e
+      - run: pnpm site:build
+      - run: pnpm exec playwright test --config tests/docs/playwright.config.ts
 
   # Packs the CLI as npm would publish it and runs it on every supported Node.
   package:

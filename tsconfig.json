@@ -10,6 +10,8 @@
     "packages/cli/tests/**/*.ts",
     "packages/cli/tsup.config.ts",
     "packages/registry/tests/**/*.ts",
-    "packages/registry/tooling/**/*.ts"
+    "packages/registry/tooling/**/*.ts",
+    "apps/docs/.vitepress/**/*.ts",
+    "apps/docs/components/**/*.ts"
   ]
 }

@@ -18,7 +18,8 @@
     "registry:validate": "tsx scripts/validate-registry.ts",
     "registry:build": "tsx scripts/build-registry.ts",
     "test:e2e": "pnpm build && playwright test --config tests/e2e/playwright.config.ts",
-    "site:build": "tsx scripts/build-site.ts"
+    "site:build": "tsx scripts/build-site.ts",
+    "test:docs": "pnpm build && pnpm site:build && playwright test --config tests/docs/playwright.config.ts"
   },
   "devDependencies": {
     "@axe-core/playwright": "4.14.0",

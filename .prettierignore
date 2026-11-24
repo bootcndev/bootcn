@@ -7,3 +7,5 @@ pnpm-lock.yaml
 bootcn-agent-brief.md
 bootcn-project-specification.md
 _site/
+.vitepress/cache
+apps/docs/public/previews

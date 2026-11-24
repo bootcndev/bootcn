@@ -9,6 +9,7 @@ on:
     tags: ['registry-v*']
     paths:
       - 'packages/registry/**'
+      - 'apps/docs/**'
       - 'scripts/build-site.ts'
       - '.github/workflows/deploy-registry.yml'
   workflow_dispatch:
@@ -50,6 +51,7 @@ jobs:
       - run: pnpm install --frozen-lockfile
       - run: pnpm registry:validate
       - run: pnpm --filter @bootcn/registry test
+      - run: pnpm build # registry, CLI and docs site
       - run: pnpm site:build
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v4
@@ -97,3 +99,9 @@ jobs:
           node "$cli" diff
           test -s assets/js/dialog.js
           test -s components/ui/dialog.html
+      - name: Docs site is up
+        run: |
+          set -euo pipefail
+          for page in "" guide/installation components/dialog previews/components/dialog/preview.html; do
+            curl -fsS -o /dev/null "https://tsirosgeorge.github.io/bootcn/$page"
+          done

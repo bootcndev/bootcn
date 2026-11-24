@@ -4,12 +4,13 @@
  *   _site/index.json, r/*.json, schema/*   latest (the current checkout)
  *   _site/v/<version>/...                  one frozen copy per `registry-v<version>` git tag
  *   _site/versions.json                    { latest, versions }
+ *   _site/*.html, assets/, previews/ ...   the docs site (apps/docs build)
  *
  * Tagged versions are rebuilt from the tag's own registry sources on every
  * deploy, so a published version never changes and never disappears.
  */
 import { execFileSync } from 'node:child_process';
-import { mkdtemp, readFile, rm, writeFile } from 'node:fs/promises';
+import { cp, mkdtemp, readFile, readdir, rm, stat, writeFile } from 'node:fs/promises';
 import { tmpdir } from 'node:os';
 import { join, relative, resolve } from 'node:path';
 
@@ -17,6 +18,9 @@ import { REGISTRY_DIR, buildRegistry } from '../packages/registry/tooling/regist
 
 const ROOT = resolve(REGISTRY_DIR, '..', '..');
 const OUT_DIR = resolve(ROOT, '_site');
+const DOCS_DIST = resolve(ROOT, 'apps', 'docs', '.vitepress', 'dist');
+/** Paths the registry owns at the site root; the docs build must not contain them. */
+const REGISTRY_PATHS = ['index.json', 'versions.json', 'r', 'v', 'schema'];
 const TAG_PREFIX = 'registry-v';
 const SEMVER = /^\d+\.\d+\.\d+(?:-[0-9A-Za-z.-]+)?$/;
 
@@ -80,34 +84,25 @@ async function main(): Promise<void> {
   );
   // Serve files as they are (no Jekyll processing on GitHub Pages).
   await writeFile(resolve(OUT_DIR, '.nojekyll'), '', 'utf8');
-  await writeFile(resolve(OUT_DIR, 'index.html'), landingPage(latest), 'utf8');
+  await copyDocs();
 
   process.stdout.write(
-    `Built ${itemCount} item(s) (latest ${latest}) and ${versions.length} tagged version(s) into ${relative(process.cwd(), OUT_DIR) || '.'}.\n`,
+    `Built ${itemCount} item(s) (latest ${latest}) and ${versions.length} tagged version(s) plus the docs into ${relative(process.cwd(), OUT_DIR) || '.'}.\n`,
   );
 }
 
-function landingPage(latest: string): string {
-  return `<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Bootcn registry</title>
-  </head>
-  <body>
-    <main>
-      <h1>Bootcn registry</h1>
-      <p>Machine-readable component registry for the <code>bootcn</code> CLI (latest ${latest}).</p>
-      <ul>
-        <li><a href="index.json">index.json</a>: every item</li>
-        <li><a href="versions.json">versions.json</a>: published versions, each under <code>v/&lt;version&gt;/</code></li>
-        <li><a href="https://github.com/tsirosgeorge/bootcn">Source and documentation</a></li>
-      </ul>
-    </main>
-  </body>
-</html>
-`;
+async function copyDocs(): Promise<void> {
+  const exists = await stat(DOCS_DIST).catch(() => null);
+  if (!exists) {
+    throw new Error(
+      `Docs build not found at ${relative(ROOT, DOCS_DIST)}. Run "pnpm build" first.`,
+    );
+  }
+  const clashes = (await readdir(DOCS_DIST)).filter((name) => REGISTRY_PATHS.includes(name));
+  if (clashes.length > 0) {
+    throw new Error(`The docs build contains registry paths: ${clashes.join(', ')}.`);
+  }
+  await cp(DOCS_DIST, OUT_DIR, { recursive: true });
 }
 
 main().catch((error: unknown) => {

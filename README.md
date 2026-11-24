@@ -8,8 +8,8 @@ HTML, CSS and JavaScript source files that you own. No React, Vue, jQuery,
 bundler or Node.js is required at runtime.
 
 > **Status:** early (0.x). 20 components plus design tokens. The CLI is on
-> [npm](https://www.npmjs.com/package/bootcn) and the registry is hosted at
-> <https://tsirosgeorge.github.io/bootcn>.
+> [npm](https://www.npmjs.com/package/bootcn); documentation, live previews and
+> the registry are at <https://tsirosgeorge.github.io/bootcn/>.
 
 ## Quick start
 
@@ -72,9 +72,11 @@ native PHP end-to-end test).
 
 ```bash
 pnpm install
-pnpm build          # builds the registry (packages/registry/dist) and the CLI
+pnpm build          # builds the registry (packages/registry/dist), the CLI and the docs
 pnpm test           # unit tests (registry tooling + CLI)
 pnpm test:e2e       # builds, then runs Playwright component and install tests
+pnpm test:docs      # builds the Pages site (_site) and tests the docs in a browser
+pnpm --filter @bootcn/docs dev   # docs site with live reload
 ```
 
 First run of the browser tests needs Playwright's Chromium:
@@ -159,6 +161,8 @@ with the CLI's default URL.
 ## Repository layout
 
 ```text
+apps/
+  docs/                Documentation site (VitePress), generated from the registry
 packages/
   cli/                 Node.js + TypeScript CLI (bin: bootcn)
   registry/

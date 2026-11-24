@@ -11,6 +11,8 @@ export default tseslint.config(
       '**/playwright-report/**',
       '**/test-results/**',
       '_site/**',
+      '**/.vitepress/cache/**',
+      'apps/docs/public/previews/**',
     ],
   },
   js.configs.recommended,

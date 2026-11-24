@@ -6,6 +6,8 @@ import { fileURLToPath } from 'node:url';
 const testsDir = fileURLToPath(new URL('.', import.meta.url));
 const root = resolve(process.env.ROOT ?? resolve(testsDir, '..'));
 const port = Number(process.env.PORT ?? 4517);
+// Optional URL prefix, e.g. PREFIX=/bootcn to serve a GitHub Pages project site.
+const prefix = (process.env.PREFIX ?? '').replace(/\/+$/, '');
 
 const contentTypes = {
   '.html': 'text/html; charset=utf-8',
@@ -13,6 +15,7 @@ const contentTypes = {
   '.js': 'text/javascript; charset=utf-8',
   '.json': 'application/json; charset=utf-8',
   '.svg': 'image/svg+xml',
+  '.woff2': 'font/woff2',
   '.php': 'text/plain; charset=utf-8',
 };
 
@@ -22,11 +25,19 @@ function isInsideRoot(filePath) {
 
 const server = createServer(async (request, response) => {
   try {
-    const urlPath = decodeURIComponent((request.url ?? '/').split('?')[0]);
+    let urlPath = decodeURIComponent((request.url ?? '/').split('?')[0]);
     if (urlPath === '/__health') {
       response.writeHead(200, { 'content-type': 'text/plain' });
       response.end('ok');
       return;
+    }
+    if (prefix) {
+      if (urlPath !== prefix && !urlPath.startsWith(`${prefix}/`)) {
+        response.writeHead(404, { 'content-type': 'text/plain' });
+        response.end('Not found');
+        return;
+      }
+      urlPath = urlPath.slice(prefix.length) || '/';
     }
     const resolved = normalize(join(root, urlPath));
     if (!isInsideRoot(resolved)) {
@@ -36,7 +47,12 @@ const server = createServer(async (request, response) => {
     }
 
     const info = await stat(resolved).catch(() => null);
-    const target = info?.isDirectory() ? join(resolved, 'index.html') : resolved;
+    let target = info?.isDirectory() ? join(resolved, 'index.html') : resolved;
+    // Clean URLs (/guide/cli -> guide/cli.html), as GitHub Pages serves them.
+    if (!info && !extname(resolved)) {
+      const html = `${resolved}.html`;
+      if (await stat(html).catch(() => null)) target = html;
+    }
     const body = await readFile(target);
 
     response.writeHead(200, {
