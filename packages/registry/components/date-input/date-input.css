@@ -1,0 +1,72 @@
+.bootcn-date-input {
+  width: 18rem;
+  max-width: 100%;
+}
+
+.bootcn-date-input__control {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  min-height: var(--bootcn-control-height);
+  padding: 0.25rem var(--bootcn-control-padding-x);
+  border: var(--bootcn-border-width) solid var(--bootcn-input);
+  border-radius: var(--bootcn-radius);
+  background-color: transparent;
+  box-shadow: var(--bootcn-shadow-sm);
+  color: var(--bootcn-foreground);
+  font-size: 1rem;
+  font-variant-numeric: tabular-nums;
+  cursor: text;
+  transition:
+    border-color var(--bootcn-transition),
+    box-shadow var(--bootcn-transition);
+}
+
+@media (min-width: 768px) {
+  .bootcn-date-input__control {
+    font-size: var(--bootcn-control-font-size);
+  }
+}
+
+.bootcn-date-input__control:focus-within {
+  border-color: var(--bootcn-ring);
+  box-shadow: 0 0 0 3px var(--bs-focus-ring-color);
+}
+
+.bootcn-date-input__control.is-invalid {
+  border-color: var(--bs-danger);
+}
+
+.bootcn-date-input__segment {
+  padding: 0.0625rem 0.125rem;
+  border-radius: var(--bootcn-radius-sm);
+  outline: 0;
+  text-align: end;
+  white-space: nowrap;
+  caret-color: transparent;
+}
+
+.bootcn-date-input__segment.is-placeholder {
+  color: var(--bootcn-muted-foreground);
+}
+
+.bootcn-date-input__segment:focus {
+  background-color: var(--bootcn-primary);
+  color: var(--bootcn-primary-foreground);
+}
+
+.bootcn-date-input__literal {
+  padding: 0 0.0625rem;
+  color: var(--bootcn-muted-foreground);
+  white-space: pre;
+}
+
+.bootcn-date-input__error {
+  margin: 0.375rem 0 0;
+  color: var(--bootcn-destructive-text);
+  font-size: 0.875rem;
+}
+
+.bootcn-date-input__error[hidden] {
+  display: none;
+}

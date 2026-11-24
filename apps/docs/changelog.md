@@ -6,6 +6,13 @@ each published version stays available under `/v/<version>/`) and the **CLI**
 
 ## Registry
 
+### 0.19.0
+
+- Date input: segmented date, time and date-time fields (day, month, year,
+  hour, minute and AM/PM as spinbuttons, ordered for the locale), built on a
+  native input that stays for phones and pages without JavaScript.
+- App sidebar 1.1.2: the links keep their inset on desktop.
+
 ### 0.18.0
 
 - Soft style (`npx bootcn add soft`): tinted fields instead of outlines,
