@@ -1,55 +1,332 @@
+/*
+ * Bootcn docs: a neutral, shadcn-like skin over VitePress's default theme.
+ * Colors are the same zinc palette as the components' tokens, so the docs
+ * and the previews read as one system. Every text color keeps 4.5:1.
+ */
+
 :root {
-  --vp-c-brand-1: #5b45d6;
-  --vp-c-brand-2: #6e5ae0;
-  --vp-c-brand-3: #5b45d6;
-  --vp-c-brand-soft: rgba(91, 69, 214, 0.14);
+  --vp-c-bg: #fff;
+  --vp-c-bg-alt: #fff;
+  --vp-c-bg-elv: #fff;
+  --vp-c-bg-soft: #f4f4f5;
+  --vp-c-text-1: #09090b;
+  --vp-c-text-2: #6b6b73;
+  --vp-c-text-3: #6b6b73;
+  --vp-c-divider: #e4e4e7;
+  --vp-c-border: #e4e4e7;
+  --vp-c-gutter: #e4e4e7;
+  --vp-c-default-soft: #f4f4f5;
+  --vp-c-brand-1: #09090b;
+  --vp-c-brand-2: #27272a;
+  --vp-c-brand-3: #18181b;
+  --vp-c-brand-soft: #f4f4f5;
+  --vp-c-tip-1: #09090b;
+  --vp-c-tip-2: #27272a;
+  --vp-c-tip-3: #18181b;
+  --vp-c-tip-soft: #f4f4f5;
+
+  --vp-button-brand-bg: #18181b;
+  --vp-button-brand-border: #18181b;
+  --vp-button-brand-text: #fafafa;
+  --vp-button-brand-hover-bg: #27272a;
+  --vp-button-brand-hover-border: #27272a;
+  --vp-button-brand-hover-text: #fafafa;
+  --vp-button-brand-active-bg: #27272a;
+  --vp-button-brand-active-border: #27272a;
+  --vp-button-brand-active-text: #fafafa;
+  --vp-button-alt-bg: #fff;
+  --vp-button-alt-border: #e4e4e7;
+  --vp-button-alt-text: #09090b;
+  --vp-button-alt-hover-bg: #f4f4f5;
+  --vp-button-alt-hover-border: #e4e4e7;
+  --vp-button-alt-hover-text: #09090b;
+
+  --vp-code-bg: #f4f4f5;
+  --vp-code-color: #09090b;
+  --vp-code-block-bg: #fafafa;
+  --vp-code-tab-bg: #fafafa;
+  --vp-code-tab-divider: #e4e4e7;
+  --vp-code-tab-text-color: #6b6b73;
+  --vp-code-tab-hover-text-color: #09090b;
+  --vp-code-tab-active-text-color: #09090b;
+  --vp-code-tab-active-bar-color: #09090b;
+  --vp-code-lang-color: #6b6b73;
+  --vp-code-copy-code-bg: #fff;
+  --vp-code-copy-code-hover-bg: #f4f4f5;
+  --vp-code-copy-code-border-color: #e4e4e7;
+  --vp-code-copy-code-hover-border-color: #e4e4e7;
+
+  --vp-nav-bg-color: rgba(255, 255, 255, 0.85);
+  --vp-sidebar-bg-color: #fff;
+  --vp-local-search-bg: #fff;
+  --vp-local-search-result-bg: #fff;
+  --vp-local-search-result-selected-bg: #f4f4f5;
+  --vp-local-search-highlight-bg: #e4e4e7;
+  --vp-local-search-highlight-text: #09090b;
+  --vp-layout-max-width: 1440px;
+
+  --bootcn-docs-radius: 0.5rem;
 }
 
 .dark {
-  --vp-c-brand-1: #b3a6ff;
-  --vp-c-brand-2: #9d8dfa;
-  --vp-c-brand-3: #6e5ae0;
-  --vp-c-brand-soft: rgba(157, 141, 250, 0.16);
+  --vp-c-bg: #09090b;
+  --vp-c-bg-alt: #09090b;
+  --vp-c-bg-elv: #09090b;
+  --vp-c-bg-soft: #18181b;
+  --vp-c-text-1: #fafafa;
+  --vp-c-text-2: #a1a1aa;
+  --vp-c-text-3: #a1a1aa;
+  --vp-c-divider: #27272a;
+  --vp-c-border: #27272a;
+  --vp-c-gutter: #27272a;
+  --vp-c-default-soft: #27272a;
+  --vp-c-brand-1: #fafafa;
+  --vp-c-brand-2: #e4e4e7;
+  --vp-c-brand-3: #fafafa;
+  --vp-c-brand-soft: #27272a;
+  --vp-c-tip-1: #fafafa;
+  --vp-c-tip-2: #e4e4e7;
+  --vp-c-tip-3: #fafafa;
+  --vp-c-tip-soft: #18181b;
+
+  --vp-button-brand-bg: #fafafa;
+  --vp-button-brand-border: #fafafa;
+  --vp-button-brand-text: #18181b;
+  --vp-button-brand-hover-bg: #e4e4e7;
+  --vp-button-brand-hover-border: #e4e4e7;
+  --vp-button-brand-hover-text: #18181b;
+  --vp-button-brand-active-bg: #e4e4e7;
+  --vp-button-brand-active-border: #e4e4e7;
+  --vp-button-brand-active-text: #18181b;
+  --vp-button-alt-bg: #09090b;
+  --vp-button-alt-border: #27272a;
+  --vp-button-alt-text: #fafafa;
+  --vp-button-alt-hover-bg: #27272a;
+  --vp-button-alt-hover-border: #27272a;
+  --vp-button-alt-hover-text: #fafafa;
+
+  --vp-code-bg: #27272a;
+  --vp-code-color: #fafafa;
+  --vp-code-block-bg: #121214;
+  --vp-code-tab-bg: #121214;
+  --vp-code-tab-divider: #27272a;
+  --vp-code-tab-text-color: #a1a1aa;
+  --vp-code-tab-hover-text-color: #fafafa;
+  --vp-code-tab-active-text-color: #fafafa;
+  --vp-code-tab-active-bar-color: #fafafa;
+  --vp-code-lang-color: #a1a1aa;
+  --vp-code-copy-code-bg: #18181b;
+  --vp-code-copy-code-hover-bg: #27272a;
+  --vp-code-copy-code-border-color: #27272a;
+  --vp-code-copy-code-hover-border-color: #3f3f46;
+
+  --vp-nav-bg-color: rgba(9, 9, 11, 0.85);
+  --vp-sidebar-bg-color: #09090b;
+  --vp-local-search-bg: #09090b;
+  --vp-local-search-result-bg: #09090b;
+  --vp-local-search-result-selected-bg: #27272a;
+  --vp-local-search-highlight-bg: #3f3f46;
+  --vp-local-search-highlight-text: #fafafa;
 }
 
-.vp-doc .bootcn-meta {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.5rem;
-  margin: 1rem 0;
-  padding: 0;
-  list-style: none;
-  font-size: 0.875rem;
+/* ------------------------------------------------------------------ nav */
+
+.VPNavBar .content-body,
+.VPNavBar.has-sidebar .content-body {
+  -webkit-backdrop-filter: saturate(180%) blur(8px);
+  backdrop-filter: saturate(180%) blur(8px);
 }
 
-.vp-doc .bootcn-meta li {
-  list-style: none;
-  margin: 0;
-  padding: 0.125rem 0.625rem;
+.VPNavBar .divider-line {
+  background-color: var(--vp-c-divider);
+}
+
+.VPNavBarTitle .title {
+  font-size: 0.9375rem;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+
+.VPNavBarMenuLink,
+.VPNavBarMenuGroup .button {
+  color: var(--vp-c-text-2) !important;
+  font-size: 0.875rem !important;
+  font-weight: 500 !important;
+}
+
+.VPNavBarMenuLink:hover,
+.VPNavBarMenuLink.active {
+  color: var(--vp-c-text-1) !important;
+}
+
+/* Search: a bordered "input" with placeholder text, as on ui.shadcn.com. */
+.VPNavBarSearch .DocSearch-Button {
   border: 1px solid var(--vp-c-divider);
-  border-radius: 999px;
+  border-radius: var(--bootcn-docs-radius);
+  background: var(--vp-c-bg-soft);
 }
 
-.bootcn-meta span {
+@media (min-width: 768px) {
+  .VPNavBarSearch .DocSearch-Button {
+    width: 15rem;
+    justify-content: flex-start;
+  }
+}
+
+.VPNavBarSearch .DocSearch-Button .DocSearch-Button-Placeholder {
   color: var(--vp-c-text-2);
+  font-size: 0.875rem;
+  font-weight: 400;
 }
 
-.bootcn-preview {
-  margin: 1.5rem 0;
+/* The search button's accessible name is its visible text; showing the
+   shortcut keys as text too would not match it (WCAG 2.5.3). Ctrl/⌘ K still
+   works. */
+.DocSearch-Button-Keys {
+  display: none !important;
 }
 
-.bootcn-preview iframe {
-  display: block;
-  width: 100%;
-  border: 1px solid var(--vp-c-divider);
-  border-radius: 8px;
-  background: transparent;
+/* -------------------------------------------------------------- sidebar */
+
+.VPSidebar nav .group + .group {
+  border-top: 0;
+  padding-top: 0.25rem;
 }
 
-.bootcn-preview figcaption {
+.VPSidebarItem.level-0 > .item > .text,
+.VPSidebarItem.level-0 > .item > h2.text {
+  color: var(--vp-c-text-1);
+  font-size: 0.875rem;
+  font-weight: 600;
+}
+
+.VPSidebarItem.level-1 .text {
+  color: var(--vp-c-text-2);
+  font-size: 0.875rem;
+  font-weight: 500;
+}
+
+.VPSidebarItem.level-1 > .item {
+  padding-left: 0.5rem;
+  border-radius: 0.375rem;
+}
+
+.VPSidebarItem.level-1.is-link > .item:hover .text {
+  color: var(--vp-c-text-1);
+}
+
+.VPSidebarItem.level-1.is-active > .item {
+  background-color: var(--vp-c-default-soft);
+}
+
+.VPSidebarItem.level-1.is-active > .item .text {
+  color: var(--vp-c-text-1);
+}
+
+.VPSidebarItem .indicator {
+  display: none;
+}
+
+/* ------------------------------------------------------------ typography */
+
+.vp-doc h1 {
+  font-size: 1.875rem;
+  font-weight: 700;
+  line-height: 2.25rem;
+  letter-spacing: -0.025em;
+}
+
+@media (min-width: 768px) {
+  .vp-doc h1 {
+    font-size: 2.25rem;
+    line-height: 2.5rem;
+  }
+}
+
+.vp-doc h2 {
+  margin: 3rem 0 1rem;
+  padding: 0 0 0.5rem;
+  border-top: 0;
+  border-bottom: 1px solid var(--vp-c-divider);
+  font-size: 1.5rem;
+  font-weight: 600;
+  line-height: 2rem;
+  letter-spacing: -0.025em;
+}
+
+.vp-doc h3 {
+  margin-top: 2rem;
+  font-size: 1.25rem;
+  font-weight: 600;
+  letter-spacing: -0.025em;
+}
+
+.vp-doc p,
+.vp-doc li {
+  line-height: 1.75;
+}
+
+.vp-doc a {
+  font-weight: 500;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+.vp-doc .header-anchor {
+  text-decoration: none;
+}
+
+.vp-doc .bootcn-lead {
   margin-top: 0.5rem;
-  font-size: 0.875rem;
   color: var(--vp-c-text-2);
+  font-size: 1.125rem;
+  line-height: 1.75rem;
+}
+
+.vp-doc :not(pre) > code {
+  border-radius: 0.25rem;
+  padding: 0.125rem 0.3rem;
+  font-size: 0.8125rem;
+  font-weight: 500;
+}
+
+.vp-doc table {
+  display: table;
+  width: 100%;
+  font-size: 0.875rem;
+}
+
+.vp-doc tr:nth-child(2n) {
+  background-color: transparent;
+}
+
+.vp-doc th {
+  background-color: transparent;
+  font-weight: 600;
+}
+
+.vp-doc .custom-block {
+  border: 1px solid var(--vp-c-divider);
+  border-radius: var(--bootcn-docs-radius);
+}
+
+/* Code blocks: bordered, rounded, on a subtle surface. */
+.vp-doc div[class*='language-'],
+.vp-doc .vp-code-group .tabs {
+  border: 1px solid var(--vp-c-divider);
+}
+
+.vp-doc div[class*='language-'] {
+  border-radius: var(--bootcn-docs-radius);
+}
+
+.vp-doc .vp-code-group .tabs {
+  border-bottom: 0;
+  border-radius: var(--bootcn-docs-radius) var(--bootcn-docs-radius) 0 0;
+}
+
+.vp-doc .vp-code-group div[class*='language-'] {
+  border-radius: 0 0 var(--bootcn-docs-radius) var(--bootcn-docs-radius);
 }
 
 /* Code block language label: VitePress's default grey is below 4.5:1. */
@@ -57,78 +334,331 @@
   color: var(--vp-c-text-2);
 }
 
-/* The search button's accessible name is "Search"; showing the shortcut keys
-   as visible text would not match it (WCAG 2.5.3). The shortcut still works. */
-.DocSearch-Button-Keys {
-  display: none !important;
-}
-
-/* Home page (doc layout, so it has a <main> landmark). */
-.bootcn-home {
-  padding: 2rem 0 1rem;
-}
-
-.vp-doc .bootcn-home h1 {
-  font-size: 3rem;
-  line-height: 1.1;
-  letter-spacing: -0.02em;
-  margin: 0 0 1rem;
-}
-
-.bootcn-home h1 .brand {
-  color: var(--vp-c-brand-1);
-}
-
-.bootcn-home .tagline {
-  font-size: 1.25rem;
-  color: var(--vp-c-text-2);
-  max-width: 40rem;
-}
-
-.bootcn-home .actions {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.75rem;
-  margin: 1.5rem 0 2.5rem;
-}
-
-.vp-doc .bootcn-home .actions a {
-  display: inline-block;
-  padding: 0.5rem 1.25rem;
-  border-radius: 999px;
+/* Aside ("On this page") */
+.VPDocAsideOutline .outline-title {
+  color: var(--vp-c-text-1);
+  font-size: 0.875rem;
   font-weight: 600;
-  text-decoration: none;
-  border: 1px solid var(--vp-c-divider);
+}
+
+.VPDocAsideOutline .outline-link {
+  color: var(--vp-c-text-2);
+  font-size: 0.875rem;
+}
+
+.VPDocAsideOutline .outline-link.active,
+.VPDocAsideOutline .outline-link:hover {
   color: var(--vp-c-text-1);
 }
 
-.vp-doc .bootcn-home .actions a.primary {
-  background: var(--vp-c-brand-3);
-  border-color: var(--vp-c-brand-3);
-  color: #fff;
+.VPDocAsideOutline .outline-marker {
+  display: none;
 }
 
-.bootcn-features {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(14rem, 1fr));
-  gap: 1rem;
+.VPDocAsideOutline .content {
+  border-left: 0;
+  padding-left: 0;
 }
 
-.bootcn-features section {
-  padding: 1.25rem;
-  border-radius: 12px;
-  background: var(--vp-c-bg-soft);
-}
+/* ------------------------------------------------------- item page bits */
 
-.vp-doc .bootcn-features h2 {
-  margin: 0 0 0.5rem;
+.vp-doc .bootcn-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin: 1rem 0 0;
   padding: 0;
-  border: 0;
-  font-size: 1.05rem;
+  list-style: none;
+  font-size: 0.75rem;
+  font-weight: 500;
 }
 
-.vp-doc .bootcn-features p {
+.vp-doc .bootcn-meta li {
+  margin: 0;
+  padding: 0.125rem 0.625rem;
+  border: 1px solid var(--vp-c-divider);
+  border-radius: 0.375rem;
+  list-style: none;
+  line-height: 1.25rem;
+}
+
+.vp-doc .bootcn-meta span {
+  color: var(--vp-c-text-2);
+}
+
+.vp-doc .bootcn-meta a {
+  text-decoration: none;
+}
+
+.vp-doc .bootcn-meta a:hover {
+  text-decoration: underline;
+}
+
+/* Tabs (Preview/Code, CLI/Manual): underline style. */
+.bootcn-tabs {
+  margin: 1.5rem 0;
+}
+
+.bootcn-tabs__list {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  border-bottom: 1px solid var(--vp-c-divider);
+}
+
+.bootcn-tabs__tablist {
+  display: flex;
+  gap: 1.25rem;
+}
+
+.bootcn-tabs__tab {
+  margin-bottom: -1px;
+  padding: 0.5rem 0.125rem;
+  border-bottom: 2px solid transparent;
+  color: var(--vp-c-text-2);
+  font-size: 0.875rem;
+  font-weight: 500;
+}
+
+.bootcn-tabs__tab:hover {
+  color: var(--vp-c-text-1);
+}
+
+.bootcn-tabs__tab[aria-selected='true'] {
+  border-bottom-color: var(--vp-c-text-1);
+  color: var(--vp-c-text-1);
+}
+
+.bootcn-tabs__tab:focus-visible,
+.bootcn-tabs__panel:focus-visible {
+  border-radius: 0.25rem;
+  outline: 2px solid var(--vp-c-text-2);
+  outline-offset: 2px;
+}
+
+.bootcn-tabs__actions {
+  display: flex;
+  margin-left: auto;
+  gap: 0.5rem;
+  font-size: 0.8125rem;
+}
+
+.vp-doc .bootcn-tabs__actions a {
+  color: var(--vp-c-text-2);
+  font-weight: 500;
+}
+
+.bootcn-tabs__panel {
+  padding-top: 1rem;
+}
+
+.bootcn-tabs__panel > :first-child {
+  margin-top: 0;
+}
+
+/* Live preview frame */
+.bootcn-preview {
+  margin: 0;
+}
+
+.bootcn-preview iframe {
+  display: block;
+  width: 100%;
+  border: 1px solid var(--vp-c-divider);
+  border-radius: var(--bootcn-docs-radius);
+  background: transparent;
+}
+
+/* ------------------------------------------------------------- home */
+
+.bootcn-home {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 3rem 1.5rem 4rem;
+}
+
+.bootcn-home__hero {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  max-width: 48rem;
+  margin: 0 auto 3rem;
+  text-align: center;
+}
+
+.bootcn-home__pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.25rem 0.75rem;
+  border: 1px solid var(--vp-c-divider);
+  border-radius: 9999px;
+  color: var(--vp-c-text-1);
+  font-size: 0.8125rem;
+  font-weight: 500;
+  text-decoration: none;
+}
+
+.bootcn-home__pill:hover {
+  background-color: var(--vp-c-bg-soft);
+}
+
+.bootcn-home h1 {
+  margin: 0;
+  color: var(--vp-c-text-1);
+  font-size: 2.25rem;
+  font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: -0.035em;
+}
+
+@media (min-width: 768px) {
+  .bootcn-home h1 {
+    font-size: 3.5rem;
+  }
+}
+
+.bootcn-home__lead {
+  max-width: 40rem;
   margin: 0;
   color: var(--vp-c-text-2);
-  font-size: 0.925rem;
+  font-size: 1.125rem;
+  line-height: 1.75rem;
+}
+
+.bootcn-home__actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-top: 0.5rem;
+}
+
+.bootcn-home__button {
+  display: inline-flex;
+  align-items: center;
+  height: 2.25rem;
+  padding: 0 1rem;
+  border: 1px solid var(--vp-button-alt-border);
+  border-radius: 0.375rem;
+  background: var(--vp-button-alt-bg);
+  color: var(--vp-button-alt-text);
+  font-size: 0.875rem;
+  font-weight: 500;
+  text-decoration: none;
+}
+
+.bootcn-home__button:hover {
+  background: var(--vp-button-alt-hover-bg);
+}
+
+.bootcn-home__button--primary {
+  border-color: var(--vp-button-brand-border);
+  background: var(--vp-button-brand-bg);
+  color: var(--vp-button-brand-text);
+}
+
+.bootcn-home__button--primary:hover {
+  background: var(--vp-button-brand-hover-bg);
+}
+
+.bootcn-home__install {
+  margin-top: 0.5rem;
+  padding: 0.375rem 0.75rem;
+  border: 1px solid var(--vp-c-divider);
+  border-radius: 0.375rem;
+  background: var(--vp-c-bg-soft);
+  font-family: var(--vp-font-family-mono);
+  font-size: 0.8125rem;
+}
+
+.bootcn-home__showcase iframe {
+  display: block;
+  width: 100%;
+  height: 720px;
+  border: 1px solid var(--vp-c-divider);
+  border-radius: 0.75rem;
+  background: transparent;
+  box-shadow:
+    0 10px 15px -3px rgba(0, 0, 0, 0.1),
+    0 4px 6px -4px rgba(0, 0, 0, 0.1);
+}
+
+.bootcn-home__caption {
+  margin-top: 0.75rem;
+  color: var(--vp-c-text-2);
+  font-size: 0.875rem;
+  text-align: center;
+}
+
+.bootcn-home__features {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 15rem), 1fr));
+  gap: 1rem;
+  margin-top: 4rem;
+}
+
+.bootcn-home__features section {
+  padding: 1.5rem;
+  border: 1px solid var(--vp-c-divider);
+  border-radius: 0.75rem;
+}
+
+.bootcn-home__features h2 {
+  margin: 0 0 0.5rem;
+  color: var(--vp-c-text-1);
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.bootcn-home__features p {
+  margin: 0;
+  color: var(--vp-c-text-2);
+  font-size: 0.875rem;
+  line-height: 1.5rem;
+}
+
+/* Overview pages: a grid of item links. */
+.vp-doc .bootcn-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 14rem), 1fr));
+  gap: 0.75rem;
+  margin: 1rem 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.vp-doc .bootcn-grid li {
+  margin: 0;
+}
+
+.vp-doc .bootcn-grid a {
+  display: block;
+  height: 100%;
+  padding: 0.875rem 1rem;
+  border: 1px solid var(--vp-c-divider);
+  border-radius: var(--bootcn-docs-radius);
+  color: var(--vp-c-text-1);
+  text-decoration: none;
+}
+
+.vp-doc .bootcn-grid a:hover {
+  background-color: var(--vp-c-bg-soft);
+}
+
+.vp-doc .bootcn-grid strong {
+  display: block;
+  font-size: 0.9375rem;
+  font-weight: 600;
+}
+
+.vp-doc .bootcn-grid span {
+  display: block;
+  margin-top: 0.25rem;
+  color: var(--vp-c-text-2);
+  font-size: 0.8125rem;
+  font-weight: 400;
+  line-height: 1.4;
 }

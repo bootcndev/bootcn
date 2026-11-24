@@ -64,12 +64,19 @@ test('the registry JSON is served next to the docs', async ({ request }) => {
 test('home page links to the guide and the components', async ({ page }) => {
   const errors = collectErrors(page);
   await page.goto('./');
-  await expect(page.getByRole('heading', { level: 1 })).toContainText('Bootcn');
+  await expect(page.getByRole('heading', { level: 1 })).toContainText('Bootstrap interfaces');
+  // The showcase is the installed admin template, following the site theme.
+  await expect(page.frameLocator('.bootcn-home__showcase iframe').locator('h1')).toHaveText(
+    'Dashboard',
+  );
   await page.getByRole('link', { name: 'Browse components' }).click();
   await expect(page).toHaveURL(/\/bootcn\/components\/$/);
   for (const item of components) {
+    // Each card is a link whose title is the item name.
     await expect(
-      page.locator('.vp-doc').getByRole('link', { name: item.title, exact: true }),
+      page.locator('.bootcn-grid a').filter({
+        has: page.locator('strong').getByText(item.title, { exact: true }),
+      }),
     ).toBeVisible();
   }
   expect(errors).toEqual([]);
@@ -219,8 +226,11 @@ test('every internal link resolves', async ({ page, request }) => {
 test('blocks overview lists every block', async ({ page }) => {
   await page.goto('blocks/');
   for (const item of blocks) {
+    // Each card is a link whose title is the item name.
     await expect(
-      page.locator('.vp-doc').getByRole('link', { name: item.title, exact: true }),
+      page.locator('.bootcn-grid a').filter({
+        has: page.locator('strong').getByText(item.title, { exact: true }),
+      }),
     ).toBeVisible();
   }
 });
@@ -310,3 +320,33 @@ for (const item of templates) {
     });
   });
 }
+
+test('preview and code tabs follow the ARIA tabs pattern', async ({ page }) => {
+  await page.goto('components/dialog');
+  const tabs = page.getByRole('tablist', { name: 'Dialog preview and code' });
+  const preview = tabs.getByRole('tab', { name: 'Preview' });
+  const code = tabs.getByRole('tab', { name: 'Code' });
+  await expect(preview).toHaveAttribute('aria-selected', 'true');
+  await expect(page.locator('.bootcn-preview iframe')).toBeVisible();
+
+  await preview.focus();
+  await page.keyboard.press('ArrowRight');
+  await expect(code).toBeFocused();
+  await expect(code).toHaveAttribute('aria-selected', 'true');
+  const codePanel = page.locator(`#${await code.getAttribute('aria-controls')}`);
+  await expect(codePanel).toBeVisible();
+  await expect(codePanel).toContainText('bootcn-dialog');
+  await expect(page.locator('.bootcn-preview iframe')).toBeHidden();
+
+  await page.keyboard.press('Home');
+  await expect(preview).toBeFocused();
+  await expect(page.locator('.bootcn-preview iframe')).toBeVisible();
+});
+
+test('installation offers CLI and manual tabs', async ({ page }) => {
+  await page.goto('blocks/login-card');
+  const tabs = page.getByRole('tablist', { name: 'Installation method' });
+  await expect(page.locator('.vp-doc')).toContainText('npx bootcn add login-card');
+  await tabs.getByRole('tab', { name: 'Manual' }).click();
+  await expect(page.getByRole('cell', { name: 'login-card.css', exact: true })).toBeVisible();
+});

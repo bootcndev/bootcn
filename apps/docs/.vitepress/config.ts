@@ -96,6 +96,12 @@ export default defineConfig({
     search: {
       provider: 'local',
       options: {
+        translations: {
+          button: {
+            buttonText: 'Search documentation…',
+            buttonAriaLabel: 'Search documentation…',
+          },
+        },
         miniSearch: {
           // Generated item pages have no file on disk for the indexer to
           // read; index them from the registry. Other pages: default splitter.

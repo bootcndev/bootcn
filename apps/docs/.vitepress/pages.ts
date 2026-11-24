@@ -65,13 +65,18 @@ function page(item: RegistryItem, kind: Kind): string {
     .map((file) => fence(file.content, `${LANG[extOf(file.path)] ?? 'text'} [${file.path}]`))
     .join('\n\n');
   const isTemplate = kind === 'templates';
-  const preview = isTemplate
-    ? `<ComponentPreview name="${item.name}" title="${item.title}" src="${templatePreviewPath(item.name)}" fixed />`
-    : `<ComponentPreview name="${item.name}" title="${item.title}" kind="${kind}" />`;
+  const main =
+    item.files.find(
+      (file) => file.type === 'registry:page' || file.type === 'registry:component',
+    ) ?? item.files[0]!;
+  const previewProps = isTemplate
+    ? `src="${templatePreviewPath(item.name)}" fixed`
+    : `kind="${kind}"`;
   const what = kind === 'components' ? 'components' : 'blocks and components';
+  const run = (prefix: string) => `${prefix} bootcn add ${item.name}`;
 
   const manual = isTemplate
-    ? `1. Install the ${what} listed above.
+    ? `1. Install the ${what} this template uses: ${depLinks}.
 2. Copy the files from [Source](#source). The page refers to your folders with
    placeholders such as \`{{bootcn:css}}\`; replace each with the path from the
    page to that folder (for example \`assets/css\`).
@@ -80,7 +85,7 @@ function page(item: RegistryItem, kind: Kind): string {
 | ---- | ---------------- |
 ${fileRows}`
     : `1. Load Bootstrap 5.3 (${requirements(item)}) and the [design tokens](../guide/theming).
-2. Install the ${what} listed above, if any.
+2. Install the ${what} it uses: ${depLinks}.
 3. Copy the files from [Source](#source) into your project. With the default
    \`bootcn.json\` they go here:
 
@@ -90,22 +95,39 @@ ${fileRows}`;
 
   return `# ${item.title}
 
-${item.description}
+<p class="bootcn-lead">${item.description}</p>
 
 <ComponentMeta version="${item.version ?? ''}" bootstrap="${item.compatibility?.bootstrap ?? '5.3'}" requires="${requirements(item)}" source="${sourceUrl}" />
 
-${preview}
+<ComponentPreview name="${item.name}" title="${item.title}" ${previewProps}>
+<template #code>
+
+${fence(main.content, `${LANG[extOf(main.path)] ?? 'text'} [${main.path}]`)}
+
+</template>
+</ComponentPreview>
 
 ## Installation
 
+<DocsTabs :labels="['CLI', 'Manual']" label="Installation method">
+<template #tab-0>
+
 ::: code-group
 
-\`\`\`bash [npx]
-npx bootcn add ${item.name}
+\`\`\`bash [npm]
+${run('npx')}
 \`\`\`
 
 \`\`\`bash [pnpm]
-pnpm dlx bootcn add ${item.name}
+${run('pnpm dlx')}
+\`\`\`
+
+\`\`\`bash [yarn]
+${run('yarn dlx')}
+\`\`\`
+
+\`\`\`bash [bun]
+${run('bunx --bun')}
 \`\`\`
 
 :::
@@ -113,12 +135,20 @@ pnpm dlx bootcn add ${item.name}
 The CLI also installs the design tokens and these ${what}: ${depLinks}.
 ${isTemplate ? 'It writes the page with its links already pointing at your asset folders.' : 'It prints the `<link>` and `<script>` tags to add to your layout.'}
 
-### Manual installation
+</template>
+<template #tab-1>
 
-<!-- v-pre: README text may show placeholders such as {{bootcn:css}} literally. -->
+<!-- v-pre: the text may show placeholders such as {{bootcn:css}} literally. -->
 ::: v-pre
 
 ${manual}
+
+:::
+
+</template>
+</DocsTabs>
+
+::: v-pre
 
 ${readmeBody(readReadme(item.name, item.type))}
 
