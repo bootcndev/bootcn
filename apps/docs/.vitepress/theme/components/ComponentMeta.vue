@@ -45,7 +45,11 @@ async function copy(): Promise<void> {
   <div class="bootcn-meta-row">
     <ul class="bootcn-meta" aria-label="Details">
       <li v-if="version"><span>Version</span> {{ version }}</li>
-      <li><span>Bootstrap</span> {{ bootstrap }}+</li>
+      <li>
+        <a href="https://getbootstrap.com/" target="_blank" rel="noreferrer"
+          ><span>Bootstrap</span> {{ bootstrap }}+</a
+        >
+      </li>
       <li><span>Requires</span> {{ requires }}</li>
       <li><a :href="source" target="_blank" rel="noreferrer">Source on GitHub</a></li>
     </ul>

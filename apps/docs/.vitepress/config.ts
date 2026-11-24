@@ -140,9 +140,5 @@ export default defineConfig({
       },
     },
     outline: { level: [2, 3] },
-    footer: {
-      message: 'Released under the MIT License. Not affiliated with Bootstrap or shadcn/ui.',
-      copyright: 'Copyright © George Tsiros',
-    },
   },
 });

@@ -84,7 +84,7 @@ function page(item: RegistryItem, kind: Kind): string {
 | File | Default location |
 | ---- | ---------------- |
 ${fileRows}`
-    : `1. Load Bootstrap 5.3 (${requirements(item)}) and the [design tokens](../guide/theming).
+    : `1. Load [Bootstrap 5.3](https://getbootstrap.com/docs/5.3/getting-started/introduction/) (${requirements(item)}) and the [design tokens](../guide/theming).
 2. Install the ${what} it uses: ${depLinks}.
 3. Copy the files from [Source](#source) into your project. With the default
    \`bootcn.json\` they go here:

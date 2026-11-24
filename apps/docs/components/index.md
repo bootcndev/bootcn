@@ -11,7 +11,7 @@ import { data as groups } from './components.data'
 <p class="bootcn-lead">Accessible building blocks in HTML, CSS and vanilla JavaScript, on Bootstrap 5.3.</p>
 
 Every component is plain HTML, CSS and (when needed) a small vanilla
-JavaScript file, built on Bootstrap 5.3. Install one with the CLI, or copy its
+JavaScript file, built on [Bootstrap 5.3](https://getbootstrap.com/). Install one with the CLI, or copy its
 files from its page.
 
 ```bash

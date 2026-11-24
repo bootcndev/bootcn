@@ -1,8 +1,8 @@
 # Right to left
 
 Bootcn works in right-to-left languages such as Arabic, Hebrew and Persian.
-Set `dir="rtl"` (and the language) on `<html>` and load Bootstrap's RTL
-stylesheet instead of the regular one:
+Set `dir="rtl"` (and the language) on `<html>` and load [Bootstrap's RTL
+stylesheet](https://getbootstrap.com/docs/5.3/getting-started/rtl/) instead of the regular one:
 
 ```html
 <html lang="ar" dir="rtl">

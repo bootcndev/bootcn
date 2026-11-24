@@ -1,6 +1,6 @@
 # Introduction
 
-Bootcn is a collection of UI components for **Bootstrap 5.3** that you copy
+Bootcn is a collection of UI components for **[Bootstrap 5.3](https://getbootstrap.com/)** that you copy
 into your project instead of installing as a package. Each component is a
 small set of files:
 

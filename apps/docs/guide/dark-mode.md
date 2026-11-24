@@ -1,6 +1,6 @@
 # Dark mode
 
-Bootcn uses Bootstrap's own color modes: set `data-bs-theme="dark"` on `<html>`
+Bootcn uses [Bootstrap's own color modes](https://getbootstrap.com/docs/5.3/customize/color-modes/): set `data-bs-theme="dark"` on `<html>`
 (or on any element) and every component switches, because their colors are
 tokens with a light and a dark value.
 

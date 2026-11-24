@@ -2,7 +2,7 @@
 
 # Bootcn
 
-Copy-paste UI components for Bootstrap 5.3+ and vanilla JavaScript.
+Copy-paste UI components for [Bootstrap](https://getbootstrap.com/) 5.3+ and vanilla JavaScript.
 
 Bootcn brings the copy-paste component workflow to Bootstrap developers who
 build with plain HTML and native PHP. Components are installed as editable

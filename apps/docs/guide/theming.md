@@ -1,6 +1,6 @@
 # Theming and dark mode
 
-`tokens.css` gives Bootstrap 5.3 a neutral, Tailwind-like look and defines the
+`tokens.css` gives [Bootstrap 5.3](https://getbootstrap.com/) a neutral, Tailwind-like look and defines the
 `--bootcn-*` tokens every Bootcn component reads. Everything stays Bootstrap:
 no Tailwind, no build step. Load it **after** Bootstrap's CSS and **before**
 any component CSS.

@@ -2,7 +2,7 @@
 
 ## Requirements
 
-- A project that loads **Bootstrap 5.3** (CSS, and the JS bundle for
+- A project that loads **[Bootstrap 5.3](https://getbootstrap.com/docs/5.3/getting-started/introduction/)** (CSS, and the JS bundle for
   interactive components such as Dialog or Tooltip).
 - **Node.js 20 or newer**, only on the machine where you run the CLI.
 

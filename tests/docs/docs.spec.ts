@@ -65,11 +65,22 @@ test('the registry JSON is served next to the docs', async ({ request }) => {
 test('home page links to the guide and the components', async ({ page }) => {
   const errors = collectErrors(page);
   await page.goto('./');
-  await expect(page.getByRole('heading', { level: 1 })).toContainText('Bootstrap interfaces');
-  // The showcase is the installed admin template, following the site theme.
-  await expect(page.frameLocator('.bootcn-home__showcase iframe').locator('h1')).toHaveText(
+  await expect(page.getByRole('heading', { level: 1 })).toHaveText('Build better with Bootstrap.');
+  // The showcase starts on the installed admin template, following the site theme.
+  await expect(page.frameLocator('.bootcn-home__showcase iframe').first().locator('h1')).toHaveText(
     'Dashboard',
   );
+  // The other templates are a tab away.
+  await page.getByRole('tab', { name: 'Landing page' }).click();
+  await expect(
+    page.frameLocator('.bootcn-home__showcase iframe').nth(2).locator('h1'),
+  ).toContainText('Ship your product site');
+  // Bootstrap is linked to its own site; the footer carries the notices.
+  await expect(
+    page.locator('.bootcn-landing__lead').getByRole('link', { name: 'Bootstrap' }),
+  ).toHaveAttribute('href', 'https://getbootstrap.com/');
+  await expect(page.getByRole('contentinfo')).toContainText('not affiliated');
+  await expect(page.getByRole('navigation', { name: 'Footer' })).toBeVisible();
   await page.getByRole('link', { name: 'Browse components' }).click();
   await expect(page).toHaveURL(/127\.0\.0\.1:\d+\/components\/$/);
   for (const item of components) {
