@@ -7,9 +7,26 @@ build with plain HTML and native PHP. Components are installed as editable
 HTML, CSS and JavaScript source files that you own. No React, Vue, jQuery,
 bundler or Node.js is required at runtime.
 
-> **Status:** 20 components plus design tokens, usable for local development. The CLI is not
-> published to npm and the registry is not hosted yet, so `npx bootcn` does not
-> work yet. Use the local commands below.
+> **Status:** early (0.x). 20 components plus design tokens. The CLI is on
+> [npm](https://www.npmjs.com/package/bootcn) and the registry is hosted at
+> <https://tsirosgeorge.github.io/bootcn>.
+
+## Quick start
+
+In your project (Node.js 20+ is needed only while running the CLI):
+
+```bash
+npx bootcn init
+```
+
+```bash
+npx bootcn add button dialog
+```
+
+`init` detects a PHP or plain HTML project, checks for Bootstrap, asks where
+files should go, writes `bootcn.json` and installs the design tokens. `add`
+shows the files it will create, asks before overwriting anything, and prints
+the `<link>` and `<script>` tags to add to your layout.
 
 ## Core principles
 
@@ -48,7 +65,7 @@ Each component lives in `packages/registry/components/<name>/` with a
 `README.md` (usage, accessibility, API) and a `preview.html` you can open
 directly in a browser.
 
-## Getting started (local development)
+## Development
 
 Requirements: Node.js >= 20, pnpm 11, and PHP 8+ (optional; only for the
 native PHP end-to-end test).
@@ -66,11 +83,10 @@ First run of the browser tests needs Playwright's Chromium:
 pnpm exec playwright install chromium
 ```
 
-### Try the CLI on your own project
+### Run your local build of the CLI
 
-Until the CLI is published on npm, run the built file with Node. It installs
-from the hosted registry by default; pass `--registry packages/registry/dist`
-to use your local build instead.
+Run the built file with Node. It installs from the hosted registry by default;
+pass `--registry packages/registry/dist` to use your local registry build.
 
 ```bash
 node packages/cli/dist/index.js init --cwd ../my-site
@@ -78,11 +94,6 @@ node packages/cli/dist/index.js add button dialog --cwd ../my-site
 node packages/cli/dist/index.js list --cwd ../my-site
 node packages/cli/dist/index.js info dialog --cwd ../my-site
 ```
-
-`init` detects a PHP or plain HTML project, checks for Bootstrap, asks where
-files should go, writes `bootcn.json` and installs the design tokens. `add`
-shows the files it will create, asks before overwriting anything, and prints
-the `<link>` and `<script>` tags to add to your layout.
 
 ### CLI reference
 
@@ -172,8 +183,6 @@ contents inlined), which the CLI reads. Previews load the same source files.
 
 ## Known limitations
 
-- The CLI is not on npm yet, so `npx bootcn` does not work; run the built file.
-  Publishing is set up; see [RELEASING.md](RELEASING.md).
 - The registry is on a GitHub Pages URL until a custom domain is set up.
 - No `doctor` or `update` commands. `diff` compares with the current registry
   only; installed versions are not recorded.
