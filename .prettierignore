@@ -11,3 +11,4 @@ _site/
 apps/docs/public/previews
 # Map data: kept compact on one line
 packages/registry/components/choropleth/choropleth-sample.js
+packages/registry/components/video-player/preview-sample.js

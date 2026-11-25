@@ -6,6 +6,14 @@ each published version stays available under `/v/<version>/`) and the **CLI**
 
 ## Registry
 
+### 0.32.0
+
+- Video player: custom controls over the native `<video>`: a big play
+  button, seek bar with buffering, back and forward 10 seconds, volume,
+  speed, captions drawn above the controls, picture in picture and full
+  screen. YouTube-style keys (K, J, L, M, C, F, arrows, 0–9), controls that
+  fade out while playing, and the browser's own player without JavaScript.
+
 ### 0.31.0
 
 - Modal: sizes, top placement, a bottom sheet on phones, blurred or

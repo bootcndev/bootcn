@@ -1,0 +1,415 @@
+.bootcn-video {
+  --bootcn-video-accent: #fff;
+  --bootcn-video-radius: var(--bootcn-radius-lg);
+  position: relative;
+  overflow: hidden;
+  border-radius: var(--bootcn-video-radius);
+  background-color: #000;
+  color: #fff;
+  aspect-ratio: 16 / 9;
+  isolation: isolate;
+}
+
+.bootcn-video__stage {
+  position: absolute;
+  inset: 0;
+}
+
+.bootcn-video__media {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  background-color: #000;
+}
+
+/* Without JavaScript the browser's own controls stay. */
+.bootcn-video:not(.is-enhanced) .bootcn-video__controls,
+.bootcn-video:not(.is-enhanced) .bootcn-video__big-play {
+  display: none;
+}
+
+.bootcn-video.is-enhanced .bootcn-video__media {
+  cursor: pointer;
+}
+
+.bootcn-video.is-idle,
+.bootcn-video.is-idle .bootcn-video__media {
+  cursor: none;
+}
+
+/* The big play button before the first play. */
+.bootcn-video__big-play {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  z-index: 2;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 4.5rem;
+  height: 4.5rem;
+  padding: 0;
+  border: 0;
+  border-radius: 9999px;
+  background-color: rgb(0 0 0 / 0.55);
+  color: #fff;
+  backdrop-filter: blur(6px);
+  transform: translate(-50%, -50%);
+  transition:
+    transform 150ms ease,
+    background-color 150ms ease;
+}
+
+.bootcn-video__big-play .bootcn-icon {
+  width: 2rem;
+  height: 2rem;
+  margin-inline-start: 0.25rem;
+}
+
+.bootcn-video__big-play:hover {
+  background-color: rgb(0 0 0 / 0.75);
+  transform: translate(-50%, -50%) scale(1.06);
+}
+
+.bootcn-video.is-started .bootcn-video__big-play {
+  display: none;
+}
+
+.bootcn-video__controls {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 3;
+  display: grid;
+  gap: 0.25rem;
+  padding: 2.5rem 0.75rem 0.5rem;
+  background: linear-gradient(to top, rgb(0 0 0 / 0.75), rgb(0 0 0 / 0.35) 60%, transparent);
+  transition:
+    opacity 250ms ease,
+    transform 250ms ease;
+}
+
+/* Before the first play the picture (poster) shows clean. */
+.bootcn-video.is-enhanced:not(.is-started) .bootcn-video__controls {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.bootcn-video.is-enhanced:not(.is-started):focus-within .bootcn-video__controls {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.bootcn-video.is-idle .bootcn-video__controls {
+  opacity: 0;
+  transform: translateY(0.5rem);
+}
+
+.bootcn-video__bar {
+  display: flex;
+  gap: 0.25rem;
+  align-items: center;
+  min-width: 0;
+}
+
+.bootcn-video__button {
+  display: inline-flex;
+  flex: none;
+  align-items: center;
+  justify-content: center;
+  width: 2.25rem;
+  height: 2.25rem;
+  padding: 0;
+  border: 0;
+  border-radius: var(--bootcn-radius);
+  background: transparent;
+  color: #fff;
+}
+
+.bootcn-video__button:hover {
+  background-color: rgb(255 255 255 / 0.15);
+}
+
+.bootcn-video__button:focus-visible,
+.bootcn-video__big-play:focus-visible,
+.bootcn-video__speed:focus-visible {
+  outline: 2px solid #fff;
+  outline-offset: 1px;
+}
+
+.bootcn-video__button[hidden] {
+  display: none;
+}
+
+.bootcn-video__pause-icon,
+.bootcn-video__mute-icon,
+.bootcn-video__exit-icon,
+.bootcn-video.is-playing .bootcn-video__play-icon,
+.bootcn-video.is-muted .bootcn-video__volume-icon,
+.bootcn-video.is-fullscreen .bootcn-video__enter-icon {
+  display: none;
+}
+
+.bootcn-video.is-playing .bootcn-video__pause-icon,
+.bootcn-video.is-muted .bootcn-video__mute-icon,
+.bootcn-video.is-fullscreen .bootcn-video__exit-icon {
+  display: inline;
+}
+
+[data-bootcn-video-captions][aria-pressed='true'],
+[data-bootcn-video-pip][aria-pressed='true'] {
+  box-shadow: inset 0 -2px 0 #fff;
+}
+
+/* Ranges: a thin track that fills to the value. */
+.bootcn-video__seek,
+.bootcn-video__volume-range {
+  --bootcn-video-fill: 0%;
+  width: 100%;
+  height: 1rem;
+  margin: 0;
+  background: transparent;
+  cursor: pointer;
+  appearance: none;
+}
+
+.bootcn-video__seek::-webkit-slider-runnable-track,
+.bootcn-video__volume-range::-webkit-slider-runnable-track {
+  height: 0.25rem;
+  border-radius: 9999px;
+  background:
+    linear-gradient(var(--bootcn-video-accent), var(--bootcn-video-accent)) 0 0 /
+      var(--bootcn-video-fill) 100% no-repeat,
+    linear-gradient(rgb(255 255 255 / 0.45), rgb(255 255 255 / 0.45)) 0 0 /
+      var(--bootcn-video-buffered, 0%) 100% no-repeat,
+    rgb(255 255 255 / 0.25);
+}
+
+.bootcn-video__seek::-moz-range-track,
+.bootcn-video__volume-range::-moz-range-track {
+  height: 0.25rem;
+  border-radius: 9999px;
+  background:
+    linear-gradient(var(--bootcn-video-accent), var(--bootcn-video-accent)) 0 0 /
+      var(--bootcn-video-fill) 100% no-repeat,
+    linear-gradient(rgb(255 255 255 / 0.45), rgb(255 255 255 / 0.45)) 0 0 /
+      var(--bootcn-video-buffered, 0%) 100% no-repeat,
+    rgb(255 255 255 / 0.25);
+}
+
+.bootcn-video__volume-range::-webkit-slider-runnable-track {
+  background:
+    linear-gradient(#fff, #fff) 0 0 / var(--bootcn-video-fill) 100% no-repeat,
+    rgb(255 255 255 / 0.25);
+}
+
+.bootcn-video__volume-range::-moz-range-track {
+  background:
+    linear-gradient(#fff, #fff) 0 0 / var(--bootcn-video-fill) 100% no-repeat,
+    rgb(255 255 255 / 0.25);
+}
+
+.bootcn-video__seek::-webkit-slider-thumb,
+.bootcn-video__volume-range::-webkit-slider-thumb {
+  width: 0.875rem;
+  height: 0.875rem;
+  margin-top: -0.3125rem;
+  border: 0;
+  border-radius: 9999px;
+  background-color: #fff;
+  appearance: none;
+  transform: scale(0.8);
+  transition: transform 150ms ease;
+}
+
+.bootcn-video__seek::-moz-range-thumb,
+.bootcn-video__volume-range::-moz-range-thumb {
+  width: 0.875rem;
+  height: 0.875rem;
+  border: 0;
+  border-radius: 9999px;
+  background-color: #fff;
+}
+
+.bootcn-video__seek:hover::-webkit-slider-thumb,
+.bootcn-video__seek:focus-visible::-webkit-slider-thumb {
+  transform: scale(1.1);
+}
+
+.bootcn-video__seek:focus-visible,
+.bootcn-video__volume-range:focus-visible {
+  outline: 2px solid #fff;
+  outline-offset: 2px;
+  border-radius: 9999px;
+}
+
+.bootcn-video__volume {
+  display: flex;
+  align-items: center;
+}
+
+.bootcn-video__volume-range {
+  width: 0;
+  opacity: 0;
+  transition:
+    width 200ms ease,
+    opacity 200ms ease;
+}
+
+.bootcn-video__volume:hover .bootcn-video__volume-range,
+.bootcn-video__volume:focus-within .bootcn-video__volume-range {
+  width: 4.5rem;
+  margin-inline: 0.25rem 0.5rem;
+  opacity: 1;
+}
+
+.bootcn-video__time {
+  padding-inline: 0.5rem;
+  font-size: 0.8125rem;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+
+.bootcn-video__spacer {
+  flex: 1;
+}
+
+.bootcn-video__speed {
+  height: 2rem;
+  padding: 0 0.375rem;
+  border: 0;
+  border-radius: var(--bootcn-radius);
+  background: transparent;
+  color: #fff;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.bootcn-video__speed:hover {
+  background-color: rgb(255 255 255 / 0.15);
+}
+
+.bootcn-video__speed option {
+  background-color: #111827;
+  color: #fff;
+}
+
+/* Captions: our own box, above the controls when they show. */
+.bootcn-video__captions {
+  position: absolute;
+  bottom: 1.25rem;
+  left: 50%;
+  z-index: 1;
+  display: none;
+  width: max-content;
+  max-width: 90%;
+  margin: 0;
+  padding: 0.125rem 0.625rem;
+  border-radius: var(--bootcn-radius-sm);
+  background-color: rgb(0 0 0 / 0.75);
+  color: #fff;
+  font-size: clamp(0.875rem, 2.4cqi, 1.375rem);
+  line-height: 1.45;
+  text-align: center;
+  white-space: pre-line;
+  transform: translateX(-50%);
+  transition: bottom 250ms ease;
+  pointer-events: none;
+}
+
+.bootcn-video.has-captions .bootcn-video__captions:not(:empty) {
+  display: block;
+}
+
+.bootcn-video.is-started:not(.is-idle) .bootcn-video__captions {
+  bottom: 5.5rem;
+}
+
+/* "+10 s", "Speed 1.5×": a short message in the middle. */
+.bootcn-video__osd {
+  position: absolute;
+  top: 1rem;
+  left: 50%;
+  z-index: 4;
+  padding: 0.375rem 0.75rem;
+  border-radius: var(--bootcn-radius);
+  background-color: rgb(0 0 0 / 0.65);
+  font-size: 0.875rem;
+  font-weight: 600;
+  opacity: 0;
+  transform: translateX(-50%);
+  pointer-events: none;
+}
+
+.bootcn-video__osd.is-visible {
+  animation: bootcn-video-osd 900ms ease forwards;
+}
+
+@keyframes bootcn-video-osd {
+  0%,
+  60% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+  }
+}
+
+.bootcn-video__spinner {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  display: none;
+  width: 3rem;
+  height: 3rem;
+  margin: -1.5rem 0 0 -1.5rem;
+  border: 3px solid rgb(255 255 255 / 0.3);
+  border-top-color: #fff;
+  border-radius: 9999px;
+  animation: bootcn-video-spin 800ms linear infinite;
+}
+
+.bootcn-video.is-waiting .bootcn-video__spinner {
+  display: block;
+}
+
+@keyframes bootcn-video-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.bootcn-video:fullscreen {
+  border-radius: 0;
+  aspect-ratio: auto;
+}
+
+/* Small players: the less used buttons give way. */
+@container bootcn-video (max-width: 30rem) {
+  .bootcn-video__skip,
+  .bootcn-video__volume-range {
+    display: none;
+  }
+}
+
+.bootcn-video {
+  container: bootcn-video / inline-size;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .bootcn-video__controls,
+  .bootcn-video__captions,
+  .bootcn-video__volume-range,
+  .bootcn-video__big-play {
+    transition: none;
+  }
+
+  .bootcn-video__osd.is-visible {
+    animation: none;
+    opacity: 0;
+  }
+}
