@@ -952,18 +952,37 @@
   overflow-x: clip;
 }
 
-/* What's new: a large live card beside two smaller ones. */
+/* What's new: two staggered columns; each card is as tall as its component,
+   and the right column starts a little lower. */
 .bootcn-landing__new {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 1rem;
+  gap: 1.25rem;
+  align-items: start;
+}
+
+.bootcn-landing__new-column {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
   margin: 0;
   padding: 0;
   list-style: none;
 }
 
-.bootcn-landing__new > :first-child {
-  grid-row: span 2;
+.bootcn-landing__new-column + .bootcn-landing__new-column {
+  margin-top: 4rem;
+}
+
+.bootcn-landing__new .bootcn-landing__card .bootcn-preview {
+  flex: none;
+}
+
+/* Title first, then the live component; the text has a soft tint. */
+.bootcn-landing__new .bootcn-landing__card-text {
+  border-top: 0;
+  border-bottom: 1px solid var(--vp-c-divider);
+  background-color: var(--vp-c-bg-soft);
 }
 
 @media (max-width: 767.98px) {
@@ -971,8 +990,8 @@
     grid-template-columns: minmax(0, 1fr);
   }
 
-  .bootcn-landing__new > :first-child {
-    grid-row: auto;
+  .bootcn-landing__new-column + .bootcn-landing__new-column {
+    margin-top: 0;
   }
 }
 

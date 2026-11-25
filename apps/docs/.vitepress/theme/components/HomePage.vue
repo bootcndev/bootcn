@@ -31,26 +31,37 @@ const showcase = [
   { label: 'Settings', name: 'settings-page' },
 ];
 
-// Newest first: live previews, then links to the rest of the recent work.
+// Newest first: live previews in two staggered columns (each card as tall
+// as its component), then links to the rest of the recent work.
 const latest = [
-  {
-    name: 'delivery-tracker',
-    kind: 'components',
-    title: 'Delivery tracker',
-    text: 'Live order tracking like a delivery app: the courier moves on the map, with arrival time and progress.',
-  },
-  {
-    name: 'video-player',
-    kind: 'components',
-    title: 'Video player',
-    text: 'Custom controls, captions, speed, picture in picture and YouTube-style keys.',
-  },
-  {
-    name: 'onboarding-flow',
-    kind: 'blocks',
-    title: 'Onboarding flow',
-    text: 'Three validated steps that end on a "You\'re all set" screen with confetti.',
-  },
+  [
+    {
+      name: 'delivery-tracker',
+      kind: 'components',
+      title: 'Delivery tracker',
+      text: 'Live order tracking like a delivery app: the courier moves on the map, with arrival time and progress.',
+    },
+    {
+      name: 'audio-player',
+      kind: 'components',
+      title: 'Audio player',
+      text: 'Play, seek, volume and a playlist over the native audio element.',
+    },
+  ],
+  [
+    {
+      name: 'video-player',
+      kind: 'components',
+      title: 'Video player',
+      text: 'Custom controls, captions, speed, picture in picture and YouTube-style keys.',
+    },
+    {
+      name: 'onboarding-flow',
+      kind: 'blocks',
+      title: 'Onboarding flow',
+      text: 'Three validated steps that end on a "You\'re all set" screen with confetti.',
+    },
+  ],
 ];
 
 const alsoNew = [
@@ -212,20 +223,22 @@ const features = [
           plain HTML, CSS and JavaScript you own.
         </p>
       </div>
-      <ul class="bootcn-landing__new">
-        <li v-for="item in latest" :key="item.name" class="bootcn-landing__card">
-          <ComponentPreview :name="item.name" :title="item.title" :kind="item.kind" bare />
-          <div class="bootcn-landing__card-text">
-            <h3>
-              <a :href="withBase(`/${item.kind}/${item.name}`)">{{ item.title }}</a><span
-                class="bootcn-landing__badge"
-                >New</span
-              >
-            </h3>
-            <p>{{ item.text }}</p>
-          </div>
-        </li>
-      </ul>
+      <div class="bootcn-landing__new">
+        <ul v-for="(column, index) in latest" :key="index" class="bootcn-landing__new-column">
+          <li v-for="item in column" :key="item.name" class="bootcn-landing__card">
+            <div class="bootcn-landing__card-text">
+              <h3>
+                <a :href="withBase(`/${item.kind}/${item.name}`)">{{ item.title }}</a><span
+                  class="bootcn-landing__badge"
+                  >New</span
+                >
+              </h3>
+              <p>{{ item.text }}</p>
+            </div>
+            <ComponentPreview :name="item.name" :title="item.title" :kind="item.kind" bare />
+          </li>
+        </ul>
+      </div>
       <ul class="bootcn-landing__also" aria-label="Also new">
         <li v-for="link in alsoNew" :key="link.href">
           <a :href="withBase(link.href)">{{ link.text }}</a>
