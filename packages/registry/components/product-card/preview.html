@@ -1,0 +1,457 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Bootcn Product card preview</title>
+    <script>
+      // Preview theme: ?theme=dark|light, else the docs page around the frame, else light.
+      (function () {
+        var theme = new URLSearchParams(location.search).get('theme');
+        if (!theme) {
+          try {
+            theme =
+              window.parent !== window &&
+              window.parent.document.documentElement.classList.contains('dark')
+                ? 'dark'
+                : 'light';
+          } catch (error) {
+            theme = 'light';
+          }
+        }
+        document.documentElement.setAttribute('data-bs-theme', theme === 'dark' ? 'dark' : 'light');
+        // ?dir=rtl: right to left, with Bootstrap's RTL stylesheet.
+        if (new URLSearchParams(location.search).get('dir') === 'rtl') {
+          document.documentElement.setAttribute('dir', 'rtl');
+          new MutationObserver(function (records, observer) {
+            var link = document.querySelector('link[href*="bootstrap.min.css"]');
+            if (!link) return;
+            link.href = link.href.replace('bootstrap.min.css', 'bootstrap.rtl.min.css');
+            observer.disconnect();
+          }).observe(document.documentElement, { childList: true, subtree: true });
+        }
+      })();
+    </script>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.9/dist/css/bootstrap.min.css"
+    />
+    <link rel="stylesheet" href="../../themes/tokens/tokens.css" />
+    <link rel="stylesheet" href="../rating/rating.css" />
+    <link rel="stylesheet" href="../button/button.css" />
+    <link rel="stylesheet" href="product-card.css" />
+  </head>
+  <body>
+    <main class="container py-4">
+      <h1 class="h4 mb-4">Product card</h1>
+      <ul class="bootcn-product-grid" aria-label="Products">
+        <li>
+          <article
+            class="bootcn-product-card"
+            data-bootcn-product
+            data-id="p1"
+            data-category="Clothing"
+            data-price="28"
+            data-rating="4.6"
+            data-colors="Sand,Navy,White"
+            aria-labelledby="p1-name"
+          >
+            <div class="bootcn-product-card__media">
+              <span
+                class="bootcn-product-art"
+                style="--bootcn-product-from: #fde68a; --bootcn-product-to: #fca5a5"
+                aria-hidden="true"
+                ><svg
+                  class="bootcn-icon"
+                  width="64"
+                  height="64"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  aria-hidden="true"
+                  focusable="false"
+                >
+                  <path
+                    d="M8 3 3 6l2 5 2-1v11h10V10l2 1 2-5-5-3c-.5 1.7-2 3-4 3s-3.5-1.3-4-3z"
+                  /></svg
+              ></span>
+              <span class="bootcn-product-card__badge">New</span>
+              <button
+                type="button"
+                class="bootcn-product-card__wish"
+                aria-pressed="false"
+                aria-label="Save Everyday Tee to your wishlist"
+                data-bootcn-wishlist
+              >
+                <svg
+                  class="bootcn-icon"
+                  width="16"
+                  height="16"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  aria-hidden="true"
+                  focusable="false"
+                >
+                  <path d="M19.5 12.6 12 20l-7.5-7.4A5 5 0 0 1 12 6a5 5 0 0 1 7.5 6.6z" />
+                </svg>
+              </button>
+            </div>
+            <div class="bootcn-product-card__body">
+              <p class="bootcn-product-card__category">Clothing</p>
+              <h2 class="bootcn-product-card__name" id="p1-name"><a href="#">Everyday Tee</a></h2>
+              <span
+                class="bootcn-rating bootcn-rating--sm"
+                role="img"
+                aria-label="Rated 4.6 out of 5, 214 reviews"
+                ><span
+                  class="bootcn-rating__stars"
+                  style="--bootcn-rating-value: 92%"
+                  aria-hidden="true"
+                ></span
+                ><span class="bootcn-rating__value" aria-hidden="true">4.6</span
+                ><span class="bootcn-rating__count" aria-hidden="true">(214)</span></span
+              >
+              <ul class="bootcn-product-card__colors" aria-label="3 colors">
+                <li>
+                  <span
+                    class="bootcn-product-card__dot"
+                    style="--bootcn-swatch: #d6c4a8"
+                    title="Sand"
+                  ></span
+                  ><span class="visually-hidden">Sand</span>
+                </li>
+                <li>
+                  <span
+                    class="bootcn-product-card__dot"
+                    style="--bootcn-swatch: #1e3a5f"
+                    title="Navy"
+                  ></span
+                  ><span class="visually-hidden">Navy</span>
+                </li>
+                <li>
+                  <span
+                    class="bootcn-product-card__dot"
+                    style="--bootcn-swatch: #f8fafc"
+                    title="White"
+                  ></span
+                  ><span class="visually-hidden">White</span>
+                </li>
+              </ul>
+              <div class="bootcn-product-card__footer">
+                <p class="bootcn-price">
+                  <span class="visually-hidden">Price:</span
+                  ><span class="bootcn-price__current">$28</span>
+                </p>
+                <button
+                  type="button"
+                  class="btn bootcn-button bootcn-button--default bootcn-button--sm bootcn-product-card__add"
+                  data-bootcn-cart-add
+                  data-id="p1"
+                  data-name="Everyday Tee"
+                  data-price="28"
+                  data-variant="Sand"
+                  data-art="shirt"
+                  data-tone="#fde68a,#fca5a5"
+                  aria-label="Add Everyday Tee to cart"
+                >
+                  <svg
+                    class="bootcn-icon"
+                    width="16"
+                    height="16"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    aria-hidden="true"
+                    focusable="false"
+                  >
+                    <path d="M6 7h12l1 14H5z" />
+                    <path d="M9 10V6a3 3 0 0 1 6 0v4" />
+                  </svg>
+                  Add
+                </button>
+              </div>
+            </div>
+          </article>
+        </li>
+        <li>
+          <article
+            class="bootcn-product-card"
+            data-bootcn-product
+            data-id="p4"
+            data-category="Electronics"
+            data-price="149"
+            data-rating="4.7"
+            data-colors="Black,Silver"
+            aria-labelledby="p4-name"
+          >
+            <div class="bootcn-product-card__media">
+              <span
+                class="bootcn-product-art"
+                style="--bootcn-product-from: #bfdbfe; --bootcn-product-to: #93c5fd"
+                aria-hidden="true"
+                ><svg
+                  class="bootcn-icon"
+                  width="64"
+                  height="64"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  aria-hidden="true"
+                  focusable="false"
+                >
+                  <path d="M4 15v-3a8 8 0 0 1 16 0v3" />
+                  <rect x="3" y="14" width="4" height="7" rx="1.5" />
+                  <rect x="17" y="14" width="4" height="7" rx="1.5" /></svg
+              ></span>
+              <span class="bootcn-product-card__badge" data-tone="sale">Sale</span>
+              <button
+                type="button"
+                class="bootcn-product-card__wish"
+                aria-pressed="false"
+                aria-label="Save Studio Headphones to your wishlist"
+                data-bootcn-wishlist
+              >
+                <svg
+                  class="bootcn-icon"
+                  width="16"
+                  height="16"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  aria-hidden="true"
+                  focusable="false"
+                >
+                  <path d="M19.5 12.6 12 20l-7.5-7.4A5 5 0 0 1 12 6a5 5 0 0 1 7.5 6.6z" />
+                </svg>
+              </button>
+            </div>
+            <div class="bootcn-product-card__body">
+              <p class="bootcn-product-card__category">Electronics</p>
+              <h2 class="bootcn-product-card__name" id="p4-name">
+                <a href="#">Studio Headphones</a>
+              </h2>
+              <span
+                class="bootcn-rating bootcn-rating--sm"
+                role="img"
+                aria-label="Rated 4.7 out of 5, 431 reviews"
+                ><span
+                  class="bootcn-rating__stars"
+                  style="--bootcn-rating-value: 94%"
+                  aria-hidden="true"
+                ></span
+                ><span class="bootcn-rating__value" aria-hidden="true">4.7</span
+                ><span class="bootcn-rating__count" aria-hidden="true">(431)</span></span
+              >
+              <ul class="bootcn-product-card__colors" aria-label="2 colors">
+                <li>
+                  <span
+                    class="bootcn-product-card__dot"
+                    style="--bootcn-swatch: #111827"
+                    title="Black"
+                  ></span
+                  ><span class="visually-hidden">Black</span>
+                </li>
+                <li>
+                  <span
+                    class="bootcn-product-card__dot"
+                    style="--bootcn-swatch: #cbd5e1"
+                    title="Silver"
+                  ></span
+                  ><span class="visually-hidden">Silver</span>
+                </li>
+              </ul>
+              <div class="bootcn-product-card__footer">
+                <p class="bootcn-price">
+                  <span class="visually-hidden">Price:</span
+                  ><span class="bootcn-price__current">$149</span
+                  ><span class="visually-hidden">, was</span
+                  ><s class="bootcn-price__compare">$179</s
+                  ><span class="bootcn-price__save">−17%</span>
+                </p>
+                <button
+                  type="button"
+                  class="btn bootcn-button bootcn-button--default bootcn-button--sm bootcn-product-card__add"
+                  data-bootcn-cart-add
+                  data-id="p4"
+                  data-name="Studio Headphones"
+                  data-price="149"
+                  data-variant="Black"
+                  data-art="headphones"
+                  data-tone="#bfdbfe,#93c5fd"
+                  aria-label="Add Studio Headphones to cart"
+                >
+                  <svg
+                    class="bootcn-icon"
+                    width="16"
+                    height="16"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    aria-hidden="true"
+                    focusable="false"
+                  >
+                    <path d="M6 7h12l1 14H5z" />
+                    <path d="M9 10V6a3 3 0 0 1 6 0v4" />
+                  </svg>
+                  Add
+                </button>
+              </div>
+            </div>
+          </article>
+        </li>
+        <li>
+          <article
+            class="bootcn-product-card"
+            data-bootcn-product
+            data-id="p6"
+            data-category="Accessories"
+            data-price="120"
+            data-rating="4.9"
+            data-colors="Charcoal,Rust"
+            aria-labelledby="p6-name"
+          >
+            <div class="bootcn-product-card__media">
+              <span
+                class="bootcn-product-art"
+                style="--bootcn-product-from: #fecaca; --bootcn-product-to: #fca5a5"
+                aria-hidden="true"
+                ><svg
+                  class="bootcn-icon"
+                  width="64"
+                  height="64"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  aria-hidden="true"
+                  focusable="false"
+                >
+                  <path d="M6 9a6 6 0 0 1 12 0v11a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1z" />
+                  <path d="M9 4.5V3h6v1.5M9 14h6v4H9z" /></svg
+              ></span>
+              <span class="bootcn-product-card__badge">New</span>
+              <button
+                type="button"
+                class="bootcn-product-card__wish"
+                aria-pressed="false"
+                aria-label="Save Commuter Backpack to your wishlist"
+                data-bootcn-wishlist
+              >
+                <svg
+                  class="bootcn-icon"
+                  width="16"
+                  height="16"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  aria-hidden="true"
+                  focusable="false"
+                >
+                  <path d="M19.5 12.6 12 20l-7.5-7.4A5 5 0 0 1 12 6a5 5 0 0 1 7.5 6.6z" />
+                </svg>
+              </button>
+            </div>
+            <div class="bootcn-product-card__body">
+              <p class="bootcn-product-card__category">Accessories</p>
+              <h2 class="bootcn-product-card__name" id="p6-name">
+                <a href="#">Commuter Backpack</a>
+              </h2>
+              <span
+                class="bootcn-rating bootcn-rating--sm"
+                role="img"
+                aria-label="Rated 4.9 out of 5, 302 reviews"
+                ><span
+                  class="bootcn-rating__stars"
+                  style="--bootcn-rating-value: 98%"
+                  aria-hidden="true"
+                ></span
+                ><span class="bootcn-rating__value" aria-hidden="true">4.9</span
+                ><span class="bootcn-rating__count" aria-hidden="true">(302)</span></span
+              >
+              <ul class="bootcn-product-card__colors" aria-label="2 colors">
+                <li>
+                  <span
+                    class="bootcn-product-card__dot"
+                    style="--bootcn-swatch: #374151"
+                    title="Charcoal"
+                  ></span
+                  ><span class="visually-hidden">Charcoal</span>
+                </li>
+                <li>
+                  <span
+                    class="bootcn-product-card__dot"
+                    style="--bootcn-swatch: #b45309"
+                    title="Rust"
+                  ></span
+                  ><span class="visually-hidden">Rust</span>
+                </li>
+              </ul>
+              <div class="bootcn-product-card__footer">
+                <p class="bootcn-price">
+                  <span class="visually-hidden">Price:</span
+                  ><span class="bootcn-price__current">$120</span>
+                </p>
+                <button
+                  type="button"
+                  class="btn bootcn-button bootcn-button--default bootcn-button--sm bootcn-product-card__add"
+                  data-bootcn-cart-add
+                  data-id="p6"
+                  data-name="Commuter Backpack"
+                  data-price="120"
+                  data-variant="Charcoal"
+                  data-art="backpack"
+                  data-tone="#fecaca,#fca5a5"
+                  aria-label="Add Commuter Backpack to cart"
+                >
+                  <svg
+                    class="bootcn-icon"
+                    width="16"
+                    height="16"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    aria-hidden="true"
+                    focusable="false"
+                  >
+                    <path d="M6 7h12l1 14H5z" />
+                    <path d="M9 10V6a3 3 0 0 1 6 0v4" />
+                  </svg>
+                  Add
+                </button>
+              </div>
+            </div>
+          </article>
+        </li>
+      </ul>
+      <p class="visually-hidden" aria-live="polite" data-bootcn-wishlist-live></p>
+    </main>
+    <script src="product-card.js"></script>
+  </body>
+</html>

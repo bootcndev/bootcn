@@ -1,0 +1,107 @@
+.bootcn-variant {
+  display: grid;
+  gap: 1.25rem;
+  color: var(--bootcn-foreground);
+}
+
+.bootcn-variant__group {
+  min-width: 0;
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+.bootcn-variant__legend {
+  display: flex;
+  gap: 0.375rem;
+  align-items: baseline;
+  width: 100%;
+  margin-bottom: 0.625rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+}
+
+.bootcn-variant__legend [data-bootcn-variant-value] {
+  color: var(--bootcn-muted-foreground);
+  font-weight: 400;
+}
+
+.bootcn-variant__guide {
+  margin-inline-start: auto;
+  color: var(--bootcn-foreground);
+  font-size: 0.8125rem;
+  font-weight: 400;
+}
+
+.bootcn-variant__swatches,
+.bootcn-variant__options {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.bootcn-variant__input {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* Colour: a round swatch with a ring when chosen. */
+.bootcn-variant__swatch {
+  width: 2rem;
+  height: 2rem;
+  border: 2px solid var(--bootcn-background);
+  border-radius: 9999px;
+  background-color: var(--bootcn-swatch);
+  box-shadow: 0 0 0 1px var(--bootcn-border-color);
+  cursor: pointer;
+  transition: box-shadow 120ms ease;
+}
+
+.bootcn-variant__input:checked + .bootcn-variant__swatch {
+  box-shadow: 0 0 0 2px var(--bootcn-foreground);
+}
+
+.bootcn-variant__input:focus-visible + .bootcn-variant__swatch,
+.bootcn-variant__input:focus-visible + .bootcn-variant__option {
+  outline: 2px solid var(--bootcn-ring);
+  outline-offset: 3px;
+}
+
+/* Size and other options: buttons. */
+.bootcn-variant__option {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 3rem;
+  height: 2.5rem;
+  padding: 0 0.875rem;
+  border: var(--bootcn-border-width) solid var(--bootcn-border-color);
+  border-radius: var(--bootcn-radius);
+  font-size: 0.875rem;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.bootcn-variant__option:hover {
+  border-color: var(--bootcn-muted-foreground);
+}
+
+.bootcn-variant__input:checked + .bootcn-variant__option {
+  border-color: var(--bootcn-primary);
+  background-color: var(--bootcn-primary);
+  color: var(--bootcn-primary-foreground);
+}
+
+/* Sold out: crossed through, not choosable. */
+.bootcn-variant__input:disabled + .bootcn-variant__option {
+  background: linear-gradient(
+    to top right,
+    transparent calc(50% - 1px),
+    var(--bootcn-border-color) calc(50% - 1px),
+    var(--bootcn-border-color) calc(50% + 1px),
+    transparent calc(50% + 1px)
+  );
+  color: var(--bootcn-muted-foreground);
+  cursor: not-allowed;
+}

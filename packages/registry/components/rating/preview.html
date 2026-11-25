@@ -1,0 +1,218 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Bootcn Rating preview</title>
+    <script>
+      // Preview theme: ?theme=dark|light, else the docs page around the frame, else light.
+      (function () {
+        var theme = new URLSearchParams(location.search).get('theme');
+        if (!theme) {
+          try {
+            theme =
+              window.parent !== window &&
+              window.parent.document.documentElement.classList.contains('dark')
+                ? 'dark'
+                : 'light';
+          } catch (error) {
+            theme = 'light';
+          }
+        }
+        document.documentElement.setAttribute('data-bs-theme', theme === 'dark' ? 'dark' : 'light');
+        // ?dir=rtl: right to left, with Bootstrap's RTL stylesheet.
+        if (new URLSearchParams(location.search).get('dir') === 'rtl') {
+          document.documentElement.setAttribute('dir', 'rtl');
+          new MutationObserver(function (records, observer) {
+            var link = document.querySelector('link[href*="bootstrap.min.css"]');
+            if (!link) return;
+            link.href = link.href.replace('bootstrap.min.css', 'bootstrap.rtl.min.css');
+            observer.disconnect();
+          }).observe(document.documentElement, { childList: true, subtree: true });
+        }
+      })();
+    </script>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.9/dist/css/bootstrap.min.css"
+    />
+    <link rel="stylesheet" href="../../themes/tokens/tokens.css" />
+    <link rel="stylesheet" href="rating.css" />
+  </head>
+  <body>
+    <main class="container py-4">
+      <h1 class="h4 mb-4">Rating</h1>
+      <div class="bootcn-rating-demo">
+        <span
+          class="bootcn-rating bootcn-rating--sm"
+          role="img"
+          aria-label="Rated 4.6 out of 5, 214 reviews"
+          ><span
+            class="bootcn-rating__stars"
+            style="--bootcn-rating-value: 92%"
+            aria-hidden="true"
+          ></span
+          ><span class="bootcn-rating__value" aria-hidden="true">4.6</span
+          ><span class="bootcn-rating__count" aria-hidden="true">(214)</span></span
+        >
+        <span class="bootcn-rating bootcn-rating--md" role="img" aria-label="Rated 3.5 out of 5"
+          ><span
+            class="bootcn-rating__stars"
+            style="--bootcn-rating-value: 70%"
+            aria-hidden="true"
+          ></span
+          ><span class="bootcn-rating__value" aria-hidden="true">3.5</span></span
+        >
+        <span
+          class="bootcn-rating bootcn-rating--lg"
+          role="img"
+          aria-label="Rated 5 out of 5, 12 reviews"
+          ><span
+            class="bootcn-rating__stars"
+            style="--bootcn-rating-value: 100%"
+            aria-hidden="true"
+          ></span
+          ><span class="bootcn-rating__value" aria-hidden="true">5</span
+          ><span class="bootcn-rating__count" aria-hidden="true">(12)</span></span
+        >
+      </div>
+
+      <fieldset class="bootcn-rating-input mt-4">
+        <legend class="bootcn-rating-input__legend">Your rating</legend>
+        <div class="bootcn-rating-input__stars">
+          <input
+            class="bootcn-rating-input__radio"
+            type="radio"
+            name="rating"
+            id="bootcn-rating-1"
+            value="1"
+          />
+          <label class="bootcn-rating-input__star" for="bootcn-rating-1"
+            ><svg
+              class="bootcn-icon"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.5"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              aria-hidden="true"
+              focusable="false"
+            >
+              <path
+                d="M12 2.5l2.9 6 6.6.9-4.8 4.6 1.2 6.5L12 17.4l-5.9 3.1 1.2-6.5L2.5 9.4l6.6-.9z"
+              /></svg
+            ><span class="visually-hidden">1 star</span></label
+          >
+          <input
+            class="bootcn-rating-input__radio"
+            type="radio"
+            name="rating"
+            id="bootcn-rating-2"
+            value="2"
+          />
+          <label class="bootcn-rating-input__star" for="bootcn-rating-2"
+            ><svg
+              class="bootcn-icon"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.5"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              aria-hidden="true"
+              focusable="false"
+            >
+              <path
+                d="M12 2.5l2.9 6 6.6.9-4.8 4.6 1.2 6.5L12 17.4l-5.9 3.1 1.2-6.5L2.5 9.4l6.6-.9z"
+              /></svg
+            ><span class="visually-hidden">2 stars</span></label
+          >
+          <input
+            class="bootcn-rating-input__radio"
+            type="radio"
+            name="rating"
+            id="bootcn-rating-3"
+            value="3"
+          />
+          <label class="bootcn-rating-input__star" for="bootcn-rating-3"
+            ><svg
+              class="bootcn-icon"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.5"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              aria-hidden="true"
+              focusable="false"
+            >
+              <path
+                d="M12 2.5l2.9 6 6.6.9-4.8 4.6 1.2 6.5L12 17.4l-5.9 3.1 1.2-6.5L2.5 9.4l6.6-.9z"
+              /></svg
+            ><span class="visually-hidden">3 stars</span></label
+          >
+          <input
+            class="bootcn-rating-input__radio"
+            type="radio"
+            name="rating"
+            id="bootcn-rating-4"
+            value="4"
+            checked
+          />
+          <label class="bootcn-rating-input__star" for="bootcn-rating-4"
+            ><svg
+              class="bootcn-icon"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.5"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              aria-hidden="true"
+              focusable="false"
+            >
+              <path
+                d="M12 2.5l2.9 6 6.6.9-4.8 4.6 1.2 6.5L12 17.4l-5.9 3.1 1.2-6.5L2.5 9.4l6.6-.9z"
+              /></svg
+            ><span class="visually-hidden">4 stars</span></label
+          >
+          <input
+            class="bootcn-rating-input__radio"
+            type="radio"
+            name="rating"
+            id="bootcn-rating-5"
+            value="5"
+          />
+          <label class="bootcn-rating-input__star" for="bootcn-rating-5"
+            ><svg
+              class="bootcn-icon"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.5"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              aria-hidden="true"
+              focusable="false"
+            >
+              <path
+                d="M12 2.5l2.9 6 6.6.9-4.8 4.6 1.2 6.5L12 17.4l-5.9 3.1 1.2-6.5L2.5 9.4l6.6-.9z"
+              /></svg
+            ><span class="visually-hidden">5 stars</span></label
+          >
+        </div>
+      </fieldset>
+    </main>
+  </body>
+</html>

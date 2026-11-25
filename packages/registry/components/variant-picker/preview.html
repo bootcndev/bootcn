@@ -1,0 +1,162 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Bootcn Variant picker preview</title>
+    <script>
+      // Preview theme: ?theme=dark|light, else the docs page around the frame, else light.
+      (function () {
+        var theme = new URLSearchParams(location.search).get('theme');
+        if (!theme) {
+          try {
+            theme =
+              window.parent !== window &&
+              window.parent.document.documentElement.classList.contains('dark')
+                ? 'dark'
+                : 'light';
+          } catch (error) {
+            theme = 'light';
+          }
+        }
+        document.documentElement.setAttribute('data-bs-theme', theme === 'dark' ? 'dark' : 'light');
+        // ?dir=rtl: right to left, with Bootstrap's RTL stylesheet.
+        if (new URLSearchParams(location.search).get('dir') === 'rtl') {
+          document.documentElement.setAttribute('dir', 'rtl');
+          new MutationObserver(function (records, observer) {
+            var link = document.querySelector('link[href*="bootstrap.min.css"]');
+            if (!link) return;
+            link.href = link.href.replace('bootstrap.min.css', 'bootstrap.rtl.min.css');
+            observer.disconnect();
+          }).observe(document.documentElement, { childList: true, subtree: true });
+        }
+      })();
+    </script>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.9/dist/css/bootstrap.min.css"
+    />
+    <link rel="stylesheet" href="../../themes/tokens/tokens.css" />
+    <link rel="stylesheet" href="variant-picker.css" />
+  </head>
+  <body>
+    <main class="container py-4" style="max-width: 28rem">
+      <h1 class="h4 mb-4">Variant picker</h1>
+      <div class="bootcn-variant" data-bootcn-variant>
+        <fieldset class="bootcn-variant__group">
+          <legend class="bootcn-variant__legend">
+            Color: <span data-bootcn-variant-value>Sand</span>
+          </legend>
+          <div class="bootcn-variant__swatches">
+            <input
+              class="bootcn-variant__input"
+              type="radio"
+              name="color"
+              id="bootcn-variant-color-sand"
+              value="Sand"
+              checked
+            />
+            <label
+              class="bootcn-variant__swatch"
+              for="bootcn-variant-color-sand"
+              style="--bootcn-swatch: #d6c4a8"
+              ><span class="visually-hidden">Sand</span></label
+            >
+            <input
+              class="bootcn-variant__input"
+              type="radio"
+              name="color"
+              id="bootcn-variant-color-navy"
+              value="Navy"
+            />
+            <label
+              class="bootcn-variant__swatch"
+              for="bootcn-variant-color-navy"
+              style="--bootcn-swatch: #1e3a5f"
+              ><span class="visually-hidden">Navy</span></label
+            >
+            <input
+              class="bootcn-variant__input"
+              type="radio"
+              name="color"
+              id="bootcn-variant-color-forest"
+              value="Forest"
+            />
+            <label
+              class="bootcn-variant__swatch"
+              for="bootcn-variant-color-forest"
+              style="--bootcn-swatch: #2f4f3a"
+              ><span class="visually-hidden">Forest</span></label
+            >
+            <input
+              class="bootcn-variant__input"
+              type="radio"
+              name="color"
+              id="bootcn-variant-color-white"
+              value="White"
+            />
+            <label
+              class="bootcn-variant__swatch"
+              for="bootcn-variant-color-white"
+              style="--bootcn-swatch: #f8fafc"
+              ><span class="visually-hidden">White</span></label
+            >
+          </div>
+        </fieldset>
+        <fieldset class="bootcn-variant__group">
+          <legend class="bootcn-variant__legend">
+            Size: <span data-bootcn-variant-value>M</span>
+            <a class="bootcn-variant__guide" href="#size-guide">Size guide</a>
+          </legend>
+          <div class="bootcn-variant__options">
+            <input
+              class="bootcn-variant__input"
+              type="radio"
+              name="size"
+              id="bootcn-variant-size-xs"
+              value="XS"
+            />
+            <label class="bootcn-variant__option" for="bootcn-variant-size-xs">XS</label>
+            <input
+              class="bootcn-variant__input"
+              type="radio"
+              name="size"
+              id="bootcn-variant-size-s"
+              value="S"
+            />
+            <label class="bootcn-variant__option" for="bootcn-variant-size-s">S</label>
+            <input
+              class="bootcn-variant__input"
+              type="radio"
+              name="size"
+              id="bootcn-variant-size-m"
+              value="M"
+              checked
+            />
+            <label class="bootcn-variant__option" for="bootcn-variant-size-m">M</label>
+            <input
+              class="bootcn-variant__input"
+              type="radio"
+              name="size"
+              id="bootcn-variant-size-l"
+              value="L"
+            />
+            <label class="bootcn-variant__option" for="bootcn-variant-size-l">L</label>
+            <input
+              class="bootcn-variant__input"
+              type="radio"
+              name="size"
+              id="bootcn-variant-size-xl"
+              value="XL"
+              disabled
+            />
+            <label class="bootcn-variant__option" for="bootcn-variant-size-xl"
+              >XL<span class="visually-hidden"> (sold out)</span></label
+            >
+          </div>
+        </fieldset>
+      </div>
+    </main>
+    <script src="variant-picker.js"></script>
+  </body>
+</html>

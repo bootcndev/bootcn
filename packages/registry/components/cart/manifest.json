@@ -1,0 +1,33 @@
+{
+  "$schema": "../../schema/registry-item.schema.json",
+  "name": "cart",
+  "type": "registry:ui",
+  "title": "Cart",
+  "description": "A shopping cart in a side drawer: a header button with the item count, line items with pictures, options, quantity steps and remove, a free-shipping progress bar, the subtotal and checkout; add-to-cart buttons and product forms feed it.",
+  "version": "1.0.0",
+  "categories": ["overlays", "data-display"],
+  "dependencies": [],
+  "registryDependencies": ["sheet", "button", "product-card"],
+  "compatibility": {
+    "bootstrap": "5.3",
+    "platform": ["Bootstrap CSS", "Bootstrap JS bundle"]
+  },
+  "license": "MIT",
+  "files": [
+    {
+      "path": "cart.html",
+      "target": "cart.html",
+      "type": "registry:component"
+    },
+    {
+      "path": "cart.css",
+      "target": "cart.css",
+      "type": "registry:style"
+    },
+    {
+      "path": "cart.js",
+      "target": "cart.js",
+      "type": "registry:script"
+    }
+  ]
+}

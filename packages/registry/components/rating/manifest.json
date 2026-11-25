@@ -1,0 +1,28 @@
+{
+  "$schema": "../../schema/registry-item.schema.json",
+  "name": "rating",
+  "type": "registry:ui",
+  "title": "Rating",
+  "description": "Star ratings: a display that fills to any value (4.6 shows six tenths of a star) with the review count, and a rating input made of five native radio buttons.",
+  "version": "1.0.0",
+  "categories": ["data-display", "forms"],
+  "dependencies": [],
+  "registryDependencies": [],
+  "compatibility": {
+    "bootstrap": "5.3",
+    "platform": ["Bootstrap CSS"]
+  },
+  "license": "MIT",
+  "files": [
+    {
+      "path": "rating.html",
+      "target": "rating.html",
+      "type": "registry:component"
+    },
+    {
+      "path": "rating.css",
+      "target": "rating.css",
+      "type": "registry:style"
+    }
+  ]
+}

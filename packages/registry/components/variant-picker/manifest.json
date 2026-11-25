@@ -1,0 +1,33 @@
+{
+  "$schema": "../../schema/registry-item.schema.json",
+  "name": "variant-picker",
+  "type": "registry:ui",
+  "title": "Variant picker",
+  "description": "Product options: colour swatches and size buttons built on native radio buttons, with the choice shown by the group name and sold-out options crossed out.",
+  "version": "1.0.0",
+  "categories": ["forms", "selection"],
+  "dependencies": [],
+  "registryDependencies": [],
+  "compatibility": {
+    "bootstrap": "5.3",
+    "platform": ["Bootstrap CSS"]
+  },
+  "license": "MIT",
+  "files": [
+    {
+      "path": "variant-picker.html",
+      "target": "variant-picker.html",
+      "type": "registry:component"
+    },
+    {
+      "path": "variant-picker.css",
+      "target": "variant-picker.css",
+      "type": "registry:style"
+    },
+    {
+      "path": "variant-picker.js",
+      "target": "variant-picker.js",
+      "type": "registry:script"
+    }
+  ]
+}

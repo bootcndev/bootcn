@@ -1,0 +1,33 @@
+{
+  "$schema": "../../schema/registry-item.schema.json",
+  "name": "product-card",
+  "type": "registry:ui",
+  "title": "Product card",
+  "description": "A product tile for shop grids: picture, sale or new badge, wishlist toggle, category, name linking to the product, rating, colours, price with the old price and saving, and an add-to-cart button.",
+  "version": "1.0.0",
+  "categories": ["data-display", "cards"],
+  "dependencies": [],
+  "registryDependencies": ["rating", "button"],
+  "compatibility": {
+    "bootstrap": "5.3",
+    "platform": ["Bootstrap CSS"]
+  },
+  "license": "MIT",
+  "files": [
+    {
+      "path": "product-card.html",
+      "target": "product-card.html",
+      "type": "registry:component"
+    },
+    {
+      "path": "product-card.css",
+      "target": "product-card.css",
+      "type": "registry:style"
+    },
+    {
+      "path": "product-card.js",
+      "target": "product-card.js",
+      "type": "registry:script"
+    }
+  ]
+}
