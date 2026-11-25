@@ -116,8 +116,10 @@ test('site header: hides while scrolling down, returns on scroll up and focus', 
     spacer.style.height = '3000px';
     document.body.appendChild(spacer);
   });
-  // Scroll positions set directly: wheel scrolling is asynchronous in WebKit.
-  const scrollTo = (y: number) => page.evaluate((top) => window.scrollTo(0, top), y);
+  // Instant jumps: wheel scrolling is asynchronous in WebKit, and Bootstrap
+  // makes scrollTo smooth unless told otherwise.
+  const scrollTo = (y: number) =>
+    page.evaluate((top) => window.scrollTo({ top, behavior: 'instant' }), y);
   await scrollTo(800);
   await expect(header).toHaveClass(/is-hidden/);
   await scrollTo(600);
