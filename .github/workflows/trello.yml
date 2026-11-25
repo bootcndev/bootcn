@@ -1,0 +1,31 @@
+name: Trello
+
+# Puts each release on the Trello boards: a card in "Roadmap & Releases →
+# Released" and a post draft in "Marketing & X → Drafts". Needs the repository
+# secrets TRELLO_KEY and TRELLO_TOKEN; without them the job only prints a
+# notice. Safe to re-run: cards with the same name are not duplicated.
+on:
+  push:
+    tags: ['registry-v*', 'cli-v*']
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: 'Release tag, e.g. registry-v0.23.0 or cli-v0.5.0'
+        required: true
+
+permissions:
+  contents: read
+
+jobs:
+  release-card:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+      - run: node scripts/trello-release.mjs "$TAG"
+        env:
+          TAG: ${{ inputs.tag || github.ref_name }}
+          TRELLO_KEY: ${{ secrets.TRELLO_KEY }}
+          TRELLO_TOKEN: ${{ secrets.TRELLO_TOKEN }}
