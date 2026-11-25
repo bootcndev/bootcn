@@ -6,6 +6,25 @@ each published version stays available under `/v/<version>/`) and the **CLI**
 
 ## Registry
 
+### 0.34.0
+
+The Commerce pack.
+
+- Rating: star display that fills to any value, and a rating input of
+  radio buttons.
+- Variant picker: colour swatches and size buttons, sold-out options
+  crossed out.
+- Product card: picture, badges, wishlist, rating, colours, price with the
+  old price and saving, add to cart.
+- Cart: a side drawer with quantities, a free-shipping bar and the subtotal,
+  fed by add-to-cart buttons and product forms, kept between pages.
+- Product listing block: filters (a drawer on phones), sorting, live count
+  and empty state.
+- Product detail block: gallery, options, quantity, add to cart, details.
+- Checkout block: contact, address, shipping method and card details with
+  formatting and checks, order summary with a discount code, confirmation.
+- Store template: catalogue, product page and checkout sharing one cart.
+
 ### 0.33.0
 
 The App UI pack.

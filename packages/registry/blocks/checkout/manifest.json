@@ -1,0 +1,41 @@
+{
+  "$schema": "../../schema/registry-item.schema.json",
+  "name": "checkout",
+  "type": "registry:block",
+  "title": "Checkout",
+  "description": "A one-page checkout: contact, delivery address, shipping method and card details with formatting and checks, beside an order summary with a discount code and totals, ending on an order confirmation.",
+  "version": "1.0.0",
+  "categories": ["forms"],
+  "dependencies": [],
+  "registryDependencies": [
+    "product-card",
+    "success-state",
+    "confetti",
+    "input",
+    "select",
+    "checkbox",
+    "button"
+  ],
+  "compatibility": {
+    "bootstrap": "5.3",
+    "platform": ["Bootstrap CSS"]
+  },
+  "license": "MIT",
+  "files": [
+    {
+      "path": "checkout.html",
+      "target": "checkout.html",
+      "type": "registry:component"
+    },
+    {
+      "path": "checkout.css",
+      "target": "checkout.css",
+      "type": "registry:style"
+    },
+    {
+      "path": "checkout.js",
+      "target": "checkout.js",
+      "type": "registry:script"
+    }
+  ]
+}

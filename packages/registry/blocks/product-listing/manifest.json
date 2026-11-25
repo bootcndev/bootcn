@@ -1,0 +1,42 @@
+{
+  "$schema": "../../schema/registry-item.schema.json",
+  "name": "product-listing",
+  "type": "registry:block",
+  "title": "Product listing",
+  "description": "A shop listing: filters by category, price, colour and rating (a sidebar on large screens, a drawer on phones), sorting, a live result count and an empty state, over a grid of product cards.",
+  "version": "1.0.0",
+  "categories": ["marketing", "data-display"],
+  "dependencies": [],
+  "registryDependencies": [
+    "product-card",
+    "rating",
+    "button",
+    "input",
+    "select",
+    "checkbox",
+    "radio-group",
+    "sheet"
+  ],
+  "compatibility": {
+    "bootstrap": "5.3",
+    "platform": ["Bootstrap CSS", "Bootstrap JS bundle"]
+  },
+  "license": "MIT",
+  "files": [
+    {
+      "path": "product-listing.html",
+      "target": "product-listing.html",
+      "type": "registry:component"
+    },
+    {
+      "path": "product-listing.css",
+      "target": "product-listing.css",
+      "type": "registry:style"
+    },
+    {
+      "path": "product-listing.js",
+      "target": "product-listing.js",
+      "type": "registry:script"
+    }
+  ]
+}

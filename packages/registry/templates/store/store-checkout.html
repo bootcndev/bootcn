@@ -1,0 +1,662 @@
+<!doctype html>
+<html lang="en" data-bs-theme="light">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Checkout · Acme Goods</title>
+    <script>
+      // Theme before the first paint: the saved choice, else the system setting.
+      (function () {
+        var theme = null;
+        try {
+          theme = localStorage.getItem('bootcn-theme');
+        } catch (error) {
+          theme = null;
+        }
+        if (theme !== 'dark' && theme !== 'light') {
+          theme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+        }
+        document.documentElement.setAttribute('data-bs-theme', theme);
+      })();
+    </script>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.9/dist/css/bootstrap.min.css"
+      integrity="sha384-yEPZ7jP9S0QKiUQ0m3jjsO4ProIW7wvR9gXkI7JOGa2XVsw53Yke2bsdkBbjmmiX"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="{{bootcn:css}}/tokens.css" />
+    <link rel="stylesheet" href="{{bootcn:css}}/button.css" />
+    <link rel="stylesheet" href="{{bootcn:css}}/badge.css" />
+    <link rel="stylesheet" href="{{bootcn:css}}/breadcrumb.css" />
+    <link rel="stylesheet" href="{{bootcn:css}}/input.css" />
+    <link rel="stylesheet" href="{{bootcn:css}}/select.css" />
+    <link rel="stylesheet" href="{{bootcn:css}}/checkbox.css" />
+    <link rel="stylesheet" href="{{bootcn:css}}/radio-group.css" />
+    <link rel="stylesheet" href="{{bootcn:css}}/sheet.css" />
+    <link rel="stylesheet" href="{{bootcn:css}}/rating.css" />
+    <link rel="stylesheet" href="{{bootcn:css}}/variant-picker.css" />
+    <link rel="stylesheet" href="{{bootcn:css}}/product-card.css" />
+    <link rel="stylesheet" href="{{bootcn:css}}/cart.css" />
+    <link rel="stylesheet" href="{{bootcn:css}}/confetti.css" />
+    <link rel="stylesheet" href="{{bootcn:css}}/success-state.css" />
+    <link rel="stylesheet" href="{{bootcn:css}}/product-listing.css" />
+    <link rel="stylesheet" href="{{bootcn:css}}/product-detail.css" />
+    <link rel="stylesheet" href="{{bootcn:css}}/checkout.css" />
+    <link rel="stylesheet" href="{{bootcn:css}}/store.css" />
+  </head>
+  <body>
+    <a class="visually-hidden-focusable bootcn-skip" href="#main">Skip to content</a>
+    <header class="bootcn-store__header">
+      <div class="bootcn-store__bar">
+        <a class="bootcn-store__brand" href="store.html"
+          ><svg
+            class="bootcn-icon"
+            width="20"
+            height="20"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            aria-hidden="true"
+            focusable="false"
+          >
+            <path d="M4 8h16l-1.5 12h-13z" />
+            <path d="M9 8V6a3 3 0 0 1 6 0v2" />
+          </svg>
+          Acme Goods</a
+        >
+        <a class="bootcn-store__back" href="store.html">Continue shopping</a>
+      </div>
+    </header>
+    <main id="main" class="bootcn-store__main">
+      <section
+        class="bootcn-checkout"
+        data-bootcn-checkout
+        data-currency="USD"
+        data-locale="en-US"
+        data-tax-rate="0.08"
+        aria-labelledby="bootcn-checkout-title"
+      >
+        <form class="bootcn-checkout__form" data-bootcn-checkout-form novalidate>
+          <div class="bootcn-checkout__main">
+            <h1 class="bootcn-checkout__title" id="bootcn-checkout-title">Checkout</h1>
+            <fieldset class="bootcn-checkout__section">
+              <legend>Contact</legend>
+              <div class="bootcn-field">
+                <label class="form-label bootcn-label" for="bootcn-checkout-email">Email</label>
+                <input
+                  class="form-control bootcn-input"
+                  id="bootcn-checkout-email"
+                  type="email"
+                  name="email"
+                  required
+                  autocomplete="email"
+                  aria-describedby="bootcn-checkout-email-hint bootcn-checkout-email-error"
+                />
+                <p class="bootcn-checkout__hint" id="bootcn-checkout-email-hint">
+                  We send the receipt and tracking here.
+                </p>
+                <div class="invalid-feedback" id="bootcn-checkout-email-error">
+                  Enter an email address like name@example.com.
+                </div>
+              </div>
+              <div class="form-check">
+                <input
+                  class="form-check-input"
+                  type="checkbox"
+                  id="bootcn-checkout-news"
+                  name="news"
+                />
+                <label class="form-check-label" for="bootcn-checkout-news"
+                  >Email me about new arrivals and offers</label
+                >
+              </div>
+            </fieldset>
+            <fieldset class="bootcn-checkout__section">
+              <legend>Delivery address</legend>
+              <div class="bootcn-checkout__grid">
+                <div class="bootcn-field">
+                  <label class="form-label bootcn-label" for="bootcn-checkout-first"
+                    >First name</label
+                  >
+                  <input
+                    class="form-control bootcn-input"
+                    id="bootcn-checkout-first"
+                    type="text"
+                    name="first_name"
+                    required
+                    autocomplete="given-name"
+                    aria-describedby="bootcn-checkout-first-error"
+                  />
+                  <div class="invalid-feedback" id="bootcn-checkout-first-error">
+                    Enter your first name.
+                  </div>
+                </div>
+                <div class="bootcn-field">
+                  <label class="form-label bootcn-label" for="bootcn-checkout-last"
+                    >Last name</label
+                  >
+                  <input
+                    class="form-control bootcn-input"
+                    id="bootcn-checkout-last"
+                    type="text"
+                    name="last_name"
+                    required
+                    autocomplete="family-name"
+                    aria-describedby="bootcn-checkout-last-error"
+                  />
+                  <div class="invalid-feedback" id="bootcn-checkout-last-error">
+                    Enter your last name.
+                  </div>
+                </div>
+                <div class="bootcn-field bootcn-checkout__wide">
+                  <label class="form-label bootcn-label" for="bootcn-checkout-address"
+                    >Address</label
+                  >
+                  <input
+                    class="form-control bootcn-input"
+                    id="bootcn-checkout-address"
+                    type="text"
+                    name="address"
+                    required
+                    autocomplete="address-line1"
+                    aria-describedby="bootcn-checkout-address-error"
+                  />
+                  <div class="invalid-feedback" id="bootcn-checkout-address-error">
+                    Enter your street and number.
+                  </div>
+                </div>
+                <div class="bootcn-field bootcn-checkout__wide">
+                  <label class="form-label bootcn-label" for="bootcn-checkout-address2"
+                    >Apartment, suite (optional)</label
+                  >
+                  <input
+                    class="form-control bootcn-input"
+                    id="bootcn-checkout-address2"
+                    type="text"
+                    name="address2"
+                    autocomplete="address-line2"
+                  />
+                </div>
+                <div class="bootcn-field">
+                  <label class="form-label bootcn-label" for="bootcn-checkout-city">City</label>
+                  <input
+                    class="form-control bootcn-input"
+                    id="bootcn-checkout-city"
+                    type="text"
+                    name="city"
+                    required
+                    autocomplete="address-level2"
+                    aria-describedby="bootcn-checkout-city-error"
+                  />
+                  <div class="invalid-feedback" id="bootcn-checkout-city-error">
+                    Enter your city.
+                  </div>
+                </div>
+                <div class="bootcn-field">
+                  <label class="form-label bootcn-label" for="bootcn-checkout-postal"
+                    >Postal code</label
+                  >
+                  <input
+                    class="form-control bootcn-input"
+                    id="bootcn-checkout-postal"
+                    type="text"
+                    name="postal_code"
+                    required
+                    autocomplete="postal-code"
+                    aria-describedby="bootcn-checkout-postal-error"
+                  />
+                  <div class="invalid-feedback" id="bootcn-checkout-postal-error">
+                    Enter your postal code.
+                  </div>
+                </div>
+                <div class="bootcn-field bootcn-checkout__wide">
+                  <label class="form-label bootcn-label" for="bootcn-checkout-country"
+                    >Country</label
+                  >
+                  <select
+                    class="form-select bootcn-select"
+                    id="bootcn-checkout-country"
+                    name="country"
+                    autocomplete="country"
+                  >
+                    <option value="US" selected>United States</option>
+                    <option value="CA">Canada</option>
+                    <option value="GB">United Kingdom</option>
+                    <option value="IE">Ireland</option>
+                    <option value="DE">Germany</option>
+                    <option value="FR">France</option>
+                    <option value="NL">Netherlands</option>
+                    <option value="AU">Australia</option>
+                  </select>
+                </div>
+              </div>
+            </fieldset>
+            <fieldset class="bootcn-checkout__section">
+              <legend>Shipping method</legend>
+              <div class="bootcn-checkout__methods">
+                <label class="bootcn-checkout__method">
+                  <input
+                    class="form-check-input"
+                    type="radio"
+                    name="shipping"
+                    value="standard"
+                    data-cost="0"
+                    checked
+                  />
+                  <span class="bootcn-checkout__method-text"
+                    ><strong>Standard</strong><span>5–7 business days</span></span
+                  >
+                  <span class="bootcn-checkout__method-price">Free</span>
+                </label>
+                <label class="bootcn-checkout__method">
+                  <input
+                    class="form-check-input"
+                    type="radio"
+                    name="shipping"
+                    value="express"
+                    data-cost="12"
+                  />
+                  <span class="bootcn-checkout__method-text"
+                    ><strong>Express</strong><span>1–2 business days</span></span
+                  >
+                  <span class="bootcn-checkout__method-price">$12.00</span>
+                </label>
+              </div>
+            </fieldset>
+            <fieldset class="bootcn-checkout__section">
+              <legend>Payment</legend>
+              <p class="bootcn-checkout__secure">
+                <svg
+                  class="bootcn-icon"
+                  width="16"
+                  height="16"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  aria-hidden="true"
+                  focusable="false"
+                >
+                  <rect x="4" y="11" width="16" height="10" rx="2" />
+                  <path d="M8 11V7a4 4 0 0 1 8 0v4" />
+                </svg>
+                Payments are encrypted. Card details never touch this page's server.
+              </p>
+              <div class="bootcn-checkout__grid">
+                <div class="bootcn-field bootcn-checkout__wide">
+                  <label class="form-label bootcn-label" for="bootcn-checkout-card"
+                    >Card number</label
+                  >
+                  <div class="bootcn-checkout__card">
+                    <input
+                      class="form-control bootcn-input"
+                      id="bootcn-checkout-card"
+                      name="card_number"
+                      type="text"
+                      inputmode="numeric"
+                      autocomplete="cc-number"
+                      required
+                      placeholder="1234 1234 1234 1234"
+                      data-bootcn-checkout-card
+                      aria-describedby="bootcn-checkout-card-brand bootcn-checkout-card-error"
+                    />
+                    <span
+                      class="bootcn-checkout__brand"
+                      id="bootcn-checkout-card-brand"
+                      data-bootcn-checkout-brand
+                    ></span>
+                  </div>
+                  <div class="invalid-feedback" id="bootcn-checkout-card-error">
+                    Check the card number.
+                  </div>
+                </div>
+                <div class="bootcn-field">
+                  <label class="form-label bootcn-label" for="bootcn-checkout-expiry"
+                    >Expiry date</label
+                  >
+                  <input
+                    class="form-control bootcn-input"
+                    id="bootcn-checkout-expiry"
+                    type="text"
+                    name="card_expiry"
+                    inputmode="numeric"
+                    autocomplete="cc-exp"
+                    required
+                    placeholder="MM / YY"
+                    data-bootcn-checkout-expiry
+                    aria-describedby="bootcn-checkout-expiry-error"
+                  />
+                  <div class="invalid-feedback" id="bootcn-checkout-expiry-error">
+                    Enter a date in the future, as MM / YY.
+                  </div>
+                </div>
+                <div class="bootcn-field">
+                  <label class="form-label bootcn-label" for="bootcn-checkout-cvc"
+                    >Security code</label
+                  >
+                  <input
+                    class="form-control bootcn-input"
+                    id="bootcn-checkout-cvc"
+                    type="text"
+                    name="card_cvc"
+                    inputmode="numeric"
+                    autocomplete="cc-csc"
+                    required
+                    minlength="3"
+                    maxlength="4"
+                    placeholder="CVC"
+                    data-bootcn-checkout-cvc
+                    aria-describedby="bootcn-checkout-cvc-error"
+                  />
+                  <div class="invalid-feedback" id="bootcn-checkout-cvc-error">
+                    Enter the 3 or 4 digits on the card.
+                  </div>
+                </div>
+                <div class="bootcn-field bootcn-checkout__wide">
+                  <label class="form-label bootcn-label" for="bootcn-checkout-name"
+                    >Name on card</label
+                  >
+                  <input
+                    class="form-control bootcn-input"
+                    id="bootcn-checkout-name"
+                    type="text"
+                    name="card_name"
+                    required
+                    autocomplete="cc-name"
+                    aria-describedby="bootcn-checkout-name-error"
+                  />
+                  <div class="invalid-feedback" id="bootcn-checkout-name-error">
+                    Enter the name as it appears on the card.
+                  </div>
+                </div>
+              </div>
+            </fieldset>
+            <button
+              type="submit"
+              class="btn bootcn-button bootcn-button--default bootcn-button--lg bootcn-checkout__pay"
+            >
+              <svg
+                class="bootcn-icon"
+                width="16"
+                height="16"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+                focusable="false"
+              >
+                <rect x="4" y="11" width="16" height="10" rx="2" />
+                <path d="M8 11V7a4 4 0 0 1 8 0v4" />
+              </svg>
+              Pay <span data-bootcn-checkout-pay-amount>$191.16</span>
+            </button>
+            <p class="bootcn-checkout__status" role="status" data-bootcn-checkout-status></p>
+          </div>
+          <section class="bootcn-checkout__summary" aria-labelledby="bootcn-checkout-summary-title">
+            <h2 class="bootcn-checkout__summary-title" id="bootcn-checkout-summary-title">
+              Order summary
+            </h2>
+            <ul class="bootcn-checkout__items" data-bootcn-checkout-items>
+              <li
+                class="bootcn-checkout__item"
+                data-bootcn-checkout-item
+                data-name="Everyday Tee"
+                data-price="28"
+                data-quantity="1"
+              >
+                <span class="bootcn-checkout__thumb"
+                  ><span
+                    class="bootcn-product-art"
+                    style="--bootcn-product-from: #fde68a; --bootcn-product-to: #fca5a5"
+                    aria-hidden="true"
+                    ><svg
+                      class="bootcn-icon"
+                      width="22"
+                      height="22"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="1.5"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      aria-hidden="true"
+                      focusable="false"
+                    >
+                      <path
+                        d="M8 3 3 6l2 5 2-1v11h10V10l2 1 2-5-5-3c-.5 1.7-2 3-4 3s-3.5-1.3-4-3z"
+                      /></svg></span
+                  ><span class="bootcn-checkout__qty" aria-hidden="true">1</span></span
+                >
+                <div class="bootcn-checkout__item-text">
+                  <p class="bootcn-checkout__item-name">Everyday Tee</p>
+                  <p class="bootcn-checkout__item-meta">Sand / M · Qty 1</p>
+                </div>
+                <p class="bootcn-checkout__item-price">$28</p>
+              </li>
+              <li
+                class="bootcn-checkout__item"
+                data-bootcn-checkout-item
+                data-name="Studio Headphones"
+                data-price="149"
+                data-quantity="1"
+              >
+                <span class="bootcn-checkout__thumb"
+                  ><span
+                    class="bootcn-product-art"
+                    style="--bootcn-product-from: #bfdbfe; --bootcn-product-to: #93c5fd"
+                    aria-hidden="true"
+                    ><svg
+                      class="bootcn-icon"
+                      width="22"
+                      height="22"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="1.5"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      aria-hidden="true"
+                      focusable="false"
+                    >
+                      <path d="M4 15v-3a8 8 0 0 1 16 0v3" />
+                      <rect x="3" y="14" width="4" height="7" rx="1.5" />
+                      <rect x="17" y="14" width="4" height="7" rx="1.5" /></svg></span
+                  ><span class="bootcn-checkout__qty" aria-hidden="true">1</span></span
+                >
+                <div class="bootcn-checkout__item-text">
+                  <p class="bootcn-checkout__item-name">Studio Headphones</p>
+                  <p class="bootcn-checkout__item-meta">Black · Qty 1</p>
+                </div>
+                <p class="bootcn-checkout__item-price">$149</p>
+              </li>
+            </ul>
+            <div class="bootcn-checkout__code">
+              <label class="form-label bootcn-label" for="bootcn-checkout-code"
+                >Discount code</label
+              >
+              <div class="input-group">
+                <input
+                  type="text"
+                  class="form-control bootcn-input"
+                  id="bootcn-checkout-code"
+                  name="code"
+                  autocomplete="off"
+                  data-bootcn-checkout-code
+                  aria-describedby="bootcn-checkout-code-message"
+                />
+                <button
+                  type="button"
+                  class="btn bootcn-button bootcn-button--outline"
+                  data-bootcn-checkout-apply
+                >
+                  Apply
+                </button>
+              </div>
+              <p
+                class="bootcn-checkout__code-message"
+                id="bootcn-checkout-code-message"
+                role="status"
+                data-bootcn-checkout-code-message
+              ></p>
+            </div>
+            <dl class="bootcn-checkout__totals">
+              <div>
+                <dt>Subtotal</dt>
+                <dd data-bootcn-checkout-subtotal>$177.00</dd>
+              </div>
+              <div data-bootcn-checkout-discount-row hidden>
+                <dt>Discount (<span data-bootcn-checkout-discount-code></span>)</dt>
+                <dd data-bootcn-checkout-discount>−$0.00</dd>
+              </div>
+              <div>
+                <dt>Shipping</dt>
+                <dd data-bootcn-checkout-shipping>Free</dd>
+              </div>
+              <div>
+                <dt>Taxes (8%)</dt>
+                <dd data-bootcn-checkout-tax>$14.16</dd>
+              </div>
+              <div class="bootcn-checkout__total">
+                <dt>Total</dt>
+                <dd data-bootcn-checkout-total>$191.16</dd>
+              </div>
+            </dl>
+          </section>
+        </form>
+        <div
+          class="bootcn-success"
+          data-bootcn-checkout-done
+          data-bootcn-success
+          data-bootcn-success-confetti
+          hidden
+        >
+          <svg
+            class="bootcn-success__mark"
+            viewBox="0 0 52 52"
+            aria-hidden="true"
+            focusable="false"
+          >
+            <circle class="bootcn-success__ring" cx="26" cy="26" r="24" />
+            <path class="bootcn-success__tick" d="M15 27l7 7 15-15" />
+          </svg>
+          <h2 class="bootcn-success__title">Thank you for your order</h2>
+          <p class="bootcn-success__text">
+            Order <strong data-bootcn-checkout-order-number>#000000</strong> is confirmed. We've
+            emailed your receipt and will send tracking as soon as it ships.
+          </p>
+          <div class="bootcn-success__actions">
+            <a class="btn bootcn-button bootcn-button--default" href="store.html"
+              >Continue shopping</a
+            >
+          </div>
+        </div>
+      </section>
+    </main>
+    <footer class="bootcn-store__footer">
+      <div class="bootcn-store__footer-inner">
+        <p>© Acme Goods. Prices include no shipping; taxes are worked out at checkout.</p>
+        <ul>
+          <li><a href="#shipping">Shipping</a></li>
+          <li><a href="#returns">Returns</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </div>
+    </footer>
+    <div
+      class="offcanvas offcanvas-end bootcn-sheet bootcn-cart"
+      tabindex="-1"
+      id="bootcn-cart"
+      aria-labelledby="bootcn-cart-title"
+      data-bootcn-cart
+      data-currency="USD"
+      data-locale="en-US"
+      data-free-shipping="100"
+      data-storage-key="acme-store-cart"
+    >
+      <div class="offcanvas-header">
+        <h2 class="bootcn-cart__title" id="bootcn-cart-title">
+          Your cart <span data-bootcn-cart-title-count></span>
+        </h2>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="offcanvas"
+          aria-label="Close cart"
+        ></button>
+      </div>
+      <div class="offcanvas-body">
+        <div class="bootcn-cart__shipping" data-bootcn-cart-shipping>
+          <span data-bootcn-cart-shipping-text>Add $100 more for free shipping</span>
+          <progress max="100" value="0" aria-label="Progress to free shipping">0%</progress>
+        </div>
+        <ul class="bootcn-cart__list" aria-label="Items in your cart" data-bootcn-cart-list></ul>
+        <div class="bootcn-cart__empty" data-bootcn-cart-empty>
+          <svg
+            class="bootcn-icon"
+            width="32"
+            height="32"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.5"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            aria-hidden="true"
+            focusable="false"
+          >
+            <path d="M6 7h12l1 14H5z" />
+            <path d="M9 10V6a3 3 0 0 1 6 0v4" />
+          </svg>
+          <p>Your cart is empty.</p>
+          <button
+            type="button"
+            class="btn bootcn-button bootcn-button--outline bootcn-button--sm"
+            data-bs-dismiss="offcanvas"
+            data-bootcn-cart-continue
+          >
+            Continue shopping
+          </button>
+        </div>
+        <div class="bootcn-cart__footer" data-bootcn-cart-footer hidden>
+          <div class="bootcn-cart__row">
+            <span>Subtotal</span><span data-bootcn-cart-subtotal>$0.00</span>
+          </div>
+          <p class="bootcn-cart__note">Shipping and taxes are worked out at checkout.</p>
+          <a
+            class="btn bootcn-button bootcn-button--default"
+            href="store-checkout.html"
+            data-bootcn-cart-checkout
+            >Checkout</a
+          >
+          <button
+            type="button"
+            class="btn bootcn-button bootcn-button--ghost"
+            data-bs-dismiss="offcanvas"
+          >
+            Continue shopping
+          </button>
+        </div>
+      </div>
+      <p class="visually-hidden" aria-live="polite" data-bootcn-cart-live></p>
+    </div>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.9/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-WyOxWvTyr1QaMPfiPJSv76iReVthorl5uWlFtZPyK0IEB0hGzo9y5Bp9mYanr8Bu"
+      crossorigin="anonymous"
+    ></script>
+    <script src="{{bootcn:js}}/cart.js"></script>
+    <script src="{{bootcn:js}}/confetti.js"></script>
+    <script src="{{bootcn:js}}/success-state.js"></script>
+    <script src="{{bootcn:js}}/checkout.js"></script>
+    <script src="{{bootcn:js}}/store.js"></script>
+  </body>
+</html>

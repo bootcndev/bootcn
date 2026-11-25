@@ -1,0 +1,1490 @@
+<section class="bootcn-listing" data-bootcn-listing aria-labelledby="bootcn-listing-title">
+  <div class="bootcn-listing__top">
+    <div>
+      <h2 class="bootcn-listing__title" id="bootcn-listing-title">All products</h2>
+      <p class="bootcn-listing__count" data-bootcn-listing-count>9 products</p>
+    </div>
+    <div class="bootcn-listing__tools">
+      <button
+        type="button"
+        class="btn bootcn-button bootcn-button--outline d-lg-none"
+        data-bs-toggle="offcanvas"
+        data-bs-target="#bootcn-listing-filters"
+        aria-controls="bootcn-listing-filters"
+      >
+        <svg
+          class="bootcn-icon"
+          width="16"
+          height="16"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          aria-hidden="true"
+          focusable="false"
+        >
+          <path d="M3 5h18M6 12h12M10 19h4" />
+        </svg>
+        Filters <span class="bootcn-listing__active" data-bootcn-listing-active hidden></span>
+      </button>
+      <label class="visually-hidden" for="bootcn-listing-sort">Sort by</label>
+      <select
+        class="form-select bootcn-select bootcn-listing__sort"
+        id="bootcn-listing-sort"
+        data-bootcn-listing-sort
+      >
+        <option value="featured">Featured</option>
+        <option value="price-asc">Price: low to high</option>
+        <option value="price-desc">Price: high to low</option>
+        <option value="rating">Best rated</option>
+      </select>
+    </div>
+  </div>
+  <div class="bootcn-listing__layout">
+    <aside
+      class="offcanvas-lg offcanvas-start bootcn-listing__aside"
+      tabindex="-1"
+      id="bootcn-listing-filters"
+      aria-labelledby="bootcn-listing-filters-title"
+    >
+      <div class="offcanvas-header">
+        <h3 class="bootcn-listing__aside-title" id="bootcn-listing-filters-title">Filters</h3>
+        <button
+          type="button"
+          class="btn-close d-lg-none"
+          data-bs-dismiss="offcanvas"
+          data-bs-target="#bootcn-listing-filters"
+          aria-label="Close filters"
+        ></button>
+      </div>
+      <form class="offcanvas-body bootcn-listing__filters" data-bootcn-listing-filters>
+        <fieldset class="bootcn-listing__group">
+          <legend>Category</legend>
+          <div class="form-check">
+            <input
+              class="form-check-input"
+              type="checkbox"
+              name="category[]"
+              value="Clothing"
+              id="bootcn-listing-cat-clothing"
+            />
+            <label class="form-check-label" for="bootcn-listing-cat-clothing"
+              >Clothing <span class="bootcn-listing__n">(1)</span></label
+            >
+          </div>
+          <div class="form-check">
+            <input
+              class="form-check-input"
+              type="checkbox"
+              name="category[]"
+              value="Home"
+              id="bootcn-listing-cat-home"
+            />
+            <label class="form-check-label" for="bootcn-listing-cat-home"
+              >Home <span class="bootcn-listing__n">(5)</span></label
+            >
+          </div>
+          <div class="form-check">
+            <input
+              class="form-check-input"
+              type="checkbox"
+              name="category[]"
+              value="Electronics"
+              id="bootcn-listing-cat-electronics"
+            />
+            <label class="form-check-label" for="bootcn-listing-cat-electronics"
+              >Electronics <span class="bootcn-listing__n">(1)</span></label
+            >
+          </div>
+          <div class="form-check">
+            <input
+              class="form-check-input"
+              type="checkbox"
+              name="category[]"
+              value="Accessories"
+              id="bootcn-listing-cat-accessories"
+            />
+            <label class="form-check-label" for="bootcn-listing-cat-accessories"
+              >Accessories <span class="bootcn-listing__n">(2)</span></label
+            >
+          </div>
+        </fieldset>
+        <fieldset class="bootcn-listing__group">
+          <legend>Price</legend>
+          <div class="bootcn-listing__range">
+            <label class="visually-hidden" for="bootcn-listing-min">Minimum price</label>
+            <input
+              type="number"
+              class="form-control bootcn-input"
+              id="bootcn-listing-min"
+              name="min"
+              min="0"
+              step="1"
+              placeholder="Min"
+              inputmode="numeric"
+            />
+            <span aria-hidden="true">–</span>
+            <label class="visually-hidden" for="bootcn-listing-max">Maximum price</label>
+            <input
+              type="number"
+              class="form-control bootcn-input"
+              id="bootcn-listing-max"
+              name="max"
+              min="0"
+              step="1"
+              placeholder="Max"
+              inputmode="numeric"
+            />
+          </div>
+        </fieldset>
+        <fieldset class="bootcn-listing__group">
+          <legend>Color</legend>
+          <div class="bootcn-listing__swatches">
+            <input
+              class="bootcn-listing__swatch-input"
+              type="checkbox"
+              name="color[]"
+              value="Black"
+              id="bootcn-listing-color-black"
+            />
+            <label
+              class="bootcn-listing__swatch"
+              for="bootcn-listing-color-black"
+              style="--bootcn-swatch: #111827"
+              title="Black"
+              ><span class="visually-hidden">Black</span></label
+            >
+            <input
+              class="bootcn-listing__swatch-input"
+              type="checkbox"
+              name="color[]"
+              value="Navy"
+              id="bootcn-listing-color-navy"
+            />
+            <label
+              class="bootcn-listing__swatch"
+              for="bootcn-listing-color-navy"
+              style="--bootcn-swatch: #1e3a5f"
+              title="Navy"
+              ><span class="visually-hidden">Navy</span></label
+            >
+            <input
+              class="bootcn-listing__swatch-input"
+              type="checkbox"
+              name="color[]"
+              value="Sand"
+              id="bootcn-listing-color-sand"
+            />
+            <label
+              class="bootcn-listing__swatch"
+              for="bootcn-listing-color-sand"
+              style="--bootcn-swatch: #d6c4a8"
+              title="Sand"
+              ><span class="visually-hidden">Sand</span></label
+            >
+            <input
+              class="bootcn-listing__swatch-input"
+              type="checkbox"
+              name="color[]"
+              value="Olive"
+              id="bootcn-listing-color-olive"
+            />
+            <label
+              class="bootcn-listing__swatch"
+              for="bootcn-listing-color-olive"
+              style="--bootcn-swatch: #556b2f"
+              title="Olive"
+              ><span class="visually-hidden">Olive</span></label
+            >
+            <input
+              class="bootcn-listing__swatch-input"
+              type="checkbox"
+              name="color[]"
+              value="Rust"
+              id="bootcn-listing-color-rust"
+            />
+            <label
+              class="bootcn-listing__swatch"
+              for="bootcn-listing-color-rust"
+              style="--bootcn-swatch: #b45309"
+              title="Rust"
+              ><span class="visually-hidden">Rust</span></label
+            >
+            <input
+              class="bootcn-listing__swatch-input"
+              type="checkbox"
+              name="color[]"
+              value="Sky"
+              id="bootcn-listing-color-sky"
+            />
+            <label
+              class="bootcn-listing__swatch"
+              for="bootcn-listing-color-sky"
+              style="--bootcn-swatch: #0ea5e9"
+              title="Sky"
+              ><span class="visually-hidden">Sky</span></label
+            >
+          </div>
+        </fieldset>
+        <fieldset class="bootcn-listing__group">
+          <legend>Rating</legend>
+          <div class="form-check">
+            <input
+              class="form-check-input"
+              type="radio"
+              name="rating"
+              value="0"
+              id="bootcn-listing-rating-0"
+              checked
+            />
+            <label class="form-check-label" for="bootcn-listing-rating-0">Any rating</label>
+          </div>
+          <div class="form-check">
+            <input
+              class="form-check-input"
+              type="radio"
+              name="rating"
+              value="4.5"
+              id="bootcn-listing-rating-4-5"
+            />
+            <label class="form-check-label" for="bootcn-listing-rating-4-5">4.5 and up</label>
+          </div>
+          <div class="form-check">
+            <input
+              class="form-check-input"
+              type="radio"
+              name="rating"
+              value="4"
+              id="bootcn-listing-rating-4"
+            />
+            <label class="form-check-label" for="bootcn-listing-rating-4">4 and up</label>
+          </div>
+        </fieldset>
+        <div class="bootcn-listing__form-actions">
+          <button
+            type="submit"
+            class="btn bootcn-button bootcn-button--default d-lg-none"
+            data-bs-dismiss="offcanvas"
+            data-bs-target="#bootcn-listing-filters"
+          >
+            Show results
+          </button>
+          <button
+            type="button"
+            class="btn bootcn-button bootcn-button--ghost bootcn-button--sm"
+            data-bootcn-listing-clear
+          >
+            Clear filters
+          </button>
+        </div>
+      </form>
+    </aside>
+    <div class="bootcn-listing__results">
+      <ul
+        class="bootcn-product-grid"
+        aria-labelledby="bootcn-listing-title"
+        data-bootcn-listing-grid
+      >
+        <li data-bootcn-listing-item>
+          <article
+            class="bootcn-product-card"
+            data-bootcn-product
+            data-id="p1"
+            data-category="Clothing"
+            data-price="28"
+            data-rating="4.6"
+            data-colors="Sand,Navy,White"
+            aria-labelledby="p1-name"
+          >
+            <div class="bootcn-product-card__media">
+              <span
+                class="bootcn-product-art"
+                style="--bootcn-product-from: #fde68a; --bootcn-product-to: #fca5a5"
+                aria-hidden="true"
+                ><svg
+                  class="bootcn-icon"
+                  width="64"
+                  height="64"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  aria-hidden="true"
+                  focusable="false"
+                >
+                  <path
+                    d="M8 3 3 6l2 5 2-1v11h10V10l2 1 2-5-5-3c-.5 1.7-2 3-4 3s-3.5-1.3-4-3z"
+                  /></svg
+              ></span>
+              <span class="bootcn-product-card__badge">New</span>
+              <button
+                type="button"
+                class="bootcn-product-card__wish"
+                aria-pressed="false"
+                aria-label="Save Everyday Tee to your wishlist"
+                data-bootcn-wishlist
+              >
+                <svg
+                  class="bootcn-icon"
+                  width="16"
+                  height="16"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  aria-hidden="true"
+                  focusable="false"
+                >
+                  <path d="M19.5 12.6 12 20l-7.5-7.4A5 5 0 0 1 12 6a5 5 0 0 1 7.5 6.6z" />
+                </svg>
+              </button>
+            </div>
+            <div class="bootcn-product-card__body">
+              <p class="bootcn-product-card__category">Clothing</p>
+              <h3 class="bootcn-product-card__name" id="p1-name">
+                <a href="#product">Everyday Tee</a>
+              </h3>
+              <span
+                class="bootcn-rating bootcn-rating--sm"
+                role="img"
+                aria-label="Rated 4.6 out of 5, 214 reviews"
+                ><span
+                  class="bootcn-rating__stars"
+                  style="--bootcn-rating-value: 92%"
+                  aria-hidden="true"
+                ></span
+                ><span class="bootcn-rating__value" aria-hidden="true">4.6</span
+                ><span class="bootcn-rating__count" aria-hidden="true">(214)</span></span
+              >
+              <ul class="bootcn-product-card__colors" aria-label="3 colors">
+                <li>
+                  <span
+                    class="bootcn-product-card__dot"
+                    style="--bootcn-swatch: #d6c4a8"
+                    title="Sand"
+                  ></span
+                  ><span class="visually-hidden">Sand</span>
+                </li>
+                <li>
+                  <span
+                    class="bootcn-product-card__dot"
+                    style="--bootcn-swatch: #1e3a5f"
+                    title="Navy"
+                  ></span
+                  ><span class="visually-hidden">Navy</span>
+                </li>
+                <li>
+                  <span
+                    class="bootcn-product-card__dot"
+                    style="--bootcn-swatch: #f8fafc"
+                    title="White"
+                  ></span
+                  ><span class="visually-hidden">White</span>
+                </li>
+              </ul>
+              <div class="bootcn-product-card__footer">
+                <p class="bootcn-price">
+                  <span class="visually-hidden">Price:</span
+                  ><span class="bootcn-price__current">$28</span>
+                </p>
+                <button
+                  type="button"
+                  class="btn bootcn-button bootcn-button--default bootcn-button--sm bootcn-product-card__add"
+                  data-bootcn-cart-add
+                  data-id="p1"
+                  data-name="Everyday Tee"
+                  data-price="28"
+                  data-variant="Sand"
+                  data-art="shirt"
+                  data-tone="#fde68a,#fca5a5"
+                  aria-label="Add Everyday Tee to cart"
+                >
+                  <svg
+                    class="bootcn-icon"
+                    width="16"
+                    height="16"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    aria-hidden="true"
+                    focusable="false"
+                  >
+                    <path d="M6 7h12l1 14H5z" />
+                    <path d="M9 10V6a3 3 0 0 1 6 0v4" />
+                  </svg>
+                  Add
+                </button>
+              </div>
+            </div>
+          </article>
+        </li>
+        <li data-bootcn-listing-item>
+          <article
+            class="bootcn-product-card"
+            data-bootcn-product
+            data-id="p2"
+            data-category="Home"
+            data-price="18"
+            data-rating="4.8"
+            data-colors="Clay,Moss"
+            aria-labelledby="p2-name"
+          >
+            <div class="bootcn-product-card__media">
+              <span
+                class="bootcn-product-art"
+                style="--bootcn-product-from: #fed7aa; --bootcn-product-to: #fdba74"
+                aria-hidden="true"
+                ><svg
+                  class="bootcn-icon"
+                  width="64"
+                  height="64"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  aria-hidden="true"
+                  focusable="false"
+                >
+                  <path d="M4 7h12v9a4 4 0 0 1-4 4H8a4 4 0 0 1-4-4z" />
+                  <path d="M16 10h2a3 3 0 0 1 0 6h-2" />
+                  <path d="M8 3v2M12 3v2" /></svg
+              ></span>
+              <span class="bootcn-product-card__badge" data-tone="sale">Sale</span>
+              <button
+                type="button"
+                class="bootcn-product-card__wish"
+                aria-pressed="false"
+                aria-label="Save Stoneware Mug to your wishlist"
+                data-bootcn-wishlist
+              >
+                <svg
+                  class="bootcn-icon"
+                  width="16"
+                  height="16"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  aria-hidden="true"
+                  focusable="false"
+                >
+                  <path d="M19.5 12.6 12 20l-7.5-7.4A5 5 0 0 1 12 6a5 5 0 0 1 7.5 6.6z" />
+                </svg>
+              </button>
+            </div>
+            <div class="bootcn-product-card__body">
+              <p class="bootcn-product-card__category">Home</p>
+              <h3 class="bootcn-product-card__name" id="p2-name">
+                <a href="#product">Stoneware Mug</a>
+              </h3>
+              <span
+                class="bootcn-rating bootcn-rating--sm"
+                role="img"
+                aria-label="Rated 4.8 out of 5, 96 reviews"
+                ><span
+                  class="bootcn-rating__stars"
+                  style="--bootcn-rating-value: 96%"
+                  aria-hidden="true"
+                ></span
+                ><span class="bootcn-rating__value" aria-hidden="true">4.8</span
+                ><span class="bootcn-rating__count" aria-hidden="true">(96)</span></span
+              >
+              <ul class="bootcn-product-card__colors" aria-label="2 colors">
+                <li>
+                  <span
+                    class="bootcn-product-card__dot"
+                    style="--bootcn-swatch: #b45309"
+                    title="Clay"
+                  ></span
+                  ><span class="visually-hidden">Clay</span>
+                </li>
+                <li>
+                  <span
+                    class="bootcn-product-card__dot"
+                    style="--bootcn-swatch: #4d7c0f"
+                    title="Moss"
+                  ></span
+                  ><span class="visually-hidden">Moss</span>
+                </li>
+              </ul>
+              <div class="bootcn-product-card__footer">
+                <p class="bootcn-price">
+                  <span class="visually-hidden">Price:</span
+                  ><span class="bootcn-price__current">$18</span
+                  ><span class="visually-hidden">, was</span><s class="bootcn-price__compare">$24</s
+                  ><span class="bootcn-price__save">−25%</span>
+                </p>
+                <button
+                  type="button"
+                  class="btn bootcn-button bootcn-button--default bootcn-button--sm bootcn-product-card__add"
+                  data-bootcn-cart-add
+                  data-id="p2"
+                  data-name="Stoneware Mug"
+                  data-price="18"
+                  data-variant="Clay"
+                  data-art="mug"
+                  data-tone="#fed7aa,#fdba74"
+                  aria-label="Add Stoneware Mug to cart"
+                >
+                  <svg
+                    class="bootcn-icon"
+                    width="16"
+                    height="16"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    aria-hidden="true"
+                    focusable="false"
+                  >
+                    <path d="M6 7h12l1 14H5z" />
+                    <path d="M9 10V6a3 3 0 0 1 6 0v4" />
+                  </svg>
+                  Add
+                </button>
+              </div>
+            </div>
+          </article>
+        </li>
+        <li data-bootcn-listing-item>
+          <article
+            class="bootcn-product-card"
+            data-bootcn-product
+            data-id="p3"
+            data-category="Home"
+            data-price="89"
+            data-rating="4.4"
+            data-colors="Black,Brass"
+            aria-labelledby="p3-name"
+          >
+            <div class="bootcn-product-card__media">
+              <span
+                class="bootcn-product-art"
+                style="--bootcn-product-from: #e9d5ff; --bootcn-product-to: #c4b5fd"
+                aria-hidden="true"
+                ><svg
+                  class="bootcn-icon"
+                  width="64"
+                  height="64"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  aria-hidden="true"
+                  focusable="false"
+                >
+                  <path d="M8 3h8l3 8H5z" />
+                  <path d="M12 11v8M8 21h8" /></svg
+              ></span>
+
+              <button
+                type="button"
+                class="bootcn-product-card__wish"
+                aria-pressed="false"
+                aria-label="Save Arc Desk Lamp to your wishlist"
+                data-bootcn-wishlist
+              >
+                <svg
+                  class="bootcn-icon"
+                  width="16"
+                  height="16"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  aria-hidden="true"
+                  focusable="false"
+                >
+                  <path d="M19.5 12.6 12 20l-7.5-7.4A5 5 0 0 1 12 6a5 5 0 0 1 7.5 6.6z" />
+                </svg>
+              </button>
+            </div>
+            <div class="bootcn-product-card__body">
+              <p class="bootcn-product-card__category">Home</p>
+              <h3 class="bootcn-product-card__name" id="p3-name">
+                <a href="#product">Arc Desk Lamp</a>
+              </h3>
+              <span
+                class="bootcn-rating bootcn-rating--sm"
+                role="img"
+                aria-label="Rated 4.4 out of 5, 57 reviews"
+                ><span
+                  class="bootcn-rating__stars"
+                  style="--bootcn-rating-value: 88%"
+                  aria-hidden="true"
+                ></span
+                ><span class="bootcn-rating__value" aria-hidden="true">4.4</span
+                ><span class="bootcn-rating__count" aria-hidden="true">(57)</span></span
+              >
+              <ul class="bootcn-product-card__colors" aria-label="2 colors">
+                <li>
+                  <span
+                    class="bootcn-product-card__dot"
+                    style="--bootcn-swatch: #111827"
+                    title="Black"
+                  ></span
+                  ><span class="visually-hidden">Black</span>
+                </li>
+                <li>
+                  <span
+                    class="bootcn-product-card__dot"
+                    style="--bootcn-swatch: #b8860b"
+                    title="Brass"
+                  ></span
+                  ><span class="visually-hidden">Brass</span>
+                </li>
+              </ul>
+              <div class="bootcn-product-card__footer">
+                <p class="bootcn-price">
+                  <span class="visually-hidden">Price:</span
+                  ><span class="bootcn-price__current">$89</span>
+                </p>
+                <button
+                  type="button"
+                  class="btn bootcn-button bootcn-button--default bootcn-button--sm bootcn-product-card__add"
+                  data-bootcn-cart-add
+                  data-id="p3"
+                  data-name="Arc Desk Lamp"
+                  data-price="89"
+                  data-variant="Black"
+                  data-art="lamp"
+                  data-tone="#e9d5ff,#c4b5fd"
+                  aria-label="Add Arc Desk Lamp to cart"
+                >
+                  <svg
+                    class="bootcn-icon"
+                    width="16"
+                    height="16"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    aria-hidden="true"
+                    focusable="false"
+                  >
+                    <path d="M6 7h12l1 14H5z" />
+                    <path d="M9 10V6a3 3 0 0 1 6 0v4" />
+                  </svg>
+                  Add
+                </button>
+              </div>
+            </div>
+          </article>
+        </li>
+        <li data-bootcn-listing-item>
+          <article
+            class="bootcn-product-card"
+            data-bootcn-product
+            data-id="p4"
+            data-category="Electronics"
+            data-price="149"
+            data-rating="4.7"
+            data-colors="Black,Silver"
+            aria-labelledby="p4-name"
+          >
+            <div class="bootcn-product-card__media">
+              <span
+                class="bootcn-product-art"
+                style="--bootcn-product-from: #bfdbfe; --bootcn-product-to: #93c5fd"
+                aria-hidden="true"
+                ><svg
+                  class="bootcn-icon"
+                  width="64"
+                  height="64"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  aria-hidden="true"
+                  focusable="false"
+                >
+                  <path d="M4 15v-3a8 8 0 0 1 16 0v3" />
+                  <rect x="3" y="14" width="4" height="7" rx="1.5" />
+                  <rect x="17" y="14" width="4" height="7" rx="1.5" /></svg
+              ></span>
+              <span class="bootcn-product-card__badge" data-tone="sale">Sale</span>
+              <button
+                type="button"
+                class="bootcn-product-card__wish"
+                aria-pressed="false"
+                aria-label="Save Studio Headphones to your wishlist"
+                data-bootcn-wishlist
+              >
+                <svg
+                  class="bootcn-icon"
+                  width="16"
+                  height="16"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  aria-hidden="true"
+                  focusable="false"
+                >
+                  <path d="M19.5 12.6 12 20l-7.5-7.4A5 5 0 0 1 12 6a5 5 0 0 1 7.5 6.6z" />
+                </svg>
+              </button>
+            </div>
+            <div class="bootcn-product-card__body">
+              <p class="bootcn-product-card__category">Electronics</p>
+              <h3 class="bootcn-product-card__name" id="p4-name">
+                <a href="#product">Studio Headphones</a>
+              </h3>
+              <span
+                class="bootcn-rating bootcn-rating--sm"
+                role="img"
+                aria-label="Rated 4.7 out of 5, 431 reviews"
+                ><span
+                  class="bootcn-rating__stars"
+                  style="--bootcn-rating-value: 94%"
+                  aria-hidden="true"
+                ></span
+                ><span class="bootcn-rating__value" aria-hidden="true">4.7</span
+                ><span class="bootcn-rating__count" aria-hidden="true">(431)</span></span
+              >
+              <ul class="bootcn-product-card__colors" aria-label="2 colors">
+                <li>
+                  <span
+                    class="bootcn-product-card__dot"
+                    style="--bootcn-swatch: #111827"
+                    title="Black"
+                  ></span
+                  ><span class="visually-hidden">Black</span>
+                </li>
+                <li>
+                  <span
+                    class="bootcn-product-card__dot"
+                    style="--bootcn-swatch: #cbd5e1"
+                    title="Silver"
+                  ></span
+                  ><span class="visually-hidden">Silver</span>
+                </li>
+              </ul>
+              <div class="bootcn-product-card__footer">
+                <p class="bootcn-price">
+                  <span class="visually-hidden">Price:</span
+                  ><span class="bootcn-price__current">$149</span
+                  ><span class="visually-hidden">, was</span
+                  ><s class="bootcn-price__compare">$179</s
+                  ><span class="bootcn-price__save">−17%</span>
+                </p>
+                <button
+                  type="button"
+                  class="btn bootcn-button bootcn-button--default bootcn-button--sm bootcn-product-card__add"
+                  data-bootcn-cart-add
+                  data-id="p4"
+                  data-name="Studio Headphones"
+                  data-price="149"
+                  data-variant="Black"
+                  data-art="headphones"
+                  data-tone="#bfdbfe,#93c5fd"
+                  aria-label="Add Studio Headphones to cart"
+                >
+                  <svg
+                    class="bootcn-icon"
+                    width="16"
+                    height="16"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    aria-hidden="true"
+                    focusable="false"
+                  >
+                    <path d="M6 7h12l1 14H5z" />
+                    <path d="M9 10V6a3 3 0 0 1 6 0v4" />
+                  </svg>
+                  Add
+                </button>
+              </div>
+            </div>
+          </article>
+        </li>
+        <li data-bootcn-listing-item>
+          <article
+            class="bootcn-product-card"
+            data-bootcn-product
+            data-id="p5"
+            data-category="Accessories"
+            data-price="215"
+            data-rating="4.5"
+            data-colors="Olive,Steel"
+            aria-labelledby="p5-name"
+          >
+            <div class="bootcn-product-card__media">
+              <span
+                class="bootcn-product-art"
+                style="--bootcn-product-from: #bbf7d0; --bootcn-product-to: #86efac"
+                aria-hidden="true"
+                ><svg
+                  class="bootcn-icon"
+                  width="64"
+                  height="64"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  aria-hidden="true"
+                  focusable="false"
+                >
+                  <circle cx="12" cy="12" r="6" />
+                  <path d="M12 9v3l2 1.5" />
+                  <path d="M9 6.5 9.5 2h5l.5 4.5M9 17.5l.5 4.5h5l.5-4.5" /></svg
+              ></span>
+
+              <button
+                type="button"
+                class="bootcn-product-card__wish"
+                aria-pressed="false"
+                aria-label="Save Field Watch to your wishlist"
+                data-bootcn-wishlist
+              >
+                <svg
+                  class="bootcn-icon"
+                  width="16"
+                  height="16"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  aria-hidden="true"
+                  focusable="false"
+                >
+                  <path d="M19.5 12.6 12 20l-7.5-7.4A5 5 0 0 1 12 6a5 5 0 0 1 7.5 6.6z" />
+                </svg>
+              </button>
+            </div>
+            <div class="bootcn-product-card__body">
+              <p class="bootcn-product-card__category">Accessories</p>
+              <h3 class="bootcn-product-card__name" id="p5-name">
+                <a href="#product">Field Watch</a>
+              </h3>
+              <span
+                class="bootcn-rating bootcn-rating--sm"
+                role="img"
+                aria-label="Rated 4.5 out of 5, 88 reviews"
+                ><span
+                  class="bootcn-rating__stars"
+                  style="--bootcn-rating-value: 90%"
+                  aria-hidden="true"
+                ></span
+                ><span class="bootcn-rating__value" aria-hidden="true">4.5</span
+                ><span class="bootcn-rating__count" aria-hidden="true">(88)</span></span
+              >
+              <ul class="bootcn-product-card__colors" aria-label="2 colors">
+                <li>
+                  <span
+                    class="bootcn-product-card__dot"
+                    style="--bootcn-swatch: #556b2f"
+                    title="Olive"
+                  ></span
+                  ><span class="visually-hidden">Olive</span>
+                </li>
+                <li>
+                  <span
+                    class="bootcn-product-card__dot"
+                    style="--bootcn-swatch: #94a3b8"
+                    title="Steel"
+                  ></span
+                  ><span class="visually-hidden">Steel</span>
+                </li>
+              </ul>
+              <div class="bootcn-product-card__footer">
+                <p class="bootcn-price">
+                  <span class="visually-hidden">Price:</span
+                  ><span class="bootcn-price__current">$215</span>
+                </p>
+                <button
+                  type="button"
+                  class="btn bootcn-button bootcn-button--default bootcn-button--sm bootcn-product-card__add"
+                  data-bootcn-cart-add
+                  data-id="p5"
+                  data-name="Field Watch"
+                  data-price="215"
+                  data-variant="Olive"
+                  data-art="watch"
+                  data-tone="#bbf7d0,#86efac"
+                  aria-label="Add Field Watch to cart"
+                >
+                  <svg
+                    class="bootcn-icon"
+                    width="16"
+                    height="16"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    aria-hidden="true"
+                    focusable="false"
+                  >
+                    <path d="M6 7h12l1 14H5z" />
+                    <path d="M9 10V6a3 3 0 0 1 6 0v4" />
+                  </svg>
+                  Add
+                </button>
+              </div>
+            </div>
+          </article>
+        </li>
+        <li data-bootcn-listing-item>
+          <article
+            class="bootcn-product-card"
+            data-bootcn-product
+            data-id="p6"
+            data-category="Accessories"
+            data-price="120"
+            data-rating="4.9"
+            data-colors="Charcoal,Rust"
+            aria-labelledby="p6-name"
+          >
+            <div class="bootcn-product-card__media">
+              <span
+                class="bootcn-product-art"
+                style="--bootcn-product-from: #fecaca; --bootcn-product-to: #fca5a5"
+                aria-hidden="true"
+                ><svg
+                  class="bootcn-icon"
+                  width="64"
+                  height="64"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  aria-hidden="true"
+                  focusable="false"
+                >
+                  <path d="M6 9a6 6 0 0 1 12 0v11a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1z" />
+                  <path d="M9 4.5V3h6v1.5M9 14h6v4H9z" /></svg
+              ></span>
+              <span class="bootcn-product-card__badge">New</span>
+              <button
+                type="button"
+                class="bootcn-product-card__wish"
+                aria-pressed="false"
+                aria-label="Save Commuter Backpack to your wishlist"
+                data-bootcn-wishlist
+              >
+                <svg
+                  class="bootcn-icon"
+                  width="16"
+                  height="16"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  aria-hidden="true"
+                  focusable="false"
+                >
+                  <path d="M19.5 12.6 12 20l-7.5-7.4A5 5 0 0 1 12 6a5 5 0 0 1 7.5 6.6z" />
+                </svg>
+              </button>
+            </div>
+            <div class="bootcn-product-card__body">
+              <p class="bootcn-product-card__category">Accessories</p>
+              <h3 class="bootcn-product-card__name" id="p6-name">
+                <a href="#product">Commuter Backpack</a>
+              </h3>
+              <span
+                class="bootcn-rating bootcn-rating--sm"
+                role="img"
+                aria-label="Rated 4.9 out of 5, 302 reviews"
+                ><span
+                  class="bootcn-rating__stars"
+                  style="--bootcn-rating-value: 98%"
+                  aria-hidden="true"
+                ></span
+                ><span class="bootcn-rating__value" aria-hidden="true">4.9</span
+                ><span class="bootcn-rating__count" aria-hidden="true">(302)</span></span
+              >
+              <ul class="bootcn-product-card__colors" aria-label="2 colors">
+                <li>
+                  <span
+                    class="bootcn-product-card__dot"
+                    style="--bootcn-swatch: #374151"
+                    title="Charcoal"
+                  ></span
+                  ><span class="visually-hidden">Charcoal</span>
+                </li>
+                <li>
+                  <span
+                    class="bootcn-product-card__dot"
+                    style="--bootcn-swatch: #b45309"
+                    title="Rust"
+                  ></span
+                  ><span class="visually-hidden">Rust</span>
+                </li>
+              </ul>
+              <div class="bootcn-product-card__footer">
+                <p class="bootcn-price">
+                  <span class="visually-hidden">Price:</span
+                  ><span class="bootcn-price__current">$120</span>
+                </p>
+                <button
+                  type="button"
+                  class="btn bootcn-button bootcn-button--default bootcn-button--sm bootcn-product-card__add"
+                  data-bootcn-cart-add
+                  data-id="p6"
+                  data-name="Commuter Backpack"
+                  data-price="120"
+                  data-variant="Charcoal"
+                  data-art="backpack"
+                  data-tone="#fecaca,#fca5a5"
+                  aria-label="Add Commuter Backpack to cart"
+                >
+                  <svg
+                    class="bootcn-icon"
+                    width="16"
+                    height="16"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    aria-hidden="true"
+                    focusable="false"
+                  >
+                    <path d="M6 7h12l1 14H5z" />
+                    <path d="M9 10V6a3 3 0 0 1 6 0v4" />
+                  </svg>
+                  Add
+                </button>
+              </div>
+            </div>
+          </article>
+        </li>
+        <li data-bootcn-listing-item>
+          <article
+            class="bootcn-product-card"
+            data-bootcn-product
+            data-id="p7"
+            data-category="Home"
+            data-price="32"
+            data-rating="4.3"
+            data-colors="Sky,Sage"
+            aria-labelledby="p7-name"
+          >
+            <div class="bootcn-product-card__media">
+              <span
+                class="bootcn-product-art"
+                style="--bootcn-product-from: #a5f3fc; --bootcn-product-to: #67e8f9"
+                aria-hidden="true"
+                ><svg
+                  class="bootcn-icon"
+                  width="64"
+                  height="64"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  aria-hidden="true"
+                  focusable="false"
+                >
+                  <path d="M10 2h4v3l2 3v12a2 2 0 0 1-2 2h-4a2 2 0 0 1-2-2V8l2-3z" />
+                  <path d="M8 12h8" /></svg
+              ></span>
+
+              <button
+                type="button"
+                class="bootcn-product-card__wish"
+                aria-pressed="false"
+                aria-label="Save Insulated Bottle to your wishlist"
+                data-bootcn-wishlist
+              >
+                <svg
+                  class="bootcn-icon"
+                  width="16"
+                  height="16"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  aria-hidden="true"
+                  focusable="false"
+                >
+                  <path d="M19.5 12.6 12 20l-7.5-7.4A5 5 0 0 1 12 6a5 5 0 0 1 7.5 6.6z" />
+                </svg>
+              </button>
+            </div>
+            <div class="bootcn-product-card__body">
+              <p class="bootcn-product-card__category">Home</p>
+              <h3 class="bootcn-product-card__name" id="p7-name">
+                <a href="#product">Insulated Bottle</a>
+              </h3>
+              <span
+                class="bootcn-rating bootcn-rating--sm"
+                role="img"
+                aria-label="Rated 4.3 out of 5, 140 reviews"
+                ><span
+                  class="bootcn-rating__stars"
+                  style="--bootcn-rating-value: 86%"
+                  aria-hidden="true"
+                ></span
+                ><span class="bootcn-rating__value" aria-hidden="true">4.3</span
+                ><span class="bootcn-rating__count" aria-hidden="true">(140)</span></span
+              >
+              <ul class="bootcn-product-card__colors" aria-label="2 colors">
+                <li>
+                  <span
+                    class="bootcn-product-card__dot"
+                    style="--bootcn-swatch: #0ea5e9"
+                    title="Sky"
+                  ></span
+                  ><span class="visually-hidden">Sky</span>
+                </li>
+                <li>
+                  <span
+                    class="bootcn-product-card__dot"
+                    style="--bootcn-swatch: #84a98c"
+                    title="Sage"
+                  ></span
+                  ><span class="visually-hidden">Sage</span>
+                </li>
+              </ul>
+              <div class="bootcn-product-card__footer">
+                <p class="bootcn-price">
+                  <span class="visually-hidden">Price:</span
+                  ><span class="bootcn-price__current">$32</span>
+                </p>
+                <button
+                  type="button"
+                  class="btn bootcn-button bootcn-button--default bootcn-button--sm bootcn-product-card__add"
+                  data-bootcn-cart-add
+                  data-id="p7"
+                  data-name="Insulated Bottle"
+                  data-price="32"
+                  data-variant="Sky"
+                  data-art="bottle"
+                  data-tone="#a5f3fc,#67e8f9"
+                  aria-label="Add Insulated Bottle to cart"
+                >
+                  <svg
+                    class="bootcn-icon"
+                    width="16"
+                    height="16"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    aria-hidden="true"
+                    focusable="false"
+                  >
+                    <path d="M6 7h12l1 14H5z" />
+                    <path d="M9 10V6a3 3 0 0 1 6 0v4" />
+                  </svg>
+                  Add
+                </button>
+              </div>
+            </div>
+          </article>
+        </li>
+        <li data-bootcn-listing-item>
+          <article
+            class="bootcn-product-card"
+            data-bootcn-product
+            data-id="p8"
+            data-category="Home"
+            data-price="240"
+            data-rating="4.6"
+            data-colors="Oak"
+            aria-labelledby="p8-name"
+          >
+            <div class="bootcn-product-card__media">
+              <span
+                class="bootcn-product-art"
+                style="--bootcn-product-from: #fef3c7; --bootcn-product-to: #fde68a"
+                aria-hidden="true"
+                ><svg
+                  class="bootcn-icon"
+                  width="64"
+                  height="64"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  aria-hidden="true"
+                  focusable="false"
+                >
+                  <path d="M7 3h10v8H7z" />
+                  <path d="M5 11h14v3H5zM7 14v7M17 14v7" /></svg
+              ></span>
+              <span class="bootcn-product-card__badge" data-tone="sale">Sale</span>
+              <button
+                type="button"
+                class="bootcn-product-card__wish"
+                aria-pressed="false"
+                aria-label="Save Oak Side Chair to your wishlist"
+                data-bootcn-wishlist
+              >
+                <svg
+                  class="bootcn-icon"
+                  width="16"
+                  height="16"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  aria-hidden="true"
+                  focusable="false"
+                >
+                  <path d="M19.5 12.6 12 20l-7.5-7.4A5 5 0 0 1 12 6a5 5 0 0 1 7.5 6.6z" />
+                </svg>
+              </button>
+            </div>
+            <div class="bootcn-product-card__body">
+              <p class="bootcn-product-card__category">Home</p>
+              <h3 class="bootcn-product-card__name" id="p8-name">
+                <a href="#product">Oak Side Chair</a>
+              </h3>
+              <span
+                class="bootcn-rating bootcn-rating--sm"
+                role="img"
+                aria-label="Rated 4.6 out of 5, 39 reviews"
+                ><span
+                  class="bootcn-rating__stars"
+                  style="--bootcn-rating-value: 92%"
+                  aria-hidden="true"
+                ></span
+                ><span class="bootcn-rating__value" aria-hidden="true">4.6</span
+                ><span class="bootcn-rating__count" aria-hidden="true">(39)</span></span
+              >
+              <ul class="bootcn-product-card__colors" aria-label="1 colors">
+                <li>
+                  <span
+                    class="bootcn-product-card__dot"
+                    style="--bootcn-swatch: #c19a6b"
+                    title="Oak"
+                  ></span
+                  ><span class="visually-hidden">Oak</span>
+                </li>
+              </ul>
+              <div class="bootcn-product-card__footer">
+                <p class="bootcn-price">
+                  <span class="visually-hidden">Price:</span
+                  ><span class="bootcn-price__current">$240</span
+                  ><span class="visually-hidden">, was</span
+                  ><s class="bootcn-price__compare">$290</s
+                  ><span class="bootcn-price__save">−17%</span>
+                </p>
+                <button
+                  type="button"
+                  class="btn bootcn-button bootcn-button--default bootcn-button--sm bootcn-product-card__add"
+                  data-bootcn-cart-add
+                  data-id="p8"
+                  data-name="Oak Side Chair"
+                  data-price="240"
+                  data-variant="Oak"
+                  data-art="chair"
+                  data-tone="#fef3c7,#fde68a"
+                  aria-label="Add Oak Side Chair to cart"
+                >
+                  <svg
+                    class="bootcn-icon"
+                    width="16"
+                    height="16"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    aria-hidden="true"
+                    focusable="false"
+                  >
+                    <path d="M6 7h12l1 14H5z" />
+                    <path d="M9 10V6a3 3 0 0 1 6 0v4" />
+                  </svg>
+                  Add
+                </button>
+              </div>
+            </div>
+          </article>
+        </li>
+        <li data-bootcn-listing-item>
+          <article
+            class="bootcn-product-card"
+            data-bootcn-product
+            data-id="p9"
+            data-category="Home"
+            data-price="24"
+            data-rating="4.2"
+            data-colors="Terracotta"
+            aria-labelledby="p9-name"
+          >
+            <div class="bootcn-product-card__media">
+              <span
+                class="bootcn-product-art"
+                style="--bootcn-product-from: #d9f99d; --bootcn-product-to: #bef264"
+                aria-hidden="true"
+                ><svg
+                  class="bootcn-icon"
+                  width="64"
+                  height="64"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  aria-hidden="true"
+                  focusable="false"
+                >
+                  <path d="M12 21v-9" />
+                  <path
+                    d="M12 12c0-4 3-7 7-7 0 4-3 7-7 7zM12 14c0-3-2.5-5.5-6-5.5 0 3.5 2.5 5.5 6 5.5z"
+                  />
+                  <path d="M7 21h10" /></svg
+              ></span>
+
+              <button
+                type="button"
+                class="bootcn-product-card__wish"
+                aria-pressed="false"
+                aria-label="Save Potted Fern to your wishlist"
+                data-bootcn-wishlist
+              >
+                <svg
+                  class="bootcn-icon"
+                  width="16"
+                  height="16"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  aria-hidden="true"
+                  focusable="false"
+                >
+                  <path d="M19.5 12.6 12 20l-7.5-7.4A5 5 0 0 1 12 6a5 5 0 0 1 7.5 6.6z" />
+                </svg>
+              </button>
+            </div>
+            <div class="bootcn-product-card__body">
+              <p class="bootcn-product-card__category">Home</p>
+              <h3 class="bootcn-product-card__name" id="p9-name">
+                <a href="#product">Potted Fern</a>
+              </h3>
+              <span
+                class="bootcn-rating bootcn-rating--sm"
+                role="img"
+                aria-label="Rated 4.2 out of 5, 65 reviews"
+                ><span
+                  class="bootcn-rating__stars"
+                  style="--bootcn-rating-value: 84%"
+                  aria-hidden="true"
+                ></span
+                ><span class="bootcn-rating__value" aria-hidden="true">4.2</span
+                ><span class="bootcn-rating__count" aria-hidden="true">(65)</span></span
+              >
+              <ul class="bootcn-product-card__colors" aria-label="1 colors">
+                <li>
+                  <span
+                    class="bootcn-product-card__dot"
+                    style="--bootcn-swatch: #c2410c"
+                    title="Terracotta"
+                  ></span
+                  ><span class="visually-hidden">Terracotta</span>
+                </li>
+              </ul>
+              <div class="bootcn-product-card__footer">
+                <p class="bootcn-price">
+                  <span class="visually-hidden">Price:</span
+                  ><span class="bootcn-price__current">$24</span>
+                </p>
+                <button
+                  type="button"
+                  class="btn bootcn-button bootcn-button--default bootcn-button--sm bootcn-product-card__add"
+                  data-bootcn-cart-add
+                  data-id="p9"
+                  data-name="Potted Fern"
+                  data-price="24"
+                  data-variant="Terracotta"
+                  data-art="plant"
+                  data-tone="#d9f99d,#bef264"
+                  aria-label="Add Potted Fern to cart"
+                >
+                  <svg
+                    class="bootcn-icon"
+                    width="16"
+                    height="16"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    aria-hidden="true"
+                    focusable="false"
+                  >
+                    <path d="M6 7h12l1 14H5z" />
+                    <path d="M9 10V6a3 3 0 0 1 6 0v4" />
+                  </svg>
+                  Add
+                </button>
+              </div>
+            </div>
+          </article>
+        </li>
+      </ul>
+      <div class="bootcn-listing__empty" data-bootcn-listing-empty hidden>
+        <p>No products match these filters.</p>
+        <button
+          type="button"
+          class="btn bootcn-button bootcn-button--outline bootcn-button--sm"
+          data-bootcn-listing-clear
+        >
+          Clear filters
+        </button>
+      </div>
+    </div>
+  </div>
+  <p class="visually-hidden" aria-live="polite" data-bootcn-listing-live></p>
+</section>

@@ -1,0 +1,242 @@
+.bootcn-detail {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 1.25rem;
+  color: var(--bootcn-foreground);
+}
+
+.bootcn-detail__crumbs {
+  font-size: 0.875rem;
+}
+
+.bootcn-detail__layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 2rem;
+}
+
+@media (min-width: 768px) {
+  .bootcn-detail__layout {
+    grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
+    gap: 3rem;
+  }
+
+  .bootcn-detail__gallery {
+    position: sticky;
+    top: 1rem;
+    align-self: start;
+  }
+}
+
+.bootcn-detail__gallery {
+  display: grid;
+  gap: 0.75rem;
+}
+
+.bootcn-detail__main {
+  aspect-ratio: 4 / 5;
+  overflow: hidden;
+  border-radius: var(--bootcn-radius-xl);
+  background-color: var(--bootcn-muted);
+}
+
+.bootcn-detail__main > *,
+.bootcn-detail__main img,
+.bootcn-detail [data-bootcn-detail-view] {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.bootcn-detail [data-bootcn-detail-view] {
+  display: block;
+}
+
+.bootcn-detail__main .bootcn-product-art .bootcn-icon {
+  width: 34%;
+}
+
+.bootcn-detail__thumbs {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 0.75rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.bootcn-detail__thumb {
+  display: block;
+  width: 100%;
+  aspect-ratio: 1;
+  padding: 0;
+  overflow: hidden;
+  border: 2px solid transparent;
+  border-radius: var(--bootcn-radius-lg);
+  background: none;
+}
+
+.bootcn-detail__thumb > span,
+.bootcn-detail__thumb .bootcn-product-art {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.bootcn-detail__thumb .bootcn-product-art {
+  display: flex;
+}
+
+.bootcn-detail__thumb[aria-pressed='true'] {
+  border-color: var(--bootcn-foreground);
+}
+
+.bootcn-detail__thumb:focus-visible {
+  outline: 2px solid var(--bootcn-ring);
+  outline-offset: 2px;
+}
+
+.bootcn-detail__info {
+  display: grid;
+  align-content: start;
+  gap: 1rem;
+}
+
+.bootcn-detail__info > p {
+  margin: 0;
+}
+
+.bootcn-detail__category {
+  color: var(--bootcn-muted-foreground);
+  font-size: 0.875rem;
+}
+
+.bootcn-detail__name {
+  margin: -0.5rem 0 0;
+  font-size: clamp(1.75rem, 4vw, 2.25rem);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+.bootcn-detail__reviews {
+  justify-self: start;
+  border-radius: var(--bootcn-radius-sm);
+  color: inherit;
+  text-decoration: none;
+}
+
+.bootcn-detail__reviews:hover .bootcn-rating__count {
+  text-decoration: underline;
+}
+
+.bootcn-detail__price {
+  font-size: 1.5rem;
+}
+
+.bootcn-detail__text {
+  color: var(--bootcn-muted-foreground);
+  line-height: 1.6;
+}
+
+.bootcn-detail__form {
+  display: grid;
+  gap: 1.25rem;
+  padding-top: 0.5rem;
+}
+
+.bootcn-detail__buy {
+  display: flex;
+  gap: 0.75rem;
+  align-items: flex-end;
+}
+
+.bootcn-detail__quantity {
+  width: 5.5rem;
+}
+
+.bootcn-detail__quantity .bootcn-input {
+  height: 3rem;
+  text-align: center;
+}
+
+.bootcn-detail__add {
+  display: inline-flex;
+  flex: 1;
+  gap: 0.5rem;
+  align-items: center;
+  justify-content: center;
+  height: 3rem;
+}
+
+.bootcn-detail__wish {
+  display: inline-flex;
+  flex: none;
+  align-items: center;
+  justify-content: center;
+  width: 3rem;
+  height: 3rem;
+}
+
+.bootcn-detail__wish[aria-pressed='true'] {
+  color: #e11d48;
+}
+
+.bootcn-detail__wish[aria-pressed='true'] .bootcn-icon {
+  fill: currentColor;
+}
+
+.bootcn-detail__perks {
+  display: grid;
+  gap: 0.5rem;
+  margin: 0;
+  padding: 1rem;
+  border-radius: var(--bootcn-radius-lg);
+  background-color: var(--bootcn-muted);
+  font-size: 0.875rem;
+  list-style: none;
+}
+
+.bootcn-detail__perks li {
+  display: flex;
+  gap: 0.625rem;
+  align-items: center;
+}
+
+.bootcn-detail__more details {
+  border-bottom: var(--bootcn-border-width) solid var(--bootcn-border-color);
+}
+
+.bootcn-detail__more summary {
+  display: flex;
+  justify-content: space-between;
+  padding: 1rem 0;
+  font-weight: 500;
+  list-style: none;
+  cursor: pointer;
+}
+
+.bootcn-detail__more summary::-webkit-details-marker {
+  display: none;
+}
+
+.bootcn-detail__more summary::after {
+  content: '+';
+  font-size: 1.25rem;
+  line-height: 1;
+}
+
+.bootcn-detail__more details[open] summary::after {
+  content: '−';
+}
+
+.bootcn-detail__more summary:focus-visible {
+  outline: 2px solid var(--bootcn-ring);
+  outline-offset: 2px;
+}
+
+.bootcn-detail__more p {
+  margin: 0 0 1rem;
+  color: var(--bootcn-muted-foreground);
+  font-size: 0.9375rem;
+  line-height: 1.6;
+}

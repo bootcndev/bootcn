@@ -1,0 +1,310 @@
+.bootcn-checkout {
+  color: var(--bootcn-foreground);
+}
+
+.bootcn-checkout__form {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 2rem;
+}
+
+.bootcn-checkout__form[hidden] {
+  display: none;
+}
+
+@media (min-width: 992px) {
+  .bootcn-checkout__form {
+    grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr);
+    gap: 3rem;
+  }
+
+  .bootcn-checkout__summary {
+    position: sticky;
+    top: 1rem;
+    align-self: start;
+  }
+}
+
+.bootcn-checkout__main {
+  display: grid;
+  gap: 2rem;
+}
+
+.bootcn-checkout__title {
+  margin: 0;
+  font-size: 1.75rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+.bootcn-checkout__section {
+  display: grid;
+  gap: 1rem;
+  min-width: 0;
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+.bootcn-checkout__section legend {
+  margin-bottom: 0.75rem;
+  font-size: 1.125rem;
+  font-weight: 600;
+}
+
+.bootcn-checkout__grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.bootcn-checkout__wide {
+  grid-column: 1 / -1;
+}
+
+@media (max-width: 575.98px) {
+  .bootcn-checkout__grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+.bootcn-checkout__hint {
+  margin: 0.25rem 0 0;
+  color: var(--bootcn-muted-foreground);
+  font-size: 0.8125rem;
+}
+
+.bootcn-checkout .form-control[aria-invalid='true'] ~ .invalid-feedback,
+.bootcn-checkout .bootcn-field:has([aria-invalid='true']) > .invalid-feedback {
+  display: block;
+}
+
+.bootcn-checkout__methods {
+  display: grid;
+  overflow: hidden;
+  border: var(--bootcn-border-width) solid var(--bootcn-border-color);
+  border-radius: var(--bootcn-radius-lg);
+}
+
+.bootcn-checkout__method {
+  display: flex;
+  gap: 0.875rem;
+  align-items: center;
+  padding: 1rem;
+  cursor: pointer;
+}
+
+.bootcn-checkout__method + .bootcn-checkout__method {
+  border-top: var(--bootcn-border-width) solid var(--bootcn-border-color);
+}
+
+.bootcn-checkout__method:has(input:checked) {
+  background-color: color-mix(in srgb, var(--bootcn-primary) 6%, transparent);
+}
+
+.bootcn-checkout__method .form-check-input {
+  flex: none;
+  margin: 0;
+}
+
+.bootcn-checkout__method-text {
+  display: grid;
+  flex: 1;
+  font-size: 0.875rem;
+}
+
+.bootcn-checkout__method-text span {
+  color: var(--bootcn-muted-foreground);
+}
+
+.bootcn-checkout__method-price {
+  font-size: 0.875rem;
+  font-weight: 600;
+}
+
+.bootcn-checkout__secure {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+  margin: -0.25rem 0 0;
+  color: var(--bootcn-muted-foreground);
+  font-size: 0.8125rem;
+}
+
+.bootcn-checkout__card {
+  position: relative;
+}
+
+.bootcn-checkout__card .bootcn-input {
+  padding-inline-end: 8rem;
+  font-variant-numeric: tabular-nums;
+}
+
+.bootcn-checkout__brand {
+  position: absolute;
+  top: 50%;
+  inset-inline-end: 0.875rem;
+  color: var(--bootcn-muted-foreground);
+  font-size: 0.75rem;
+  font-weight: 600;
+  transform: translateY(-50%);
+  pointer-events: none;
+}
+
+.bootcn-checkout__pay {
+  display: inline-flex;
+  gap: 0.5rem;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 3.25rem;
+  font-size: 1rem;
+}
+
+.bootcn-checkout__status {
+  margin: -1rem 0 0;
+  color: var(--bootcn-destructive-text);
+  font-size: 0.875rem;
+}
+
+.bootcn-checkout__status:empty {
+  display: none;
+}
+
+/* Summary. */
+.bootcn-checkout__summary {
+  display: grid;
+  gap: 1.25rem;
+  padding: 1.5rem;
+  border-radius: var(--bootcn-radius-xl);
+  background-color: var(--bootcn-muted);
+}
+
+.bootcn-checkout__summary-title {
+  margin: 0;
+  font-size: 1.125rem;
+  font-weight: 600;
+}
+
+.bootcn-checkout__items {
+  display: grid;
+  gap: 1rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.bootcn-checkout__item {
+  display: grid;
+  grid-template-columns: 3.5rem minmax(0, 1fr) auto;
+  gap: 0.875rem;
+  align-items: center;
+}
+
+.bootcn-checkout__item p {
+  margin: 0;
+}
+
+.bootcn-checkout__thumb {
+  position: relative;
+  width: 3.5rem;
+  height: 3.5rem;
+  border-radius: var(--bootcn-radius);
+  background-color: var(--bootcn-background);
+}
+
+.bootcn-checkout__thumb .bootcn-product-art {
+  overflow: hidden;
+  border-radius: var(--bootcn-radius);
+}
+
+.bootcn-checkout__qty {
+  position: absolute;
+  top: -0.4375rem;
+  inset-inline-end: -0.4375rem;
+  min-width: 1.25rem;
+  height: 1.25rem;
+  padding: 0 0.3125rem;
+  border-radius: 9999px;
+  background-color: var(--bootcn-muted-foreground);
+  color: var(--bootcn-background);
+  font-size: 0.6875rem;
+  font-weight: 700;
+  line-height: 1.25rem;
+  text-align: center;
+}
+
+.bootcn-checkout__item-name {
+  font-size: 0.875rem;
+  font-weight: 600;
+}
+
+.bootcn-checkout__item-meta {
+  color: var(--bootcn-muted-foreground);
+  font-size: 0.8125rem;
+}
+
+.bootcn-checkout__item-price {
+  font-size: 0.875rem;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+}
+
+.bootcn-checkout__code .bootcn-input {
+  background-color: var(--bootcn-background);
+}
+
+.bootcn-checkout__code-message {
+  margin: 0.375rem 0 0;
+  color: var(--bootcn-success-text);
+  font-size: 0.8125rem;
+}
+
+.bootcn-checkout__code-message.is-error {
+  color: var(--bootcn-destructive-text);
+}
+
+.bootcn-checkout__code-message:empty {
+  display: none;
+}
+
+.bootcn-checkout__totals {
+  display: grid;
+  gap: 0.5rem;
+  margin: 0;
+  padding-top: 1rem;
+  border-top: var(--bootcn-border-width) solid var(--bootcn-border-color);
+  font-size: 0.875rem;
+  font-variant-numeric: tabular-nums;
+}
+
+.bootcn-checkout__totals div {
+  display: flex;
+  justify-content: space-between;
+}
+
+.bootcn-checkout__totals div[hidden] {
+  display: none;
+}
+
+.bootcn-checkout__totals dt {
+  font-weight: 400;
+  color: var(--bootcn-muted-foreground);
+}
+
+.bootcn-checkout__totals dd {
+  margin: 0;
+}
+
+.bootcn-checkout__total {
+  margin-top: 0.25rem;
+  padding-top: 0.75rem;
+  border-top: var(--bootcn-border-width) solid var(--bootcn-border-color);
+  font-size: 1.125rem;
+}
+
+.bootcn-checkout__total dt,
+.bootcn-checkout__total dd {
+  color: var(--bootcn-foreground) !important;
+  font-weight: 700 !important;
+}

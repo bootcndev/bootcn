@@ -1,0 +1,61 @@
+{
+  "$schema": "../../schema/registry-item.schema.json",
+  "name": "store",
+  "type": "registry:template",
+  "title": "Store",
+  "description": "An online shop in three pages: a catalogue with filters and sorting, a product page with gallery and options, and a one-page checkout, sharing a cart drawer that keeps its items between pages.",
+  "version": "1.0.0",
+  "categories": ["marketing"],
+  "dependencies": [],
+  "registryDependencies": [
+    "button",
+    "badge",
+    "breadcrumb",
+    "input",
+    "select",
+    "checkbox",
+    "radio-group",
+    "sheet",
+    "rating",
+    "variant-picker",
+    "product-card",
+    "cart",
+    "confetti",
+    "success-state",
+    "product-listing",
+    "product-detail",
+    "checkout"
+  ],
+  "compatibility": {
+    "bootstrap": "5.3",
+    "platform": ["Bootstrap CSS", "Bootstrap JS bundle"]
+  },
+  "license": "MIT",
+  "files": [
+    {
+      "path": "store.html",
+      "target": "store.html",
+      "type": "registry:page"
+    },
+    {
+      "path": "store-product.html",
+      "target": "store-product.html",
+      "type": "registry:page"
+    },
+    {
+      "path": "store-checkout.html",
+      "target": "store-checkout.html",
+      "type": "registry:page"
+    },
+    {
+      "path": "store.css",
+      "target": "store.css",
+      "type": "registry:style"
+    },
+    {
+      "path": "store.js",
+      "target": "store.js",
+      "type": "registry:script"
+    }
+  ]
+}
