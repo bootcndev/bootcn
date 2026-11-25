@@ -178,10 +178,15 @@ test('file manager: sort, search, select, delete, view and upload', async ({ pag
   await openPreview(page, 'file-manager');
   const files = page.getByRole('region', { name: 'Files' });
   const table = files.getByRole('table', { name: 'Files in Website' });
+  // page.evaluate, not locator.evaluateAll: in Playwright's Firefox an
+  // evaluateAll on these rows followed by a click crashes the page (a
+  // test-tool bug, not the component's).
   const names = () =>
-    table
-      .locator('[data-bootcn-files-item]')
-      .evaluateAll((rows) => rows.map((r) => r.getAttribute('data-name')));
+    page.evaluate(() =>
+      Array.from(document.querySelectorAll('[data-bootcn-files-item]')).map((r) =>
+        r.getAttribute('data-name'),
+      ),
+    );
   expect((await names()).slice(0, 2)).toEqual(['Brand assets', 'Invoices']);
 
   // Size, largest first: folders stay on top.
