@@ -1,0 +1,176 @@
+.bootcn-location-dot {
+  --bootcn-location-color: #2563eb;
+  position: relative;
+  display: inline-block;
+  width: 1.125rem;
+  height: 1.125rem;
+  border: 3px solid #fff;
+  border-radius: 9999px;
+  background-color: var(--bootcn-location-color);
+  box-shadow: 0 1px 4px rgb(0 0 0 / 0.3);
+}
+
+/* The pulse */
+.bootcn-location-dot::after {
+  position: absolute;
+  inset: -3px;
+  border-radius: inherit;
+  background-color: var(--bootcn-location-color);
+  content: '';
+  animation: bootcn-location-pulse 2s ease-out infinite;
+  pointer-events: none;
+}
+
+@keyframes bootcn-location-pulse {
+  from {
+    opacity: 0.6;
+    transform: scale(1);
+  }
+
+  to {
+    opacity: 0;
+    transform: scale(3.2);
+  }
+}
+
+/* How precise the position is: a translucent circle around the dot. */
+.bootcn-location-dot__accuracy {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: var(--bootcn-location-accuracy, 4rem);
+  height: var(--bootcn-location-accuracy, 4rem);
+  border: 1px solid color-mix(in srgb, var(--bootcn-location-color) 40%, transparent);
+  border-radius: 9999px;
+  background-color: color-mix(in srgb, var(--bootcn-location-color) 12%, transparent);
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+}
+
+.bootcn-location-pin {
+  --bootcn-location-pin-color: var(--bootcn-primary);
+  --bootcn-location-pin-ink: var(--bootcn-primary-foreground);
+  position: relative;
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  animation: bootcn-location-drop 500ms cubic-bezier(0.34, 1.56, 0.64, 1) both;
+}
+
+/* The shadow on the ground under the pin. */
+.bootcn-location-pin::after {
+  width: 0.75rem;
+  height: 0.25rem;
+  margin-top: 0.125rem;
+  border-radius: 9999px;
+  background-color: rgb(0 0 0 / 0.25);
+  content: '';
+}
+
+.bootcn-location-pin__head {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.25rem;
+  height: 2.25rem;
+  border: 2px solid #fff;
+  border-radius: 9999px 9999px 9999px 0.25rem;
+  background-color: var(--bootcn-location-pin-color);
+  box-shadow: 0 2px 6px rgb(0 0 0 / 0.3);
+  color: var(--bootcn-location-pin-ink);
+  transform: rotate(-45deg);
+}
+
+.bootcn-location-pin__head > * {
+  transform: rotate(45deg);
+}
+
+.bootcn-location-pin__head .bootcn-icon {
+  width: 1rem;
+  height: 1rem;
+}
+
+.bootcn-location-pin--label .bootcn-location-pin__head {
+  width: auto;
+  height: 1.75rem;
+  padding: 0 0.625rem;
+  border-radius: 9999px;
+  color: #fff;
+  transform: none;
+}
+
+.bootcn-location-pin--label .bootcn-location-pin__head > * {
+  transform: none;
+}
+
+.bootcn-location-pin--label .bootcn-location-pin__head::after {
+  position: absolute;
+  bottom: 0.25rem;
+  left: 50%;
+  width: 0.625rem;
+  height: 0.625rem;
+  border-right: 2px solid #fff;
+  border-bottom: 2px solid #fff;
+  background-color: var(--bootcn-location-pin-color);
+  content: '';
+  transform: translateX(-50%) rotate(45deg);
+}
+
+.bootcn-location-pin__text {
+  position: relative;
+  z-index: 1;
+  font-size: 0.75rem;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+@keyframes bootcn-location-drop {
+  from {
+    opacity: 0;
+    transform: translateY(-1.5rem);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .bootcn-location-dot::after {
+    animation: none;
+    opacity: 0;
+  }
+
+  .bootcn-location-pin {
+    animation: none;
+  }
+}
+
+/* Preview layout only: a quiet map background. */
+.bootcn-location-pin-demo {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  gap: 3rem;
+  width: 26rem;
+  max-width: 100%;
+  height: 12rem;
+  padding: 2rem;
+  border: var(--bootcn-border-width) solid var(--bootcn-border-color);
+  border-radius: var(--bootcn-radius-lg);
+  background-color: var(--bootcn-muted);
+  background-image:
+    linear-gradient(
+      30deg,
+      transparent 47%,
+      var(--bootcn-background) 47%,
+      var(--bootcn-background) 53%,
+      transparent 53%
+    ),
+    linear-gradient(
+      120deg,
+      transparent 48%,
+      var(--bootcn-background) 48%,
+      var(--bootcn-background) 52%,
+      transparent 52%
+    );
+  background-size:
+    9rem 9rem,
+    6rem 6rem;
+}

@@ -6,6 +6,16 @@ each published version stays available under `/v/<version>/`) and the **CLI**
 
 ## Registry
 
+### 0.28.0
+
+- Social actions: a like button with a count and a pop animation, follow and
+  subscribe toggles (`aria-pressed`), compact counts (12.4K, with the exact
+  number for screen readers) and a "followed by" line.
+- Location pin: a "you are here" dot with an accuracy halo and a pulse,
+  map pins with an icon, a colour or a short label; plain CSS.
+- Audio player: play and pause, seek, previous and next, volume and mute,
+  and a playlist, over a native `<audio>` element.
+
 ### 0.27.0
 
 - Toaster: `Bootcn.toast()` with success, error, warning, info and loading

@@ -1,0 +1,33 @@
+{
+  "$schema": "../../schema/registry-item.schema.json",
+  "name": "social-actions",
+  "type": "registry:ui",
+  "title": "Social actions",
+  "description": "Like and follow buttons that keep their counts, compact numbers (12.4K subscribers) and a \"Followed by\" line with avatars.",
+  "version": "1.0.0",
+  "categories": ["actions"],
+  "dependencies": [],
+  "registryDependencies": ["avatar", "button"],
+  "compatibility": {
+    "bootstrap": "5.3",
+    "platform": ["Bootstrap CSS"]
+  },
+  "license": "MIT",
+  "files": [
+    {
+      "path": "social-actions.html",
+      "target": "social-actions.html",
+      "type": "registry:component"
+    },
+    {
+      "path": "social-actions.css",
+      "target": "social-actions.css",
+      "type": "registry:style"
+    },
+    {
+      "path": "social-actions.js",
+      "target": "social-actions.js",
+      "type": "registry:script"
+    }
+  ]
+}

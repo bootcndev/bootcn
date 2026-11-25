@@ -1,0 +1,33 @@
+{
+  "$schema": "../../schema/registry-item.schema.json",
+  "name": "audio-player",
+  "type": "registry:ui",
+  "title": "Audio player",
+  "description": "A music player over the native audio element: play, pause, previous and next, a seek bar with times, volume and mute, and a playlist.",
+  "version": "1.0.0",
+  "categories": ["data-display"],
+  "dependencies": [],
+  "registryDependencies": [],
+  "compatibility": {
+    "bootstrap": "5.3",
+    "platform": ["Bootstrap CSS"]
+  },
+  "license": "MIT",
+  "files": [
+    {
+      "path": "audio-player.html",
+      "target": "audio-player.html",
+      "type": "registry:component"
+    },
+    {
+      "path": "audio-player.css",
+      "target": "audio-player.css",
+      "type": "registry:style"
+    },
+    {
+      "path": "audio-player.js",
+      "target": "audio-player.js",
+      "type": "registry:script"
+    }
+  ]
+}

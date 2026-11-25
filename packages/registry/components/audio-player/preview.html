@@ -1,0 +1,320 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Bootcn Audio player preview</title>
+    <script>
+      // Preview theme: ?theme=dark|light, else the docs page around the frame, else light.
+      (function () {
+        var theme = new URLSearchParams(location.search).get('theme');
+        if (!theme) {
+          try {
+            theme =
+              window.parent !== window &&
+              window.parent.document.documentElement.classList.contains('dark')
+                ? 'dark'
+                : 'light';
+          } catch (error) {
+            theme = 'light';
+          }
+        }
+        document.documentElement.setAttribute('data-bs-theme', theme === 'dark' ? 'dark' : 'light');
+        // ?dir=rtl: right to left, with Bootstrap's RTL stylesheet.
+        if (new URLSearchParams(location.search).get('dir') === 'rtl') {
+          document.documentElement.setAttribute('dir', 'rtl');
+          new MutationObserver(function (records, observer) {
+            var link = document.querySelector('link[href*="bootstrap.min.css"]');
+            if (!link) return;
+            link.href = link.href.replace('bootstrap.min.css', 'bootstrap.rtl.min.css');
+            observer.disconnect();
+          }).observe(document.documentElement, { childList: true, subtree: true });
+        }
+      })();
+    </script>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.9/dist/css/bootstrap.min.css"
+    />
+    <link rel="stylesheet" href="../../themes/tokens/tokens.css" />
+    <link rel="stylesheet" href="audio-player.css" />
+  </head>
+  <body>
+    <main class="container py-4">
+      <h1 class="h4 mb-4">Audio player</h1>
+      <section class="bootcn-audio" data-bootcn-audio aria-label="Audio player">
+        <audio preload="metadata"></audio>
+        <div class="bootcn-audio__now">
+          <span
+            class="bootcn-audio__cover"
+            style="--bootcn-audio-cover: linear-gradient(135deg, #2563eb, #8b5cf6)"
+            aria-hidden="true"
+            ><svg
+              class="bootcn-icon"
+              width="16"
+              height="16"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              aria-hidden="true"
+              focusable="false"
+            >
+              <path d="M9 18V5l12-2v13" />
+              <circle cx="6" cy="18" r="3" />
+              <circle cx="18" cy="16" r="3" /></svg
+          ></span>
+          <div class="bootcn-audio__meta">
+            <p class="bootcn-audio__title" data-bootcn-audio-title>Morning Light</p>
+            <p class="bootcn-audio__artist" data-bootcn-audio-artist>The Northwind Trio</p>
+          </div>
+        </div>
+        <div class="bootcn-audio__seek">
+          <span class="bootcn-audio__time" data-bootcn-audio-current aria-hidden="true">0:00</span>
+          <input
+            class="bootcn-audio__range"
+            type="range"
+            min="0"
+            max="100"
+            step="1"
+            value="0"
+            aria-label="Seek"
+            data-bootcn-audio-seek
+          />
+          <span class="bootcn-audio__time" data-bootcn-audio-duration aria-hidden="true">0:00</span>
+        </div>
+        <div class="bootcn-audio__controls">
+          <button
+            type="button"
+            class="bootcn-audio__button"
+            aria-label="Previous track"
+            data-bootcn-audio-prev
+          >
+            <svg
+              class="bootcn-icon"
+              width="16"
+              height="16"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              aria-hidden="true"
+              focusable="false"
+            >
+              <path d="M19 5 9 12l10 7z" fill="currentColor" />
+              <path d="M5 5v14" />
+            </svg>
+          </button>
+          <button
+            type="button"
+            class="bootcn-audio__button bootcn-audio__play"
+            aria-label="Play"
+            data-bootcn-audio-play
+          >
+            <svg
+              class="bootcn-icon bootcn-audio__play-icon"
+              width="16"
+              height="16"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              aria-hidden="true"
+              focusable="false"
+            >
+              <path d="M7 5v14l12-7z" fill="currentColor" />
+            </svg>
+            <svg
+              class="bootcn-icon bootcn-audio__pause-icon"
+              width="16"
+              height="16"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              aria-hidden="true"
+              focusable="false"
+            >
+              <rect x="6" y="5" width="4" height="14" rx="1" fill="currentColor" />
+              <rect x="14" y="5" width="4" height="14" rx="1" fill="currentColor" />
+            </svg>
+          </button>
+          <button
+            type="button"
+            class="bootcn-audio__button"
+            aria-label="Next track"
+            data-bootcn-audio-next
+          >
+            <svg
+              class="bootcn-icon"
+              width="16"
+              height="16"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              aria-hidden="true"
+              focusable="false"
+            >
+              <path d="m5 5 10 7-10 7z" fill="currentColor" />
+              <path d="M19 5v14" />
+            </svg>
+          </button>
+          <div class="bootcn-audio__volume">
+            <button
+              type="button"
+              class="bootcn-audio__button"
+              aria-label="Mute"
+              aria-pressed="false"
+              data-bootcn-audio-mute
+            >
+              <svg
+                class="bootcn-icon bootcn-audio__volume-icon"
+                width="16"
+                height="16"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+                focusable="false"
+              >
+                <path d="M11 5 6 9H2v6h4l5 4z" />
+                <path d="M15.5 8.5a5 5 0 0 1 0 7" />
+                <path d="M19 5a10 10 0 0 1 0 14" />
+              </svg>
+              <svg
+                class="bootcn-icon bootcn-audio__mute-icon"
+                width="16"
+                height="16"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+                focusable="false"
+              >
+                <path d="M11 5 6 9H2v6h4l5 4z" />
+                <path d="m22 9-6 6M16 9l6 6" />
+              </svg>
+            </button>
+            <input
+              class="bootcn-audio__range bootcn-audio__range--volume"
+              type="range"
+              min="0"
+              max="100"
+              step="5"
+              value="80"
+              aria-label="Volume"
+              data-bootcn-audio-volume
+            />
+          </div>
+        </div>
+        <ol class="bootcn-audio__playlist" aria-label="Playlist">
+          <li>
+            <button
+              type="button"
+              class="bootcn-audio__track"
+              data-src="media/morning-light.mp3"
+              data-title="Morning Light"
+              data-artist="The Northwind Trio"
+              data-cover="linear-gradient(135deg, #2563eb, #8b5cf6)"
+              aria-current="true"
+            >
+              <span class="bootcn-audio__track-number" aria-hidden="true">1</span>
+              <span class="bootcn-audio__track-title">Morning Light</span>
+              <span class="bootcn-audio__track-artist">The Northwind Trio</span>
+            </button>
+          </li>
+          <li>
+            <button
+              type="button"
+              class="bootcn-audio__track"
+              data-src="media/city-lines.mp3"
+              data-title="City Lines"
+              data-artist="Contoso Collective"
+              data-cover="linear-gradient(135deg, #0d9488, #2563eb)"
+            >
+              <span class="bootcn-audio__track-number" aria-hidden="true">2</span>
+              <span class="bootcn-audio__track-title">City Lines</span>
+              <span class="bootcn-audio__track-artist">Contoso Collective</span>
+            </button>
+          </li>
+          <li>
+            <button
+              type="button"
+              class="bootcn-audio__track"
+              data-src="media/slow-tide.mp3"
+              data-title="Slow Tide"
+              data-artist="Fabrikam Strings"
+              data-cover="linear-gradient(135deg, #f59e0b, #e11d48)"
+            >
+              <span class="bootcn-audio__track-number" aria-hidden="true">3</span>
+              <span class="bootcn-audio__track-title">Slow Tide</span>
+              <span class="bootcn-audio__track-artist">Fabrikam Strings</span>
+            </button>
+          </li>
+        </ol>
+      </section>
+    </main>
+    <script>
+      // Preview only: short generated melodies stand in for real MP3 files.
+      (function () {
+        function wav(notes, seconds) {
+          var rate = 8000;
+          var length = rate * seconds;
+          var data = new Uint8Array(44 + length);
+          var view = new DataView(data.buffer);
+          function text(offset, value) {
+            for (var i = 0; i < value.length; i += 1) data[offset + i] = value.charCodeAt(i);
+          }
+          text(0, 'RIFF');
+          view.setUint32(4, 36 + length, true);
+          text(8, 'WAVEfmt ');
+          view.setUint32(16, 16, true);
+          view.setUint16(20, 1, true);
+          view.setUint16(22, 1, true);
+          view.setUint32(24, rate, true);
+          view.setUint32(28, rate, true);
+          view.setUint16(32, 1, true);
+          view.setUint16(34, 8, true);
+          text(36, 'data');
+          view.setUint32(40, length, true);
+          for (var i = 0; i < length; i += 1) {
+            var note = notes[Math.floor((i / rate) * 2) % notes.length];
+            var fade = 1 - (((i / rate) * 2) % 1);
+            data[44 + i] = 128 + Math.round(Math.sin((2 * Math.PI * note * i) / rate) * 30 * fade);
+          }
+          return URL.createObjectURL(new Blob([data], { type: 'audio/wav' }));
+        }
+        var songs = [
+          [523, 659, 784, 659],
+          [392, 494, 587, 494],
+          [440, 554, 659, 554],
+        ];
+        document.addEventListener('DOMContentLoaded', function () {
+          document.querySelectorAll('.bootcn-audio__track').forEach(function (track, i) {
+            track.setAttribute('data-src', wav(songs[i % songs.length], 12 + i * 4));
+          });
+          var first = document.querySelector('.bootcn-audio__track');
+          document.querySelector('[data-bootcn-audio] audio').src = first.getAttribute('data-src');
+        });
+      })();
+    </script>
+    <script src="audio-player.js"></script>
+  </body>
+</html>

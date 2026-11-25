@@ -1,0 +1,228 @@
+<section class="bootcn-audio" data-bootcn-audio aria-label="Audio player">
+  <audio preload="metadata" src="media/morning-light.mp3"></audio>
+  <div class="bootcn-audio__now">
+    <span
+      class="bootcn-audio__cover"
+      style="--bootcn-audio-cover: linear-gradient(135deg, #2563eb, #8b5cf6)"
+      aria-hidden="true"
+      ><svg
+        class="bootcn-icon"
+        width="16"
+        height="16"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        aria-hidden="true"
+        focusable="false"
+      >
+        <path d="M9 18V5l12-2v13" />
+        <circle cx="6" cy="18" r="3" />
+        <circle cx="18" cy="16" r="3" /></svg
+    ></span>
+    <div class="bootcn-audio__meta">
+      <p class="bootcn-audio__title" data-bootcn-audio-title>Morning Light</p>
+      <p class="bootcn-audio__artist" data-bootcn-audio-artist>The Northwind Trio</p>
+    </div>
+  </div>
+  <div class="bootcn-audio__seek">
+    <span class="bootcn-audio__time" data-bootcn-audio-current aria-hidden="true">0:00</span>
+    <input
+      class="bootcn-audio__range"
+      type="range"
+      min="0"
+      max="100"
+      step="1"
+      value="0"
+      aria-label="Seek"
+      data-bootcn-audio-seek
+    />
+    <span class="bootcn-audio__time" data-bootcn-audio-duration aria-hidden="true">0:00</span>
+  </div>
+  <div class="bootcn-audio__controls">
+    <button
+      type="button"
+      class="bootcn-audio__button"
+      aria-label="Previous track"
+      data-bootcn-audio-prev
+    >
+      <svg
+        class="bootcn-icon"
+        width="16"
+        height="16"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        aria-hidden="true"
+        focusable="false"
+      >
+        <path d="M19 5 9 12l10 7z" fill="currentColor" />
+        <path d="M5 5v14" />
+      </svg>
+    </button>
+    <button
+      type="button"
+      class="bootcn-audio__button bootcn-audio__play"
+      aria-label="Play"
+      data-bootcn-audio-play
+    >
+      <svg
+        class="bootcn-icon bootcn-audio__play-icon"
+        width="16"
+        height="16"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        aria-hidden="true"
+        focusable="false"
+      >
+        <path d="M7 5v14l12-7z" fill="currentColor" />
+      </svg>
+      <svg
+        class="bootcn-icon bootcn-audio__pause-icon"
+        width="16"
+        height="16"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        aria-hidden="true"
+        focusable="false"
+      >
+        <rect x="6" y="5" width="4" height="14" rx="1" fill="currentColor" />
+        <rect x="14" y="5" width="4" height="14" rx="1" fill="currentColor" />
+      </svg>
+    </button>
+    <button
+      type="button"
+      class="bootcn-audio__button"
+      aria-label="Next track"
+      data-bootcn-audio-next
+    >
+      <svg
+        class="bootcn-icon"
+        width="16"
+        height="16"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        aria-hidden="true"
+        focusable="false"
+      >
+        <path d="m5 5 10 7-10 7z" fill="currentColor" />
+        <path d="M19 5v14" />
+      </svg>
+    </button>
+    <div class="bootcn-audio__volume">
+      <button
+        type="button"
+        class="bootcn-audio__button"
+        aria-label="Mute"
+        aria-pressed="false"
+        data-bootcn-audio-mute
+      >
+        <svg
+          class="bootcn-icon bootcn-audio__volume-icon"
+          width="16"
+          height="16"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          aria-hidden="true"
+          focusable="false"
+        >
+          <path d="M11 5 6 9H2v6h4l5 4z" />
+          <path d="M15.5 8.5a5 5 0 0 1 0 7" />
+          <path d="M19 5a10 10 0 0 1 0 14" />
+        </svg>
+        <svg
+          class="bootcn-icon bootcn-audio__mute-icon"
+          width="16"
+          height="16"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          aria-hidden="true"
+          focusable="false"
+        >
+          <path d="M11 5 6 9H2v6h4l5 4z" />
+          <path d="m22 9-6 6M16 9l6 6" />
+        </svg>
+      </button>
+      <input
+        class="bootcn-audio__range bootcn-audio__range--volume"
+        type="range"
+        min="0"
+        max="100"
+        step="5"
+        value="80"
+        aria-label="Volume"
+        data-bootcn-audio-volume
+      />
+    </div>
+  </div>
+  <ol class="bootcn-audio__playlist" aria-label="Playlist">
+    <li>
+      <button
+        type="button"
+        class="bootcn-audio__track"
+        data-src="media/morning-light.mp3"
+        data-title="Morning Light"
+        data-artist="The Northwind Trio"
+        data-cover="linear-gradient(135deg, #2563eb, #8b5cf6)"
+        aria-current="true"
+      >
+        <span class="bootcn-audio__track-number" aria-hidden="true">1</span>
+        <span class="bootcn-audio__track-title">Morning Light</span>
+        <span class="bootcn-audio__track-artist">The Northwind Trio</span>
+      </button>
+    </li>
+    <li>
+      <button
+        type="button"
+        class="bootcn-audio__track"
+        data-src="media/city-lines.mp3"
+        data-title="City Lines"
+        data-artist="Contoso Collective"
+        data-cover="linear-gradient(135deg, #0d9488, #2563eb)"
+      >
+        <span class="bootcn-audio__track-number" aria-hidden="true">2</span>
+        <span class="bootcn-audio__track-title">City Lines</span>
+        <span class="bootcn-audio__track-artist">Contoso Collective</span>
+      </button>
+    </li>
+    <li>
+      <button
+        type="button"
+        class="bootcn-audio__track"
+        data-src="media/slow-tide.mp3"
+        data-title="Slow Tide"
+        data-artist="Fabrikam Strings"
+        data-cover="linear-gradient(135deg, #f59e0b, #e11d48)"
+      >
+        <span class="bootcn-audio__track-number" aria-hidden="true">3</span>
+        <span class="bootcn-audio__track-title">Slow Tide</span>
+        <span class="bootcn-audio__track-artist">Fabrikam Strings</span>
+      </button>
+    </li>
+  </ol>
+</section>
