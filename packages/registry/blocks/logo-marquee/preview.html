@@ -1,0 +1,321 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Bootcn Logo marquee preview</title>
+    <script>
+      // Preview theme: ?theme=dark|light, else the docs page around the frame, else light.
+      (function () {
+        var theme = new URLSearchParams(location.search).get('theme');
+        if (!theme) {
+          try {
+            theme =
+              window.parent !== window &&
+              window.parent.document.documentElement.classList.contains('dark')
+                ? 'dark'
+                : 'light';
+          } catch (error) {
+            theme = 'light';
+          }
+        }
+        document.documentElement.setAttribute('data-bs-theme', theme === 'dark' ? 'dark' : 'light');
+        // ?dir=rtl: right to left, with Bootstrap's RTL stylesheet.
+        if (new URLSearchParams(location.search).get('dir') === 'rtl') {
+          document.documentElement.setAttribute('dir', 'rtl');
+          new MutationObserver(function (records, observer) {
+            var link = document.querySelector('link[href*="bootstrap.min.css"]');
+            if (!link) return;
+            link.href = link.href.replace('bootstrap.min.css', 'bootstrap.rtl.min.css');
+            observer.disconnect();
+          }).observe(document.documentElement, { childList: true, subtree: true });
+        }
+      })();
+    </script>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.9/dist/css/bootstrap.min.css"
+    />
+    <link rel="stylesheet" href="../../themes/tokens/tokens.css" />
+    <link rel="stylesheet" href="../../components/marquee/marquee.css" />
+    <link rel="stylesheet" href="logo-marquee.css" />
+  </head>
+  <body>
+    <main class="container py-4">
+      <h1 class="h4 mb-4">Logo marquee</h1>
+      <section class="bootcn-logo-marquee" aria-labelledby="bootcn-logo-marquee-title">
+        <h2 class="bootcn-logo-marquee__title" id="bootcn-logo-marquee-title">
+          Trusted by product teams at
+        </h2>
+        <section
+          class="bootcn-marquee bootcn-logo-marquee__strip"
+          data-bootcn-marquee
+          aria-label="Customer logos"
+        >
+          <div class="bootcn-marquee__viewport">
+            <ul class="bootcn-marquee__group">
+              <li class="bootcn-marquee__item">
+                <svg
+                  class="bootcn-icon bootcn-marquee__logo"
+                  width="16"
+                  height="16"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  aria-hidden="true"
+                  focusable="false"
+                >
+                  <path d="M12 2 21 7v10l-9 5-9-5V7z" />
+                </svg>
+                <span>Northwind</span>
+              </li>
+              <li class="bootcn-marquee__item">
+                <svg
+                  class="bootcn-icon bootcn-marquee__logo"
+                  width="16"
+                  height="16"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  aria-hidden="true"
+                  focusable="false"
+                >
+                  <circle cx="12" cy="12" r="9" />
+                </svg>
+                <span>Contoso</span>
+              </li>
+              <li class="bootcn-marquee__item">
+                <svg
+                  class="bootcn-icon bootcn-marquee__logo"
+                  width="16"
+                  height="16"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  aria-hidden="true"
+                  focusable="false"
+                >
+                  <path d="M12 3 22 20H2z" />
+                </svg>
+                <span>Fabrikam</span>
+              </li>
+              <li class="bootcn-marquee__item">
+                <svg
+                  class="bootcn-icon bootcn-marquee__logo"
+                  width="16"
+                  height="16"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  aria-hidden="true"
+                  focusable="false"
+                >
+                  <path d="M2 12c3-6 6-6 10 0s7 6 10 0" />
+                </svg>
+                <span>Tailspin</span>
+              </li>
+              <li class="bootcn-marquee__item">
+                <svg
+                  class="bootcn-icon bootcn-marquee__logo"
+                  width="16"
+                  height="16"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  aria-hidden="true"
+                  focusable="false"
+                >
+                  <path d="M12 2 22 12 12 22 2 12z" />
+                </svg>
+                <span>Litware</span>
+              </li>
+              <li class="bootcn-marquee__item">
+                <svg
+                  class="bootcn-icon bootcn-marquee__logo"
+                  width="16"
+                  height="16"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  aria-hidden="true"
+                  focusable="false"
+                >
+                  <rect x="4" y="4" width="16" height="16" rx="3" />
+                </svg>
+                <span>Proseware</span>
+              </li>
+            </ul>
+            <ul class="bootcn-marquee__group" aria-hidden="true">
+              <li class="bootcn-marquee__item">
+                <svg
+                  class="bootcn-icon bootcn-marquee__logo"
+                  width="16"
+                  height="16"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  aria-hidden="true"
+                  focusable="false"
+                >
+                  <path d="M12 2 21 7v10l-9 5-9-5V7z" />
+                </svg>
+                <span>Northwind</span>
+              </li>
+              <li class="bootcn-marquee__item">
+                <svg
+                  class="bootcn-icon bootcn-marquee__logo"
+                  width="16"
+                  height="16"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  aria-hidden="true"
+                  focusable="false"
+                >
+                  <circle cx="12" cy="12" r="9" />
+                </svg>
+                <span>Contoso</span>
+              </li>
+              <li class="bootcn-marquee__item">
+                <svg
+                  class="bootcn-icon bootcn-marquee__logo"
+                  width="16"
+                  height="16"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  aria-hidden="true"
+                  focusable="false"
+                >
+                  <path d="M12 3 22 20H2z" />
+                </svg>
+                <span>Fabrikam</span>
+              </li>
+              <li class="bootcn-marquee__item">
+                <svg
+                  class="bootcn-icon bootcn-marquee__logo"
+                  width="16"
+                  height="16"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  aria-hidden="true"
+                  focusable="false"
+                >
+                  <path d="M2 12c3-6 6-6 10 0s7 6 10 0" />
+                </svg>
+                <span>Tailspin</span>
+              </li>
+              <li class="bootcn-marquee__item">
+                <svg
+                  class="bootcn-icon bootcn-marquee__logo"
+                  width="16"
+                  height="16"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  aria-hidden="true"
+                  focusable="false"
+                >
+                  <path d="M12 2 22 12 12 22 2 12z" />
+                </svg>
+                <span>Litware</span>
+              </li>
+              <li class="bootcn-marquee__item">
+                <svg
+                  class="bootcn-icon bootcn-marquee__logo"
+                  width="16"
+                  height="16"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  aria-hidden="true"
+                  focusable="false"
+                >
+                  <rect x="4" y="4" width="16" height="16" rx="3" />
+                </svg>
+                <span>Proseware</span>
+              </li>
+            </ul>
+          </div>
+          <button
+            type="button"
+            class="bootcn-marquee__pause"
+            aria-pressed="false"
+            data-bootcn-marquee-pause
+          >
+            <svg
+              class="bootcn-icon bootcn-marquee__pause-icon"
+              width="16"
+              height="16"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              aria-hidden="true"
+              focusable="false"
+            >
+              <rect x="6" y="5" width="4" height="14" rx="1" />
+              <rect x="14" y="5" width="4" height="14" rx="1" />
+            </svg>
+            <svg
+              class="bootcn-icon bootcn-marquee__play-icon"
+              width="16"
+              height="16"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              aria-hidden="true"
+              focusable="false"
+            >
+              <path d="M7 5v14l12-7z" />
+            </svg>
+            <span class="visually-hidden">Pause</span>
+          </button>
+        </section>
+      </section>
+    </main>
+    <script src="../../components/marquee/marquee.js"></script>
+  </body>
+</html>

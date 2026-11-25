@@ -9,7 +9,7 @@ build with plain HTML and native PHP. Components are installed as editable
 HTML, CSS and JavaScript source files that you own. No React, Vue, jQuery,
 bundler or Node.js is required at runtime.
 
-> **Status:** early (0.x). 83 components, 39 blocks (authentication, dashboard, navigation, marketing, charts, AI chat), admin dashboard, analytics dashboard, landing page and settings templates and design
+> **Status:** early (0.x). 87 components, 40 blocks (authentication, dashboard, navigation, marketing, charts, AI chat), admin dashboard, analytics dashboard, landing page and settings templates and design
 > tokens, with a Tailwind-like look built on Bootstrap. The CLI is on
 > [npm](https://www.npmjs.com/package/bootcn); documentation, live previews and
 > the registry are at <https://bootcn.dev/>. News: [@bootcndev](https://x.com/bootcndev) on X.
@@ -47,6 +47,7 @@ the `<link>` and `<script>` tags to add to your layout.
 | `accordion`         | ui    | HTML, CSS     | Bootstrap CSS + JS bundle | —                                                         |
 | `alert-dialog`      | ui    | HTML, CSS, JS | Bootstrap CSS + JS bundle | `dialog`, `button`                                        |
 | `alert`             | ui    | HTML, CSS     | Bootstrap CSS + JS bundle | —                                                         |
+| `animated-button`   | ui    | HTML, CSS, JS | Bootstrap CSS             | `button`                                                  |
 | `aspect-ratio`      | ui    | HTML, CSS     | Bootstrap CSS             | —                                                         |
 | `autocomplete`      | ui    | HTML, CSS, JS | Bootstrap CSS             | `label`                                                   |
 | `avatar`            | ui    | HTML, CSS     | Bootstrap CSS             | —                                                         |
@@ -92,11 +93,14 @@ the `<link>` and `<script>` tags to add to your layout.
 | `label`             | ui    | HTML, CSS     | Bootstrap CSS             | `input`                                                   |
 | `link`              | ui    | HTML, CSS     | Bootstrap CSS             | —                                                         |
 | `listbox`           | ui    | HTML, CSS, JS | Bootstrap CSS             | `label`                                                   |
+| `loader`            | ui    | HTML, CSS     | Bootstrap CSS             | —                                                         |
+| `marquee`           | ui    | HTML, CSS, JS | Bootstrap CSS             | —                                                         |
 | `menubar`           | ui    | HTML, CSS, JS | Bootstrap CSS             | `dropdown`                                                |
 | `meter`             | ui    | HTML, CSS     | Bootstrap CSS             | —                                                         |
 | `navigation-menu`   | ui    | HTML, CSS     | Bootstrap CSS + JS bundle | —                                                         |
 | `number-field`      | ui    | HTML, CSS, JS | Bootstrap CSS             | `label`, `input`                                          |
 | `pagination`        | ui    | HTML, CSS     | Bootstrap CSS             | —                                                         |
+| `password-strength` | ui    | HTML, CSS, JS | Bootstrap CSS             | `label`, `input`                                          |
 | `popover`           | ui    | HTML, CSS, JS | Bootstrap CSS + JS bundle | `button`                                                  |
 | `progress-circle`   | ui    | HTML, CSS     | Bootstrap CSS             | —                                                         |
 | `progress`          | ui    | HTML, CSS     | Bootstrap CSS             | —                                                         |
@@ -164,6 +168,7 @@ pages. `bootcn add` installs the components a block or template uses.
 | `login-split`          | block    | HTML, CSS            | Bootstrap CSS             | `input`, `checkbox`, `button`                                                                                                                          |
 | `login-sso`            | block    | HTML, CSS            | Bootstrap CSS             | `card`, `input`, `button`, `separator`                                                                                                                 |
 | `logo-cloud`           | block    | HTML, CSS            | Bootstrap CSS             | —                                                                                                                                                      |
+| `logo-marquee`         | block    | HTML, CSS            | Bootstrap CSS             | `marquee`                                                                                                                                              |
 | `page-header`          | block    | HTML, CSS            | Bootstrap CSS             | `button`                                                                                                                                               |
 | `pricing-table`        | block    | HTML, CSS            | Bootstrap CSS             | `button`, `badge`                                                                                                                                      |
 | `sidebar-floating`     | block    | HTML, CSS            | Bootstrap CSS             | —                                                                                                                                                      |

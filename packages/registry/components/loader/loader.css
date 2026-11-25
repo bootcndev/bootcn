@@ -1,0 +1,171 @@
+.bootcn-loader {
+  --bootcn-loader-size: 0.5rem;
+  --bootcn-loader-color: var(--bootcn-muted-foreground);
+  display: inline-flex;
+  align-items: center;
+  gap: calc(var(--bootcn-loader-size) * 0.6);
+  color: var(--bootcn-loader-color);
+}
+
+.bootcn-loader--sm {
+  --bootcn-loader-size: 0.375rem;
+}
+
+.bootcn-loader--lg {
+  --bootcn-loader-size: 0.75rem;
+}
+
+/* Typing dots */
+.bootcn-loader__dot {
+  width: var(--bootcn-loader-size);
+  height: var(--bootcn-loader-size);
+  border-radius: 9999px;
+  background-color: currentColor;
+  animation: bootcn-loader-bounce 1.2s infinite ease-in-out;
+}
+
+.bootcn-loader__dot:nth-child(2) {
+  animation-delay: 0.15s;
+}
+
+.bootcn-loader__dot:nth-child(3) {
+  animation-delay: 0.3s;
+}
+
+@keyframes bootcn-loader-bounce {
+  0%,
+  80%,
+  100% {
+    opacity: 0.35;
+    transform: translateY(0);
+  }
+
+  40% {
+    opacity: 1;
+    transform: translateY(calc(var(--bootcn-loader-size) * -0.5));
+  }
+}
+
+/* Pulse */
+.bootcn-loader--pulse {
+  position: relative;
+  width: calc(var(--bootcn-loader-size) * 2.5);
+  height: calc(var(--bootcn-loader-size) * 2.5);
+}
+
+.bootcn-loader--pulse::before,
+.bootcn-loader--pulse::after {
+  position: absolute;
+  inset: 0;
+  border-radius: 9999px;
+  background-color: currentColor;
+  content: '';
+}
+
+.bootcn-loader--pulse::before {
+  inset: 25%;
+}
+
+.bootcn-loader--pulse::after {
+  opacity: 0.35;
+  animation: bootcn-loader-pulse 1.4s infinite ease-out;
+}
+
+@keyframes bootcn-loader-pulse {
+  from {
+    opacity: 0.5;
+    transform: scale(0.5);
+  }
+
+  to {
+    opacity: 0;
+    transform: scale(1.2);
+  }
+}
+
+/* Bars */
+.bootcn-loader--bars {
+  gap: calc(var(--bootcn-loader-size) * 0.35);
+  height: calc(var(--bootcn-loader-size) * 2.5);
+}
+
+.bootcn-loader__bar {
+  width: calc(var(--bootcn-loader-size) * 0.45);
+  height: 100%;
+  border-radius: 9999px;
+  background-color: currentColor;
+  animation: bootcn-loader-bars 1s infinite ease-in-out;
+}
+
+.bootcn-loader__bar:nth-child(2) {
+  animation-delay: 0.1s;
+}
+
+.bootcn-loader__bar:nth-child(3) {
+  animation-delay: 0.2s;
+}
+
+.bootcn-loader__bar:nth-child(4) {
+  animation-delay: 0.3s;
+}
+
+@keyframes bootcn-loader-bars {
+  0%,
+  100% {
+    transform: scaleY(0.4);
+  }
+
+  50% {
+    transform: scaleY(1);
+  }
+}
+
+/* Shimmering text: muted text with a moving highlight. */
+.bootcn-loader--text {
+  background: linear-gradient(
+      90deg,
+      var(--bootcn-muted-foreground) 0%,
+      var(--bootcn-muted-foreground) 40%,
+      var(--bootcn-foreground) 50%,
+      var(--bootcn-muted-foreground) 60%,
+      var(--bootcn-muted-foreground) 100%
+    )
+    0 0 / 300% 100%;
+  background-clip: text;
+  color: transparent;
+  font-size: 0.875rem;
+  font-weight: 500;
+  animation: bootcn-loader-shimmer 2s infinite linear;
+}
+
+@keyframes bootcn-loader-shimmer {
+  from {
+    background-position: 100% 0;
+  }
+
+  to {
+    background-position: 0 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .bootcn-loader__dot,
+  .bootcn-loader__bar,
+  .bootcn-loader--pulse::after,
+  .bootcn-loader--text {
+    animation: none;
+  }
+
+  .bootcn-loader--text {
+    color: var(--bootcn-muted-foreground);
+    background: none;
+  }
+}
+
+/* Preview layout only. */
+.bootcn-loader-demo {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 2rem;
+}

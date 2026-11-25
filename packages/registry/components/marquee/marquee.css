@@ -1,0 +1,129 @@
+.bootcn-marquee {
+  --bootcn-marquee-duration: 30s;
+  --bootcn-marquee-gap: 3rem;
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 40rem;
+  max-width: 100%;
+}
+
+.bootcn-marquee__viewport {
+  display: flex;
+  flex: 1;
+  gap: var(--bootcn-marquee-gap);
+  min-width: 0;
+  overflow: hidden;
+  mask-image: linear-gradient(90deg, transparent, #000 10%, #000 90%, transparent);
+}
+
+.bootcn-marquee__group {
+  display: flex;
+  flex: none;
+  align-items: center;
+  gap: var(--bootcn-marquee-gap);
+  min-width: 100%;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  animation: bootcn-marquee var(--bootcn-marquee-duration) linear infinite;
+}
+
+/* Paused while pointed at, while it holds focus, or with the button. */
+.bootcn-marquee:hover .bootcn-marquee__group,
+.bootcn-marquee:focus-within .bootcn-marquee__group,
+.bootcn-marquee.is-paused .bootcn-marquee__group {
+  animation-play-state: paused;
+}
+
+.bootcn-marquee--reverse .bootcn-marquee__group {
+  animation-direction: reverse;
+}
+
+@keyframes bootcn-marquee {
+  to {
+    transform: translateX(calc(-100% - var(--bootcn-marquee-gap)));
+  }
+}
+
+[dir='rtl'] .bootcn-marquee__group {
+  animation-name: bootcn-marquee-rtl;
+}
+
+@keyframes bootcn-marquee-rtl {
+  to {
+    transform: translateX(calc(100% + var(--bootcn-marquee-gap)));
+  }
+}
+
+.bootcn-marquee__item {
+  display: inline-flex;
+  flex: none;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--bootcn-muted-foreground);
+  font-size: 1.125rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  white-space: nowrap;
+}
+
+.bootcn-marquee__logo {
+  width: 1.5rem;
+  height: 1.5rem;
+}
+
+.bootcn-marquee__pause {
+  display: inline-flex;
+  flex: none;
+  align-items: center;
+  justify-content: center;
+  width: 2rem;
+  height: 2rem;
+  margin-inline-start: 0.5rem;
+  border: var(--bootcn-border-width) solid var(--bootcn-border-color);
+  border-radius: 9999px;
+  background-color: var(--bootcn-background);
+  color: var(--bootcn-muted-foreground);
+}
+
+.bootcn-marquee__pause:hover {
+  background-color: var(--bootcn-accent);
+  color: var(--bootcn-foreground);
+}
+
+.bootcn-marquee__pause:focus-visible {
+  outline: 0;
+  box-shadow: var(--bootcn-focus-ring);
+}
+
+.bootcn-marquee__play-icon,
+.bootcn-marquee__pause[aria-pressed='true'] .bootcn-marquee__pause-icon {
+  display: none;
+}
+
+.bootcn-marquee__pause[aria-pressed='true'] .bootcn-marquee__play-icon {
+  display: inline-block;
+}
+
+/* Reduced motion: no movement; the items wrap instead, and the copy and the
+   button are not needed. */
+@media (prefers-reduced-motion: reduce) {
+  .bootcn-marquee__viewport {
+    flex-wrap: wrap;
+    justify-content: center;
+    mask-image: none;
+  }
+
+  .bootcn-marquee__group {
+    flex-wrap: wrap;
+    justify-content: center;
+    min-width: 0;
+    animation: none;
+  }
+
+  .bootcn-marquee__group[aria-hidden='true'],
+  .bootcn-marquee__pause {
+    display: none;
+  }
+}

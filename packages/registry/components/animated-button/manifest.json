@@ -1,0 +1,33 @@
+{
+  "$schema": "../../schema/registry-item.schema.json",
+  "name": "animated-button",
+  "type": "registry:ui",
+  "title": "Animated button",
+  "description": "Button effects for calls to action: a shimmer sweep, a glowing animated border, a ripple on click and a press effect.",
+  "version": "1.0.0",
+  "categories": ["actions"],
+  "dependencies": [],
+  "registryDependencies": ["button"],
+  "compatibility": {
+    "bootstrap": "5.3",
+    "platform": ["Bootstrap CSS"]
+  },
+  "license": "MIT",
+  "files": [
+    {
+      "path": "animated-button.html",
+      "target": "animated-button.html",
+      "type": "registry:component"
+    },
+    {
+      "path": "animated-button.css",
+      "target": "animated-button.css",
+      "type": "registry:style"
+    },
+    {
+      "path": "animated-button.js",
+      "target": "animated-button.js",
+      "type": "registry:script"
+    }
+  ]
+}

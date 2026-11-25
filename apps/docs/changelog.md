@@ -6,6 +6,14 @@ each published version stays available under `/v/<version>/`) and the **CLI**
 
 ## Registry
 
+### 0.24.0
+
+- Password strength (meter, live rule checklist, show/hide, blocks weak
+  passwords in forms), Loader (typing dots, pulse, bars, "Thinking…"),
+  Marquee (pauses on hover, focus or its button) and Animated button
+  (shimmer, glowing border, ripple, press and nudge).
+- Block: Logo marquee.
+
 ### 0.23.0
 
 - Translations: messages written by component scripts (announcements,

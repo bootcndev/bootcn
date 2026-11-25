@@ -1,0 +1,144 @@
+.bootcn-button--shimmer,
+.bootcn-button--glow,
+[data-bootcn-ripple] {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+}
+
+/* Shimmer: a light band sweeps across every few seconds. */
+.bootcn-button--shimmer::after {
+  position: absolute;
+  z-index: -1;
+  inset: 0;
+  background: linear-gradient(
+    110deg,
+    transparent 25%,
+    rgb(255 255 255 / 0.35) 45%,
+    rgb(255 255 255 / 0.35) 55%,
+    transparent 75%
+  );
+  content: '';
+  transform: translateX(-100%);
+  animation: bootcn-button-shimmer 3s infinite;
+}
+
+[data-bs-theme='dark'] .bootcn-button--shimmer::after {
+  background: linear-gradient(110deg, transparent 25%, rgb(0 0 0 / 0.18) 50%, transparent 75%);
+}
+
+@keyframes bootcn-button-shimmer {
+  0%,
+  60% {
+    transform: translateX(-100%);
+  }
+
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+/* Glow: a rotating gradient shows only as a border around the button. */
+.bootcn-button--glow {
+  border-color: transparent;
+}
+
+.bootcn-button--glow::before {
+  position: absolute;
+  z-index: -2;
+  inset: -100%;
+  background: conic-gradient(
+    from 0deg,
+    transparent 0deg,
+    #8b5cf6 60deg,
+    #06b6d4 120deg,
+    transparent 180deg,
+    transparent 360deg
+  );
+  content: '';
+  animation: bootcn-button-spin 4s linear infinite;
+}
+
+.bootcn-button--glow::after {
+  position: absolute;
+  z-index: -1;
+  inset: 1.5px;
+  border-radius: calc(var(--bs-btn-border-radius, var(--bootcn-radius)) - 1.5px);
+  background-color: var(--bootcn-background);
+  content: '';
+}
+
+@keyframes bootcn-button-spin {
+  to {
+    transform: rotate(1turn);
+  }
+}
+
+/* Press: a small give when pressed. */
+.bootcn-button--press {
+  transition: transform 100ms var(--bootcn-transition-timing);
+}
+
+.bootcn-button--press:active {
+  transform: scale(0.97);
+}
+
+/* Nudge: the icon moves towards where the link goes. */
+.bootcn-button--nudge .bootcn-icon {
+  transition: translate var(--bootcn-transition);
+}
+
+.bootcn-button--nudge:hover .bootcn-icon {
+  translate: 0.1875rem 0;
+}
+
+[dir='rtl'] .bootcn-button--nudge:hover .bootcn-icon {
+  translate: -0.1875rem 0;
+}
+
+/* Ripple (animated-button.js): a circle that grows from the click point. */
+.bootcn-ripple {
+  position: absolute;
+  z-index: -1;
+  border-radius: 9999px;
+  background-color: currentColor;
+  opacity: 0.25;
+  pointer-events: none;
+  transform: scale(0);
+  animation: bootcn-ripple 500ms ease-out forwards;
+}
+
+@keyframes bootcn-ripple {
+  to {
+    opacity: 0;
+    transform: scale(1);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .bootcn-button--shimmer::after,
+  .bootcn-button--glow::before,
+  .bootcn-ripple {
+    animation: none;
+  }
+
+  .bootcn-button--shimmer::after {
+    display: none;
+  }
+
+  .bootcn-button--press:active {
+    transform: none;
+  }
+
+  .bootcn-button--nudge:hover .bootcn-icon {
+    translate: none;
+  }
+}
+
+/* Preview layout only. */
+.bootcn-animated-button-demo {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 1rem;
+}

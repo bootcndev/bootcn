@@ -1,0 +1,28 @@
+{
+  "$schema": "../../schema/registry-item.schema.json",
+  "name": "loader",
+  "type": "registry:ui",
+  "title": "Loader",
+  "description": "Small loading indicators: typing dots, pulse, bars and a shimmering \"Thinking…\" text, in three sizes, still under reduced motion.",
+  "version": "1.0.0",
+  "categories": ["feedback"],
+  "dependencies": [],
+  "registryDependencies": [],
+  "compatibility": {
+    "bootstrap": "5.3",
+    "platform": ["Bootstrap CSS"]
+  },
+  "license": "MIT",
+  "files": [
+    {
+      "path": "loader.html",
+      "target": "loader.html",
+      "type": "registry:component"
+    },
+    {
+      "path": "loader.css",
+      "target": "loader.css",
+      "type": "registry:style"
+    }
+  ]
+}

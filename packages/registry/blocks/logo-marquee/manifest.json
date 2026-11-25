@@ -1,0 +1,28 @@
+{
+  "$schema": "../../schema/registry-item.schema.json",
+  "name": "logo-marquee",
+  "type": "registry:block",
+  "title": "Logo marquee",
+  "description": "Customer logos that scroll in a loop under a line of social proof, with a pause button.",
+  "version": "1.0.0",
+  "categories": ["marketing"],
+  "dependencies": [],
+  "registryDependencies": ["marquee"],
+  "compatibility": {
+    "bootstrap": "5.3",
+    "platform": ["Bootstrap CSS"]
+  },
+  "license": "MIT",
+  "files": [
+    {
+      "path": "logo-marquee.html",
+      "target": "logo-marquee.html",
+      "type": "registry:component"
+    },
+    {
+      "path": "logo-marquee.css",
+      "target": "logo-marquee.css",
+      "type": "registry:style"
+    }
+  ]
+}
