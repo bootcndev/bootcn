@@ -1,8 +1,8 @@
 {
   "$schema": "../../schema/registry-item.schema.json",
-  "name": "store",
+  "name": "ecommerce",
   "type": "registry:template",
-  "title": "Store",
+  "title": "E-commerce",
   "description": "An online shop in three pages: a catalogue with filters and sorting, a product page with gallery and options, and a one-page checkout, sharing a cart drawer that keeps its items between pages.",
   "version": "1.0.0",
   "categories": ["marketing"],
@@ -33,28 +33,28 @@
   "license": "MIT",
   "files": [
     {
-      "path": "store.html",
-      "target": "store.html",
+      "path": "ecommerce.html",
+      "target": "ecommerce.html",
       "type": "registry:page"
     },
     {
-      "path": "store-product.html",
-      "target": "store-product.html",
+      "path": "ecommerce-product.html",
+      "target": "ecommerce-product.html",
       "type": "registry:page"
     },
     {
-      "path": "store-checkout.html",
-      "target": "store-checkout.html",
+      "path": "ecommerce-checkout.html",
+      "target": "ecommerce-checkout.html",
       "type": "registry:page"
     },
     {
-      "path": "store.css",
-      "target": "store.css",
+      "path": "ecommerce.css",
+      "target": "ecommerce.css",
       "type": "registry:style"
     },
     {
-      "path": "store.js",
-      "target": "store.js",
+      "path": "ecommerce.js",
+      "target": "ecommerce.js",
       "type": "registry:script"
     }
   ]

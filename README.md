@@ -9,7 +9,7 @@ build with plain HTML and native PHP. Components are installed as editable
 HTML, CSS and JavaScript source files that you own. No React, Vue, jQuery,
 bundler or Node.js is required at runtime.
 
-> **Status:** early (0.x). 114 components, 48 blocks (authentication, dashboard, navigation, marketing, commerce, charts, AI chat), admin dashboard, analytics dashboard, landing page, settings and store templates and design
+> **Status:** early (0.x). 114 components, 48 blocks (authentication, dashboard, navigation, marketing, commerce, charts, AI chat), admin dashboard, analytics dashboard, landing page, settings and e-commerce templates and design
 > tokens, with a Tailwind-like look built on Bootstrap. The CLI is on
 > [npm](https://www.npmjs.com/package/bootcn); documentation, live previews and
 > the registry are at <https://bootcn.dev/>. News: [@bootcndev](https://x.com/bootcndev) on X.
@@ -220,9 +220,9 @@ pages. `bootcn add` installs the components a block or template uses.
 | `user-menu`            | block    | HTML, CSS            | Bootstrap CSS + JS bundle | `dropdown`, `avatar`                                                                                                                                                                                                     |
 | `admin-dashboard`      | template | page (HTML), CSS, JS | Bootstrap CSS + JS bundle | `app-sidebar`, `user-menu`, `page-header`, `stats-cards`, `activity-feed`, `transactions-table`                                                                                                                          |
 | `analytics-dashboard`  | template | page (HTML), CSS, JS | Bootstrap CSS + JS bundle | `sidebar`, `breadcrumb`, `date-picker`, `stats-cards`, `chart-area`, `chart-pie`, `chart-bar`, `chart-radial`, `data-table`, `button`                                                                                    |
+| `ecommerce`            | template | page (HTML), CSS, JS | Bootstrap CSS + JS bundle | `button`, `badge`, `breadcrumb`, `input`, `select`, `checkbox`, `radio-group`, `sheet`, `rating`, `variant-picker`, `product-card`, `cart`, `confetti`, `success-state`, `product-listing`, `product-detail`, `checkout` |
 | `landing-page`         | template | page (HTML), CSS, JS | Bootstrap CSS + JS bundle | `site-header`, `hero-section`, `logo-cloud`, `feature-grid`, `testimonials`, `pricing-table`, `faq-section`, `call-to-action`, `site-footer`, `button`                                                                   |
 | `settings-page`        | template | page (HTML), CSS, JS | Bootstrap CSS + JS bundle | `card`, `avatar`, `field`, `input`, `textarea`, `button`, `form`, `checkbox-group`, `switch`, `table`, `badge`, `alert-dialog`                                                                                           |
-| `store`                | template | page (HTML), CSS, JS | Bootstrap CSS + JS bundle | `button`, `badge`, `breadcrumb`, `input`, `select`, `checkbox`, `radio-group`, `sheet`, `rating`, `variant-picker`, `product-card`, `cart`, `confetti`, `success-state`, `product-listing`, `product-detail`, `checkout` |
 
 A template is installed as a page (`registry:page`) at the project root, or
 under `paths.pages` in `bootcn.json` (`public/` for PHP projects with a

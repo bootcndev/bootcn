@@ -23,7 +23,7 @@ The Commerce pack.
 - Product detail block: gallery, options, quantity, add to cart, details.
 - Checkout block: contact, address, shipping method and card details with
   formatting and checks, order summary with a discount code, confirmation.
-- Store template: catalogue, product page and checkout sharing one cart.
+- E-commerce template: catalogue, product page and checkout sharing one cart.
 
 ### 0.33.0
 

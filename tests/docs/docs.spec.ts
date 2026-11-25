@@ -608,12 +608,12 @@ test('home page live previews are centered on phones', async ({ page }) => {
   expect(Math.abs(gaps.left - gaps.right)).toBeLessThanOrEqual(2);
 });
 
-test('store template: the cart follows you from the catalogue to the checkout', async ({
+test('e-commerce template: the cart follows you from the catalogue to the checkout', async ({
   page,
 }) => {
   await page.setViewportSize({ width: 1280, height: 900 });
-  await page.goto('previews/templates/store/store.html');
-  await page.evaluate(() => localStorage.removeItem('acme-store-cart'));
+  await page.goto('previews/templates/ecommerce/ecommerce.html');
+  await page.evaluate(() => localStorage.removeItem('acme-ecommerce-cart'));
   await page.reload();
   await page.getByRole('button', { name: 'Add Studio Headphones to cart' }).click();
   await expect(page.getByRole('dialog', { name: /Your cart/ })).toBeVisible();
@@ -626,7 +626,7 @@ test('store template: the cart follows you from the catalogue to the checkout', 
   // $149 + 8% tax.
   await expect(page.locator('[data-bootcn-checkout-total]')).toHaveText('$160.92');
 
-  await page.goto('previews/templates/store/store-product.html');
+  await page.goto('previews/templates/ecommerce/ecommerce-product.html');
   await page.locator('label[for="bootcn-detail-size-l"]').click();
   await page.getByLabel('Quantity', { exact: true }).fill('2');
   await page.getByRole('button', { name: 'Add to cart' }).click();
@@ -635,11 +635,11 @@ test('store template: the cart follows you from the catalogue to the checkout', 
   await expect(page.locator('[data-bootcn-cart-count]').first()).toHaveText('3');
 });
 
-for (const pageName of ['store-product', 'store-checkout']) {
+for (const pageName of ['ecommerce-product', 'ecommerce-checkout']) {
   for (const theme of ['light', 'dark'] as const) {
-    test(`store template: ${pageName} has no axe violations in ${theme} mode`, async ({ page }) => {
+    test(`e-commerce template: ${pageName} has no axe violations in ${theme} mode`, async ({ page }) => {
       await page.addInitScript((t) => localStorage.setItem('bootcn-theme', t), theme);
-      await page.goto(`previews/templates/store/${pageName}.html`);
+      await page.goto(`previews/templates/ecommerce/${pageName}.html`);
       await expect(page.locator('html')).toHaveAttribute('data-bs-theme', theme);
       const results = await new AxeBuilder({ page }).analyze();
       expect(results.violations.map((v) => `${v.id}: ${v.help}`)).toEqual([]);

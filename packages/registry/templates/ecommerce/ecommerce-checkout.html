@@ -43,13 +43,13 @@
     <link rel="stylesheet" href="{{bootcn:css}}/product-listing.css" />
     <link rel="stylesheet" href="{{bootcn:css}}/product-detail.css" />
     <link rel="stylesheet" href="{{bootcn:css}}/checkout.css" />
-    <link rel="stylesheet" href="{{bootcn:css}}/store.css" />
+    <link rel="stylesheet" href="{{bootcn:css}}/ecommerce.css" />
   </head>
   <body>
     <a class="visually-hidden-focusable bootcn-skip" href="#main">Skip to content</a>
-    <header class="bootcn-store__header">
-      <div class="bootcn-store__bar">
-        <a class="bootcn-store__brand" href="store.html"
+    <header class="bootcn-ecommerce__header">
+      <div class="bootcn-ecommerce__bar">
+        <a class="bootcn-ecommerce__brand" href="ecommerce.html"
           ><svg
             class="bootcn-icon"
             width="20"
@@ -68,10 +68,10 @@
           </svg>
           Acme Goods</a
         >
-        <a class="bootcn-store__back" href="store.html">Continue shopping</a>
+        <a class="bootcn-ecommerce__back" href="ecommerce.html">Continue shopping</a>
       </div>
     </header>
-    <main id="main" class="bootcn-store__main">
+    <main id="main" class="bootcn-ecommerce__main">
       <section
         class="bootcn-checkout"
         data-bootcn-checkout
@@ -554,15 +554,15 @@
             emailed your receipt and will send tracking as soon as it ships.
           </p>
           <div class="bootcn-success__actions">
-            <a class="btn bootcn-button bootcn-button--default" href="store.html"
+            <a class="btn bootcn-button bootcn-button--default" href="ecommerce.html"
               >Continue shopping</a
             >
           </div>
         </div>
       </section>
     </main>
-    <footer class="bootcn-store__footer">
-      <div class="bootcn-store__footer-inner">
+    <footer class="bootcn-ecommerce__footer">
+      <div class="bootcn-ecommerce__footer-inner">
         <p>© Acme Goods. Prices include no shipping; taxes are worked out at checkout.</p>
         <ul>
           <li><a href="#shipping">Shipping</a></li>
@@ -580,7 +580,7 @@
       data-currency="USD"
       data-locale="en-US"
       data-free-shipping="100"
-      data-storage-key="acme-store-cart"
+      data-storage-key="acme-ecommerce-cart"
     >
       <div class="offcanvas-header">
         <h2 class="bootcn-cart__title" id="bootcn-cart-title">
@@ -633,7 +633,7 @@
           <p class="bootcn-cart__note">Shipping and taxes are worked out at checkout.</p>
           <a
             class="btn bootcn-button bootcn-button--default"
-            href="store-checkout.html"
+            href="ecommerce-checkout.html"
             data-bootcn-cart-checkout
             >Checkout</a
           >
@@ -657,6 +657,6 @@
     <script src="{{bootcn:js}}/confetti.js"></script>
     <script src="{{bootcn:js}}/success-state.js"></script>
     <script src="{{bootcn:js}}/checkout.js"></script>
-    <script src="{{bootcn:js}}/store.js"></script>
+    <script src="{{bootcn:js}}/ecommerce.js"></script>
   </body>
 </html>

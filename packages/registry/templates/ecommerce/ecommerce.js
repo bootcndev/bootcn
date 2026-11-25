@@ -1,5 +1,5 @@
 /*
- * Store: the dark mode toggle. The theme is set before the first
+ * E-commerce: the dark mode toggle. The theme is set before the first
  * paint by the inline script in <head>; this keeps the toggle in sync, saves
  * the choice, and follows the system setting until the user picks one.
  */
@@ -74,7 +74,7 @@
   }
 
   window.Bootcn = window.Bootcn || {};
-  window.Bootcn.store = { init: init, destroy: destroy, setTheme: setTheme };
+  window.Bootcn.ecommerce = { init: init, destroy: destroy, setTheme: setTheme };
 
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', init);
