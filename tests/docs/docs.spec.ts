@@ -566,3 +566,44 @@ test('the home page has structured data and the site has robots.txt', async ({ p
   expect(robots.ok()).toBe(true);
   expect(await robots.text()).toContain('Sitemap: https://bootcn.dev/sitemap.xml');
 });
+
+// Site pages on phones: decorations and tab rows must not make the page
+// scroll sideways.
+for (const path of [
+  '',
+  'components/',
+  'blocks/',
+  'templates/',
+  'themes/',
+  'charts/',
+  'guide/introduction',
+  'changelog',
+]) {
+  for (const width of [320, 375]) {
+    test(`site page /${path} has no horizontal overflow at ${width}px`, async ({ page }) => {
+      await page.setViewportSize({ width, height: 800 });
+      await page.goto(path);
+      await page.waitForLoadState('networkidle');
+      const overflow = await page.evaluate(
+        () => document.documentElement.scrollWidth - document.documentElement.clientWidth,
+      );
+      expect(overflow).toBeLessThanOrEqual(0);
+    });
+  }
+}
+
+test('home page live previews are centered on phones', async ({ page }) => {
+  await page.setViewportSize({ width: 375, height: 800 });
+  await page.goto('');
+  const card = page.locator('.bootcn-landing__live iframe').first();
+  await card.scrollIntoViewIfNeeded();
+  const frame = page.frameLocator('.bootcn-landing__live iframe').first();
+  await expect(frame.locator('.bootcn-docs-stage')).toBeAttached();
+  const gaps = await card.evaluate((el: HTMLIFrameElement) => {
+    const child = el.contentDocument!.querySelector('.bootcn-docs-stage')!.firstElementChild!;
+    const box = child.getBoundingClientRect();
+    return { left: box.left, right: el.clientWidth - box.right };
+  });
+  expect(gaps.left).toBeGreaterThan(0);
+  expect(Math.abs(gaps.left - gaps.right)).toBeLessThanOrEqual(2);
+});

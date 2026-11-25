@@ -76,7 +76,7 @@ const STRUCTURED_DATA = {
       license: 'https://opensource.org/licenses/MIT',
       programmingLanguage: ['HTML', 'CSS', 'JavaScript'],
       runtimePlatform: 'Bootstrap 5.3',
-      author: { '@type': 'Person', name: 'George Tsiros' },
+      author: { '@id': 'https://bootcn.dev/#organization' },
       publisher: { '@id': `${SITE_URL}/#organization` },
     },
   ],

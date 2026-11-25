@@ -88,7 +88,7 @@ const columns = [
     </div>
     <div class="bootcn-footer__bottom">
       <p>
-        © {{ year }} George Tsiros. Released under the
+        © {{ year }} Bootcn. Released under the
         <a
           href="https://github.com/bootcndev/bootcn/blob/main/LICENSE"
           target="_blank"

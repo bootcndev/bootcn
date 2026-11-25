@@ -31,6 +31,41 @@ const showcase = [
   { label: 'Settings', name: 'settings-page' },
 ];
 
+// Newest first: live previews, then links to the rest of the recent work.
+const latest = [
+  {
+    name: 'delivery-tracker',
+    kind: 'components',
+    title: 'Delivery tracker',
+    text: 'Live order tracking like a delivery app: the courier moves on the map, with arrival time and progress.',
+  },
+  {
+    name: 'video-player',
+    kind: 'components',
+    title: 'Video player',
+    text: 'Custom controls, captions, speed, picture in picture and YouTube-style keys.',
+  },
+  {
+    name: 'onboarding-flow',
+    kind: 'blocks',
+    title: 'Onboarding flow',
+    text: 'Three validated steps that end on a "You\'re all set" screen with confetti.',
+  },
+];
+
+const alsoNew = [
+  { text: 'Route tracker', href: '/components/route-tracker' },
+  { text: 'Product tour', href: '/components/tour' },
+  { text: 'Modal', href: '/components/modal' },
+  { text: 'Stepper', href: '/components/stepper' },
+  { text: 'Get-started checklist', href: '/components/onboarding-checklist' },
+  { text: 'Toaster', href: '/components/toaster' },
+  { text: 'Audio player', href: '/components/audio-player' },
+  { text: 'Social actions', href: '/components/social-actions' },
+  { text: 'Location pin', href: '/components/location-pin' },
+  { text: 'Choropleth map', href: '/components/choropleth' },
+];
+
 const live = [
   { name: 'calendar', title: 'Calendar', text: 'Keyboard grid, ranges, localized.' },
   { name: 'color-area', title: 'Color area', text: '2D picker with hue and hex.' },
@@ -100,9 +135,9 @@ const features = [
         width="64"
         height="64"
       />
-      <a class="bootcn-landing__pill" :href="withBase('/guide/laravel')">
+      <a class="bootcn-landing__pill" :href="withBase('/changelog')">
         <span class="bootcn-landing__pill-tag">New</span>
-        Laravel support and an MCP server for AI assistants
+        Delivery tracking, a video player and onboarding flows
         <span aria-hidden="true">→</span>
       </a>
       <h1 id="bootcn-landing-title" class="bootcn-landing__title">
@@ -167,6 +202,35 @@ const features = [
           </p>
         </template>
       </DocsTabs>
+    </section>
+
+    <section class="bootcn-landing__section" aria-labelledby="bootcn-landing-new">
+      <div class="bootcn-landing__heading">
+        <h2 id="bootcn-landing-new">New in Bootcn</h2>
+        <p>
+          Maps that move, media players and first-run flows, built the same way as everything else:
+          plain HTML, CSS and JavaScript you own.
+        </p>
+      </div>
+      <ul class="bootcn-landing__new">
+        <li v-for="item in latest" :key="item.name" class="bootcn-landing__card">
+          <ComponentPreview :name="item.name" :title="item.title" :kind="item.kind" bare />
+          <div class="bootcn-landing__card-text">
+            <h3>
+              <a :href="withBase(`/${item.kind}/${item.name}`)">{{ item.title }}</a><span
+                class="bootcn-landing__badge"
+                >New</span
+              >
+            </h3>
+            <p>{{ item.text }}</p>
+          </div>
+        </li>
+      </ul>
+      <ul class="bootcn-landing__also" aria-label="Also new">
+        <li v-for="link in alsoNew" :key="link.href">
+          <a :href="withBase(link.href)">{{ link.text }}</a>
+        </li>
+      </ul>
     </section>
 
     <section class="bootcn-landing__section" aria-labelledby="bootcn-landing-live">

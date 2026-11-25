@@ -67,11 +67,27 @@ body > main.container:first-child[data-bootcn-docs-center] {
   max-width: none;
   padding: 2.5rem 1.5rem;
 }
-/* One centered block as wide as its widest child (at least 20rem), so
+/* Narrow frames (phones): less padding, so components such as the calendar
+   fit and stay centered instead of running off the right edge. */
+@media (max-width: 420px) {
+  body > main.container:first-child[data-bootcn-docs-center] {
+    padding: 1.5rem 0.75rem;
+  }
+}
+@media (max-width: 300px) {
+  body > main.container:first-child[data-bootcn-docs-center] {
+    padding-inline: 0.25rem;
+  }
+}
+/* Children narrower than the stage (a calendar, a picker) sit in its middle. */
+.bootcn-docs-stage > * {
+  margin-inline: auto;
+}
+/* One centered block as wide as its widest child (at least 18rem), so
    full-width children such as separators and tables keep their width. */
 .bootcn-docs-stage {
   width: fit-content;
-  min-width: min(100%, 20rem);
+  min-width: min(100%, 18rem);
   max-width: 100%;
 }
 body > main.container:first-child[data-bootcn-docs-center] > h1:first-child,

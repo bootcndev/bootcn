@@ -159,17 +159,46 @@
   color: var(--vp-c-text-1) !important;
 }
 
-/* Search: a bordered "input" with placeholder text, as on ui.shadcn.com. */
+/* Search on phones: a plain icon button, like the menu button beside it. */
 .VPNavBarSearch .DocSearch-Button {
-  border: 1px solid var(--vp-c-divider);
+  width: 2.5rem;
+  height: 2.5rem;
+  margin: 0;
+  padding: 0;
+  justify-content: center;
+  border: 0;
   border-radius: var(--bootcn-docs-radius);
+  background: transparent;
+  color: var(--vp-c-text-1);
+}
+
+.VPNavBarSearch .DocSearch-Button:hover {
   background: var(--vp-c-bg-soft);
 }
 
+.VPNavBarSearch .DocSearch-Button .DocSearch-Search-Icon {
+  width: 1.125rem;
+  height: 1.125rem;
+  color: currentColor;
+}
+
+/* Wider screens: a bordered "input" with placeholder text, as on ui.shadcn.com. */
 @media (min-width: 768px) {
   .VPNavBarSearch .DocSearch-Button {
     width: 15rem;
+    height: 2.25rem;
+    padding: 0 0.75rem;
     justify-content: flex-start;
+    border: 1px solid var(--vp-c-divider);
+    background: var(--vp-c-bg-soft);
+  }
+
+  .VPNavBarSearch .DocSearch-Button:hover {
+    border-color: var(--vp-c-text-3);
+  }
+
+  .VPNavBarSearch .DocSearch-Button .DocSearch-Search-Icon {
+    color: var(--vp-c-text-2);
   }
 }
 
@@ -453,6 +482,18 @@
 .bootcn-tabs__tablist {
   display: flex;
   gap: 1.25rem;
+  /* Many tabs on a phone: they scroll in their row, not the whole page. */
+  min-width: 0;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+
+.bootcn-tabs__tablist::-webkit-scrollbar {
+  display: none;
+}
+
+.bootcn-tabs__tab {
+  flex: none;
 }
 
 .bootcn-tabs__tab {
@@ -906,6 +947,75 @@
   --bootcn-landing-accent: #c4b5fd;
 }
 
+/* Decorations reach the screen edges; anything wider is cut, not scrolled. */
+.VPPage:has(.bootcn-landing) {
+  overflow-x: clip;
+}
+
+/* What's new: a large live card beside two smaller ones. */
+.bootcn-landing__new {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.bootcn-landing__new > :first-child {
+  grid-row: span 2;
+}
+
+@media (max-width: 767.98px) {
+  .bootcn-landing__new {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .bootcn-landing__new > :first-child {
+    grid-row: auto;
+  }
+}
+
+.bootcn-landing__badge {
+  display: inline-block;
+  margin-inline-start: 0.375rem;
+  padding: 0.0625rem 0.4375rem;
+  border-radius: 9999px;
+  background-color: color-mix(in srgb, var(--bootcn-landing-accent) 14%, transparent);
+  color: var(--bootcn-landing-accent);
+  font-size: 0.6875rem;
+  font-weight: 600;
+  vertical-align: 0.125rem;
+}
+
+.bootcn-landing__also {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  justify-content: center;
+  margin: 1.5rem 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.bootcn-landing__also a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 2.25rem;
+  padding: 0.25rem 0.875rem;
+  border: 1px solid var(--vp-c-divider);
+  border-radius: 9999px;
+  color: var(--vp-c-text-1);
+  font-size: 0.875rem;
+  font-weight: 500;
+  text-decoration: none;
+}
+
+.bootcn-landing__also a:hover {
+  border-color: var(--vp-c-text-3);
+  background-color: var(--vp-c-bg-soft);
+}
+
 .bootcn-landing a:focus-visible,
 .bootcn-landing button:focus-visible,
 .bootcn-footer a:focus-visible {
@@ -929,7 +1039,8 @@
 .bootcn-landing__hero::before {
   position: absolute;
   z-index: -1;
-  inset: -3.5rem -50vw auto;
+  /* As wide as the screen, never wider: no sideways scroll on phones. */
+  inset: -3.5rem calc(50% - 50vw) auto;
   height: 32rem;
   background-image:
     linear-gradient(var(--vp-c-divider) 1px, transparent 1px),
