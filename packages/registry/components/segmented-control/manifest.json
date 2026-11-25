@@ -1,0 +1,28 @@
+{
+  "$schema": "../../schema/registry-item.schema.json",
+  "name": "segmented-control",
+  "type": "registry:ui",
+  "title": "Segmented control",
+  "description": "A row of mutually exclusive options in one rounded track, iOS style, built on native radio buttons.",
+  "version": "1.0.0",
+  "categories": ["forms"],
+  "dependencies": [],
+  "registryDependencies": [],
+  "compatibility": {
+    "bootstrap": "5.3",
+    "platform": ["Bootstrap CSS"]
+  },
+  "license": "MIT",
+  "files": [
+    {
+      "path": "segmented-control.html",
+      "target": "segmented-control.html",
+      "type": "registry:component"
+    },
+    {
+      "path": "segmented-control.css",
+      "target": "segmented-control.css",
+      "type": "registry:style"
+    }
+  ]
+}

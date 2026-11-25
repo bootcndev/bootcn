@@ -1,0 +1,184 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Bootcn Action sheet preview</title>
+    <script>
+      // Preview theme: ?theme=dark|light, else the docs page around the frame, else light.
+      (function () {
+        var theme = new URLSearchParams(location.search).get('theme');
+        if (!theme) {
+          try {
+            theme =
+              window.parent !== window &&
+              window.parent.document.documentElement.classList.contains('dark')
+                ? 'dark'
+                : 'light';
+          } catch (error) {
+            theme = 'light';
+          }
+        }
+        document.documentElement.setAttribute('data-bs-theme', theme === 'dark' ? 'dark' : 'light');
+        // ?dir=rtl: right to left, with Bootstrap's RTL stylesheet.
+        if (new URLSearchParams(location.search).get('dir') === 'rtl') {
+          document.documentElement.setAttribute('dir', 'rtl');
+          new MutationObserver(function (records, observer) {
+            var link = document.querySelector('link[href*="bootstrap.min.css"]');
+            if (!link) return;
+            link.href = link.href.replace('bootstrap.min.css', 'bootstrap.rtl.min.css');
+            observer.disconnect();
+          }).observe(document.documentElement, { childList: true, subtree: true });
+        }
+      })();
+    </script>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.9/dist/css/bootstrap.min.css"
+    />
+    <link rel="stylesheet" href="../../themes/tokens/tokens.css" />
+    <link rel="stylesheet" href="../button/button.css" />
+    <link rel="stylesheet" href="action-sheet.css" />
+  </head>
+  <body>
+    <main class="container py-4">
+      <h1 class="h4 mb-4">Action sheet</h1>
+      <button
+        type="button"
+        class="btn bootcn-button bootcn-button--outline"
+        data-bs-toggle="offcanvas"
+        data-bs-target="#bootcn-action-sheet"
+        aria-controls="bootcn-action-sheet"
+      >
+        <svg
+          class="bootcn-icon"
+          width="16"
+          height="16"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          aria-hidden="true"
+          focusable="false"
+        >
+          <path d="M12 3v12" />
+          <path d="m8 7 4-4 4 4" />
+          <path d="M20 14v5a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2v-5" />
+        </svg>
+        Share photo
+      </button>
+
+      <div
+        class="offcanvas offcanvas-bottom bootcn-action-sheet"
+        id="bootcn-action-sheet"
+        tabindex="-1"
+        aria-labelledby="bootcn-action-sheet-title"
+      >
+        <div class="bootcn-action-sheet__group">
+          <div class="bootcn-action-sheet__header">
+            <h2 class="bootcn-action-sheet__title" id="bootcn-action-sheet-title">Share photo</h2>
+            <p class="bootcn-action-sheet__description">Beach at sunset · 2.4 MB</p>
+          </div>
+          <ul class="bootcn-action-sheet__list">
+            <li>
+              <button type="button" class="bootcn-action-sheet__action" data-bs-dismiss="offcanvas">
+                <svg
+                  class="bootcn-icon"
+                  width="16"
+                  height="16"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  aria-hidden="true"
+                  focusable="false"
+                >
+                  <rect x="8" y="8" width="13" height="13" rx="2" />
+                  <path d="M16 8V5a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h3" />
+                </svg>
+                Copy link
+              </button>
+            </li>
+            <li>
+              <button type="button" class="bootcn-action-sheet__action" data-bs-dismiss="offcanvas">
+                <svg
+                  class="bootcn-icon"
+                  width="16"
+                  height="16"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  aria-hidden="true"
+                  focusable="false"
+                >
+                  <path d="M12 20h9" />
+                  <path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4z" />
+                </svg>
+                Edit
+              </button>
+            </li>
+            <li>
+              <button type="button" class="bootcn-action-sheet__action" data-bs-dismiss="offcanvas">
+                <svg
+                  class="bootcn-icon"
+                  width="16"
+                  height="16"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  aria-hidden="true"
+                  focusable="false"
+                >
+                  <path d="M12 4v12" />
+                  <path d="M7 11l5 5 5-5" />
+                  <path d="M5 20h14" />
+                </svg>
+                Save to files
+              </button>
+            </li>
+            <li>
+              <button
+                type="button"
+                class="bootcn-action-sheet__action bootcn-action-sheet__action--destructive"
+                data-bs-dismiss="offcanvas"
+              >
+                <svg
+                  class="bootcn-icon"
+                  width="16"
+                  height="16"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  aria-hidden="true"
+                  focusable="false"
+                >
+                  <path d="M3 6h18" />
+                  <path d="M8 6V4h8v2" />
+                  <path d="M19 6l-1 14H6L5 6" />
+                </svg>
+                Delete photo
+              </button>
+            </li>
+          </ul>
+        </div>
+        <button type="button" class="bootcn-action-sheet__cancel" data-bs-dismiss="offcanvas">
+          Cancel
+        </button>
+      </div>
+    </main>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.9/dist/js/bootstrap.bundle.min.js"></script>
+  </body>
+</html>

@@ -1,0 +1,261 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Bootcn Grouped list preview</title>
+    <script>
+      // Preview theme: ?theme=dark|light, else the docs page around the frame, else light.
+      (function () {
+        var theme = new URLSearchParams(location.search).get('theme');
+        if (!theme) {
+          try {
+            theme =
+              window.parent !== window &&
+              window.parent.document.documentElement.classList.contains('dark')
+                ? 'dark'
+                : 'light';
+          } catch (error) {
+            theme = 'light';
+          }
+        }
+        document.documentElement.setAttribute('data-bs-theme', theme === 'dark' ? 'dark' : 'light');
+        // ?dir=rtl: right to left, with Bootstrap's RTL stylesheet.
+        if (new URLSearchParams(location.search).get('dir') === 'rtl') {
+          document.documentElement.setAttribute('dir', 'rtl');
+          new MutationObserver(function (records, observer) {
+            var link = document.querySelector('link[href*="bootstrap.min.css"]');
+            if (!link) return;
+            link.href = link.href.replace('bootstrap.min.css', 'bootstrap.rtl.min.css');
+            observer.disconnect();
+          }).observe(document.documentElement, { childList: true, subtree: true });
+        }
+      })();
+    </script>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.9/dist/css/bootstrap.min.css"
+    />
+    <link rel="stylesheet" href="../../themes/tokens/tokens.css" />
+    <link rel="stylesheet" href="../switch/switch.css" />
+    <link rel="stylesheet" href="grouped-list.css" />
+  </head>
+  <body>
+    <main class="container py-4">
+      <h1 class="h4 mb-4">Grouped list</h1>
+      <div class="bootcn-grouped-list">
+        <section class="bootcn-grouped-list__section" aria-labelledby="bootcn-grouped-connectivity">
+          <h2 class="bootcn-grouped-list__heading" id="bootcn-grouped-connectivity">
+            Connectivity
+          </h2>
+          <ul class="bootcn-grouped-list__group">
+            <li>
+              <a class="bootcn-grouped-list__row" href="#">
+                <span
+                  class="bootcn-grouped-list__icon"
+                  style="--bootcn-grouped-icon: #2563eb"
+                  aria-hidden="true"
+                  ><svg
+                    class="bootcn-icon"
+                    width="16"
+                    height="16"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    aria-hidden="true"
+                    focusable="false"
+                  >
+                    <path d="M5 12.6a10 10 0 0 1 14 0" />
+                    <path d="M8.5 16.1a5 5 0 0 1 7 0" />
+                    <path d="M2 9a15 15 0 0 1 20 0" />
+                    <path d="M12 20h.01" /></svg
+                ></span>
+                <span class="bootcn-grouped-list__label">Wi-Fi</span>
+                <span class="bootcn-grouped-list__value">Office 5G</span>
+                <svg
+                  class="bootcn-icon bootcn-grouped-list__chevron bootcn-rtl-flip"
+                  width="16"
+                  height="16"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  aria-hidden="true"
+                  focusable="false"
+                >
+                  <path d="m9 18 6-6-6-6" />
+                </svg>
+              </a>
+            </li>
+            <li>
+              <div class="bootcn-grouped-list__row">
+                <span
+                  class="bootcn-grouped-list__icon"
+                  style="--bootcn-grouped-icon: #7c3aed"
+                  aria-hidden="true"
+                  ><svg
+                    class="bootcn-icon"
+                    width="16"
+                    height="16"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    aria-hidden="true"
+                    focusable="false"
+                  >
+                    <path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5z" /></svg
+                ></span>
+                <label class="bootcn-grouped-list__label" for="bootcn-grouped-dark"
+                  >Dark mode</label
+                >
+                <div class="form-check form-switch bootcn-switch bootcn-grouped-list__switch">
+                  <input
+                    class="form-check-input bootcn-switch__input"
+                    type="checkbox"
+                    role="switch"
+                    id="bootcn-grouped-dark"
+                    checked
+                  />
+                </div>
+              </div>
+            </li>
+            <li>
+              <a class="bootcn-grouped-list__row" href="#">
+                <span
+                  class="bootcn-grouped-list__icon"
+                  style="--bootcn-grouped-icon: #0d9488"
+                  aria-hidden="true"
+                  ><svg
+                    class="bootcn-icon"
+                    width="16"
+                    height="16"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    aria-hidden="true"
+                    focusable="false"
+                  >
+                    <circle cx="12" cy="12" r="9" />
+                    <path d="M3 12h18" />
+                    <path d="M12 3a14 14 0 0 1 0 18a14 14 0 0 1 0-18" /></svg
+                ></span>
+                <span class="bootcn-grouped-list__label">Language</span>
+                <span class="bootcn-grouped-list__value">English</span>
+                <svg
+                  class="bootcn-icon bootcn-grouped-list__chevron bootcn-rtl-flip"
+                  width="16"
+                  height="16"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  aria-hidden="true"
+                  focusable="false"
+                >
+                  <path d="m9 18 6-6-6-6" />
+                </svg>
+              </a>
+            </li>
+          </ul>
+        </section>
+        <section class="bootcn-grouped-list__section" aria-labelledby="bootcn-grouped-privacy">
+          <h2 class="bootcn-grouped-list__heading" id="bootcn-grouped-privacy">Privacy</h2>
+          <ul class="bootcn-grouped-list__group">
+            <li>
+              <div class="bootcn-grouped-list__row">
+                <span
+                  class="bootcn-grouped-list__icon"
+                  style="--bootcn-grouped-icon: #dc2626"
+                  aria-hidden="true"
+                  ><svg
+                    class="bootcn-icon"
+                    width="16"
+                    height="16"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    aria-hidden="true"
+                    focusable="false"
+                  >
+                    <path d="M6 8a6 6 0 1 1 12 0c0 7 3 9 3 9H3s3-2 3-9" />
+                    <path d="M10 21a2 2 0 0 0 4 0" /></svg
+                ></span>
+                <label class="bootcn-grouped-list__label" for="bootcn-grouped-notify"
+                  >Notifications</label
+                >
+                <div class="form-check form-switch bootcn-switch bootcn-grouped-list__switch">
+                  <input
+                    class="form-check-input bootcn-switch__input"
+                    type="checkbox"
+                    role="switch"
+                    id="bootcn-grouped-notify"
+                    checked
+                  />
+                </div>
+              </div>
+            </li>
+            <li>
+              <a class="bootcn-grouped-list__row" href="#">
+                <span
+                  class="bootcn-grouped-list__icon"
+                  style="--bootcn-grouped-icon: #4b5563"
+                  aria-hidden="true"
+                  ><svg
+                    class="bootcn-icon"
+                    width="16"
+                    height="16"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    aria-hidden="true"
+                    focusable="false"
+                  >
+                    <rect x="4" y="11" width="16" height="10" rx="2" />
+                    <path d="M8 11V7a4 4 0 0 1 8 0v4" /></svg
+                ></span>
+                <span class="bootcn-grouped-list__label">Passcode</span>
+                <svg
+                  class="bootcn-icon bootcn-grouped-list__chevron bootcn-rtl-flip"
+                  width="16"
+                  height="16"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  aria-hidden="true"
+                  focusable="false"
+                >
+                  <path d="m9 18 6-6-6-6" />
+                </svg>
+              </a>
+            </li>
+          </ul>
+          <p class="bootcn-grouped-list__footer">
+            Notifications include messages, mentions and reminders.
+          </p>
+        </section>
+      </div>
+    </main>
+  </body>
+</html>

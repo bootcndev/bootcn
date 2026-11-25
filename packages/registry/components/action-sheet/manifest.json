@@ -1,0 +1,28 @@
+{
+  "$schema": "../../schema/registry-item.schema.json",
+  "name": "action-sheet",
+  "type": "registry:ui",
+  "title": "Action sheet",
+  "description": "A menu of actions that slides up from the bottom, iOS style: a title, grouped actions, a destructive action and a separate Cancel.",
+  "version": "1.0.0",
+  "categories": ["overlays"],
+  "dependencies": [],
+  "registryDependencies": ["button"],
+  "compatibility": {
+    "bootstrap": "5.3",
+    "platform": ["Bootstrap CSS", "Bootstrap JS bundle"]
+  },
+  "license": "MIT",
+  "files": [
+    {
+      "path": "action-sheet.html",
+      "target": "action-sheet.html",
+      "type": "registry:component"
+    },
+    {
+      "path": "action-sheet.css",
+      "target": "action-sheet.css",
+      "type": "registry:style"
+    }
+  ]
+}

@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Bootcn Segmented control preview</title>
+    <script>
+      // Preview theme: ?theme=dark|light, else the docs page around the frame, else light.
+      (function () {
+        var theme = new URLSearchParams(location.search).get('theme');
+        if (!theme) {
+          try {
+            theme =
+              window.parent !== window &&
+              window.parent.document.documentElement.classList.contains('dark')
+                ? 'dark'
+                : 'light';
+          } catch (error) {
+            theme = 'light';
+          }
+        }
+        document.documentElement.setAttribute('data-bs-theme', theme === 'dark' ? 'dark' : 'light');
+        // ?dir=rtl: right to left, with Bootstrap's RTL stylesheet.
+        if (new URLSearchParams(location.search).get('dir') === 'rtl') {
+          document.documentElement.setAttribute('dir', 'rtl');
+          new MutationObserver(function (records, observer) {
+            var link = document.querySelector('link[href*="bootstrap.min.css"]');
+            if (!link) return;
+            link.href = link.href.replace('bootstrap.min.css', 'bootstrap.rtl.min.css');
+            observer.disconnect();
+          }).observe(document.documentElement, { childList: true, subtree: true });
+        }
+      })();
+    </script>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.9/dist/css/bootstrap.min.css"
+    />
+    <link rel="stylesheet" href="../../themes/tokens/tokens.css" />
+    <link rel="stylesheet" href="segmented-control.css" />
+  </head>
+  <body>
+    <main class="container py-4">
+      <h1 class="h4 mb-4">Segmented control</h1>
+      <fieldset class="bootcn-segmented">
+        <legend class="visually-hidden">Period</legend>
+        <input
+          class="bootcn-segmented__input"
+          type="radio"
+          name="period"
+          id="bootcn-segmented-period-day"
+          value="day"
+        />
+        <label class="bootcn-segmented__option" for="bootcn-segmented-period-day">Day</label>
+        <input
+          class="bootcn-segmented__input"
+          type="radio"
+          name="period"
+          id="bootcn-segmented-period-week"
+          value="week"
+          checked
+        />
+        <label class="bootcn-segmented__option" for="bootcn-segmented-period-week">Week</label>
+        <input
+          class="bootcn-segmented__input"
+          type="radio"
+          name="period"
+          id="bootcn-segmented-period-month"
+          value="month"
+        />
+        <label class="bootcn-segmented__option" for="bootcn-segmented-period-month">Month</label>
+        <input
+          class="bootcn-segmented__input"
+          type="radio"
+          name="period"
+          id="bootcn-segmented-period-year"
+          value="year"
+        />
+        <label class="bootcn-segmented__option" for="bootcn-segmented-period-year">Year</label>
+      </fieldset>
+
+      <fieldset class="bootcn-segmented bootcn-segmented--sm mt-3">
+        <legend class="visually-hidden">View</legend>
+        <input
+          class="bootcn-segmented__input"
+          type="radio"
+          name="view"
+          id="bootcn-segmented-view-list"
+          value="list"
+          checked
+        />
+        <label class="bootcn-segmented__option" for="bootcn-segmented-view-list">List</label>
+        <input
+          class="bootcn-segmented__input"
+          type="radio"
+          name="view"
+          id="bootcn-segmented-view-board"
+          value="board"
+        />
+        <label class="bootcn-segmented__option" for="bootcn-segmented-view-board">Board</label>
+      </fieldset>
+    </main>
+  </body>
+</html>
