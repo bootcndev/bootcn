@@ -1,0 +1,365 @@
+.bootcn-delivery {
+  --bootcn-delivery-height: 22rem;
+  --bootcn-delivery-color: #111827;
+  --bootcn-delivery-done: #16a34a;
+  overflow: hidden;
+  border: var(--bootcn-border-width) solid var(--bootcn-border-color);
+  border-radius: var(--bootcn-radius-xl);
+  background-color: var(--bootcn-background);
+  color: var(--bootcn-foreground);
+}
+
+[data-bs-theme='dark'] .bootcn-delivery {
+  --bootcn-delivery-color: #f3f4f6;
+}
+
+.bootcn-delivery__map {
+  position: relative;
+  overflow: hidden;
+  height: var(--bootcn-delivery-height);
+  background-color: var(--bootcn-muted);
+}
+
+.bootcn-delivery__view {
+  position: absolute;
+  inset: 0;
+  cursor: grab;
+  touch-action: none;
+  user-select: none;
+}
+
+.bootcn-delivery.is-dragging .bootcn-delivery__view {
+  cursor: grabbing;
+}
+
+.bootcn-delivery__tiles {
+  position: absolute;
+  inset: 0;
+}
+
+.bootcn-delivery__tile {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 256px;
+  height: 256px;
+  max-width: none;
+  pointer-events: none;
+}
+
+[data-bs-theme='dark'] .bootcn-delivery__tiles {
+  filter: invert(1) hue-rotate(180deg) brightness(0.9) contrast(0.9);
+}
+
+.bootcn-delivery__line {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+  pointer-events: none;
+}
+
+.bootcn-delivery__ahead,
+.bootcn-delivery__behind {
+  fill: none;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+/* The road ahead: solid and bold, like a ride app; behind: faded. */
+.bootcn-delivery__ahead {
+  stroke: var(--bootcn-delivery-color);
+  stroke-width: 5;
+}
+
+.bootcn-delivery__behind {
+  stroke: var(--bootcn-delivery-color);
+  stroke-dasharray: 2 8;
+  stroke-opacity: 0.45;
+  stroke-width: 4;
+}
+
+.bootcn-delivery__marker,
+.bootcn-delivery__courier {
+  position: absolute;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+}
+
+.bootcn-delivery__marker[hidden],
+.bootcn-delivery__courier[hidden] {
+  display: none;
+}
+
+/* Pins stand on their point. */
+.bootcn-delivery__marker .bootcn-location-pin {
+  position: absolute;
+  bottom: -0.375rem;
+  left: 0;
+  transform: translateX(-50%);
+}
+
+.bootcn-delivery__home {
+  --bootcn-location-pin-color: var(--bootcn-delivery-color);
+  --bootcn-location-pin-ink: var(--bootcn-background);
+}
+
+.bootcn-delivery__vehicle {
+  position: absolute;
+  top: -1.25rem;
+  left: -1.25rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  border: 3px solid #fff;
+  border-radius: 9999px;
+  background-color: #111827;
+  box-shadow: 0 2px 8px rgb(0 0 0 / 0.35);
+  color: #fff;
+}
+
+.bootcn-delivery__arrow {
+  transform: rotate(var(--bootcn-delivery-heading, 0deg));
+  transition: transform 400ms ease;
+}
+
+.bootcn-delivery__zoom {
+  position: absolute;
+  top: 0.75rem;
+  right: 0.75rem;
+  display: grid;
+  overflow: hidden;
+  border: var(--bootcn-border-width) solid var(--bootcn-border-color);
+  border-radius: var(--bootcn-radius);
+  background-color: var(--bootcn-background);
+  box-shadow: var(--bootcn-shadow-sm);
+}
+
+.bootcn-delivery__control {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.25rem;
+  height: 2.25rem;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: var(--bootcn-foreground);
+}
+
+.bootcn-delivery__control + .bootcn-delivery__control {
+  border-top: var(--bootcn-border-width) solid var(--bootcn-border-color);
+}
+
+.bootcn-delivery__control:hover {
+  background-color: var(--bootcn-accent);
+}
+
+.bootcn-delivery__control:focus-visible {
+  position: relative;
+  z-index: 1;
+  outline: 0;
+  box-shadow: inset var(--bootcn-focus-ring);
+}
+
+.bootcn-delivery__attribution {
+  position: absolute;
+  top: 0;
+  left: 0;
+  margin: 0;
+  padding: 0.125rem 0.375rem;
+  border-bottom-right-radius: var(--bootcn-radius-sm);
+  background-color: rgb(255 255 255 / 0.85);
+  color: #1f2937;
+  font-size: 0.6875rem;
+}
+
+.bootcn-delivery__attribution a {
+  color: inherit;
+}
+
+.bootcn-delivery__attribution[hidden] {
+  display: none;
+}
+
+/* The sheet: slides over the bottom of the map like a ride app's. */
+.bootcn-delivery__sheet {
+  position: relative;
+  display: grid;
+  gap: 1rem;
+  margin-top: -1.25rem;
+  padding: 0.75rem 1.25rem 1.25rem;
+  border-radius: var(--bootcn-radius-xl) var(--bootcn-radius-xl) 0 0;
+  background-color: var(--bootcn-background);
+  box-shadow: 0 -6px 16px rgb(0 0 0 / 0.08);
+}
+
+.bootcn-delivery__handle {
+  justify-self: center;
+  width: 2.5rem;
+  height: 0.25rem;
+  border-radius: 9999px;
+  background-color: var(--bootcn-border-color);
+}
+
+.bootcn-delivery__summary {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25rem 1rem;
+  align-items: flex-end;
+  justify-content: space-between;
+}
+
+.bootcn-delivery__summary p {
+  margin: 0;
+}
+
+.bootcn-delivery__state {
+  color: var(--bootcn-muted-foreground);
+  font-size: 0.875rem;
+  font-weight: 500;
+}
+
+.bootcn-delivery__eta {
+  font-size: 1.75rem;
+  font-weight: 700;
+  line-height: 1.15;
+  font-variant-numeric: tabular-nums;
+}
+
+.bootcn-delivery__detail {
+  display: grid;
+  color: var(--bootcn-muted-foreground);
+  font-size: 0.875rem;
+  text-align: end;
+}
+
+.bootcn-delivery__remaining:empty {
+  display: none;
+}
+
+/* Progress: one bar per step, labels under them. */
+.bootcn-delivery__steps {
+  display: grid;
+  grid-auto-columns: minmax(0, 1fr);
+  grid-auto-flow: column;
+  gap: 0.375rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.bootcn-delivery__steps li {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: 0.5rem 0.25rem;
+  align-items: start;
+  color: var(--bootcn-muted-foreground);
+  font-size: 0.75rem;
+  line-height: 1.3;
+}
+
+/* The bar above each label. */
+.bootcn-delivery__steps li::before {
+  grid-column: 1 / -1;
+  height: 0.25rem;
+  border-radius: 9999px;
+  background-color: var(--bootcn-muted);
+  content: '';
+}
+
+.bootcn-delivery__check {
+  display: none;
+  width: 0.875rem;
+  height: 0.875rem;
+  color: var(--bootcn-success-text);
+}
+
+.bootcn-delivery__steps li.is-done,
+.bootcn-delivery__steps li.is-current {
+  color: var(--bootcn-foreground);
+}
+
+.bootcn-delivery__steps li.is-done::before {
+  background-color: var(--bootcn-delivery-done);
+}
+
+.bootcn-delivery__steps li.is-done .bootcn-delivery__check {
+  display: inline;
+}
+
+.bootcn-delivery__steps li.is-current {
+  font-weight: 600;
+}
+
+/* The step in progress: a light that runs along its bar. */
+.bootcn-delivery__steps li.is-current::before {
+  background:
+    linear-gradient(90deg, transparent 0%, var(--bootcn-delivery-done) 50%, transparent 100%) 0 0 /
+      50% 100% no-repeat,
+    color-mix(in srgb, var(--bootcn-delivery-done) 30%, var(--bootcn-muted));
+  animation: bootcn-delivery-progress 1.4s ease-in-out infinite;
+}
+
+@keyframes bootcn-delivery-progress {
+  from {
+    background-position:
+      -100% 0,
+      0 0;
+  }
+
+  to {
+    background-position:
+      200% 0,
+      0 0;
+  }
+}
+
+.bootcn-delivery__courier-card {
+  display: flex;
+  gap: 0.75rem;
+  align-items: center;
+  padding-top: 1rem;
+  border-top: var(--bootcn-border-width) solid var(--bootcn-border-color);
+}
+
+.bootcn-delivery__who {
+  flex: 1;
+  min-width: 0;
+}
+
+.bootcn-delivery__who p,
+.bootcn-delivery__order {
+  margin: 0;
+}
+
+.bootcn-delivery__name {
+  font-weight: 600;
+}
+
+.bootcn-delivery__vehicle-info,
+.bootcn-delivery__order {
+  color: var(--bootcn-muted-foreground);
+  font-size: 0.875rem;
+}
+
+.bootcn-delivery .bootcn-button--icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 9999px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .bootcn-delivery__arrow {
+    transition: none;
+  }
+
+  .bootcn-delivery__steps li.is-current {
+    animation: none;
+  }
+}

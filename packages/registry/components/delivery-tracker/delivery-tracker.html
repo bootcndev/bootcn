@@ -1,0 +1,292 @@
+<section
+  class="bootcn-delivery"
+  data-bootcn-delivery
+  aria-label="Delivery tracking"
+  data-origin="40.7741,-73.9546"
+  data-destination="40.7807,-73.95464"
+  data-route="[[40.7741,-73.9546],[40.77815,-73.95318],[40.77906,-73.95575],[40.7807,-73.95464]]"
+  data-status="preparing"
+>
+  <div class="bootcn-delivery__map" dir="ltr">
+    <div
+      class="bootcn-delivery__view"
+      data-bootcn-delivery-view
+      role="img"
+      aria-label="Map with the courier, the restaurant and your address"
+    >
+      <div class="bootcn-delivery__tiles" data-bootcn-delivery-tiles></div>
+      <svg
+        class="bootcn-delivery__line"
+        data-bootcn-delivery-line
+        aria-hidden="true"
+        focusable="false"
+      >
+        <path class="bootcn-delivery__ahead" data-bootcn-delivery-ahead d="" />
+        <path class="bootcn-delivery__behind" data-bootcn-delivery-behind d="" />
+      </svg>
+      <span class="bootcn-delivery__marker" data-bootcn-delivery-origin hidden>
+        <span class="bootcn-location-pin"
+          ><span class="bootcn-location-pin__head"
+            ><svg
+              class="bootcn-icon"
+              width="16"
+              height="16"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              aria-hidden="true"
+              focusable="false"
+            >
+              <path d="M4 10v10h16V10" />
+              <path d="M2 10 4 4h16l2 6z" />
+              <path d="M10 20v-5h4v5" /></svg></span
+        ></span>
+      </span>
+      <span class="bootcn-delivery__marker" data-bootcn-delivery-destination hidden>
+        <span class="bootcn-location-pin bootcn-delivery__home"
+          ><span class="bootcn-location-pin__head"
+            ><svg
+              class="bootcn-icon"
+              width="16"
+              height="16"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              aria-hidden="true"
+              focusable="false"
+            >
+              <path d="m3 11 9-7 9 7" />
+              <path d="M5 10v10h14V10" /></svg></span
+        ></span>
+      </span>
+      <span class="bootcn-delivery__courier" data-bootcn-delivery-courier hidden>
+        <span class="bootcn-delivery__vehicle"
+          ><svg
+            class="bootcn-delivery__arrow"
+            width="20"
+            height="20"
+            viewBox="0 0 24 24"
+            aria-hidden="true"
+            focusable="false"
+          >
+            <path d="M12 2 20 21l-8-4.5L4 21z" fill="currentColor" /></svg
+        ></span>
+      </span>
+    </div>
+    <div class="bootcn-delivery__zoom">
+      <button
+        type="button"
+        class="bootcn-delivery__control"
+        aria-label="Zoom in"
+        data-bootcn-delivery-zoom-in
+      >
+        <svg
+          class="bootcn-icon"
+          width="16"
+          height="16"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          aria-hidden="true"
+          focusable="false"
+        >
+          <path d="M12 5v14M5 12h14" />
+        </svg>
+      </button>
+      <button
+        type="button"
+        class="bootcn-delivery__control"
+        aria-label="Zoom out"
+        data-bootcn-delivery-zoom-out
+      >
+        <svg
+          class="bootcn-icon"
+          width="16"
+          height="16"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          aria-hidden="true"
+          focusable="false"
+        >
+          <path d="M5 12h14" />
+        </svg>
+      </button>
+      <button
+        type="button"
+        class="bootcn-delivery__control"
+        aria-label="Show the courier and your address"
+        data-bootcn-delivery-fit
+      >
+        <svg
+          class="bootcn-icon"
+          width="16"
+          height="16"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          aria-hidden="true"
+          focusable="false"
+        >
+          <path
+            d="M8 3H5a2 2 0 0 0-2 2v3M21 8V5a2 2 0 0 0-2-2h-3M3 16v3a2 2 0 0 0 2 2h3M16 21h3a2 2 0 0 0 2-2v-3"
+          />
+        </svg>
+      </button>
+    </div>
+    <p class="bootcn-delivery__attribution" data-bootcn-delivery-attribution>
+      © <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors
+    </p>
+  </div>
+  <div class="bootcn-delivery__sheet">
+    <span class="bootcn-delivery__handle" aria-hidden="true"></span>
+    <div class="bootcn-delivery__summary">
+      <div>
+        <p class="bootcn-delivery__state" data-bootcn-delivery-state>Preparing your order</p>
+        <p class="bootcn-delivery__eta" data-bootcn-delivery-eta>25 min</p>
+      </div>
+      <p class="bootcn-delivery__detail">
+        <span data-bootcn-delivery-arrival>Arriving at 12:45</span>
+        <span class="bootcn-delivery__remaining" data-bootcn-delivery-remaining></span>
+      </p>
+    </div>
+    <ol class="bootcn-delivery__steps" aria-label="Order progress">
+      <li data-step="placed">
+        <svg
+          class="bootcn-icon bootcn-delivery__check"
+          width="16"
+          height="16"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          aria-hidden="true"
+          focusable="false"
+        >
+          <path d="M20 6 9 17l-5-5" /></svg
+        ><span data-step-label>Order placed</span>
+      </li>
+      <li data-step="preparing">
+        <svg
+          class="bootcn-icon bootcn-delivery__check"
+          width="16"
+          height="16"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          aria-hidden="true"
+          focusable="false"
+        >
+          <path d="M20 6 9 17l-5-5" /></svg
+        ><span data-step-label>Preparing your order</span>
+      </li>
+      <li data-step="on-the-way">
+        <svg
+          class="bootcn-icon bootcn-delivery__check"
+          width="16"
+          height="16"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          aria-hidden="true"
+          focusable="false"
+        >
+          <path d="M20 6 9 17l-5-5" /></svg
+        ><span data-step-label>On the way</span>
+      </li>
+      <li data-step="delivered">
+        <svg
+          class="bootcn-icon bootcn-delivery__check"
+          width="16"
+          height="16"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          aria-hidden="true"
+          focusable="false"
+        >
+          <path d="M20 6 9 17l-5-5" /></svg
+        ><span data-step-label>Delivered</span>
+      </li>
+    </ol>
+    <div class="bootcn-delivery__courier-card">
+      <span class="bootcn-avatar" role="img" aria-label="Marco Rossi">
+        <span class="bootcn-avatar__fallback" aria-hidden="true">MR</span>
+      </span>
+      <div class="bootcn-delivery__who">
+        <p class="bootcn-delivery__name">Marco Rossi</p>
+        <p class="bootcn-delivery__vehicle-info">Red scooter · 4KF 218</p>
+      </div>
+      <a
+        class="btn bootcn-button bootcn-button--outline bootcn-button--icon"
+        href="tel:+12125550142"
+        aria-label="Call Marco"
+        ><svg
+          class="bootcn-icon"
+          width="16"
+          height="16"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          aria-hidden="true"
+          focusable="false"
+        >
+          <path
+            d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"
+          /></svg
+      ></a>
+      <button
+        type="button"
+        class="btn bootcn-button bootcn-button--outline bootcn-button--icon"
+        aria-label="Message Marco"
+      >
+        <svg
+          class="bootcn-icon"
+          width="16"
+          height="16"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          aria-hidden="true"
+          focusable="false"
+        >
+          <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
+        </svg>
+      </button>
+    </div>
+    <p class="bootcn-delivery__order">Order #4821 from Acme Kitchen · 214 E 88th St</p>
+    <p class="visually-hidden" role="status" data-bootcn-delivery-status></p>
+  </div>
+</section>

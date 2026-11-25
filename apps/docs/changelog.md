@@ -6,6 +6,15 @@ each published version stays available under `/v/<version>/`) and the **CLI**
 
 ## Registry
 
+### 0.30.0
+
+- Delivery tracker: live order tracking like a delivery or ride app. The
+  courier glides along the map towards the address and turns the way it
+  moves; the road ahead is drawn bold and the road behind faded. A sheet
+  shows the arrival time (from the server, or estimated from the distance
+  left), the order progress, the courier and call/message buttons.
+  Positions come from `update()` or Server-Sent Events (`data-source`).
+
 ### 0.29.0
 
 - Route tracker: follows the device's position and draws the route on an

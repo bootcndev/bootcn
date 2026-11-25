@@ -1,0 +1,25 @@
+{
+  "$schema": "../../schema/registry-item.schema.json",
+  "name": "delivery-tracker",
+  "type": "registry:ui",
+  "title": "Delivery tracker",
+  "description": "Live order tracking like a delivery or ride app: the courier moves on the map towards your address, with arrival time, order progress and the courier's details in a sheet.",
+  "version": "1.0.0",
+  "categories": ["data-display"],
+  "dependencies": [],
+  "registryDependencies": ["avatar", "button", "location-pin"],
+  "compatibility": {
+    "bootstrap": "5.3",
+    "platform": ["Bootstrap CSS"]
+  },
+  "license": "MIT",
+  "files": [
+    {
+      "path": "delivery-tracker.html",
+      "target": "delivery-tracker.html",
+      "type": "registry:component"
+    },
+    { "path": "delivery-tracker.css", "target": "delivery-tracker.css", "type": "registry:style" },
+    { "path": "delivery-tracker.js", "target": "delivery-tracker.js", "type": "registry:script" }
+  ]
+}

@@ -11,6 +11,13 @@ const CDN_CSS = '**/bootstrap@5.3.9/dist/css/bootstrap.min.css';
 const CDN_RTL_CSS = '**/bootstrap@5.3.9/dist/css/bootstrap.rtl.min.css';
 const CDN_JS = '**/bootstrap@5.3.9/dist/js/bootstrap.bundle.min.js';
 
+// Map tiles are answered locally: tests never reach OpenStreetMap.
+const TILES = 'https://tile.openstreetmap.org/**';
+const PNG = Buffer.from(
+  'iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=',
+  'base64',
+);
+
 export type PreviewKind = 'components' | 'blocks';
 
 export function previewUrl(name: string, kind: PreviewKind = 'components'): string {
@@ -50,6 +57,9 @@ export async function openPreview(
       path: resolve(bootstrapRoot, 'js/bootstrap.bundle.min.js'),
       contentType: 'text/javascript',
     }),
+  );
+  await page.route(TILES, (route) =>
+    route.fulfill({ status: 200, contentType: 'image/png', body: PNG }),
   );
   await page.goto(previewUrl(name, kind) + query);
 }

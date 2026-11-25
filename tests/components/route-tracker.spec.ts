@@ -1,15 +1,10 @@
 /**
  * Route tracker: positions come from Playwright's simulated geolocation and
- * map tiles are answered locally, so nothing reaches OpenStreetMap.
+ * map tiles are answered locally (helpers.ts), so nothing reaches OpenStreetMap.
  */
 import { expect, test, type Page } from '@playwright/test';
 
 import { collectErrors, openPreview } from './helpers.js';
-
-const PNG = Buffer.from(
-  'iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=',
-  'base64',
-);
 
 type Api = {
   add: (root: Element, point: object) => boolean;
@@ -18,18 +13,18 @@ type Api = {
 };
 type W = { Bootcn: { routeTracker: Api } };
 
-async function stubTiles(page: Page): Promise<string[]> {
+// openPreview answers the tiles locally; this records which were asked for.
+function stubTiles(page: Page): string[] {
   const requested: string[] = [];
-  await page.route('https://tile.openstreetmap.org/**', (route) => {
-    requested.push(route.request().url());
-    return route.fulfill({ status: 200, contentType: 'image/png', body: PNG });
+  page.on('request', (request) => {
+    if (request.url().startsWith('https://tile.openstreetmap.org/')) requested.push(request.url());
   });
   return requested;
 }
 
 test('tracks positions, draws the line and reports the totals', async ({ page, context }) => {
   const errors = collectErrors(page);
-  const tiles = await stubTiles(page);
+  const tiles = stubTiles(page);
   await context.grantPermissions(['geolocation']);
   await context.setGeolocation({ latitude: 40.7812, longitude: -73.9665, accuracy: 10 });
   await openPreview(page, 'route-tracker');
@@ -61,8 +56,10 @@ test('tracks positions, draws the line and reports the totals', async ({ page, c
       ),
     )
     .toBe(4);
-  const d = await root.locator('.bootcn-route__trail').getAttribute('d');
-  expect(d).toMatch(/^M[\d.-]+ [\d.-]+(L[\d.-]+ [\d.-]+){3}$/);
+  await expect(root.locator('.bootcn-route__trail')).toHaveAttribute(
+    'd',
+    /^M[\d.-]+ [\d.-]+(L[\d.-]+ [\d.-]+){3}$/,
+  );
   await expect(root.locator('[data-bootcn-route-distance]')).toHaveText(/^33\d m$/);
 
   await root.getByRole('button', { name: 'Stop' }).click();
@@ -72,7 +69,7 @@ test('tracks positions, draws the line and reports the totals', async ({ page, c
 });
 
 test('filters vague and tiny moves, splits segments, exports GeoJSON', async ({ page }) => {
-  await stubTiles(page);
+  stubTiles(page);
   await openPreview(page, 'route-tracker');
   const root = page.locator('[data-bootcn-route]');
   const result = await root.evaluate((el) => {
@@ -108,7 +105,7 @@ test('filters vague and tiny moves, splits segments, exports GeoJSON', async ({ 
 });
 
 test('map controls: zoom, fit and drag to pan', async ({ page }) => {
-  const tiles = await stubTiles(page);
+  const tiles = stubTiles(page);
   await openPreview(page, 'route-tracker');
   await page.getByRole('button', { name: 'Replay a sample route' }).click();
   await expect(page.getByRole('button', { name: 'Replay a sample route' })).toBeEnabled({
