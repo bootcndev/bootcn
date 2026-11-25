@@ -1,0 +1,144 @@
+.bootcn-experience {
+  --bootcn-experience-logo-size: 3rem;
+  color: var(--bootcn-foreground);
+}
+
+.bootcn-experience__heading {
+  margin: 0 0 1.25rem;
+  font-size: 1.25rem;
+  font-weight: 600;
+}
+
+.bootcn-experience__list,
+.bootcn-experience__roles,
+.bootcn-experience__skills {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.bootcn-experience__company {
+  display: grid;
+  grid-template-columns: var(--bootcn-experience-logo-size) minmax(0, 1fr);
+  gap: 1rem;
+  padding-block: 1.25rem;
+}
+
+.bootcn-experience__company + .bootcn-experience__company {
+  border-top: var(--bootcn-border-width) solid var(--bootcn-border-color);
+}
+
+.bootcn-experience__company:first-child {
+  padding-top: 0;
+}
+
+.bootcn-experience__logo {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--bootcn-experience-logo-size);
+  height: var(--bootcn-experience-logo-size);
+  overflow: hidden;
+  border-radius: var(--bootcn-radius);
+  background-color: var(--bootcn-experience-logo, var(--bootcn-muted));
+  color: #fff;
+  font-size: 0.875rem;
+  font-weight: 700;
+}
+
+.bootcn-experience__logo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.bootcn-experience__body p {
+  margin: 0;
+}
+
+.bootcn-experience__org-name,
+.bootcn-experience__title {
+  margin: 0;
+  font-size: 1rem;
+  font-weight: 600;
+  line-height: 1.4;
+}
+
+.bootcn-experience__meta,
+.bootcn-experience__dates,
+.bootcn-experience__place {
+  color: var(--bootcn-muted-foreground);
+  font-size: 0.875rem;
+}
+
+.bootcn-experience__meta {
+  color: var(--bootcn-foreground);
+}
+
+.bootcn-experience__text {
+  margin-top: 0.5rem !important;
+  font-size: 0.875rem;
+  line-height: 1.55;
+}
+
+.bootcn-experience__skills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.375rem;
+  margin-top: 0.625rem;
+}
+
+.bootcn-experience__skills li {
+  padding: 0.125rem 0.5rem;
+  border: var(--bootcn-border-width) solid var(--bootcn-border-color);
+  border-radius: 9999px;
+  font-size: 0.75rem;
+  font-weight: 500;
+}
+
+/* Several roles at one company: a line joins them, a dot marks each. */
+.bootcn-experience__roles {
+  margin-top: 0.75rem;
+}
+
+.bootcn-experience__role {
+  position: relative;
+  padding-inline-start: 1.25rem;
+  padding-bottom: 1rem;
+}
+
+.bootcn-experience__role:last-child {
+  padding-bottom: 0;
+}
+
+.bootcn-experience__role::before {
+  position: absolute;
+  top: 0.4375rem;
+  inset-inline-start: 0;
+  width: 0.5rem;
+  height: 0.5rem;
+  border-radius: 9999px;
+  background-color: var(--bootcn-muted-foreground);
+  content: '';
+}
+
+.bootcn-experience__role:not(:last-child)::after {
+  position: absolute;
+  top: 1.125rem;
+  bottom: 0.25rem;
+  inset-inline-start: calc(0.25rem - 1px);
+  width: 2px;
+  border-radius: 9999px;
+  background-color: var(--bootcn-border-color);
+  content: '';
+}
+
+.bootcn-experience__role .bootcn-experience__title {
+  font-size: 0.9375rem;
+}
+
+@media (max-width: 575.98px) {
+  .bootcn-experience {
+    --bootcn-experience-logo-size: 2.5rem;
+  }
+}

@@ -1,0 +1,42 @@
+{
+  "$schema": "../../schema/registry-item.schema.json",
+  "name": "api-keys",
+  "type": "registry:block",
+  "title": "API keys",
+  "description": "API key management: a table of keys with permissions and last use, a dialog that creates a key and shows it once with a copy button, and revoking with confirmation.",
+  "version": "1.0.0",
+  "categories": ["dashboard", "forms"],
+  "dependencies": [],
+  "registryDependencies": [
+    "button",
+    "badge",
+    "table",
+    "input",
+    "select",
+    "dialog",
+    "modal",
+    "alert-dialog"
+  ],
+  "compatibility": {
+    "bootstrap": "5.3",
+    "platform": ["Bootstrap CSS", "Bootstrap JS bundle"]
+  },
+  "license": "MIT",
+  "files": [
+    {
+      "path": "api-keys.html",
+      "target": "api-keys.html",
+      "type": "registry:component"
+    },
+    {
+      "path": "api-keys.css",
+      "target": "api-keys.css",
+      "type": "registry:style"
+    },
+    {
+      "path": "api-keys.js",
+      "target": "api-keys.js",
+      "type": "registry:script"
+    }
+  ]
+}

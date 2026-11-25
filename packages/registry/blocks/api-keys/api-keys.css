@@ -1,0 +1,130 @@
+.bootcn-api-keys {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 1.25rem;
+  color: var(--bootcn-foreground);
+}
+
+.bootcn-api-keys__header {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+
+.bootcn-api-keys__header > div {
+  flex: 1 1 18rem;
+}
+
+.bootcn-api-keys__header .bootcn-button,
+.bootcn-api-keys .input-group .bootcn-button {
+  display: inline-flex;
+  gap: 0.375rem;
+  align-items: center;
+}
+
+.bootcn-api-keys__title {
+  margin: 0;
+  font-size: 1.25rem;
+  font-weight: 600;
+}
+
+.bootcn-api-keys__description,
+.bootcn-api-keys__hint {
+  margin: 0.25rem 0 0;
+  color: var(--bootcn-muted-foreground);
+  font-size: 0.875rem;
+}
+
+.bootcn-api-keys__table-wrap {
+  /* Keeps visually hidden text (absolutely positioned) inside the scroller. */
+  position: relative;
+  border: var(--bootcn-border-width) solid var(--bootcn-border-color);
+  border-radius: var(--bootcn-radius-lg);
+}
+
+.bootcn-api-keys__table-wrap:focus-visible {
+  outline: 0;
+  box-shadow: var(--bootcn-focus-ring);
+}
+
+.bootcn-api-keys__table {
+  margin: 0;
+  white-space: nowrap;
+}
+
+.bootcn-api-keys__table > :not(caption) > * > * {
+  padding: 0.75rem 1rem;
+  vertical-align: middle;
+}
+
+.bootcn-api-keys__table tbody tr:last-child > * {
+  border-bottom: 0;
+}
+
+.bootcn-api-keys__name {
+  font-weight: 500;
+}
+
+.bootcn-api-keys__key,
+.bootcn-api-keys__secret {
+  font-family: var(--bs-font-monospace);
+  font-size: 0.8125rem;
+}
+
+.bootcn-api-keys__key {
+  padding: 0.125rem 0.375rem;
+  border-radius: var(--bootcn-radius-sm);
+  background-color: var(--bootcn-muted);
+  color: var(--bootcn-foreground);
+}
+
+.bootcn-api-keys__empty td {
+  padding: 2rem 1rem !important;
+  color: var(--bootcn-muted-foreground);
+  text-align: center;
+  white-space: normal;
+}
+
+/* The "copy it now" warning. */
+.bootcn-api-keys__warning {
+  display: flex;
+  gap: 0.625rem;
+  align-items: flex-start;
+  padding: 0.75rem 0.875rem;
+  border: var(--bootcn-border-width) solid color-mix(in srgb, #d97706 45%, transparent);
+  border-radius: var(--bootcn-radius);
+  background-color: color-mix(in srgb, #f59e0b 12%, transparent);
+  font-size: 0.875rem;
+}
+
+.bootcn-api-keys__warning .bootcn-icon {
+  flex: none;
+  margin-top: 0.125rem;
+  color: #b45309;
+}
+
+[data-bs-theme='dark'] .bootcn-api-keys__warning .bootcn-icon {
+  color: #fbbf24;
+}
+
+.bootcn-api-keys__warning p {
+  margin: 0;
+}
+
+.bootcn-api-keys tr.is-new > * {
+  animation: bootcn-api-keys-new 1.6s ease;
+}
+
+@keyframes bootcn-api-keys-new {
+  from {
+    background-color: color-mix(in srgb, var(--bootcn-primary) 10%, transparent);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .bootcn-api-keys tr.is-new > * {
+    animation: none;
+  }
+}

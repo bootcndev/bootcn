@@ -1,0 +1,33 @@
+{
+  "$schema": "../../schema/registry-item.schema.json",
+  "name": "invoice",
+  "type": "registry:block",
+  "title": "Invoice",
+  "description": "An invoice page: brand, number and status, billing addresses and dates, line items with totals and VAT worked out from quantity and price, payment notes, and a clean printed or PDF version.",
+  "version": "1.0.0",
+  "categories": ["dashboard"],
+  "dependencies": [],
+  "registryDependencies": ["button", "badge", "table"],
+  "compatibility": {
+    "bootstrap": "5.3",
+    "platform": ["Bootstrap CSS"]
+  },
+  "license": "MIT",
+  "files": [
+    {
+      "path": "invoice.html",
+      "target": "invoice.html",
+      "type": "registry:component"
+    },
+    {
+      "path": "invoice.css",
+      "target": "invoice.css",
+      "type": "registry:style"
+    },
+    {
+      "path": "invoice.js",
+      "target": "invoice.js",
+      "type": "registry:script"
+    }
+  ]
+}

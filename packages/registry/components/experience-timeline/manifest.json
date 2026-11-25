@@ -1,0 +1,33 @@
+{
+  "$schema": "../../schema/registry-item.schema.json",
+  "name": "experience-timeline",
+  "type": "registry:ui",
+  "title": "Experience timeline",
+  "description": "Work history as on LinkedIn: company logos, roles with dates and durations (\"2 yrs 3 mos\"), several roles at one company joined by a line, locations, descriptions and skills.",
+  "version": "1.0.0",
+  "categories": ["data-display"],
+  "dependencies": [],
+  "registryDependencies": [],
+  "compatibility": {
+    "bootstrap": "5.3",
+    "platform": ["Bootstrap CSS"]
+  },
+  "license": "MIT",
+  "files": [
+    {
+      "path": "experience-timeline.html",
+      "target": "experience-timeline.html",
+      "type": "registry:component"
+    },
+    {
+      "path": "experience-timeline.css",
+      "target": "experience-timeline.css",
+      "type": "registry:style"
+    },
+    {
+      "path": "experience-timeline.js",
+      "target": "experience-timeline.js",
+      "type": "registry:script"
+    }
+  ]
+}
