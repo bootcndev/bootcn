@@ -1,0 +1,125 @@
+<div class="bootcn-pay-demo">
+  <div
+    class="bootcn-pay-card"
+    id="bootcn-pay-preview"
+    data-bootcn-pay-card
+    data-brand=""
+    aria-hidden="true"
+  >
+    <div class="bootcn-pay-card__inner">
+      <div class="bootcn-pay-card__face bootcn-pay-card__front">
+        <div class="bootcn-pay-card__top">
+          <span class="bootcn-pay-card__chip"></span>
+          <span class="bootcn-pay-card__brand" data-bootcn-pay-brand></span>
+        </div>
+        <span></span>
+        <p class="bootcn-pay-card__number" data-bootcn-pay-number>•••• •••• •••• ••••</p>
+        <div class="bootcn-pay-card__bottom">
+          <span
+            ><span class="bootcn-pay-card__label">Card holder</span
+            ><span class="bootcn-pay-card__name" data-bootcn-pay-name>Your name</span></span
+          >
+          <span
+            ><span class="bootcn-pay-card__label">Expires</span
+            ><span data-bootcn-pay-expiry>MM / YY</span></span
+          >
+        </div>
+      </div>
+      <div class="bootcn-pay-card__face bootcn-pay-card__back">
+        <div class="bootcn-pay-card__stripe"></div>
+        <div class="bootcn-pay-card__signature" data-bootcn-pay-cvc>•••</div>
+      </div>
+    </div>
+  </div>
+  <form class="bootcn-pay-form" data-bootcn-pay-form="bootcn-pay-preview" novalidate>
+    <div class="bootcn-pay-form__grid">
+      <div class="bootcn-field bootcn-pay-form__wide">
+        <label class="form-label bootcn-label" for="bootcn-pay-number">Card number</label>
+        <input
+          class="form-control bootcn-input"
+          id="bootcn-pay-number"
+          type="text"
+          name="card_number"
+          inputmode="numeric"
+          autocomplete="cc-number"
+          required
+          placeholder="1234 1234 1234 1234"
+          aria-describedby="bootcn-pay-number-error"
+        />
+        <div class="invalid-feedback" id="bootcn-pay-number-error">Check the card number.</div>
+      </div>
+      <div class="bootcn-field bootcn-pay-form__wide">
+        <label class="form-label bootcn-label" for="bootcn-pay-name">Name on card</label>
+        <input
+          class="form-control bootcn-input"
+          id="bootcn-pay-name"
+          type="text"
+          name="card_name"
+          autocomplete="cc-name"
+          required
+          aria-describedby="bootcn-pay-name-error"
+        />
+        <div class="invalid-feedback" id="bootcn-pay-name-error">
+          Enter the name as it appears on the card.
+        </div>
+      </div>
+      <div class="bootcn-field">
+        <label class="form-label bootcn-label" for="bootcn-pay-expiry">Expiry date</label>
+        <input
+          class="form-control bootcn-input"
+          id="bootcn-pay-expiry"
+          type="text"
+          name="card_expiry"
+          inputmode="numeric"
+          autocomplete="cc-exp"
+          required
+          placeholder="MM / YY"
+          aria-describedby="bootcn-pay-expiry-error"
+        />
+        <div class="invalid-feedback" id="bootcn-pay-expiry-error">
+          Enter a date in the future, as MM / YY.
+        </div>
+      </div>
+      <div class="bootcn-field">
+        <label class="form-label bootcn-label" for="bootcn-pay-cvc">Security code</label>
+        <input
+          class="form-control bootcn-input"
+          id="bootcn-pay-cvc"
+          type="text"
+          name="card_cvc"
+          inputmode="numeric"
+          autocomplete="cc-csc"
+          required
+          minlength="3"
+          maxlength="4"
+          placeholder="CVC"
+          aria-describedby="bootcn-pay-cvc-error"
+        />
+        <div class="invalid-feedback" id="bootcn-pay-cvc-error">
+          Enter the 3 or 4 digits on the card.
+        </div>
+      </div>
+    </div>
+    <p class="bootcn-pay-form__note">
+      <svg
+        class="bootcn-icon"
+        width="16"
+        height="16"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        aria-hidden="true"
+        focusable="false"
+      >
+        <rect x="4" y="11" width="16" height="10" rx="2" />
+        <path d="M8 11V7a4 4 0 0 1 8 0v4" />
+      </svg>
+      Card details go straight to the payment provider; this site keeps only the last four digits.
+    </p>
+    <button type="submit" class="btn bootcn-button bootcn-button--default">Add card</button>
+  </form>
+</div>
+<p class="visually-hidden" aria-live="polite" data-bootcn-pay-live></p>

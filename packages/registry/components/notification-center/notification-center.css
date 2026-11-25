@@ -1,0 +1,267 @@
+.bootcn-notifications {
+  position: relative;
+  display: inline-block;
+  color: var(--bootcn-foreground);
+}
+
+.bootcn-notifications__toggle {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.bootcn-notifications__count {
+  position: absolute;
+  top: 0.125rem;
+  inset-inline-end: 0.125rem;
+  min-width: 1.125rem;
+  height: 1.125rem;
+  padding: 0 0.25rem;
+  border: 2px solid var(--bootcn-background);
+  border-radius: 9999px;
+  background-color: #dc2626;
+  color: #fff;
+  font-size: 0.625rem;
+  font-weight: 700;
+  line-height: 0.875rem;
+  text-align: center;
+}
+
+.bootcn-notifications__count[hidden] {
+  display: none;
+}
+
+.bootcn-notifications__panel {
+  position: absolute;
+  top: calc(100% + 0.5rem);
+  inset-inline-end: 0;
+  z-index: 1050;
+  display: grid;
+  width: min(24rem, calc(100vw - 1.5rem));
+  max-height: min(32rem, calc(100vh - 6rem));
+  grid-template-rows: auto auto minmax(0, 1fr) auto;
+  overflow: hidden;
+  border: var(--bootcn-border-width) solid var(--bootcn-border-color);
+  border-radius: var(--bootcn-radius-lg);
+  background-color: var(--bootcn-background);
+  box-shadow: var(--bootcn-shadow-lg);
+  text-align: start;
+}
+
+.bootcn-notifications__panel[hidden] {
+  display: none;
+}
+
+.bootcn-notifications__panel:focus {
+  outline: 0;
+}
+
+.bootcn-notifications__panel:focus-visible {
+  box-shadow: var(--bootcn-shadow-lg), var(--bootcn-focus-ring);
+}
+
+.bootcn-notifications__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 1rem 0.5rem;
+}
+
+.bootcn-notifications__title {
+  margin: 0;
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.bootcn-notifications__link {
+  padding: 0.125rem 0.25rem;
+  border: 0;
+  border-radius: var(--bootcn-radius-sm);
+  background: none;
+  color: var(--bootcn-foreground);
+  font-size: 0.8125rem;
+  text-decoration: underline;
+}
+
+.bootcn-notifications__link:disabled {
+  color: var(--bootcn-muted-foreground);
+  text-decoration: none;
+}
+
+.bootcn-notifications__filters {
+  display: flex;
+  gap: 0.25rem;
+  padding: 0 1rem 0.75rem;
+  border-bottom: var(--bootcn-border-width) solid var(--bootcn-border-color);
+}
+
+.bootcn-notifications__filter {
+  padding: 0.25rem 0.75rem;
+  border: 0;
+  border-radius: 9999px;
+  background: none;
+  color: var(--bootcn-muted-foreground);
+  font-size: 0.8125rem;
+  font-weight: 500;
+}
+
+.bootcn-notifications__filter[aria-pressed='true'] {
+  background-color: var(--bootcn-muted);
+  color: var(--bootcn-foreground);
+}
+
+.bootcn-notifications__scroll {
+  overflow-y: auto;
+  overscroll-behavior: contain;
+}
+
+.bootcn-notifications__group[hidden] {
+  display: none;
+}
+
+.bootcn-notifications__group-title {
+  margin: 0;
+  padding: 0.75rem 1rem 0.25rem;
+  color: var(--bootcn-muted-foreground);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.bootcn-notifications__list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.bootcn-notification {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) 1.75rem;
+  gap: 0.75rem;
+  align-items: start;
+  padding: 0.625rem 0.5rem 0.625rem 1rem;
+}
+
+.bootcn-notification[hidden] {
+  display: none;
+}
+
+.bootcn-notification:hover {
+  background-color: var(--bootcn-muted);
+}
+
+.bootcn-notification.is-unread {
+  background-color: color-mix(in srgb, var(--bootcn-primary) 4%, transparent);
+}
+
+.bootcn-notification__body {
+  display: grid;
+  gap: 0.125rem;
+  min-width: 0;
+}
+
+.bootcn-notification__text {
+  border-radius: var(--bootcn-radius-sm);
+  color: var(--bootcn-foreground);
+  font-size: 0.875rem;
+  line-height: 1.4;
+  text-decoration: none;
+}
+
+.bootcn-notification:not(.is-unread) .bootcn-notification__text {
+  color: var(--bootcn-muted-foreground);
+}
+
+.bootcn-notification__text:hover {
+  text-decoration: underline;
+}
+
+.bootcn-notification__time {
+  color: var(--bootcn-muted-foreground);
+  font-size: 0.75rem;
+}
+
+.bootcn-notification__mark {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.75rem;
+  height: 1.75rem;
+  padding: 0;
+  border: 0;
+  border-radius: 9999px;
+  background: none;
+}
+
+.bootcn-notification__mark[hidden] {
+  display: none;
+}
+
+.bootcn-notification__mark:hover {
+  background-color: var(--bootcn-accent);
+}
+
+.bootcn-notification__dot {
+  width: 0.5rem;
+  height: 0.5rem;
+  border-radius: 9999px;
+  background-color: #2563eb;
+}
+
+.bootcn-notifications__empty {
+  margin: 0;
+  padding: 2.5rem 1rem;
+  color: var(--bootcn-muted-foreground);
+  font-size: 0.875rem;
+  text-align: center;
+}
+
+.bootcn-notifications__empty[hidden] {
+  display: none;
+}
+
+.bootcn-notifications__footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.625rem 1rem;
+  border-top: var(--bootcn-border-width) solid var(--bootcn-border-color);
+  font-size: 0.8125rem;
+}
+
+.bootcn-notifications__footer a {
+  border-radius: var(--bootcn-radius-sm);
+  color: var(--bootcn-foreground);
+}
+
+.bootcn-notifications__settings {
+  display: inline-flex;
+  padding: 0.25rem;
+  color: var(--bootcn-muted-foreground) !important;
+}
+
+.bootcn-notifications__link:focus-visible,
+.bootcn-notifications__filter:focus-visible,
+.bootcn-notification__text:focus-visible,
+.bootcn-notification__mark:focus-visible,
+.bootcn-notifications__footer a:focus-visible {
+  outline: 0;
+  box-shadow: var(--bootcn-focus-ring);
+}
+
+/* Phones: the panel spans the screen under the bell. */
+@media (max-width: 575.98px) {
+  .bootcn-notifications {
+    position: static;
+  }
+
+  .bootcn-notifications__panel {
+    position: fixed;
+    top: 4rem;
+    right: 0.75rem;
+    left: 0.75rem;
+    width: auto;
+  }
+}

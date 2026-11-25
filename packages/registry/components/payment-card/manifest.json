@@ -1,0 +1,33 @@
+{
+  "$schema": "../../schema/registry-item.schema.json",
+  "name": "payment-card",
+  "type": "registry:ui",
+  "title": "Payment card",
+  "description": "A payment card picture that follows its form as people type (number, brand colour, name, expiry) and turns over for the security code, with formatting and checks; also small cards for lists.",
+  "version": "1.0.0",
+  "categories": ["forms", "data-display"],
+  "dependencies": [],
+  "registryDependencies": ["input", "button"],
+  "compatibility": {
+    "bootstrap": "5.3",
+    "platform": ["Bootstrap CSS"]
+  },
+  "license": "MIT",
+  "files": [
+    {
+      "path": "payment-card.html",
+      "target": "payment-card.html",
+      "type": "registry:component"
+    },
+    {
+      "path": "payment-card.css",
+      "target": "payment-card.css",
+      "type": "registry:style"
+    },
+    {
+      "path": "payment-card.js",
+      "target": "payment-card.js",
+      "type": "registry:script"
+    }
+  ]
+}

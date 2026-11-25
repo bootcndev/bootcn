@@ -1,0 +1,557 @@
+<div
+  class="bootcn-filters"
+  data-bootcn-filters
+  data-target="#bootcn-filter-demo"
+  data-empty="#bootcn-filter-demo-empty"
+  data-noun="contacts"
+  role="search"
+  aria-label="Filter contacts"
+>
+  <div class="bootcn-filters__search">
+    <svg
+      class="bootcn-icon bootcn-filters__search-icon"
+      width="16"
+      height="16"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      stroke-width="2"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+      aria-hidden="true"
+      focusable="false"
+    >
+      <circle cx="11" cy="11" r="7" />
+      <path d="m20 20-3.5-3.5" />
+    </svg>
+    <input
+      type="search"
+      class="form-control bootcn-input"
+      placeholder="Search contacts"
+      aria-label="Search contacts"
+      data-bootcn-filters-search
+    />
+  </div>
+  <div class="bootcn-filter" data-bootcn-filter="status" data-type="multi" data-label="Status">
+    <button
+      type="button"
+      class="bootcn-filter__toggle"
+      aria-expanded="false"
+      aria-controls="bootcn-fb-status-panel"
+      data-bootcn-filter-toggle
+    >
+      <span data-bootcn-filter-label>Status</span
+      ><svg
+        class="bootcn-icon bootcn-filter__chevron"
+        width="14"
+        height="14"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        aria-hidden="true"
+        focusable="false"
+      >
+        <path d="m6 9 6 6 6-6" />
+      </svg>
+    </button>
+    <button
+      type="button"
+      class="bootcn-filter__clear"
+      aria-label="Clear Status filter"
+      data-bootcn-filter-clear
+      hidden
+    >
+      <svg
+        class="bootcn-icon"
+        width="14"
+        height="14"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        aria-hidden="true"
+        focusable="false"
+      >
+        <path d="M18 6 6 18M6 6l12 12" />
+      </svg>
+    </button>
+    <div class="bootcn-filter__panel" id="bootcn-fb-status-panel" data-bootcn-filter-panel hidden>
+      <fieldset class="bootcn-filter__fieldset">
+        <legend class="visually-hidden">Status</legend>
+        <div class="form-check">
+          <input
+            class="form-check-input"
+            type="checkbox"
+            name="status[]"
+            value="Lead"
+            id="bootcn-fb-status-lead"
+          />
+          <label class="form-check-label" for="bootcn-fb-status-lead">Lead</label>
+        </div>
+        <div class="form-check">
+          <input
+            class="form-check-input"
+            type="checkbox"
+            name="status[]"
+            value="Qualified"
+            id="bootcn-fb-status-qualified"
+          />
+          <label class="form-check-label" for="bootcn-fb-status-qualified">Qualified</label>
+        </div>
+        <div class="form-check">
+          <input
+            class="form-check-input"
+            type="checkbox"
+            name="status[]"
+            value="Customer"
+            id="bootcn-fb-status-customer"
+          />
+          <label class="form-check-label" for="bootcn-fb-status-customer">Customer</label>
+        </div>
+        <div class="form-check">
+          <input
+            class="form-check-input"
+            type="checkbox"
+            name="status[]"
+            value="Churned"
+            id="bootcn-fb-status-churned"
+          />
+          <label class="form-check-label" for="bootcn-fb-status-churned">Churned</label>
+        </div>
+      </fieldset>
+      <button
+        type="button"
+        class="btn bootcn-button bootcn-button--outline bootcn-button--sm bootcn-filter__done"
+        data-bootcn-filter-done
+      >
+        Done
+      </button>
+    </div>
+  </div>
+  <div class="bootcn-filter" data-bootcn-filter="owner" data-type="multi" data-label="Owner">
+    <button
+      type="button"
+      class="bootcn-filter__toggle"
+      aria-expanded="false"
+      aria-controls="bootcn-fb-owner-panel"
+      data-bootcn-filter-toggle
+    >
+      <span data-bootcn-filter-label>Owner</span
+      ><svg
+        class="bootcn-icon bootcn-filter__chevron"
+        width="14"
+        height="14"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        aria-hidden="true"
+        focusable="false"
+      >
+        <path d="m6 9 6 6 6-6" />
+      </svg>
+    </button>
+    <button
+      type="button"
+      class="bootcn-filter__clear"
+      aria-label="Clear Owner filter"
+      data-bootcn-filter-clear
+      hidden
+    >
+      <svg
+        class="bootcn-icon"
+        width="14"
+        height="14"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        aria-hidden="true"
+        focusable="false"
+      >
+        <path d="M18 6 6 18M6 6l12 12" />
+      </svg>
+    </button>
+    <div class="bootcn-filter__panel" id="bootcn-fb-owner-panel" data-bootcn-filter-panel hidden>
+      <fieldset class="bootcn-filter__fieldset">
+        <legend class="visually-hidden">Owner</legend>
+        <div class="form-check">
+          <input
+            class="form-check-input"
+            type="checkbox"
+            name="owner[]"
+            value="Olivia Martin"
+            id="bootcn-fb-owner-olivia-martin"
+          />
+          <label class="form-check-label" for="bootcn-fb-owner-olivia-martin">Olivia Martin</label>
+        </div>
+        <div class="form-check">
+          <input
+            class="form-check-input"
+            type="checkbox"
+            name="owner[]"
+            value="Jackson Lee"
+            id="bootcn-fb-owner-jackson-lee"
+          />
+          <label class="form-check-label" for="bootcn-fb-owner-jackson-lee">Jackson Lee</label>
+        </div>
+        <div class="form-check">
+          <input
+            class="form-check-input"
+            type="checkbox"
+            name="owner[]"
+            value="Isabella Nguyen"
+            id="bootcn-fb-owner-isabella-nguyen"
+          />
+          <label class="form-check-label" for="bootcn-fb-owner-isabella-nguyen"
+            >Isabella Nguyen</label
+          >
+        </div>
+      </fieldset>
+      <button
+        type="button"
+        class="btn bootcn-button bootcn-button--outline bootcn-button--sm bootcn-filter__done"
+        data-bootcn-filter-done
+      >
+        Done
+      </button>
+    </div>
+  </div>
+  <div
+    class="bootcn-filter"
+    data-bootcn-filter="value"
+    data-type="range"
+    data-label="Deal value"
+    data-currency="USD"
+  >
+    <button
+      type="button"
+      class="bootcn-filter__toggle"
+      aria-expanded="false"
+      aria-controls="bootcn-fb-value-panel"
+      data-bootcn-filter-toggle
+    >
+      <span data-bootcn-filter-label>Deal value</span
+      ><svg
+        class="bootcn-icon bootcn-filter__chevron"
+        width="14"
+        height="14"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        aria-hidden="true"
+        focusable="false"
+      >
+        <path d="m6 9 6 6 6-6" />
+      </svg>
+    </button>
+    <button
+      type="button"
+      class="bootcn-filter__clear"
+      aria-label="Clear Deal value filter"
+      data-bootcn-filter-clear
+      hidden
+    >
+      <svg
+        class="bootcn-icon"
+        width="14"
+        height="14"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        aria-hidden="true"
+        focusable="false"
+      >
+        <path d="M18 6 6 18M6 6l12 12" />
+      </svg>
+    </button>
+    <div class="bootcn-filter__panel" id="bootcn-fb-value-panel" data-bootcn-filter-panel hidden>
+      <div class="bootcn-filter__range">
+        <div>
+          <label class="form-label bootcn-label" for="bootcn-fb-value-min">Minimum</label>
+          <input
+            type="number"
+            class="form-control bootcn-input"
+            id="bootcn-fb-value-min"
+            min="0"
+            step="1000"
+            inputmode="numeric"
+            data-bootcn-filter-min
+          />
+        </div>
+        <div>
+          <label class="form-label bootcn-label" for="bootcn-fb-value-max">Maximum</label>
+          <input
+            type="number"
+            class="form-control bootcn-input"
+            id="bootcn-fb-value-max"
+            min="0"
+            step="1000"
+            inputmode="numeric"
+            data-bootcn-filter-max
+          />
+        </div>
+      </div>
+      <button
+        type="button"
+        class="btn bootcn-button bootcn-button--outline bootcn-button--sm bootcn-filter__done"
+        data-bootcn-filter-done
+      >
+        Done
+      </button>
+    </div>
+  </div>
+  <div class="bootcn-filter" data-bootcn-filter="created" data-type="single" data-label="Created">
+    <button
+      type="button"
+      class="bootcn-filter__toggle"
+      aria-expanded="false"
+      aria-controls="bootcn-fb-created-panel"
+      data-bootcn-filter-toggle
+    >
+      <span data-bootcn-filter-label>Created</span
+      ><svg
+        class="bootcn-icon bootcn-filter__chevron"
+        width="14"
+        height="14"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        aria-hidden="true"
+        focusable="false"
+      >
+        <path d="m6 9 6 6 6-6" />
+      </svg>
+    </button>
+    <button
+      type="button"
+      class="bootcn-filter__clear"
+      aria-label="Clear Created filter"
+      data-bootcn-filter-clear
+      hidden
+    >
+      <svg
+        class="bootcn-icon"
+        width="14"
+        height="14"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        aria-hidden="true"
+        focusable="false"
+      >
+        <path d="M18 6 6 18M6 6l12 12" />
+      </svg>
+    </button>
+    <div class="bootcn-filter__panel" id="bootcn-fb-created-panel" data-bootcn-filter-panel hidden>
+      <fieldset class="bootcn-filter__fieldset">
+        <legend class="visually-hidden">Created</legend>
+        <div class="form-check">
+          <input
+            class="form-check-input"
+            type="radio"
+            name="created"
+            value=""
+            id="bootcn-fb-created-any"
+            checked
+          />
+          <label class="form-check-label" for="bootcn-fb-created-any">Any time</label>
+        </div>
+        <div class="form-check">
+          <input
+            class="form-check-input"
+            type="radio"
+            name="created"
+            value="7"
+            id="bootcn-fb-created-7"
+          />
+          <label class="form-check-label" for="bootcn-fb-created-7">Last 7 days</label>
+        </div>
+        <div class="form-check">
+          <input
+            class="form-check-input"
+            type="radio"
+            name="created"
+            value="30"
+            id="bootcn-fb-created-30"
+          />
+          <label class="form-check-label" for="bootcn-fb-created-30">Last 30 days</label>
+        </div>
+        <div class="form-check">
+          <input
+            class="form-check-input"
+            type="radio"
+            name="created"
+            value="90"
+            id="bootcn-fb-created-90"
+          />
+          <label class="form-check-label" for="bootcn-fb-created-90">Last 90 days</label>
+        </div>
+      </fieldset>
+      <button
+        type="button"
+        class="btn bootcn-button bootcn-button--outline bootcn-button--sm bootcn-filter__done"
+        data-bootcn-filter-done
+      >
+        Done
+      </button>
+    </div>
+  </div>
+  <button
+    type="button"
+    class="btn bootcn-button bootcn-button--ghost bootcn-button--sm"
+    data-bootcn-filters-clear-all
+    hidden
+  >
+    Clear all
+  </button>
+  <p class="bootcn-filters__count" data-bootcn-filters-count>8 of 8 contacts</p>
+  <p class="visually-hidden" aria-live="polite" data-bootcn-filters-live></p>
+</div>
+
+<div class="table-responsive mt-3">
+  <table class="table bootcn-table" id="bootcn-filter-demo">
+    <caption class="visually-hidden">
+      Contacts
+    </caption>
+    <thead>
+      <tr>
+        <th scope="col">Name</th>
+        <th scope="col">Company</th>
+        <th scope="col">Status</th>
+        <th scope="col">Owner</th>
+        <th scope="col" class="text-end">Deal value</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr
+        data-bootcn-filter-item
+        data-status="Customer"
+        data-owner="Olivia Martin"
+        data-value="48000"
+        data-created="2026-03-14"
+      >
+        <th scope="row">Sofia Davis</th>
+        <td>Northwind Traders</td>
+        <td>Customer</td>
+        <td>Olivia Martin</td>
+        <td class="text-end">$48,000</td>
+      </tr>
+      <tr
+        data-bootcn-filter-item
+        data-status="Qualified"
+        data-owner="Jackson Lee"
+        data-value="22000"
+        data-created="2026-11-20"
+      >
+        <th scope="row">Liam Johnson</th>
+        <td>Contoso</td>
+        <td>Qualified</td>
+        <td>Jackson Lee</td>
+        <td class="text-end">$22,000</td>
+      </tr>
+      <tr
+        data-bootcn-filter-item
+        data-status="Lead"
+        data-owner="Isabella Nguyen"
+        data-value="6500"
+        data-created="2026-11-23"
+      >
+        <th scope="row">Emma Wilson</th>
+        <td>Fabrikam</td>
+        <td>Lead</td>
+        <td>Isabella Nguyen</td>
+        <td class="text-end">$6,500</td>
+      </tr>
+      <tr
+        data-bootcn-filter-item
+        data-status="Customer"
+        data-owner="Olivia Martin"
+        data-value="91000"
+        data-created="2025-12-02"
+      >
+        <th scope="row">Noah Brown</th>
+        <td>Adventure Works</td>
+        <td>Customer</td>
+        <td>Olivia Martin</td>
+        <td class="text-end">$91,000</td>
+      </tr>
+      <tr
+        data-bootcn-filter-item
+        data-status="Lead"
+        data-owner="Jackson Lee"
+        data-value="3200"
+        data-created="2026-11-24"
+      >
+        <th scope="row">Ava Martinez</th>
+        <td>Tailspin Toys</td>
+        <td>Lead</td>
+        <td>Jackson Lee</td>
+        <td class="text-end">$3,200</td>
+      </tr>
+      <tr
+        data-bootcn-filter-item
+        data-status="Churned"
+        data-owner="Isabella Nguyen"
+        data-value="0"
+        data-created="2025-08-19"
+      >
+        <th scope="row">Lucas Garcia</th>
+        <td>Wide World Importers</td>
+        <td>Churned</td>
+        <td>Isabella Nguyen</td>
+        <td class="text-end">$0</td>
+      </tr>
+      <tr
+        data-bootcn-filter-item
+        data-status="Qualified"
+        data-owner="Olivia Martin"
+        data-value="15000"
+        data-created="2026-10-30"
+      >
+        <th scope="row">Mia Anderson</th>
+        <td>Litware</td>
+        <td>Qualified</td>
+        <td>Olivia Martin</td>
+        <td class="text-end">$15,000</td>
+      </tr>
+      <tr
+        data-bootcn-filter-item
+        data-status="Customer"
+        data-owner="Jackson Lee"
+        data-value="37000"
+        data-created="2026-06-08"
+      >
+        <th scope="row">Ethan Thomas</th>
+        <td>Proseware</td>
+        <td>Customer</td>
+        <td>Jackson Lee</td>
+        <td class="text-end">$37,000</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<p class="bootcn-filters__empty" id="bootcn-filter-demo-empty" hidden>
+  No contacts match these filters.
+</p>

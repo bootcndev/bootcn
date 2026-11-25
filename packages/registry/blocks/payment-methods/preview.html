@@ -1,0 +1,401 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Bootcn Payment methods preview</title>
+    <script>
+      // Preview theme: ?theme=dark|light, else the docs page around the frame, else light.
+      (function () {
+        var theme = new URLSearchParams(location.search).get('theme');
+        if (!theme) {
+          try {
+            theme =
+              window.parent !== window &&
+              window.parent.document.documentElement.classList.contains('dark')
+                ? 'dark'
+                : 'light';
+          } catch (error) {
+            theme = 'light';
+          }
+        }
+        document.documentElement.setAttribute('data-bs-theme', theme === 'dark' ? 'dark' : 'light');
+        // ?dir=rtl: right to left, with Bootstrap's RTL stylesheet.
+        if (new URLSearchParams(location.search).get('dir') === 'rtl') {
+          document.documentElement.setAttribute('dir', 'rtl');
+          new MutationObserver(function (records, observer) {
+            var link = document.querySelector('link[href*="bootstrap.min.css"]');
+            if (!link) return;
+            link.href = link.href.replace('bootstrap.min.css', 'bootstrap.rtl.min.css');
+            observer.disconnect();
+          }).observe(document.documentElement, { childList: true, subtree: true });
+        }
+      })();
+    </script>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.9/dist/css/bootstrap.min.css"
+    />
+    <link rel="stylesheet" href="../../themes/tokens/tokens.css" />
+    <link rel="stylesheet" href="../../components/badge/badge.css" />
+    <link rel="stylesheet" href="../../components/button/button.css" />
+    <link rel="stylesheet" href="../../components/input/input.css" />
+    <link rel="stylesheet" href="../../components/dialog/dialog.css" />
+    <link rel="stylesheet" href="../../components/modal/modal.css" />
+    <link rel="stylesheet" href="../../components/alert-dialog/alert-dialog.css" />
+    <link rel="stylesheet" href="../../components/payment-card/payment-card.css" />
+    <link rel="stylesheet" href="payment-methods.css" />
+  </head>
+  <body>
+    <main class="container py-4" style="max-width: 48rem">
+      <h1 class="h4 mb-4">Payment methods</h1>
+      <section class="bootcn-methods" data-bootcn-methods aria-labelledby="bootcn-methods-title">
+        <header class="bootcn-methods__header">
+          <div>
+            <h2 class="bootcn-methods__heading" id="bootcn-methods-title">Payment methods</h2>
+            <p class="bootcn-methods__description">Cards used for your subscription and orders.</p>
+          </div>
+          <button
+            type="button"
+            class="btn bootcn-button bootcn-button--default"
+            data-bootcn-methods-add
+          >
+            <svg
+              class="bootcn-icon"
+              width="16"
+              height="16"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              aria-hidden="true"
+              focusable="false"
+            >
+              <path d="M12 5v14M5 12h14" />
+            </svg>
+            Add card
+          </button>
+        </header>
+        <ul class="bootcn-methods__list" data-bootcn-methods-list>
+          <li
+            class="bootcn-methods__item"
+            data-card-id="pm1"
+            data-brand="visa"
+            data-last4="4242"
+            data-name="Olivia Martin"
+            data-expiry="12 / 28"
+          >
+            <span class="bootcn-pay-card bootcn-pay-card--mini" data-brand="visa" aria-hidden="true"
+              ><span class="bootcn-pay-card__inner"
+                ><span class="bootcn-pay-card__face"
+                  ><span class="bootcn-pay-card__brand">Visa</span></span
+                ></span
+              ></span
+            >
+            <div class="bootcn-methods__text">
+              <p class="bootcn-methods__title">
+                Visa ending 4242
+                <span class="badge bootcn-badge bootcn-badge--secondary" data-bootcn-methods-default
+                  >Default</span
+                >
+              </p>
+              <p class="bootcn-methods__meta">Expires 12 / 28</p>
+            </div>
+            <div class="bootcn-methods__actions">
+              <button
+                type="button"
+                class="btn bootcn-button bootcn-button--ghost bootcn-button--sm"
+                data-bootcn-methods-make-default
+                hidden
+              >
+                Set as default
+              </button>
+              <button
+                type="button"
+                class="btn bootcn-button bootcn-button--outline bootcn-button--sm"
+                data-bootcn-methods-edit
+                aria-label="Edit Visa ending 4242"
+              >
+                Edit
+              </button>
+              <button
+                type="button"
+                class="btn bootcn-button bootcn-button--ghost bootcn-button--sm"
+                data-bootcn-methods-remove
+                aria-label="Remove Visa ending 4242"
+              >
+                Remove
+              </button>
+            </div>
+          </li>
+          <li
+            class="bootcn-methods__item"
+            data-card-id="pm2"
+            data-brand="mastercard"
+            data-last4="4444"
+            data-name="Olivia Martin"
+            data-expiry="03 / 27"
+          >
+            <span
+              class="bootcn-pay-card bootcn-pay-card--mini"
+              data-brand="mastercard"
+              aria-hidden="true"
+              ><span class="bootcn-pay-card__inner"
+                ><span class="bootcn-pay-card__face"
+                  ><span class="bootcn-pay-card__brand">Mastercard</span></span
+                ></span
+              ></span
+            >
+            <div class="bootcn-methods__text">
+              <p class="bootcn-methods__title">Mastercard ending 4444</p>
+              <p class="bootcn-methods__meta">Expires 03 / 27</p>
+            </div>
+            <div class="bootcn-methods__actions">
+              <button
+                type="button"
+                class="btn bootcn-button bootcn-button--ghost bootcn-button--sm"
+                data-bootcn-methods-make-default
+              >
+                Set as default
+              </button>
+              <button
+                type="button"
+                class="btn bootcn-button bootcn-button--outline bootcn-button--sm"
+                data-bootcn-methods-edit
+                aria-label="Edit Mastercard ending 4444"
+              >
+                Edit
+              </button>
+              <button
+                type="button"
+                class="btn bootcn-button bootcn-button--ghost bootcn-button--sm"
+                data-bootcn-methods-remove
+                aria-label="Remove Mastercard ending 4444"
+              >
+                Remove
+              </button>
+            </div>
+          </li>
+        </ul>
+        <p class="bootcn-methods__empty" data-bootcn-methods-empty hidden>No cards yet.</p>
+        <p class="visually-hidden" aria-live="polite" data-bootcn-methods-live></p>
+
+        <div
+          class="modal fade bootcn-dialog bootcn-modal bootcn-modal--sheet"
+          id="bootcn-methods-dialog"
+          tabindex="-1"
+          aria-labelledby="bootcn-methods-dialog-title"
+        >
+          <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h2
+                  class="modal-title bootcn-dialog__title"
+                  id="bootcn-methods-dialog-title"
+                  data-bootcn-methods-dialog-title
+                >
+                  Add a card
+                </h2>
+                <button
+                  type="button"
+                  class="btn-close"
+                  data-bs-dismiss="modal"
+                  aria-label="Close"
+                ></button>
+              </div>
+              <div class="modal-body bootcn-methods__dialog-body">
+                <div
+                  class="bootcn-pay-card"
+                  id="bootcn-methods-card"
+                  data-bootcn-pay-card
+                  data-brand=""
+                  aria-hidden="true"
+                >
+                  <div class="bootcn-pay-card__inner">
+                    <div class="bootcn-pay-card__face bootcn-pay-card__front">
+                      <div class="bootcn-pay-card__top">
+                        <span class="bootcn-pay-card__chip"></span>
+                        <span class="bootcn-pay-card__brand" data-bootcn-pay-brand></span>
+                      </div>
+                      <span></span>
+                      <p class="bootcn-pay-card__number" data-bootcn-pay-number>
+                        •••• •••• •••• ••••
+                      </p>
+                      <div class="bootcn-pay-card__bottom">
+                        <span
+                          ><span class="bootcn-pay-card__label">Card holder</span
+                          ><span class="bootcn-pay-card__name" data-bootcn-pay-name
+                            >Your name</span
+                          ></span
+                        >
+                        <span
+                          ><span class="bootcn-pay-card__label">Expires</span
+                          ><span data-bootcn-pay-expiry>MM / YY</span></span
+                        >
+                      </div>
+                    </div>
+                    <div class="bootcn-pay-card__face bootcn-pay-card__back">
+                      <div class="bootcn-pay-card__stripe"></div>
+                      <div class="bootcn-pay-card__signature" data-bootcn-pay-cvc>•••</div>
+                    </div>
+                  </div>
+                </div>
+                <form class="bootcn-pay-form" data-bootcn-pay-form="bootcn-methods-card" novalidate>
+                  <div class="bootcn-pay-form__grid">
+                    <div class="bootcn-field bootcn-pay-form__wide">
+                      <label class="form-label bootcn-label" for="bootcn-methods-number"
+                        >Card number</label
+                      >
+                      <input
+                        class="form-control bootcn-input"
+                        id="bootcn-methods-number"
+                        type="text"
+                        name="card_number"
+                        inputmode="numeric"
+                        autocomplete="cc-number"
+                        required
+                        placeholder="1234 1234 1234 1234"
+                        aria-describedby="bootcn-methods-number-error"
+                      />
+                      <div class="invalid-feedback" id="bootcn-methods-number-error">
+                        Check the card number.
+                      </div>
+                    </div>
+                    <div class="bootcn-field bootcn-pay-form__wide">
+                      <label class="form-label bootcn-label" for="bootcn-methods-name"
+                        >Name on card</label
+                      >
+                      <input
+                        class="form-control bootcn-input"
+                        id="bootcn-methods-name"
+                        type="text"
+                        name="card_name"
+                        autocomplete="cc-name"
+                        required
+                        aria-describedby="bootcn-methods-name-error"
+                      />
+                      <div class="invalid-feedback" id="bootcn-methods-name-error">
+                        Enter the name as it appears on the card.
+                      </div>
+                    </div>
+                    <div class="bootcn-field">
+                      <label class="form-label bootcn-label" for="bootcn-methods-expiry"
+                        >Expiry date</label
+                      >
+                      <input
+                        class="form-control bootcn-input"
+                        id="bootcn-methods-expiry"
+                        type="text"
+                        name="card_expiry"
+                        inputmode="numeric"
+                        autocomplete="cc-exp"
+                        required
+                        placeholder="MM / YY"
+                        aria-describedby="bootcn-methods-expiry-error"
+                      />
+                      <div class="invalid-feedback" id="bootcn-methods-expiry-error">
+                        Enter a date in the future, as MM / YY.
+                      </div>
+                    </div>
+                    <div class="bootcn-field">
+                      <label class="form-label bootcn-label" for="bootcn-methods-cvc"
+                        >Security code</label
+                      >
+                      <input
+                        class="form-control bootcn-input"
+                        id="bootcn-methods-cvc"
+                        type="text"
+                        name="card_cvc"
+                        inputmode="numeric"
+                        autocomplete="cc-csc"
+                        required
+                        minlength="3"
+                        maxlength="4"
+                        placeholder="CVC"
+                        aria-describedby="bootcn-methods-cvc-error"
+                      />
+                      <div class="invalid-feedback" id="bootcn-methods-cvc-error">
+                        Enter the 3 or 4 digits on the card.
+                      </div>
+                    </div>
+                  </div>
+                  <p class="bootcn-pay-form__note">
+                    <svg
+                      class="bootcn-icon"
+                      width="16"
+                      height="16"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      aria-hidden="true"
+                      focusable="false"
+                    >
+                      <rect x="4" y="11" width="16" height="10" rx="2" />
+                      <path d="M8 11V7a4 4 0 0 1 8 0v4" />
+                    </svg>
+                    Card details go straight to the payment provider; this site keeps only the last
+                    four digits.
+                  </p>
+                  <button type="submit" class="btn bootcn-button bootcn-button--default">
+                    Save card
+                  </button>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div
+          class="modal fade bootcn-dialog bootcn-alert-dialog"
+          id="bootcn-methods-remove"
+          tabindex="-1"
+          role="alertdialog"
+          aria-modal="true"
+          aria-labelledby="bootcn-methods-remove-title"
+          aria-describedby="bootcn-methods-remove-text"
+          data-bs-backdrop="static"
+        >
+          <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h2 class="modal-title bootcn-dialog__title" id="bootcn-methods-remove-title">
+                  Remove <span data-bootcn-methods-remove-name>this card</span>?
+                </h2>
+              </div>
+              <div class="modal-body">
+                <p class="bootcn-dialog__description" id="bootcn-methods-remove-text">
+                  You can add it again at any time.
+                </p>
+              </div>
+              <div class="modal-footer bootcn-alert-dialog__footer">
+                <button
+                  type="button"
+                  class="btn bootcn-button bootcn-button--outline"
+                  data-bs-dismiss="modal"
+                >
+                  Cancel
+                </button>
+                <button
+                  type="button"
+                  class="btn bootcn-button bootcn-button--destructive"
+                  data-bootcn-methods-confirm-remove
+                >
+                  Remove card
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.9/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../../components/alert-dialog/alert-dialog.js"></script>
+    <script src="../../components/payment-card/payment-card.js"></script>
+    <script src="payment-methods.js"></script>
+  </body>
+</html>

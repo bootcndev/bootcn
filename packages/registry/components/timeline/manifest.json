@@ -1,0 +1,33 @@
+{
+  "$schema": "../../schema/registry-item.schema.json",
+  "name": "timeline",
+  "type": "registry:ui",
+  "title": "Timeline",
+  "description": "A timeline for activity and progress: icons with a status (done, current, upcoming, error), titles, times shown as \"2 hours ago\" and notes; vertical, or horizontal steps that stack on phones.",
+  "version": "1.0.0",
+  "categories": ["data-display"],
+  "dependencies": [],
+  "registryDependencies": [],
+  "compatibility": {
+    "bootstrap": "5.3",
+    "platform": ["Bootstrap CSS"]
+  },
+  "license": "MIT",
+  "files": [
+    {
+      "path": "timeline.html",
+      "target": "timeline.html",
+      "type": "registry:component"
+    },
+    {
+      "path": "timeline.css",
+      "target": "timeline.css",
+      "type": "registry:style"
+    },
+    {
+      "path": "timeline.js",
+      "target": "timeline.js",
+      "type": "registry:script"
+    }
+  ]
+}

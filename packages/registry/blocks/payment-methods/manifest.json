@@ -1,0 +1,41 @@
+{
+  "$schema": "../../schema/registry-item.schema.json",
+  "name": "payment-methods",
+  "type": "registry:block",
+  "title": "Payment methods",
+  "description": "Saved payment cards: a list with the default card, Set as default, Edit and Remove (confirmed), and an Add card dialog whose card picture follows the form.",
+  "version": "1.0.0",
+  "categories": ["dashboard", "forms"],
+  "dependencies": [],
+  "registryDependencies": [
+    "payment-card",
+    "badge",
+    "button",
+    "input",
+    "dialog",
+    "modal",
+    "alert-dialog"
+  ],
+  "compatibility": {
+    "bootstrap": "5.3",
+    "platform": ["Bootstrap CSS", "Bootstrap JS bundle"]
+  },
+  "license": "MIT",
+  "files": [
+    {
+      "path": "payment-methods.html",
+      "target": "payment-methods.html",
+      "type": "registry:component"
+    },
+    {
+      "path": "payment-methods.css",
+      "target": "payment-methods.css",
+      "type": "registry:style"
+    },
+    {
+      "path": "payment-methods.js",
+      "target": "payment-methods.js",
+      "type": "registry:script"
+    }
+  ]
+}

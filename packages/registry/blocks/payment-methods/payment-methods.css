@@ -1,0 +1,126 @@
+.bootcn-methods {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 1.25rem;
+  color: var(--bootcn-foreground);
+}
+
+.bootcn-methods__header {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+
+.bootcn-methods__header .bootcn-button {
+  display: inline-flex;
+  gap: 0.375rem;
+  align-items: center;
+}
+
+.bootcn-methods__heading {
+  margin: 0;
+  font-size: 1.25rem;
+  font-weight: 600;
+}
+
+.bootcn-methods__description {
+  margin: 0.25rem 0 0;
+  color: var(--bootcn-muted-foreground);
+  font-size: 0.875rem;
+}
+
+.bootcn-methods__list {
+  display: grid;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  border: var(--bootcn-border-width) solid var(--bootcn-border-color);
+  border-radius: var(--bootcn-radius-lg);
+  list-style: none;
+}
+
+.bootcn-methods__item {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem 1rem;
+  align-items: center;
+  padding: 1rem 1.25rem;
+}
+
+.bootcn-methods__item + .bootcn-methods__item {
+  border-top: var(--bootcn-border-width) solid var(--bootcn-border-color);
+}
+
+.bootcn-methods__item.is-new {
+  animation: bootcn-methods-new 1.4s ease;
+}
+
+@keyframes bootcn-methods-new {
+  from {
+    background-color: color-mix(in srgb, var(--bootcn-primary) 8%, transparent);
+  }
+}
+
+.bootcn-methods__text {
+  flex: 1 1 10rem;
+  min-width: 0;
+}
+
+.bootcn-methods__text p {
+  margin: 0;
+}
+
+.bootcn-methods__title {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  align-items: center;
+  font-size: 0.9375rem;
+  font-weight: 500;
+}
+
+.bootcn-methods__meta {
+  color: var(--bootcn-muted-foreground);
+  font-size: 0.8125rem;
+}
+
+.bootcn-methods__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.375rem;
+}
+
+.bootcn-methods__actions [hidden] {
+  display: none;
+}
+
+.bootcn-methods__empty {
+  margin: 0;
+  padding: 2rem;
+  border: 2px dashed var(--bootcn-border-color);
+  border-radius: var(--bootcn-radius-lg);
+  color: var(--bootcn-muted-foreground);
+  text-align: center;
+}
+
+.bootcn-methods__empty[hidden] {
+  display: none;
+}
+
+.bootcn-methods__dialog-body {
+  display: grid;
+  justify-items: center;
+  gap: 1.5rem;
+}
+
+.bootcn-methods__dialog-body .bootcn-pay-form {
+  width: 100%;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .bootcn-methods__item.is-new {
+    animation: none;
+  }
+}

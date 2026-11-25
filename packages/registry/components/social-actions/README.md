@@ -22,7 +22,18 @@ the request fails.
   full number for screen readers.
 - `Bootcn.social.compact(n)`; `init()` / `destroy()`.
 
+## Like and dislike
+
+`data-bootcn-vote` on a group of two buttons, `data-bootcn-vote-button="up"`
+and `"down"`, each with `data-count` and a `data-bootcn-count` number.
+Only one can be pressed; pressing the other takes the first back, and the
+counts follow. `bootcn:vote` fires with `detail: { value }`: 1, -1 or 0
+(no vote). Name the group with the question ("Was this answer helpful?").
+
 ## Accessibility
+
+- The like/dislike pair is a named group of two toggle buttons
+  (`aria-pressed`), named "Like" and "Dislike" with their counts.
 
 - Like and Follow are toggle buttons (`aria-pressed`): screen readers say
   "Like 1,241, toggle button, pressed" and "Follow, toggle button".

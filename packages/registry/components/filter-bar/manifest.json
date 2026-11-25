@@ -1,0 +1,33 @@
+{
+  "$schema": "../../schema/registry-item.schema.json",
+  "name": "filter-bar",
+  "type": "registry:ui",
+  "title": "Filter bar",
+  "description": "A filter bar for tables and lists: search, a chip per filter that opens its choices (several values, a range, one option), chips that say what is chosen and clear with \u00d7, Clear all, and a live result count.",
+  "version": "1.0.0",
+  "categories": ["forms", "data-display"],
+  "dependencies": [],
+  "registryDependencies": ["input", "checkbox", "radio-group", "button", "table"],
+  "compatibility": {
+    "bootstrap": "5.3",
+    "platform": ["Bootstrap CSS"]
+  },
+  "license": "MIT",
+  "files": [
+    {
+      "path": "filter-bar.html",
+      "target": "filter-bar.html",
+      "type": "registry:component"
+    },
+    {
+      "path": "filter-bar.css",
+      "target": "filter-bar.css",
+      "type": "registry:style"
+    },
+    {
+      "path": "filter-bar.js",
+      "target": "filter-bar.js",
+      "type": "registry:script"
+    }
+  ]
+}

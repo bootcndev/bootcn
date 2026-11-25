@@ -1,0 +1,213 @@
+/* The card: front and back, turned over for the security code. */
+.bootcn-pay-card {
+  --bootcn-pay-from: #3f3f46;
+  --bootcn-pay-to: #18181b;
+  position: relative;
+  width: min(100%, 22rem);
+  aspect-ratio: 1.586;
+  color: #fff;
+  font-variant-numeric: tabular-nums;
+  perspective: 1000px;
+}
+
+.bootcn-pay-card[data-brand='visa'] {
+  --bootcn-pay-from: #1e40af;
+  --bootcn-pay-to: #172554;
+}
+
+.bootcn-pay-card[data-brand='mastercard'] {
+  --bootcn-pay-from: #b45309;
+  --bootcn-pay-to: #7c2d12;
+}
+
+.bootcn-pay-card[data-brand='amex'] {
+  --bootcn-pay-from: #0f766e;
+  --bootcn-pay-to: #134e4a;
+}
+
+.bootcn-pay-card__inner {
+  position: absolute;
+  inset: 0;
+  transform-style: preserve-3d;
+  transition: transform 500ms cubic-bezier(0.4, 0.2, 0.2, 1);
+}
+
+.bootcn-pay-card.is-flipped .bootcn-pay-card__inner {
+  transform: rotateY(180deg);
+}
+
+.bootcn-pay-card__face {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  overflow: hidden;
+  padding: 1.25rem 1.375rem;
+  border-radius: 1rem;
+  background: radial-gradient(120% 140% at 0% 0%, var(--bootcn-pay-from), var(--bootcn-pay-to));
+  box-shadow: 0 12px 30px -10px rgb(0 0 0 / 0.45);
+  backface-visibility: hidden;
+  transition: background 400ms ease;
+}
+
+/* A soft light across the card. */
+.bootcn-pay-card__face::after {
+  position: absolute;
+  inset: -40% -10% auto auto;
+  width: 70%;
+  height: 120%;
+  border-radius: 9999px;
+  background: rgb(255 255 255 / 0.08);
+  content: '';
+  pointer-events: none;
+}
+
+.bootcn-pay-card__front {
+  grid-template-rows: auto 1fr auto auto;
+}
+
+.bootcn-pay-card__top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.bootcn-pay-card__chip {
+  width: 2.5rem;
+  height: 1.875rem;
+  border-radius: 0.375rem;
+  background: linear-gradient(135deg, #fde68a, #d4a017);
+  opacity: 0.9;
+}
+
+.bootcn-pay-card__brand {
+  font-size: 0.875rem;
+  font-style: italic;
+  font-weight: 800;
+  letter-spacing: 0.02em;
+}
+
+.bootcn-pay-card__number {
+  align-self: end;
+  margin: 0 0 0.875rem;
+  font-family: var(--bs-font-monospace);
+  font-size: clamp(1rem, 4.6cqi, 1.375rem);
+  letter-spacing: 0.08em;
+  white-space: nowrap;
+}
+
+.bootcn-pay-card {
+  container-type: inline-size;
+}
+
+.bootcn-pay-card__bottom {
+  display: flex;
+  gap: 1rem;
+  justify-content: space-between;
+  font-size: 0.8125rem;
+}
+
+.bootcn-pay-card__label {
+  display: block;
+  font-size: 0.625rem;
+  letter-spacing: 0.08em;
+  opacity: 0.75;
+  text-transform: uppercase;
+}
+
+.bootcn-pay-card__name {
+  overflow: hidden;
+  max-width: 13rem;
+  text-overflow: ellipsis;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.bootcn-pay-card__back {
+  align-content: center;
+  padding-inline: 0;
+  transform: rotateY(180deg);
+}
+
+.bootcn-pay-card__stripe {
+  height: 2.75rem;
+  background-color: #0a0a0a;
+}
+
+.bootcn-pay-card__signature {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  height: 2.25rem;
+  margin: 1rem 1.375rem 0;
+  padding: 0 0.75rem;
+  border-radius: 0.25rem;
+  background: repeating-linear-gradient(45deg, #f4f4f5 0 6px, #e4e4e7 6px 12px);
+  color: #18181b;
+  font-family: var(--bs-font-monospace);
+  font-weight: 700;
+  letter-spacing: 0.15em;
+}
+
+/* Small cards in lists. */
+.bootcn-pay-card--mini {
+  width: 3.5rem;
+  border-radius: 0.375rem;
+  perspective: none;
+}
+
+.bootcn-pay-card--mini .bootcn-pay-card__face {
+  padding: 0.375rem 0.5rem;
+  border-radius: 0.375rem;
+  box-shadow: none;
+}
+
+.bootcn-pay-card--mini .bootcn-pay-card__brand {
+  align-self: end;
+  font-size: 0.5rem;
+}
+
+/* The form beside the card. */
+.bootcn-pay-form {
+  display: grid;
+  gap: 1rem;
+}
+
+.bootcn-pay-form__grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.bootcn-pay-form__wide {
+  grid-column: 1 / -1;
+}
+
+.bootcn-pay-form .form-control[aria-invalid='true'] ~ .invalid-feedback {
+  display: block;
+}
+
+.bootcn-pay-form__note {
+  margin: 0;
+  color: var(--bootcn-muted-foreground);
+  font-size: 0.8125rem;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .bootcn-pay-card__inner,
+  .bootcn-pay-card__face {
+    transition: none;
+  }
+}
+
+.bootcn-pay-demo {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 2rem;
+  align-items: start;
+}
+
+@media (min-width: 768px) {
+  .bootcn-pay-demo {
+    grid-template-columns: 22rem minmax(0, 1fr);
+  }
+}

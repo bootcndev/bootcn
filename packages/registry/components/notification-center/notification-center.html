@@ -1,0 +1,240 @@
+<div class="bootcn-notifications" data-bootcn-notifications data-filter="all">
+  <button
+    type="button"
+    class="btn bootcn-button bootcn-button--ghost bootcn-button--icon bootcn-notifications__toggle"
+    aria-expanded="false"
+    aria-controls="bootcn-notifications-panel"
+    aria-label="Notifications, 3 unread"
+    data-bootcn-notifications-toggle
+  >
+    <svg
+      class="bootcn-icon"
+      width="18"
+      height="18"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      stroke-width="2"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+      aria-hidden="true"
+      focusable="false"
+    >
+      <path d="M6 8a6 6 0 1 1 12 0c0 7 3 9 3 9H3s3-2 3-9" />
+      <path d="M10 21a2 2 0 0 0 4 0" />
+    </svg>
+    <span class="bootcn-notifications__count" data-bootcn-notifications-count>3</span>
+  </button>
+  <section
+    class="bootcn-notifications__panel"
+    id="bootcn-notifications-panel"
+    tabindex="-1"
+    aria-labelledby="bootcn-notifications-title"
+    data-bootcn-notifications-panel
+    hidden
+  >
+    <header class="bootcn-notifications__header">
+      <h2 class="bootcn-notifications__title" id="bootcn-notifications-title">Notifications</h2>
+      <button type="button" class="bootcn-notifications__link" data-bootcn-notifications-read-all>
+        Mark all as read
+      </button>
+    </header>
+    <div class="bootcn-notifications__filters" role="group" aria-label="Show">
+      <button
+        type="button"
+        class="bootcn-notifications__filter"
+        aria-pressed="true"
+        data-bootcn-notifications-filter="all"
+      >
+        All
+      </button>
+      <button
+        type="button"
+        class="bootcn-notifications__filter"
+        aria-pressed="false"
+        data-bootcn-notifications-filter="unread"
+      >
+        Unread
+      </button>
+    </div>
+    <div class="bootcn-notifications__scroll">
+      <div class="bootcn-notifications__group" data-bootcn-notifications-group>
+        <h3 class="bootcn-notifications__group-title">Today</h3>
+        <ul class="bootcn-notifications__list">
+          <li class="bootcn-notification is-unread" data-bootcn-notification="n1">
+            <span
+              class="bootcn-avatar bootcn-avatar--sm bootcn-notification__avatar"
+              aria-hidden="true"
+              ><span class="bootcn-avatar__fallback">OM</span></span
+            >
+            <div class="bootcn-notification__body">
+              <a class="bootcn-notification__text" href="#q1-plan"
+                ><span class="visually-hidden" data-bootcn-notification-state>Unread: </span
+                ><strong>Olivia Martin</strong> mentioned you in <strong>Q1 launch plan</strong></a
+              >
+              <time
+                class="bootcn-notification__time"
+                datetime="2026-11-25T15:40"
+                data-bootcn-relative
+                >20 min ago</time
+              >
+            </div>
+            <button
+              type="button"
+              class="bootcn-notification__mark"
+              aria-label="Mark as read"
+              data-bootcn-notifications-mark
+            >
+              <span class="bootcn-notification__dot" aria-hidden="true"></span>
+            </button>
+          </li>
+          <li class="bootcn-notification is-unread" data-bootcn-notification="n2">
+            <span
+              class="bootcn-avatar bootcn-avatar--sm bootcn-notification__avatar"
+              aria-hidden="true"
+              ><span class="bootcn-avatar__fallback">JL</span></span
+            >
+            <div class="bootcn-notification__body">
+              <a class="bootcn-notification__text" href="#deal-northwind"
+                ><span class="visually-hidden" data-bootcn-notification-state>Unread: </span
+                ><strong>Jackson Lee</strong> moved <strong>Northwind renewal</strong> to Won</a
+              >
+              <time
+                class="bootcn-notification__time"
+                datetime="2026-11-25T13:05"
+                data-bootcn-relative
+                >3 hours ago</time
+              >
+            </div>
+            <button
+              type="button"
+              class="bootcn-notification__mark"
+              aria-label="Mark as read"
+              data-bootcn-notifications-mark
+            >
+              <span class="bootcn-notification__dot" aria-hidden="true"></span>
+            </button>
+          </li>
+          <li class="bootcn-notification is-unread" data-bootcn-notification="n3">
+            <span
+              class="bootcn-avatar bootcn-avatar--sm bootcn-notification__avatar"
+              aria-hidden="true"
+              ><span class="bootcn-avatar__fallback">IN</span></span
+            >
+            <div class="bootcn-notification__body">
+              <a class="bootcn-notification__text" href="#task-contoso"
+                ><span class="visually-hidden" data-bootcn-notification-state>Unread: </span
+                ><strong>Isabella Nguyen</strong> assigned you
+                <strong>Contoso onboarding</strong></a
+              >
+              <time
+                class="bootcn-notification__time"
+                datetime="2026-11-25T09:30"
+                data-bootcn-relative
+                >This morning</time
+              >
+            </div>
+            <button
+              type="button"
+              class="bootcn-notification__mark"
+              aria-label="Mark as read"
+              data-bootcn-notifications-mark
+            >
+              <span class="bootcn-notification__dot" aria-hidden="true"></span>
+            </button>
+          </li>
+        </ul>
+      </div>
+      <div class="bootcn-notifications__group" data-bootcn-notifications-group>
+        <h3 class="bootcn-notifications__group-title">Earlier</h3>
+        <ul class="bootcn-notifications__list">
+          <li class="bootcn-notification" data-bootcn-notification="n4">
+            <span
+              class="bootcn-avatar bootcn-avatar--sm bootcn-notification__avatar"
+              aria-hidden="true"
+              ><span class="bootcn-avatar__fallback">WK</span></span
+            >
+            <div class="bootcn-notification__body">
+              <a class="bootcn-notification__text" href="#pricing"
+                ><span class="visually-hidden" data-bootcn-notification-state></span
+                ><strong>William Kim</strong> commented on <strong>Pricing page</strong></a
+              >
+              <time
+                class="bootcn-notification__time"
+                datetime="2026-11-23T17:15"
+                data-bootcn-relative
+                >2 days ago</time
+              >
+            </div>
+            <button
+              type="button"
+              class="bootcn-notification__mark"
+              aria-label="Mark as read"
+              data-bootcn-notifications-mark
+              hidden
+            >
+              <span class="bootcn-notification__dot" aria-hidden="true"></span>
+            </button>
+          </li>
+          <li class="bootcn-notification" data-bootcn-notification="n5">
+            <span
+              class="bootcn-avatar bootcn-avatar--sm bootcn-notification__avatar"
+              aria-hidden="true"
+              ><span class="bootcn-avatar__fallback">FB</span></span
+            >
+            <div class="bootcn-notification__body">
+              <a class="bootcn-notification__text" href="#export"
+                ><span class="visually-hidden" data-bootcn-notification-state></span>Your export
+                <strong>Customers.csv</strong> is ready</a
+              >
+              <time
+                class="bootcn-notification__time"
+                datetime="2026-11-22T08:00"
+                data-bootcn-relative
+                >3 days ago</time
+              >
+            </div>
+            <button
+              type="button"
+              class="bootcn-notification__mark"
+              aria-label="Mark as read"
+              data-bootcn-notifications-mark
+              hidden
+            >
+              <span class="bootcn-notification__dot" aria-hidden="true"></span>
+            </button>
+          </li>
+        </ul>
+      </div>
+      <p class="bootcn-notifications__empty" data-bootcn-notifications-empty hidden>
+        You're all caught up.
+      </p>
+    </div>
+    <footer class="bootcn-notifications__footer">
+      <a href="#notifications">View all notifications</a>
+      <a
+        class="bootcn-notifications__settings"
+        href="#notification-settings"
+        aria-label="Notification settings"
+        ><svg
+          class="bootcn-icon"
+          width="16"
+          height="16"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          aria-hidden="true"
+          focusable="false"
+        >
+          <circle cx="12" cy="12" r="3" />
+          <path
+            d="M19.4 15a1.7 1.7 0 0 0 .3 1.8l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.8-.3 1.7 1.7 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1a1.7 1.7 0 0 0-1.1-1.5 1.7 1.7 0 0 0-1.8.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.8 1.7 1.7 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1a1.7 1.7 0 0 0 1.5-1.1 1.7 1.7 0 0 0-.3-1.8l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.7 1.7 0 0 0 1.8.3H9a1.7 1.7 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.1a1.7 1.7 0 0 0 1 1.5 1.7 1.7 0 0 0 1.8-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0-.3 1.8V9a1.7 1.7 0 0 0 1.5 1H21a2 2 0 1 1 0 4h-.1a1.7 1.7 0 0 0-1.5 1z"
+          /></svg
+      ></a>
+    </footer>
+  </section>
+  <p class="visually-hidden" aria-live="polite" data-bootcn-notifications-live></p>
+</div>

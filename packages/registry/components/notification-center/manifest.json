@@ -1,0 +1,33 @@
+{
+  "$schema": "../../schema/registry-item.schema.json",
+  "name": "notification-center",
+  "type": "registry:ui",
+  "title": "Notification center",
+  "description": "A notification center: a bell with the unread count that opens a panel of notifications grouped by day, with All and Unread, unread markers, mark one or all as read, relative times and an empty state.",
+  "version": "1.0.0",
+  "categories": ["overlays", "feedback"],
+  "dependencies": [],
+  "registryDependencies": ["avatar", "button", "timeline"],
+  "compatibility": {
+    "bootstrap": "5.3",
+    "platform": ["Bootstrap CSS"]
+  },
+  "license": "MIT",
+  "files": [
+    {
+      "path": "notification-center.html",
+      "target": "notification-center.html",
+      "type": "registry:component"
+    },
+    {
+      "path": "notification-center.css",
+      "target": "notification-center.css",
+      "type": "registry:style"
+    },
+    {
+      "path": "notification-center.js",
+      "target": "notification-center.js",
+      "type": "registry:script"
+    }
+  ]
+}

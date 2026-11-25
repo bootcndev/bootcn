@@ -62,7 +62,42 @@
     );
   }
 
+  // Like and dislike: one at a time; choosing one takes back the other.
+  function vote(button) {
+    const group = button.closest('[data-bootcn-vote]');
+    if (!group) return;
+    const pressing = button.getAttribute('aria-pressed') !== 'true';
+    group.querySelectorAll('[data-bootcn-vote-button]').forEach(function (other) {
+      const was = other.getAttribute('aria-pressed') === 'true';
+      const now = other === button ? pressing : false;
+      if (was === now) return;
+      const count = Math.max(0, Number(other.getAttribute('data-count') || 0) + (now ? 1 : -1));
+      other.setAttribute('aria-pressed', String(now));
+      other.setAttribute('data-count', String(count));
+      const el = other.querySelector('[data-bootcn-count]');
+      if (el) show(el, count);
+      if (now) {
+        other.classList.remove('is-popping');
+        void other.offsetWidth;
+        other.classList.add('is-popping');
+      }
+    });
+    const value = pressing
+      ? button.getAttribute('data-bootcn-vote-button') === 'down'
+        ? -1
+        : 1
+      : 0;
+    group.dispatchEvent(
+      new CustomEvent('bootcn:vote', { bubbles: true, detail: { value: value } }),
+    );
+  }
+
   function onClick(event) {
+    const voteButton = event.target.closest && event.target.closest('[data-bootcn-vote-button]');
+    if (voteButton) {
+      vote(voteButton);
+      return;
+    }
     const like = event.target.closest && event.target.closest('[data-bootcn-like]');
     if (like) {
       toggleLike(like);

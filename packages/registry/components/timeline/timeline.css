@@ -1,0 +1,152 @@
+.bootcn-timeline {
+  --bootcn-timeline-size: 1.75rem;
+  --bootcn-timeline-line: var(--bootcn-border-color);
+  margin: 0;
+  padding: 0;
+  color: var(--bootcn-foreground);
+  list-style: none;
+}
+
+.bootcn-timeline__item {
+  position: relative;
+  display: grid;
+  grid-template-columns: var(--bootcn-timeline-size) minmax(0, 1fr);
+  gap: 0.875rem;
+  padding-bottom: 1.5rem;
+}
+
+.bootcn-timeline__item:last-child {
+  padding-bottom: 0;
+}
+
+/* The line to the next item. */
+.bootcn-timeline__item:not(:last-child)::before {
+  position: absolute;
+  top: calc(var(--bootcn-timeline-size) + 0.25rem);
+  bottom: 0.25rem;
+  inset-inline-start: calc(var(--bootcn-timeline-size) / 2 - 1px);
+  width: 2px;
+  border-radius: 9999px;
+  background-color: var(--bootcn-timeline-line);
+  content: '';
+}
+
+.bootcn-timeline__marker {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--bootcn-timeline-size);
+  height: var(--bootcn-timeline-size);
+  border: var(--bootcn-border-width) solid var(--bootcn-border-color);
+  border-radius: 9999px;
+  background-color: var(--bootcn-background);
+  color: var(--bootcn-muted-foreground);
+}
+
+.bootcn-timeline__item[data-status='done'] .bootcn-timeline__marker {
+  color: var(--bootcn-foreground);
+}
+
+.bootcn-timeline__item[data-status='current'] .bootcn-timeline__marker {
+  border-color: var(--bootcn-primary);
+  background-color: var(--bootcn-primary);
+  color: var(--bootcn-primary-foreground);
+  box-shadow: 0 0 0 4px color-mix(in srgb, var(--bootcn-primary) 15%, transparent);
+}
+
+.bootcn-timeline__item[data-status='error'] .bootcn-timeline__marker {
+  border-color: var(--bootcn-destructive);
+  background-color: var(--bootcn-destructive-subtle);
+  color: var(--bootcn-destructive-text);
+}
+
+.bootcn-timeline__item[data-status='upcoming'] .bootcn-timeline__marker {
+  border-style: dashed;
+}
+
+.bootcn-timeline__content {
+  min-width: 0;
+  padding-top: 0.25rem;
+}
+
+.bootcn-timeline__content p {
+  margin: 0;
+}
+
+.bootcn-timeline__title {
+  font-size: 0.875rem;
+  line-height: 1.4;
+}
+
+.bootcn-timeline__meta {
+  margin-top: 0.125rem !important;
+  color: var(--bootcn-muted-foreground);
+  font-size: 0.8125rem;
+}
+
+.bootcn-timeline__text {
+  margin-top: 0.5rem !important;
+  padding: 0.625rem 0.75rem;
+  border: var(--bootcn-border-width) solid var(--bootcn-border-color);
+  border-radius: var(--bootcn-radius);
+  background-color: var(--bootcn-muted);
+  font-size: 0.875rem;
+  line-height: 1.5;
+}
+
+.bootcn-timeline__item[data-status='upcoming'] .bootcn-timeline__title {
+  color: var(--bootcn-muted-foreground);
+}
+
+/* Horizontal: steps side by side, the line running between the markers. */
+.bootcn-timeline--horizontal {
+  display: flex;
+}
+
+.bootcn-timeline--horizontal .bootcn-timeline__item {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding-bottom: 0;
+  padding-inline-end: 0.75rem;
+}
+
+.bootcn-timeline--horizontal .bootcn-timeline__item:not(:last-child)::before {
+  top: calc(var(--bootcn-timeline-size) / 2 - 1px);
+  bottom: auto;
+  inset-inline-start: calc(var(--bootcn-timeline-size) + 0.375rem);
+  inset-inline-end: 0.375rem;
+  width: auto;
+  height: 2px;
+}
+
+.bootcn-timeline--horizontal .bootcn-timeline__item[data-status='done']:not(:last-child)::before {
+  background-color: var(--bootcn-primary);
+}
+
+.bootcn-timeline--horizontal .bootcn-timeline__content {
+  padding-top: 0;
+}
+
+@media (max-width: 575.98px) {
+  .bootcn-timeline--horizontal {
+    flex-direction: column;
+  }
+
+  .bootcn-timeline--horizontal .bootcn-timeline__item {
+    display: grid;
+    grid-template-columns: var(--bootcn-timeline-size) minmax(0, 1fr);
+    gap: 0.875rem;
+    padding-bottom: 1.25rem;
+  }
+
+  .bootcn-timeline--horizontal .bootcn-timeline__item:not(:last-child)::before {
+    top: calc(var(--bootcn-timeline-size) + 0.25rem);
+    bottom: 0.25rem;
+    inset-inline-start: calc(var(--bootcn-timeline-size) / 2 - 1px);
+    inset-inline-end: auto;
+    width: 2px;
+    height: auto;
+  }
+}
