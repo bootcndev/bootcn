@@ -1,0 +1,86 @@
+.bootcn-location {
+  width: 100%;
+  max-width: 56rem;
+  margin-inline: auto;
+  padding: var(--bootcn-card-padding);
+}
+
+.bootcn-location__grid {
+  display: grid;
+  gap: 1.5rem;
+}
+
+@media (min-width: 768px) {
+  .bootcn-location__grid {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1.4fr);
+    align-items: start;
+  }
+}
+
+.bootcn-location__info {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1rem;
+}
+
+.bootcn-location__info .bootcn-card__title {
+  margin: 0;
+}
+
+.bootcn-location__address,
+.bootcn-location__contact li {
+  display: flex;
+  gap: 0.5rem;
+  margin: 0;
+  font-size: 0.875rem;
+  font-style: normal;
+}
+
+.bootcn-location__address .bootcn-icon,
+.bootcn-location__contact .bootcn-icon {
+  flex: none;
+  margin-top: 0.125rem;
+  color: var(--bootcn-muted-foreground);
+}
+
+.bootcn-location__hours {
+  display: grid;
+  gap: 0.25rem;
+  width: 100%;
+  margin: 0;
+  font-size: 0.875rem;
+}
+
+.bootcn-location__hours div {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.bootcn-location__hours dt {
+  color: var(--bootcn-muted-foreground);
+  font-weight: 400;
+}
+
+.bootcn-location__hours dd {
+  margin: 0;
+  font-variant-numeric: tabular-nums;
+}
+
+.bootcn-location__contact {
+  display: grid;
+  gap: 0.375rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.bootcn-location__contact a {
+  color: var(--bootcn-foreground);
+  text-underline-offset: 0.2em;
+}
+
+.bootcn-location .bootcn-map {
+  width: 100%;
+}

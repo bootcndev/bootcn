@@ -1,0 +1,28 @@
+{
+  "$schema": "../../schema/registry-item.schema.json",
+  "name": "heatmap",
+  "type": "registry:ui",
+  "title": "Heatmap",
+  "description": "A table of values coloured by intensity (days by hours, weeks by days), with every number readable and a Less–More legend.",
+  "version": "1.0.0",
+  "categories": ["data-display"],
+  "dependencies": [],
+  "registryDependencies": [],
+  "compatibility": {
+    "bootstrap": "5.3",
+    "platform": ["Bootstrap CSS"]
+  },
+  "license": "MIT",
+  "files": [
+    {
+      "path": "heatmap.html",
+      "target": "heatmap.html",
+      "type": "registry:component"
+    },
+    {
+      "path": "heatmap.css",
+      "target": "heatmap.css",
+      "type": "registry:style"
+    }
+  ]
+}

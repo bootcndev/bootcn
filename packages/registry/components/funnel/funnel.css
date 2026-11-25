@@ -1,0 +1,67 @@
+.bootcn-funnel {
+  width: 30rem;
+  max-width: 100%;
+  margin: 0;
+}
+
+.bootcn-funnel__title {
+  margin-bottom: 1rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+}
+
+.bootcn-funnel__list {
+  display: grid;
+  gap: 0.875rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.bootcn-funnel__head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 0.375rem;
+  font-size: 0.875rem;
+}
+
+.bootcn-funnel__name {
+  font-weight: 500;
+}
+
+.bootcn-funnel__count {
+  font-variant-numeric: tabular-nums;
+  font-weight: 600;
+}
+
+.bootcn-funnel__share {
+  color: var(--bootcn-muted-foreground);
+  font-weight: 400;
+}
+
+/* The bar: centred, as wide as the step's share of the first step. */
+.bootcn-funnel__bar {
+  height: 0.75rem;
+  border-radius: 9999px;
+  background-color: var(--bootcn-muted);
+}
+
+.bootcn-funnel__bar::before {
+  display: block;
+  width: var(--bootcn-funnel-value, 100%);
+  min-width: 0.75rem;
+  height: 100%;
+  margin-inline: auto;
+  border-radius: inherit;
+  background-color: var(--bootcn-chart-1);
+  content: '';
+}
+
+.bootcn-funnel__step {
+  display: block;
+  margin-top: 0.25rem;
+  color: var(--bootcn-muted-foreground);
+  font-size: 0.75rem;
+}

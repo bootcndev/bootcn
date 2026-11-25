@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Bootcn Sparkline preview</title>
+    <script>
+      // Preview theme: ?theme=dark|light, else the docs page around the frame, else light.
+      (function () {
+        var theme = new URLSearchParams(location.search).get('theme');
+        if (!theme) {
+          try {
+            theme =
+              window.parent !== window &&
+              window.parent.document.documentElement.classList.contains('dark')
+                ? 'dark'
+                : 'light';
+          } catch (error) {
+            theme = 'light';
+          }
+        }
+        document.documentElement.setAttribute('data-bs-theme', theme === 'dark' ? 'dark' : 'light');
+        // ?dir=rtl: right to left, with Bootstrap's RTL stylesheet.
+        if (new URLSearchParams(location.search).get('dir') === 'rtl') {
+          document.documentElement.setAttribute('dir', 'rtl');
+          new MutationObserver(function (records, observer) {
+            var link = document.querySelector('link[href*="bootstrap.min.css"]');
+            if (!link) return;
+            link.href = link.href.replace('bootstrap.min.css', 'bootstrap.rtl.min.css');
+            observer.disconnect();
+          }).observe(document.documentElement, { childList: true, subtree: true });
+        }
+      })();
+    </script>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.9/dist/css/bootstrap.min.css"
+    />
+    <link rel="stylesheet" href="../../themes/tokens/tokens.css" />
+    <link rel="stylesheet" href="sparkline.css" />
+  </head>
+  <body>
+    <main class="container py-4">
+      <h1 class="h4 mb-4">Sparkline</h1>
+      <div class="bootcn-sparkline-demo">
+        <p class="bootcn-sparkline-demo__row">
+          Visitors
+          <span
+            class="bootcn-sparkline bootcn-sparkline--up"
+            data-bootcn-sparkline
+            data-values="120,132,128,141,150,149,163,158,170,176,169,182,190,198"
+            data-label="Visitors, last 14 days"
+          ></span>
+          <strong>198</strong>
+        </p>
+        <p class="bootcn-sparkline-demo__row">
+          Bounce rate
+          <span
+            class="bootcn-sparkline bootcn-sparkline--down"
+            data-bootcn-sparkline
+            data-values="48,47,49,45,44,46,43,41,42,40,39,40,38,37"
+            data-label="Bounce rate, last 14 days"
+            data-format="{value}%"
+          ></span>
+          <strong>37%</strong>
+        </p>
+        <p class="bootcn-sparkline-demo__row">
+          Sign-ups
+          <span
+            class="bootcn-sparkline bootcn-sparkline--bars"
+            data-bootcn-sparkline
+            data-type="bar"
+            data-values="12,18,9,22,17,25,19,28,24,30,21,26,33,29"
+            data-label="Sign-ups, last 14 days"
+          ></span>
+          <strong>29</strong>
+        </p>
+      </div>
+    </main>
+    <script src="sparkline.js"></script>
+  </body>
+</html>

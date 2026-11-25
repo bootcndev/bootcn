@@ -6,6 +6,14 @@ each published version stays available under `/v/<version>/`) and the **CLI**
 
 ## Registry
 
+### 0.25.0
+
+- Map embed: an OpenStreetMap map that loads only on request.
+- Analytics: Sparkline (trend with a text summary), Funnel (an ordered list
+  with counts and conversion) and Heatmap (a table coloured in five steps,
+  every number readable).
+- Blocks: Location card and Traffic overview.
+
 ### 0.24.0
 
 - Password strength (meter, live rule checklist, show/hide, blocks weak

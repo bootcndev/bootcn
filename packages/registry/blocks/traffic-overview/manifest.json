@@ -1,0 +1,28 @@
+{
+  "$schema": "../../schema/registry-item.schema.json",
+  "name": "traffic-overview",
+  "type": "registry:block",
+  "title": "Traffic overview",
+  "description": "An analytics section: three metrics with sparklines, a sign-up funnel and a heatmap of visits by day and hour.",
+  "version": "1.0.0",
+  "categories": ["charts"],
+  "dependencies": [],
+  "registryDependencies": ["sparkline", "funnel", "heatmap", "card"],
+  "compatibility": {
+    "bootstrap": "5.3",
+    "platform": ["Bootstrap CSS"]
+  },
+  "license": "MIT",
+  "files": [
+    {
+      "path": "traffic-overview.html",
+      "target": "traffic-overview.html",
+      "type": "registry:component"
+    },
+    {
+      "path": "traffic-overview.css",
+      "target": "traffic-overview.css",
+      "type": "registry:style"
+    }
+  ]
+}

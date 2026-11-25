@@ -1,0 +1,33 @@
+{
+  "$schema": "../../schema/registry-item.schema.json",
+  "name": "sparkline",
+  "type": "registry:ui",
+  "title": "Sparkline",
+  "description": "A word-sized trend line drawn from a list of numbers, with a text summary for screen readers; up and down colours.",
+  "version": "1.0.0",
+  "categories": ["data-display"],
+  "dependencies": [],
+  "registryDependencies": [],
+  "compatibility": {
+    "bootstrap": "5.3",
+    "platform": ["Bootstrap CSS"]
+  },
+  "license": "MIT",
+  "files": [
+    {
+      "path": "sparkline.html",
+      "target": "sparkline.html",
+      "type": "registry:component"
+    },
+    {
+      "path": "sparkline.css",
+      "target": "sparkline.css",
+      "type": "registry:style"
+    },
+    {
+      "path": "sparkline.js",
+      "target": "sparkline.js",
+      "type": "registry:script"
+    }
+  ]
+}

@@ -1,0 +1,28 @@
+{
+  "$schema": "../../schema/registry-item.schema.json",
+  "name": "funnel",
+  "type": "registry:ui",
+  "title": "Funnel",
+  "description": "A conversion funnel as an ordered list: each step with its count, its share of the first step and of the previous one, and a bar.",
+  "version": "1.0.0",
+  "categories": ["data-display"],
+  "dependencies": [],
+  "registryDependencies": [],
+  "compatibility": {
+    "bootstrap": "5.3",
+    "platform": ["Bootstrap CSS"]
+  },
+  "license": "MIT",
+  "files": [
+    {
+      "path": "funnel.html",
+      "target": "funnel.html",
+      "type": "registry:component"
+    },
+    {
+      "path": "funnel.css",
+      "target": "funnel.css",
+      "type": "registry:style"
+    }
+  ]
+}

@@ -9,7 +9,7 @@ build with plain HTML and native PHP. Components are installed as editable
 HTML, CSS and JavaScript source files that you own. No React, Vue, jQuery,
 bundler or Node.js is required at runtime.
 
-> **Status:** early (0.x). 87 components, 40 blocks (authentication, dashboard, navigation, marketing, charts, AI chat), admin dashboard, analytics dashboard, landing page and settings templates and design
+> **Status:** early (0.x). 91 components, 42 blocks (authentication, dashboard, navigation, marketing, charts, AI chat), admin dashboard, analytics dashboard, landing page and settings templates and design
 > tokens, with a Tailwind-like look built on Bootstrap. The CLI is on
 > [npm](https://www.npmjs.com/package/bootcn); documentation, live previews and
 > the registry are at <https://bootcn.dev/>. News: [@bootcndev](https://x.com/bootcndev) on X.
@@ -83,6 +83,8 @@ the `<link>` and `<script>` tags to add to your layout.
 | `empty`             | ui    | HTML, CSS     | Bootstrap CSS             | `button`                                                  |
 | `field`             | ui    | HTML, CSS     | Bootstrap CSS             | `input`, `select`, `switch`, `label`                      |
 | `form`              | ui    | HTML, CSS, JS | Bootstrap CSS             | `field`, `label`, `input`, `select`, `checkbox`, `button` |
+| `funnel`            | ui    | HTML, CSS     | Bootstrap CSS             | —                                                         |
+| `heatmap`           | ui    | HTML, CSS     | Bootstrap CSS             | —                                                         |
 | `hover-card`        | ui    | HTML, CSS, JS | Bootstrap CSS + JS bundle | `avatar`                                                  |
 | `image`             | ui    | HTML, CSS, JS | Bootstrap CSS             | —                                                         |
 | `input-group`       | ui    | HTML, CSS     | Bootstrap CSS             | `button`, `label`                                         |
@@ -94,6 +96,7 @@ the `<link>` and `<script>` tags to add to your layout.
 | `link`              | ui    | HTML, CSS     | Bootstrap CSS             | —                                                         |
 | `listbox`           | ui    | HTML, CSS, JS | Bootstrap CSS             | `label`                                                   |
 | `loader`            | ui    | HTML, CSS     | Bootstrap CSS             | —                                                         |
+| `map-embed`         | ui    | HTML, CSS, JS | Bootstrap CSS             | `button`                                                  |
 | `marquee`           | ui    | HTML, CSS, JS | Bootstrap CSS             | —                                                         |
 | `menubar`           | ui    | HTML, CSS, JS | Bootstrap CSS             | `dropdown`                                                |
 | `meter`             | ui    | HTML, CSS     | Bootstrap CSS             | —                                                         |
@@ -118,6 +121,7 @@ the `<link>` and `<script>` tags to add to your layout.
 | `skeleton`          | ui    | HTML, CSS     | Bootstrap CSS             | —                                                         |
 | `slider`            | ui    | HTML, CSS, JS | Bootstrap CSS             | `label`                                                   |
 | `snippet`           | ui    | HTML, CSS, JS | Bootstrap CSS             | —                                                         |
+| `sparkline`         | ui    | HTML, CSS, JS | Bootstrap CSS             | —                                                         |
 | `spinner`           | ui    | HTML, CSS     | Bootstrap CSS             | —                                                         |
 | `switch`            | ui    | HTML, CSS     | Bootstrap CSS             | —                                                         |
 | `table`             | ui    | HTML, CSS     | Bootstrap CSS             | —                                                         |
@@ -161,6 +165,7 @@ pages. `bootcn add` installs the components a block or template uses.
 | `feature-grid`         | block    | HTML, CSS            | Bootstrap CSS             | —                                                                                                                                                      |
 | `forgot-password-card` | block    | HTML, CSS            | Bootstrap CSS             | `card`, `input`, `button`                                                                                                                              |
 | `hero-section`         | block    | HTML, CSS            | Bootstrap CSS             | `button`, `badge`                                                                                                                                      |
+| `location-card`        | block    | HTML, CSS            | Bootstrap CSS             | `map-embed`, `card`, `button`                                                                                                                          |
 | `login-card`           | block    | HTML, CSS            | Bootstrap CSS             | `card`, `input`, `checkbox`, `button`                                                                                                                  |
 | `login-image`          | block    | HTML, CSS            | Bootstrap CSS             | `card`, `input`, `button`                                                                                                                              |
 | `login-magic-link`     | block    | HTML, CSS            | Bootstrap CSS             | `card`, `input`, `button`, `label`                                                                                                                     |
@@ -181,6 +186,7 @@ pages. `bootcn add` installs the components a block or template uses.
 | `site-header`          | block    | HTML, CSS, JS        | Bootstrap CSS + JS bundle | `button`                                                                                                                                               |
 | `stats-cards`          | block    | HTML, CSS            | Bootstrap CSS             | —                                                                                                                                                      |
 | `testimonials`         | block    | HTML, CSS            | Bootstrap CSS             | `avatar`                                                                                                                                               |
+| `traffic-overview`     | block    | HTML, CSS            | Bootstrap CSS             | `sparkline`, `funnel`, `heatmap`, `card`                                                                                                               |
 | `transactions-table`   | block    | HTML, CSS            | Bootstrap CSS             | `card`, `badge`, `button`, `input`                                                                                                                     |
 | `user-menu`            | block    | HTML, CSS            | Bootstrap CSS + JS bundle | `dropdown`, `avatar`                                                                                                                                   |
 | `admin-dashboard`      | template | page (HTML), CSS, JS | Bootstrap CSS + JS bundle | `app-sidebar`, `user-menu`, `page-header`, `stats-cards`, `activity-feed`, `transactions-table`                                                        |

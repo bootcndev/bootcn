@@ -1,0 +1,28 @@
+{
+  "$schema": "../../schema/registry-item.schema.json",
+  "name": "location-card",
+  "type": "registry:block",
+  "title": "Location card",
+  "description": "Where to find you: the address, opening hours, phone and email, a directions link and a map that loads on request.",
+  "version": "1.0.0",
+  "categories": ["marketing"],
+  "dependencies": [],
+  "registryDependencies": ["map-embed", "card", "button"],
+  "compatibility": {
+    "bootstrap": "5.3",
+    "platform": ["Bootstrap CSS"]
+  },
+  "license": "MIT",
+  "files": [
+    {
+      "path": "location-card.html",
+      "target": "location-card.html",
+      "type": "registry:component"
+    },
+    {
+      "path": "location-card.css",
+      "target": "location-card.css",
+      "type": "registry:style"
+    }
+  ]
+}
