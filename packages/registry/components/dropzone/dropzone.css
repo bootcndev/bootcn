@@ -1,0 +1,203 @@
+.bootcn-dropzone {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 0.75rem;
+  color: var(--bootcn-foreground);
+}
+
+.bootcn-dropzone__area {
+  position: relative;
+  display: grid;
+  justify-items: center;
+  gap: 0.375rem;
+  padding: 2rem 1.25rem;
+  border: 2px dashed var(--bootcn-border-color);
+  border-radius: var(--bootcn-radius-lg);
+  background-color: var(--bootcn-background);
+  font-size: 0.875rem;
+  text-align: center;
+  cursor: pointer;
+  transition:
+    border-color var(--bootcn-transition-duration) ease,
+    background-color var(--bootcn-transition-duration) ease;
+}
+
+.bootcn-dropzone__area:hover {
+  border-color: var(--bootcn-muted-foreground);
+  background-color: var(--bootcn-muted);
+}
+
+/* The real file input covers nothing: the label opens it, and it keeps the focus. */
+.bootcn-dropzone__input {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.bootcn-dropzone__area:has(.bootcn-dropzone__input:focus-visible) {
+  border-color: var(--bootcn-ring);
+  box-shadow: var(--bootcn-focus-ring);
+}
+
+.bootcn-dropzone.is-dragging .bootcn-dropzone__area {
+  border-color: var(--bootcn-primary);
+  border-style: solid;
+  background-color: color-mix(in srgb, var(--bootcn-primary) 6%, var(--bootcn-background));
+}
+
+.bootcn-dropzone__icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 3rem;
+  height: 3rem;
+  margin-bottom: 0.25rem;
+  border: var(--bootcn-border-width) solid var(--bootcn-border-color);
+  border-radius: 9999px;
+  background-color: var(--bootcn-background);
+  color: var(--bootcn-muted-foreground);
+}
+
+.bootcn-dropzone.is-dragging .bootcn-dropzone__icon {
+  color: var(--bootcn-primary);
+  transform: translateY(-2px);
+}
+
+.bootcn-dropzone__hint {
+  color: var(--bootcn-muted-foreground);
+  font-size: 0.8125rem;
+}
+
+.bootcn-dropzone__files {
+  display: grid;
+  gap: 0.5rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.bootcn-dropzone__files:empty {
+  display: none;
+}
+
+.bootcn-dropzone__file {
+  display: grid;
+  grid-template-columns: 2.5rem minmax(0, 1fr) auto;
+  gap: 0.75rem;
+  align-items: center;
+  padding: 0.625rem 0.75rem;
+  border: var(--bootcn-border-width) solid var(--bootcn-border-color);
+  border-radius: var(--bootcn-radius);
+  background-color: var(--bootcn-background);
+}
+
+.bootcn-dropzone__thumb {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  overflow: hidden;
+  border-radius: var(--bootcn-radius-sm);
+  background-color: var(--bootcn-muted);
+  color: var(--bootcn-muted-foreground);
+}
+
+.bootcn-dropzone__thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.bootcn-dropzone__meta {
+  display: grid;
+  gap: 0.25rem;
+  min-width: 0;
+}
+
+.bootcn-dropzone__name {
+  overflow: hidden;
+  font-size: 0.875rem;
+  font-weight: 500;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.bootcn-dropzone__status {
+  color: var(--bootcn-muted-foreground);
+  font-size: 0.75rem;
+}
+
+.bootcn-dropzone__file.is-done .bootcn-dropzone__status {
+  color: var(--bootcn-success-text);
+}
+
+.bootcn-dropzone__file.is-error {
+  border-color: color-mix(in srgb, var(--bootcn-destructive) 50%, transparent);
+}
+
+.bootcn-dropzone__file.is-error .bootcn-dropzone__status {
+  color: var(--bootcn-destructive-text);
+}
+
+.bootcn-dropzone__progress {
+  width: 100%;
+  height: 0.25rem;
+  overflow: hidden;
+  border: 0;
+  border-radius: 9999px;
+  background-color: var(--bootcn-muted);
+  appearance: none;
+}
+
+.bootcn-dropzone__progress::-webkit-progress-bar {
+  background-color: var(--bootcn-muted);
+}
+
+.bootcn-dropzone__progress::-webkit-progress-value {
+  border-radius: 9999px;
+  background-color: var(--bootcn-primary);
+  transition: width 200ms ease;
+}
+
+.bootcn-dropzone__progress::-moz-progress-bar {
+  border-radius: 9999px;
+  background-color: var(--bootcn-primary);
+}
+
+.bootcn-dropzone__file.is-done .bootcn-dropzone__progress,
+.bootcn-dropzone__file.is-error .bootcn-dropzone__progress {
+  display: none;
+}
+
+.bootcn-dropzone__remove {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2rem;
+  height: 2rem;
+  padding: 0;
+  border: 0;
+  border-radius: var(--bootcn-radius-sm);
+  background: transparent;
+  color: var(--bootcn-muted-foreground);
+}
+
+.bootcn-dropzone__remove:hover {
+  background-color: var(--bootcn-accent);
+  color: var(--bootcn-foreground);
+}
+
+.bootcn-dropzone__remove:focus-visible {
+  outline: 0;
+  box-shadow: var(--bootcn-focus-ring);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .bootcn-dropzone__area,
+  .bootcn-dropzone__progress::-webkit-progress-value {
+    transition: none;
+  }
+}

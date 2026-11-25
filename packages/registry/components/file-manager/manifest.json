@@ -1,0 +1,33 @@
+{
+  "$schema": "../../schema/registry-item.schema.json",
+  "name": "file-manager",
+  "type": "registry:ui",
+  "title": "File manager",
+  "description": "A file browser: breadcrumbs, search, list or grid view, sorting, selection with bulk actions, a menu per file and drag-and-drop uploads that appear in the list.",
+  "version": "1.0.0",
+  "categories": ["data-display"],
+  "dependencies": [],
+  "registryDependencies": ["dropzone", "breadcrumb", "input", "checkbox", "dropdown", "button"],
+  "compatibility": {
+    "bootstrap": "5.3",
+    "platform": ["Bootstrap CSS", "Bootstrap JS bundle"]
+  },
+  "license": "MIT",
+  "files": [
+    {
+      "path": "file-manager.html",
+      "target": "file-manager.html",
+      "type": "registry:component"
+    },
+    {
+      "path": "file-manager.css",
+      "target": "file-manager.css",
+      "type": "registry:style"
+    },
+    {
+      "path": "file-manager.js",
+      "target": "file-manager.js",
+      "type": "registry:script"
+    }
+  ]
+}

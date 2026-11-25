@@ -132,3 +132,130 @@ test('invoice: amounts and totals from quantity and price', async ({ page }) => 
   await expect(invoice.getByText('Due in 14 days')).toBeVisible();
   expect(errors).toEqual([]);
 });
+
+test('dropzone: checks files, shows progress and removes them', async ({ page }) => {
+  const errors = collectErrors(page);
+  await openPreview(page, 'dropzone');
+  const zone = page.locator('[data-bootcn-dropzone]');
+  await zone.locator('input[type="file"]').setInputFiles([
+    { name: 'logo.png', mimeType: 'image/png', buffer: Buffer.from('89504e47', 'hex') },
+    { name: 'notes.exe', mimeType: 'application/octet-stream', buffer: Buffer.from('x') },
+    {
+      name: 'huge.pdf',
+      mimeType: 'application/pdf',
+      buffer: Buffer.alloc(11 * 1024 * 1024),
+    },
+  ]);
+  const items = zone.getByRole('listitem');
+  await expect(items).toHaveCount(3);
+  await expect(items.nth(1)).toContainText('This type of file is not allowed');
+  await expect(items.nth(2)).toContainText('Too large (max 10.5 MB)');
+  await expect(items.nth(0)).toContainText('Uploaded', { timeout: 5000 });
+  await expect(zone.locator('[data-bootcn-dropzone-live]')).toContainText('logo.png');
+
+  await zone.getByRole('button', { name: 'Remove notes.exe' }).click();
+  await expect(items).toHaveCount(2);
+  await expect(zone.getByRole('button', { name: 'Remove huge.pdf' })).toBeFocused();
+
+  // Dropping files works like choosing them.
+  const transfer = await page.evaluateHandle(() => {
+    const dt = new DataTransfer();
+    dt.items.add(new File(['a,b'], 'data.csv', { type: 'text/csv' }));
+    return dt;
+  });
+  const area = zone.locator('.bootcn-dropzone__area');
+  await area.dispatchEvent('dragover', { dataTransfer: transfer });
+  await expect(zone).toHaveClass(/is-dragging/);
+  await area.dispatchEvent('drop', { dataTransfer: transfer });
+  await expect(zone).not.toHaveClass(/is-dragging/);
+  await expect(items).toHaveCount(3);
+  await expect(zone.getByRole('listitem').filter({ hasText: 'data.csv' })).toBeVisible();
+  expect(errors).toEqual([]);
+});
+
+test('file manager: sort, search, select, delete, view and upload', async ({ page }) => {
+  const errors = collectErrors(page);
+  await openPreview(page, 'file-manager');
+  const files = page.getByRole('region', { name: 'Files' });
+  const table = files.getByRole('table', { name: 'Files in Website' });
+  const names = () =>
+    table
+      .locator('[data-bootcn-files-item]')
+      .evaluateAll((rows) => rows.map((r) => r.getAttribute('data-name')));
+  expect((await names()).slice(0, 2)).toEqual(['Brand assets', 'Invoices']);
+
+  // Size, largest first: folders stay on top.
+  await table.getByRole('button', { name: 'Size' }).click();
+  await table.getByRole('button', { name: 'Size' }).click();
+  await expect(table.getByRole('columnheader', { name: 'Size' })).toHaveAttribute(
+    'aria-sort',
+    'descending',
+  );
+  expect((await names()).slice(0, 4)).toEqual([
+    'Brand assets',
+    'Invoices',
+    'Product demo.mp4',
+    'Homepage hero.png',
+  ]);
+
+  await files.getByRole('searchbox', { name: 'Search files' }).fill('.p');
+  // "Homepage hero.png" and "Q3 report.pdf".
+  await expect(table.locator('[data-bootcn-files-item]:visible')).toHaveCount(2);
+  await files.getByRole('searchbox', { name: 'Search files' }).fill('zzz');
+  await expect(files.getByText('No files match your search.')).toBeVisible();
+  await files.getByRole('searchbox', { name: 'Search files' }).fill('');
+
+  await table.getByRole('checkbox', { name: 'Select Q3 report.pdf' }).check();
+  await table.getByRole('checkbox', { name: 'Select Customers.csv' }).check();
+  await expect(files.locator('[data-bootcn-files-count]')).toHaveText('2 selected');
+  const all = table.getByRole('checkbox', { name: 'Select all' });
+  expect(await all.evaluate((el: HTMLInputElement) => el.indeterminate)).toBe(true);
+
+  const action = page.evaluate(
+    () =>
+      new Promise<{ action: string; names: string[] }>((resolve) =>
+        document.addEventListener(
+          'bootcn:files:action',
+          (e) => resolve((e as CustomEvent<{ action: string; names: string[] }>).detail),
+          { once: true },
+        ),
+      ),
+  );
+  await files.locator('[data-bootcn-files-bulk]').getByRole('button', { name: 'Delete' }).click();
+  expect(await action).toMatchObject({
+    action: 'delete',
+    names: ['Q3 report.pdf', 'Customers.csv'],
+  });
+  await expect(table.locator('[data-bootcn-files-item]')).toHaveCount(5);
+  await expect(files.locator('[data-bootcn-files-bulk]')).toBeHidden();
+  await expect(files.locator('[data-bootcn-files-live]')).toHaveText('Deleted 2 files');
+
+  // One file from its menu.
+  await table.getByRole('button', { name: 'Actions for Meeting notes.txt' }).click();
+  await table
+    .getByRole('menu')
+    .or(table.locator('.dropdown-menu.show'))
+    .getByRole('button', { name: 'Delete' })
+    .click();
+  await expect(table.locator('[data-name="Meeting notes.txt"]')).toHaveCount(0);
+
+  await files.getByRole('button', { name: 'Grid' }).click();
+  await expect(files.getByRole('button', { name: 'Grid' })).toHaveAttribute('aria-pressed', 'true');
+  await expect(files).toHaveAttribute('data-view', 'grid');
+
+  await files.getByRole('button', { name: 'Upload', exact: true }).click();
+  await expect(files.getByRole('button', { name: 'Upload', exact: true })).toHaveAttribute(
+    'aria-expanded',
+    'true',
+  );
+  await files.locator('input[type="file"]').setInputFiles({
+    name: 'Budget 2027.xlsx',
+    mimeType: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',
+    buffer: Buffer.from('x'.repeat(2048)),
+  });
+  const added = table.locator('[data-name="Budget 2027.xlsx"]');
+  await expect(added).toBeVisible({ timeout: 5000 });
+  await expect(added).toHaveAttribute('data-type', 'sheet');
+  await expect(added.getByRole('checkbox', { name: 'Select Budget 2027.xlsx' })).toBeVisible();
+  expect(errors).toEqual([]);
+});

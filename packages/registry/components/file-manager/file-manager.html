@@ -1,0 +1,861 @@
+<section
+  class="bootcn-files"
+  data-bootcn-files
+  data-view="list"
+  aria-labelledby="bootcn-files-title"
+>
+  <header class="bootcn-files__header">
+    <div class="bootcn-files__where">
+      <h2 class="visually-hidden" id="bootcn-files-title">Files</h2>
+      <nav aria-label="Folder">
+        <ol class="breadcrumb bootcn-breadcrumb mb-0">
+          <li class="breadcrumb-item"><a href="#home">Home</a></li>
+          <li class="breadcrumb-item"><a href="#projects">Projects</a></li>
+          <li class="breadcrumb-item active" aria-current="page">Website</li>
+        </ol>
+      </nav>
+    </div>
+    <div class="bootcn-files__tools">
+      <div class="bootcn-files__search">
+        <svg
+          class="bootcn-icon bootcn-files__search-icon"
+          width="16"
+          height="16"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          aria-hidden="true"
+          focusable="false"
+        >
+          <circle cx="11" cy="11" r="7" />
+          <path d="m20 20-3.5-3.5" />
+        </svg>
+        <input
+          type="search"
+          class="form-control bootcn-input"
+          placeholder="Search files"
+          aria-label="Search files"
+          data-bootcn-files-search
+        />
+      </div>
+      <div class="bootcn-files__view" role="group" aria-label="View">
+        <button
+          type="button"
+          class="bootcn-files__view-button"
+          aria-label="List"
+          aria-pressed="true"
+          data-bootcn-files-view="list"
+        >
+          <svg
+            class="bootcn-icon"
+            width="16"
+            height="16"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            aria-hidden="true"
+            focusable="false"
+          >
+            <path d="M8 6h13M8 12h13M8 18h13M3 6h.01M3 12h.01M3 18h.01" />
+          </svg>
+        </button>
+        <button
+          type="button"
+          class="bootcn-files__view-button"
+          aria-label="Grid"
+          aria-pressed="false"
+          data-bootcn-files-view="grid"
+        >
+          <svg
+            class="bootcn-icon"
+            width="16"
+            height="16"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            aria-hidden="true"
+            focusable="false"
+          >
+            <rect x="3" y="3" width="7" height="7" rx="1" />
+            <rect x="14" y="3" width="7" height="7" rx="1" />
+            <rect x="3" y="14" width="7" height="7" rx="1" />
+            <rect x="14" y="14" width="7" height="7" rx="1" />
+          </svg>
+        </button>
+      </div>
+      <button
+        type="button"
+        class="btn bootcn-button bootcn-button--default"
+        aria-expanded="false"
+        aria-controls="bootcn-files-upload"
+        data-bootcn-files-upload-toggle
+      >
+        <svg
+          class="bootcn-icon"
+          width="16"
+          height="16"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          aria-hidden="true"
+          focusable="false"
+        >
+          <path d="M12 21V9M7 14l5-5 5 5" />
+          <path d="M4 3h16" />
+        </svg>
+        Upload
+      </button>
+    </div>
+  </header>
+  <div class="bootcn-files__upload" id="bootcn-files-upload" hidden>
+    <div class="bootcn-dropzone" data-bootcn-dropzone data-max-size="10485760">
+      <label class="bootcn-dropzone__area">
+        <span class="bootcn-dropzone__icon"
+          ><svg
+            class="bootcn-icon"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            aria-hidden="true"
+            focusable="false"
+          >
+            <path d="M7 18a5 5 0 1 1 1-9.9A6 6 0 0 1 19.5 10 4 4 0 0 1 18 18z" />
+            <path d="M12 12v6M9.5 14.5 12 12l2.5 2.5" /></svg
+        ></span>
+        <span class="bootcn-dropzone__title"
+          ><strong>Click to upload</strong> or drag and drop</span
+        >
+        <span class="bootcn-dropzone__hint" id="bootcn-files-upload-hint"
+          >Images, PDF or spreadsheets, up to 10 MB each</span
+        >
+        <input
+          type="file"
+          id="bootcn-files-upload-input"
+          class="bootcn-dropzone__input"
+          multiple
+          accept="image/*,.pdf,.csv,.xlsx"
+          aria-describedby="bootcn-files-upload-hint"
+          data-bootcn-dropzone-input
+        />
+      </label>
+      <ul class="bootcn-dropzone__files" aria-label="Uploads" data-bootcn-dropzone-list></ul>
+      <p class="visually-hidden" aria-live="polite" data-bootcn-dropzone-live></p>
+    </div>
+  </div>
+  <div class="bootcn-files__bulk" data-bootcn-files-bulk hidden>
+    <span data-bootcn-files-count>0 selected</span>
+    <button
+      type="button"
+      class="btn bootcn-button bootcn-button--ghost bootcn-button--sm"
+      data-bootcn-files-bulk-action="download"
+    >
+      Download
+    </button>
+    <button
+      type="button"
+      class="btn bootcn-button bootcn-button--ghost bootcn-button--sm bootcn-files__danger"
+      data-bootcn-files-bulk-action="delete"
+    >
+      Delete
+    </button>
+    <button
+      type="button"
+      class="btn bootcn-button bootcn-button--ghost bootcn-button--sm ms-auto"
+      data-bootcn-files-clear
+    >
+      Clear selection
+    </button>
+  </div>
+  <div class="bootcn-files__table" role="table" aria-label="Files in Website">
+    <div role="rowgroup" class="bootcn-files__head">
+      <div role="row" class="bootcn-files__item bootcn-files__item--head">
+        <span role="columnheader" class="bootcn-files__select"
+          ><input
+            class="form-check-input"
+            type="checkbox"
+            aria-label="Select all"
+            data-bootcn-files-check-all
+        /></span>
+        <span role="columnheader" class="bootcn-files__name" aria-sort="ascending"
+          ><button type="button" class="bootcn-files__sort" data-bootcn-files-sort="name">
+            Name
+          </button></span
+        >
+        <span role="columnheader" class="bootcn-files__size" aria-sort="none"
+          ><button type="button" class="bootcn-files__sort" data-bootcn-files-sort="size">
+            Size
+          </button></span
+        >
+        <span role="columnheader" class="bootcn-files__modified" aria-sort="none"
+          ><button type="button" class="bootcn-files__sort" data-bootcn-files-sort="modified">
+            Modified
+          </button></span
+        >
+        <span role="columnheader" class="bootcn-files__actions"
+          ><span class="visually-hidden">Actions</span></span
+        >
+      </div>
+    </div>
+    <div role="rowgroup" class="bootcn-files__body" data-bootcn-files-list>
+      <div
+        role="row"
+        class="bootcn-files__item"
+        data-bootcn-files-item
+        data-name="Brand assets"
+        data-type="folder"
+        data-size="0"
+        data-modified="2026-11-20"
+      >
+        <span role="cell" class="bootcn-files__select"
+          ><input
+            class="form-check-input"
+            type="checkbox"
+            aria-label="Select Brand assets"
+            data-bootcn-files-check
+        /></span>
+        <span role="cell" class="bootcn-files__name"
+          ><span class="bootcn-files__icon" data-type="folder"
+            ><svg
+              class="bootcn-icon"
+              width="20"
+              height="20"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              aria-hidden="true"
+              focusable="false"
+            >
+              <path
+                d="M3 6a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"
+              /></svg></span
+          ><a href="#brand-assets" class="bootcn-files__link">Brand assets</a></span
+        >
+        <span role="cell" class="bootcn-files__size">14 items</span>
+        <span role="cell" class="bootcn-files__modified"
+          ><time datetime="2026-11-20">Nov 20</time></span
+        >
+        <div role="cell" class="bootcn-files__actions">
+          <div class="dropdown">
+            <button
+              type="button"
+              class="bootcn-files__more"
+              data-bs-toggle="dropdown"
+              aria-expanded="false"
+              aria-label="Actions for Brand assets"
+            >
+              <svg
+                class="bootcn-icon"
+                width="16"
+                height="16"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+                focusable="false"
+              >
+                <circle cx="5" cy="12" r="1" />
+                <circle cx="12" cy="12" r="1" />
+                <circle cx="19" cy="12" r="1" />
+              </svg>
+            </button>
+            <ul class="dropdown-menu dropdown-menu-end bootcn-dropdown">
+              <li>
+                <button type="button" class="dropdown-item" data-bootcn-files-action="download">
+                  Download
+                </button>
+              </li>
+              <li>
+                <button type="button" class="dropdown-item" data-bootcn-files-action="rename">
+                  Rename
+                </button>
+              </li>
+              <li><hr class="dropdown-divider" /></li>
+              <li>
+                <button
+                  type="button"
+                  class="dropdown-item text-danger"
+                  data-bootcn-files-action="delete"
+                >
+                  Delete
+                </button>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div
+        role="row"
+        class="bootcn-files__item"
+        data-bootcn-files-item
+        data-name="Invoices"
+        data-type="folder"
+        data-size="0"
+        data-modified="2026-11-02"
+      >
+        <span role="cell" class="bootcn-files__select"
+          ><input
+            class="form-check-input"
+            type="checkbox"
+            aria-label="Select Invoices"
+            data-bootcn-files-check
+        /></span>
+        <span role="cell" class="bootcn-files__name"
+          ><span class="bootcn-files__icon" data-type="folder"
+            ><svg
+              class="bootcn-icon"
+              width="20"
+              height="20"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              aria-hidden="true"
+              focusable="false"
+            >
+              <path
+                d="M3 6a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"
+              /></svg></span
+          ><a href="#invoices" class="bootcn-files__link">Invoices</a></span
+        >
+        <span role="cell" class="bootcn-files__size">32 items</span>
+        <span role="cell" class="bootcn-files__modified"
+          ><time datetime="2026-11-02">Nov 2</time></span
+        >
+        <div role="cell" class="bootcn-files__actions">
+          <div class="dropdown">
+            <button
+              type="button"
+              class="bootcn-files__more"
+              data-bs-toggle="dropdown"
+              aria-expanded="false"
+              aria-label="Actions for Invoices"
+            >
+              <svg
+                class="bootcn-icon"
+                width="16"
+                height="16"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+                focusable="false"
+              >
+                <circle cx="5" cy="12" r="1" />
+                <circle cx="12" cy="12" r="1" />
+                <circle cx="19" cy="12" r="1" />
+              </svg>
+            </button>
+            <ul class="dropdown-menu dropdown-menu-end bootcn-dropdown">
+              <li>
+                <button type="button" class="dropdown-item" data-bootcn-files-action="download">
+                  Download
+                </button>
+              </li>
+              <li>
+                <button type="button" class="dropdown-item" data-bootcn-files-action="rename">
+                  Rename
+                </button>
+              </li>
+              <li><hr class="dropdown-divider" /></li>
+              <li>
+                <button
+                  type="button"
+                  class="dropdown-item text-danger"
+                  data-bootcn-files-action="delete"
+                >
+                  Delete
+                </button>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div
+        role="row"
+        class="bootcn-files__item"
+        data-bootcn-files-item
+        data-name="Homepage hero.png"
+        data-type="image"
+        data-size="2457600"
+        data-modified="2026-11-24"
+      >
+        <span role="cell" class="bootcn-files__select"
+          ><input
+            class="form-check-input"
+            type="checkbox"
+            aria-label="Select Homepage hero.png"
+            data-bootcn-files-check
+        /></span>
+        <span role="cell" class="bootcn-files__name"
+          ><span class="bootcn-files__icon" data-type="image"
+            ><svg
+              class="bootcn-icon"
+              width="20"
+              height="20"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              aria-hidden="true"
+              focusable="false"
+            >
+              <rect x="3" y="3" width="18" height="18" rx="2" />
+              <circle cx="9" cy="9" r="2" />
+              <path d="m21 15-5-5L5 21" /></svg></span
+          ><a href="#homepage-hero-png" class="bootcn-files__link">Homepage hero.png</a></span
+        >
+        <span role="cell" class="bootcn-files__size">2.5 MB</span>
+        <span role="cell" class="bootcn-files__modified"
+          ><time datetime="2026-11-24">Nov 24</time></span
+        >
+        <div role="cell" class="bootcn-files__actions">
+          <div class="dropdown">
+            <button
+              type="button"
+              class="bootcn-files__more"
+              data-bs-toggle="dropdown"
+              aria-expanded="false"
+              aria-label="Actions for Homepage hero.png"
+            >
+              <svg
+                class="bootcn-icon"
+                width="16"
+                height="16"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+                focusable="false"
+              >
+                <circle cx="5" cy="12" r="1" />
+                <circle cx="12" cy="12" r="1" />
+                <circle cx="19" cy="12" r="1" />
+              </svg>
+            </button>
+            <ul class="dropdown-menu dropdown-menu-end bootcn-dropdown">
+              <li>
+                <button type="button" class="dropdown-item" data-bootcn-files-action="download">
+                  Download
+                </button>
+              </li>
+              <li>
+                <button type="button" class="dropdown-item" data-bootcn-files-action="rename">
+                  Rename
+                </button>
+              </li>
+              <li><hr class="dropdown-divider" /></li>
+              <li>
+                <button
+                  type="button"
+                  class="dropdown-item text-danger"
+                  data-bootcn-files-action="delete"
+                >
+                  Delete
+                </button>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div
+        role="row"
+        class="bootcn-files__item"
+        data-bootcn-files-item
+        data-name="Q3 report.pdf"
+        data-type="pdf"
+        data-size="1153434"
+        data-modified="2026-10-15"
+      >
+        <span role="cell" class="bootcn-files__select"
+          ><input
+            class="form-check-input"
+            type="checkbox"
+            aria-label="Select Q3 report.pdf"
+            data-bootcn-files-check
+        /></span>
+        <span role="cell" class="bootcn-files__name"
+          ><span class="bootcn-files__icon" data-type="pdf"
+            ><svg
+              class="bootcn-icon"
+              width="20"
+              height="20"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              aria-hidden="true"
+              focusable="false"
+            >
+              <path d="M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z" />
+              <path d="M14 3v6h6" /></svg></span
+          ><a href="#q3-report-pdf" class="bootcn-files__link">Q3 report.pdf</a></span
+        >
+        <span role="cell" class="bootcn-files__size">1.2 MB</span>
+        <span role="cell" class="bootcn-files__modified"
+          ><time datetime="2026-10-15">Oct 15</time></span
+        >
+        <div role="cell" class="bootcn-files__actions">
+          <div class="dropdown">
+            <button
+              type="button"
+              class="bootcn-files__more"
+              data-bs-toggle="dropdown"
+              aria-expanded="false"
+              aria-label="Actions for Q3 report.pdf"
+            >
+              <svg
+                class="bootcn-icon"
+                width="16"
+                height="16"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+                focusable="false"
+              >
+                <circle cx="5" cy="12" r="1" />
+                <circle cx="12" cy="12" r="1" />
+                <circle cx="19" cy="12" r="1" />
+              </svg>
+            </button>
+            <ul class="dropdown-menu dropdown-menu-end bootcn-dropdown">
+              <li>
+                <button type="button" class="dropdown-item" data-bootcn-files-action="download">
+                  Download
+                </button>
+              </li>
+              <li>
+                <button type="button" class="dropdown-item" data-bootcn-files-action="rename">
+                  Rename
+                </button>
+              </li>
+              <li><hr class="dropdown-divider" /></li>
+              <li>
+                <button
+                  type="button"
+                  class="dropdown-item text-danger"
+                  data-bootcn-files-action="delete"
+                >
+                  Delete
+                </button>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div
+        role="row"
+        class="bootcn-files__item"
+        data-bootcn-files-item
+        data-name="Customers.csv"
+        data-type="sheet"
+        data-size="84300"
+        data-modified="2026-11-18"
+      >
+        <span role="cell" class="bootcn-files__select"
+          ><input
+            class="form-check-input"
+            type="checkbox"
+            aria-label="Select Customers.csv"
+            data-bootcn-files-check
+        /></span>
+        <span role="cell" class="bootcn-files__name"
+          ><span class="bootcn-files__icon" data-type="sheet"
+            ><svg
+              class="bootcn-icon"
+              width="20"
+              height="20"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              aria-hidden="true"
+              focusable="false"
+            >
+              <rect x="4" y="3" width="16" height="18" rx="2" />
+              <path d="M4 9h16M4 15h16M10 3v18" /></svg></span
+          ><a href="#customers-csv" class="bootcn-files__link">Customers.csv</a></span
+        >
+        <span role="cell" class="bootcn-files__size">84 kB</span>
+        <span role="cell" class="bootcn-files__modified"
+          ><time datetime="2026-11-18">Nov 18</time></span
+        >
+        <div role="cell" class="bootcn-files__actions">
+          <div class="dropdown">
+            <button
+              type="button"
+              class="bootcn-files__more"
+              data-bs-toggle="dropdown"
+              aria-expanded="false"
+              aria-label="Actions for Customers.csv"
+            >
+              <svg
+                class="bootcn-icon"
+                width="16"
+                height="16"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+                focusable="false"
+              >
+                <circle cx="5" cy="12" r="1" />
+                <circle cx="12" cy="12" r="1" />
+                <circle cx="19" cy="12" r="1" />
+              </svg>
+            </button>
+            <ul class="dropdown-menu dropdown-menu-end bootcn-dropdown">
+              <li>
+                <button type="button" class="dropdown-item" data-bootcn-files-action="download">
+                  Download
+                </button>
+              </li>
+              <li>
+                <button type="button" class="dropdown-item" data-bootcn-files-action="rename">
+                  Rename
+                </button>
+              </li>
+              <li><hr class="dropdown-divider" /></li>
+              <li>
+                <button
+                  type="button"
+                  class="dropdown-item text-danger"
+                  data-bootcn-files-action="delete"
+                >
+                  Delete
+                </button>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div
+        role="row"
+        class="bootcn-files__item"
+        data-bootcn-files-item
+        data-name="Product demo.mp4"
+        data-type="video"
+        data-size="48234496"
+        data-modified="2026-09-30"
+      >
+        <span role="cell" class="bootcn-files__select"
+          ><input
+            class="form-check-input"
+            type="checkbox"
+            aria-label="Select Product demo.mp4"
+            data-bootcn-files-check
+        /></span>
+        <span role="cell" class="bootcn-files__name"
+          ><span class="bootcn-files__icon" data-type="video"
+            ><svg
+              class="bootcn-icon"
+              width="20"
+              height="20"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              aria-hidden="true"
+              focusable="false"
+            >
+              <rect x="3" y="5" width="14" height="14" rx="2" />
+              <path d="m17 10 4-2v8l-4-2" /></svg></span
+          ><a href="#product-demo-mp4" class="bootcn-files__link">Product demo.mp4</a></span
+        >
+        <span role="cell" class="bootcn-files__size">48.2 MB</span>
+        <span role="cell" class="bootcn-files__modified"
+          ><time datetime="2026-09-30">Sep 30</time></span
+        >
+        <div role="cell" class="bootcn-files__actions">
+          <div class="dropdown">
+            <button
+              type="button"
+              class="bootcn-files__more"
+              data-bs-toggle="dropdown"
+              aria-expanded="false"
+              aria-label="Actions for Product demo.mp4"
+            >
+              <svg
+                class="bootcn-icon"
+                width="16"
+                height="16"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+                focusable="false"
+              >
+                <circle cx="5" cy="12" r="1" />
+                <circle cx="12" cy="12" r="1" />
+                <circle cx="19" cy="12" r="1" />
+              </svg>
+            </button>
+            <ul class="dropdown-menu dropdown-menu-end bootcn-dropdown">
+              <li>
+                <button type="button" class="dropdown-item" data-bootcn-files-action="download">
+                  Download
+                </button>
+              </li>
+              <li>
+                <button type="button" class="dropdown-item" data-bootcn-files-action="rename">
+                  Rename
+                </button>
+              </li>
+              <li><hr class="dropdown-divider" /></li>
+              <li>
+                <button
+                  type="button"
+                  class="dropdown-item text-danger"
+                  data-bootcn-files-action="delete"
+                >
+                  Delete
+                </button>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div
+        role="row"
+        class="bootcn-files__item"
+        data-bootcn-files-item
+        data-name="Meeting notes.txt"
+        data-type="file"
+        data-size="3200"
+        data-modified="2026-11-25"
+      >
+        <span role="cell" class="bootcn-files__select"
+          ><input
+            class="form-check-input"
+            type="checkbox"
+            aria-label="Select Meeting notes.txt"
+            data-bootcn-files-check
+        /></span>
+        <span role="cell" class="bootcn-files__name"
+          ><span class="bootcn-files__icon" data-type="file"
+            ><svg
+              class="bootcn-icon"
+              width="20"
+              height="20"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              aria-hidden="true"
+              focusable="false"
+            >
+              <path d="M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z" />
+              <path d="M14 3v6h6" /></svg></span
+          ><a href="#meeting-notes-txt" class="bootcn-files__link">Meeting notes.txt</a></span
+        >
+        <span role="cell" class="bootcn-files__size">3.2 kB</span>
+        <span role="cell" class="bootcn-files__modified"
+          ><time datetime="2026-11-25">Today</time></span
+        >
+        <div role="cell" class="bootcn-files__actions">
+          <div class="dropdown">
+            <button
+              type="button"
+              class="bootcn-files__more"
+              data-bs-toggle="dropdown"
+              aria-expanded="false"
+              aria-label="Actions for Meeting notes.txt"
+            >
+              <svg
+                class="bootcn-icon"
+                width="16"
+                height="16"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+                focusable="false"
+              >
+                <circle cx="5" cy="12" r="1" />
+                <circle cx="12" cy="12" r="1" />
+                <circle cx="19" cy="12" r="1" />
+              </svg>
+            </button>
+            <ul class="dropdown-menu dropdown-menu-end bootcn-dropdown">
+              <li>
+                <button type="button" class="dropdown-item" data-bootcn-files-action="download">
+                  Download
+                </button>
+              </li>
+              <li>
+                <button type="button" class="dropdown-item" data-bootcn-files-action="rename">
+                  Rename
+                </button>
+              </li>
+              <li><hr class="dropdown-divider" /></li>
+              <li>
+                <button
+                  type="button"
+                  class="dropdown-item text-danger"
+                  data-bootcn-files-action="delete"
+                >
+                  Delete
+                </button>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <p class="bootcn-files__empty" data-bootcn-files-empty hidden>No files match your search.</p>
+  <p class="visually-hidden" aria-live="polite" data-bootcn-files-live></p>
+</section>

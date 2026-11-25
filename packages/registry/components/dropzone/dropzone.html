@@ -1,0 +1,36 @@
+<div class="bootcn-dropzone" data-bootcn-dropzone data-max-size="10485760">
+  <label class="bootcn-dropzone__area">
+    <span class="bootcn-dropzone__icon"
+      ><svg
+        class="bootcn-icon"
+        width="24"
+        height="24"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        aria-hidden="true"
+        focusable="false"
+      >
+        <path d="M7 18a5 5 0 1 1 1-9.9A6 6 0 0 1 19.5 10 4 4 0 0 1 18 18z" />
+        <path d="M12 12v6M9.5 14.5 12 12l2.5 2.5" /></svg
+    ></span>
+    <span class="bootcn-dropzone__title"><strong>Click to upload</strong> or drag and drop</span>
+    <span class="bootcn-dropzone__hint" id="bootcn-dropzone-hint"
+      >Images, PDF or spreadsheets, up to 10 MB each</span
+    >
+    <input
+      type="file"
+      id="bootcn-dropzone-input"
+      class="bootcn-dropzone__input"
+      multiple
+      accept="image/*,.pdf,.csv,.xlsx"
+      aria-describedby="bootcn-dropzone-hint"
+      data-bootcn-dropzone-input
+    />
+  </label>
+  <ul class="bootcn-dropzone__files" aria-label="Uploads" data-bootcn-dropzone-list></ul>
+  <p class="visually-hidden" aria-live="polite" data-bootcn-dropzone-live></p>
+</div>

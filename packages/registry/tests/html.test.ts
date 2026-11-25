@@ -16,8 +16,14 @@ const htmlvalidate = new HtmlValidate({
     'doctype-style': 'off',
     'void-style': 'off',
     // A filterable list (combobox, command) needs a custom listbox: <select>
-    // cannot filter. Every other native-element preference still applies.
-    'prefer-native-element': ['error', { exclude: ['listbox'] }],
+    // cannot filter. A file manager shows the same rows as a list or a grid
+    // of cards; a native <table> loses its table semantics in some browsers
+    // when its display changes, so it uses ARIA table roles. Every other
+    // native-element preference still applies.
+    'prefer-native-element': [
+      'error',
+      { exclude: ['listbox', 'table', 'rowgroup', 'row', 'columnheader', 'cell'] },
+    ],
   },
 });
 
