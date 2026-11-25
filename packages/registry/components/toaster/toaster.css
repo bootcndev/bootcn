@@ -1,0 +1,241 @@
+.bootcn-toaster {
+  --bootcn-toaster-gap: 0.75rem;
+  --bootcn-toaster-width: 22rem;
+  position: fixed;
+  z-index: 1090;
+  width: min(var(--bootcn-toaster-width), calc(100vw - 2rem));
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  outline: 0;
+}
+
+.bootcn-toaster[data-position^='bottom'] {
+  bottom: 1rem;
+}
+
+.bootcn-toaster[data-position^='top'] {
+  top: 1rem;
+}
+
+.bootcn-toaster[data-position$='right'] {
+  inset-inline-end: 1rem;
+}
+
+.bootcn-toaster[data-position$='left'] {
+  inset-inline-start: 1rem;
+}
+
+.bootcn-toaster[data-position$='center'] {
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+/* Each toast is placed by toaster.js: collapsed, the newest is in front and
+   the older ones peek behind it; on hover or focus they spread out. */
+.bootcn-toaster__toast {
+  --bootcn-toast-y: 0px;
+  --bootcn-toast-scale: 1;
+  position: absolute;
+  inset-inline: 0;
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  align-items: start;
+  gap: 0.25rem 0.75rem;
+  padding: 0.875rem 1rem;
+  overflow: hidden;
+  border: var(--bootcn-border-width) solid var(--bootcn-border-color);
+  border-radius: var(--bootcn-radius-lg);
+  background-color: var(--bootcn-background);
+  box-shadow: var(--bootcn-shadow-lg);
+  color: var(--bootcn-foreground);
+  font-size: 0.875rem;
+  touch-action: pan-y;
+  transition:
+    transform 400ms cubic-bezier(0.21, 1.02, 0.73, 1),
+    opacity 400ms;
+}
+
+.bootcn-toaster[data-position^='bottom'] .bootcn-toaster__toast {
+  bottom: 0;
+  transform: translateY(calc(var(--bootcn-toast-y) * -1)) scale(var(--bootcn-toast-scale));
+  transform-origin: bottom center;
+}
+
+.bootcn-toaster[data-position^='top'] .bootcn-toaster__toast {
+  top: 0;
+  transform: translateY(var(--bootcn-toast-y)) scale(var(--bootcn-toast-scale));
+  transform-origin: top center;
+}
+
+.bootcn-toaster__toast.is-entering {
+  opacity: 0;
+}
+
+.bootcn-toaster[data-position^='bottom'] .bootcn-toaster__toast.is-entering {
+  transform: translateY(100%);
+}
+
+.bootcn-toaster[data-position^='top'] .bootcn-toaster__toast.is-entering {
+  transform: translateY(-100%);
+}
+
+.bootcn-toaster__toast.is-leaving {
+  opacity: 0;
+}
+
+.bootcn-toaster__toast.is-hidden {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.bootcn-toaster__toast.is-swiping {
+  transition: none;
+}
+
+.bootcn-toaster__icon {
+  display: inline-flex;
+  margin-top: 0.0625rem;
+}
+
+.bootcn-toaster__icon .bootcn-icon {
+  width: 1.125rem;
+  height: 1.125rem;
+}
+
+.bootcn-toaster__toast[data-type='success'] .bootcn-toaster__icon {
+  color: #16a34a;
+}
+
+.bootcn-toaster__toast[data-type='error'] .bootcn-toaster__icon {
+  color: var(--bs-danger);
+}
+
+.bootcn-toaster__toast[data-type='warning'] .bootcn-toaster__icon {
+  color: #d97706;
+}
+
+.bootcn-toaster__toast[data-type='info'] .bootcn-toaster__icon {
+  color: var(--bootcn-chart-1);
+}
+
+.bootcn-toaster__body {
+  grid-column: 2;
+  min-width: 0;
+}
+
+.bootcn-toaster__toast:not(:has(.bootcn-toaster__icon)) .bootcn-toaster__body {
+  grid-column: 1 / 3;
+}
+
+.bootcn-toaster__title {
+  margin: 0;
+  font-weight: 600;
+}
+
+.bootcn-toaster__description {
+  margin: 0.125rem 0 0;
+  color: var(--bootcn-muted-foreground);
+}
+
+.bootcn-toaster__actions {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.bootcn-toaster__action {
+  padding: 0.25rem 0.625rem;
+  border: 0;
+  border-radius: var(--bootcn-radius-sm);
+  background-color: var(--bootcn-primary);
+  color: var(--bootcn-primary-foreground);
+  font-size: 0.8125rem;
+  font-weight: 500;
+}
+
+.bootcn-toaster__close {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.5rem;
+  height: 1.5rem;
+  border: 0;
+  border-radius: var(--bootcn-radius-sm);
+  background: transparent;
+  color: var(--bootcn-muted-foreground);
+}
+
+.bootcn-toaster__close:hover {
+  background-color: var(--bootcn-accent);
+  color: var(--bootcn-foreground);
+}
+
+.bootcn-toaster__action:focus-visible,
+.bootcn-toaster__close:focus-visible {
+  outline: 0;
+  box-shadow: var(--bootcn-focus-ring);
+}
+
+.bootcn-toaster__close .bootcn-icon {
+  width: 0.875rem;
+  height: 0.875rem;
+}
+
+/* The time left; it stops while the toaster is hovered or focused. */
+.bootcn-toaster__timer {
+  position: absolute;
+  inset-inline: 0;
+  bottom: 0;
+  height: 2px;
+  background-color: var(--bootcn-muted-foreground);
+  opacity: 0.35;
+  transform-origin: left;
+  animation: bootcn-toaster-timer var(--bootcn-toast-duration, 4000ms) linear forwards;
+}
+
+[dir='rtl'] .bootcn-toaster__timer {
+  transform-origin: right;
+}
+
+.bootcn-toaster.is-paused .bootcn-toaster__timer {
+  animation-play-state: paused;
+}
+
+@keyframes bootcn-toaster-timer {
+  to {
+    transform: scaleX(0);
+  }
+}
+
+.bootcn-toaster__spinner {
+  width: 1.125rem;
+  height: 1.125rem;
+  border: 2px solid currentColor;
+  border-inline-end-color: transparent;
+  border-radius: 9999px;
+  animation: bootcn-toaster-spin 0.75s linear infinite;
+}
+
+@keyframes bootcn-toaster-spin {
+  to {
+    transform: rotate(1turn);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .bootcn-toaster__toast {
+    transition: opacity 150ms;
+  }
+
+  .bootcn-toaster__spinner {
+    animation-duration: 1.5s;
+  }
+}
+
+/* Preview layout only. */
+.bootcn-toaster-demo {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}

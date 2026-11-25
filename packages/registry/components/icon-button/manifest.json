@@ -1,0 +1,28 @@
+{
+  "$schema": "../../schema/registry-item.schema.json",
+  "name": "icon-button",
+  "type": "registry:ui",
+  "title": "Button with icons",
+  "description": "Buttons with a leading or trailing icon, icon-only buttons in three sizes, an icon that becomes a spinner while loading, and a count badge.",
+  "version": "1.0.0",
+  "categories": ["actions"],
+  "dependencies": [],
+  "registryDependencies": ["button"],
+  "compatibility": {
+    "bootstrap": "5.3",
+    "platform": ["Bootstrap CSS"]
+  },
+  "license": "MIT",
+  "files": [
+    {
+      "path": "icon-button.html",
+      "target": "icon-button.html",
+      "type": "registry:component"
+    },
+    {
+      "path": "icon-button.css",
+      "target": "icon-button.css",
+      "type": "registry:style"
+    }
+  ]
+}

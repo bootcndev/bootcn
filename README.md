@@ -9,7 +9,7 @@ build with plain HTML and native PHP. Components are installed as editable
 HTML, CSS and JavaScript source files that you own. No React, Vue, jQuery,
 bundler or Node.js is required at runtime.
 
-> **Status:** early (0.x). 92 components, 42 blocks (authentication, dashboard, navigation, marketing, charts, AI chat), admin dashboard, analytics dashboard, landing page and settings templates and design
+> **Status:** early (0.x). 95 components, 42 blocks (authentication, dashboard, navigation, marketing, charts, AI chat), admin dashboard, analytics dashboard, landing page and settings templates and design
 > tokens, with a Tailwind-like look built on Bootstrap. The CLI is on
 > [npm](https://www.npmjs.com/package/bootcn); documentation, live previews and
 > the registry are at <https://bootcn.dev/>. News: [@bootcndev](https://x.com/bootcndev) on X.
@@ -70,6 +70,7 @@ the `<link>` and `<script>` tags to add to your layout.
 | `color-slider`      | ui    | HTML, CSS, JS | Bootstrap CSS             | `label`                                                   |
 | `combobox`          | ui    | HTML, CSS, JS | Bootstrap CSS             | `label`                                                   |
 | `command`           | ui    | HTML, CSS, JS | Bootstrap CSS + JS bundle | `kbd`, `button`                                           |
+| `confetti`          | ui    | HTML, CSS, JS | Bootstrap CSS             | `button`                                                  |
 | `context-menu`      | ui    | HTML, CSS, JS | Bootstrap CSS             | `dropdown`                                                |
 | `conversation`      | ui    | HTML, CSS, JS | Bootstrap CSS             | `code-block`                                              |
 | `data-table`        | ui    | HTML, CSS, JS | Bootstrap CSS             | `table`, `input`, `button`, `checkbox`                    |
@@ -87,6 +88,7 @@ the `<link>` and `<script>` tags to add to your layout.
 | `funnel`            | ui    | HTML, CSS     | Bootstrap CSS             | —                                                         |
 | `heatmap`           | ui    | HTML, CSS     | Bootstrap CSS             | —                                                         |
 | `hover-card`        | ui    | HTML, CSS, JS | Bootstrap CSS + JS bundle | `avatar`                                                  |
+| `icon-button`       | ui    | HTML, CSS     | Bootstrap CSS             | `button`                                                  |
 | `image`             | ui    | HTML, CSS, JS | Bootstrap CSS             | —                                                         |
 | `input-group`       | ui    | HTML, CSS     | Bootstrap CSS             | `button`, `label`                                         |
 | `input-otp`         | ui    | HTML, CSS, JS | Bootstrap CSS             | `label`                                                   |
@@ -130,6 +132,7 @@ the `<link>` and `<script>` tags to add to your layout.
 | `tag-group`         | ui    | HTML, CSS, JS | Bootstrap CSS             | —                                                         |
 | `textarea`          | ui    | HTML, CSS     | Bootstrap CSS             | `input`                                                   |
 | `toast`             | ui    | HTML, CSS, JS | Bootstrap CSS + JS bundle | `button`                                                  |
+| `toaster`           | ui    | HTML, CSS, JS | Bootstrap CSS             | `button`                                                  |
 | `toggle-group`      | ui    | HTML, CSS     | Bootstrap CSS             | `toggle`                                                  |
 | `toggle`            | ui    | HTML, CSS     | Bootstrap CSS             | —                                                         |
 | `toolbar`           | ui    | HTML, CSS, JS | Bootstrap CSS             | —                                                         |

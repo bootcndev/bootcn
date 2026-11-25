@@ -6,6 +6,16 @@ each published version stays available under `/v/<version>/`) and the **CLI**
 
 ## Registry
 
+### 0.27.0
+
+- Toaster: `Bootcn.toast()` with success, error, warning, info and loading
+  types, descriptions, an action, `toast.promise()`, positions, stacking
+  that expands on hover, swipe to dismiss and a timer that pauses on hover
+  and focus.
+- Button with icons (leading, trailing, icon-only sizes, loading spinner,
+  count badge) and Confetti (`Bootcn.confetti()`, skipped under reduced
+  motion).
+
 ### 0.26.0
 
 - Choropleth map: regions from any GeoJSON coloured by a chosen metric,

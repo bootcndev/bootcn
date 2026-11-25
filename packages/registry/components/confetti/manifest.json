@@ -1,0 +1,33 @@
+{
+  "$schema": "../../schema/registry-item.schema.json",
+  "name": "confetti",
+  "type": "registry:ui",
+  "title": "Confetti",
+  "description": "A burst of confetti from a button or any point, drawn on a canvas in the theme colours, with no library; skipped under reduced motion.",
+  "version": "1.0.0",
+  "categories": ["feedback"],
+  "dependencies": [],
+  "registryDependencies": ["button"],
+  "compatibility": {
+    "bootstrap": "5.3",
+    "platform": ["Bootstrap CSS"]
+  },
+  "license": "MIT",
+  "files": [
+    {
+      "path": "confetti.html",
+      "target": "confetti.html",
+      "type": "registry:component"
+    },
+    {
+      "path": "confetti.css",
+      "target": "confetti.css",
+      "type": "registry:style"
+    },
+    {
+      "path": "confetti.js",
+      "target": "confetti.js",
+      "type": "registry:script"
+    }
+  ]
+}
