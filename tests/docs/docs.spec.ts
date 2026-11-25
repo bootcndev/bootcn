@@ -637,7 +637,9 @@ test('e-commerce template: the cart follows you from the catalogue to the checko
 
 for (const pageName of ['ecommerce-product', 'ecommerce-checkout']) {
   for (const theme of ['light', 'dark'] as const) {
-    test(`e-commerce template: ${pageName} has no axe violations in ${theme} mode`, async ({ page }) => {
+    test(`e-commerce template: ${pageName} has no axe violations in ${theme} mode`, async ({
+      page,
+    }) => {
       await page.addInitScript((t) => localStorage.setItem('bootcn-theme', t), theme);
       await page.goto(`previews/templates/ecommerce/${pageName}.html`);
       await expect(page.locator('html')).toHaveAttribute('data-bs-theme', theme);
