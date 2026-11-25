@@ -35,7 +35,7 @@ const columns = [
     title: 'Project',
     links: [
       { text: 'Changelog', href: withBase('/changelog') },
-      { text: 'GitHub', href: 'https://github.com/tsirosgeorge/bootcn', external: true },
+      { text: 'GitHub', href: 'https://github.com/bootcndev/bootcn', external: true },
       { text: 'npm', href: 'https://www.npmjs.com/package/bootcn', external: true },
       { text: 'X (@bootcndev)', href: 'https://x.com/bootcndev', external: true },
       { text: 'llms.txt', href: withBase('/llms.txt') },
@@ -90,7 +90,7 @@ const columns = [
       <p>
         © {{ year }} George Tsiros. Released under the
         <a
-          href="https://github.com/tsirosgeorge/bootcn/blob/main/LICENSE"
+          href="https://github.com/bootcndev/bootcn/blob/main/LICENSE"
           target="_blank"
           rel="noreferrer"
           >MIT License</a

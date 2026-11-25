@@ -22,7 +22,7 @@ export const REPO_DIR = resolve(DOCS_DIR, '..', '..');
 export const REGISTRY_SRC = resolve(REPO_DIR, 'packages', 'registry');
 const REGISTRY_DIST = resolve(REGISTRY_SRC, 'dist');
 
-export const GITHUB_URL = 'https://github.com/tsirosgeorge/bootcn';
+export const GITHUB_URL = 'https://github.com/bootcndev/bootcn';
 export const NPM_URL = 'https://www.npmjs.com/package/bootcn';
 export const X_URL = 'https://x.com/bootcndev';
 export const SITE_URL = 'https://bootcn.dev';

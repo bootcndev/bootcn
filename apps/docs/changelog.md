@@ -81,6 +81,11 @@ each published version stays available under `/v/<version>/`) and the **CLI**
 
 ### Site
 
+- The repository moved to <https://github.com/bootcndev/bootcn>, and the
+  GitHub Pages mirror to <https://bootcndev.github.io/bootcn>. Projects whose
+  `bootcn.json` still points to the old `tsirosgeorge.github.io` address
+  should change it to `https://bootcn.dev`.
+
 - The docs and the registry moved to <https://bootcn.dev>, with a logo and
   icons. The GitHub Pages address stays as a mirror.
 
@@ -168,7 +173,7 @@ each published version stays available under `/v/<version>/`) and the **CLI**
 ### 0.3.0
 
 - The default registry is now `https://bootcn.dev`. Projects whose
-  `bootcn.json` points to `https://tsirosgeorge.github.io/bootcn` keep working:
+  `bootcn.json` points to `https://bootcndev.github.io/bootcn` keep working:
   that address stays as a mirror.
 
 ### 0.2.0

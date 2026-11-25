@@ -1,8 +1,8 @@
 # Contributing
 
-Bootcn is developed on [GitHub](https://github.com/tsirosgeorge/bootcn).
+Bootcn is developed on [GitHub](https://github.com/bootcndev/bootcn).
 Bug reports and ideas are welcome as
-[issues](https://github.com/tsirosgeorge/bootcn/issues).
+[issues](https://github.com/bootcndev/bootcn/issues).
 
 ## Working on the project
 
@@ -19,7 +19,7 @@ pnpm test:e2e
 Each component lives in `packages/registry/components/<name>/` with its HTML,
 CSS, optional JavaScript, a `preview.html`, a `README.md` and a
 `manifest.json`. The conventions every component follows are in
-[CONVENTIONS.md](https://github.com/tsirosgeorge/bootcn/blob/main/packages/registry/CONVENTIONS.md).
+[CONVENTIONS.md](https://github.com/bootcndev/bootcn/blob/main/packages/registry/CONVENTIONS.md).
 
 This site lives in `apps/docs` and is built from the same registry:
 

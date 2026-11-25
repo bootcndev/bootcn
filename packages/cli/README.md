@@ -32,7 +32,7 @@ Exit codes: `0` success, `1` user or configuration error, `2` registry or
 network error, `3` partial install.
 
 Documentation, the component list and the source:
-<https://github.com/tsirosgeorge/bootcn>.
+<https://github.com/bootcndev/bootcn>.
 
 Global flags: `--cwd <path>`, `--registry <https-url-or-path>`, `--yes`,
 `--overwrite`, `--dry-run`, `--verbose`, `--version`, `--help`.

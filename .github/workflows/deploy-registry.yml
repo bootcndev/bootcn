@@ -4,7 +4,7 @@ name: Deploy registry
 #   latest:   https://bootcn.dev/
 #   frozen:   https://bootcn.dev/v/<version>/  (one per registry-v<version> tag)
 # to the server (rsync over SSH, restricted to the site folder by rrsync), and
-# a mirror at https://tsirosgeorge.github.io/bootcn/ (GitHub Pages) for
+# a mirror at https://bootcndev.github.io/bootcn/ (GitHub Pages) for
 # projects whose bootcn.json still points there.
 on:
   push:
@@ -126,5 +126,5 @@ jobs:
           set -euo pipefail
           for page in "" guide/installation components/dialog previews/components/dialog/preview.html; do
             curl -fsS -o /dev/null "https://bootcn.dev/$page"
-            curl -fsS -o /dev/null "https://tsirosgeorge.github.io/bootcn/$page"
+            curl -fsS -o /dev/null "https://bootcndev.github.io/bootcn/$page"
           done

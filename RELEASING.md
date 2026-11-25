@@ -43,7 +43,7 @@ version is published by hand:
 
 2. On npmjs.com, open the `bootcn` package → **Settings** → **Trusted
    Publisher** → **GitHub Actions**, and enter exactly:
-   - Organization or user: `tsirosgeorge`
+   - Organization or user: `bootcndev`
    - Repository: `bootcn`
    - Workflow filename: `release-cli.yml`
    - Environment: leave empty

@@ -10,7 +10,7 @@ import { withBase } from 'vitepress';
 import { data } from '../../../home.data';
 
 const BOOTSTRAP = 'https://getbootstrap.com/';
-const GITHUB = 'https://github.com/tsirosgeorge/bootcn';
+const GITHUB = 'https://github.com/bootcndev/bootcn';
 const command = 'npx bootcn@latest init';
 const copied = ref(false);
 

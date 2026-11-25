@@ -9,7 +9,7 @@ export const CONFIG_FILE = `${BRAND}.json`;
 
 /**
  * Hosted registry (latest version). Frozen versions live under
- * `${DEFAULT_REGISTRY}/v/<version>`. tsirosgeorge.github.io/bootcn stays as a mirror.
+ * `${DEFAULT_REGISTRY}/v/<version>`. bootcndev.github.io/bootcn stays as a mirror.
  */
 export const DEFAULT_REGISTRY = `https://${BRAND}.dev`;
 

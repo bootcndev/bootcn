@@ -25,7 +25,7 @@ describe('published package', () => {
     expect(pkg.version).toMatch(/^\d+\.\d+\.\d+(?:-[0-9A-Za-z.-]+)?$/);
     expect(pkg.bin).toEqual({ bootcn: 'dist/index.js' });
     expect(pkg.repository).toMatchObject({
-      url: 'git+https://github.com/tsirosgeorge/bootcn.git',
+      url: 'git+https://github.com/bootcndev/bootcn.git',
       directory: 'packages/cli',
     });
   });

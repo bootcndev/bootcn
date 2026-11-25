@@ -47,4 +47,4 @@ The list of versions is in
 A registry is a folder of static JSON files, so you can host your own (for
 example with your company's components) and set `registry` to its URL or to a
 local path. Build one with the same tooling this project uses: see the
-[repository](https://github.com/tsirosgeorge/bootcn).
+[repository](https://github.com/bootcndev/bootcn).
