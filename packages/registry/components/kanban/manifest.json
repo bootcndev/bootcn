@@ -1,0 +1,33 @@
+{
+  "$schema": "../../schema/registry-item.schema.json",
+  "name": "kanban",
+  "type": "registry:ui",
+  "title": "Kanban",
+  "description": "A kanban board: columns with counts and optional limits, cards with tags, due dates, comments and people, drag and drop with the mouse or touch, keyboard moves that are announced, and adding cards in place.",
+  "version": "1.0.0",
+  "categories": ["data-display"],
+  "dependencies": [],
+  "registryDependencies": ["avatar", "button", "textarea"],
+  "compatibility": {
+    "bootstrap": "5.3",
+    "platform": ["Bootstrap CSS"]
+  },
+  "license": "MIT",
+  "files": [
+    {
+      "path": "kanban.html",
+      "target": "kanban.html",
+      "type": "registry:component"
+    },
+    {
+      "path": "kanban.css",
+      "target": "kanban.css",
+      "type": "registry:style"
+    },
+    {
+      "path": "kanban.js",
+      "target": "kanban.js",
+      "type": "registry:script"
+    }
+  ]
+}

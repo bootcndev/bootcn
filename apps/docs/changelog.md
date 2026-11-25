@@ -6,6 +6,23 @@ each published version stays available under `/v/<version>/`) and the **CLI**
 
 ## Registry
 
+### 0.33.0
+
+The App UI pack.
+
+- Experience timeline: work history as on LinkedIn, with roles grouped by
+  company and durations worked out from the dates.
+- API keys block: masked keys, a create dialog that shows the new key once
+  with Copy, and revoking with confirmation; your server supplies the keys.
+- Invoice block: line items, VAT and totals worked out in any currency,
+  status, and a clean print/PDF version.
+- Dropzone: drag-and-drop uploads with checks, thumbnails, progress and
+  errors, to a URL or through your own code.
+- File manager: breadcrumbs, search, list or grid view, sorting, selection
+  with bulk actions, per-file menus and uploads that join the list.
+- Kanban: columns with counts and limits, drag and drop (mouse, pen and
+  touch by the grip), keyboard moves that are announced, and adding cards.
+
 ### 0.32.0
 
 - Video player: custom controls over the native `<video>`: a big play

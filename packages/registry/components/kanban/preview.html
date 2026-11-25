@@ -1,0 +1,742 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Bootcn Kanban preview</title>
+    <script>
+      // Preview theme: ?theme=dark|light, else the docs page around the frame, else light.
+      (function () {
+        var theme = new URLSearchParams(location.search).get('theme');
+        if (!theme) {
+          try {
+            theme =
+              window.parent !== window &&
+              window.parent.document.documentElement.classList.contains('dark')
+                ? 'dark'
+                : 'light';
+          } catch (error) {
+            theme = 'light';
+          }
+        }
+        document.documentElement.setAttribute('data-bs-theme', theme === 'dark' ? 'dark' : 'light');
+        // ?dir=rtl: right to left, with Bootstrap's RTL stylesheet.
+        if (new URLSearchParams(location.search).get('dir') === 'rtl') {
+          document.documentElement.setAttribute('dir', 'rtl');
+          new MutationObserver(function (records, observer) {
+            var link = document.querySelector('link[href*="bootstrap.min.css"]');
+            if (!link) return;
+            link.href = link.href.replace('bootstrap.min.css', 'bootstrap.rtl.min.css');
+            observer.disconnect();
+          }).observe(document.documentElement, { childList: true, subtree: true });
+        }
+      })();
+    </script>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.9/dist/css/bootstrap.min.css"
+    />
+    <link rel="stylesheet" href="../../themes/tokens/tokens.css" />
+    <link rel="stylesheet" href="../avatar/avatar.css" />
+    <link rel="stylesheet" href="../button/button.css" />
+    <link rel="stylesheet" href="../textarea/textarea.css" />
+    <link rel="stylesheet" href="kanban.css" />
+  </head>
+  <body>
+    <main class="container py-4">
+      <h1 class="h4 mb-4">Kanban</h1>
+      <section class="bootcn-kanban" data-bootcn-kanban aria-labelledby="bootcn-kanban-title">
+        <h2 class="bootcn-kanban__heading" id="bootcn-kanban-title">Website launch</h2>
+        <p class="visually-hidden" id="bootcn-kanban-help" data-bootcn-kanban-help>
+          Press Space to pick up the card, the arrow keys to move it, Space to drop it or Escape to
+          cancel.
+        </p>
+        <div class="bootcn-kanban__board">
+          <section
+            class="bootcn-kanban__column"
+            data-bootcn-kanban-column="todo"
+            aria-labelledby="bootcn-kanban-todo"
+          >
+            <header class="bootcn-kanban__column-header">
+              <h3 class="bootcn-kanban__column-title" id="bootcn-kanban-todo">To do</h3>
+              <span class="bootcn-kanban__count" data-bootcn-kanban-count>3</span>
+            </header>
+            <ul
+              class="bootcn-kanban__cards"
+              data-bootcn-kanban-list
+              aria-labelledby="bootcn-kanban-todo"
+            >
+              <li
+                class="bootcn-kanban__card"
+                data-bootcn-kanban-card="c1"
+                tabindex="0"
+                aria-describedby="bootcn-kanban-help"
+              >
+                <span class="bootcn-kanban__grip" aria-hidden="true"
+                  ><svg
+                    class="bootcn-icon"
+                    width="14"
+                    height="14"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    aria-hidden="true"
+                    focusable="false"
+                  >
+                    <circle cx="9" cy="6" r="1" />
+                    <circle cx="15" cy="6" r="1" />
+                    <circle cx="9" cy="12" r="1" />
+                    <circle cx="15" cy="12" r="1" />
+                    <circle cx="9" cy="18" r="1" />
+                    <circle cx="15" cy="18" r="1" /></svg
+                ></span>
+                <span class="bootcn-kanban__tag" data-tone="design">Design</span>
+                <p class="bootcn-kanban__title">Hero illustration for the homepage</p>
+                <div class="bootcn-kanban__footer">
+                  <span class="bootcn-kanban__meta-item"
+                    ><svg
+                      class="bootcn-icon"
+                      width="14"
+                      height="14"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      aria-hidden="true"
+                      focusable="false"
+                    >
+                      <rect x="3" y="4" width="18" height="18" rx="2" />
+                      <path d="M16 2v4M8 2v4M3 10h18" /></svg
+                    ><time datetime="2026-12-03">Dec 3</time></span
+                  ><span class="bootcn-kanban__meta-item"
+                    ><svg
+                      class="bootcn-icon"
+                      width="14"
+                      height="14"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      aria-hidden="true"
+                      focusable="false"
+                    >
+                      <path
+                        d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"
+                      /></svg
+                    >4<span class="visually-hidden"> comments</span></span
+                  >
+                  <span class="bootcn-avatar-group bootcn-kanban__people"
+                    ><span
+                      class="bootcn-avatar bootcn-avatar--sm"
+                      role="img"
+                      aria-label="Olivia Martin"
+                      ><span class="bootcn-avatar__fallback" aria-hidden="true">OM</span></span
+                    ></span
+                  >
+                </div>
+              </li>
+              <li
+                class="bootcn-kanban__card"
+                data-bootcn-kanban-card="c2"
+                tabindex="0"
+                aria-describedby="bootcn-kanban-help"
+              >
+                <span class="bootcn-kanban__grip" aria-hidden="true"
+                  ><svg
+                    class="bootcn-icon"
+                    width="14"
+                    height="14"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    aria-hidden="true"
+                    focusable="false"
+                  >
+                    <circle cx="9" cy="6" r="1" />
+                    <circle cx="15" cy="6" r="1" />
+                    <circle cx="9" cy="12" r="1" />
+                    <circle cx="15" cy="12" r="1" />
+                    <circle cx="9" cy="18" r="1" />
+                    <circle cx="15" cy="18" r="1" /></svg
+                ></span>
+                <span class="bootcn-kanban__tag" data-tone="content">Content</span>
+                <p class="bootcn-kanban__title">Write the pricing page copy</p>
+                <div class="bootcn-kanban__footer">
+                  <span class="bootcn-kanban__meta-item"
+                    ><svg
+                      class="bootcn-icon"
+                      width="14"
+                      height="14"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      aria-hidden="true"
+                      focusable="false"
+                    >
+                      <rect x="3" y="4" width="18" height="18" rx="2" />
+                      <path d="M16 2v4M8 2v4M3 10h18" /></svg
+                    ><time datetime="2026-12-05">Dec 5</time></span
+                  >
+                  <span class="bootcn-avatar-group bootcn-kanban__people"
+                    ><span
+                      class="bootcn-avatar bootcn-avatar--sm"
+                      role="img"
+                      aria-label="Jackson Lee"
+                      ><span class="bootcn-avatar__fallback" aria-hidden="true">JL</span></span
+                    ></span
+                  >
+                </div>
+              </li>
+              <li
+                class="bootcn-kanban__card"
+                data-bootcn-kanban-card="c3"
+                tabindex="0"
+                aria-describedby="bootcn-kanban-help"
+              >
+                <span class="bootcn-kanban__grip" aria-hidden="true"
+                  ><svg
+                    class="bootcn-icon"
+                    width="14"
+                    height="14"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    aria-hidden="true"
+                    focusable="false"
+                  >
+                    <circle cx="9" cy="6" r="1" />
+                    <circle cx="15" cy="6" r="1" />
+                    <circle cx="9" cy="12" r="1" />
+                    <circle cx="15" cy="12" r="1" />
+                    <circle cx="9" cy="18" r="1" />
+                    <circle cx="15" cy="18" r="1" /></svg
+                ></span>
+                <span class="bootcn-kanban__tag" data-tone="engineering">Engineering</span>
+                <p class="bootcn-kanban__title">Set up error monitoring</p>
+              </li>
+            </ul>
+            <p class="bootcn-kanban__empty" data-bootcn-kanban-empty hidden>Drop cards here</p>
+            <form class="bootcn-kanban__form" data-bootcn-kanban-form hidden>
+              <label class="visually-hidden" for="bootcn-kanban-new-todo">New card in To do</label>
+              <textarea
+                class="form-control bootcn-textarea"
+                id="bootcn-kanban-new-todo"
+                rows="2"
+                placeholder="Card title"
+              ></textarea>
+              <div class="bootcn-kanban__form-actions">
+                <button
+                  type="submit"
+                  class="btn bootcn-button bootcn-button--default bootcn-button--sm"
+                >
+                  Add card
+                </button>
+                <button
+                  type="button"
+                  class="btn bootcn-button bootcn-button--ghost bootcn-button--sm"
+                  data-bootcn-kanban-cancel
+                >
+                  Cancel
+                </button>
+              </div>
+            </form>
+            <button type="button" class="bootcn-kanban__add" data-bootcn-kanban-add>
+              <svg
+                class="bootcn-icon"
+                width="16"
+                height="16"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+                focusable="false"
+              >
+                <path d="M12 5v14M5 12h14" />
+              </svg>
+              Add a card
+            </button>
+          </section>
+          <section
+            class="bootcn-kanban__column"
+            data-bootcn-kanban-column="doing"
+            data-limit="3"
+            aria-labelledby="bootcn-kanban-doing"
+          >
+            <header class="bootcn-kanban__column-header">
+              <h3 class="bootcn-kanban__column-title" id="bootcn-kanban-doing">In progress</h3>
+              <span class="bootcn-kanban__count" data-bootcn-kanban-count>2 / 3</span>
+            </header>
+            <ul
+              class="bootcn-kanban__cards"
+              data-bootcn-kanban-list
+              aria-labelledby="bootcn-kanban-doing"
+            >
+              <li
+                class="bootcn-kanban__card"
+                data-bootcn-kanban-card="c4"
+                tabindex="0"
+                aria-describedby="bootcn-kanban-help"
+              >
+                <span class="bootcn-kanban__grip" aria-hidden="true"
+                  ><svg
+                    class="bootcn-icon"
+                    width="14"
+                    height="14"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    aria-hidden="true"
+                    focusable="false"
+                  >
+                    <circle cx="9" cy="6" r="1" />
+                    <circle cx="15" cy="6" r="1" />
+                    <circle cx="9" cy="12" r="1" />
+                    <circle cx="15" cy="12" r="1" />
+                    <circle cx="9" cy="18" r="1" />
+                    <circle cx="15" cy="18" r="1" /></svg
+                ></span>
+                <span class="bootcn-kanban__tag" data-tone="engineering">Engineering</span>
+                <p class="bootcn-kanban__title">Checkout flow: address step</p>
+                <div class="bootcn-kanban__footer">
+                  <span class="bootcn-kanban__meta-item"
+                    ><svg
+                      class="bootcn-icon"
+                      width="14"
+                      height="14"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      aria-hidden="true"
+                      focusable="false"
+                    >
+                      <rect x="3" y="4" width="18" height="18" rx="2" />
+                      <path d="M16 2v4M8 2v4M3 10h18" /></svg
+                    ><time datetime="2026-11-28">Nov 28</time></span
+                  ><span class="bootcn-kanban__meta-item"
+                    ><svg
+                      class="bootcn-icon"
+                      width="14"
+                      height="14"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      aria-hidden="true"
+                      focusable="false"
+                    >
+                      <path
+                        d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"
+                      /></svg
+                    >7<span class="visually-hidden"> comments</span></span
+                  >
+                  <span class="bootcn-avatar-group bootcn-kanban__people"
+                    ><span
+                      class="bootcn-avatar bootcn-avatar--sm"
+                      role="img"
+                      aria-label="Isabella Nguyen"
+                      ><span class="bootcn-avatar__fallback" aria-hidden="true">IN</span></span
+                    ><span
+                      class="bootcn-avatar bootcn-avatar--sm"
+                      role="img"
+                      aria-label="William Kim"
+                      ><span class="bootcn-avatar__fallback" aria-hidden="true">WK</span></span
+                    ></span
+                  >
+                </div>
+              </li>
+              <li
+                class="bootcn-kanban__card"
+                data-bootcn-kanban-card="c5"
+                tabindex="0"
+                aria-describedby="bootcn-kanban-help"
+              >
+                <span class="bootcn-kanban__grip" aria-hidden="true"
+                  ><svg
+                    class="bootcn-icon"
+                    width="14"
+                    height="14"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    aria-hidden="true"
+                    focusable="false"
+                  >
+                    <circle cx="9" cy="6" r="1" />
+                    <circle cx="15" cy="6" r="1" />
+                    <circle cx="9" cy="12" r="1" />
+                    <circle cx="15" cy="12" r="1" />
+                    <circle cx="9" cy="18" r="1" />
+                    <circle cx="15" cy="18" r="1" /></svg
+                ></span>
+                <span class="bootcn-kanban__tag" data-tone="content">Content</span>
+                <p class="bootcn-kanban__title">Onboarding emails</p>
+                <div class="bootcn-kanban__footer">
+                  <span class="bootcn-kanban__meta-item"
+                    ><svg
+                      class="bootcn-icon"
+                      width="14"
+                      height="14"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      aria-hidden="true"
+                      focusable="false"
+                    >
+                      <path
+                        d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"
+                      /></svg
+                    >2<span class="visually-hidden"> comments</span></span
+                  >
+                  <span class="bootcn-avatar-group bootcn-kanban__people"
+                    ><span
+                      class="bootcn-avatar bootcn-avatar--sm"
+                      role="img"
+                      aria-label="Jackson Lee"
+                      ><span class="bootcn-avatar__fallback" aria-hidden="true">JL</span></span
+                    ></span
+                  >
+                </div>
+              </li>
+            </ul>
+            <p class="bootcn-kanban__empty" data-bootcn-kanban-empty hidden>Drop cards here</p>
+            <form class="bootcn-kanban__form" data-bootcn-kanban-form hidden>
+              <label class="visually-hidden" for="bootcn-kanban-new-doing"
+                >New card in In progress</label
+              >
+              <textarea
+                class="form-control bootcn-textarea"
+                id="bootcn-kanban-new-doing"
+                rows="2"
+                placeholder="Card title"
+              ></textarea>
+              <div class="bootcn-kanban__form-actions">
+                <button
+                  type="submit"
+                  class="btn bootcn-button bootcn-button--default bootcn-button--sm"
+                >
+                  Add card
+                </button>
+                <button
+                  type="button"
+                  class="btn bootcn-button bootcn-button--ghost bootcn-button--sm"
+                  data-bootcn-kanban-cancel
+                >
+                  Cancel
+                </button>
+              </div>
+            </form>
+            <button type="button" class="bootcn-kanban__add" data-bootcn-kanban-add>
+              <svg
+                class="bootcn-icon"
+                width="16"
+                height="16"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+                focusable="false"
+              >
+                <path d="M12 5v14M5 12h14" />
+              </svg>
+              Add a card
+            </button>
+          </section>
+          <section
+            class="bootcn-kanban__column"
+            data-bootcn-kanban-column="review"
+            aria-labelledby="bootcn-kanban-review"
+          >
+            <header class="bootcn-kanban__column-header">
+              <h3 class="bootcn-kanban__column-title" id="bootcn-kanban-review">Review</h3>
+              <span class="bootcn-kanban__count" data-bootcn-kanban-count>1</span>
+            </header>
+            <ul
+              class="bootcn-kanban__cards"
+              data-bootcn-kanban-list
+              aria-labelledby="bootcn-kanban-review"
+            >
+              <li
+                class="bootcn-kanban__card"
+                data-bootcn-kanban-card="c6"
+                tabindex="0"
+                aria-describedby="bootcn-kanban-help"
+              >
+                <span class="bootcn-kanban__grip" aria-hidden="true"
+                  ><svg
+                    class="bootcn-icon"
+                    width="14"
+                    height="14"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    aria-hidden="true"
+                    focusable="false"
+                  >
+                    <circle cx="9" cy="6" r="1" />
+                    <circle cx="15" cy="6" r="1" />
+                    <circle cx="9" cy="12" r="1" />
+                    <circle cx="15" cy="12" r="1" />
+                    <circle cx="9" cy="18" r="1" />
+                    <circle cx="15" cy="18" r="1" /></svg
+                ></span>
+                <span class="bootcn-kanban__tag" data-tone="design">Design</span>
+                <p class="bootcn-kanban__title">Dark mode for the dashboard</p>
+                <div class="bootcn-kanban__footer">
+                  <span class="bootcn-kanban__meta-item"
+                    ><svg
+                      class="bootcn-icon"
+                      width="14"
+                      height="14"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      aria-hidden="true"
+                      focusable="false"
+                    >
+                      <rect x="3" y="4" width="18" height="18" rx="2" />
+                      <path d="M16 2v4M8 2v4M3 10h18" /></svg
+                    ><time datetime="2026-11-27">Nov 27</time></span
+                  ><span class="bootcn-kanban__meta-item"
+                    ><svg
+                      class="bootcn-icon"
+                      width="14"
+                      height="14"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      aria-hidden="true"
+                      focusable="false"
+                    >
+                      <path
+                        d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"
+                      /></svg
+                    >3<span class="visually-hidden"> comments</span></span
+                  >
+                  <span class="bootcn-avatar-group bootcn-kanban__people"
+                    ><span
+                      class="bootcn-avatar bootcn-avatar--sm"
+                      role="img"
+                      aria-label="Olivia Martin"
+                      ><span class="bootcn-avatar__fallback" aria-hidden="true">OM</span></span
+                    ></span
+                  >
+                </div>
+              </li>
+            </ul>
+            <p class="bootcn-kanban__empty" data-bootcn-kanban-empty hidden>Drop cards here</p>
+            <form class="bootcn-kanban__form" data-bootcn-kanban-form hidden>
+              <label class="visually-hidden" for="bootcn-kanban-new-review"
+                >New card in Review</label
+              >
+              <textarea
+                class="form-control bootcn-textarea"
+                id="bootcn-kanban-new-review"
+                rows="2"
+                placeholder="Card title"
+              ></textarea>
+              <div class="bootcn-kanban__form-actions">
+                <button
+                  type="submit"
+                  class="btn bootcn-button bootcn-button--default bootcn-button--sm"
+                >
+                  Add card
+                </button>
+                <button
+                  type="button"
+                  class="btn bootcn-button bootcn-button--ghost bootcn-button--sm"
+                  data-bootcn-kanban-cancel
+                >
+                  Cancel
+                </button>
+              </div>
+            </form>
+            <button type="button" class="bootcn-kanban__add" data-bootcn-kanban-add>
+              <svg
+                class="bootcn-icon"
+                width="16"
+                height="16"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+                focusable="false"
+              >
+                <path d="M12 5v14M5 12h14" />
+              </svg>
+              Add a card
+            </button>
+          </section>
+          <section
+            class="bootcn-kanban__column"
+            data-bootcn-kanban-column="done"
+            aria-labelledby="bootcn-kanban-done"
+          >
+            <header class="bootcn-kanban__column-header">
+              <h3 class="bootcn-kanban__column-title" id="bootcn-kanban-done">Done</h3>
+              <span class="bootcn-kanban__count" data-bootcn-kanban-count>2</span>
+            </header>
+            <ul
+              class="bootcn-kanban__cards"
+              data-bootcn-kanban-list
+              aria-labelledby="bootcn-kanban-done"
+            >
+              <li
+                class="bootcn-kanban__card"
+                data-bootcn-kanban-card="c7"
+                tabindex="0"
+                aria-describedby="bootcn-kanban-help"
+              >
+                <span class="bootcn-kanban__grip" aria-hidden="true"
+                  ><svg
+                    class="bootcn-icon"
+                    width="14"
+                    height="14"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    aria-hidden="true"
+                    focusable="false"
+                  >
+                    <circle cx="9" cy="6" r="1" />
+                    <circle cx="15" cy="6" r="1" />
+                    <circle cx="9" cy="12" r="1" />
+                    <circle cx="15" cy="12" r="1" />
+                    <circle cx="9" cy="18" r="1" />
+                    <circle cx="15" cy="18" r="1" /></svg
+                ></span>
+                <span class="bootcn-kanban__tag" data-tone="research">Research</span>
+                <p class="bootcn-kanban__title">Choose the analytics tool</p>
+              </li>
+              <li
+                class="bootcn-kanban__card"
+                data-bootcn-kanban-card="c8"
+                tabindex="0"
+                aria-describedby="bootcn-kanban-help"
+              >
+                <span class="bootcn-kanban__grip" aria-hidden="true"
+                  ><svg
+                    class="bootcn-icon"
+                    width="14"
+                    height="14"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    aria-hidden="true"
+                    focusable="false"
+                  >
+                    <circle cx="9" cy="6" r="1" />
+                    <circle cx="15" cy="6" r="1" />
+                    <circle cx="9" cy="12" r="1" />
+                    <circle cx="15" cy="12" r="1" />
+                    <circle cx="9" cy="18" r="1" />
+                    <circle cx="15" cy="18" r="1" /></svg
+                ></span>
+                <span class="bootcn-kanban__tag" data-tone="engineering">Engineering</span>
+                <p class="bootcn-kanban__title">Domain and SSL certificates</p>
+              </li>
+            </ul>
+            <p class="bootcn-kanban__empty" data-bootcn-kanban-empty hidden>Drop cards here</p>
+            <form class="bootcn-kanban__form" data-bootcn-kanban-form hidden>
+              <label class="visually-hidden" for="bootcn-kanban-new-done">New card in Done</label>
+              <textarea
+                class="form-control bootcn-textarea"
+                id="bootcn-kanban-new-done"
+                rows="2"
+                placeholder="Card title"
+              ></textarea>
+              <div class="bootcn-kanban__form-actions">
+                <button
+                  type="submit"
+                  class="btn bootcn-button bootcn-button--default bootcn-button--sm"
+                >
+                  Add card
+                </button>
+                <button
+                  type="button"
+                  class="btn bootcn-button bootcn-button--ghost bootcn-button--sm"
+                  data-bootcn-kanban-cancel
+                >
+                  Cancel
+                </button>
+              </div>
+            </form>
+            <button type="button" class="bootcn-kanban__add" data-bootcn-kanban-add>
+              <svg
+                class="bootcn-icon"
+                width="16"
+                height="16"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+                focusable="false"
+              >
+                <path d="M12 5v14M5 12h14" />
+              </svg>
+              Add a card
+            </button>
+          </section>
+        </div>
+        <p class="visually-hidden" aria-live="assertive" data-bootcn-kanban-live></p>
+      </section>
+    </main>
+    <script src="kanban.js"></script>
+  </body>
+</html>

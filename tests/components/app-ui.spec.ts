@@ -259,3 +259,103 @@ test('file manager: sort, search, select, delete, view and upload', async ({ pag
   await expect(added.getByRole('checkbox', { name: 'Select Budget 2027.xlsx' })).toBeVisible();
   expect(errors).toEqual([]);
 });
+
+test('kanban: keyboard moves, cancel, limits and adding cards', async ({ page }) => {
+  const errors = collectErrors(page);
+  await openPreview(page, 'kanban');
+  const board = page.getByRole('region', { name: 'Website launch' });
+  const column = (name: string) => board.getByRole('region', { name });
+  const live = board.locator('[data-bootcn-kanban-live]');
+  const moves: unknown[] = [];
+  await page.exposeFunction('recordMove', (detail: unknown) => moves.push(detail));
+  await page.evaluate(() =>
+    document.addEventListener('bootcn:kanban:move', (e) =>
+      (window as unknown as { recordMove: (d: unknown) => void }).recordMove(
+        (e as CustomEvent).detail,
+      ),
+    ),
+  );
+
+  const card = board.locator('[data-bootcn-kanban-card="c1"]');
+  await card.focus();
+  await page.keyboard.press('Space');
+  await expect(live).toContainText('Picked up Hero illustration for the homepage');
+  await page.keyboard.press('ArrowRight');
+  await expect(live).toHaveText('In progress, position 1 of 3.');
+  await page.keyboard.press('ArrowDown');
+  await expect(live).toHaveText('In progress, position 2 of 3.');
+  await expect(card).toBeFocused();
+  await page.keyboard.press('Space');
+  await expect(live).toHaveText(
+    'Dropped Hero illustration for the homepage in In progress, position 2 of 3.',
+  );
+  expect(moves).toEqual([{ card: 'c1', from: 'todo', to: 'doing', index: 1 }]);
+  await expect(column('In progress').locator('[data-bootcn-kanban-count]')).toHaveText('3 / 3');
+  await expect(column('To do').locator('[data-bootcn-kanban-count]')).toHaveText('2');
+
+  // Over the limit: marked.
+  const other = board.locator('[data-bootcn-kanban-card="c6"]');
+  await other.focus();
+  await page.keyboard.press('Enter');
+  await page.keyboard.press('ArrowLeft');
+  await page.keyboard.press('Enter');
+  await expect(column('In progress')).toHaveClass(/is-over-limit/);
+  await expect(column('In progress').locator('[data-bootcn-kanban-count]')).toHaveText('4 / 3');
+
+  // Escape puts the card back where it was.
+  const done = board.locator('[data-bootcn-kanban-card="c7"]');
+  await done.focus();
+  await page.keyboard.press('Space');
+  await page.keyboard.press('ArrowLeft');
+  await page.keyboard.press('ArrowLeft');
+  await page.keyboard.press('Escape');
+  await expect(live).toHaveText('Move cancelled. Choose the analytics tool is back in Done.');
+  await expect(column('Done').locator('[data-bootcn-kanban-card="c7"]')).toHaveCount(1);
+  await expect(done).toBeFocused();
+
+  // Without a card picked up, arrows move the focus.
+  await page.keyboard.press('ArrowDown');
+  await expect(board.locator('[data-bootcn-kanban-card="c8"]')).toBeFocused();
+
+  // Add a card.
+  await column('Review').getByRole('button', { name: 'Add a card' }).click();
+  const field = column('Review').getByLabel('New card in Review');
+  await expect(field).toBeFocused();
+  await field.fill('Accessibility audit');
+  await page.keyboard.press('Enter');
+  await expect(column('Review').locator('.bootcn-kanban__title')).toContainText([
+    'Accessibility audit',
+  ]);
+  await expect(live).toHaveText('Added Accessibility audit to Review.');
+  await page.keyboard.press('Escape');
+  await expect(column('Review').getByRole('button', { name: 'Add a card' })).toBeFocused();
+  // A column with cards hides its "Drop cards here" hint.
+  await expect(column('Review').locator('[data-bootcn-kanban-empty]')).toBeHidden();
+  expect(errors).toEqual([]);
+});
+
+test('kanban: drag and drop with the mouse', async ({ page }) => {
+  await openPreview(page, 'kanban');
+  await page.setViewportSize({ width: 1280, height: 900 });
+  const board = page.getByRole('region', { name: 'Website launch' });
+  const card = board.locator('[data-bootcn-kanban-card="c3"]');
+  const target = board.locator('[data-bootcn-kanban-card="c6"]');
+  const from = (await card.boundingBox())!;
+  const to = (await target.boundingBox())!;
+  await page.mouse.move(from.x + 30, from.y + 20);
+  await page.mouse.down();
+  await page.mouse.move(from.x + 60, from.y + 40, { steps: 3 });
+  await expect(card).toHaveClass(/is-dragging/);
+  await expect(board.locator('.bootcn-kanban__placeholder')).toHaveCount(1);
+  // Above the middle of the Review card: lands before it.
+  await page.mouse.move(to.x + 30, to.y + 5, { steps: 8 });
+  await page.mouse.up();
+  await expect(card).not.toHaveClass(/is-dragging/);
+  await expect(board.locator('.bootcn-kanban__placeholder')).toHaveCount(0);
+  const review = board.getByRole('region', { name: 'Review' });
+  await expect(review.locator('[data-bootcn-kanban-card]').first()).toHaveAttribute(
+    'data-bootcn-kanban-card',
+    'c3',
+  );
+  await expect(review.locator('[data-bootcn-kanban-count]')).toHaveText('2');
+});
