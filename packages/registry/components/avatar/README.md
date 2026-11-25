@@ -8,12 +8,12 @@ and an overlapping group.
 ```html
 <!-- Image -->
 <span class="bootcn-avatar">
-  <img class="bootcn-avatar__image" src="/img/maria.jpg" alt="Maria Papadopoulou" />
+  <img class="bootcn-avatar__image" src="/img/olivia.jpg" alt="Olivia Martin" />
 </span>
 
 <!-- Initials when there is no image -->
-<span class="bootcn-avatar" role="img" aria-label="Nikos Georgiou">
-  <span class="bootcn-avatar__fallback" aria-hidden="true">NG</span>
+<span class="bootcn-avatar" role="img" aria-label="Jackson Lee">
+  <span class="bootcn-avatar__fallback" aria-hidden="true">JL</span>
 </span>
 
 <!-- Group -->

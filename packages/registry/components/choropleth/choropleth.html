@@ -1,0 +1,335 @@
+<figure
+  class="bootcn-choropleth"
+  data-bootcn-choropleth
+  data-geo-name="romania-counties"
+  data-locale="en-IE"
+  aria-labelledby="bootcn-choropleth-title"
+>
+  <figcaption class="bootcn-choropleth__title" id="bootcn-choropleth-title">
+    Sales by county
+  </figcaption>
+  <div class="bootcn-choropleth__metric">
+    <label class="bootcn-label" for="bootcn-choropleth-metric">Colour by</label>
+    <select
+      class="form-select bootcn-select"
+      id="bootcn-choropleth-metric"
+      data-bootcn-choropleth-metric
+    >
+      <option value="revenue">Estimated revenue / year</option>
+      <option value="resellers">Resellers</option>
+      <option value="businesses">Businesses</option>
+    </select>
+  </div>
+  <div class="bootcn-choropleth__map" data-bootcn-choropleth-map>
+    <div class="bootcn-choropleth__zoom" role="group" aria-label="Zoom">
+      <button
+        type="button"
+        class="bootcn-choropleth__zoom-button"
+        data-bootcn-choropleth-zoom="in"
+        aria-label="Zoom in"
+      >
+        <svg
+          class="bootcn-icon"
+          width="16"
+          height="16"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          aria-hidden="true"
+          focusable="false"
+        >
+          <path d="M12 5v14M5 12h14" />
+        </svg>
+      </button>
+      <button
+        type="button"
+        class="bootcn-choropleth__zoom-button"
+        data-bootcn-choropleth-zoom="out"
+        aria-label="Zoom out"
+      >
+        <svg
+          class="bootcn-icon"
+          width="16"
+          height="16"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          aria-hidden="true"
+          focusable="false"
+        >
+          <path d="M5 12h14" />
+        </svg>
+      </button>
+      <button
+        type="button"
+        class="bootcn-choropleth__zoom-button"
+        data-bootcn-choropleth-zoom="reset"
+        aria-label="Reset zoom"
+      >
+        <svg
+          class="bootcn-icon"
+          width="16"
+          height="16"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          aria-hidden="true"
+          focusable="false"
+        >
+          <path d="M3 12a9 9 0 1 0 3-6.7L3 8" />
+          <path d="M3 3v5h5" />
+        </svg>
+      </button>
+    </div>
+    <p class="bootcn-choropleth__loading">Loading the map…</p>
+    <div class="bootcn-choropleth__tooltip" aria-hidden="true" hidden></div>
+  </div>
+  <div class="bootcn-choropleth__legend" data-bootcn-choropleth-legend></div>
+  <details class="bootcn-choropleth__data">
+    <summary>Show data</summary>
+    <div class="bootcn-choropleth__table" data-bootcn-choropleth-table></div>
+  </details>
+  <p class="bootcn-choropleth__source">
+    Boundaries:
+    <a href="https://www.geoboundaries.org/" target="_blank" rel="noreferrer">geoBoundaries</a>
+    (World Bank, CC BY 4.0), simplified. Sample figures.
+  </p>
+  <script type="application/json" data-bootcn-choropleth-data>
+    {
+      "metrics": {
+        "revenue": {
+          "label": "Estimated revenue / year",
+          "format": "currency",
+          "currency": "EUR"
+        },
+        "resellers": {
+          "label": "Resellers"
+        },
+        "businesses": {
+          "label": "Businesses"
+        }
+      },
+      "regions": {
+        "alba": {
+          "revenue": 24952,
+          "resellers": 5,
+          "businesses": 13680
+        },
+        "arad": {
+          "revenue": 28299,
+          "resellers": 8,
+          "businesses": 17155
+        },
+        "arges": {
+          "revenue": 11314,
+          "resellers": 2,
+          "businesses": 12690
+        },
+        "bacau": {
+          "revenue": 7358,
+          "resellers": 5,
+          "businesses": 10746
+        },
+        "bihor": {
+          "revenue": 33234,
+          "resellers": 11,
+          "businesses": 18329
+        },
+        "bistrita-nasaud": {
+          "revenue": 23349,
+          "resellers": 7,
+          "businesses": 12934
+        },
+        "botosani": {
+          "revenue": 4976,
+          "resellers": 0,
+          "businesses": 5279
+        },
+        "braila": {
+          "revenue": 11623,
+          "resellers": 5,
+          "businesses": 11742
+        },
+        "brasov": {
+          "revenue": 39739,
+          "resellers": 13,
+          "businesses": 22497
+        },
+        "bucuresti": {
+          "revenue": 65493,
+          "resellers": 17,
+          "businesses": 37425
+        },
+        "buzau": {
+          "revenue": 23309,
+          "resellers": 6,
+          "businesses": 19284
+        },
+        "calarasi": {
+          "revenue": 32485,
+          "resellers": 7,
+          "businesses": 23458
+        },
+        "caras-severin": {
+          "revenue": 30405,
+          "resellers": 7,
+          "businesses": 21921
+        },
+        "cluj": {
+          "revenue": 65696,
+          "resellers": 18,
+          "businesses": 36124
+        },
+        "constanta": {
+          "revenue": 48189,
+          "resellers": 12,
+          "businesses": 32935
+        },
+        "covasna": {
+          "revenue": 29018,
+          "resellers": 8,
+          "businesses": 16346
+        },
+        "dambovita": {
+          "revenue": 7039,
+          "resellers": 3,
+          "businesses": 5311
+        },
+        "dolj": {
+          "revenue": 15763,
+          "resellers": 4,
+          "businesses": 13826
+        },
+        "galati": {
+          "revenue": 12667,
+          "resellers": 1,
+          "businesses": 13310
+        },
+        "giurgiu": {
+          "revenue": 19054,
+          "resellers": 7,
+          "businesses": 11549
+        },
+        "gorj": {
+          "revenue": 35887,
+          "resellers": 11,
+          "businesses": 19588
+        },
+        "harghita": {
+          "revenue": 22089,
+          "resellers": 6,
+          "businesses": 18838
+        },
+        "hunedoara": {
+          "revenue": 24599,
+          "resellers": 9,
+          "businesses": 20552
+        },
+        "ialomita": {
+          "revenue": 32236,
+          "resellers": 9,
+          "businesses": 21847
+        },
+        "iasi": {
+          "revenue": 50601,
+          "resellers": 17,
+          "businesses": 26869
+        },
+        "ilfov": {
+          "revenue": 5501,
+          "resellers": 4,
+          "businesses": 5616
+        },
+        "maramures": {
+          "revenue": 29331,
+          "resellers": 8,
+          "businesses": 16318
+        },
+        "mehedinti": {
+          "revenue": 32027,
+          "resellers": 8,
+          "businesses": 24111
+        },
+        "mures": {
+          "revenue": 7309,
+          "resellers": 3,
+          "businesses": 6931
+        },
+        "neamt": {
+          "revenue": 18857,
+          "resellers": 8,
+          "businesses": 17261
+        },
+        "olt": {
+          "revenue": 15954,
+          "resellers": 3,
+          "businesses": 12009
+        },
+        "prahova": {
+          "revenue": 15641,
+          "resellers": 3,
+          "businesses": 14310
+        },
+        "salaj": {
+          "revenue": 12748,
+          "resellers": 6,
+          "businesses": 15047
+        },
+        "satu-mare": {
+          "revenue": 26398,
+          "resellers": 10,
+          "businesses": 14783
+        },
+        "sibiu": {
+          "revenue": 23960,
+          "resellers": 9,
+          "businesses": 14381
+        },
+        "suceava": {
+          "revenue": 21502,
+          "resellers": 9,
+          "businesses": 13756
+        },
+        "teleorman": {
+          "revenue": 9354,
+          "resellers": 3,
+          "businesses": 8785
+        },
+        "timis": {
+          "revenue": 55691,
+          "resellers": 18,
+          "businesses": 34482
+        },
+        "tulcea": {
+          "revenue": 22250,
+          "resellers": 5,
+          "businesses": 17733
+        },
+        "valcea": {
+          "revenue": 14626,
+          "resellers": 2,
+          "businesses": 10189
+        },
+        "vaslui": {
+          "revenue": 30928,
+          "resellers": 6,
+          "businesses": 23058
+        },
+        "vrancea": {
+          "revenue": 14336,
+          "resellers": 5,
+          "businesses": 10361
+        }
+      }
+    }
+  </script>
+</figure>

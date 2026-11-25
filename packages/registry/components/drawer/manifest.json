@@ -5,20 +5,12 @@
   "title": "Drawer",
   "description": "A panel that slides up from the bottom, with a handle, for quick tasks on phones.",
   "version": "1.0.1",
-  "categories": [
-    "overlays"
-  ],
+  "categories": ["overlays"],
   "dependencies": [],
-  "registryDependencies": [
-    "button",
-    "input"
-  ],
+  "registryDependencies": ["button", "input"],
   "compatibility": {
     "bootstrap": "5.3",
-    "platform": [
-      "Bootstrap CSS",
-      "Bootstrap JS bundle"
-    ]
+    "platform": ["Bootstrap CSS", "Bootstrap JS bundle"]
   },
   "license": "MIT",
   "files": [

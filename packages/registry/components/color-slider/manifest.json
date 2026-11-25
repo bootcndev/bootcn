@@ -5,18 +5,12 @@
   "title": "Color slider",
   "description": "Sliders for one color channel each (hue, saturation, lightness, opacity), with the channel painted on the track and a live swatch.",
   "version": "1.0.1",
-  "categories": [
-    "forms"
-  ],
+  "categories": ["forms"],
   "dependencies": [],
-  "registryDependencies": [
-    "label"
-  ],
+  "registryDependencies": ["label"],
   "compatibility": {
     "bootstrap": "5.3",
-    "platform": [
-      "Bootstrap CSS"
-    ]
+    "platform": ["Bootstrap CSS"]
   },
   "license": "MIT",
   "files": [

@@ -5,18 +5,12 @@
   "title": "Conversation",
   "description": "A chat transcript for AI assistants: user and assistant messages, reasoning, sources, copy and feedback actions, a typing indicator and a \"scroll to latest\" button.",
   "version": "1.1.0",
-  "categories": [
-    "ai"
-  ],
+  "categories": ["ai"],
   "dependencies": [],
-  "registryDependencies": [
-    "code-block"
-  ],
+  "registryDependencies": ["code-block"],
   "compatibility": {
     "bootstrap": "5.3",
-    "platform": [
-      "Bootstrap CSS"
-    ]
+    "platform": ["Bootstrap CSS"]
   },
   "license": "MIT",
   "files": [

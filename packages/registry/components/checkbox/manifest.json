@@ -5,17 +5,12 @@
   "title": "Checkbox",
   "description": "A checkbox with label, description, invalid and disabled states.",
   "version": "1.1.1",
-  "categories": [
-    "forms",
-    "selection"
-  ],
+  "categories": ["forms", "selection"],
   "dependencies": [],
   "registryDependencies": [],
   "compatibility": {
     "bootstrap": "5.3",
-    "platform": [
-      "Bootstrap CSS"
-    ]
+    "platform": ["Bootstrap CSS"]
   },
   "license": "MIT",
   "files": [

@@ -5,22 +5,12 @@
   "title": "Sidebar with groups",
   "description": "A sidebar with a team switcher, search, collapsible navigation groups, projects and the user menu.",
   "version": "1.0.1",
-  "categories": [
-    "navigation"
-  ],
+  "categories": ["navigation"],
   "dependencies": [],
-  "registryDependencies": [
-    "dropdown",
-    "input",
-    "user-menu",
-    "button"
-  ],
+  "registryDependencies": ["dropdown", "input", "user-menu", "button"],
   "compatibility": {
     "bootstrap": "5.3",
-    "platform": [
-      "Bootstrap CSS",
-      "Bootstrap JS bundle"
-    ]
+    "platform": ["Bootstrap CSS", "Bootstrap JS bundle"]
   },
   "license": "MIT",
   "files": [

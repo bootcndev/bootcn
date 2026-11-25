@@ -5,7 +5,7 @@
   if (ns.checkboxGroup) return; // already loaded: idempotent
 
   // Messages: override them for your language with window.Bootcn.messages,
-  // e.g. { 'copy.done': 'Αντιγράφηκε.' } (see the Translations guide).
+  // e.g. { 'copy.done': 'Copié.' } (see the Translations guide).
   // Plural keys end in .one, .other… as chosen by Intl.PluralRules.
   function t(key, fallback, vars) {
     const custom = window.Bootcn && window.Bootcn.messages && window.Bootcn.messages[key];

@@ -5,18 +5,12 @@
   "title": "Input OTP",
   "description": "A one-time code field shown as separate boxes, backed by one real input that autofills from SMS and accepts paste.",
   "version": "1.0.2",
-  "categories": [
-    "forms"
-  ],
+  "categories": ["forms"],
   "dependencies": [],
-  "registryDependencies": [
-    "label"
-  ],
+  "registryDependencies": ["label"],
   "compatibility": {
     "bootstrap": "5.3",
-    "platform": [
-      "Bootstrap CSS"
-    ]
+    "platform": ["Bootstrap CSS"]
   },
   "license": "MIT",
   "files": [

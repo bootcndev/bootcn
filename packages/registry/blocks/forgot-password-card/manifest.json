@@ -5,20 +5,12 @@
   "title": "Forgot password card",
   "description": "Asks for an email address to send a reset link, with a status message and a way back to sign in.",
   "version": "1.0.1",
-  "categories": [
-    "authentication"
-  ],
+  "categories": ["authentication"],
   "dependencies": [],
-  "registryDependencies": [
-    "card",
-    "input",
-    "button"
-  ],
+  "registryDependencies": ["card", "input", "button"],
   "compatibility": {
     "bootstrap": "5.3",
-    "platform": [
-      "Bootstrap CSS"
-    ]
+    "platform": ["Bootstrap CSS"]
   },
   "license": "MIT",
   "files": [

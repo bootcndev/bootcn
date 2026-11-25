@@ -18,12 +18,12 @@ test('map embed: nothing from OpenStreetMap until "Show map"', async ({ page }) 
   expect(requests).toEqual([]);
 
   await page.getByRole('button', { name: 'Show map' }).click();
-  const frame = page.locator('iframe[title="Map of Syntagma Square, Athens"]');
+  const frame = page.locator('iframe[title="Map of Union Square, San Francisco"]');
   await expect(frame).toBeVisible();
   await expect(frame).toBeFocused();
   const src = await frame.getAttribute('src');
   expect(src).toContain('https://www.openstreetmap.org/export/embed.html?bbox=');
-  expect(src).toContain('marker=37.9755%2C23.7348');
+  expect(src).toContain('marker=37.788%2C-122.4075');
   await expect.poll(() => requests.length).toBeGreaterThan(0);
 });
 
@@ -59,4 +59,61 @@ test('funnel and heatmap: the numbers are text in a list and a table', async ({ 
   await expectNoAxeViolations(page);
   await page.evaluate(() => document.documentElement.setAttribute('data-bs-theme', 'dark'));
   await expectNoAxeViolations(page);
+});
+
+test('choropleth: regions, tooltip, metric, zoom, keyboard and table', async ({ page }) => {
+  const errors = collectErrors(page);
+  await openPreview(page, 'choropleth');
+  const map = page.locator('[data-bootcn-choropleth-map]');
+  const regions = map.locator('.bootcn-choropleth__region');
+  await expect(regions).toHaveCount(42);
+  const cluj = map.locator('[data-region="cluj"]');
+  await expect(cluj).toHaveAttribute('aria-label', /^Cluj: Estimated revenue \/ year €/);
+  await expectNoAxeViolations(page);
+
+  // Hover shows the tooltip with every metric.
+  await cluj.hover();
+  const tooltip = map.locator('.bootcn-choropleth__tooltip');
+  await expect(tooltip).toBeVisible();
+  await expect(tooltip).toContainText('Cluj');
+  await expect(tooltip).toContainText('Resellers');
+
+  // Another metric recolours the map and the legend.
+  const fill = () => cluj.evaluate((el) => (el as SVGPathElement).style.fill);
+  const before = await fill();
+  await page.getByLabel('Colour by').selectOption('resellers');
+  await expect(page.locator('[data-bootcn-choropleth-legend]')).toContainText('Resellers:');
+  await expect(cluj).toHaveAttribute('aria-label', /Cluj: Resellers \d+/);
+  expect(typeof before).toBe('string');
+
+  // Zoom in changes the view; reset restores it.
+  const svg = map.locator('svg.bootcn-choropleth__svg');
+  const full = await svg.getAttribute('viewBox');
+  await page.getByRole('button', { name: 'Zoom in' }).click();
+  await expect(svg).not.toHaveAttribute('viewBox', full!);
+  await page.getByRole('button', { name: 'Reset zoom' }).click();
+  await expect(svg).toHaveAttribute('viewBox', full!);
+
+  // One tab stop; arrows move through the regions with their tooltip.
+  const first = regions.first();
+  await first.focus();
+  await page.keyboard.press('ArrowRight');
+  await expect(regions.nth(1)).toBeFocused();
+  await expect(regions.nth(1)).toHaveAttribute('tabindex', '0');
+  await expect(first).toHaveAttribute('tabindex', '-1');
+  await expect(tooltip).toBeVisible();
+
+  // Every value is in the table.
+  await page.getByText('Show data').click();
+  const table = page.locator('[data-bootcn-choropleth-table] table');
+  await expect(table.locator('tbody tr')).toHaveCount(42);
+  await expect(table.locator('thead th')).toHaveText([
+    'Region',
+    'Estimated revenue / year',
+    'Resellers',
+    'Businesses',
+  ]);
+  await page.evaluate(() => document.documentElement.setAttribute('data-bs-theme', 'dark'));
+  await expectNoAxeViolations(page);
+  expect(errors).toEqual([]);
 });

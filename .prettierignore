@@ -9,3 +9,5 @@ bootcn-project-specification.md
 _site/
 .vitepress/cache
 apps/docs/public/previews
+# Map data: kept compact on one line
+packages/registry/components/choropleth/choropleth-sample.js

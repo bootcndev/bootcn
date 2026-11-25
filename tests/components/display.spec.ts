@@ -37,8 +37,8 @@ test('range slider: two thumbs that cannot cross', async ({ page }) => {
 
 test('user: names as text, the link variant is one target', async ({ page }) => {
   await openPreview(page, 'user');
-  await expect(page.getByText('Maria Papadopoulou')).toBeVisible();
-  const link = page.getByRole('link', { name: /Eleni Kosta/ });
+  await expect(page.getByText('Olivia Martin')).toBeVisible();
+  const link = page.getByRole('link', { name: /Isabella Nguyen/ });
   await expect(link).toHaveAttribute('href', '#profile');
   await link.focus();
   await expect(link).toBeFocused();

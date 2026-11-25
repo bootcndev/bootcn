@@ -5,19 +5,12 @@
   "title": "Number field",
   "description": "A number input with decrement and increment buttons that respect min, max and step.",
   "version": "1.0.1",
-  "categories": [
-    "forms"
-  ],
+  "categories": ["forms"],
   "dependencies": [],
-  "registryDependencies": [
-    "label",
-    "input"
-  ],
+  "registryDependencies": ["label", "input"],
   "compatibility": {
     "bootstrap": "5.3",
-    "platform": [
-      "Bootstrap CSS"
-    ]
+    "platform": ["Bootstrap CSS"]
   },
   "license": "MIT",
   "files": [

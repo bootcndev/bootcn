@@ -1,0 +1,38 @@
+{
+  "$schema": "../../schema/registry-item.schema.json",
+  "name": "choropleth",
+  "type": "registry:ui",
+  "title": "Choropleth map",
+  "description": "A map of regions coloured by a value, from any GeoJSON: a metric selector, tooltips, zoom and pan, a legend and the data as a table.",
+  "version": "1.0.0",
+  "categories": ["data-display"],
+  "dependencies": [],
+  "registryDependencies": ["label", "select"],
+  "compatibility": {
+    "bootstrap": "5.3",
+    "platform": ["Bootstrap CSS"]
+  },
+  "license": "MIT",
+  "files": [
+    {
+      "path": "choropleth.html",
+      "target": "choropleth.html",
+      "type": "registry:component"
+    },
+    {
+      "path": "choropleth.css",
+      "target": "choropleth.css",
+      "type": "registry:style"
+    },
+    {
+      "path": "choropleth.js",
+      "target": "choropleth.js",
+      "type": "registry:script"
+    },
+    {
+      "path": "choropleth-sample.js",
+      "target": "choropleth-sample.js",
+      "type": "registry:lib"
+    }
+  ]
+}

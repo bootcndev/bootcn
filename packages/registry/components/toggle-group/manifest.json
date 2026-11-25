@@ -5,18 +5,12 @@
   "title": "Toggle group",
   "description": "A set of toggles: several independent ones, or one choice from a set, built on native inputs.",
   "version": "1.0.1",
-  "categories": [
-    "actions"
-  ],
+  "categories": ["actions"],
   "dependencies": [],
-  "registryDependencies": [
-    "toggle"
-  ],
+  "registryDependencies": ["toggle"],
   "compatibility": {
     "bootstrap": "5.3",
-    "platform": [
-      "Bootstrap CSS"
-    ]
+    "platform": ["Bootstrap CSS"]
   },
   "license": "MIT",
   "files": [

@@ -5,16 +5,12 @@
   "title": "Tag group",
   "description": "A list of tags (chips) that can be removed, or a set of selectable tags built on native checkboxes.",
   "version": "1.1.0",
-  "categories": [
-    "data-display"
-  ],
+  "categories": ["data-display"],
   "dependencies": [],
   "registryDependencies": [],
   "compatibility": {
     "bootstrap": "5.3",
-    "platform": [
-      "Bootstrap CSS"
-    ]
+    "platform": ["Bootstrap CSS"]
   },
   "license": "MIT",
   "files": [

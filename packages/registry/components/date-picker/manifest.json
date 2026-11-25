@@ -5,21 +5,12 @@
   "title": "Date picker",
   "description": "A button that opens a calendar in a popover and shows the chosen date, with keyboard support and form value.",
   "version": "1.0.1",
-  "categories": [
-    "forms"
-  ],
+  "categories": ["forms"],
   "dependencies": [],
-  "registryDependencies": [
-    "calendar",
-    "button",
-    "label"
-  ],
+  "registryDependencies": ["calendar", "button", "label"],
   "compatibility": {
     "bootstrap": "5.3",
-    "platform": [
-      "Bootstrap CSS",
-      "Bootstrap JS bundle"
-    ]
+    "platform": ["Bootstrap CSS", "Bootstrap JS bundle"]
   },
   "license": "MIT",
   "files": [

@@ -5,18 +5,12 @@
   "title": "Slider",
   "description": "A native range input with a filled track, a visible value and keyboard support.",
   "version": "1.0.1",
-  "categories": [
-    "forms"
-  ],
+  "categories": ["forms"],
   "dependencies": [],
-  "registryDependencies": [
-    "label"
-  ],
+  "registryDependencies": ["label"],
   "compatibility": {
     "bootstrap": "5.3",
-    "platform": [
-      "Bootstrap CSS"
-    ]
+    "platform": ["Bootstrap CSS"]
   },
   "license": "MIT",
   "files": [

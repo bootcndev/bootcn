@@ -16,7 +16,7 @@ only.
     aria-describedby="country-help"
   >
     <option value="">Choose a country</option>
-    <option value="gr">Greece</option>
+    <option value="pt">Portugal</option>
   </select>
   <p class="bootcn-field__help" id="country-help">Used for tax calculation.</p>
 </div>

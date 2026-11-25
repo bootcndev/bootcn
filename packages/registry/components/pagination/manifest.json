@@ -5,16 +5,12 @@
   "title": "Pagination",
   "description": "Links to the pages of a long list, with previous and next, the current page and a gap.",
   "version": "1.0.1",
-  "categories": [
-    "navigation"
-  ],
+  "categories": ["navigation"],
   "dependencies": [],
   "registryDependencies": [],
   "compatibility": {
     "bootstrap": "5.3",
-    "platform": [
-      "Bootstrap CSS"
-    ]
+    "platform": ["Bootstrap CSS"]
   },
   "license": "MIT",
   "files": [

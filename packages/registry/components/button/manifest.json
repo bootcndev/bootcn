@@ -5,17 +5,12 @@
   "title": "Button",
   "description": "A customizable button built on Bootstrap with variants, sizes, icons and a CSS loading state.",
   "version": "1.2.1",
-  "categories": [
-    "buttons",
-    "actions"
-  ],
+  "categories": ["buttons", "actions"],
   "dependencies": [],
   "registryDependencies": [],
   "compatibility": {
     "bootstrap": "5.3",
-    "platform": [
-      "Bootstrap CSS"
-    ]
+    "platform": ["Bootstrap CSS"]
   },
   "license": "MIT",
   "files": [

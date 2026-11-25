@@ -119,9 +119,9 @@ test('autocomplete: filter, mark the match, choose, free text', async ({ page })
   await input.pressSequentially('lo');
   await expect(list).toBeVisible();
   await expect(input).toHaveAttribute('aria-expanded', 'true');
-  await expect(list.getByRole('option')).toHaveText(['Barcelona', 'London', 'Thessaloniki']);
+  await expect(list.getByRole('option')).toHaveText(['Barcelona', 'London']);
   await expect(list.getByRole('option', { name: 'London' }).locator('mark')).toHaveText('Lo');
-  await expect(page.locator('[data-bootcn-autocomplete-status]')).toHaveText('3 suggestions.');
+  await expect(page.locator('[data-bootcn-autocomplete-status]')).toHaveText('2 suggestions.');
   await expectNoAxeViolations(page);
 
   await page.keyboard.press('ArrowDown');
@@ -163,7 +163,7 @@ test('autocomplete: remote suggestions from a URL', async ({ page }) => {
   await page.route('**/cities?q=*', (route) => {
     const q = new URL(route.request().url()).searchParams.get('q');
     return route.fulfill({
-      json: [{ value: 'ath', label: `Athens (${q})` }, 'Atlanta <b>US</b>'],
+      json: [{ value: 'ant', label: `Antwerp (${q})` }, 'Atlanta <b>US</b>'],
     });
   });
   await page.evaluate(() =>
@@ -174,10 +174,10 @@ test('autocomplete: remote suggestions from a URL', async ({ page }) => {
   const input = page.getByRole('combobox', { name: 'City' });
   await input.pressSequentially('at');
   const list = page.getByRole('listbox', { name: 'City' });
-  await expect(list.getByRole('option')).toHaveText(['Athens (at)', 'Atlanta <b>US</b>']);
+  await expect(list.getByRole('option')).toHaveText(['Antwerp (at)', 'Atlanta <b>US</b>']);
   await expect(list.locator('b')).toHaveCount(0);
   await list.getByRole('option').first().click();
-  await expect(input).toHaveValue('ath');
+  await expect(input).toHaveValue('ant');
 });
 
 test('color slider: channels paint the swatch and the form value', async ({ page }) => {

@@ -5,21 +5,12 @@
   "title": "App sidebar",
   "description": "A sidebar with grouped navigation, counts and the signed-in user; it becomes an off-canvas drawer below 992px.",
   "version": "1.1.2",
-  "categories": [
-    "navigation"
-  ],
+  "categories": ["navigation"],
   "dependencies": [],
-  "registryDependencies": [
-    "button",
-    "badge",
-    "avatar"
-  ],
+  "registryDependencies": ["button", "badge", "avatar"],
   "compatibility": {
     "bootstrap": "5.3",
-    "platform": [
-      "Bootstrap CSS",
-      "Bootstrap JS bundle"
-    ]
+    "platform": ["Bootstrap CSS", "Bootstrap JS bundle"]
   },
   "license": "MIT",
   "files": [

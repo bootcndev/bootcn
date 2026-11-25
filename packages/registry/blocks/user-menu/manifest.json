@@ -5,20 +5,12 @@
   "title": "User menu",
   "description": "An avatar button that opens an account menu with the user's name, email, links and sign out.",
   "version": "1.0.1",
-  "categories": [
-    "navigation"
-  ],
+  "categories": ["navigation"],
   "dependencies": [],
-  "registryDependencies": [
-    "dropdown",
-    "avatar"
-  ],
+  "registryDependencies": ["dropdown", "avatar"],
   "compatibility": {
     "bootstrap": "5.3",
-    "platform": [
-      "Bootstrap CSS",
-      "Bootstrap JS bundle"
-    ]
+    "platform": ["Bootstrap CSS", "Bootstrap JS bundle"]
   },
   "license": "MIT",
   "files": [

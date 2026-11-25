@@ -5,19 +5,12 @@
   "title": "Inset sidebar",
   "description": "The collapsible Sidebar with the page content raised in a rounded panel beside it.",
   "version": "1.0.1",
-  "categories": [
-    "navigation"
-  ],
+  "categories": ["navigation"],
   "dependencies": [],
-  "registryDependencies": [
-    "sidebar"
-  ],
+  "registryDependencies": ["sidebar"],
   "compatibility": {
     "bootstrap": "5.3",
-    "platform": [
-      "Bootstrap CSS",
-      "Bootstrap JS bundle"
-    ]
+    "platform": ["Bootstrap CSS", "Bootstrap JS bundle"]
   },
   "license": "MIT",
   "files": [

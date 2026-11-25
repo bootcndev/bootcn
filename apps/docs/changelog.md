@@ -6,6 +6,13 @@ each published version stays available under `/v/<version>/`) and the **CLI**
 
 ## Registry
 
+### 0.26.0
+
+- Choropleth map: regions from any GeoJSON coloured by a chosen metric,
+  with tooltips, zoom and pan, keyboard navigation, a legend and the data as
+  a table. Sample: Romania's counties from geoBoundaries (CC BY 4.0).
+- Examples use neutral sample names and addresses.
+
 ### 0.25.0
 
 - Map embed: an OpenStreetMap map that loads only on request.

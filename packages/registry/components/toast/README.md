@@ -52,7 +52,7 @@ Create one from a button, without writing JavaScript:
   class="btn bootcn-button bootcn-button--outline"
   data-bootcn-toast-create
   data-bootcn-toast-title="Invitation sent"
-  data-bootcn-toast-message="We emailed nikos@example.com."
+  data-bootcn-toast-message="We emailed jackson@example.com."
   data-bootcn-toast-variant="success"
 >
   Invite

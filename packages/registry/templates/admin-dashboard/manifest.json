@@ -5,9 +5,7 @@
   "title": "Admin dashboard",
   "description": "A complete admin page: responsive sidebar, top bar with search, theme toggle and user menu, metric cards, a revenue chart, recent activity and a transactions table.",
   "version": "1.0.1",
-  "categories": [
-    "dashboard"
-  ],
+  "categories": ["dashboard"],
   "dependencies": [],
   "registryDependencies": [
     "app-sidebar",
@@ -19,10 +17,7 @@
   ],
   "compatibility": {
     "bootstrap": "5.3",
-    "platform": [
-      "Bootstrap CSS",
-      "Bootstrap JS bundle"
-    ]
+    "platform": ["Bootstrap CSS", "Bootstrap JS bundle"]
   },
   "license": "MIT",
   "files": [

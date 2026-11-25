@@ -20,7 +20,7 @@ Bootcn adds the styling. There is no `dropdown.js`.
   </button>
   <ul class="dropdown-menu bootcn-dropdown__menu" aria-labelledby="account-menu">
     <li>
-      <span class="dropdown-header bootcn-dropdown__label">Signed in as maria@example.com</span>
+      <span class="dropdown-header bootcn-dropdown__label">Signed in as olivia@example.com</span>
     </li>
     <li><a class="dropdown-item bootcn-dropdown__item" href="/profile">Profile</a></li>
     <li><hr class="dropdown-divider bootcn-dropdown__divider" /></li>
