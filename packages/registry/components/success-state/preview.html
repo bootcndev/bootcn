@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Bootcn Success state preview</title>
+    <script>
+      // Preview theme: ?theme=dark|light, else the docs page around the frame, else light.
+      (function () {
+        var theme = new URLSearchParams(location.search).get('theme');
+        if (!theme) {
+          try {
+            theme =
+              window.parent !== window &&
+              window.parent.document.documentElement.classList.contains('dark')
+                ? 'dark'
+                : 'light';
+          } catch (error) {
+            theme = 'light';
+          }
+        }
+        document.documentElement.setAttribute('data-bs-theme', theme === 'dark' ? 'dark' : 'light');
+        // ?dir=rtl: right to left, with Bootstrap's RTL stylesheet.
+        if (new URLSearchParams(location.search).get('dir') === 'rtl') {
+          document.documentElement.setAttribute('dir', 'rtl');
+          new MutationObserver(function (records, observer) {
+            var link = document.querySelector('link[href*="bootstrap.min.css"]');
+            if (!link) return;
+            link.href = link.href.replace('bootstrap.min.css', 'bootstrap.rtl.min.css');
+            observer.disconnect();
+          }).observe(document.documentElement, { childList: true, subtree: true });
+        }
+      })();
+    </script>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.9/dist/css/bootstrap.min.css"
+    />
+    <link rel="stylesheet" href="../../themes/tokens/tokens.css" />
+    <link rel="stylesheet" href="../button/button.css" />
+    <link rel="stylesheet" href="../confetti/confetti.css" />
+    <link rel="stylesheet" href="success-state.css" />
+  </head>
+  <body>
+    <main class="container py-4">
+      <h1 class="h4 mb-4">Success state</h1>
+      <div class="bootcn-success" data-bootcn-success data-bootcn-success-confetti>
+        <svg class="bootcn-success__mark" viewBox="0 0 52 52" aria-hidden="true" focusable="false">
+          <circle class="bootcn-success__ring" cx="26" cy="26" r="24" />
+          <path class="bootcn-success__tick" d="M15 27l7 7 15-15" />
+        </svg>
+        <h2 class="bootcn-success__title">You're all set</h2>
+        <p class="bootcn-success__text">
+          Your workspace is ready. We've sent a confirmation to olivia@example.com.
+        </p>
+        <div class="bootcn-success__actions">
+          <a class="btn bootcn-button bootcn-button--default" href="#dashboard">Go to dashboard</a>
+          <a class="btn bootcn-button bootcn-button--outline" href="#invite">Invite your team</a>
+        </div>
+      </div>
+      <p class="text-center">
+        <button
+          type="button"
+          class="btn bootcn-button bootcn-button--secondary bootcn-button--sm"
+          data-success-replay
+        >
+          Play again
+        </button>
+      </p>
+    </main>
+    <script src="../confetti/confetti.js"></script>
+    <script src="success-state.js"></script>
+    <script>
+      // Preview only.
+      document.querySelector('[data-success-replay]').addEventListener('click', function () {
+        window.Bootcn.success.play(document.querySelector('[data-bootcn-success]'));
+      });
+    </script>
+  </body>
+</html>

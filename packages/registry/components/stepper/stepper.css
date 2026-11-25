@@ -1,0 +1,217 @@
+.bootcn-stepper {
+  --bootcn-stepper-size: 2rem;
+  display: grid;
+  gap: 1.5rem;
+}
+
+.bootcn-stepper__list {
+  display: flex;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.bootcn-stepper__item {
+  position: relative;
+  display: flex;
+  flex: 1;
+  gap: 0.75rem;
+  align-items: flex-start;
+  min-width: 0;
+  color: var(--bootcn-muted-foreground);
+}
+
+/* The line to the next step. */
+.bootcn-stepper__item:not(:last-child)::after {
+  flex: 1;
+  min-width: 1rem;
+  height: 2px;
+  margin-top: calc(var(--bootcn-stepper-size) / 2 - 1px);
+  margin-inline-end: 0.75rem;
+  border-radius: 9999px;
+  background-color: var(--bootcn-border-color);
+  content: '';
+  transition: background-color var(--bootcn-transition-duration) ease;
+}
+
+.bootcn-stepper__item.is-complete:not(:last-child)::after {
+  background-color: var(--bootcn-primary);
+}
+
+.bootcn-stepper__marker {
+  display: inline-flex;
+  flex: none;
+  align-items: center;
+  justify-content: center;
+  width: var(--bootcn-stepper-size);
+  height: var(--bootcn-stepper-size);
+  border: 2px solid var(--bootcn-border-color);
+  border-radius: 9999px;
+  background-color: var(--bootcn-background);
+  font-size: 0.8125rem;
+  font-weight: 600;
+  transition:
+    background-color var(--bootcn-transition-duration) ease,
+    border-color var(--bootcn-transition-duration) ease,
+    color var(--bootcn-transition-duration) ease;
+}
+
+.bootcn-stepper__check {
+  display: none;
+}
+
+.bootcn-stepper__item.is-current {
+  color: var(--bootcn-foreground);
+}
+
+.bootcn-stepper__item.is-current .bootcn-stepper__marker {
+  border-color: var(--bootcn-primary);
+  color: var(--bootcn-foreground);
+  box-shadow: 0 0 0 4px color-mix(in srgb, var(--bootcn-primary) 15%, transparent);
+}
+
+.bootcn-stepper__item.is-complete {
+  color: var(--bootcn-foreground);
+}
+
+.bootcn-stepper__item.is-complete .bootcn-stepper__marker {
+  border-color: var(--bootcn-primary);
+  background-color: var(--bootcn-primary);
+  color: var(--bootcn-primary-foreground);
+}
+
+.bootcn-stepper__item.is-complete .bootcn-stepper__number {
+  display: none;
+}
+
+.bootcn-stepper__item.is-complete .bootcn-stepper__check {
+  display: inline;
+}
+
+.bootcn-stepper__text {
+  display: grid;
+  flex: none;
+  max-width: 10rem;
+  padding-top: 0.25rem;
+  margin-inline-end: 0.75rem;
+}
+
+.bootcn-stepper__title {
+  font-size: 0.875rem;
+  font-weight: 600;
+  line-height: 1.3;
+}
+
+.bootcn-stepper__description {
+  font-size: 0.75rem;
+  color: var(--bootcn-muted-foreground);
+}
+
+.bootcn-stepper__panel:focus {
+  outline: 0;
+}
+
+.bootcn-stepper__panel-title {
+  margin: 0 0 0.25rem;
+  font-size: 1.125rem;
+  font-weight: 600;
+}
+
+.bootcn-stepper__panel-title:focus {
+  outline: 0;
+}
+
+.bootcn-stepper__actions {
+  display: flex;
+  gap: 0.5rem;
+  justify-content: flex-end;
+}
+
+.bootcn-stepper__actions [data-bootcn-stepper-prev] {
+  margin-inline-end: auto;
+}
+
+.bootcn-stepper.is-finished .bootcn-stepper__actions {
+  display: none;
+}
+
+.bootcn-stepper .form-control[aria-invalid='true'] ~ .invalid-feedback,
+.bootcn-stepper .form-select[aria-invalid='true'] ~ .invalid-feedback,
+.bootcn-stepper .form-check-input[aria-invalid='true'] ~ .invalid-feedback,
+.bootcn-stepper .bootcn-field:has([aria-invalid='true']) > .invalid-feedback {
+  display: block;
+}
+
+/* Small screens: only the current step's text. */
+@media (max-width: 575.98px) {
+  .bootcn-stepper:not(.bootcn-stepper--vertical)
+    .bootcn-stepper__item:not(.is-current)
+    .bootcn-stepper__text {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
+  }
+
+  .bootcn-stepper:not(.bootcn-stepper--vertical) .bootcn-stepper__item:not(.is-current) {
+    flex: 0 1 auto;
+  }
+
+  .bootcn-stepper:not(.bootcn-stepper--vertical) .bootcn-stepper__item.is-current {
+    flex: 1 1 auto;
+  }
+
+  .bootcn-stepper:not(.bootcn-stepper--vertical) .bootcn-stepper__text {
+    flex: 0 1 auto;
+    min-width: 0;
+  }
+
+  .bootcn-stepper:not(.bootcn-stepper--vertical) .bootcn-stepper__title {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .bootcn-stepper:not(.bootcn-stepper--vertical) .bootcn-stepper__description {
+    display: none;
+  }
+
+  .bootcn-stepper:not(.bootcn-stepper--vertical) .bootcn-stepper__item:not(:last-child)::after {
+    width: 1.5rem;
+  }
+}
+
+/* Vertical: steps down the side, the line between the markers. */
+.bootcn-stepper--vertical .bootcn-stepper__list {
+  flex-direction: column;
+}
+
+.bootcn-stepper--vertical .bootcn-stepper__item {
+  flex-wrap: wrap;
+  padding-bottom: 1.5rem;
+}
+
+.bootcn-stepper--vertical .bootcn-stepper__item:not(:last-child)::after {
+  position: absolute;
+  top: var(--bootcn-stepper-size);
+  bottom: 0;
+  inset-inline-start: calc(var(--bootcn-stepper-size) / 2 - 1px);
+  width: 2px;
+  height: auto;
+  min-width: 0;
+  margin: 0.25rem 0;
+}
+
+.bootcn-stepper--vertical .bootcn-stepper__text {
+  flex: 1;
+  max-width: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .bootcn-stepper__item::after,
+  .bootcn-stepper__marker {
+    transition: none;
+  }
+}

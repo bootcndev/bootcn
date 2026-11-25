@@ -6,6 +6,24 @@ each published version stays available under `/v/<version>/`) and the **CLI**
 
 ## Registry
 
+### 0.31.0
+
+- Modal: sizes, top placement, a bottom sheet on phones, blurred or
+  transparent backdrop, scrolling content with shadows, form validation
+  with a `bootcn:modal:submit` event and busy state, and an
+  unsaved-changes guard ("Discard your unsaved changes?").
+- Stepper: horizontal or vertical steps whose markers turn into checks,
+  validation before each step, focus and announcements on every move, and
+  an optional closing panel.
+- Success state: a "You're all set" screen whose check draws itself, with
+  optional confetti.
+- Onboarding checklist: a "Get started" card with tasks, a progress bar,
+  collapse and dismiss, remembered in the browser if you want.
+- Tour: a product tour that highlights one element at a time, with "1 of
+  4", Back, Next, Skip and full keyboard support.
+- Onboarding flow block: a three-step workspace setup that ends on the
+  success state.
+
 ### 0.30.0
 
 - Delivery tracker: live order tracking like a delivery or ride app. The

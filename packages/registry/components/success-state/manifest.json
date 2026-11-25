@@ -1,0 +1,33 @@
+{
+  "$schema": "../../schema/registry-item.schema.json",
+  "name": "success-state",
+  "type": "registry:ui",
+  "title": "Success state",
+  "description": "A \"You're all set\" screen: a check that draws itself, a title, a message and next steps, with optional confetti.",
+  "version": "1.0.0",
+  "categories": ["feedback"],
+  "dependencies": [],
+  "registryDependencies": ["button"],
+  "compatibility": {
+    "bootstrap": "5.3",
+    "platform": ["Bootstrap CSS"]
+  },
+  "license": "MIT",
+  "files": [
+    {
+      "path": "success-state.html",
+      "target": "success-state.html",
+      "type": "registry:component"
+    },
+    {
+      "path": "success-state.css",
+      "target": "success-state.css",
+      "type": "registry:style"
+    },
+    {
+      "path": "success-state.js",
+      "target": "success-state.js",
+      "type": "registry:script"
+    }
+  ]
+}

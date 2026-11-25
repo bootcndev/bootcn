@@ -1,0 +1,21 @@
+{
+  "$schema": "../../schema/registry-item.schema.json",
+  "name": "modal",
+  "type": "registry:ui",
+  "title": "Modal",
+  "description": "Modals for forms and longer content: sizes, top placement, a bottom sheet on phones, blurred backdrop, scrolling with shadows, form validation and an unsaved-changes guard.",
+  "version": "1.0.0",
+  "categories": ["overlays", "dialogs"],
+  "dependencies": [],
+  "registryDependencies": ["dialog", "button", "input"],
+  "compatibility": {
+    "bootstrap": "5.3",
+    "platform": ["Bootstrap CSS", "Bootstrap JS bundle"]
+  },
+  "license": "MIT",
+  "files": [
+    { "path": "modal.html", "target": "modal.html", "type": "registry:component" },
+    { "path": "modal.css", "target": "modal.css", "type": "registry:style" },
+    { "path": "modal.js", "target": "modal.js", "type": "registry:script" }
+  ]
+}

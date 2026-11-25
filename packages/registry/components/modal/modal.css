@@ -1,0 +1,152 @@
+/* Builds on .bootcn-dialog (the dialog component) for the surface. */
+
+/* Opening: a small zoom and fade instead of Bootstrap's slide. */
+.bootcn-modal.fade .modal-dialog {
+  transform: scale(0.96);
+  transition:
+    transform 200ms cubic-bezier(0.16, 1, 0.3, 1),
+    opacity 200ms ease;
+}
+
+.bootcn-modal.show .modal-dialog {
+  transform: none;
+}
+
+.bootcn-modal .modal-body {
+  font-size: 0.9375rem;
+}
+
+/* Scrolling inside: the body scrolls, with shadows that say so. */
+.bootcn-modal .modal-dialog-scrollable .modal-header,
+.bootcn-modal .modal-dialog-scrollable .modal-footer {
+  position: relative;
+  z-index: 1;
+  transition: box-shadow 150ms ease;
+}
+
+.bootcn-modal .modal-dialog-scrollable .modal-body {
+  padding-bottom: 1rem;
+}
+
+.bootcn-modal .modal-content.is-scrolled .modal-header {
+  box-shadow:
+    0 1px 0 var(--bootcn-border-color),
+    0 6px 10px -8px rgb(0 0 0 / 0.25);
+}
+
+.bootcn-modal .modal-content.has-more .modal-footer {
+  box-shadow:
+    0 -1px 0 var(--bootcn-border-color),
+    0 -6px 10px -8px rgb(0 0 0 / 0.25);
+}
+
+/* Placement: near the top of the screen. */
+.bootcn-modal--top .modal-dialog {
+  margin-top: 4rem;
+}
+
+/* Backdrops */
+body:has(.bootcn-modal--blur.show) .modal-backdrop.show {
+  background-color: rgb(0 0 0 / 0.3);
+  opacity: 1;
+  backdrop-filter: blur(6px);
+}
+
+body:has(.bootcn-modal--transparent.show) .modal-backdrop.show {
+  opacity: 0;
+}
+
+/* On phones: a sheet from the bottom edge. */
+@media (max-width: 575.98px) {
+  .bootcn-modal--sheet .modal-dialog {
+    display: flex;
+    align-items: flex-end;
+    min-height: 100%;
+    margin: 0;
+  }
+
+  .bootcn-modal--sheet .modal-content {
+    border-bottom: 0;
+    border-radius: var(--bootcn-radius-xl) var(--bootcn-radius-xl) 0 0;
+    padding-bottom: env(safe-area-inset-bottom);
+  }
+
+  .bootcn-modal--sheet.fade .modal-dialog {
+    transform: translateY(100%);
+  }
+
+  .bootcn-modal--sheet.show .modal-dialog {
+    transform: none;
+  }
+
+  .bootcn-modal--sheet .modal-footer > * {
+    flex: 1;
+  }
+}
+
+.bootcn-modal .modal-fullscreen .modal-content {
+  border: 0;
+  border-radius: 0;
+}
+
+/* Unsaved changes: a bar over the footer. */
+.bootcn-modal__discard {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 0.75rem;
+  align-items: center;
+  margin: 0.75rem var(--bootcn-dialog-padding) 0;
+  padding: 0.75rem 1rem;
+  border: var(--bootcn-border-width) solid var(--bootcn-border-color);
+  border-radius: var(--bootcn-radius);
+  background-color: var(--bootcn-muted);
+  font-size: 0.875rem;
+}
+
+.bootcn-modal__discard[hidden] {
+  display: none;
+}
+
+.bootcn-modal__discard p {
+  flex: 1 1 12rem;
+  margin: 0;
+}
+
+.bootcn-modal__discard-actions {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.bootcn-modal .form-control[aria-invalid='true'] ~ .invalid-feedback {
+  display: block;
+}
+
+.bootcn-modal .is-loading {
+  position: relative;
+  color: transparent !important;
+}
+
+.bootcn-modal .is-loading::after {
+  position: absolute;
+  inset: 0;
+  width: 1rem;
+  height: 1rem;
+  margin: auto;
+  border: 2px solid currentColor;
+  border-color: var(--bootcn-primary-foreground) var(--bootcn-primary-foreground) transparent;
+  border-radius: 9999px;
+  content: '';
+  animation: bootcn-modal-spin 700ms linear infinite;
+}
+
+@keyframes bootcn-modal-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .bootcn-modal.fade .modal-dialog {
+    transition: none;
+  }
+}

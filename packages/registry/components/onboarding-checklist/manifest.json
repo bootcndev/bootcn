@@ -1,0 +1,33 @@
+{
+  "$schema": "../../schema/registry-item.schema.json",
+  "name": "onboarding-checklist",
+  "type": "registry:ui",
+  "title": "Onboarding checklist",
+  "description": "A \"Get started\" card: tasks that tick off with a progress bar, collapse and dismiss, and a message when everything is done; progress can be remembered.",
+  "version": "1.0.0",
+  "categories": ["feedback", "data-display"],
+  "dependencies": [],
+  "registryDependencies": ["button", "progress"],
+  "compatibility": {
+    "bootstrap": "5.3",
+    "platform": ["Bootstrap CSS"]
+  },
+  "license": "MIT",
+  "files": [
+    {
+      "path": "onboarding-checklist.html",
+      "target": "onboarding-checklist.html",
+      "type": "registry:component"
+    },
+    {
+      "path": "onboarding-checklist.css",
+      "target": "onboarding-checklist.css",
+      "type": "registry:style"
+    },
+    {
+      "path": "onboarding-checklist.js",
+      "target": "onboarding-checklist.js",
+      "type": "registry:script"
+    }
+  ]
+}

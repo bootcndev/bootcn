@@ -1,0 +1,288 @@
+<section class="bootcn-onboarding" aria-labelledby="bootcn-onboarding-title">
+  <div class="bootcn-onboarding__intro">
+    <h1 class="bootcn-onboarding__title" id="bootcn-onboarding-title">Set up your workspace</h1>
+    <p class="bootcn-onboarding__subtitle">Three quick steps. You can change everything later.</p>
+  </div>
+  <form class="bootcn-onboarding__card" novalidate>
+    <div class="bootcn-stepper" data-bootcn-stepper>
+      <ol class="bootcn-stepper__list" aria-label="Setup progress">
+        <li class="bootcn-stepper__item" data-bootcn-stepper-item>
+          <span class="bootcn-stepper__marker" aria-hidden="true"
+            ><span class="bootcn-stepper__number">1</span
+            ><svg
+              class="bootcn-icon bootcn-stepper__check"
+              width="16"
+              height="16"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="3"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              aria-hidden="true"
+              focusable="false"
+            >
+              <path d="M20 6 9 17l-5-5" /></svg
+          ></span>
+          <span class="bootcn-stepper__text">
+            <span class="bootcn-stepper__title">Workspace</span>
+            <span class="bootcn-stepper__description">Name it</span>
+            <span class="visually-hidden" data-bootcn-stepper-state></span>
+          </span>
+        </li>
+        <li class="bootcn-stepper__item" data-bootcn-stepper-item>
+          <span class="bootcn-stepper__marker" aria-hidden="true"
+            ><span class="bootcn-stepper__number">2</span
+            ><svg
+              class="bootcn-icon bootcn-stepper__check"
+              width="16"
+              height="16"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="3"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              aria-hidden="true"
+              focusable="false"
+            >
+              <path d="M20 6 9 17l-5-5" /></svg
+          ></span>
+          <span class="bootcn-stepper__text">
+            <span class="bootcn-stepper__title">About you</span>
+            <span class="bootcn-stepper__description">Your role</span>
+            <span class="visually-hidden" data-bootcn-stepper-state></span>
+          </span>
+        </li>
+        <li class="bootcn-stepper__item" data-bootcn-stepper-item>
+          <span class="bootcn-stepper__marker" aria-hidden="true"
+            ><span class="bootcn-stepper__number">3</span
+            ><svg
+              class="bootcn-icon bootcn-stepper__check"
+              width="16"
+              height="16"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="3"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              aria-hidden="true"
+              focusable="false"
+            >
+              <path d="M20 6 9 17l-5-5" /></svg
+          ></span>
+          <span class="bootcn-stepper__text">
+            <span class="bootcn-stepper__title">Your team</span>
+            <span class="bootcn-stepper__description">Invite people</span>
+            <span class="visually-hidden" data-bootcn-stepper-state></span>
+          </span>
+        </li>
+      </ol>
+
+      <section
+        class="bootcn-stepper__panel"
+        data-bootcn-stepper-panel
+        aria-labelledby="bootcn-onboarding-p1"
+      >
+        <h2
+          class="bootcn-stepper__panel-title"
+          id="bootcn-onboarding-p1"
+          data-bootcn-stepper-heading
+        >
+          Name your workspace
+        </h2>
+        <p class="bootcn-onboarding__hint">This is usually your company or team name.</p>
+        <div class="bootcn-field mb-3">
+          <label class="form-label bootcn-label" for="bootcn-onboarding-name">Workspace name</label>
+          <input
+            type="text"
+            class="form-control bootcn-input"
+            id="bootcn-onboarding-name"
+            name="workspace"
+            required
+            autocomplete="organization"
+            placeholder="Acme Inc."
+            aria-describedby="bootcn-onboarding-name-error"
+          />
+          <div class="invalid-feedback" id="bootcn-onboarding-name-error">
+            Enter a name for your workspace.
+          </div>
+        </div>
+        <div class="bootcn-field">
+          <label class="form-label bootcn-label" for="bootcn-onboarding-url">Workspace URL</label>
+          <div class="input-group">
+            <span class="input-group-text">app.example.com/</span>
+            <input
+              type="text"
+              class="form-control bootcn-input"
+              id="bootcn-onboarding-url"
+              name="slug"
+              required
+              pattern="[a-z0-9\-]+"
+              placeholder="acme"
+              aria-describedby="bootcn-onboarding-url-help bootcn-onboarding-url-error"
+            />
+          </div>
+          <p class="bootcn-onboarding__hint mt-1 mb-0" id="bootcn-onboarding-url-help">
+            Lowercase letters, numbers and dashes.
+          </p>
+          <div class="invalid-feedback" id="bootcn-onboarding-url-error">
+            Use lowercase letters, numbers and dashes only.
+          </div>
+        </div>
+      </section>
+
+      <section
+        class="bootcn-stepper__panel"
+        data-bootcn-stepper-panel
+        aria-labelledby="bootcn-onboarding-p2"
+        hidden
+      >
+        <h2
+          class="bootcn-stepper__panel-title"
+          id="bootcn-onboarding-p2"
+          data-bootcn-stepper-heading
+        >
+          Tell us about you
+        </h2>
+        <p class="bootcn-onboarding__hint">We'll suggest templates that fit how you work.</p>
+        <div class="bootcn-field mb-3">
+          <label class="form-label bootcn-label" for="bootcn-onboarding-role">Your role</label>
+          <select
+            class="form-select bootcn-select"
+            id="bootcn-onboarding-role"
+            name="role"
+            required
+            aria-describedby="bootcn-onboarding-role-error"
+          >
+            <option value="">Choose a role</option>
+            <option>Engineering</option>
+            <option>Design</option>
+            <option>Product</option>
+            <option>Marketing</option>
+            <option>Other</option>
+          </select>
+          <div class="invalid-feedback" id="bootcn-onboarding-role-error">Choose your role.</div>
+        </div>
+        <fieldset>
+          <legend class="form-label bootcn-label fs-6">Team size</legend>
+          <div class="bootcn-onboarding__sizes">
+            <input
+              class="btn-check"
+              type="radio"
+              name="size"
+              id="bootcn-onboarding-size-1"
+              value="1"
+              checked
+            />
+            <label class="btn bootcn-button bootcn-button--outline" for="bootcn-onboarding-size-1"
+              >Just me</label
+            >
+            <input
+              class="btn-check"
+              type="radio"
+              name="size"
+              id="bootcn-onboarding-size-2"
+              value="2-10"
+            />
+            <label class="btn bootcn-button bootcn-button--outline" for="bootcn-onboarding-size-2"
+              >2–10</label
+            >
+            <input
+              class="btn-check"
+              type="radio"
+              name="size"
+              id="bootcn-onboarding-size-3"
+              value="11-50"
+            />
+            <label class="btn bootcn-button bootcn-button--outline" for="bootcn-onboarding-size-3"
+              >11–50</label
+            >
+            <input
+              class="btn-check"
+              type="radio"
+              name="size"
+              id="bootcn-onboarding-size-4"
+              value="50+"
+            />
+            <label class="btn bootcn-button bootcn-button--outline" for="bootcn-onboarding-size-4"
+              >50+</label
+            >
+          </div>
+        </fieldset>
+      </section>
+
+      <section
+        class="bootcn-stepper__panel"
+        data-bootcn-stepper-panel
+        aria-labelledby="bootcn-onboarding-p3"
+        hidden
+      >
+        <h2
+          class="bootcn-stepper__panel-title"
+          id="bootcn-onboarding-p3"
+          data-bootcn-stepper-heading
+        >
+          Invite your team
+        </h2>
+        <p class="bootcn-onboarding__hint">Optional: you can invite people later from Settings.</p>
+        <div class="bootcn-field">
+          <label class="form-label bootcn-label" for="bootcn-onboarding-invites"
+            >Email addresses</label
+          >
+          <textarea
+            class="form-control bootcn-textarea"
+            id="bootcn-onboarding-invites"
+            name="invites"
+            rows="3"
+            placeholder="jackson@example.com, isabella@example.com"
+            aria-describedby="bootcn-onboarding-invites-help"
+          ></textarea>
+          <p class="bootcn-onboarding__hint mt-1 mb-0" id="bootcn-onboarding-invites-help">
+            Separate addresses with commas.
+          </p>
+        </div>
+      </section>
+
+      <div
+        class="bootcn-success"
+        data-bootcn-stepper-complete
+        data-bootcn-success
+        data-bootcn-success-confetti
+        hidden
+      >
+        <svg class="bootcn-success__mark" viewBox="0 0 52 52" aria-hidden="true" focusable="false">
+          <circle class="bootcn-success__ring" cx="26" cy="26" r="24" />
+          <path class="bootcn-success__tick" d="M15 27l7 7 15-15" />
+        </svg>
+        <h2 class="bootcn-success__title">You're all set</h2>
+        <p class="bootcn-success__text">Your workspace is ready. Invitations are on their way.</p>
+        <div class="bootcn-success__actions">
+          <a class="btn bootcn-button bootcn-button--default" href="#dashboard"
+            >Go to your workspace</a
+          >
+        </div>
+      </div>
+
+      <div class="bootcn-stepper__actions">
+        <button
+          type="button"
+          class="btn bootcn-button bootcn-button--outline"
+          data-bootcn-stepper-prev
+        >
+          Back
+        </button>
+        <button
+          type="submit"
+          class="btn bootcn-button bootcn-button--default"
+          data-bootcn-stepper-next
+          data-finish-label="Finish setup"
+        >
+          <span data-bootcn-stepper-next-label>Continue</span>
+        </button>
+      </div>
+      <p class="visually-hidden" aria-live="polite" data-bootcn-stepper-live></p>
+    </div>
+  </form>
+</section>

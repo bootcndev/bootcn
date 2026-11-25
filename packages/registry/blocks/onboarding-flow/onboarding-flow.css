@@ -1,0 +1,54 @@
+.bootcn-onboarding {
+  display: grid;
+  gap: 1.5rem;
+  width: 100%;
+  max-width: 40rem;
+  margin-inline: auto;
+}
+
+.bootcn-onboarding__intro {
+  text-align: center;
+}
+
+.bootcn-onboarding__title {
+  margin: 0;
+  font-size: 1.75rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+.bootcn-onboarding__subtitle,
+.bootcn-onboarding__hint {
+  color: var(--bootcn-muted-foreground);
+  font-size: 0.875rem;
+}
+
+.bootcn-onboarding__subtitle {
+  margin: 0.375rem 0 0;
+}
+
+.bootcn-onboarding__card {
+  padding: 1.5rem;
+  border: var(--bootcn-border-width) solid var(--bootcn-border-color);
+  border-radius: var(--bootcn-radius-xl);
+  background-color: var(--bootcn-background);
+  box-shadow: var(--bootcn-shadow);
+}
+
+.bootcn-onboarding__sizes {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.bootcn-onboarding__sizes .btn-check:checked + .bootcn-button {
+  border-color: var(--bootcn-primary);
+  background-color: var(--bootcn-primary);
+  color: var(--bootcn-primary-foreground);
+}
+
+@media (max-width: 575.98px) {
+  .bootcn-onboarding__card {
+    padding: 1rem;
+  }
+}

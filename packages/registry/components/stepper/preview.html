@@ -1,0 +1,355 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Bootcn Stepper preview</title>
+    <script>
+      // Preview theme: ?theme=dark|light, else the docs page around the frame, else light.
+      (function () {
+        var theme = new URLSearchParams(location.search).get('theme');
+        if (!theme) {
+          try {
+            theme =
+              window.parent !== window &&
+              window.parent.document.documentElement.classList.contains('dark')
+                ? 'dark'
+                : 'light';
+          } catch (error) {
+            theme = 'light';
+          }
+        }
+        document.documentElement.setAttribute('data-bs-theme', theme === 'dark' ? 'dark' : 'light');
+        // ?dir=rtl: right to left, with Bootstrap's RTL stylesheet.
+        if (new URLSearchParams(location.search).get('dir') === 'rtl') {
+          document.documentElement.setAttribute('dir', 'rtl');
+          new MutationObserver(function (records, observer) {
+            var link = document.querySelector('link[href*="bootstrap.min.css"]');
+            if (!link) return;
+            link.href = link.href.replace('bootstrap.min.css', 'bootstrap.rtl.min.css');
+            observer.disconnect();
+          }).observe(document.documentElement, { childList: true, subtree: true });
+        }
+      })();
+    </script>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.9/dist/css/bootstrap.min.css"
+    />
+    <link rel="stylesheet" href="../../themes/tokens/tokens.css" />
+    <link rel="stylesheet" href="../button/button.css" />
+    <link rel="stylesheet" href="../input/input.css" />
+    <link rel="stylesheet" href="stepper.css" />
+  </head>
+  <body>
+    <main class="container py-4" style="max-width: 42rem">
+      <h1 class="h4 mb-4">Stepper</h1>
+      <div class="bootcn-stepper" data-bootcn-stepper>
+        <ol class="bootcn-stepper__list" aria-label="Sign-up progress">
+          <li class="bootcn-stepper__item" data-bootcn-stepper-item>
+            <span class="bootcn-stepper__marker" aria-hidden="true"
+              ><span class="bootcn-stepper__number">1</span
+              ><svg
+                class="bootcn-icon bootcn-stepper__check"
+                width="16"
+                height="16"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="3"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+                focusable="false"
+              >
+                <path d="M20 6 9 17l-5-5" /></svg
+            ></span>
+            <span class="bootcn-stepper__text">
+              <span class="bootcn-stepper__title">Account</span>
+              <span class="bootcn-stepper__description">Your details</span>
+              <span class="visually-hidden" data-bootcn-stepper-state></span>
+            </span>
+          </li>
+          <li class="bootcn-stepper__item" data-bootcn-stepper-item>
+            <span class="bootcn-stepper__marker" aria-hidden="true"
+              ><span class="bootcn-stepper__number">2</span
+              ><svg
+                class="bootcn-icon bootcn-stepper__check"
+                width="16"
+                height="16"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="3"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+                focusable="false"
+              >
+                <path d="M20 6 9 17l-5-5" /></svg
+            ></span>
+            <span class="bootcn-stepper__text">
+              <span class="bootcn-stepper__title">Plan</span>
+              <span class="bootcn-stepper__description">Pick a plan</span>
+              <span class="visually-hidden" data-bootcn-stepper-state></span>
+            </span>
+          </li>
+          <li class="bootcn-stepper__item" data-bootcn-stepper-item>
+            <span class="bootcn-stepper__marker" aria-hidden="true"
+              ><span class="bootcn-stepper__number">3</span
+              ><svg
+                class="bootcn-icon bootcn-stepper__check"
+                width="16"
+                height="16"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="3"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+                focusable="false"
+              >
+                <path d="M20 6 9 17l-5-5" /></svg
+            ></span>
+            <span class="bootcn-stepper__text">
+              <span class="bootcn-stepper__title">Review</span>
+              <span class="bootcn-stepper__description">Check and confirm</span>
+              <span class="visually-hidden" data-bootcn-stepper-state></span>
+            </span>
+          </li>
+        </ol>
+        <section
+          class="bootcn-stepper__panel"
+          data-bootcn-stepper-panel
+          aria-labelledby="bootcn-stepper-p1"
+        >
+          <h2
+            class="bootcn-stepper__panel-title"
+            id="bootcn-stepper-p1"
+            data-bootcn-stepper-heading
+          >
+            Your details
+          </h2>
+          <p class="text-body-secondary small">We'll use these to sign you in.</p>
+          <div class="bootcn-field mb-3">
+            <label class="form-label bootcn-label" for="bootcn-stepper-name">Full name</label>
+            <input
+              type="text"
+              class="form-control bootcn-input"
+              id="bootcn-stepper-name"
+              name="name"
+              required
+              autocomplete="name"
+              aria-describedby="bootcn-stepper-name-error"
+            />
+            <div class="invalid-feedback" id="bootcn-stepper-name-error">Enter your name.</div>
+          </div>
+          <div class="bootcn-field mb-3">
+            <label class="form-label bootcn-label" for="bootcn-stepper-email">Email</label>
+            <input
+              class="form-control bootcn-input"
+              id="bootcn-stepper-email"
+              name="email"
+              type="email"
+              required
+              autocomplete="email"
+              aria-describedby="bootcn-stepper-email-error"
+            />
+            <div class="invalid-feedback" id="bootcn-stepper-email-error">
+              Enter a valid email address.
+            </div>
+          </div>
+        </section>
+        <section
+          class="bootcn-stepper__panel"
+          data-bootcn-stepper-panel
+          aria-labelledby="bootcn-stepper-p2"
+          hidden
+        >
+          <h2
+            class="bootcn-stepper__panel-title"
+            id="bootcn-stepper-p2"
+            data-bootcn-stepper-heading
+          >
+            Pick a plan
+          </h2>
+          <p class="text-body-secondary small">You can change it at any time.</p>
+          <div class="form-check mb-2">
+            <input
+              class="form-check-input"
+              type="radio"
+              name="plan"
+              id="bootcn-stepper-free"
+              value="free"
+              checked
+            />
+            <label class="form-check-label" for="bootcn-stepper-free">Free: 3 projects</label>
+          </div>
+          <div class="form-check">
+            <input
+              class="form-check-input"
+              type="radio"
+              name="plan"
+              id="bootcn-stepper-pro"
+              value="pro"
+            />
+            <label class="form-check-label" for="bootcn-stepper-pro"
+              >Pro: unlimited projects, $12 a month</label
+            >
+          </div>
+        </section>
+        <section
+          class="bootcn-stepper__panel"
+          data-bootcn-stepper-panel
+          aria-labelledby="bootcn-stepper-p3"
+          hidden
+        >
+          <h2
+            class="bootcn-stepper__panel-title"
+            id="bootcn-stepper-p3"
+            data-bootcn-stepper-heading
+          >
+            Check and confirm
+          </h2>
+          <p class="text-body-secondary small mb-3">Go back to change anything.</p>
+          <div class="form-check">
+            <input
+              class="form-check-input"
+              type="checkbox"
+              id="bootcn-stepper-terms"
+              required
+              aria-describedby="bootcn-stepper-terms-error"
+            />
+            <label class="form-check-label" for="bootcn-stepper-terms"
+              >I agree to the terms of service</label
+            >
+            <div class="invalid-feedback" id="bootcn-stepper-terms-error">
+              Agree to the terms to continue.
+            </div>
+          </div>
+        </section>
+        <div class="bootcn-stepper__actions">
+          <button
+            type="button"
+            class="btn bootcn-button bootcn-button--outline"
+            data-bootcn-stepper-prev
+          >
+            Back
+          </button>
+          <button
+            type="button"
+            class="btn bootcn-button bootcn-button--default"
+            data-bootcn-stepper-next
+            data-finish-label="Create account"
+          >
+            <span data-bootcn-stepper-next-label>Continue</span>
+          </button>
+        </div>
+        <p class="visually-hidden" aria-live="polite" data-bootcn-stepper-live></p>
+      </div>
+      <h2 class="h6 text-body-secondary mt-5 mb-3">Vertical, progress only</h2>
+      <div class="bootcn-stepper bootcn-stepper--vertical" data-bootcn-stepper data-step="1">
+        <ol class="bootcn-stepper__list" aria-label="Shipping progress">
+          <li class="bootcn-stepper__item" data-bootcn-stepper-item>
+            <span class="bootcn-stepper__marker" aria-hidden="true"
+              ><span class="bootcn-stepper__number">1</span
+              ><svg
+                class="bootcn-icon bootcn-stepper__check"
+                width="16"
+                height="16"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="3"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+                focusable="false"
+              >
+                <path d="M20 6 9 17l-5-5" /></svg
+            ></span>
+            <span class="bootcn-stepper__text">
+              <span class="bootcn-stepper__title">Order placed</span>
+              <span class="bootcn-stepper__description">Today, 9:41</span>
+              <span class="visually-hidden" data-bootcn-stepper-state></span>
+            </span>
+          </li>
+          <li class="bootcn-stepper__item" data-bootcn-stepper-item>
+            <span class="bootcn-stepper__marker" aria-hidden="true"
+              ><span class="bootcn-stepper__number">2</span
+              ><svg
+                class="bootcn-icon bootcn-stepper__check"
+                width="16"
+                height="16"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="3"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+                focusable="false"
+              >
+                <path d="M20 6 9 17l-5-5" /></svg
+            ></span>
+            <span class="bootcn-stepper__text">
+              <span class="bootcn-stepper__title">Packed</span>
+              <span class="bootcn-stepper__description">Today, 13:05</span>
+              <span class="visually-hidden" data-bootcn-stepper-state></span>
+            </span>
+          </li>
+          <li class="bootcn-stepper__item" data-bootcn-stepper-item>
+            <span class="bootcn-stepper__marker" aria-hidden="true"
+              ><span class="bootcn-stepper__number">3</span
+              ><svg
+                class="bootcn-icon bootcn-stepper__check"
+                width="16"
+                height="16"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="3"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+                focusable="false"
+              >
+                <path d="M20 6 9 17l-5-5" /></svg
+            ></span>
+            <span class="bootcn-stepper__text">
+              <span class="bootcn-stepper__title">Shipped</span>
+              <span class="bootcn-stepper__description">Expected tomorrow</span>
+              <span class="visually-hidden" data-bootcn-stepper-state></span>
+            </span>
+          </li>
+          <li class="bootcn-stepper__item" data-bootcn-stepper-item>
+            <span class="bootcn-stepper__marker" aria-hidden="true"
+              ><span class="bootcn-stepper__number">4</span
+              ><svg
+                class="bootcn-icon bootcn-stepper__check"
+                width="16"
+                height="16"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="3"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+                focusable="false"
+              >
+                <path d="M20 6 9 17l-5-5" /></svg
+            ></span>
+            <span class="bootcn-stepper__text">
+              <span class="bootcn-stepper__title">Delivered</span>
+              <span class="bootcn-stepper__description"></span>
+              <span class="visually-hidden" data-bootcn-stepper-state></span>
+            </span>
+          </li>
+        </ol>
+      </div>
+    </main>
+    <script src="stepper.js"></script>
+  </body>
+</html>

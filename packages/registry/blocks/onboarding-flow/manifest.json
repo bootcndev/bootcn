@@ -1,0 +1,36 @@
+{
+  "$schema": "../../schema/registry-item.schema.json",
+  "name": "onboarding-flow",
+  "type": "registry:block",
+  "title": "Onboarding flow",
+  "description": "A first-run setup card: three steps (workspace, about you, invite the team) with validation, ending on a \"You're all set\" screen with confetti.",
+  "version": "1.0.0",
+  "categories": ["forms", "authentication"],
+  "dependencies": [],
+  "registryDependencies": [
+    "stepper",
+    "success-state",
+    "confetti",
+    "input",
+    "select",
+    "textarea",
+    "button"
+  ],
+  "compatibility": {
+    "bootstrap": "5.3",
+    "platform": ["Bootstrap CSS"]
+  },
+  "license": "MIT",
+  "files": [
+    {
+      "path": "onboarding-flow.html",
+      "target": "onboarding-flow.html",
+      "type": "registry:component"
+    },
+    {
+      "path": "onboarding-flow.css",
+      "target": "onboarding-flow.css",
+      "type": "registry:style"
+    }
+  ]
+}

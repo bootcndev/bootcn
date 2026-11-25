@@ -1,0 +1,33 @@
+{
+  "$schema": "../../schema/registry-item.schema.json",
+  "name": "tour",
+  "type": "registry:ui",
+  "title": "Tour",
+  "description": "A product tour: highlights one element at a time with a card next to it, \"1 of 4\", Back, Next and Skip; keyboard friendly.",
+  "version": "1.0.0",
+  "categories": ["overlays"],
+  "dependencies": [],
+  "registryDependencies": ["button"],
+  "compatibility": {
+    "bootstrap": "5.3",
+    "platform": ["Bootstrap CSS"]
+  },
+  "license": "MIT",
+  "files": [
+    {
+      "path": "tour.html",
+      "target": "tour.html",
+      "type": "registry:component"
+    },
+    {
+      "path": "tour.css",
+      "target": "tour.css",
+      "type": "registry:style"
+    },
+    {
+      "path": "tour.js",
+      "target": "tour.js",
+      "type": "registry:script"
+    }
+  ]
+}

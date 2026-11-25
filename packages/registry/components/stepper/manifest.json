@@ -1,0 +1,33 @@
+{
+  "$schema": "../../schema/registry-item.schema.json",
+  "name": "stepper",
+  "type": "registry:ui",
+  "title": "Stepper",
+  "description": "Steps for multi-step forms and progress: numbered markers that turn into checks, horizontal or vertical, with validation before each step and an optional closing panel.",
+  "version": "1.0.0",
+  "categories": ["forms", "navigation"],
+  "dependencies": [],
+  "registryDependencies": ["button", "input"],
+  "compatibility": {
+    "bootstrap": "5.3",
+    "platform": ["Bootstrap CSS"]
+  },
+  "license": "MIT",
+  "files": [
+    {
+      "path": "stepper.html",
+      "target": "stepper.html",
+      "type": "registry:component"
+    },
+    {
+      "path": "stepper.css",
+      "target": "stepper.css",
+      "type": "registry:style"
+    },
+    {
+      "path": "stepper.js",
+      "target": "stepper.js",
+      "type": "registry:script"
+    }
+  ]
+}
