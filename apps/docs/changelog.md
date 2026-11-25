@@ -6,6 +6,22 @@ each published version stays available under `/v/<version>/`) and the **CLI**
 
 ## Registry
 
+### 0.35.0
+
+The CRM pack.
+
+- Social actions: a like/dislike pair, one at a time.
+- Timeline: activity and progress, horizontal steps, relative times.
+- Payment card: a card picture that follows its form and turns over for
+  the security code, with checks.
+- Payment methods block: saved cards, default, edit, remove, add.
+- Notification center: bell with the unread count, a panel by day, All and
+  Unread, mark read, live notifications.
+- Filter bar: search and filter chips (values, ranges, dates) with a live
+  count, or server-side filtering.
+- CRM template: deals pipeline with stage totals, contacts with filters
+  and an add-contact dialog, and a contact page with an activity timeline.
+
 ### 0.34.0
 
 The Commerce pack.

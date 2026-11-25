@@ -648,3 +648,65 @@ for (const pageName of ['ecommerce-product', 'ecommerce-checkout']) {
     });
   }
 }
+
+test('crm template: moving a deal updates the stage totals', async ({ page }) => {
+  await page.setViewportSize({ width: 1280, height: 900 });
+  await page.goto('previews/templates/crm/crm.html');
+  const total = (stage: string) =>
+    page.locator(`[data-bootcn-kanban-column="${stage}"] [data-crm-column-total]`);
+  await expect(total('negotiation')).toHaveText('$48,000');
+  await expect(page.locator('[data-crm-stat="open"]')).toHaveText('$131,700');
+  const deal = page.locator('[data-bootcn-kanban-card="d6"]');
+  await deal.focus();
+  await page.keyboard.press('Space');
+  await page.keyboard.press('ArrowRight');
+  await page.keyboard.press('Space');
+  await expect(total('won')).toHaveText('$139,000');
+  await expect(total('negotiation')).toHaveText('$0');
+  await expect(page.locator('[data-crm-stat="won"]')).toHaveText('$139,000');
+  await expect(page.locator('[data-crm-stat="open"]')).toHaveText('$83,700');
+});
+
+test('crm template: filter contacts and add one', async ({ page }) => {
+  await page.setViewportSize({ width: 1280, height: 900 });
+  await page.goto('previews/templates/crm/crm-contacts.html');
+  const count = page.locator('[data-bootcn-filters-count]');
+  await expect(count).toHaveText('8 of 8 contacts');
+  await page.locator('[data-bootcn-filter="owner"] [data-bootcn-filter-toggle]').click();
+  await page.getByLabel('Jackson Lee').check();
+  await expect(count).toHaveText('3 of 8 contacts');
+  await page.keyboard.press('Escape');
+  await page.getByRole('button', { name: 'Add contact' }).first().click();
+  const dialog = page.getByRole('dialog', { name: 'Add contact' });
+  await dialog.getByLabel('Name').fill('Grace Lee');
+  await dialog.getByLabel('Email').fill('grace@example.com');
+  await dialog.getByLabel('Owner').selectOption('Jackson Lee');
+  await dialog.getByRole('button', { name: 'Add contact' }).click();
+  await expect(dialog).toBeHidden();
+  await expect(page.locator('[data-crm-contacts] tr').first()).toContainText('Grace Lee');
+  // It matches the owner filter, so it shows and counts.
+  await expect(count).toHaveText('4 of 9 contacts');
+});
+
+test('crm template: a note joins the activity timeline', async ({ page }) => {
+  await page.goto('previews/templates/crm/crm-contact.html');
+  await page.getByRole('button', { name: 'Add note' }).click();
+  await expect(page.getByLabel('Add a note')).toHaveAttribute('aria-invalid', 'true');
+  await page.getByLabel('Add a note').fill('Sent the revised quote.');
+  await page.getByRole('button', { name: 'Add note' }).click();
+  const first = page.getByRole('list', { name: 'Activity' }).getByRole('listitem').first();
+  await expect(first).toContainText('Sent the revised quote.');
+  await expect(page.getByLabel('Add a note')).toHaveValue('');
+});
+
+for (const pageName of ['crm-contacts', 'crm-contact']) {
+  for (const theme of ['light', 'dark'] as const) {
+    test(`crm template: ${pageName} has no axe violations in ${theme} mode`, async ({ page }) => {
+      await page.addInitScript((t) => localStorage.setItem('bootcn-theme', t), theme);
+      await page.goto(`previews/templates/crm/${pageName}.html`);
+      await expect(page.locator('html')).toHaveAttribute('data-bs-theme', theme);
+      const results = await new AxeBuilder({ page }).analyze();
+      expect(results.violations.map((v) => `${v.id}: ${v.help}`)).toEqual([]);
+    });
+  }
+}

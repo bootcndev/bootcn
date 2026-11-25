@@ -1,0 +1,59 @@
+{
+  "$schema": "../../schema/registry-item.schema.json",
+  "name": "crm",
+  "type": "registry:template",
+  "title": "CRM",
+  "description": "A CRM in three pages: a deals pipeline on a kanban board with totals per stage, a contacts table with a filter bar and an add-contact dialog, and a contact page with details, open deals and an activity timeline you can add notes to.",
+  "version": "1.0.0",
+  "categories": ["dashboard"],
+  "dependencies": [],
+  "registryDependencies": [
+    "button",
+    "badge",
+    "avatar",
+    "input",
+    "textarea",
+    "select",
+    "checkbox",
+    "radio-group",
+    "table",
+    "dialog",
+    "modal",
+    "kanban",
+    "timeline",
+    "filter-bar",
+    "notification-center"
+  ],
+  "compatibility": {
+    "bootstrap": "5.3",
+    "platform": ["Bootstrap CSS", "Bootstrap JS bundle"]
+  },
+  "license": "MIT",
+  "files": [
+    {
+      "path": "crm.html",
+      "target": "crm.html",
+      "type": "registry:page"
+    },
+    {
+      "path": "crm-contacts.html",
+      "target": "crm-contacts.html",
+      "type": "registry:page"
+    },
+    {
+      "path": "crm-contact.html",
+      "target": "crm-contact.html",
+      "type": "registry:page"
+    },
+    {
+      "path": "crm.css",
+      "target": "crm.css",
+      "type": "registry:style"
+    },
+    {
+      "path": "crm.js",
+      "target": "crm.js",
+      "type": "registry:script"
+    }
+  ]
+}

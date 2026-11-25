@@ -1,0 +1,419 @@
+.bootcn-skip {
+  position: absolute;
+  z-index: 1080;
+  top: 0.5rem;
+  inset-inline-start: 0.5rem;
+  padding: 0.5rem 0.75rem;
+  border-radius: var(--bootcn-radius);
+  background-color: var(--bootcn-background);
+  box-shadow: var(--bootcn-focus-ring);
+}
+
+body {
+  background-color: var(--bootcn-background);
+  color: var(--bootcn-foreground);
+}
+
+.bootcn-crm__header {
+  position: sticky;
+  top: 0;
+  z-index: 1020;
+  border-bottom: var(--bootcn-border-width) solid var(--bootcn-border-color);
+  background-color: color-mix(in srgb, var(--bootcn-background) 92%, transparent);
+  backdrop-filter: blur(8px);
+}
+
+.bootcn-crm__bar {
+  display: flex;
+  gap: 1.5rem;
+  align-items: center;
+  max-width: 84rem;
+  height: 3.75rem;
+  margin: 0 auto;
+  padding: 0 1.25rem;
+}
+
+.bootcn-crm__brand {
+  display: inline-flex;
+  gap: 0.5rem;
+  align-items: center;
+  border-radius: var(--bootcn-radius-sm);
+  color: var(--bootcn-foreground);
+  font-weight: 700;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.bootcn-crm__nav {
+  min-width: 0;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+
+.bootcn-crm__nav ul {
+  display: flex;
+  gap: 0.25rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.bootcn-crm__nav a {
+  display: block;
+  padding: 0.375rem 0.75rem;
+  border-radius: var(--bootcn-radius);
+  color: var(--bootcn-muted-foreground);
+  font-size: 0.875rem;
+  font-weight: 500;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.bootcn-crm__nav a:hover,
+.bootcn-crm__nav a[aria-current='page'] {
+  background-color: var(--bootcn-muted);
+  color: var(--bootcn-foreground);
+}
+
+.bootcn-crm__actions {
+  display: flex;
+  gap: 0.25rem;
+  align-items: center;
+  margin-inline-start: auto;
+}
+
+.bootcn-crm__theme .bootcn-theme-when-dark,
+[data-bs-theme='dark'] .bootcn-crm__theme .bootcn-theme-when-light {
+  display: none;
+}
+
+[data-bs-theme='dark'] .bootcn-crm__theme .bootcn-theme-when-dark {
+  display: inline;
+}
+
+.bootcn-crm__brand:focus-visible,
+.bootcn-crm__nav a:focus-visible,
+.bootcn-crm__back:focus-visible,
+.bootcn-crm__person:focus-visible {
+  outline: 2px solid var(--bootcn-ring);
+  outline-offset: 2px;
+}
+
+@media (max-width: 575.98px) {
+  .bootcn-crm__brand {
+    font-size: 0;
+    gap: 0;
+  }
+
+  .bootcn-crm__bar {
+    gap: 0.75rem;
+  }
+}
+
+.bootcn-crm__main {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 1.5rem;
+  max-width: 84rem;
+  margin: 0 auto;
+  padding: 1.75rem 1.25rem 4rem;
+}
+
+.bootcn-crm__title-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.bootcn-crm__title-row .bootcn-button,
+.bootcn-crm__profile-actions .bootcn-button {
+  display: inline-flex;
+  gap: 0.375rem;
+  align-items: center;
+}
+
+.bootcn-crm__title {
+  margin: 0;
+  font-size: 1.75rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+/* Stats. */
+.bootcn-crm__stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 11rem), 1fr));
+  gap: 0.75rem;
+  margin: 0;
+}
+
+.bootcn-crm__stat {
+  padding: 1rem 1.125rem;
+  border: var(--bootcn-border-width) solid var(--bootcn-border-color);
+  border-radius: var(--bootcn-radius-lg);
+}
+
+.bootcn-crm__stat dt {
+  color: var(--bootcn-muted-foreground);
+  font-size: 0.8125rem;
+  font-weight: 500;
+}
+
+.bootcn-crm__stat dd {
+  margin: 0.25rem 0 0;
+  font-size: 1.5rem;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+}
+
+/* Pipeline. */
+.bootcn-crm__pipeline .bootcn-kanban__board {
+  grid-auto-columns: minmax(15rem, 1fr);
+}
+
+.bootcn-crm__column-total {
+  margin-inline-start: auto;
+  color: var(--bootcn-muted-foreground);
+  font-size: 0.75rem;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+}
+
+.bootcn-crm__deal-value {
+  margin: -0.25rem 0 0;
+  font-size: 0.9375rem;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+}
+
+/* Status labels: a colour and the word. */
+.bootcn-crm__status {
+  --bootcn-crm-tone: #52525b;
+  display: inline-block;
+  padding: 0.0625rem 0.5rem;
+  border-radius: 9999px;
+  background-color: color-mix(in srgb, var(--bootcn-crm-tone) 12%, transparent);
+  color: var(--bootcn-crm-tone);
+  font-size: 0.75rem;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.bootcn-crm__status[data-status='lead'] {
+  --bootcn-crm-tone: #1d4ed8;
+}
+
+.bootcn-crm__status[data-status='qualified'] {
+  --bootcn-crm-tone: #854d0e;
+}
+
+.bootcn-crm__status[data-status='customer'] {
+  --bootcn-crm-tone: #047857;
+}
+
+.bootcn-crm__status[data-status='churned'] {
+  --bootcn-crm-tone: #b91c1c;
+}
+
+[data-bs-theme='dark'] .bootcn-crm__status[data-status='lead'] {
+  --bootcn-crm-tone: #93c5fd;
+}
+
+[data-bs-theme='dark'] .bootcn-crm__status[data-status='qualified'] {
+  --bootcn-crm-tone: #fcd34d;
+}
+
+[data-bs-theme='dark'] .bootcn-crm__status[data-status='customer'] {
+  --bootcn-crm-tone: #6ee7b7;
+}
+
+[data-bs-theme='dark'] .bootcn-crm__status[data-status='churned'] {
+  --bootcn-crm-tone: #fca5a5;
+}
+
+[data-bs-theme='dark'] .bootcn-crm__status:not([data-status]) {
+  --bootcn-crm-tone: #d4d4d8;
+}
+
+/* Contacts. */
+.bootcn-crm__table-wrap {
+  position: relative;
+  border: var(--bootcn-border-width) solid var(--bootcn-border-color);
+  border-radius: var(--bootcn-radius-lg);
+}
+
+.bootcn-crm__table-wrap:focus-visible {
+  outline: 0;
+  box-shadow: var(--bootcn-focus-ring);
+}
+
+.bootcn-crm__table {
+  margin: 0;
+  white-space: nowrap;
+}
+
+.bootcn-crm__table > :not(caption) > * > * {
+  padding: 0.75rem 1rem;
+  vertical-align: middle;
+}
+
+.bootcn-crm__table tbody tr:last-child > * {
+  border-bottom: 0;
+}
+
+.bootcn-crm__table tbody tr[hidden] {
+  display: none;
+}
+
+.bootcn-crm__person {
+  display: inline-flex;
+  gap: 0.75rem;
+  align-items: center;
+  border-radius: var(--bootcn-radius-sm);
+  color: inherit;
+  text-decoration: none;
+}
+
+.bootcn-crm__person-name {
+  display: block;
+  font-weight: 600;
+}
+
+.bootcn-crm__person-email {
+  display: block;
+  color: var(--bootcn-muted-foreground);
+  font-size: 0.8125rem;
+  font-weight: 400;
+}
+
+.bootcn-crm__person:hover .bootcn-crm__person-name {
+  text-decoration: underline;
+}
+
+.bootcn-crm__form {
+  display: grid;
+  gap: 1rem;
+}
+
+.bootcn-crm__form-row {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+/* Contact page. */
+.bootcn-crm__back {
+  border-radius: var(--bootcn-radius-sm);
+  color: var(--bootcn-muted-foreground);
+  font-size: 0.875rem;
+  text-decoration: none;
+}
+
+.bootcn-crm__back:hover {
+  color: var(--bootcn-foreground);
+}
+
+.bootcn-crm__profile {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem 1.25rem;
+  align-items: center;
+}
+
+.bootcn-crm__profile-text {
+  flex: 1 1 16rem;
+}
+
+.bootcn-crm__profile-text p {
+  margin: 0.25rem 0 0;
+  color: var(--bootcn-muted-foreground);
+}
+
+.bootcn-crm__profile-actions {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.bootcn-crm__columns {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 1.25rem;
+  align-items: start;
+}
+
+@media (min-width: 992px) {
+  .bootcn-crm__columns {
+    grid-template-columns: 20rem minmax(0, 1fr);
+  }
+}
+
+.bootcn-crm__panel {
+  display: grid;
+  gap: 1rem;
+  padding: 1.25rem;
+  border: var(--bootcn-border-width) solid var(--bootcn-border-color);
+  border-radius: var(--bootcn-radius-lg);
+}
+
+.bootcn-crm__panel-title {
+  margin: 0;
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.bootcn-crm__details {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: 0.5rem 1rem;
+  margin: 0;
+  font-size: 0.875rem;
+}
+
+.bootcn-crm__details dt {
+  color: var(--bootcn-muted-foreground);
+  font-weight: 400;
+}
+
+.bootcn-crm__details dd {
+  margin: 0;
+  overflow-wrap: anywhere;
+}
+
+.bootcn-crm__details a {
+  color: inherit;
+}
+
+.bootcn-crm__deals {
+  display: grid;
+  gap: 0.5rem;
+  margin: 0;
+  padding: 0;
+  font-size: 0.875rem;
+  list-style: none;
+}
+
+.bootcn-crm__deals li {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+  padding: 0.625rem 0.75rem;
+  border-radius: var(--bootcn-radius);
+  background-color: var(--bootcn-muted);
+}
+
+.bootcn-crm__deals li span:first-child {
+  flex: 1;
+  font-weight: 500;
+}
+
+.bootcn-crm__note {
+  display: grid;
+  gap: 0.5rem;
+  justify-items: start;
+}
+
+.bootcn-crm__note .bootcn-textarea {
+  width: 100%;
+}
