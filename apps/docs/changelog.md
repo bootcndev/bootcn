@@ -6,6 +6,14 @@ each published version stays available under `/v/<version>/`) and the **CLI**
 
 ## Registry
 
+### 0.29.0
+
+- Route tracker: follows the device's position and draws the route on an
+  OpenStreetMap map as it goes, with distance, time and average speed;
+  zoom, fit, drag to pan, segments when tracking pauses, filtering of
+  inaccurate positions and GeoJSON export. No tile is requested before
+  tracking starts, and the tile server is configurable.
+
 ### 0.28.0
 
 - Social actions: a like button with a count and a pop animation, follow and

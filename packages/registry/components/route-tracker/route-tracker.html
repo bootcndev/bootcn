@@ -1,0 +1,195 @@
+<section class="bootcn-route" data-bootcn-route aria-label="Route tracker" data-zoom="16">
+  <div class="bootcn-route__map" dir="ltr">
+    <div
+      class="bootcn-route__view"
+      data-bootcn-route-view
+      role="img"
+      aria-label="Map of your route"
+    >
+      <div class="bootcn-route__tiles" data-bootcn-route-tiles></div>
+      <svg class="bootcn-route__line" data-bootcn-route-line aria-hidden="true" focusable="false">
+        <path class="bootcn-route__casing" d="" />
+        <path class="bootcn-route__trail" d="" />
+      </svg>
+      <span class="bootcn-route__origin" data-bootcn-route-start hidden></span>
+      <span class="bootcn-route__here" data-bootcn-route-here hidden
+        ><span class="bootcn-location-dot"><span class="bootcn-location-dot__accuracy"></span></span
+      ></span>
+    </div>
+    <p class="bootcn-route__empty" data-bootcn-route-empty>
+      Press Start to draw your route on the map.
+    </p>
+    <div class="bootcn-route__zoom">
+      <button
+        type="button"
+        class="bootcn-route__control"
+        aria-label="Zoom in"
+        data-bootcn-route-zoom-in
+      >
+        <svg
+          class="bootcn-icon"
+          width="16"
+          height="16"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          aria-hidden="true"
+          focusable="false"
+        >
+          <path d="M12 5v14M5 12h14" />
+        </svg>
+      </button>
+      <button
+        type="button"
+        class="bootcn-route__control"
+        aria-label="Zoom out"
+        data-bootcn-route-zoom-out
+      >
+        <svg
+          class="bootcn-icon"
+          width="16"
+          height="16"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          aria-hidden="true"
+          focusable="false"
+        >
+          <path d="M5 12h14" />
+        </svg>
+      </button>
+      <button
+        type="button"
+        class="bootcn-route__control"
+        aria-label="Show the whole route"
+        data-bootcn-route-fit
+      >
+        <svg
+          class="bootcn-icon"
+          width="16"
+          height="16"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          aria-hidden="true"
+          focusable="false"
+        >
+          <path
+            d="M8 3H5a2 2 0 0 0-2 2v3M21 8V5a2 2 0 0 0-2-2h-3M3 16v3a2 2 0 0 0 2 2h3M16 21h3a2 2 0 0 0 2-2v-3"
+          />
+        </svg>
+      </button>
+      <button
+        type="button"
+        class="bootcn-route__control"
+        aria-label="Center on my position"
+        data-bootcn-route-locate
+      >
+        <svg
+          class="bootcn-icon"
+          width="16"
+          height="16"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          aria-hidden="true"
+          focusable="false"
+        >
+          <circle cx="12" cy="12" r="3" />
+          <path d="M12 2v3M12 19v3M2 12h3M19 12h3" />
+          <circle cx="12" cy="12" r="7" />
+        </svg>
+      </button>
+    </div>
+    <p class="bootcn-route__attribution" data-bootcn-route-attribution hidden>
+      © <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors
+    </p>
+  </div>
+  <div class="bootcn-route__bar">
+    <dl class="bootcn-route__stats">
+      <div>
+        <dt>Distance</dt>
+        <dd data-bootcn-route-distance>0 m</dd>
+      </div>
+      <div>
+        <dt>Time</dt>
+        <dd data-bootcn-route-duration>0:00</dd>
+      </div>
+      <div>
+        <dt>Avg speed</dt>
+        <dd data-bootcn-route-speed>0 km/h</dd>
+      </div>
+    </dl>
+    <div class="bootcn-route__actions">
+      <button
+        type="button"
+        class="btn bootcn-button bootcn-button--default bootcn-route__toggle"
+        data-bootcn-route-toggle
+      >
+        <svg
+          class="bootcn-icon bootcn-route__start-icon"
+          width="16"
+          height="16"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          aria-hidden="true"
+          focusable="false"
+        >
+          <path d="M7 5v14l12-7z" fill="currentColor" /></svg
+        ><svg
+          class="bootcn-icon bootcn-route__stop-icon"
+          width="16"
+          height="16"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          aria-hidden="true"
+          focusable="false"
+        >
+          <rect x="6" y="6" width="12" height="12" rx="1.5" fill="currentColor" /></svg
+        ><span data-bootcn-route-toggle-label>Start</span>
+      </button>
+      <button
+        type="button"
+        class="btn bootcn-button bootcn-button--outline"
+        data-bootcn-route-clear
+      >
+        <svg
+          class="bootcn-icon"
+          width="16"
+          height="16"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          aria-hidden="true"
+          focusable="false"
+        >
+          <path d="M3 6h18M8 6V4h8v2M6 6l1 14h10l1-14" /></svg
+        >Clear
+      </button>
+    </div>
+  </div>
+  <p class="bootcn-route__status" role="status" data-bootcn-route-status></p>
+</section>

@@ -9,7 +9,7 @@ build with plain HTML and native PHP. Components are installed as editable
 HTML, CSS and JavaScript source files that you own. No React, Vue, jQuery,
 bundler or Node.js is required at runtime.
 
-> **Status:** early (0.x). 98 components, 42 blocks (authentication, dashboard, navigation, marketing, charts, AI chat), admin dashboard, analytics dashboard, landing page and settings templates and design
+> **Status:** early (0.x). 99 components, 42 blocks (authentication, dashboard, navigation, marketing, charts, AI chat), admin dashboard, analytics dashboard, landing page and settings templates and design
 > tokens, with a Tailwind-like look built on Bootstrap. The CLI is on
 > [npm](https://www.npmjs.com/package/bootcn); documentation, live previews and
 > the registry are at <https://bootcn.dev/>. News: [@bootcndev](https://x.com/bootcndev) on X.
@@ -116,6 +116,7 @@ the `<link>` and `<script>` tags to add to your layout.
 | `radio-group`       | ui    | HTML, CSS     | Bootstrap CSS             | —                                                         |
 | `range-slider`      | ui    | HTML, CSS, JS | Bootstrap CSS             | `label`                                                   |
 | `resizable`         | ui    | HTML, CSS, JS | Bootstrap CSS             | —                                                         |
+| `route-tracker`     | ui    | HTML, CSS, JS | Bootstrap CSS             | `button`, `location-pin`                                  |
 | `scroll-area`       | ui    | HTML, CSS     | Bootstrap CSS             | —                                                         |
 | `scroll-shadow`     | ui    | HTML, CSS     | Bootstrap CSS             | —                                                         |
 | `search-field`      | ui    | HTML, CSS, JS | Bootstrap CSS             | `label`                                                   |
