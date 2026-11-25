@@ -1,0 +1,109 @@
+.bootcn-grouped-list {
+  display: grid;
+  gap: 1.5rem;
+  width: 24rem;
+  max-width: 100%;
+}
+
+.bootcn-grouped-list__heading {
+  margin: 0 0 0.375rem;
+  padding-inline: 1rem;
+  color: var(--bootcn-muted-foreground);
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+}
+
+.bootcn-grouped-list__group {
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  border: var(--bootcn-border-width) solid var(--bootcn-border-color);
+  border-radius: var(--bootcn-radius-xl);
+  background-color: var(--bootcn-background);
+  list-style: none;
+}
+
+/* Hairlines between rows start after the icon, as on iOS. */
+.bootcn-grouped-list__group li + li {
+  position: relative;
+}
+
+.bootcn-grouped-list__group li + li::before {
+  position: absolute;
+  top: 0;
+  inset-inline: 3.25rem 0;
+  border-top: var(--bootcn-border-width) solid var(--bootcn-border-color);
+  content: '';
+}
+
+.bootcn-grouped-list__row {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  min-height: 2.875rem;
+  padding: 0.5rem 1rem;
+  color: var(--bootcn-foreground);
+  font-size: 0.9375rem;
+  text-decoration: none;
+}
+
+a.bootcn-grouped-list__row:hover {
+  background-color: var(--bootcn-accent);
+  color: var(--bootcn-foreground);
+}
+
+a.bootcn-grouped-list__row:focus-visible {
+  outline: 0;
+  box-shadow: inset 0 0 0 2px var(--bootcn-ring);
+}
+
+.bootcn-grouped-list__icon {
+  display: inline-flex;
+  flex: none;
+  align-items: center;
+  justify-content: center;
+  width: 1.75rem;
+  height: 1.75rem;
+  border-radius: 0.4375rem;
+  background-color: var(--bootcn-grouped-icon, var(--bootcn-muted-foreground));
+  color: #fff;
+}
+
+.bootcn-grouped-list__icon .bootcn-icon {
+  width: 1rem;
+  height: 1rem;
+}
+
+.bootcn-grouped-list__label {
+  flex: 1;
+  min-width: 0;
+  margin: 0;
+}
+
+.bootcn-grouped-list__value {
+  color: var(--bootcn-muted-foreground);
+}
+
+.bootcn-grouped-list__chevron {
+  flex: none;
+  color: var(--bootcn-muted-foreground);
+}
+
+.bootcn-grouped-list__switch {
+  margin: 0;
+  padding-inline-start: 0;
+  min-height: 0;
+}
+
+.bootcn-grouped-list__switch .form-check-input {
+  margin: 0;
+}
+
+.bootcn-grouped-list__footer {
+  margin: 0.375rem 0 0;
+  padding-inline: 1rem;
+  color: var(--bootcn-muted-foreground);
+  font-size: 0.8125rem;
+}
