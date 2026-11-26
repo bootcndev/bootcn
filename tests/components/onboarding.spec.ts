@@ -47,6 +47,9 @@ test('modal: autofocus, validation, unsaved-changes guard, submit', async ({ pag
 
   // Discard closes without saving and resets the form.
   await page.getByRole('button', { name: 'Edit profile' }).click();
+  // Fully open (the field gets the focus): Bootstrap ignores closing while
+  // the opening animation runs.
+  await expect(name).toBeFocused();
   await expect(name).toHaveValue('Olivia Martin');
   await name.fill('Someone else');
   await dialog.getByRole('button', { name: 'Cancel' }).click();

@@ -103,7 +103,9 @@ test('payment methods: add, edit, default and remove', async ({ page }) => {
   await page.getByRole('button', { name: 'Edit Mastercard ending 5100' }).click();
   const edit = page.getByRole('dialog', { name: 'Edit card' });
   await expect(edit.getByLabel('Card number')).toHaveValue('•••• •••• •••• 5100');
-  await expect(edit.getByLabel('Card number')).toHaveJSProperty('readOnly', true);
+  // An attribute check, not toHaveJSProperty: evaluating on elements crashes
+  // Playwright's Firefox here (see the file manager test).
+  await expect(edit.getByLabel('Card number')).toHaveAttribute('readonly', '');
   await edit.getByLabel('Expiry date').fill('');
   await edit.getByLabel('Expiry date').pressSequentially('0830');
   await edit.getByRole('button', { name: 'Save card' }).click();
