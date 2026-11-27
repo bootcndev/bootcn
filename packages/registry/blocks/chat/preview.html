@@ -1,0 +1,713 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Bootcn Chat preview</title>
+    <script>
+      // Preview theme: ?theme=dark|light, else the docs page around the frame, else light.
+      (function () {
+        var theme = new URLSearchParams(location.search).get('theme');
+        if (!theme) {
+          try {
+            theme =
+              window.parent !== window &&
+              window.parent.document.documentElement.classList.contains('dark')
+                ? 'dark'
+                : 'light';
+          } catch (error) {
+            theme = 'light';
+          }
+        }
+        document.documentElement.setAttribute('data-bs-theme', theme === 'dark' ? 'dark' : 'light');
+        // ?dir=rtl: right to left, with Bootstrap's RTL stylesheet.
+        if (new URLSearchParams(location.search).get('dir') === 'rtl') {
+          document.documentElement.setAttribute('dir', 'rtl');
+          new MutationObserver(function (records, observer) {
+            var link = document.querySelector('link[href*="bootstrap.min.css"]');
+            if (!link) return;
+            link.href = link.href.replace('bootstrap.min.css', 'bootstrap.rtl.min.css');
+            observer.disconnect();
+          }).observe(document.documentElement, { childList: true, subtree: true });
+        }
+      })();
+    </script>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.9/dist/css/bootstrap.min.css"
+    />
+    <link rel="stylesheet" href="../../themes/tokens/tokens.css" />
+    <link rel="stylesheet" href="../../components/avatar/avatar.css" />
+    <link rel="stylesheet" href="chat.css" />
+  </head>
+  <body>
+    <main class="container py-4" style="max-width: 64rem">
+      <h1 class="h4 mb-4">Chat</h1>
+      <section class="bootcn-chat" data-bootcn-chat aria-labelledby="bootcn-chat-title">
+        <div class="bootcn-chat__sidebar">
+          <div class="bootcn-chat__sidebar-head">
+            <h2 class="bootcn-chat__title" id="bootcn-chat-title">Messages</h2>
+            <button type="button" class="bootcn-chat__icon-button" aria-label="New message">
+              <svg
+                class="bootcn-icon"
+                width="16"
+                height="16"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+                focusable="false"
+              >
+                <path d="M12 20h9" />
+                <path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4z" />
+              </svg>
+            </button>
+          </div>
+          <div class="bootcn-chat__search">
+            <svg
+              class="bootcn-icon"
+              width="14"
+              height="14"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              aria-hidden="true"
+              focusable="false"
+            >
+              <circle cx="11" cy="11" r="7" />
+              <path d="m20 20-3.5-3.5" />
+            </svg>
+            <input
+              class="form-control form-control-sm"
+              type="search"
+              placeholder="Search"
+              aria-label="Search conversations"
+              data-chat-search
+            />
+          </div>
+          <ul class="bootcn-chat__conversations" aria-label="Conversations">
+            <li>
+              <a
+                class="bootcn-chat__conversation"
+                href="#chat-lena"
+                data-chat-open="lena"
+                aria-current="true"
+              >
+                <span class="bootcn-chat__avatar" aria-hidden="true"
+                  >LF<span class="bootcn-chat__presence" aria-hidden="true"></span
+                ></span>
+                <span class="bootcn-chat__conversation-text">
+                  <span class="bootcn-chat__conversation-top"
+                    ><span class="bootcn-chat__conversation-name"
+                      >Lena Fischer<span class="visually-hidden">, online</span></span
+                    ><span class="bootcn-chat__conversation-time">10:42</span></span
+                  >
+                  <span class="bootcn-chat__conversation-bottom"
+                    ><span class="bootcn-chat__preview" data-chat-preview
+                      >Perfect, see you at 3!</span
+                    ></span
+                  >
+                </span>
+              </a>
+            </li>
+            <li>
+              <a class="bootcn-chat__conversation" href="#chat-team" data-chat-open="team">
+                <span class="bootcn-chat__avatar" aria-hidden="true">DT</span>
+                <span class="bootcn-chat__conversation-text">
+                  <span class="bootcn-chat__conversation-top"
+                    ><span class="bootcn-chat__conversation-name">Design team</span
+                    ><span class="bootcn-chat__conversation-time">09:15</span></span
+                  >
+                  <span class="bootcn-chat__conversation-bottom"
+                    ><span class="bootcn-chat__preview" data-chat-preview
+                      >Noah: New mockups are in the folder</span
+                    ><span class="bootcn-chat__unread" data-chat-unread
+                      >2<span class="visually-hidden"> unread</span></span
+                    ></span
+                  >
+                </span>
+              </a>
+            </li>
+            <li>
+              <a class="bootcn-chat__conversation" href="#chat-marco" data-chat-open="marco">
+                <span class="bootcn-chat__avatar" aria-hidden="true">MB</span>
+                <span class="bootcn-chat__conversation-text">
+                  <span class="bootcn-chat__conversation-top"
+                    ><span class="bootcn-chat__conversation-name">Marco Bianchi</span
+                    ><span class="bootcn-chat__conversation-time">Yesterday</span></span
+                  >
+                  <span class="bootcn-chat__conversation-bottom"
+                    ><span class="bootcn-chat__preview" data-chat-preview
+                      >You: Thanks, that works for me</span
+                    ></span
+                  >
+                </span>
+              </a>
+            </li>
+            <li>
+              <a class="bootcn-chat__conversation" href="#chat-ava" data-chat-open="ava">
+                <span class="bootcn-chat__avatar" aria-hidden="true"
+                  >AM<span class="bootcn-chat__presence" aria-hidden="true"></span
+                ></span>
+                <span class="bootcn-chat__conversation-text">
+                  <span class="bootcn-chat__conversation-top"
+                    ><span class="bootcn-chat__conversation-name"
+                      >Ava Martinez<span class="visually-hidden">, online</span></span
+                    ><span class="bootcn-chat__conversation-time">Mon</span></span
+                  >
+                  <span class="bootcn-chat__conversation-bottom"
+                    ><span class="bootcn-chat__preview" data-chat-preview
+                      >Can you review the onboarding emails?</span
+                    ></span
+                  >
+                </span>
+              </a>
+            </li>
+          </ul>
+          <p class="bootcn-chat__none" data-chat-none hidden>No conversations found.</p>
+        </div>
+        <div class="bootcn-chat__thread">
+          <header class="bootcn-chat__thread-head">
+            <button
+              type="button"
+              class="bootcn-chat__icon-button bootcn-chat__back"
+              data-chat-back
+              aria-label="Back to conversations"
+            >
+              <svg
+                class="bootcn-icon bootcn-rtl-flip"
+                width="18"
+                height="18"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+                focusable="false"
+              >
+                <path d="m15 18-6-6 6-6" />
+              </svg>
+            </button>
+            <span class="bootcn-chat__avatar" aria-hidden="true" data-chat-head-initials
+              >LF<span class="bootcn-chat__presence"></span
+            ></span>
+            <div class="bootcn-chat__thread-text">
+              <p class="bootcn-chat__thread-name" data-chat-head-name>Lena Fischer</p>
+              <p class="bootcn-chat__thread-status" data-chat-head-status>Online</p>
+            </div>
+            <button type="button" class="bootcn-chat__icon-button" aria-label="Call">
+              <svg
+                class="bootcn-icon"
+                width="16"
+                height="16"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+                focusable="false"
+              >
+                <path
+                  d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"
+                />
+              </svg>
+            </button>
+            <button type="button" class="bootcn-chat__icon-button" aria-label="Video call">
+              <svg
+                class="bootcn-icon"
+                width="16"
+                height="16"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+                focusable="false"
+              >
+                <rect x="2" y="6" width="14" height="12" rx="2" />
+                <path d="m16 10 6-3v10l-6-3" />
+              </svg>
+            </button>
+          </header>
+          <div class="bootcn-chat__scroll" data-chat-scroll>
+            <div
+              class="bootcn-chat__log"
+              id="chat-lena"
+              data-chat-thread="lena"
+              data-chat-name="Lena Fischer"
+              data-chat-status="Online"
+              data-chat-initials="LF"
+              role="log"
+              aria-label="Messages with Lena Fischer"
+            >
+              <ol class="bootcn-chat__messages">
+                <li class="bootcn-chat__day"><span>Today</span></li>
+                <li class="bootcn-chat__message">
+                  <span class="visually-hidden">Lena Fischer said:</span>
+                  <div class="bootcn-chat__bubble">
+                    Hi! Are we still on for the design review today?
+                  </div>
+                  <div class="bootcn-chat__reactions">
+                    <button
+                      type="button"
+                      class="bootcn-chat__react"
+                      data-chat-react
+                      aria-label="Add a reaction"
+                      aria-haspopup="true"
+                      aria-expanded="false"
+                    >
+                      <svg
+                        class="bootcn-icon"
+                        width="14"
+                        height="14"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        aria-hidden="true"
+                        focusable="false"
+                      >
+                        <circle cx="12" cy="12" r="9" />
+                        <path d="M8 14s1.5 2 4 2 4-2 4-2M9 9h.01M15 9h.01" />
+                      </svg>
+                    </button>
+                  </div>
+                  <p class="bootcn-chat__meta"><time>10:31</time></p>
+                </li>
+                <li class="bootcn-chat__message bootcn-chat__message--me">
+                  <span class="visually-hidden">You said:</span>
+                  <div class="bootcn-chat__bubble">Yes! I moved it to 3pm so Marco can join.</div>
+                  <p class="bootcn-chat__meta">
+                    <time>10:33</time
+                    ><span class="bootcn-chat__status" data-chat-status data-state="read"
+                      ><svg
+                        class="bootcn-icon"
+                        width="14"
+                        height="14"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        aria-hidden="true"
+                        focusable="false"
+                      >
+                        <path d="m2 12 5 5L18 6" />
+                        <path d="m12 16 1 1L22 8" /></svg
+                      ><span>Read</span></span
+                    >
+                  </p>
+                </li>
+                <li class="bootcn-chat__message">
+                  <span class="visually-hidden">Lena Fischer said:</span>
+                  <div class="bootcn-chat__bubble">Great. I'll bring the new onboarding flow.</div>
+                  <div class="bootcn-chat__reactions">
+                    <button
+                      type="button"
+                      class="bootcn-chat__reaction"
+                      aria-pressed="true"
+                      data-chat-reaction="👍"
+                    >
+                      <span aria-hidden="true">👍</span
+                      ><span class="visually-hidden">You reacted with</span>
+                      <span data-chat-reaction-count>1</span></button
+                    ><button
+                      type="button"
+                      class="bootcn-chat__react"
+                      data-chat-react
+                      aria-label="Add a reaction"
+                      aria-haspopup="true"
+                      aria-expanded="false"
+                    >
+                      <svg
+                        class="bootcn-icon"
+                        width="14"
+                        height="14"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        aria-hidden="true"
+                        focusable="false"
+                      >
+                        <circle cx="12" cy="12" r="9" />
+                        <path d="M8 14s1.5 2 4 2 4-2 4-2M9 9h.01M15 9h.01" />
+                      </svg>
+                    </button>
+                  </div>
+                  <p class="bootcn-chat__meta"><time>10:35</time></p>
+                </li>
+                <li class="bootcn-chat__message">
+                  <span class="visually-hidden">Lena Fischer said:</span>
+                  <a class="bootcn-chat__file" href="#onboarding-v3.pdf"
+                    ><svg
+                      class="bootcn-icon"
+                      width="20"
+                      height="20"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      aria-hidden="true"
+                      focusable="false"
+                    >
+                      <path d="M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z" />
+                      <path d="M14 3v6h6" /></svg
+                    ><span
+                      ><span class="bootcn-chat__file-name">onboarding-v3.pdf</span
+                      ><span class="bootcn-chat__file-size">PDF · 2.4 MB</span></span
+                    ></a
+                  >
+                  <div class="bootcn-chat__reactions">
+                    <button
+                      type="button"
+                      class="bootcn-chat__react"
+                      data-chat-react
+                      aria-label="Add a reaction"
+                      aria-haspopup="true"
+                      aria-expanded="false"
+                    >
+                      <svg
+                        class="bootcn-icon"
+                        width="14"
+                        height="14"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        aria-hidden="true"
+                        focusable="false"
+                      >
+                        <circle cx="12" cy="12" r="9" />
+                        <path d="M8 14s1.5 2 4 2 4-2 4-2M9 9h.01M15 9h.01" />
+                      </svg>
+                    </button>
+                  </div>
+                  <p class="bootcn-chat__meta"><time>10:36</time></p>
+                </li>
+                <li class="bootcn-chat__message">
+                  <span class="visually-hidden">Lena Fischer said:</span>
+                  <div class="bootcn-chat__bubble">Perfect, see you at 3!</div>
+                  <div class="bootcn-chat__reactions">
+                    <button
+                      type="button"
+                      class="bootcn-chat__react"
+                      data-chat-react
+                      aria-label="Add a reaction"
+                      aria-haspopup="true"
+                      aria-expanded="false"
+                    >
+                      <svg
+                        class="bootcn-icon"
+                        width="14"
+                        height="14"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        aria-hidden="true"
+                        focusable="false"
+                      >
+                        <circle cx="12" cy="12" r="9" />
+                        <path d="M8 14s1.5 2 4 2 4-2 4-2M9 9h.01M15 9h.01" />
+                      </svg>
+                    </button>
+                  </div>
+                  <p class="bootcn-chat__meta"><time>10:42</time></p>
+                </li>
+              </ol>
+            </div>
+            <div
+              class="bootcn-chat__log"
+              id="chat-team"
+              data-chat-thread="team"
+              data-chat-name="Design team"
+              data-chat-status="5 members"
+              data-chat-initials="DT"
+              role="log"
+              aria-label="Messages with Design team"
+              hidden
+            >
+              <ol class="bootcn-chat__messages">
+                <li class="bootcn-chat__day"><span>Today</span></li>
+                <li class="bootcn-chat__message">
+                  <span class="visually-hidden">Noah Brown said:</span>
+                  <p class="bootcn-chat__author">Noah Brown</p>
+                  <div class="bootcn-chat__bubble">New mockups are in the folder</div>
+                  <div class="bootcn-chat__reactions">
+                    <button
+                      type="button"
+                      class="bootcn-chat__react"
+                      data-chat-react
+                      aria-label="Add a reaction"
+                      aria-haspopup="true"
+                      aria-expanded="false"
+                    >
+                      <svg
+                        class="bootcn-icon"
+                        width="14"
+                        height="14"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        aria-hidden="true"
+                        focusable="false"
+                      >
+                        <circle cx="12" cy="12" r="9" />
+                        <path d="M8 14s1.5 2 4 2 4-2 4-2M9 9h.01M15 9h.01" />
+                      </svg>
+                    </button>
+                  </div>
+                  <p class="bootcn-chat__meta"><time>09:15</time></p>
+                </li>
+              </ol>
+            </div>
+            <div
+              class="bootcn-chat__log"
+              id="chat-marco"
+              data-chat-thread="marco"
+              data-chat-name="Marco Bianchi"
+              data-chat-status="Last seen yesterday"
+              data-chat-initials="MB"
+              role="log"
+              aria-label="Messages with Marco Bianchi"
+              hidden
+            >
+              <ol class="bootcn-chat__messages">
+                <li class="bootcn-chat__day"><span>Yesterday</span></li>
+                <li class="bootcn-chat__message">
+                  <span class="visually-hidden">Marco Bianchi said:</span>
+                  <div class="bootcn-chat__bubble">Could we push the launch to Thursday?</div>
+                  <div class="bootcn-chat__reactions">
+                    <button
+                      type="button"
+                      class="bootcn-chat__react"
+                      data-chat-react
+                      aria-label="Add a reaction"
+                      aria-haspopup="true"
+                      aria-expanded="false"
+                    >
+                      <svg
+                        class="bootcn-icon"
+                        width="14"
+                        height="14"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        aria-hidden="true"
+                        focusable="false"
+                      >
+                        <circle cx="12" cy="12" r="9" />
+                        <path d="M8 14s1.5 2 4 2 4-2 4-2M9 9h.01M15 9h.01" />
+                      </svg>
+                    </button>
+                  </div>
+                  <p class="bootcn-chat__meta"><time>17:02</time></p>
+                </li>
+                <li class="bootcn-chat__message bootcn-chat__message--me">
+                  <span class="visually-hidden">You said:</span>
+                  <div class="bootcn-chat__bubble">Thanks, that works for me</div>
+                  <p class="bootcn-chat__meta">
+                    <time>17:10</time
+                    ><span class="bootcn-chat__status" data-chat-status data-state="read"
+                      ><svg
+                        class="bootcn-icon"
+                        width="14"
+                        height="14"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        aria-hidden="true"
+                        focusable="false"
+                      >
+                        <path d="m2 12 5 5L18 6" />
+                        <path d="m12 16 1 1L22 8" /></svg
+                      ><span>Read</span></span
+                    >
+                  </p>
+                </li>
+              </ol>
+            </div>
+            <div
+              class="bootcn-chat__log"
+              id="chat-ava"
+              data-chat-thread="ava"
+              data-chat-name="Ava Martinez"
+              data-chat-status="Online"
+              data-chat-initials="AM"
+              role="log"
+              aria-label="Messages with Ava Martinez"
+              hidden
+            >
+              <ol class="bootcn-chat__messages">
+                <li class="bootcn-chat__day"><span>Monday</span></li>
+                <li class="bootcn-chat__message">
+                  <span class="visually-hidden">Ava Martinez said:</span>
+                  <div class="bootcn-chat__bubble">Can you review the onboarding emails?</div>
+                  <div class="bootcn-chat__reactions">
+                    <button
+                      type="button"
+                      class="bootcn-chat__react"
+                      data-chat-react
+                      aria-label="Add a reaction"
+                      aria-haspopup="true"
+                      aria-expanded="false"
+                    >
+                      <svg
+                        class="bootcn-icon"
+                        width="14"
+                        height="14"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        aria-hidden="true"
+                        focusable="false"
+                      >
+                        <circle cx="12" cy="12" r="9" />
+                        <path d="M8 14s1.5 2 4 2 4-2 4-2M9 9h.01M15 9h.01" />
+                      </svg>
+                    </button>
+                  </div>
+                  <p class="bootcn-chat__meta"><time>11:20</time></p>
+                </li>
+              </ol>
+            </div>
+            <p class="bootcn-chat__typing" data-chat-typing hidden>
+              <span class="bootcn-chat__dots" aria-hidden="true"
+                ><span></span><span></span><span></span></span
+              ><span data-chat-typing-text>Lena is typing…</span>
+            </p>
+          </div>
+          <form class="bootcn-chat__composer" data-chat-composer>
+            <button
+              type="button"
+              class="bootcn-chat__icon-button"
+              aria-label="Attach a file"
+              data-chat-attach
+            >
+              <svg
+                class="bootcn-icon"
+                width="16"
+                height="16"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+                focusable="false"
+              >
+                <path
+                  d="m21.4 11-8.5 8.5a6 6 0 0 1-8.5-8.5l8.5-8.5a4 4 0 0 1 5.7 5.7l-8.5 8.5a2 2 0 0 1-2.8-2.8l7.8-7.8"
+                />
+              </svg>
+            </button>
+            <input
+              class="visually-hidden"
+              type="file"
+              tabindex="-1"
+              aria-hidden="true"
+              data-chat-file
+            />
+            <label class="visually-hidden" for="bootcn-chat-input" data-chat-input-label
+              >Message Lena Fischer</label
+            >
+            <textarea
+              class="bootcn-chat__input"
+              id="bootcn-chat-input"
+              rows="1"
+              placeholder="Write a message…"
+              data-chat-input
+            ></textarea>
+            <button type="submit" class="bootcn-chat__send" aria-label="Send">
+              <svg
+                class="bootcn-icon"
+                width="16"
+                height="16"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+                focusable="false"
+              >
+                <path d="M22 2 11 13" />
+                <path d="m22 2-7 20-4-9-9-4z" />
+              </svg>
+            </button>
+          </form>
+        </div>
+        <div class="bootcn-chat__picker" role="menu" aria-label="Reactions" data-chat-picker hidden>
+          <button type="button" role="menuitem" data-chat-emoji="👍" aria-label="Thumbs up">
+            👍
+          </button>
+          <button type="button" role="menuitem" data-chat-emoji="❤️" aria-label="Heart">❤️</button>
+          <button type="button" role="menuitem" data-chat-emoji="😂" aria-label="Laughing">
+            😂
+          </button>
+          <button type="button" role="menuitem" data-chat-emoji="😮" aria-label="Surprised">
+            😮
+          </button>
+          <button type="button" role="menuitem" data-chat-emoji="🙏" aria-label="Thank you">
+            🙏
+          </button>
+        </div>
+      </section>
+    </main>
+    <script src="chat.js"></script>
+    <script>
+      // Demo only: Lena answers after a moment. Use Bootcn.chat.receive with your
+      // own server (for example WebSockets or Server-Sent Events).
+      document.addEventListener('bootcn:chat:send', function (event) {
+        var root = event.target.closest('[data-bootcn-chat]');
+        var id = event.detail.conversation;
+        if (id !== 'lena') return;
+        setTimeout(function () {
+          Bootcn.chat.typing(root, id, true);
+        }, 600);
+        setTimeout(function () {
+          Bootcn.chat.typing(root, id, false);
+          Bootcn.chat.receive(root, id, { text: 'Sounds good! 🙌', from: 'Lena Fischer' });
+        }, 2200);
+      });
+    </script>
+  </body>
+</html>

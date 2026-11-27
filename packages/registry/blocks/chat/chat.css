@@ -1,0 +1,590 @@
+.bootcn-chat {
+  --bootcn-chat-height: 36rem;
+  --bootcn-chat-mine: var(--bootcn-primary);
+  --bootcn-chat-mine-text: var(--bootcn-primary-foreground);
+  position: relative;
+  display: grid;
+  grid-template-columns: 17rem minmax(0, 1fr);
+  height: var(--bootcn-chat-height);
+  overflow: hidden;
+  border: var(--bootcn-border-width) solid var(--bootcn-border-color);
+  border-radius: var(--bootcn-radius-xl);
+  background-color: var(--bootcn-background);
+  container-type: inline-size;
+}
+
+/* ------------------------------------------------------------- sidebar */
+
+.bootcn-chat__sidebar {
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+  border-inline-end: var(--bootcn-border-width) solid var(--bootcn-border-color);
+}
+
+.bootcn-chat__sidebar-head,
+.bootcn-chat__thread-head {
+  display: flex;
+  align-items: center;
+  gap: 0.625rem;
+  min-height: 3.5rem;
+  padding: 0.5rem 0.75rem 0.5rem 1rem;
+  border-bottom: var(--bootcn-border-width) solid var(--bootcn-border-color);
+}
+
+.bootcn-chat__title {
+  flex: 1;
+  margin: 0;
+  font-size: 1.125rem;
+  font-weight: 700;
+}
+
+.bootcn-chat__icon-button {
+  display: inline-flex;
+  flex: none;
+  align-items: center;
+  justify-content: center;
+  width: 2.25rem;
+  height: 2.25rem;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: transparent;
+  color: var(--bootcn-muted-foreground);
+}
+
+.bootcn-chat__icon-button:hover {
+  background-color: var(--bootcn-accent);
+  color: var(--bootcn-foreground);
+}
+
+.bootcn-chat
+  :is(
+    .bootcn-chat__icon-button,
+    .bootcn-chat__send,
+    .bootcn-chat__react,
+    .bootcn-chat__reaction,
+    .bootcn-chat__picker button
+  ):focus-visible,
+.bootcn-chat__conversation:focus-visible {
+  outline: 0;
+  box-shadow: var(--bootcn-focus-ring);
+}
+
+.bootcn-chat__search {
+  position: relative;
+  padding: 0.75rem;
+}
+
+.bootcn-chat__search .bootcn-icon {
+  position: absolute;
+  top: 50%;
+  inset-inline-start: 1.375rem;
+  color: var(--bootcn-muted-foreground);
+  transform: translateY(-50%);
+  pointer-events: none;
+}
+
+.bootcn-chat__search .form-control {
+  padding-inline-start: 2rem;
+  border-color: transparent;
+  background-color: var(--bootcn-muted);
+}
+
+.bootcn-chat__conversations {
+  flex: 1;
+  margin: 0;
+  padding: 0 0.5rem 0.5rem;
+  overflow-y: auto;
+  list-style: none;
+}
+
+.bootcn-chat__conversation {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.625rem;
+  border-radius: var(--bootcn-radius-lg);
+  color: var(--bootcn-foreground);
+  text-decoration: none;
+}
+
+.bootcn-chat__conversation:hover {
+  background-color: var(--bootcn-accent);
+}
+
+.bootcn-chat__conversation[aria-current='true'] {
+  background-color: var(--bootcn-muted);
+}
+
+.bootcn-chat__avatar {
+  position: relative;
+  display: inline-flex;
+  flex: none;
+  align-items: center;
+  justify-content: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 50%;
+  background-color: color-mix(in srgb, var(--bootcn-primary) 12%, var(--bootcn-muted));
+  color: var(--bootcn-foreground);
+  font-size: 0.8125rem;
+  font-weight: 600;
+}
+
+.bootcn-chat__presence {
+  position: absolute;
+  inset-inline-end: 0;
+  bottom: 0;
+  width: 0.75rem;
+  height: 0.75rem;
+  border: 2px solid var(--bootcn-background);
+  border-radius: 50%;
+  background-color: #16a34a;
+}
+
+.bootcn-chat__conversation-text {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  flex: 1;
+  gap: 0.125rem;
+  min-width: 0;
+}
+
+.bootcn-chat__conversation-top,
+.bootcn-chat__conversation-bottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+}
+
+.bootcn-chat__conversation-name {
+  min-width: 0;
+  overflow: hidden;
+  font-size: 0.875rem;
+  font-weight: 600;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.bootcn-chat__conversation-time,
+.bootcn-chat__preview {
+  color: var(--bootcn-muted-foreground);
+  font-size: 0.75rem;
+}
+
+.bootcn-chat__conversation-time {
+  flex: none;
+}
+
+.bootcn-chat__preview {
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.bootcn-chat__conversation:has(.bootcn-chat__unread) .bootcn-chat__preview {
+  color: var(--bootcn-foreground);
+  font-weight: 500;
+}
+
+.bootcn-chat__unread {
+  flex: none;
+  min-width: 1.25rem;
+  padding: 0 0.375rem;
+  border-radius: 9999px;
+  background-color: var(--bootcn-primary);
+  color: var(--bootcn-primary-foreground);
+  font-size: 0.6875rem;
+  font-weight: 600;
+  line-height: 1.25rem;
+  text-align: center;
+}
+
+.bootcn-chat__none {
+  margin: 0;
+  padding: 1rem;
+  color: var(--bootcn-muted-foreground);
+  font-size: 0.875rem;
+  text-align: center;
+}
+
+/* -------------------------------------------------------------- thread */
+
+.bootcn-chat__thread {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  min-height: 0;
+}
+
+.bootcn-chat__back {
+  display: none;
+}
+
+.bootcn-chat__thread-text {
+  flex: 1;
+  min-width: 0;
+}
+
+.bootcn-chat__thread-name,
+.bootcn-chat__thread-status {
+  margin: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.bootcn-chat__thread-name {
+  font-size: 0.9375rem;
+  font-weight: 600;
+}
+
+.bootcn-chat__thread-status {
+  color: var(--bootcn-muted-foreground);
+  font-size: 0.75rem;
+}
+
+.bootcn-chat__scroll {
+  flex: 1;
+  padding: 1rem;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  background-color: color-mix(in srgb, var(--bootcn-muted) 45%, var(--bootcn-background));
+}
+
+.bootcn-chat__messages {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.bootcn-chat__log[hidden] {
+  display: none;
+}
+
+.bootcn-chat__day {
+  align-self: center;
+  margin: 0.5rem 0;
+  padding: 0.125rem 0.625rem;
+  border-radius: 9999px;
+  background-color: var(--bootcn-background);
+  box-shadow: var(--bootcn-shadow-sm);
+  color: var(--bootcn-muted-foreground);
+  font-size: 0.75rem;
+}
+
+.bootcn-chat__message {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  max-width: min(75%, 28rem);
+  margin-top: 0.375rem;
+}
+
+.bootcn-chat__message--me {
+  align-self: flex-end;
+  align-items: flex-end;
+}
+
+.bootcn-chat__message.is-new {
+  animation: bootcn-chat-in 220ms ease-out;
+}
+
+@keyframes bootcn-chat-in {
+  from {
+    opacity: 0;
+    transform: translateY(0.5rem);
+  }
+}
+
+.bootcn-chat__author {
+  margin: 0 0 0.125rem 0.75rem;
+  color: var(--bootcn-muted-foreground);
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
+.bootcn-chat__bubble {
+  padding: 0.5rem 0.875rem;
+  border-radius: 1.125rem;
+  border-end-start-radius: 0.375rem;
+  background-color: var(--bootcn-background);
+  box-shadow: var(--bootcn-shadow-sm);
+  color: var(--bootcn-foreground);
+  font-size: 0.9375rem;
+  line-height: 1.45;
+  overflow-wrap: anywhere;
+  white-space: pre-wrap;
+}
+
+.bootcn-chat__message--me .bootcn-chat__bubble {
+  border-end-start-radius: 1.125rem;
+  border-end-end-radius: 0.375rem;
+  background-color: var(--bootcn-chat-mine);
+  color: var(--bootcn-chat-mine-text);
+}
+
+.bootcn-chat__file {
+  display: flex;
+  align-items: center;
+  gap: 0.625rem;
+  padding: 0.625rem 0.875rem;
+  border: var(--bootcn-border-width) solid var(--bootcn-border-color);
+  border-radius: var(--bootcn-radius-lg);
+  background-color: var(--bootcn-background);
+  color: var(--bootcn-foreground);
+  text-decoration: none;
+}
+
+.bootcn-chat__file span {
+  display: grid;
+}
+
+.bootcn-chat__file-name {
+  font-size: 0.875rem;
+  font-weight: 500;
+}
+
+.bootcn-chat__file-size {
+  color: var(--bootcn-muted-foreground);
+  font-size: 0.75rem;
+}
+
+.bootcn-chat__reactions {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  margin-top: 0.125rem;
+}
+
+.bootcn-chat__reaction,
+.bootcn-chat__react {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  padding: 0 0.4375rem;
+  border: var(--bootcn-border-width) solid var(--bootcn-border-color);
+  border-radius: 9999px;
+  background-color: var(--bootcn-background);
+  color: var(--bootcn-muted-foreground);
+  font-size: 0.75rem;
+  line-height: 1.375rem;
+}
+
+.bootcn-chat__reaction[aria-pressed='true'] {
+  border-color: color-mix(in srgb, var(--bootcn-primary) 50%, transparent);
+  background-color: color-mix(in srgb, var(--bootcn-primary) 8%, var(--bootcn-background));
+  color: var(--bootcn-foreground);
+}
+
+/* The add-reaction button shows on hover and focus. */
+.bootcn-chat__react {
+  opacity: 0;
+}
+
+.bootcn-chat__message:hover .bootcn-chat__react,
+.bootcn-chat__react:focus-visible,
+.bootcn-chat__react[aria-expanded='true'] {
+  opacity: 1;
+}
+
+@media (hover: none) {
+  .bootcn-chat__react {
+    opacity: 1;
+  }
+}
+
+.bootcn-chat__meta {
+  display: flex;
+  align-items: center;
+  gap: 0.375rem;
+  margin: 0.125rem 0.5rem 0;
+  color: var(--bootcn-muted-foreground);
+  font-size: 0.6875rem;
+}
+
+.bootcn-chat__status {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.125rem;
+}
+
+.bootcn-chat__status[data-state='read'] .bootcn-icon {
+  color: var(--bootcn-primary);
+}
+
+.bootcn-chat__typing {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin: 0.75rem 0 0;
+  color: var(--bootcn-muted-foreground);
+  font-size: 0.75rem;
+}
+
+.bootcn-chat__typing[hidden] {
+  display: none;
+}
+
+.bootcn-chat__dots {
+  display: inline-flex;
+  gap: 0.1875rem;
+  padding: 0.5rem 0.75rem;
+  border-radius: 1rem;
+  background-color: var(--bootcn-background);
+  box-shadow: var(--bootcn-shadow-sm);
+}
+
+.bootcn-chat__dots span {
+  width: 0.375rem;
+  height: 0.375rem;
+  border-radius: 50%;
+  background-color: var(--bootcn-muted-foreground);
+  animation: bootcn-chat-dot 1.2s infinite ease-in-out;
+}
+
+.bootcn-chat__dots span:nth-child(2) {
+  animation-delay: 0.15s;
+}
+
+.bootcn-chat__dots span:nth-child(3) {
+  animation-delay: 0.3s;
+}
+
+@keyframes bootcn-chat-dot {
+  0%,
+  60%,
+  100% {
+    opacity: 0.35;
+    transform: none;
+  }
+  30% {
+    opacity: 1;
+    transform: translateY(-0.1875rem);
+  }
+}
+
+/* ------------------------------------------------------------ composer */
+
+.bootcn-chat__composer {
+  display: flex;
+  align-items: flex-end;
+  gap: 0.5rem;
+  padding: 0.625rem 0.75rem;
+  border-top: var(--bootcn-border-width) solid var(--bootcn-border-color);
+}
+
+.bootcn-chat__input {
+  flex: 1;
+  min-width: 0;
+  max-height: 8rem;
+  padding: 0.5rem 0.875rem;
+  border: var(--bootcn-border-width) solid var(--bootcn-border-color);
+  border-radius: 1.25rem;
+  background-color: var(--bootcn-background);
+  color: var(--bootcn-foreground);
+  font-size: 0.9375rem;
+  line-height: 1.4;
+  resize: none;
+}
+
+.bootcn-chat__input:focus {
+  border-color: var(--bootcn-ring);
+  outline: 0;
+  box-shadow: var(--bootcn-focus-ring);
+}
+
+.bootcn-chat__send {
+  display: inline-flex;
+  flex: none;
+  align-items: center;
+  justify-content: center;
+  width: 2.375rem;
+  height: 2.375rem;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background-color: var(--bootcn-primary);
+  color: var(--bootcn-primary-foreground);
+}
+
+.bootcn-chat__send:disabled {
+  opacity: 0.5;
+}
+
+/* -------------------------------------------------------------- picker */
+
+.bootcn-chat__picker {
+  position: absolute;
+  z-index: 5;
+  display: flex;
+  gap: 0.125rem;
+  padding: 0.25rem;
+  border: var(--bootcn-border-width) solid var(--bootcn-border-color);
+  border-radius: 9999px;
+  background-color: var(--bootcn-background);
+  box-shadow: var(--bootcn-shadow-lg);
+}
+
+.bootcn-chat__picker[hidden] {
+  display: none;
+}
+
+.bootcn-chat__picker button {
+  width: 2.25rem;
+  height: 2.25rem;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: transparent;
+  font-size: 1.25rem;
+  transition: transform 120ms ease;
+}
+
+.bootcn-chat__picker button:hover,
+.bootcn-chat__picker button:focus-visible {
+  background-color: var(--bootcn-accent);
+  transform: scale(1.15);
+}
+
+/* --------------------------------------------- narrow: one pane at a time */
+
+/* A container query styles what is inside the container, not the
+   container: each pane spans both columns and the other one hides. */
+@container (max-width: 40rem) {
+  .bootcn-chat__sidebar,
+  .bootcn-chat__thread {
+    grid-row: 1;
+    grid-column: 1 / -1;
+  }
+
+  .bootcn-chat__sidebar {
+    border-inline-end: 0;
+  }
+
+  .bootcn-chat:not(.is-reading) .bootcn-chat__thread,
+  .bootcn-chat.is-reading .bootcn-chat__sidebar {
+    display: none;
+  }
+
+  .bootcn-chat__back {
+    display: inline-flex;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .bootcn-chat__message.is-new,
+  .bootcn-chat__dots span {
+    animation: none;
+  }
+
+  .bootcn-chat__picker button {
+    transition: none;
+  }
+}

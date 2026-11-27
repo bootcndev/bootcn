@@ -10,6 +10,21 @@ each published version stays available under `/v/<version>/`) and the **CLI**
 
 ## Registry
 
+### 0.40.0
+
+Chat and an email inbox.
+
+- Chat block: conversations with presence and unread counts, threads
+  with day separators, read receipts, files and reactions, "is typing",
+  and a composer that grows, sends on Enter and attaches files. Messages
+  arrive with `Bootcn.chat.receive()` and are read out as they come.
+- Email inbox block: folders and labels, a list with stars, unread,
+  selection and search, and a reader with reply; Gmail-style keys (j, k,
+  e, #, s, x, c, /), bulk actions with Undo and a compose dialog.
+- Both fit their space: three panes, two, or one at a time on phones.
+- Landing: "New in Bootcn" shows the chat, the inbox, feedback and the
+  flow builder.
+
 ### 0.39.0
 
 Search and feedback.

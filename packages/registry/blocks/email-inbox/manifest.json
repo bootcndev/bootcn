@@ -1,0 +1,34 @@
+{
+  "$schema": "../../schema/registry-item.schema.json",
+  "name": "email-inbox",
+  "type": "registry:block",
+  "title": "Email inbox",
+  "description": "An email client in three panes: folders and labels, a message list with stars, unread, selection and search, and a reader with reply; Gmail-style keys, bulk actions with Undo, a compose dialog, and one pane at a time on phones.",
+  "version": "1.0.0",
+  "added": "0.40.0",
+  "categories": ["dashboard"],
+  "dependencies": [],
+  "registryDependencies": ["button", "checkbox", "input", "textarea", "kbd"],
+  "compatibility": {
+    "bootstrap": "5.3",
+    "platform": ["Bootstrap CSS"]
+  },
+  "license": "MIT",
+  "files": [
+    {
+      "path": "email-inbox.html",
+      "target": "email-inbox.html",
+      "type": "registry:component"
+    },
+    {
+      "path": "email-inbox.css",
+      "target": "email-inbox.css",
+      "type": "registry:style"
+    },
+    {
+      "path": "email-inbox.js",
+      "target": "email-inbox.js",
+      "type": "registry:script"
+    }
+  ]
+}

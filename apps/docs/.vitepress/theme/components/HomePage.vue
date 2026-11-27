@@ -37,30 +37,30 @@ const showcase = [
 const latest = [
   [
     {
-      name: 'delivery-tracker',
-      kind: 'components',
-      title: 'Delivery tracker',
-      text: 'Live order tracking like a delivery app: the courier moves on the map, with arrival time and progress.',
+      name: 'email-inbox',
+      kind: 'blocks',
+      title: 'Email inbox',
+      text: 'Folders, a message list and a reader, with Gmail-style keys, bulk actions and Undo.',
     },
     {
-      name: 'audio-player',
+      name: 'feedback',
       kind: 'components',
-      title: 'Audio player',
-      text: 'Play, seek, volume and a playlist over the native audio element.',
+      title: 'Feedback',
+      text: 'A floating feedback button with five faces, and "Was this page helpful?".',
     },
   ],
   [
     {
-      name: 'video-player',
-      kind: 'components',
-      title: 'Video player',
-      text: 'Custom controls, captions, speed, picture in picture and YouTube-style keys.',
+      name: 'chat',
+      kind: 'blocks',
+      title: 'Chat',
+      text: 'Conversations, read receipts, reactions, files and "is typing", one pane at a time on phones.',
     },
     {
-      name: 'onboarding-flow',
-      kind: 'blocks',
-      title: 'Onboarding flow',
-      text: 'Three validated steps that end on a "You\'re all set" screen with confetti.',
+      name: 'flow-builder',
+      kind: 'components',
+      title: 'Flow builder',
+      text: 'Automations such as email sequences: steps, yes/no branches, + menus, pan and zoom.',
     },
   ],
 ];
@@ -68,14 +68,14 @@ const latest = [
 const alsoNew = [
   { text: 'Spotlight search', href: '/components/spotlight' },
   { text: 'Reviews', href: '/blocks/reviews' },
-  { text: 'Feedback', href: '/components/feedback' },
   { text: 'SaaS template', href: '/templates/saas' },
   { text: 'Blog article', href: '/blocks/blog-article' },
-  { text: 'Flow builder', href: '/components/flow-builder' },
   { text: 'Swipe actions', href: '/components/swipe-actions' },
   { text: 'Tab bar', href: '/components/tab-bar' },
   { text: 'Large title', href: '/components/large-title' },
   { text: 'Tree', href: '/components/tree' },
+  { text: 'Signature pad', href: '/components/signature-pad' },
+  { text: 'Delivery tracker', href: '/components/delivery-tracker' },
 ];
 
 const live = [
@@ -149,7 +149,7 @@ const features = [
       />
       <a class="bootcn-landing__pill" :href="withBase('/changelog')">
         <span class="bootcn-landing__pill-tag">New</span>
-        Spotlight search, reviews and feedback
+        Chat, an email inbox, search and feedback
         <span aria-hidden="true">→</span>
       </a>
       <h1 id="bootcn-landing-title" class="bootcn-landing__title">
@@ -220,7 +220,7 @@ const features = [
       <div class="bootcn-landing__heading">
         <h2 id="bootcn-landing-new">New in Bootcn</h2>
         <p>
-          Maps that move, media players and first-run flows, built the same way as everything else:
+          Messaging, mail, search and feedback for your app, built the same way as everything else:
           plain HTML, CSS and JavaScript you own.
         </p>
       </div>
