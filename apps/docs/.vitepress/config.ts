@@ -46,6 +46,46 @@ function kindSidebar(kind: Kind) {
 
 const BASE = process.env.DOCS_BASE ?? '/';
 
+/** What an item page is called in its title: "Tree component for Bootstrap 5". */
+const ITEM_NOUN: Partial<Record<Kind, string>> = {
+  components: 'component',
+  blocks: 'block',
+  templates: 'template',
+};
+
+/** Section names for breadcrumbs, by the first path segment. */
+const SECTIONS: Record<string, string> = {
+  guide: 'Guide',
+  components: 'Components',
+  blocks: 'Blocks',
+  templates: 'Templates',
+  charts: 'Charts',
+  ai: 'AI',
+  themes: 'Themes',
+};
+
+/** schema.org BreadcrumbList: Bootcn > section > page. */
+function breadcrumbs(path: string, title: string) {
+  const [section, rest] = path.split(/\/(.*)/);
+  const trail = [{ name: 'Bootcn', url: `${SITE_URL}/` }];
+  if (section && SECTIONS[section] && section !== 'guide') {
+    trail.push({ name: SECTIONS[section]!, url: `${SITE_URL}/${section}/` });
+  }
+  if (rest || !SECTIONS[section ?? ''] || section === 'guide') {
+    trail.push({ name: title, url: `${SITE_URL}/${path}` });
+  }
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: trail.map((step, index) => ({
+      '@type': 'ListItem',
+      position: index + 1,
+      name: step.name,
+      item: step.url,
+    })),
+  };
+}
+
 const STRUCTURED_DATA = {
   '@context': 'https://schema.org',
   '@graph': [
@@ -109,12 +149,31 @@ export default defineConfig({
     ['meta', { name: 'twitter:site', content: '@bootcndev' }],
     ['meta', { name: 'twitter:image', content: `${SITE_URL}/og-image.png` }],
   ],
+  // Item pages: the manifest description, and a title that says what it is.
+  transformPageData(pageData) {
+    const kind = pageData.relativePath.split('/')[0] as Kind;
+    const params = pageData.params as { title?: string; description?: string } | undefined;
+    if (!params?.description || !(kind in ITEM_NOUN)) return;
+    pageData.title = params.title ?? pageData.title;
+    // VitePress writes the description into attributes without escaping quotes.
+    const text = params.description.replace(/"([^"]*)"/g, '“$1”').replace(/"/g, '”');
+    // Short ones say a little more, so search results have something to show.
+    pageData.description =
+      text.length < 110
+        ? `${text} A free, accessible Bootstrap 5.3 ${ITEM_NOUN[kind]} in HTML, CSS and vanilla JavaScript.`
+        : text;
+    pageData.titleTemplate = `:title ${ITEM_NOUN[kind]} for Bootstrap 5 | Bootcn`;
+  },
   // bootcn.dev is the canonical site, also for the GitHub Pages mirror.
   transformHead({ pageData, siteData }) {
     const path = pageData.relativePath.replace(/(^|\/)index\.md$/, '$1').replace(/\.md$/, '');
     const url = `${SITE_URL}/${path}`;
     const title =
-      path === '' ? 'Bootcn: build better with Bootstrap' : `${pageData.title} | Bootcn`;
+      path === ''
+        ? 'Bootcn: build better with Bootstrap'
+        : typeof pageData.titleTemplate === 'string'
+          ? pageData.titleTemplate.replace(':title', pageData.title)
+          : `${pageData.title} | Bootcn`;
     const description = pageData.description || siteData.description;
     const head: HeadConfig[] = [
       ['link', { rel: 'canonical', href: url }],
@@ -127,6 +186,12 @@ export default defineConfig({
     // Structured data for search engines and AI answers, on the home page.
     if (path === '')
       head.push(['script', { type: 'application/ld+json' }, JSON.stringify(STRUCTURED_DATA)]);
+    else
+      head.push([
+        'script',
+        { type: 'application/ld+json' },
+        JSON.stringify(breadcrumbs(path, pageData.title)),
+      ]);
     return head;
   },
   // The default github themes have colours below 4.5:1 on the code background.

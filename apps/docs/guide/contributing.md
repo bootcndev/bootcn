@@ -1,3 +1,7 @@
+---
+description: 'How to contribute to Bootcn: set up the repository, follow the component conventions, run the tests and open a pull request.'
+---
+
 # Contributing
 
 Bootcn is developed on [GitHub](https://github.com/bootcndev/bootcn).

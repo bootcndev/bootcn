@@ -174,9 +174,10 @@ ${sources}
 /** Dynamic-route paths for one kind (used by <kind>/[name].paths.ts). */
 export function itemPaths(
   kind: Kind,
-): { params: { name: string; title: string }; content: string }[] {
+): { params: { name: string; title: string; description: string }; content: string }[] {
   return itemsOf(kind).map((entry) => ({
-    params: { name: entry.name, title: entry.title },
+    // The description becomes the page's meta description (config.ts).
+    params: { name: entry.name, title: entry.title, description: entry.description },
     content: page(readItem(entry.name), kind),
   }));
 }

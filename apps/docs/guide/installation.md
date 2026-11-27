@@ -1,3 +1,7 @@
+---
+description: Install Bootcn components in any Bootstrap 5.3 site with the CLI (npm, a standalone executable or Composer), or copy the files by hand.
+---
+
 # Installation
 
 ## Requirements

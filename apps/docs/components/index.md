@@ -1,4 +1,5 @@
 ---
+description: 'All Bootcn components for Bootstrap 5.3: forms, navigation, overlays, data display and more, accessible and in plain HTML, CSS and JavaScript.'
 title: Components
 ---
 

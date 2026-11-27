@@ -1,4 +1,5 @@
 ---
+description: 'Ready-made Bootstrap 5.3 blocks: login and sign-up forms, dashboards, pricing, marketing sections and charts, with live previews.'
 title: Blocks
 aside: false
 ---

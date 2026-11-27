@@ -1,3 +1,7 @@
+---
+description: 'Use Bootcn in Laravel: the CLI writes Blade views and puts the CSS and JavaScript in public, ready for your layouts.'
+---
+
 # Laravel
 
 Bootcn fits Laravel well: components are plain markup, styled with

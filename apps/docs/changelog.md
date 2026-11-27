@@ -1,3 +1,7 @@
+---
+description: 'Release notes for the Bootcn registry and CLI: new components, blocks and templates, fixes and changes in every version.'
+---
+
 # Changelog
 
 Two things are versioned: the **registry** (components, blocks, templates;
@@ -21,6 +25,9 @@ Everyday UI.
 - Site: components, blocks and templates from the last two releases carry a
   "New" badge in the sidebar, the lists and on their page; every other page
   says which release added it.
+- Site: every page has its own search description and every item page a
+  title such as "Tree component for Bootstrap 5", with breadcrumbs for
+  search engines. Live previews and the 404 page are no longer indexed.
 
 ### 0.35.0
 

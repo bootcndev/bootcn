@@ -1,3 +1,7 @@
+---
+description: 'Right-to-left layouts with Bootcn: Bootstrap RTL stylesheet, logical CSS properties and mirrored icons for Arabic, Hebrew and Persian.'
+---
+
 # Right to left
 
 Bootcn works in right-to-left languages such as Arabic, Hebrew and Persian.

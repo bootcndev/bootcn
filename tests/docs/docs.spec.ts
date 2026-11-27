@@ -264,6 +264,58 @@ test('items from the latest releases are marked New', async ({ page }) => {
   ).toBeVisible();
 });
 
+test('every page in the sitemap has its own title, description and canonical', async ({
+  request,
+  browserName,
+}) => {
+  test.skip(browserName !== 'chromium', 'browser-independent; runs in Chromium');
+  test.setTimeout(120_000);
+  const sitemap = await (await request.get('sitemap.xml')).text();
+  const urls = [...sitemap.matchAll(/<loc>https:\/\/bootcn\.dev\/([^<]*)<\/loc>/g)].map(
+    (m) => m[1]!,
+  );
+  expect(urls.length).toBeGreaterThan(150);
+  const titles = new Map<string, string>();
+  const descriptions = new Map<string, string>();
+  const problems: string[] = [];
+  for (const path of urls) {
+    const html = await (await request.get(path || '/')).text();
+    const title = /<title>([^<]*)<\/title>/.exec(html)?.[1] ?? '';
+    const description = /<meta name="description" content="([^"]*)"/.exec(html)?.[1] ?? '';
+    const canonical = /<link rel="canonical" href="([^"]*)"/.exec(html)?.[1];
+    if (canonical !== `https://bootcn.dev/${path}`)
+      problems.push(`${path}: canonical ${canonical}`);
+    if (html.includes('name="robots" content="noindex"')) problems.push(`${path}: noindex`);
+    if (description.length < 50) problems.push(`${path}: short description`);
+    if (/content="[^"]*"[^\s>/]/.test(html))
+      problems.push(`${path}: unescaped quote in an attribute`);
+    if (titles.has(title)) problems.push(`${path}: same title as ${titles.get(title)}`);
+    if (descriptions.has(description))
+      problems.push(`${path}: same description as ${descriptions.get(description)}`);
+    titles.set(title, path);
+    descriptions.set(description, path);
+  }
+  expect(problems).toEqual([]);
+});
+
+test('previews and the 404 page are not indexed', async ({ request, browserName }) => {
+  test.skip(browserName !== 'chromium', 'browser-independent; runs in Chromium');
+  for (const path of [
+    '404.html',
+    'previews/components/tree/preview.html',
+    'previews/templates/crm/crm.html',
+  ]) {
+    expect(await (await request.get(path)).text(), path).toContain(
+      '<meta name="robots" content="noindex">',
+    );
+  }
+  await expect(async () => {
+    const html = await (await request.get('components/tree')).text();
+    expect(html).toContain('<title>Tree component for Bootstrap 5 | Bootcn</title>');
+    expect(html).toContain('"@type":"BreadcrumbList"');
+  }).toPass();
+});
+
 test('every internal link resolves', async ({ request, browserName }) => {
   // Link checking does not depend on the browser: read the static HTML once.
   test.skip(browserName !== 'chromium', 'browser-independent; runs in Chromium');
@@ -586,7 +638,7 @@ test('pages have link preview tags for X and Open Graph', async ({ page, request
   const meta = (selector: string) => page.locator(`head meta[${selector}]`).getAttribute('content');
   expect(await meta('name="twitter:card"')).toBe('summary_large_image');
   expect(await meta('property="og:image"')).toBe('https://bootcn.dev/og-image.png');
-  expect(await meta('property="og:title"')).toBe('Dialog | Bootcn');
+  expect(await meta('property="og:title"')).toBe('Dialog component for Bootstrap 5 | Bootcn');
   expect(await meta('property="og:url"')).toBe('https://bootcn.dev/components/dialog');
   expect(await meta('property="og:description"')).toBeTruthy();
   const image = await request.get('og-image.png');

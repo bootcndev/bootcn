@@ -1,4 +1,5 @@
 ---
+description: 'Bootstrap 5.3 charts: bar, line, area, pie, radar and radial, with accessible tables, dark mode and live previews you can copy.'
 title: Charts
 aside: false
 ---

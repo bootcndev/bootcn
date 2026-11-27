@@ -1,3 +1,7 @@
+---
+description: 'Dark mode for Bootcn components with Bootstrap 5.3 color modes: data-bs-theme, the system preference and a theme toggle.'
+---
+
 # Dark mode
 
 Bootcn uses [Bootstrap's own color modes](https://getbootstrap.com/docs/5.3/customize/color-modes/): set `data-bs-theme="dark"` on `<html>`

@@ -1,3 +1,7 @@
+---
+description: 'The bootcn command line: init, add, list, info and diff. Installs components, blocks and templates with their dependencies into your project.'
+---
+
 # CLI
 
 ```bash

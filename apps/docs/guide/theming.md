@@ -1,3 +1,7 @@
+---
+description: 'Theme Bootcn with Bootstrap CSS variables and design tokens: colors, radius, fonts, and light and dark mode, without a build step.'
+---
+
 # Theming and dark mode
 
 `tokens.css` gives [Bootstrap 5.3](https://getbootstrap.com/) a neutral, Tailwind-like look and defines the

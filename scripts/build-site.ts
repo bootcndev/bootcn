@@ -156,6 +156,34 @@ async function copyDocs(): Promise<void> {
     throw new Error(`The docs build contains registry paths: ${clashes.join(', ')}.`);
   }
   await cp(DOCS_DIST, OUT_DIR, { recursive: true });
+  await noindex();
+}
+
+const NOINDEX = '<meta name="robots" content="noindex">';
+
+/**
+ * Keep search engines to the documentation pages: the live previews (shown in
+ * iframes on those pages) and the 404 page get a robots noindex. Previews stay
+ * crawlable, so the pages that embed them still render for search engines.
+ */
+async function noindex(): Promise<void> {
+  const files = [resolve(OUT_DIR, '404.html')];
+  const walk = async (dir: string): Promise<void> => {
+    for (const entry of await readdir(dir, { withFileTypes: true })) {
+      const path = join(dir, entry.name);
+      if (entry.isDirectory()) await walk(path);
+      else if (entry.name.endsWith('.html')) files.push(path);
+    }
+  };
+  await walk(resolve(OUT_DIR, 'previews'));
+  for (const file of files) {
+    const html = await readFile(file, 'utf8');
+    if (html.includes(NOINDEX)) continue;
+    // Fragments (component markup the previews include) have no <head>.
+    if (!/<head[\s>]/i.test(html)) continue;
+    const marked = html.replace(/<head([^>]*)>/i, `<head$1>\n    ${NOINDEX}`);
+    await writeFile(file, marked, 'utf8');
+  }
 }
 
 main().catch((error: unknown) => {

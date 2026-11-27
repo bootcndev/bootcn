@@ -1,3 +1,7 @@
+---
+description: 'Animations in Bootcn components: CSS transitions, enter and exit effects, and respect for the prefers-reduced-motion setting.'
+---
+
 # Animations
 
 Bootcn keeps motion short and functional: colors, borders and focus rings

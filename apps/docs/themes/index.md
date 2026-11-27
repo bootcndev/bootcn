@@ -1,4 +1,5 @@
 ---
+description: 'Build a Bootstrap 5.3 theme in a minute: pick a style, base color, primary color and radius, preview it on real components and copy the CSS.'
 title: Theme builder
 aside: false
 ---

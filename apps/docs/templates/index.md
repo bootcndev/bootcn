@@ -1,4 +1,5 @@
 ---
+description: 'Free Bootstrap 5.3 page templates: admin and analytics dashboards, landing page, settings, e-commerce and CRM, installed with one command.'
 title: Templates
 ---
 

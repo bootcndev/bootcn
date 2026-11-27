@@ -1,3 +1,7 @@
+---
+description: 'What Bootcn is: accessible UI components for Bootstrap 5.3 that you copy into your project as plain HTML, CSS and vanilla JavaScript, and own.'
+---
+
 # Introduction
 
 Bootcn is a collection of UI components for **[Bootstrap 5.3](https://getbootstrap.com/)** that you copy

@@ -1,3 +1,7 @@
+---
+description: 'Use Bootcn with AI assistants: an MCP server for Claude, Cursor and VS Code, llms.txt and a Copy prompt button on every page.'
+---
+
 # AI assistants (MCP)
 
 The CLI includes a [Model Context Protocol](https://modelcontextprotocol.io/)

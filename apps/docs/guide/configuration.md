@@ -1,3 +1,7 @@
+---
+description: 'The bootcn.json file: where components, CSS and JavaScript are installed, the registry URL and options for PHP and Laravel projects.'
+---
+
 # Configuration
 
 `bootcn init` writes `bootcn.json` in the project root:

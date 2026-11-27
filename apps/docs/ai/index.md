@@ -1,4 +1,5 @@
 ---
+description: 'AI chat UI for Bootstrap 5.3: a chat block, conversation with reasoning and sources, prompt input and streamed replies, in plain HTML, CSS and JavaScript.'
 title: AI
 aside: false
 ---
