@@ -16,8 +16,16 @@ const columns = [
       { text: 'Theming', href: withBase('/guide/theming') },
       { text: 'Dark mode', href: withBase('/guide/dark-mode') },
       { text: 'Right to left', href: withBase('/guide/rtl') },
-      { text: 'Laravel', href: withBase('/guide/laravel') },
       { text: 'AI assistants (MCP)', href: withBase('/guide/mcp') },
+    ],
+  },
+  {
+    title: 'Frameworks',
+    links: [
+      { text: 'HTML and PHP', href: withBase('/guide/installation') },
+      { text: 'Laravel', href: withBase('/guide/laravel') },
+      { text: 'React', href: withBase('/guide/react') },
+      { text: 'Vue', href: withBase('/guide/vue') },
     ],
   },
   {
@@ -68,7 +76,8 @@ const columns = [
         <p>
           Build better with
           <a href="https://getbootstrap.com/" target="_blank" rel="noreferrer">Bootstrap</a>.
-          Copy-paste components, blocks and templates in plain HTML, CSS and JavaScript.
+          Copy-paste components, blocks and templates in plain HTML, CSS and JavaScript, with React
+          and Vue components.
         </p>
       </div>
       <nav class="bootcn-footer__nav" aria-label="Footer">
