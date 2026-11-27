@@ -107,7 +107,11 @@ async function writeLlmsTxt(): Promise<void> {
   ];
   const guide = [
     ['Introduction', 'guide/introduction', 'What Bootcn is and how the registry works.'],
-    ['Installation', 'guide/installation', 'Install components into a PHP or plain HTML project.'],
+    [
+      'Installation',
+      'guide/installation',
+      'Install components into a PHP, plain HTML, Laravel, React or Vue project.',
+    ],
     ['CLI', 'guide/cli', 'Commands, options, updating and exit codes.'],
     ['Configuration', 'guide/configuration', 'bootcn.json, paths and pinning a registry version.'],
     ['Theming', 'guide/theming', 'Design tokens and how to change them.'],
@@ -132,7 +136,7 @@ async function writeLlmsTxt(): Promise<void> {
   const lines = [
     '# Bootcn',
     '',
-    `> Copy-paste UI components, blocks and templates for Bootstrap 5.3 and vanilla JavaScript, with a Tailwind-like look. Install with \`npx bootcn add <name>\`. Registry ${index.version}.`,
+    `> Copy-paste UI components, blocks and templates for Bootstrap 5.3 and vanilla JavaScript, with React and Vue components and a Tailwind-like look. Install with \`npx bootcn add <name>\`. Registry ${index.version}.`,
     '',
     'Each item below links to its documentation in Markdown; its machine-readable source (all files inlined) is at `r/<name>.json`. Everything in one file: ' +
       `${SITE_URL}/llms-full.txt. An agent skill for AI assistants: ${SITE_URL}/skills/bootcn/SKILL.md.`,
@@ -177,7 +181,7 @@ async function writeMarkdown(
   const full: string[] = [
     '# Bootcn',
     '',
-    `> Copy-paste UI components, blocks and templates for Bootstrap 5.3 in plain HTML, CSS and vanilla JavaScript. Registry ${index.version}. Install with \`npx bootcn@latest add <name>\`.`,
+    `> Copy-paste UI components, blocks and templates for Bootstrap 5.3 in plain HTML, CSS and vanilla JavaScript, with React and Vue components. Registry ${index.version}. Install with \`npx bootcn@latest add <name>\`.`,
   ];
   const docs = resolve(ROOT, 'apps', 'docs');
   for (const [, path] of guide) {

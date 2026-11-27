@@ -1,5 +1,5 @@
 ---
-description: 'What Bootcn is: accessible UI components for Bootstrap 5.3 that you copy into your project as plain HTML, CSS and vanilla JavaScript, and own.'
+description: 'What Bootcn is: accessible UI components for Bootstrap 5.3 that you copy into your project as plain HTML, CSS and vanilla JavaScript (or as React and Vue components), and own.'
 ---
 
 # Introduction
@@ -11,6 +11,10 @@ small set of files:
 - an **HTML** snippet with the markup and ARIA attributes,
 - a **CSS** file with `bootcn-` classes built on Bootstrap's variables,
 - and, only when needed, a **vanilla JavaScript** file.
+
+In [React](./react) and [Vue](./vue) projects the CLI installs a `.tsx` or
+`.vue` component in place of the HTML snippet, built on the same CSS and
+JavaScript. In [Laravel](./laravel) the HTML becomes a Blade view.
 
 A command-line tool, `bootcn`, downloads those files from the
 [registry](#the-registry) and writes them where your project keeps its assets.
@@ -24,8 +28,10 @@ card or a transactions table, built from components) and
 ## Who it is for
 
 - PHP, [Laravel](./laravel) and plain HTML sites that already use Bootstrap.
-- Teams who want consistent, accessible components without adopting React or
-  Vue.
+- [React](./react) and [Vue](./vue) apps that use Bootstrap and want
+  accessible components they own.
+- Teams who want consistent, accessible components without adopting a
+  JavaScript framework.
 - Anyone who prefers readable source over a compiled UI library.
 
 ## Principles

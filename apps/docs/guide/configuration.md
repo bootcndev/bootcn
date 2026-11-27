@@ -1,5 +1,5 @@
 ---
-description: 'The bootcn.json file: where components, CSS and JavaScript are installed, the registry URL and options for PHP and Laravel projects.'
+description: 'The bootcn.json file: where components, CSS and JavaScript are installed, the registry URL and options for PHP, Laravel, React and Vue projects.'
 ---
 
 # Configuration

@@ -104,7 +104,7 @@ const TOOLS = [
   },
 ];
 
-const INSTRUCTIONS = `${BRAND_TITLE} is a copy-paste component library for Bootstrap 5.3: each item is plain HTML, CSS and (sometimes) a small vanilla JavaScript file installed into the user's project. Search or list items, read one with get_item before writing markup that uses it, and install with add_items. Keep the bootcn- classes and data-bootcn-* attributes: the CSS and JS rely on them. Pages must load Bootstrap 5.3 CSS (and its JS bundle for interactive items), then tokens.css, then the item styles.`;
+const INSTRUCTIONS = `${BRAND_TITLE} is a copy-paste component library for Bootstrap 5.3: each item is plain HTML, CSS and (sometimes) a small vanilla JavaScript file installed into the user's project. Search or list items, read one with get_item before writing markup that uses it, and install with add_items. Keep the bootcn- classes and data-bootcn-* attributes: the CSS and JS rely on them. Pages must load Bootstrap 5.3 CSS (and its JS bundle for interactive items), then tokens.css, then the item styles. In React and Vue projects ("framework": "react" or "vue" in bootcn.json), add_items installs .tsx or .vue components for the items that have one (button, dialog, toaster, input, textarea, select, checkbox, switch, tabs, card, alert, badge, avatar); import those instead of writing the markup.`;
 
 /** Collects command output instead of printing it (stdout is the protocol). */
 function captureOutput(): Output & { text(): string } {

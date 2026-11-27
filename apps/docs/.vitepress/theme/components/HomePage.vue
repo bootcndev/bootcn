@@ -97,7 +97,7 @@ const steps = [
   },
   {
     title: 'Own the code',
-    text: 'Plain HTML, CSS and JavaScript in your project, or Blade views in Laravel. Include it and edit it.',
+    text: 'Plain HTML, CSS and JavaScript in your project, Blade views in Laravel, or .tsx and .vue components in React and Vue. Use it and edit it.',
     code: "<?php include 'components/ui/dialog.html'; ?>",
   },
 ];
@@ -108,8 +108,8 @@ const features = [
     text: 'Source files land in your project. Change anything; nothing updates behind your back.',
   },
   {
-    title: 'Plain HTML, PHP and Laravel',
-    text: 'Made for server-rendered sites. In Laravel the CLI writes Blade views; no React, no bundler, no Node.js at runtime.',
+    title: 'HTML, PHP, Laravel, React and Vue',
+    text: 'Plain HTML and PHP need no bundler and no Node.js at runtime. Laravel gets Blade views; React and Vue get typed components with the same CSS.',
   },
   {
     title: 'Accessible and tested',
@@ -158,8 +158,8 @@ const features = [
       <p class="bootcn-landing__lead">
         Accessible components, blocks and page templates for
         <a :href="BOOTSTRAP" target="_blank" rel="noreferrer">Bootstrap</a> 5.3, in plain HTML, CSS
-        and vanilla JavaScript, with a clean modern look. Copy them into your project or let the CLI
-        do it. The code is yours.
+        and vanilla JavaScript, with a clean modern look, and as components for React and Vue. Copy
+        them into your project or let the CLI do it. The code is yours.
       </p>
       <div class="bootcn-landing__actions">
         <a
@@ -271,7 +271,10 @@ const features = [
     <section class="bootcn-landing__section" aria-labelledby="bootcn-landing-how">
       <div class="bootcn-landing__heading">
         <h2 id="bootcn-landing-how">From zero to a page in three commands</h2>
-        <p>No build step and no framework. If your page loads Bootstrap, it can load Bootcn.</p>
+        <p>
+          No build step needed: if your page loads Bootstrap, it can load Bootcn. In React and Vue
+          the same commands install components.
+        </p>
       </div>
       <ol class="bootcn-landing__steps">
         <li v-for="(step, index) in steps" :key="step.title" class="bootcn-landing__step">

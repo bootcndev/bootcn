@@ -32,7 +32,7 @@ npx bootcn <command> [options]
 
 ## Setting up
 
-`init` looks at the project first: Laravel, PHP or plain HTML, and where
+`init` looks at the project first: Laravel, React, Vue, PHP or plain HTML, and where
 Bootstrap comes from and which version (`node_modules`, `vendor`,
 `package.json`, `composer.json` or a CDN link in your pages). Then it asks:
 

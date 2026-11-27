@@ -1,6 +1,6 @@
 ---
 name: bootcn
-description: Build Bootstrap 5.3 interfaces with Bootcn, the copy-paste library of accessible components, blocks and page templates in plain HTML, CSS and vanilla JavaScript. Use when the user works on a Bootstrap, plain HTML, PHP or Laravel (Blade) site and wants UI such as dialogs, data tables, forms, dashboards, charts, chat, calendars or full pages, mentions Bootcn or bootcn.dev, or has a bootcn.json in the project.
+description: Build Bootstrap 5.3 interfaces with Bootcn, the copy-paste library of accessible components, blocks and page templates in plain HTML, CSS and vanilla JavaScript, with React and Vue components. Use when the user works on a Bootstrap, plain HTML, PHP, Laravel (Blade), React or Vue project and wants UI such as dialogs, data tables, forms, dashboards, charts, chat, calendars or full pages, mentions Bootcn or bootcn.dev, or has a bootcn.json in the project.
 ---
 
 # Bootcn
@@ -9,7 +9,8 @@ Bootcn (https://bootcn.dev) is a registry of UI items for **Bootstrap 5.3**
 in plain HTML, CSS and vanilla JavaScript. Items are copied into the
 project, so the code belongs to the user: edit it freely, nothing updates
 behind their back. There is no framework and no build step; a page that
-loads Bootstrap can load Bootcn.
+loads Bootstrap can load Bootcn. React and Vue projects get `.tsx` and `.vue`
+components built on the same CSS and JavaScript.
 
 Item types:
 
@@ -54,13 +55,22 @@ npx bootcn@latest add dialog data-table
   `paths.js`, `paths.lib`, `paths.pages`). In Laravel, `init` sets
   `"framework": "laravel"` and components become Blade views under
   `resources/views`.
+- In React or Vue (`react`, `next`, `vue` or `nuxt` in `package.json`),
+  `init` sets `"framework": "react"` or `"vue"`. `add` then installs `.tsx`
+  or `.vue` components in `src/components/ui` (CSS and JavaScript in
+  `src/bootcn`) and prints the import lines. Components with one so far:
+  button, dialog, toaster, input, textarea, select, checkbox, switch, tabs,
+  card, alert, badge, avatar. For other items it installs the CSS and
+  JavaScript; write the markup from the item's page as JSX or a template.
+  Guides: https://bootcn.dev/guide/react and https://bootcn.dev/guide/vue.
 
 ## Use an installed item
 
 1. Load Bootstrap 5.3 CSS (and the Bootstrap JS bundle when the item's
    README says so), then `tokens.css`, then the item's CSS.
 2. Include the item's HTML where it belongs: PHP `include`, a Blade
-   `@include`, or paste it into the page.
+   `@include`, or paste it into the page. In React and Vue, import the
+   installed component instead; it loads its own CSS and JavaScript.
 3. Load the item's JavaScript, if it has one, before `</body>`. Scripts
    start themselves; each also exposes an API on `window.Bootcn` (for
    example `Bootcn.chat.receive()`), documented in the item's README.
@@ -80,7 +90,9 @@ npx bootcn@latest add dialog data-table
 - Put user-provided text in the DOM with `textContent`, never `innerHTML`.
 - Translate texts the scripts announce with `window.Bootcn.messages`
   (see https://bootcn.dev/guide/i18n).
-- Do not add a JavaScript framework to make an item work.
+- Do not add a JavaScript framework to make an item work. In React and Vue,
+  start the item's script in `useEffect` or `onMounted` (as the installed
+  components do) so server rendering keeps working.
 
 ## More
 

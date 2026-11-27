@@ -1,8 +1,9 @@
 # bootcn
 
-Install copy-paste Bootstrap 5.3 components (HTML, CSS and vanilla JavaScript)
-into your own project. The installed files are yours: no runtime package, no
-framework, no Node.js needed in production.
+Install copy-paste Bootstrap 5.3 components (HTML, CSS and vanilla JavaScript,
+or React and Vue components) into your own project. The installed files are
+yours: no runtime package, and plain HTML and PHP sites need no Node.js in
+production.
 
 Requires Node.js 20 or newer, only while you run the CLI. Bootstrap 5.3 is
 loaded by your pages (the CLI prints the CDN tags if it is missing).
@@ -22,6 +23,11 @@ In a Laravel project, `init` sets `"framework": "laravel"`: components and
 templates become Blade views under `resources/views`, CSS and JavaScript go
 to `public/vendor/bootcn`, and templates link them with `asset()`. See
 <https://bootcn.dev/guide/laravel>.
+
+In a React or Vue project (`react`, `next`, `vue` or `nuxt` in
+`package.json`), `add` installs `.tsx` or `.vue` components in
+`src/components/ui`, with their CSS and JavaScript in `src/bootcn`. See
+<https://bootcn.dev/guide/react> and <https://bootcn.dev/guide/vue>.
 
 Components come from the hosted registry at
 <https://bootcn.dev>. Pin a version with

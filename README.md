@@ -2,12 +2,13 @@
 
 # Bootcn
 
-Copy-paste UI components for [Bootstrap](https://getbootstrap.com/) 5.3+ and vanilla JavaScript.
+Copy-paste UI components for [Bootstrap](https://getbootstrap.com/) 5.3+ and vanilla JavaScript, with React and Vue components.
 
 Bootcn brings the copy-paste component workflow to Bootstrap developers who
-build with plain HTML and native PHP. Components are installed as editable
-HTML, CSS and JavaScript source files that you own. No React, Vue, jQuery,
-bundler or Node.js is required at runtime.
+build with plain HTML, native PHP, Laravel, React or Vue. Components are
+installed as editable source files that you own: HTML, CSS and JavaScript,
+Blade views in Laravel, or `.tsx` and `.vue` components in React and Vue.
+Plain HTML and PHP sites need no jQuery, bundler or Node.js at runtime.
 
 > **Status:** early (0.x). 137 components, 55 blocks (authentication, dashboard, navigation, marketing, blog, commerce, communication, charts, AI chat), admin dashboard, analytics dashboard, landing page, settings, e-commerce, CRM and SaaS templates and design
 > tokens, with a Tailwind-like look built on Bootstrap. The CLI is on
@@ -26,10 +27,18 @@ npx bootcn init
 npx bootcn add button dialog
 ```
 
-`init` detects a Laravel, PHP or plain HTML project, checks for Bootstrap, asks where
+`init` detects a Laravel, React, Vue, PHP or plain HTML project, checks for Bootstrap, asks where
 files should go, writes `bootcn.json` and installs the design tokens. `add`
 shows the files it will create, asks before overwriting anything, and prints
 the `<link>` and `<script>` tags to add to your layout.
+
+### React and Vue
+
+In a React or Vue project (`react`, `next`, `vue` or `nuxt` in
+`package.json`) the same commands install `.tsx` or `.vue` components:
+Button, Dialog, Toaster, Input, Textarea, Select, Checkbox, Switch, Tabs,
+Card, Alert, Badge and Avatar so far, typed and tested. See
+[React](https://bootcn.dev/guide/react) and [Vue](https://bootcn.dev/guide/vue).
 
 ### With an AI assistant
 
@@ -44,7 +53,8 @@ and any docs page as Markdown by adding `.md` to its address. See
 
 - **Source ownership:** installed files live in your project and are yours to edit.
 - **Bootstrap-native:** built on Bootstrap 5.3+, its plugins, utilities and CSS variables.
-- **No framework lock-in:** components run with browser-native JavaScript.
+- **No framework lock-in:** components run with browser-native JavaScript; React and Vue
+  components are thin wrappers over the same CSS and JavaScript.
 - **No runtime Node.js:** Node.js is only used for development tooling.
 
 ## What is available

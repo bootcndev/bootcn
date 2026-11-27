@@ -1,7 +1,7 @@
 {
   "name": "bootcn",
   "version": "0.8.0",
-  "description": "Install copy-paste Bootstrap 5.3 components (HTML, CSS, vanilla JS) into your project.",
+  "description": "Install copy-paste Bootstrap 5.3 components (HTML, CSS, vanilla JS, React and Vue) into your project.",
   "license": "MIT",
   "author": "George Tsiros",
   "homepage": "https://github.com/bootcndev/bootcn#readme",
@@ -29,6 +29,8 @@
     "copy-paste",
     "cli",
     "vanilla-js",
+    "react",
+    "vue",
     "php"
   ],
   "scripts": {

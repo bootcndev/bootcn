@@ -68,7 +68,7 @@ In the root of your project:
 npx bootcn init
 ```
 
-`init` detects whether this is a Laravel, PHP or plain HTML project, finds
+`init` detects whether this is a Laravel, React, Vue, PHP or plain HTML project, finds
 Bootstrap and its version, and asks a few questions: which Bootstrap version
 to set up for, which [style](../themes/) and whether the default folders suit
 you. Then it writes [`bootcn.json`](./configuration) and installs the
@@ -106,6 +106,10 @@ include it:
 
 In plain HTML, copy the markup into your page. Each component page shows the
 markup and its options.
+
+In a React or Vue project `add` installs `.tsx` or `.vue` components instead
+of HTML, and prints the import lines: see [React](./react) and [Vue](./vue).
+In Laravel it writes Blade views: see [Laravel](./laravel).
 
 ## Without the CLI
 

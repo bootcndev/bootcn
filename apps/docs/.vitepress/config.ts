@@ -232,10 +232,15 @@ export default defineConfig({
           { text: 'Right to left', link: '/guide/rtl' },
           { text: 'Translations', link: '/guide/i18n' },
           { text: 'Animations', link: '/guide/animations' },
+          { text: 'AI assistants (MCP)', link: '/guide/mcp' },
+        ],
+      },
+      {
+        text: 'Frameworks',
+        items: [
           { text: 'Laravel', link: '/guide/laravel' },
           { text: 'React', link: '/guide/react' },
           { text: 'Vue', link: '/guide/vue' },
-          { text: 'AI assistants (MCP)', link: '/guide/mcp' },
         ],
       },
       ...kindSidebar('components'),
