@@ -10,6 +10,27 @@ each published version stays available under `/v/<version>/`) and the **CLI**
 
 ## Registry
 
+### 0.37.0
+
+iOS-style UI and a flow builder.
+
+- Flow builder: a visual builder for automations such as email sequences.
+  Steps joined by lines, yes/no branches, + buttons with a menu of steps,
+  warnings on unfinished steps, pan and zoom, arrow keys across the
+  drawing, and the flow as JSON for saving.
+- Segmented control: mutually exclusive options in one rounded track, on
+  native radio buttons.
+- Action sheet: choices that slide up from the bottom, with a Cancel
+  button.
+- Grouped list: settings rows in rounded groups, with icon tiles, values,
+  switches and chevrons.
+- Tab bar: bottom navigation for phones, with badges, a filled icon for
+  the current page and room for the home indicator.
+- Swipe actions: rows that slide to reveal Read, Pin, Archive or Delete,
+  a long swipe to delete, and every action reachable with the keyboard.
+- Large title: a navigation bar whose large title shrinks into the bar as
+  the page scrolls.
+
 ### 0.36.0
 
 Everyday UI.

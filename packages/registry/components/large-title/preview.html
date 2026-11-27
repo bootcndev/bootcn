@@ -1,0 +1,177 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Bootcn Large title preview</title>
+    <script>
+      // Preview theme: ?theme=dark|light, else the docs page around the frame, else light.
+      (function () {
+        var theme = new URLSearchParams(location.search).get('theme');
+        if (!theme) {
+          try {
+            theme =
+              window.parent !== window &&
+              window.parent.document.documentElement.classList.contains('dark')
+                ? 'dark'
+                : 'light';
+          } catch (error) {
+            theme = 'light';
+          }
+        }
+        document.documentElement.setAttribute('data-bs-theme', theme === 'dark' ? 'dark' : 'light');
+        // ?dir=rtl: right to left, with Bootstrap's RTL stylesheet.
+        if (new URLSearchParams(location.search).get('dir') === 'rtl') {
+          document.documentElement.setAttribute('dir', 'rtl');
+          new MutationObserver(function (records, observer) {
+            var link = document.querySelector('link[href*="bootstrap.min.css"]');
+            if (!link) return;
+            link.href = link.href.replace('bootstrap.min.css', 'bootstrap.rtl.min.css');
+            observer.disconnect();
+          }).observe(document.documentElement, { childList: true, subtree: true });
+        }
+      })();
+    </script>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.9/dist/css/bootstrap.min.css"
+    />
+    <link rel="stylesheet" href="../../themes/tokens/tokens.css" />
+    <link rel="stylesheet" href="large-title.css" />
+    <style>
+      .bootcn-large-title-demo {
+        width: 24rem;
+        max-width: 100%;
+        height: 30rem;
+        overflow-y: auto;
+        border: var(--bootcn-border-width) solid var(--bootcn-border-color);
+        border-radius: 2rem;
+        background-color: var(--bootcn-background);
+      }
+    </style>
+  </head>
+  <body>
+    <main class="container py-4">
+      <h1 class="h4 mb-4">Large title</h1>
+      <div class="bootcn-large-title-demo" id="bootcn-large-title-demo">
+        <div class="bootcn-large-title" data-bootcn-large-title>
+          <div class="bootcn-large-title__bar">
+            <a class="bootcn-large-title__back" href="#"
+              ><svg
+                class="bootcn-icon bootcn-rtl-flip"
+                width="20"
+                height="20"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+                focusable="false"
+              >
+                <path d="m15 18-6-6 6-6" /></svg
+              ><span>Lists</span></a
+            >
+            <p class="bootcn-large-title__small" aria-hidden="true">Reminders</p>
+            <div class="bootcn-large-title__actions">
+              <button type="button" class="bootcn-large-title__button" aria-label="New reminder">
+                <svg
+                  class="bootcn-icon"
+                  width="20"
+                  height="20"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  aria-hidden="true"
+                  focusable="false"
+                >
+                  <path d="M12 5v14M5 12h14" />
+                </svg>
+              </button>
+            </div>
+          </div>
+          <h2 class="bootcn-large-title__title">Reminders</h2>
+          <div class="bootcn-large-title__search">
+            <svg
+              class="bootcn-icon"
+              width="16"
+              height="16"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              aria-hidden="true"
+              focusable="false"
+            >
+              <circle cx="11" cy="11" r="7" />
+              <path d="m20 20-3.5-3.5" />
+            </svg>
+            <input
+              class="form-control"
+              type="search"
+              placeholder="Search"
+              aria-label="Search reminders"
+            />
+          </div>
+        </div>
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item d-flex align-items-center gap-3">
+            <input class="form-check-input m-0" type="checkbox" id="lt-0" />
+            <label class="form-check-label" for="lt-0">Book the dentist</label>
+          </li>
+          <li class="list-group-item d-flex align-items-center gap-3">
+            <input class="form-check-input m-0" type="checkbox" id="lt-1" />
+            <label class="form-check-label" for="lt-1">Renew the passport</label>
+          </li>
+          <li class="list-group-item d-flex align-items-center gap-3">
+            <input class="form-check-input m-0" type="checkbox" id="lt-2" />
+            <label class="form-check-label" for="lt-2">Call the bank about the card</label>
+          </li>
+          <li class="list-group-item d-flex align-items-center gap-3">
+            <input class="form-check-input m-0" type="checkbox" id="lt-3" />
+            <label class="form-check-label" for="lt-3">Pick up the dry cleaning</label>
+          </li>
+          <li class="list-group-item d-flex align-items-center gap-3">
+            <input class="form-check-input m-0" type="checkbox" id="lt-4" />
+            <label class="form-check-label" for="lt-4">Send the slides to Lena</label>
+          </li>
+          <li class="list-group-item d-flex align-items-center gap-3">
+            <input class="form-check-input m-0" type="checkbox" id="lt-5" />
+            <label class="form-check-label" for="lt-5">Water the plants</label>
+          </li>
+          <li class="list-group-item d-flex align-items-center gap-3">
+            <input class="form-check-input m-0" type="checkbox" id="lt-6" />
+            <label class="form-check-label" for="lt-6">Order printer paper</label>
+          </li>
+          <li class="list-group-item d-flex align-items-center gap-3">
+            <input class="form-check-input m-0" type="checkbox" id="lt-7" />
+            <label class="form-check-label" for="lt-7">Pay the electricity bill</label>
+          </li>
+          <li class="list-group-item d-flex align-items-center gap-3">
+            <input class="form-check-input m-0" type="checkbox" id="lt-8" />
+            <label class="form-check-label" for="lt-8">Plan the team offsite</label>
+          </li>
+          <li class="list-group-item d-flex align-items-center gap-3">
+            <input class="form-check-input m-0" type="checkbox" id="lt-9" />
+            <label class="form-check-label" for="lt-9">Return the library books</label>
+          </li>
+          <li class="list-group-item d-flex align-items-center gap-3">
+            <input class="form-check-input m-0" type="checkbox" id="lt-10" />
+            <label class="form-check-label" for="lt-10">Update the budget sheet</label>
+          </li>
+          <li class="list-group-item d-flex align-items-center gap-3">
+            <input class="form-check-input m-0" type="checkbox" id="lt-11" />
+            <label class="form-check-label" for="lt-11">Buy a birthday present for Marco</label>
+          </li>
+        </ul>
+      </div>
+    </main>
+    <script src="large-title.js"></script>
+  </body>
+</html>

@@ -1,0 +1,29 @@
+{
+  "$schema": "../../schema/registry-item.schema.json",
+  "name": "tab-bar",
+  "type": "registry:ui",
+  "title": "Tab bar",
+  "description": "A bottom navigation bar for phones, iOS style: icons with labels, the current page highlighted, badges, and a translucent bar that respects the home indicator.",
+  "version": "1.0.0",
+  "added": "0.37.0",
+  "categories": ["navigation"],
+  "dependencies": [],
+  "registryDependencies": [],
+  "compatibility": {
+    "bootstrap": "5.3",
+    "platform": ["Bootstrap CSS"]
+  },
+  "license": "MIT",
+  "files": [
+    {
+      "path": "tab-bar.html",
+      "target": "tab-bar.html",
+      "type": "registry:component"
+    },
+    {
+      "path": "tab-bar.css",
+      "target": "tab-bar.css",
+      "type": "registry:style"
+    }
+  ]
+}

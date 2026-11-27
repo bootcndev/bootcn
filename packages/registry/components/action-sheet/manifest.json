@@ -5,6 +5,7 @@
   "title": "Action sheet",
   "description": "A menu of actions that slides up from the bottom, iOS style: a title, grouped actions, a destructive action and a separate Cancel.",
   "version": "1.0.0",
+  "added": "0.37.0",
   "categories": ["overlays"],
   "dependencies": [],
   "registryDependencies": ["button"],

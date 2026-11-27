@@ -65,16 +65,16 @@ const latest = [
 ];
 
 const alsoNew = [
+  { text: 'Flow builder', href: '/components/flow-builder' },
+  { text: 'Swipe actions', href: '/components/swipe-actions' },
+  { text: 'Tab bar', href: '/components/tab-bar' },
+  { text: 'Large title', href: '/components/large-title' },
+  { text: 'Tree', href: '/components/tree' },
+  { text: 'Signature pad', href: '/components/signature-pad' },
   { text: 'Route tracker', href: '/components/route-tracker' },
   { text: 'Product tour', href: '/components/tour' },
   { text: 'Modal', href: '/components/modal' },
   { text: 'Stepper', href: '/components/stepper' },
-  { text: 'Get-started checklist', href: '/components/onboarding-checklist' },
-  { text: 'Toaster', href: '/components/toaster' },
-  { text: 'Audio player', href: '/components/audio-player' },
-  { text: 'Social actions', href: '/components/social-actions' },
-  { text: 'Location pin', href: '/components/location-pin' },
-  { text: 'Choropleth map', href: '/components/choropleth' },
 ];
 
 const live = [
@@ -148,7 +148,7 @@ const features = [
       />
       <a class="bootcn-landing__pill" :href="withBase('/changelog')">
         <span class="bootcn-landing__pill-tag">New</span>
-        Delivery tracking, a video player and onboarding flows
+        A flow builder and iOS-style navigation
         <span aria-hidden="true">→</span>
       </a>
       <h1 id="bootcn-landing-title" class="bootcn-landing__title">

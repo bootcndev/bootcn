@@ -1,0 +1,1033 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Bootcn Flow builder preview</title>
+    <script>
+      // Preview theme: ?theme=dark|light, else the docs page around the frame, else light.
+      (function () {
+        var theme = new URLSearchParams(location.search).get('theme');
+        if (!theme) {
+          try {
+            theme =
+              window.parent !== window &&
+              window.parent.document.documentElement.classList.contains('dark')
+                ? 'dark'
+                : 'light';
+          } catch (error) {
+            theme = 'light';
+          }
+        }
+        document.documentElement.setAttribute('data-bs-theme', theme === 'dark' ? 'dark' : 'light');
+        // ?dir=rtl: right to left, with Bootstrap's RTL stylesheet.
+        if (new URLSearchParams(location.search).get('dir') === 'rtl') {
+          document.documentElement.setAttribute('dir', 'rtl');
+          new MutationObserver(function (records, observer) {
+            var link = document.querySelector('link[href*="bootstrap.min.css"]');
+            if (!link) return;
+            link.href = link.href.replace('bootstrap.min.css', 'bootstrap.rtl.min.css');
+            observer.disconnect();
+          }).observe(document.documentElement, { childList: true, subtree: true });
+        }
+      })();
+    </script>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.9/dist/css/bootstrap.min.css"
+    />
+    <link rel="stylesheet" href="../../themes/tokens/tokens.css" />
+    <link rel="stylesheet" href="flow-builder.css" />
+  </head>
+  <body>
+    <main class="container py-4" style="max-width: 72rem">
+      <h1 class="h4 mb-4">Flow builder</h1>
+      <div class="bootcn-flow" data-bootcn-flow>
+        <div class="bootcn-flow__toolbar" role="toolbar" aria-label="Zoom">
+          <button
+            type="button"
+            class="bootcn-flow__tool"
+            data-flow-zoom="out"
+            aria-label="Zoom out"
+          >
+            <svg
+              class="bootcn-icon"
+              width="16"
+              height="16"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              aria-hidden="true"
+              focusable="false"
+            >
+              <path d="M5 12h14" />
+            </svg>
+          </button>
+          <output class="bootcn-flow__zoom" aria-live="polite">100%</output>
+          <button type="button" class="bootcn-flow__tool" data-flow-zoom="in" aria-label="Zoom in">
+            <svg
+              class="bootcn-icon"
+              width="16"
+              height="16"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              aria-hidden="true"
+              focusable="false"
+            >
+              <path d="M12 5v14M5 12h14" />
+            </svg>
+          </button>
+          <button
+            type="button"
+            class="bootcn-flow__tool"
+            data-flow-zoom="fit"
+            aria-label="Fit to screen"
+          >
+            <svg
+              class="bootcn-icon"
+              width="16"
+              height="16"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              aria-hidden="true"
+              focusable="false"
+            >
+              <path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5" />
+            </svg>
+          </button>
+        </div>
+        <div class="bootcn-flow__viewport">
+          <div class="bootcn-flow__canvas">
+            <ol class="bootcn-flow__steps" aria-label="Welcome sequence">
+              <li class="bootcn-flow__step">
+                <button
+                  type="button"
+                  class="bootcn-flow__node"
+                  data-kind="trigger"
+                  data-id="trigger"
+                  aria-pressed="false"
+                >
+                  <span class="bootcn-flow__head"
+                    ><span class="bootcn-flow__icon"
+                      ><svg
+                        class="bootcn-icon"
+                        width="16"
+                        height="16"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        aria-hidden="true"
+                        focusable="false"
+                      >
+                        <path d="M13 2 3 14h9l-1 8 10-12h-9z" /></svg></span
+                    ><span class="bootcn-flow__text"
+                      ><span class="bootcn-flow__eyebrow">When someone</span
+                      ><span class="bootcn-flow__title">Joins the newsletter</span
+                      ><span class="bootcn-flow__subtitle">Welcome list</span></span
+                    ></span
+                  ><span class="bootcn-flow__status">1,284 people so far</span>
+                </button>
+                <div class="bootcn-flow__link">
+                  <button type="button" class="bootcn-flow__add">
+                    <svg
+                      class="bootcn-icon"
+                      width="12"
+                      height="12"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      aria-hidden="true"
+                      focusable="false"
+                    >
+                      <path d="M12 5v14M5 12h14" /></svg
+                    ><span class="visually-hidden">Add a step</span>
+                  </button>
+                </div>
+              </li>
+              <li class="bootcn-flow__step">
+                <button
+                  type="button"
+                  class="bootcn-flow__node"
+                  data-kind="email"
+                  data-id="email-1"
+                  aria-pressed="false"
+                >
+                  <span class="bootcn-flow__head"
+                    ><span class="bootcn-flow__icon"
+                      ><svg
+                        class="bootcn-icon"
+                        width="16"
+                        height="16"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        aria-hidden="true"
+                        focusable="false"
+                      >
+                        <rect x="3" y="5" width="18" height="14" rx="2" />
+                        <path d="m3 7 9 6 9-6" /></svg></span
+                    ><span class="bootcn-flow__text"
+                      ><span class="bootcn-flow__eyebrow">Email 1</span
+                      ><span class="bootcn-flow__title">Welcome to Northwind</span
+                      ><span class="bootcn-flow__subtitle">Your free guide is inside</span></span
+                    ></span
+                  ><span class="bootcn-flow__status">Sent to 1,284</span>
+                </button>
+                <div class="bootcn-flow__link">
+                  <button type="button" class="bootcn-flow__add">
+                    <svg
+                      class="bootcn-icon"
+                      width="12"
+                      height="12"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      aria-hidden="true"
+                      focusable="false"
+                    >
+                      <path d="M12 5v14M5 12h14" /></svg
+                    ><span class="visually-hidden">Add a step</span>
+                  </button>
+                </div>
+              </li>
+              <li class="bootcn-flow__step">
+                <button
+                  type="button"
+                  class="bootcn-flow__node"
+                  data-kind="wait"
+                  data-id="wait-1"
+                  aria-pressed="false"
+                >
+                  <span class="bootcn-flow__head"
+                    ><span class="bootcn-flow__icon"
+                      ><svg
+                        class="bootcn-icon"
+                        width="16"
+                        height="16"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        aria-hidden="true"
+                        focusable="false"
+                      >
+                        <circle cx="12" cy="12" r="9" />
+                        <path d="M12 7v5l3 2" /></svg></span
+                    ><span class="bootcn-flow__text"
+                      ><span class="bootcn-flow__eyebrow">Wait</span
+                      ><span class="bootcn-flow__title">2 days</span></span
+                    ></span
+                  ><span class="bootcn-flow__status">38 people waiting</span>
+                </button>
+                <div class="bootcn-flow__link">
+                  <button type="button" class="bootcn-flow__add">
+                    <svg
+                      class="bootcn-icon"
+                      width="12"
+                      height="12"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      aria-hidden="true"
+                      focusable="false"
+                    >
+                      <path d="M12 5v14M5 12h14" /></svg
+                    ><span class="visually-hidden">Add a step</span>
+                  </button>
+                </div>
+              </li>
+              <li class="bootcn-flow__step">
+                <button
+                  type="button"
+                  class="bootcn-flow__node"
+                  data-kind="condition"
+                  data-id="opened-1"
+                  aria-pressed="false"
+                >
+                  <span class="bootcn-flow__head"
+                    ><span class="bootcn-flow__icon"
+                      ><svg
+                        class="bootcn-icon"
+                        width="16"
+                        height="16"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        aria-hidden="true"
+                        focusable="false"
+                      >
+                        <path d="M6 3v6a6 6 0 0 0 6 6h0a6 6 0 0 1 6 6v0M18 3v6a6 6 0 0 1-6 6" />
+                        <path d="m3 6 3-3 3 3M15 6l3-3 3 3" /></svg></span
+                    ><span class="bootcn-flow__text"
+                      ><span class="bootcn-flow__eyebrow">If they</span
+                      ><span class="bootcn-flow__title">Opened the email before</span></span
+                    ></span
+                  ><span class="bootcn-flow__status">Checked 1,246 people</span>
+                </button>
+                <ul class="bootcn-flow__branches">
+                  <li class="bootcn-flow__branch">
+                    <span class="bootcn-flow__label">Yes</span>
+                    <div class="bootcn-flow__link">
+                      <button type="button" class="bootcn-flow__add">
+                        <svg
+                          class="bootcn-icon"
+                          width="12"
+                          height="12"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          stroke="currentColor"
+                          stroke-width="2"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          aria-hidden="true"
+                          focusable="false"
+                        >
+                          <path d="M12 5v14M5 12h14" /></svg
+                        ><span class="visually-hidden">Add a step</span>
+                      </button>
+                    </div>
+                    <ol class="bootcn-flow__steps">
+                      <li class="bootcn-flow__step">
+                        <button
+                          type="button"
+                          class="bootcn-flow__node"
+                          data-kind="email"
+                          data-id="email-2a"
+                          aria-pressed="false"
+                        >
+                          <span class="bootcn-flow__head"
+                            ><span class="bootcn-flow__icon"
+                              ><svg
+                                class="bootcn-icon"
+                                width="16"
+                                height="16"
+                                viewBox="0 0 24 24"
+                                fill="none"
+                                stroke="currentColor"
+                                stroke-width="2"
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                aria-hidden="true"
+                                focusable="false"
+                              >
+                                <rect x="3" y="5" width="18" height="14" rx="2" />
+                                <path d="m3 7 9 6 9-6" /></svg></span
+                            ><span class="bootcn-flow__text"
+                              ><span class="bootcn-flow__eyebrow">Email 2</span
+                              ><span class="bootcn-flow__title"
+                                >Did you get a chance to read it?</span
+                              ><span class="bootcn-flow__subtitle"
+                                >I'd love to hear what you think</span
+                              ></span
+                            ></span
+                          ><span class="bootcn-flow__status">Not sent yet</span>
+                        </button>
+                        <div class="bootcn-flow__link">
+                          <button type="button" class="bootcn-flow__add">
+                            <svg
+                              class="bootcn-icon"
+                              width="12"
+                              height="12"
+                              viewBox="0 0 24 24"
+                              fill="none"
+                              stroke="currentColor"
+                              stroke-width="2"
+                              stroke-linecap="round"
+                              stroke-linejoin="round"
+                              aria-hidden="true"
+                              focusable="false"
+                            >
+                              <path d="M12 5v14M5 12h14" /></svg
+                            ><span class="visually-hidden">Add a step</span>
+                          </button>
+                        </div>
+                      </li>
+                      <li class="bootcn-flow__end">
+                        <svg
+                          class="bootcn-icon"
+                          width="14"
+                          height="14"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          stroke="currentColor"
+                          stroke-width="2"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          aria-hidden="true"
+                          focusable="false"
+                        >
+                          <path d="M5 21V4M5 4h11l-2 4 2 4H5" /></svg
+                        ><span>End</span>
+                      </li>
+                    </ol>
+                  </li>
+                  <li class="bootcn-flow__branch">
+                    <span class="bootcn-flow__label">No</span>
+                    <div class="bootcn-flow__link">
+                      <button type="button" class="bootcn-flow__add">
+                        <svg
+                          class="bootcn-icon"
+                          width="12"
+                          height="12"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          stroke="currentColor"
+                          stroke-width="2"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          aria-hidden="true"
+                          focusable="false"
+                        >
+                          <path d="M12 5v14M5 12h14" /></svg
+                        ><span class="visually-hidden">Add a step</span>
+                      </button>
+                    </div>
+                    <ol class="bootcn-flow__steps">
+                      <li class="bootcn-flow__step">
+                        <button
+                          type="button"
+                          class="bootcn-flow__node"
+                          data-kind="email"
+                          data-id="email-2b"
+                          aria-pressed="true"
+                        >
+                          <span class="bootcn-flow__head"
+                            ><span class="bootcn-flow__icon"
+                              ><svg
+                                class="bootcn-icon"
+                                width="16"
+                                height="16"
+                                viewBox="0 0 24 24"
+                                fill="none"
+                                stroke="currentColor"
+                                stroke-width="2"
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                aria-hidden="true"
+                                focusable="false"
+                              >
+                                <rect x="3" y="5" width="18" height="14" rx="2" />
+                                <path d="m3 7 9 6 9-6" /></svg></span
+                            ><span class="bootcn-flow__text"
+                              ><span class="bootcn-flow__eyebrow">Email 2</span
+                              ><span class="bootcn-flow__title">Your guide is waiting for you</span
+                              ><span class="bootcn-flow__subtitle"
+                                >In case you missed it</span
+                              ></span
+                            ></span
+                          ><span class="bootcn-flow__status bootcn-flow__status--warning"
+                            ><svg
+                              class="bootcn-icon"
+                              width="14"
+                              height="14"
+                              viewBox="0 0 24 24"
+                              fill="none"
+                              stroke="currentColor"
+                              stroke-width="2"
+                              stroke-linecap="round"
+                              stroke-linejoin="round"
+                              aria-hidden="true"
+                              focusable="false"
+                            >
+                              <circle cx="12" cy="12" r="9" />
+                              <path d="M12 8v4M12 16h.01" /></svg
+                            >Add text and a link to each button</span
+                          >
+                        </button>
+                        <div class="bootcn-flow__link">
+                          <button type="button" class="bootcn-flow__add">
+                            <svg
+                              class="bootcn-icon"
+                              width="12"
+                              height="12"
+                              viewBox="0 0 24 24"
+                              fill="none"
+                              stroke="currentColor"
+                              stroke-width="2"
+                              stroke-linecap="round"
+                              stroke-linejoin="round"
+                              aria-hidden="true"
+                              focusable="false"
+                            >
+                              <path d="M12 5v14M5 12h14" /></svg
+                            ><span class="visually-hidden">Add a step</span>
+                          </button>
+                        </div>
+                      </li>
+                      <li class="bootcn-flow__step">
+                        <button
+                          type="button"
+                          class="bootcn-flow__node"
+                          data-kind="wait"
+                          data-id="wait-2"
+                          aria-pressed="false"
+                        >
+                          <span class="bootcn-flow__head"
+                            ><span class="bootcn-flow__icon"
+                              ><svg
+                                class="bootcn-icon"
+                                width="16"
+                                height="16"
+                                viewBox="0 0 24 24"
+                                fill="none"
+                                stroke="currentColor"
+                                stroke-width="2"
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                aria-hidden="true"
+                                focusable="false"
+                              >
+                                <circle cx="12" cy="12" r="9" />
+                                <path d="M12 7v5l3 2" /></svg></span
+                            ><span class="bootcn-flow__text"
+                              ><span class="bootcn-flow__eyebrow">Wait</span
+                              ><span class="bootcn-flow__title">3 days</span></span
+                            ></span
+                          ><span class="bootcn-flow__status">Nobody waiting yet</span>
+                        </button>
+                        <div class="bootcn-flow__link">
+                          <button type="button" class="bootcn-flow__add">
+                            <svg
+                              class="bootcn-icon"
+                              width="12"
+                              height="12"
+                              viewBox="0 0 24 24"
+                              fill="none"
+                              stroke="currentColor"
+                              stroke-width="2"
+                              stroke-linecap="round"
+                              stroke-linejoin="round"
+                              aria-hidden="true"
+                              focusable="false"
+                            >
+                              <path d="M12 5v14M5 12h14" /></svg
+                            ><span class="visually-hidden">Add a step</span>
+                          </button>
+                        </div>
+                      </li>
+                      <li class="bootcn-flow__step">
+                        <button
+                          type="button"
+                          class="bootcn-flow__node"
+                          data-kind="condition"
+                          data-id="clicked-1"
+                          aria-pressed="false"
+                        >
+                          <span class="bootcn-flow__head"
+                            ><span class="bootcn-flow__icon"
+                              ><svg
+                                class="bootcn-icon"
+                                width="16"
+                                height="16"
+                                viewBox="0 0 24 24"
+                                fill="none"
+                                stroke="currentColor"
+                                stroke-width="2"
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                aria-hidden="true"
+                                focusable="false"
+                              >
+                                <path
+                                  d="M6 3v6a6 6 0 0 0 6 6h0a6 6 0 0 1 6 6v0M18 3v6a6 6 0 0 1-6 6"
+                                />
+                                <path d="m3 6 3-3 3 3M15 6l3-3 3 3" /></svg></span
+                            ><span class="bootcn-flow__text"
+                              ><span class="bootcn-flow__eyebrow">If they</span
+                              ><span class="bootcn-flow__title">Clicked a link</span></span
+                            ></span
+                          ><span class="bootcn-flow__status">Nobody checked yet</span>
+                        </button>
+                        <ul class="bootcn-flow__branches">
+                          <li class="bootcn-flow__branch">
+                            <span class="bootcn-flow__label">Yes</span>
+                            <div class="bootcn-flow__link">
+                              <button type="button" class="bootcn-flow__add">
+                                <svg
+                                  class="bootcn-icon"
+                                  width="12"
+                                  height="12"
+                                  viewBox="0 0 24 24"
+                                  fill="none"
+                                  stroke="currentColor"
+                                  stroke-width="2"
+                                  stroke-linecap="round"
+                                  stroke-linejoin="round"
+                                  aria-hidden="true"
+                                  focusable="false"
+                                >
+                                  <path d="M12 5v14M5 12h14" /></svg
+                                ><span class="visually-hidden">Add a step</span>
+                              </button>
+                            </div>
+                            <ol class="bootcn-flow__steps">
+                              <li class="bootcn-flow__end">
+                                <svg
+                                  class="bootcn-icon"
+                                  width="14"
+                                  height="14"
+                                  viewBox="0 0 24 24"
+                                  fill="none"
+                                  stroke="currentColor"
+                                  stroke-width="2"
+                                  stroke-linecap="round"
+                                  stroke-linejoin="round"
+                                  aria-hidden="true"
+                                  focusable="false"
+                                >
+                                  <path d="M5 21V4M5 4h11l-2 4 2 4H5" /></svg
+                                ><span>End</span>
+                              </li>
+                            </ol>
+                          </li>
+                          <li class="bootcn-flow__branch">
+                            <span class="bootcn-flow__label">No</span>
+                            <div class="bootcn-flow__link">
+                              <button type="button" class="bootcn-flow__add">
+                                <svg
+                                  class="bootcn-icon"
+                                  width="12"
+                                  height="12"
+                                  viewBox="0 0 24 24"
+                                  fill="none"
+                                  stroke="currentColor"
+                                  stroke-width="2"
+                                  stroke-linecap="round"
+                                  stroke-linejoin="round"
+                                  aria-hidden="true"
+                                  focusable="false"
+                                >
+                                  <path d="M12 5v14M5 12h14" /></svg
+                                ><span class="visually-hidden">Add a step</span>
+                              </button>
+                            </div>
+                            <ol class="bootcn-flow__steps">
+                              <li class="bootcn-flow__step">
+                                <button
+                                  type="button"
+                                  class="bootcn-flow__node"
+                                  data-kind="email"
+                                  data-id="email-3"
+                                  aria-pressed="false"
+                                >
+                                  <span class="bootcn-flow__head"
+                                    ><span class="bootcn-flow__icon"
+                                      ><svg
+                                        class="bootcn-icon"
+                                        width="16"
+                                        height="16"
+                                        viewBox="0 0 24 24"
+                                        fill="none"
+                                        stroke="currentColor"
+                                        stroke-width="2"
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round"
+                                        aria-hidden="true"
+                                        focusable="false"
+                                      >
+                                        <rect x="3" y="5" width="18" height="14" rx="2" />
+                                        <path d="m3 7 9 6 9-6" /></svg></span
+                                    ><span class="bootcn-flow__text"
+                                      ><span class="bootcn-flow__eyebrow">Email 3</span
+                                      ><span class="bootcn-flow__title"
+                                        >Last chance: your guide</span
+                                      ><span class="bootcn-flow__subtitle"
+                                        >We will stop writing after this</span
+                                      ></span
+                                    ></span
+                                  ><span class="bootcn-flow__status">Not sent yet</span>
+                                </button>
+                                <div class="bootcn-flow__link">
+                                  <button type="button" class="bootcn-flow__add">
+                                    <svg
+                                      class="bootcn-icon"
+                                      width="12"
+                                      height="12"
+                                      viewBox="0 0 24 24"
+                                      fill="none"
+                                      stroke="currentColor"
+                                      stroke-width="2"
+                                      stroke-linecap="round"
+                                      stroke-linejoin="round"
+                                      aria-hidden="true"
+                                      focusable="false"
+                                    >
+                                      <path d="M12 5v14M5 12h14" /></svg
+                                    ><span class="visually-hidden">Add a step</span>
+                                  </button>
+                                </div>
+                              </li>
+                              <li class="bootcn-flow__end">
+                                <svg
+                                  class="bootcn-icon"
+                                  width="14"
+                                  height="14"
+                                  viewBox="0 0 24 24"
+                                  fill="none"
+                                  stroke="currentColor"
+                                  stroke-width="2"
+                                  stroke-linecap="round"
+                                  stroke-linejoin="round"
+                                  aria-hidden="true"
+                                  focusable="false"
+                                >
+                                  <path d="M5 21V4M5 4h11l-2 4 2 4H5" /></svg
+                                ><span>End</span>
+                              </li>
+                            </ol>
+                          </li>
+                        </ul>
+                      </li>
+                    </ol>
+                  </li>
+                </ul>
+              </li>
+            </ol>
+          </div>
+        </div>
+        <template data-flow-step="email" data-label="Send an email">
+          <li class="bootcn-flow__step">
+            <button type="button" class="bootcn-flow__node" data-kind="email" aria-pressed="false">
+              <span class="bootcn-flow__head"
+                ><span class="bootcn-flow__icon"
+                  ><svg
+                    class="bootcn-icon"
+                    width="16"
+                    height="16"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    aria-hidden="true"
+                    focusable="false"
+                  >
+                    <rect x="3" y="5" width="18" height="14" rx="2" />
+                    <path d="m3 7 9 6 9-6" /></svg></span
+                ><span class="bootcn-flow__text"
+                  ><span class="bootcn-flow__eyebrow">Email</span
+                  ><span class="bootcn-flow__title">New email</span
+                  ><span class="bootcn-flow__subtitle">Write a subject line</span></span
+                ></span
+              ><span class="bootcn-flow__status bootcn-flow__status--warning"
+                ><svg
+                  class="bootcn-icon"
+                  width="14"
+                  height="14"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  aria-hidden="true"
+                  focusable="false"
+                >
+                  <circle cx="12" cy="12" r="9" />
+                  <path d="M12 8v4M12 16h.01" /></svg
+                >Add a subject and some text</span
+              >
+            </button>
+            <div class="bootcn-flow__link">
+              <button type="button" class="bootcn-flow__add">
+                <svg
+                  class="bootcn-icon"
+                  width="12"
+                  height="12"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  aria-hidden="true"
+                  focusable="false"
+                >
+                  <path d="M12 5v14M5 12h14" /></svg
+                ><span class="visually-hidden">Add a step</span>
+              </button>
+            </div>
+          </li>
+        </template>
+        <template data-flow-step="wait" data-label="Wait">
+          <li class="bootcn-flow__step">
+            <button type="button" class="bootcn-flow__node" data-kind="wait" aria-pressed="false">
+              <span class="bootcn-flow__head"
+                ><span class="bootcn-flow__icon"
+                  ><svg
+                    class="bootcn-icon"
+                    width="16"
+                    height="16"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    aria-hidden="true"
+                    focusable="false"
+                  >
+                    <circle cx="12" cy="12" r="9" />
+                    <path d="M12 7v5l3 2" /></svg></span
+                ><span class="bootcn-flow__text"
+                  ><span class="bootcn-flow__eyebrow">Wait</span
+                  ><span class="bootcn-flow__title">1 day</span></span
+                ></span
+              ><span class="bootcn-flow__status">Then go on</span>
+            </button>
+            <div class="bootcn-flow__link">
+              <button type="button" class="bootcn-flow__add">
+                <svg
+                  class="bootcn-icon"
+                  width="12"
+                  height="12"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  aria-hidden="true"
+                  focusable="false"
+                >
+                  <path d="M12 5v14M5 12h14" /></svg
+                ><span class="visually-hidden">Add a step</span>
+              </button>
+            </div>
+          </li>
+        </template>
+        <template data-flow-step="tag" data-label="Add a tag">
+          <li class="bootcn-flow__step">
+            <button type="button" class="bootcn-flow__node" data-kind="tag" aria-pressed="false">
+              <span class="bootcn-flow__head"
+                ><span class="bootcn-flow__icon"
+                  ><svg
+                    class="bootcn-icon"
+                    width="16"
+                    height="16"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    aria-hidden="true"
+                    focusable="false"
+                  >
+                    <path d="M3 12V4a1 1 0 0 1 1-1h8l9 9-9 9z" />
+                    <circle cx="7.5" cy="7.5" r="1.5" /></svg></span
+                ><span class="bootcn-flow__text"
+                  ><span class="bootcn-flow__eyebrow">Add a tag</span
+                  ><span class="bootcn-flow__title">Choose a tag</span></span
+                ></span
+              ><span class="bootcn-flow__status bootcn-flow__status--warning"
+                ><svg
+                  class="bootcn-icon"
+                  width="14"
+                  height="14"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  aria-hidden="true"
+                  focusable="false"
+                >
+                  <circle cx="12" cy="12" r="9" />
+                  <path d="M12 8v4M12 16h.01" /></svg
+                >Pick the tag to add</span
+              >
+            </button>
+            <div class="bootcn-flow__link">
+              <button type="button" class="bootcn-flow__add">
+                <svg
+                  class="bootcn-icon"
+                  width="12"
+                  height="12"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  aria-hidden="true"
+                  focusable="false"
+                >
+                  <path d="M12 5v14M5 12h14" /></svg
+                ><span class="visually-hidden">Add a step</span>
+              </button>
+            </div>
+          </li>
+        </template>
+        <template data-flow-step="condition" data-label="Condition (yes or no)">
+          <li class="bootcn-flow__step">
+            <button
+              type="button"
+              class="bootcn-flow__node"
+              data-kind="condition"
+              aria-pressed="false"
+            >
+              <span class="bootcn-flow__head"
+                ><span class="bootcn-flow__icon"
+                  ><svg
+                    class="bootcn-icon"
+                    width="16"
+                    height="16"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    aria-hidden="true"
+                    focusable="false"
+                  >
+                    <path d="M6 3v6a6 6 0 0 0 6 6h0a6 6 0 0 1 6 6v0M18 3v6a6 6 0 0 1-6 6" />
+                    <path d="m3 6 3-3 3 3M15 6l3-3 3 3" /></svg></span
+                ><span class="bootcn-flow__text"
+                  ><span class="bootcn-flow__eyebrow">If they</span
+                  ><span class="bootcn-flow__title">Opened the last email</span></span
+                ></span
+              ><span class="bootcn-flow__status bootcn-flow__status--warning"
+                ><svg
+                  class="bootcn-icon"
+                  width="14"
+                  height="14"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  aria-hidden="true"
+                  focusable="false"
+                >
+                  <circle cx="12" cy="12" r="9" />
+                  <path d="M12 8v4M12 16h.01" /></svg
+                >Wait before it, to give people time to read</span
+              >
+            </button>
+            <ul class="bootcn-flow__branches">
+              <li class="bootcn-flow__branch">
+                <span class="bootcn-flow__label">Yes</span>
+                <div class="bootcn-flow__link">
+                  <button type="button" class="bootcn-flow__add">
+                    <svg
+                      class="bootcn-icon"
+                      width="12"
+                      height="12"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      aria-hidden="true"
+                      focusable="false"
+                    >
+                      <path d="M12 5v14M5 12h14" /></svg
+                    ><span class="visually-hidden">Add a step</span>
+                  </button>
+                </div>
+                <ol class="bootcn-flow__steps">
+                  <li class="bootcn-flow__end">
+                    <svg
+                      class="bootcn-icon"
+                      width="14"
+                      height="14"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      aria-hidden="true"
+                      focusable="false"
+                    >
+                      <path d="M5 21V4M5 4h11l-2 4 2 4H5" /></svg
+                    ><span>End</span>
+                  </li>
+                </ol>
+              </li>
+              <li class="bootcn-flow__branch">
+                <span class="bootcn-flow__label">No</span>
+                <div class="bootcn-flow__link">
+                  <button type="button" class="bootcn-flow__add">
+                    <svg
+                      class="bootcn-icon"
+                      width="12"
+                      height="12"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      aria-hidden="true"
+                      focusable="false"
+                    >
+                      <path d="M12 5v14M5 12h14" /></svg
+                    ><span class="visually-hidden">Add a step</span>
+                  </button>
+                </div>
+                <ol class="bootcn-flow__steps">
+                  <li class="bootcn-flow__end">
+                    <svg
+                      class="bootcn-icon"
+                      width="14"
+                      height="14"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      aria-hidden="true"
+                      focusable="false"
+                    >
+                      <path d="M5 21V4M5 4h11l-2 4 2 4H5" /></svg
+                    ><span>End</span>
+                  </li>
+                </ol>
+              </li>
+            </ul>
+          </li>
+        </template>
+      </div>
+    </main>
+    <script src="flow-builder.js"></script>
+  </body>
+</html>

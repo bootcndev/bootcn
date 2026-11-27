@@ -1,0 +1,34 @@
+{
+  "$schema": "../../schema/registry-item.schema.json",
+  "name": "large-title",
+  "type": "registry:ui",
+  "title": "Large title",
+  "description": "An iOS-style navigation bar with a large title that shrinks into the bar as the page scrolls, with a back link, actions and an optional search field.",
+  "version": "1.0.0",
+  "added": "0.37.0",
+  "categories": ["navigation"],
+  "dependencies": [],
+  "registryDependencies": [],
+  "compatibility": {
+    "bootstrap": "5.3",
+    "platform": ["Bootstrap CSS"]
+  },
+  "license": "MIT",
+  "files": [
+    {
+      "path": "large-title.html",
+      "target": "large-title.html",
+      "type": "registry:component"
+    },
+    {
+      "path": "large-title.css",
+      "target": "large-title.css",
+      "type": "registry:style"
+    },
+    {
+      "path": "large-title.js",
+      "target": "large-title.js",
+      "type": "registry:script"
+    }
+  ]
+}

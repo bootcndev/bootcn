@@ -1,0 +1,411 @@
+.bootcn-flow {
+  --bootcn-flow-line: color-mix(in srgb, var(--bootcn-foreground) 22%, transparent);
+  --bootcn-flow-node-width: 15rem;
+  --bootcn-flow-gap: 2.75rem;
+  position: relative;
+  overflow: hidden;
+  border: var(--bootcn-border-width) solid var(--bootcn-border-color);
+  border-radius: var(--bootcn-radius-xl);
+  background-color: var(--bootcn-muted);
+}
+
+/* ------------------------------------------------------------- canvas */
+
+.bootcn-flow__viewport {
+  height: var(--bootcn-flow-height, 36rem);
+  overflow: auto;
+  background-image: radial-gradient(
+    circle,
+    color-mix(in srgb, var(--bootcn-foreground) 14%, transparent) 1px,
+    transparent 1.5px
+  );
+  background-size: 1.25rem 1.25rem;
+  cursor: grab;
+  overscroll-behavior: contain;
+}
+
+.bootcn-flow.is-panning .bootcn-flow__viewport {
+  cursor: grabbing;
+  user-select: none;
+}
+
+.bootcn-flow__canvas {
+  display: flex;
+  justify-content: center;
+  width: max-content;
+  min-width: 100%;
+  padding: 2rem 2rem 3rem;
+  zoom: var(--bootcn-flow-zoom, 1);
+}
+
+/* -------------------------------------------------------------- steps */
+
+.bootcn-flow__steps,
+.bootcn-flow__branches {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.bootcn-flow__steps {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.bootcn-flow__step {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* The line between two steps, with its + button in the middle. */
+.bootcn-flow__link {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.5rem;
+  height: var(--bootcn-flow-gap);
+}
+
+.bootcn-flow__link::before {
+  position: absolute;
+  inset-block: 0;
+  inset-inline-start: 50%;
+  border-inline-start: 1px solid var(--bootcn-flow-line);
+  content: '';
+}
+
+.bootcn-flow__add {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.25rem;
+  height: 1.25rem;
+  padding: 0;
+  border: 1px solid var(--bootcn-flow-line);
+  border-radius: 50%;
+  background-color: var(--bootcn-background);
+  color: var(--bootcn-muted-foreground);
+  transition:
+    transform 150ms ease,
+    color 150ms ease;
+}
+
+.bootcn-flow__add:hover,
+.bootcn-flow__add[aria-expanded='true'] {
+  border-color: var(--bootcn-foreground);
+  color: var(--bootcn-foreground);
+  transform: scale(1.15);
+}
+
+.bootcn-flow__add:focus-visible,
+.bootcn-flow__tool:focus-visible,
+.bootcn-flow__menu-item:focus-visible {
+  outline: 0;
+  box-shadow: 0 0 0 2px var(--bootcn-ring);
+}
+
+/* --------------------------------------------------------------- nodes */
+
+.bootcn-flow__node {
+  display: flex;
+  flex-direction: column;
+  width: var(--bootcn-flow-node-width);
+  padding: 0;
+  overflow: hidden;
+  border: var(--bootcn-border-width) solid var(--bootcn-border-color);
+  border-radius: var(--bootcn-radius-lg);
+  background-color: var(--bootcn-background);
+  box-shadow: var(--bootcn-shadow-sm);
+  color: var(--bootcn-foreground);
+  text-align: start;
+  transition:
+    box-shadow 150ms ease,
+    border-color 150ms ease;
+}
+
+.bootcn-flow__node:hover {
+  box-shadow: var(--bootcn-shadow-md);
+}
+
+.bootcn-flow__node:focus-visible {
+  outline: 0;
+  box-shadow:
+    0 0 0 2px var(--bootcn-background),
+    0 0 0 4px var(--bootcn-ring);
+}
+
+.bootcn-flow__node[aria-pressed='true'] {
+  border-color: var(--bootcn-foreground);
+  box-shadow: 0 0 0 1px var(--bootcn-foreground);
+}
+
+.bootcn-flow__head {
+  display: flex;
+  align-items: center;
+  gap: 0.625rem;
+  padding: 0.625rem 0.75rem;
+}
+
+.bootcn-flow__icon {
+  display: inline-flex;
+  flex: none;
+  align-items: center;
+  justify-content: center;
+  width: 2rem;
+  height: 2rem;
+  border-radius: var(--bootcn-radius-md);
+  background-color: var(--bootcn-muted);
+}
+
+.bootcn-flow__text {
+  display: grid;
+  min-width: 0;
+}
+
+.bootcn-flow__eyebrow {
+  color: var(--bootcn-muted-foreground);
+  font-size: 0.6875rem;
+  line-height: 1.3;
+}
+
+.bootcn-flow__title {
+  overflow: hidden;
+  font-size: 0.875rem;
+  font-weight: 500;
+  line-height: 1.35;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.bootcn-flow__subtitle {
+  overflow: hidden;
+  color: var(--bootcn-muted-foreground);
+  font-size: 0.75rem;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.bootcn-flow__status {
+  display: flex;
+  align-items: center;
+  gap: 0.375rem;
+  padding: 0.375rem 0.75rem;
+  border-top: var(--bootcn-border-width) solid var(--bootcn-border-color);
+  color: var(--bootcn-muted-foreground);
+  font-size: 0.6875rem;
+}
+
+.bootcn-flow__status--warning {
+  border-top-color: color-mix(in srgb, #d97706 25%, transparent);
+  background-color: color-mix(in srgb, #f59e0b 12%, var(--bootcn-background));
+  color: #92400e;
+}
+
+[data-bs-theme='dark'] .bootcn-flow__status--warning {
+  color: #fcd34d;
+}
+
+.bootcn-flow__status .bootcn-icon {
+  flex: none;
+}
+
+/* ------------------------------------------------------------ branches */
+
+.bootcn-flow__branches {
+  position: relative;
+  display: flex;
+  align-items: flex-start;
+  padding-top: 1.25rem;
+}
+
+/* The stem from the condition down to the branches. */
+.bootcn-flow__branches::before {
+  position: absolute;
+  top: 0;
+  inset-inline-start: 50%;
+  height: 1.25rem;
+  border-inline-start: 1px solid var(--bootcn-flow-line);
+  content: '';
+}
+
+.bootcn-flow__branch {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1.25rem 1.25rem 0;
+}
+
+/* The bar across the branches: rounded into the outer ones. */
+.bootcn-flow__branch::before {
+  position: absolute;
+  top: 0;
+  inset-inline: 0;
+  border-top: 1px solid var(--bootcn-flow-line);
+  content: '';
+}
+
+.bootcn-flow__branch::after {
+  position: absolute;
+  top: 0;
+  inset-inline-start: 50%;
+  height: 1.25rem;
+  border-inline-start: 1px solid var(--bootcn-flow-line);
+  content: '';
+}
+
+.bootcn-flow__branch:first-child::before {
+  inset-inline-start: 50%;
+  height: 1.25rem;
+  border-inline-start: 1px solid var(--bootcn-flow-line);
+  border-start-start-radius: 0.75rem;
+}
+
+.bootcn-flow__branch:last-child::before {
+  inset-inline-end: 50%;
+  height: 1.25rem;
+  border-inline-end: 1px solid var(--bootcn-flow-line);
+  border-start-end-radius: 0.75rem;
+}
+
+.bootcn-flow__branch:first-child::after,
+.bootcn-flow__branch:last-child::after {
+  display: none;
+}
+
+.bootcn-flow__branch:only-child::before {
+  inset-inline: 50% auto;
+  border-top: 0;
+  border-inline-end: 0;
+  border-radius: 0;
+}
+
+.bootcn-flow__label {
+  padding: 0.0625rem 0.5rem;
+  border: 1px solid var(--bootcn-flow-line);
+  border-radius: 9999px;
+  background-color: var(--bootcn-background);
+  color: var(--bootcn-muted-foreground);
+  font-size: 0.6875rem;
+  line-height: 1.4;
+}
+
+.bootcn-flow__branch > .bootcn-flow__link {
+  height: 2rem;
+}
+
+/* ----------------------------------------------------------------- end */
+
+.bootcn-flow__end {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.375rem;
+  padding: 0.375rem 1.25rem;
+  border-radius: 9999px;
+  background-color: color-mix(in srgb, var(--bootcn-foreground) 7%, transparent);
+  color: var(--bootcn-muted-foreground);
+  font-size: 0.75rem;
+}
+
+/* ------------------------------------------------- toolbar and the menu */
+
+.bootcn-flow__toolbar {
+  position: absolute;
+  inset-inline-end: 0.75rem;
+  bottom: 0.75rem;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  gap: 0.125rem;
+  padding: 0.25rem;
+  border: var(--bootcn-border-width) solid var(--bootcn-border-color);
+  border-radius: var(--bootcn-radius-lg);
+  background-color: var(--bootcn-background);
+  box-shadow: var(--bootcn-shadow-sm);
+}
+
+.bootcn-flow__tool {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2rem;
+  height: 2rem;
+  padding: 0;
+  border: 0;
+  border-radius: var(--bootcn-radius-md);
+  background-color: transparent;
+  color: var(--bootcn-foreground);
+}
+
+.bootcn-flow__tool:hover {
+  background-color: var(--bootcn-accent);
+}
+
+.bootcn-flow__zoom {
+  min-width: 3rem;
+  color: var(--bootcn-muted-foreground);
+  font-size: 0.75rem;
+  font-variant-numeric: tabular-nums;
+  text-align: center;
+}
+
+.bootcn-flow__menu {
+  position: fixed;
+  z-index: 1070;
+  display: grid;
+  min-width: 12rem;
+  padding: 0.25rem;
+  border: var(--bootcn-border-width) solid var(--bootcn-border-color);
+  border-radius: var(--bootcn-radius-lg);
+  background-color: var(--bootcn-background);
+  box-shadow: var(--bootcn-shadow-lg);
+}
+
+.bootcn-flow__menu[hidden] {
+  display: none;
+}
+
+.bootcn-flow__menu-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.375rem 0.5rem;
+  border: 0;
+  border-radius: var(--bootcn-radius-md);
+  background-color: transparent;
+  color: var(--bootcn-foreground);
+  font-size: 0.875rem;
+  text-align: start;
+}
+
+.bootcn-flow__menu-item:hover,
+.bootcn-flow__menu-item:focus {
+  background-color: var(--bootcn-accent);
+}
+
+/* A new step fades in. */
+.bootcn-flow__step.is-new > .bootcn-flow__node {
+  animation: bootcn-flow-in 300ms ease;
+}
+
+@keyframes bootcn-flow-in {
+  from {
+    opacity: 0;
+    transform: translateY(-0.5rem) scale(0.97);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .bootcn-flow__node,
+  .bootcn-flow__add {
+    transition: none;
+  }
+
+  .bootcn-flow__step.is-new > .bootcn-flow__node {
+    animation: none;
+  }
+}

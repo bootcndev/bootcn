@@ -241,7 +241,7 @@ test('items from the latest releases are marked New', async ({ page }) => {
         added?: string;
       }
     ).added;
-  const latest = ['tree', 'button'].find((name) => added(name) === version);
+  const latest = components.map((item) => item.name).find((name) => added(name) === version);
   test.skip(!latest, 'no component in this release to check');
 
   await page.goto(`components/${latest}`);

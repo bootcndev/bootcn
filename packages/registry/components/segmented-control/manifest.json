@@ -5,6 +5,7 @@
   "title": "Segmented control",
   "description": "A row of mutually exclusive options in one rounded track, iOS style, built on native radio buttons.",
   "version": "1.0.0",
+  "added": "0.37.0",
   "categories": ["forms"],
   "dependencies": [],
   "registryDependencies": [],

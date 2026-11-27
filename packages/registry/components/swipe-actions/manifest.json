@@ -1,0 +1,34 @@
+{
+  "$schema": "../../schema/registry-item.schema.json",
+  "name": "swipe-actions",
+  "type": "registry:ui",
+  "title": "Swipe actions",
+  "description": "List rows that slide to reveal actions, as in iOS Mail: swipe for Read, Pin, Archive or Delete, a long swipe to delete, and every action also reachable with the keyboard.",
+  "version": "1.0.0",
+  "added": "0.37.0",
+  "categories": ["data-display", "actions"],
+  "dependencies": [],
+  "registryDependencies": [],
+  "compatibility": {
+    "bootstrap": "5.3",
+    "platform": ["Bootstrap CSS"]
+  },
+  "license": "MIT",
+  "files": [
+    {
+      "path": "swipe-actions.html",
+      "target": "swipe-actions.html",
+      "type": "registry:component"
+    },
+    {
+      "path": "swipe-actions.css",
+      "target": "swipe-actions.css",
+      "type": "registry:style"
+    },
+    {
+      "path": "swipe-actions.js",
+      "target": "swipe-actions.js",
+      "type": "registry:script"
+    }
+  ]
+}

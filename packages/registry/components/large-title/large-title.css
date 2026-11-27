@@ -1,0 +1,130 @@
+/* No box of its own, so the bar sticks to the whole scrolling area. */
+.bootcn-large-title {
+  display: contents;
+}
+
+/* The bar sticks to the top; its small title and hairline appear once the
+   large title has scrolled under it. */
+.bootcn-large-title__bar {
+  position: sticky;
+  top: 0;
+  z-index: 1020;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+  align-items: center;
+  gap: 0.5rem;
+  min-height: 2.75rem;
+  padding: 0.25rem 0.75rem;
+  border-bottom: var(--bootcn-border-width) solid transparent;
+  background-color: transparent;
+  transition:
+    background-color 200ms ease,
+    border-color 200ms ease;
+}
+
+.bootcn-large-title.is-collapsed .bootcn-large-title__bar {
+  border-bottom-color: var(--bootcn-border-color);
+  background-color: color-mix(in srgb, var(--bootcn-background) 82%, transparent);
+  -webkit-backdrop-filter: saturate(180%) blur(16px);
+  backdrop-filter: saturate(180%) blur(16px);
+}
+
+.bootcn-large-title__back {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.125rem;
+  justify-self: start;
+  min-height: 2.25rem;
+  padding-inline: 0.125rem 0.5rem;
+  border-radius: var(--bootcn-radius-md);
+  color: var(--bootcn-primary);
+  font-size: 1rem;
+  text-decoration: none;
+}
+
+.bootcn-large-title__back:focus-visible,
+.bootcn-large-title__button:focus-visible {
+  outline: 0;
+  box-shadow: 0 0 0 2px var(--bootcn-ring);
+}
+
+.bootcn-large-title__small {
+  margin: 0;
+  overflow: hidden;
+  color: var(--bootcn-foreground);
+  font-size: 1rem;
+  font-weight: 600;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  opacity: 0;
+  transform: translateY(0.25rem);
+  transition:
+    opacity 200ms ease,
+    transform 200ms ease;
+}
+
+.bootcn-large-title.is-collapsed .bootcn-large-title__small {
+  opacity: 1;
+  transform: none;
+}
+
+.bootcn-large-title__actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.25rem;
+}
+
+.bootcn-large-title__button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.25rem;
+  height: 2.25rem;
+  padding: 0;
+  border: 0;
+  border-radius: 9999px;
+  background-color: transparent;
+  color: var(--bootcn-primary);
+}
+
+.bootcn-large-title__button:hover {
+  background-color: var(--bootcn-accent);
+}
+
+.bootcn-large-title__title {
+  margin: 0;
+  padding: 0.125rem 1rem 0.5rem;
+  color: var(--bootcn-foreground);
+  font-size: 2.125rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1.15;
+}
+
+.bootcn-large-title__search {
+  position: relative;
+  margin: 0 1rem 0.75rem;
+}
+
+.bootcn-large-title__search .bootcn-icon {
+  position: absolute;
+  top: 50%;
+  inset-inline-start: 0.625rem;
+  color: var(--bootcn-muted-foreground);
+  transform: translateY(-50%);
+  pointer-events: none;
+}
+
+.bootcn-large-title__search .form-control {
+  padding-inline-start: 2rem;
+  border-color: transparent;
+  border-radius: var(--bootcn-radius-lg);
+  background-color: var(--bootcn-muted);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .bootcn-large-title__bar,
+  .bootcn-large-title__small {
+    transition: none;
+  }
+}

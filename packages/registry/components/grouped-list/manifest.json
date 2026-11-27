@@ -5,6 +5,7 @@
   "title": "Grouped list",
   "description": "Settings-style rows in rounded groups, iOS style: an icon tile, a label, a value or a switch, and a chevron for rows that open a page.",
   "version": "1.0.0",
+  "added": "0.37.0",
   "categories": ["data-display"],
   "dependencies": [],
   "registryDependencies": ["switch"],

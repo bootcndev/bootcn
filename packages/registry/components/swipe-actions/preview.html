@@ -1,0 +1,541 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Bootcn Swipe actions preview</title>
+    <script>
+      // Preview theme: ?theme=dark|light, else the docs page around the frame, else light.
+      (function () {
+        var theme = new URLSearchParams(location.search).get('theme');
+        if (!theme) {
+          try {
+            theme =
+              window.parent !== window &&
+              window.parent.document.documentElement.classList.contains('dark')
+                ? 'dark'
+                : 'light';
+          } catch (error) {
+            theme = 'light';
+          }
+        }
+        document.documentElement.setAttribute('data-bs-theme', theme === 'dark' ? 'dark' : 'light');
+        // ?dir=rtl: right to left, with Bootstrap's RTL stylesheet.
+        if (new URLSearchParams(location.search).get('dir') === 'rtl') {
+          document.documentElement.setAttribute('dir', 'rtl');
+          new MutationObserver(function (records, observer) {
+            var link = document.querySelector('link[href*="bootstrap.min.css"]');
+            if (!link) return;
+            link.href = link.href.replace('bootstrap.min.css', 'bootstrap.rtl.min.css');
+            observer.disconnect();
+          }).observe(document.documentElement, { childList: true, subtree: true });
+        }
+      })();
+    </script>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.9/dist/css/bootstrap.min.css"
+    />
+    <link rel="stylesheet" href="../../themes/tokens/tokens.css" />
+    <link rel="stylesheet" href="swipe-actions.css" />
+    <style>
+      .bootcn-swipe-demo__mail {
+        position: relative;
+        display: grid;
+        gap: 0.125rem;
+        padding: 0.75rem 1rem 0.75rem 1.75rem;
+        color: var(--bootcn-foreground);
+        text-decoration: none;
+      }
+      .bootcn-swipe-demo__mail:focus-visible {
+        outline: 0;
+        box-shadow: inset 0 0 0 2px var(--bootcn-ring);
+      }
+      .bootcn-swipe-demo__dot {
+        position: absolute;
+        top: 1.125rem;
+        inset-inline-start: 0.625rem;
+        width: 0.5rem;
+        height: 0.5rem;
+        border-radius: 50%;
+        background-color: var(--bootcn-primary);
+      }
+      .bootcn-swipe-demo__top {
+        display: flex;
+        justify-content: space-between;
+        gap: 1rem;
+        font-size: 0.9375rem;
+      }
+      .bootcn-swipe-demo__time,
+      .bootcn-swipe-demo__text {
+        color: var(--bootcn-muted-foreground);
+        font-size: 0.8125rem;
+      }
+      .bootcn-swipe-demo__subject {
+        font-size: 0.875rem;
+      }
+      .bootcn-swipe-demo__text {
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
+    </style>
+  </head>
+  <body>
+    <main class="container py-4" style="max-width: 28rem">
+      <h1 class="h4 mb-4">Swipe actions</h1>
+      <ul class="bootcn-swipe-list" data-bootcn-swipe aria-label="Inbox">
+        <li class="bootcn-swipe">
+          <div class="bootcn-swipe__content">
+            <a class="bootcn-swipe-demo__mail" href="#">
+              <span class="bootcn-swipe-demo__dot" aria-hidden="true"></span
+              ><span class="bootcn-swipe-demo__top"
+                ><span class="visually-hidden">Unread, </span><strong>Northwind Studio</strong
+                ><span class="bootcn-swipe-demo__time">9:41</span></span
+              >
+              <span class="bootcn-swipe-demo__subject">Your invoice for November</span>
+              <span class="bootcn-swipe-demo__text"
+                >Thanks for your business. The invoice is attached as a PDF.</span
+              >
+            </a>
+          </div>
+          <div class="bootcn-swipe__actions bootcn-swipe__actions--leading">
+            <button
+              type="button"
+              class="bootcn-swipe__action"
+              data-action="mark"
+              style="--bootcn-swipe-color: #2563eb"
+            >
+              <svg
+                class="bootcn-icon"
+                width="20"
+                height="20"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+                focusable="false"
+              >
+                <path d="M4 6h16v12H4z" />
+                <path d="m4 7 8 6 8-6" /></svg
+              ><span>Mark as read</span>
+            </button>
+          </div>
+          <div class="bootcn-swipe__actions bootcn-swipe__actions--trailing">
+            <button
+              type="button"
+              class="bootcn-swipe__action"
+              data-action="pin"
+              style="--bootcn-swipe-color: #c2410c"
+            >
+              <svg
+                class="bootcn-icon"
+                width="20"
+                height="20"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+                focusable="false"
+              >
+                <path d="M12 17v5" />
+                <path d="M9 3h6l-1 6 4 4H6l4-4z" /></svg
+              ><span>Pin</span>
+            </button>
+            <button
+              type="button"
+              class="bootcn-swipe__action"
+              data-action="archive"
+              style="--bootcn-swipe-color: #6d28d9"
+            >
+              <svg
+                class="bootcn-icon"
+                width="20"
+                height="20"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+                focusable="false"
+              >
+                <rect x="3" y="4" width="18" height="5" rx="1" />
+                <path d="M5 9v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V9M10 13h4" /></svg
+              ><span>Archive</span>
+            </button>
+            <button
+              type="button"
+              class="bootcn-swipe__action"
+              data-action="delete"
+              style="--bootcn-swipe-color: #dc2626"
+              data-swipe-remove
+              data-swipe-full
+            >
+              <svg
+                class="bootcn-icon"
+                width="20"
+                height="20"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+                focusable="false"
+              >
+                <path d="M3 6h18M8 6V4h8v2M6 6l1 14h10l1-14" /></svg
+              ><span>Delete</span>
+            </button>
+          </div>
+        </li>
+        <li class="bootcn-swipe">
+          <div class="bootcn-swipe__content">
+            <a class="bootcn-swipe-demo__mail" href="#">
+              <span class="bootcn-swipe-demo__dot" aria-hidden="true"></span
+              ><span class="bootcn-swipe-demo__top"
+                ><span class="visually-hidden">Unread, </span><strong>Lena Fischer</strong
+                ><span class="bootcn-swipe-demo__time">Yesterday</span></span
+              >
+              <span class="bootcn-swipe-demo__subject">Design review moved to Thursday</span>
+              <span class="bootcn-swipe-demo__text"
+                >Same time, same room. I added the new mockups to the folder.</span
+              >
+            </a>
+          </div>
+          <div class="bootcn-swipe__actions bootcn-swipe__actions--leading">
+            <button
+              type="button"
+              class="bootcn-swipe__action"
+              data-action="mark"
+              style="--bootcn-swipe-color: #2563eb"
+            >
+              <svg
+                class="bootcn-icon"
+                width="20"
+                height="20"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+                focusable="false"
+              >
+                <path d="M4 6h16v12H4z" />
+                <path d="m4 7 8 6 8-6" /></svg
+              ><span>Mark as read</span>
+            </button>
+          </div>
+          <div class="bootcn-swipe__actions bootcn-swipe__actions--trailing">
+            <button
+              type="button"
+              class="bootcn-swipe__action"
+              data-action="pin"
+              style="--bootcn-swipe-color: #c2410c"
+            >
+              <svg
+                class="bootcn-icon"
+                width="20"
+                height="20"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+                focusable="false"
+              >
+                <path d="M12 17v5" />
+                <path d="M9 3h6l-1 6 4 4H6l4-4z" /></svg
+              ><span>Pin</span>
+            </button>
+            <button
+              type="button"
+              class="bootcn-swipe__action"
+              data-action="archive"
+              style="--bootcn-swipe-color: #6d28d9"
+            >
+              <svg
+                class="bootcn-icon"
+                width="20"
+                height="20"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+                focusable="false"
+              >
+                <rect x="3" y="4" width="18" height="5" rx="1" />
+                <path d="M5 9v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V9M10 13h4" /></svg
+              ><span>Archive</span>
+            </button>
+            <button
+              type="button"
+              class="bootcn-swipe__action"
+              data-action="delete"
+              style="--bootcn-swipe-color: #dc2626"
+              data-swipe-remove
+              data-swipe-full
+            >
+              <svg
+                class="bootcn-icon"
+                width="20"
+                height="20"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+                focusable="false"
+              >
+                <path d="M3 6h18M8 6V4h8v2M6 6l1 14h10l1-14" /></svg
+              ><span>Delete</span>
+            </button>
+          </div>
+        </li>
+        <li class="bootcn-swipe">
+          <div class="bootcn-swipe__content">
+            <a class="bootcn-swipe-demo__mail" href="#">
+              <span class="bootcn-swipe-demo__top"
+                ><strong>Kanban weekly</strong
+                ><span class="bootcn-swipe-demo__time">Mon</span></span
+              >
+              <span class="bootcn-swipe-demo__subject">Five tasks are due this week</span>
+              <span class="bootcn-swipe-demo__text"
+                >Launch checklist, pricing page copy and three more.</span
+              >
+            </a>
+          </div>
+          <div class="bootcn-swipe__actions bootcn-swipe__actions--leading">
+            <button
+              type="button"
+              class="bootcn-swipe__action"
+              data-action="mark"
+              style="--bootcn-swipe-color: #2563eb"
+            >
+              <svg
+                class="bootcn-icon"
+                width="20"
+                height="20"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+                focusable="false"
+              >
+                <path d="M4 6h16v12H4z" />
+                <path d="m4 7 8 6 8-6" /></svg
+              ><span>Mark as unread</span>
+            </button>
+          </div>
+          <div class="bootcn-swipe__actions bootcn-swipe__actions--trailing">
+            <button
+              type="button"
+              class="bootcn-swipe__action"
+              data-action="pin"
+              style="--bootcn-swipe-color: #c2410c"
+            >
+              <svg
+                class="bootcn-icon"
+                width="20"
+                height="20"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+                focusable="false"
+              >
+                <path d="M12 17v5" />
+                <path d="M9 3h6l-1 6 4 4H6l4-4z" /></svg
+              ><span>Pin</span>
+            </button>
+            <button
+              type="button"
+              class="bootcn-swipe__action"
+              data-action="archive"
+              style="--bootcn-swipe-color: #6d28d9"
+            >
+              <svg
+                class="bootcn-icon"
+                width="20"
+                height="20"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+                focusable="false"
+              >
+                <rect x="3" y="4" width="18" height="5" rx="1" />
+                <path d="M5 9v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V9M10 13h4" /></svg
+              ><span>Archive</span>
+            </button>
+            <button
+              type="button"
+              class="bootcn-swipe__action"
+              data-action="delete"
+              style="--bootcn-swipe-color: #dc2626"
+              data-swipe-remove
+              data-swipe-full
+            >
+              <svg
+                class="bootcn-icon"
+                width="20"
+                height="20"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+                focusable="false"
+              >
+                <path d="M3 6h18M8 6V4h8v2M6 6l1 14h10l1-14" /></svg
+              ><span>Delete</span>
+            </button>
+          </div>
+        </li>
+        <li class="bootcn-swipe">
+          <div class="bootcn-swipe__content">
+            <a class="bootcn-swipe-demo__mail" href="#">
+              <span class="bootcn-swipe-demo__top"
+                ><strong>Marco Bianchi</strong
+                ><span class="bootcn-swipe-demo__time">Sun</span></span
+              >
+              <span class="bootcn-swipe-demo__subject">Photos from the offsite</span>
+              <span class="bootcn-swipe-demo__text"
+                >Here they are! My favourite is the one by the lake.</span
+              >
+            </a>
+          </div>
+          <div class="bootcn-swipe__actions bootcn-swipe__actions--leading">
+            <button
+              type="button"
+              class="bootcn-swipe__action"
+              data-action="mark"
+              style="--bootcn-swipe-color: #2563eb"
+            >
+              <svg
+                class="bootcn-icon"
+                width="20"
+                height="20"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+                focusable="false"
+              >
+                <path d="M4 6h16v12H4z" />
+                <path d="m4 7 8 6 8-6" /></svg
+              ><span>Mark as unread</span>
+            </button>
+          </div>
+          <div class="bootcn-swipe__actions bootcn-swipe__actions--trailing">
+            <button
+              type="button"
+              class="bootcn-swipe__action"
+              data-action="pin"
+              style="--bootcn-swipe-color: #c2410c"
+            >
+              <svg
+                class="bootcn-icon"
+                width="20"
+                height="20"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+                focusable="false"
+              >
+                <path d="M12 17v5" />
+                <path d="M9 3h6l-1 6 4 4H6l4-4z" /></svg
+              ><span>Pin</span>
+            </button>
+            <button
+              type="button"
+              class="bootcn-swipe__action"
+              data-action="archive"
+              style="--bootcn-swipe-color: #6d28d9"
+            >
+              <svg
+                class="bootcn-icon"
+                width="20"
+                height="20"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+                focusable="false"
+              >
+                <rect x="3" y="4" width="18" height="5" rx="1" />
+                <path d="M5 9v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V9M10 13h4" /></svg
+              ><span>Archive</span>
+            </button>
+            <button
+              type="button"
+              class="bootcn-swipe__action"
+              data-action="delete"
+              style="--bootcn-swipe-color: #dc2626"
+              data-swipe-remove
+              data-swipe-full
+            >
+              <svg
+                class="bootcn-icon"
+                width="20"
+                height="20"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+                focusable="false"
+              >
+                <path d="M3 6h18M8 6V4h8v2M6 6l1 14h10l1-14" /></svg
+              ><span>Delete</span>
+            </button>
+          </div>
+        </li>
+      </ul>
+      <p class="text-body-secondary small mt-3 mb-0">
+        Swipe a message left or right, or Tab to its actions.
+      </p>
+    </main>
+    <script src="swipe-actions.js"></script>
+  </body>
+</html>
