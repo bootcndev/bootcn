@@ -22,8 +22,8 @@ const browsers = [
 
 export default defineConfig({
   testDir: '..',
-  // The docs site has its own config (tests/docs/playwright.config.ts).
-  testIgnore: ['docs/**'],
+  // The docs site and the screenshots have their own configs (tests/docs, tests/visual).
+  testIgnore: ['docs/**', 'visual/**'],
   fullyParallel: true,
   forbidOnly: Boolean(process.env.CI),
   retries: process.env.CI ? 2 : 0,

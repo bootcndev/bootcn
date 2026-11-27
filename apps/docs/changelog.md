@@ -30,6 +30,9 @@ Effects, motion and colour.
 - Spotlight search 1.0.1: the list no longer redraws when a slower source
   returns the same results.
 - Every effect stands still under reduced motion.
+- Tree 1.0.1: file sizes ("2 kB") keep their order on right-to-left
+  pages. Found by the new visual regression tests: a screenshot of every
+  preview in light, dark and right to left, compared in CI.
 
 ### 0.41.0
 

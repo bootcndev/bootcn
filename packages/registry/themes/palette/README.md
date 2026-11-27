@@ -26,11 +26,6 @@ design tokens (`tokens.css`) and the theme builder.
 For text, pair shades far apart: 700 to 950 on 50 to 100 backgrounds (and
 the other way round in dark mode) keep at least 4.5:1. Mid shades (400 to 600) suit large text, icons and fills, not body text.
 
-## Credits
-
-Colour values from Tailwind CSS (MIT License, Copyright (c) Tailwind Labs,
-Inc.).
-
 ## Dependencies
 
 - Nothing; it only defines CSS variables.

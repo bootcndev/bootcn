@@ -35,6 +35,45 @@ jobs:
       - run: pnpm site:build
       - run: pnpm exec playwright test --config tests/docs/playwright.config.ts
 
+  # Screenshots of every preview in light, dark and right to left, compared
+  # with tests/visual/__screenshots__ (made on Linux by visual-baselines.yml).
+  visual:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - id: baselines
+        name: Baselines exist
+        run: |
+          if ls tests/visual/__screenshots__/*.png >/dev/null 2>&1; then
+            echo "ready=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "::notice::No visual baselines yet: run the Update visual baselines workflow."
+          fi
+      - uses: pnpm/action-setup@v4
+        if: steps.baselines.outputs.ready == 'true'
+        with:
+          version: 11.10.0
+      - uses: actions/setup-node@v4
+        if: steps.baselines.outputs.ready == 'true'
+        with:
+          node-version: 24
+          cache: pnpm
+      - if: steps.baselines.outputs.ready == 'true'
+        run: pnpm install --frozen-lockfile
+      - if: steps.baselines.outputs.ready == 'true'
+        run: pnpm exec playwright install --with-deps chromium
+      - if: steps.baselines.outputs.ready == 'true'
+        run: pnpm exec playwright test --config tests/visual/playwright.config.ts
+      - name: Upload the differences
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: visual-differences
+          path: |
+            playwright-report
+            test-results
+          retention-days: 14
+
   # Packs the CLI as npm would publish it and runs it on every supported Node.
   package:
     runs-on: ubuntu-latest

@@ -1,7 +1,6 @@
 /*
  * Colour palette: 22 colours in 11 shades (50 lightest to 950 darkest) as
  * CSS variables, for your own components, charts and illustrations.
- * Colour values from Tailwind CSS (MIT License, Copyright (c) Tailwind Labs, Inc.).
  */
 :root {
   --bootcn-slate-50: #f8fafc;

@@ -100,6 +100,10 @@
   color: var(--bootcn-muted-foreground);
   font-size: 0.75rem;
   font-variant-numeric: tabular-nums;
+  /* "2 kB" keeps its own order on right-to-left pages: its direction comes
+     from its own text (inline-block, so browsers apply it). */
+  display: inline-block;
+  unicode-bidi: plaintext;
 }
 
 /* Drawn checkbox for data-checkable trees. */

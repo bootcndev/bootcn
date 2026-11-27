@@ -4,7 +4,7 @@
   "type": "registry:ui",
   "title": "Tree",
   "description": "A tree view for folders, categories and permissions: expand and collapse, full keyboard support, single or multiple selection, checkboxes with a partial state, and children loaded on demand.",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "added": "0.36.0",
   "categories": ["data-display", "navigation"],
   "dependencies": [],

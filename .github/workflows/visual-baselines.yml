@@ -1,0 +1,42 @@
+name: Update visual baselines
+
+# Makes new screenshots for tests/visual on Linux (where CI compares them)
+# and pushes them to the visual-baselines branch. Review the images in that
+# branch's commit, then merge it into main.
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: visual-baselines
+  cancel-in-progress: true
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 11.10.0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: pnpm
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm exec playwright install --with-deps chromium
+      - name: Make every screenshot again
+        run: |
+          rm -rf tests/visual/__screenshots__
+          pnpm exec playwright test --config tests/visual/playwright.config.ts --update-snapshots=all
+      - name: Push to the visual-baselines branch
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git checkout -B visual-baselines
+          git add tests/visual/__screenshots__
+          git commit -m "Visual baselines from ${GITHUB_SHA::7}" || { echo "No changes"; exit 0; }
+          git push -f origin visual-baselines
