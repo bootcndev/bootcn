@@ -7,9 +7,19 @@ name: Release CLI
 on:
   push:
     tags: ['cli-v*']
+  # Re-run only the executables and the Composer package for a tag that is
+  # already on npm, for example after one of those jobs failed.
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: Existing tag, for example cli-v0.6.1
+        required: true
 
 permissions:
   contents: read
+
+env:
+  TAG: ${{ inputs.tag || github.ref_name }}
 
 concurrency:
   group: release-cli
@@ -17,6 +27,7 @@ concurrency:
 
 jobs:
   publish:
+    if: github.event_name == 'push'
     runs-on: ubuntu-latest
     permissions:
       contents: read
@@ -76,6 +87,7 @@ jobs:
   # and the Composer package download these).
   binaries:
     needs: github-release
+    if: ${{ !cancelled() && (needs.github-release.result == 'success' || github.event_name == 'workflow_dispatch') }}
     # macOS, because the macOS executables must be signed (codesign); Bun
     # builds the Linux and Windows ones from here too.
     runs-on: macos-latest
@@ -83,6 +95,8 @@ jobs:
       contents: write
     steps:
       - uses: actions/checkout@v4
+        with:
+          ref: ${{ env.TAG }}
       - uses: pnpm/action-setup@v4
         with:
           version: 11.10.0
@@ -94,15 +108,16 @@ jobs:
         with:
           bun-version: 1.3.5
       - run: pnpm install --frozen-lockfile
-      - run: pnpm build
+      # Bun compiles the CLI from its sources: no need to build the docs.
+      - run: pnpm --filter bootcn build
       - run: scripts/build-binaries.sh dist-bin
       - name: The macOS executable is signed, runs and reports this version
         run: |
           set -euo pipefail
           codesign --verify dist-bin/bootcn-darwin-arm64
-          test "$(env -i PATH=/usr/bin:/bin dist-bin/bootcn-darwin-arm64 --version)" = "${GITHUB_REF_NAME#cli-v}"
+          test "$(env -i PATH=/usr/bin:/bin dist-bin/bootcn-darwin-arm64 --version)" = "${TAG#cli-v}"
       - name: Attach to the release
-        run: gh release upload "$GITHUB_REF_NAME" dist-bin/* --repo "$GITHUB_REPOSITORY" --clobber
+        run: gh release upload "$TAG" dist-bin/* --repo "$GITHUB_REPOSITORY" --clobber
         env:
           GH_TOKEN: ${{ github.token }}
 
@@ -111,9 +126,12 @@ jobs:
   # tag it, after the executables it downloads are on the release.
   composer:
     needs: binaries
+    if: ${{ !cancelled() && needs.binaries.result == 'success' }}
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        with:
+          ref: ${{ env.TAG }}
       - name: Publish to bootcndev/bootcn-composer
         env:
           DEPLOY_KEY: ${{ secrets.COMPOSER_DEPLOY_KEY }}
@@ -123,7 +141,7 @@ jobs:
             echo "::notice::COMPOSER_DEPLOY_KEY is not set; the Composer package was not published."
             exit 0
           fi
-          version="${GITHUB_REF_NAME#cli-v}"
+          version="${TAG#cli-v}"
           mkdir -p ~/.ssh
           printf '%s\n' "$DEPLOY_KEY" > ~/.ssh/composer_key
           chmod 600 ~/.ssh/composer_key
