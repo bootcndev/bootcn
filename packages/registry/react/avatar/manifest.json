@@ -1,0 +1,24 @@
+{
+  "$schema": "../../schema/registry-item.schema.json",
+  "name": "avatar",
+  "type": "registry:ui",
+  "title": "Avatar (React)",
+  "description": "The avatar as a React component: a user image with an initials fallback, sizes and an overlapping group.",
+  "version": "1.0.0",
+  "added": "0.44.0",
+  "categories": ["data-display", "avatars"],
+  "dependencies": [],
+  "registryDependencies": [],
+  "compatibility": {
+    "bootstrap": "5.3",
+    "platform": ["Bootstrap CSS"]
+  },
+  "license": "MIT",
+  "files": [
+    {
+      "path": "Avatar.tsx",
+      "target": "Avatar.tsx",
+      "type": "registry:react"
+    }
+  ]
+}

@@ -1,0 +1,24 @@
+{
+  "$schema": "../../schema/registry-item.schema.json",
+  "name": "textarea",
+  "type": "registry:ui",
+  "title": "Textarea (React)",
+  "description": "The textarea as a React component: a multi-line text field with label, help text, invalid state and optional auto-sizing.",
+  "version": "1.0.0",
+  "added": "0.44.0",
+  "categories": ["forms", "inputs"],
+  "dependencies": [],
+  "registryDependencies": [],
+  "compatibility": {
+    "bootstrap": "5.3",
+    "platform": ["Bootstrap CSS"]
+  },
+  "license": "MIT",
+  "files": [
+    {
+      "path": "Textarea.tsx",
+      "target": "Textarea.tsx",
+      "type": "registry:react"
+    }
+  ]
+}

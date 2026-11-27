@@ -65,11 +65,18 @@ const open = ref(false);
 
 ## Components so far
 
-| Component | Props and slots                                                                                 |
-| --------- | ----------------------------------------------------------------------------------------------- |
-| `Button`  | `variant` (default, secondary, outline, ghost, destructive, link), `size`, `type`, default slot |
-| `Dialog`  | `v-model:open`, `title`, `description`, `size`, default slot, `#footer` slot                    |
-| `Toaster` | Put `<Toaster />` once; import `toast` from it: `toast()`, `toast.success()`…                   |
+| Component                     | Props and slots                                                                                                                       |
+| ----------------------------- | ------------------------------------------------------------------------------------------------------------------------------------- |
+| `Button`                      | `variant` (default, secondary, outline, ghost, destructive, link), `size`, `type`, default slot                                       |
+| `Dialog`                      | `v-model:open`, `title`, `description`, `size`, default slot, `#footer` slot                                                          |
+| `Toaster`                     | Put `<Toaster />` once; import `toast` from it: `toast()`, `toast.success()`…                                                         |
+| `Input`, `Textarea`, `Select` | `v-model`, `label`, `help`, `error`, and every attribute of the field; `Select` also `options`, `placeholder` and `<option>` children |
+| `Checkbox`, `Switch`          | `v-model` (boolean), `label`                                                                                                          |
+| `Tabs`                        | `v-model`, `label`, `items` (`value`, `label`), a slot named after each value                                                         |
+| `Card`                        | `title`, `description`, `titleAs`, default slot, `#footer` slot                                                                       |
+| `Alert`                       | `title`, `variant` (default, destructive), default slot, `#icon` slot                                                                 |
+| `Badge`                       | `variant` (default, secondary, outline, destructive), default slot                                                                    |
+| `Avatar`                      | `name`, `src` (initials when missing or broken), `fallback`, `size`, `square`                                                         |
 
 More come with each release. For an item without a Vue component yet, `add`
 installs its CSS and JavaScript and says so: copy its markup from its page

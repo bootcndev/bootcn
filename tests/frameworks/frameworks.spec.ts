@@ -11,7 +11,10 @@ for (const framework of ['react', 'vue']) {
       const errors: string[] = [];
       page.on('pageerror', (error) => errors.push(error.message));
       page.on('console', (message) => {
-        if (message.type() === 'error') errors.push(message.text());
+        // The avatar's missing.png fails on purpose, to show its initials.
+        if (message.type() === 'error' && !message.text().includes('404')) {
+          errors.push(message.text());
+        }
       });
       await page.goto(`/examples/${framework}/dist/index.html`);
       await expect(page.getByRole('heading', { level: 1 })).toBeVisible();
@@ -52,6 +55,55 @@ for (const framework of ['react', 'vue']) {
       await dialog.getByRole('button', { name: 'Delete project' }).click();
       await expect(dialog).toBeHidden();
       await expect(page.getByTestId('state')).toHaveText('Project deleted');
+    });
+
+    test('form fields: labels, hints, errors and two-way state', async ({ page }) => {
+      const name = page.getByRole('textbox', { name: 'Name' });
+      await expect(name).toHaveAttribute('aria-invalid', 'true');
+      await expect(name).toHaveAccessibleDescription('Shown on your profile. Enter your name.');
+      await name.fill('Lena');
+      await expect(name).not.toHaveAttribute('aria-invalid', 'true');
+      await expect(name).toHaveAccessibleDescription('Shown on your profile.');
+      await page.getByRole('combobox', { name: 'Country' }).selectOption('es');
+      await page.getByRole('checkbox', { name: 'Accept the terms' }).check();
+      await page.getByRole('switch', { name: 'Wi-Fi' }).uncheck();
+      await expect(page.getByTestId('form')).toHaveText('Lena / es / terms yes / wifi off');
+      await expect(page.getByRole('textbox', { name: 'Bio' })).toHaveClass(/bootcn-textarea/);
+      const results = await new AxeBuilder({ page }).analyze();
+      expect(results.violations.map((v) => v.id)).toEqual([]);
+    });
+
+    test('tabs: arrow keys, Home and End, one tab in the Tab order', async ({ page }) => {
+      const list = page.getByRole('tablist', { name: 'Account settings' });
+      const account = list.getByRole('tab', { name: 'Account' });
+      await expect(account).toHaveAttribute('aria-selected', 'true');
+      await expect(page.getByRole('tabpanel', { name: 'Account' })).toHaveText('Account panel');
+      await account.focus();
+      await page.keyboard.press('ArrowRight');
+      await expect(list.getByRole('tab', { name: 'Password' })).toBeFocused();
+      await expect(page.getByRole('tabpanel', { name: 'Password' })).toBeVisible();
+      await expect(page.getByRole('tabpanel', { name: 'Account' })).toBeHidden();
+      await page.keyboard.press('End');
+      await expect(list.getByRole('tab', { name: 'Team' })).toHaveAttribute(
+        'aria-selected',
+        'true',
+      );
+      await page.keyboard.press('Home');
+      await expect(account).toBeFocused();
+      await expect(list.locator('[tabindex="0"]')).toHaveCount(1);
+    });
+
+    test('card, badge, alert and avatar', async ({ page }) => {
+      await expect(page.getByRole('heading', { name: 'Profile' })).toHaveClass(
+        /bootcn-card__title/,
+      );
+      await expect(page.getByText('Draft')).toHaveClass(/bootcn-badge--secondary/);
+      await expect(page.locator('.bootcn-alert__title')).toHaveText('Heads up');
+      // The image fails, so the initials show, named for screen readers.
+      await expect(page.getByRole('img', { name: 'Lena Fischer' })).toHaveText('LF');
+      await expect(page.getByRole('img', { name: 'Marco Bianchi' })).toHaveClass(
+        /bootcn-avatar--sm/,
+      );
     });
 
     test('toaster: toast() shows a message', async ({ page }) => {

@@ -1,0 +1,24 @@
+{
+  "$schema": "../../schema/registry-item.schema.json",
+  "name": "checkbox",
+  "type": "registry:ui",
+  "title": "Checkbox (React)",
+  "description": "The checkbox as a React component: a checkbox with label, description, invalid and disabled states.",
+  "version": "1.0.0",
+  "added": "0.44.0",
+  "categories": ["forms", "selection"],
+  "dependencies": [],
+  "registryDependencies": [],
+  "compatibility": {
+    "bootstrap": "5.3",
+    "platform": ["Bootstrap CSS"]
+  },
+  "license": "MIT",
+  "files": [
+    {
+      "path": "Checkbox.tsx",
+      "target": "Checkbox.tsx",
+      "type": "registry:react"
+    }
+  ]
+}

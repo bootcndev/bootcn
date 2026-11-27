@@ -2,8 +2,12 @@
  * Markdown for the generated item pages (components, blocks, templates),
  * built from the registry: the same data and files the CLI installs.
  */
+import { existsSync, readFileSync, readdirSync } from 'node:fs';
+import { resolve } from 'node:path';
+
 import {
   DEFAULT_PATHS,
+  REGISTRY_SRC,
   GITHUB_URL,
   KINDS,
   type Kind,
@@ -24,6 +28,40 @@ function fence(content: string, info: string): string {
   const longest = Math.max(2, ...(content.match(/`+/g) ?? []).map((run) => run.length));
   const ticks = '`'.repeat(longest + 1);
   return `${ticks}${info}\n${content.replace(/\n$/, '')}\n${ticks}`;
+}
+
+/**
+ * "React and Vue": the item's .tsx and .vue components (registry overlays in
+ * packages/registry/react and vue), when it has them.
+ */
+function frameworkSection(name: string): string {
+  const parts: string[] = [];
+  for (const [framework, ext, lang] of [
+    ['react', '.tsx', 'tsx'],
+    ['vue', '.vue', 'vue'],
+  ] as const) {
+    const dir = resolve(REGISTRY_SRC, framework, name);
+    if (!existsSync(dir)) continue;
+    for (const file of readdirSync(dir)
+      .filter((f) => f.endsWith(ext))
+      .sort()) {
+      parts.push(fence(readFileSync(resolve(dir, file), 'utf8'), `${lang} [${file}]`));
+    }
+  }
+  if (parts.length === 0) return '';
+  return `## React and Vue
+
+In a [React](../guide/react) or [Vue](../guide/vue) project, \`npx bootcn add ${name}\`
+installs this as a component of your framework, with the same CSS and
+JavaScript; its import paths are filled in for your folders.
+
+::: code-group
+
+${parts.join('\n\n')}
+
+:::
+
+`;
 }
 
 function extOf(path: string): string {
@@ -158,7 +196,7 @@ ${readmeBody(readReadme(item.name, item.type))}
 
 :::
 
-## Source
+${frameworkSection(item.name)}## Source
 
 The exact files the CLI installs (${item.name}@${item.version ?? 'unversioned'}).
 [View on GitHub](${sourceUrl}) · [Report an issue](${GITHUB_URL}/issues/new?title=${encodeURIComponent(`[${item.name}] `)})

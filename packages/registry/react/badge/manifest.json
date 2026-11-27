@@ -1,0 +1,24 @@
+{
+  "$schema": "../../schema/registry-item.schema.json",
+  "name": "badge",
+  "type": "registry:ui",
+  "title": "Badge (React)",
+  "description": "The badge as a React component: a small status label with default, secondary, outline and destructive variants.",
+  "version": "1.0.0",
+  "added": "0.44.0",
+  "categories": ["badges", "data-display"],
+  "dependencies": [],
+  "registryDependencies": [],
+  "compatibility": {
+    "bootstrap": "5.3",
+    "platform": ["Bootstrap CSS"]
+  },
+  "license": "MIT",
+  "files": [
+    {
+      "path": "Badge.tsx",
+      "target": "Badge.tsx",
+      "type": "registry:react"
+    }
+  ]
+}

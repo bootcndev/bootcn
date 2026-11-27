@@ -1,0 +1,24 @@
+{
+  "$schema": "../../schema/registry-item.schema.json",
+  "name": "select",
+  "type": "registry:ui",
+  "title": "Select (Vue)",
+  "description": "The select as a Vue component: a native select with label, help text, option groups, invalid and disabled states.",
+  "version": "1.0.0",
+  "added": "0.44.0",
+  "categories": ["forms", "inputs"],
+  "dependencies": [],
+  "registryDependencies": [],
+  "compatibility": {
+    "bootstrap": "5.3",
+    "platform": ["Bootstrap CSS"]
+  },
+  "license": "MIT",
+  "files": [
+    {
+      "path": "Select.vue",
+      "target": "Select.vue",
+      "type": "registry:vue"
+    }
+  ]
+}

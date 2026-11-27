@@ -1,0 +1,24 @@
+{
+  "$schema": "../../schema/registry-item.schema.json",
+  "name": "input",
+  "type": "registry:ui",
+  "title": "Input (React)",
+  "description": "The input as a React component: a text input with label, help text, invalid and disabled states, and an input-group icon example.",
+  "version": "1.0.0",
+  "added": "0.44.0",
+  "categories": ["forms", "inputs"],
+  "dependencies": [],
+  "registryDependencies": [],
+  "compatibility": {
+    "bootstrap": "5.3",
+    "platform": ["Bootstrap CSS"]
+  },
+  "license": "MIT",
+  "files": [
+    {
+      "path": "Input.tsx",
+      "target": "Input.tsx",
+      "type": "registry:react"
+    }
+  ]
+}

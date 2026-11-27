@@ -69,11 +69,18 @@ export function App() {
 
 ## Components so far
 
-| Component | Props                                                                                                 |
-| --------- | ----------------------------------------------------------------------------------------------------- |
-| `Button`  | `variant` (default, secondary, outline, ghost, destructive, link), `size`, and every button attribute |
-| `Dialog`  | `open`, `onOpenChange`, `title`, `description`, `children`, `footer`, `size`                          |
-| `Toaster` | Put `<Toaster />` once; call `toast()`, `toast.success()`, `toast.promise()`…                         |
+| Component                     | Props                                                                                                 |
+| ----------------------------- | ----------------------------------------------------------------------------------------------------- |
+| `Button`                      | `variant` (default, secondary, outline, ghost, destructive, link), `size`, and every button attribute |
+| `Dialog`                      | `open`, `onOpenChange`, `title`, `description`, `children`, `footer`, `size`                          |
+| `Toaster`                     | Put `<Toaster />` once; call `toast()`, `toast.success()`, `toast.promise()`…                         |
+| `Input`, `Textarea`, `Select` | `label`, `help`, `error`, and every attribute of the field; `Select` also `options` and `placeholder` |
+| `Checkbox`, `Switch`          | `label`, `checked`, `onChange`, and every input attribute                                             |
+| `Tabs`                        | `label`, `items` (`value`, `label`, `content`), `value` / `defaultValue`, `onValueChange`             |
+| `Card`                        | `title`, `description`, `titleAs`, `footer`, `children`                                               |
+| `Alert`                       | `title`, `variant` (default, destructive), `icon`, `children`                                         |
+| `Badge`                       | `variant` (default, secondary, outline, destructive)                                                  |
+| `Avatar`                      | `name`, `src` (initials when missing or broken), `fallback`, `size`, `square`                         |
 
 More come with each release. For an item without a React component yet,
 `add` installs its CSS and JavaScript and says so: copy its markup from its

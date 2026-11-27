@@ -1,0 +1,24 @@
+{
+  "$schema": "../../schema/registry-item.schema.json",
+  "name": "alert",
+  "type": "registry:ui",
+  "title": "Alert (Vue)",
+  "description": "The alert as a Vue component: a callout for important information, with an icon, title and description, in default and destructive styles.",
+  "version": "1.0.0",
+  "added": "0.44.0",
+  "categories": ["feedback"],
+  "dependencies": [],
+  "registryDependencies": [],
+  "compatibility": {
+    "bootstrap": "5.3",
+    "platform": ["Bootstrap CSS", "Bootstrap JS bundle"]
+  },
+  "license": "MIT",
+  "files": [
+    {
+      "path": "Alert.vue",
+      "target": "Alert.vue",
+      "type": "registry:vue"
+    }
+  ]
+}

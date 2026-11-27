@@ -25,16 +25,20 @@ export default function setup(): void {
     run('node', [
       cli,
       'add',
-      'button',
-      'dialog',
-      'toaster',
+      ...['button', 'dialog', 'toaster', 'input', 'textarea', 'select', 'checkbox', 'switch'],
+      ...['badge', 'alert', 'card', 'avatar', 'tabs'],
       '--yes',
       '--cwd',
       app,
       '--registry',
       registry,
     ]);
-    if (framework === 'react') run('pnpm', ['exec', 'tsc', '-p', 'tsconfig.json'], app);
+    // Type-check the installed components as a user's project would.
+    run(
+      'pnpm',
+      ['exec', framework === 'react' ? 'tsc' : 'vue-tsc', '--noEmit', '-p', 'tsconfig.json'],
+      app,
+    );
     run('pnpm', ['exec', 'vite', 'build'], app);
   }
 }

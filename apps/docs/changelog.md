@@ -10,6 +10,18 @@ each published version stays available under `/v/<version>/`) and the **CLI**
 
 ## Registry
 
+### 0.44.0
+
+More React and Vue components.
+
+- Input, Textarea and Select (label, hint and error wired to the field),
+  Checkbox and Switch (`checked` in React, `v-model` in Vue), Tabs (arrow
+  keys, Home and End, without Bootstrap's JavaScript), Card, Alert, Badge
+  and Avatar (initials when the picture is missing or broken).
+- Item pages show the React and Vue code under "React and Vue".
+- Both example apps are type-checked (TypeScript and vue-tsc) and tested in
+  CI after the CLI installs the components.
+
 ### 0.43.0
 
 React and Vue.

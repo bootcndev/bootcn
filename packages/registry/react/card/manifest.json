@@ -1,0 +1,24 @@
+{
+  "$schema": "../../schema/registry-item.schema.json",
+  "name": "card",
+  "type": "registry:ui",
+  "title": "Card (React)",
+  "description": "The card as a React component: a content container with header, title, description, content and footer regions.",
+  "version": "1.0.0",
+  "added": "0.44.0",
+  "categories": ["cards", "layout"],
+  "dependencies": [],
+  "registryDependencies": [],
+  "compatibility": {
+    "bootstrap": "5.3",
+    "platform": ["Bootstrap CSS"]
+  },
+  "license": "MIT",
+  "files": [
+    {
+      "path": "Card.tsx",
+      "target": "Card.tsx",
+      "type": "registry:react"
+    }
+  ]
+}
