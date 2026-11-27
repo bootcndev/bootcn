@@ -5,6 +5,7 @@
   "title": "Bar chart",
   "description": "A card with a bar chart built on the Chart component: desktop and mobile visitors side by side.",
   "version": "1.0.0",
+  "added": "0.10.0",
   "categories": ["charts"],
   "dependencies": [],
   "registryDependencies": ["chart", "card"],

@@ -5,6 +5,7 @@
   "title": "Traffic overview",
   "description": "An analytics section: three metrics with sparklines, a sign-up funnel and a heatmap of visits by day and hour.",
   "version": "1.0.0",
+  "added": "0.25.0",
   "categories": ["charts"],
   "dependencies": [],
   "registryDependencies": ["sparkline", "funnel", "heatmap", "card"],

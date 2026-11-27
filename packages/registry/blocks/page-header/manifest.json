@@ -5,6 +5,7 @@
   "title": "Page header",
   "description": "A page title with breadcrumb navigation, a short description and primary actions.",
   "version": "1.0.0",
+  "added": "0.3.0",
   "categories": ["navigation"],
   "dependencies": [],
   "registryDependencies": ["button"],

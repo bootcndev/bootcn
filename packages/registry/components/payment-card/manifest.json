@@ -5,6 +5,7 @@
   "title": "Payment card",
   "description": "A payment card picture that follows its form as people type (number, brand colour, name, expiry) and turns over for the security code, with formatting and checks; also small cards for lists.",
   "version": "1.0.0",
+  "added": "0.35.0",
   "categories": ["forms", "data-display"],
   "dependencies": [],
   "registryDependencies": ["input", "button"],

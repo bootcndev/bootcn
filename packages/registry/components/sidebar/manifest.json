@@ -5,6 +5,7 @@
   "title": "Sidebar",
   "description": "An app sidebar that collapses to icons on desktop (remembered, Ctrl/⌘ B) and becomes a drawer on phones.",
   "version": "1.0.1",
+  "added": "0.9.0",
   "categories": ["navigation"],
   "dependencies": [],
   "registryDependencies": ["avatar"],

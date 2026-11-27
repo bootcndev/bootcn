@@ -5,6 +5,7 @@
   "title": "Kbd",
   "description": "Shows keyboard keys and shortcuts in text.",
   "version": "1.0.0",
+  "added": "0.6.0",
   "categories": ["data-display"],
   "dependencies": [],
   "registryDependencies": [],

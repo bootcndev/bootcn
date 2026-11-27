@@ -5,6 +5,7 @@
   "title": "File manager",
   "description": "A file browser: breadcrumbs, search, list or grid view, sorting, selection with bulk actions, a menu per file and drag-and-drop uploads that appear in the list.",
   "version": "1.0.0",
+  "added": "0.33.0",
   "categories": ["data-display"],
   "dependencies": [],
   "registryDependencies": ["dropzone", "breadcrumb", "input", "checkbox", "dropdown", "button"],

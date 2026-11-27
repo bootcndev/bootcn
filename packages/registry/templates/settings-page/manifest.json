@@ -5,6 +5,7 @@
   "title": "Settings page",
   "description": "Account settings for a SaaS app: a section nav, profile and password forms with validation, notification choices, billing with invoices and a confirmed account deletion.",
   "version": "1.0.0",
+  "added": "0.17.0",
   "categories": ["dashboard"],
   "dependencies": [],
   "registryDependencies": [

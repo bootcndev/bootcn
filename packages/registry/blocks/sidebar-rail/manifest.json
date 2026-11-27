@@ -5,6 +5,7 @@
   "title": "Sidebar rail",
   "description": "A narrow icon-only navigation rail with labels in tooltips, beside the page content.",
   "version": "1.0.0",
+  "added": "0.23.0",
   "categories": ["navigation"],
   "dependencies": [],
   "registryDependencies": [],

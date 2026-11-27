@@ -5,6 +5,7 @@
   "title": "Site header",
   "description": "A marketing site header: logo, section links and sign-in buttons, collapsing into a menu on phones; sticky with a blurred background, optionally hiding while you scroll down.",
   "version": "1.1.0",
+  "added": "0.17.0",
   "categories": ["marketing"],
   "dependencies": [],
   "registryDependencies": ["button"],

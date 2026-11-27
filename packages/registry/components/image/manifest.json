@@ -5,6 +5,7 @@
   "title": "Image",
   "description": "An image that fades in once loaded over a placeholder, shows its description if it fails, and can zoom on hover.",
   "version": "1.1.0",
+  "added": "0.23.0",
   "categories": ["data-display"],
   "dependencies": [],
   "registryDependencies": [],

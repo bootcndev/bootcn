@@ -5,6 +5,7 @@
   "title": "Prompt input",
   "description": "The message box of an AI chat: a growing textarea, file attachments, a model choice, suggestions and a send button that turns into stop.",
   "version": "1.1.0",
+  "added": "0.14.0",
   "categories": ["ai"],
   "dependencies": [],
   "registryDependencies": [],

@@ -5,6 +5,7 @@
   "title": "Stats cards",
   "description": "A responsive row of metric cards with a value, an icon and the change since the last period.",
   "version": "1.1.0",
+  "added": "0.3.0",
   "categories": ["dashboard"],
   "dependencies": [],
   "registryDependencies": [],

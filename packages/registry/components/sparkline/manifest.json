@@ -5,6 +5,7 @@
   "title": "Sparkline",
   "description": "A word-sized trend line drawn from a list of numbers, with a text summary for screen readers; up and down colours.",
   "version": "1.0.0",
+  "added": "0.25.0",
   "categories": ["data-display"],
   "dependencies": [],
   "registryDependencies": [],

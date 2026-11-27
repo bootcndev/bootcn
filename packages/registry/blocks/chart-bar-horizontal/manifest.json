@@ -5,6 +5,7 @@
   "title": "Horizontal bar chart",
   "description": "A card with a horizontal bar chart built on the Chart component: revenue by channel this quarter.",
   "version": "1.0.0",
+  "added": "0.10.0",
   "categories": ["charts"],
   "dependencies": [],
   "registryDependencies": ["chart", "card"],

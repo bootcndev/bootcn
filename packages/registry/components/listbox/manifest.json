@@ -5,6 +5,7 @@
   "title": "Listbox",
   "description": "A list of options to pick one or several from, with keyboard navigation, typeahead and form values.",
   "version": "1.0.0",
+  "added": "0.13.0",
   "categories": ["forms"],
   "dependencies": [],
   "registryDependencies": ["label"],

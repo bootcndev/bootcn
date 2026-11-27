@@ -5,6 +5,7 @@
   "title": "Field",
   "description": "Groups form controls with labels, descriptions and errors, in stacked, side-by-side and horizontal layouts.",
   "version": "1.0.0",
+  "added": "0.6.0",
   "categories": ["forms"],
   "dependencies": [],
   "registryDependencies": ["input", "select", "switch", "label"],

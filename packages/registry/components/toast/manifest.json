@@ -5,6 +5,7 @@
   "title": "Toast",
   "description": "Notifications built on Bootstrap Toast, with declarative triggers and a safe create() API.",
   "version": "1.1.0",
+  "added": "0.1.0",
   "categories": ["feedback", "overlays"],
   "dependencies": [],
   "registryDependencies": ["button"],

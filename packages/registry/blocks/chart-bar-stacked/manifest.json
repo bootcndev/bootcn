@@ -5,6 +5,7 @@
   "title": "Stacked bar chart",
   "description": "A bar chart card that stacks three series per month, with the total, a legend and a data table.",
   "version": "1.0.0",
+  "added": "0.23.0",
   "categories": ["charts"],
   "dependencies": [],
   "registryDependencies": ["chart", "card"],

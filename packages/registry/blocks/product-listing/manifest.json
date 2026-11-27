@@ -5,6 +5,7 @@
   "title": "Product listing",
   "description": "A shop listing: filters by category, price, colour and rating (a sidebar on large screens, a drawer on phones), sorting, a live result count and an empty state, over a grid of product cards.",
   "version": "1.0.0",
+  "added": "0.34.0",
   "categories": ["marketing", "data-display"],
   "dependencies": [],
   "registryDependencies": [

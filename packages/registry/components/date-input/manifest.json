@@ -5,6 +5,7 @@
   "title": "Date input",
   "description": "A segmented date, time or date-time field: day, month, year, hour and minute are separate spinbuttons, ordered for the locale, typed or changed with the arrow keys.",
   "version": "1.2.0",
+  "added": "0.19.0",
   "categories": ["forms"],
   "dependencies": [],
   "registryDependencies": ["field", "label", "input"],

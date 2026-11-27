@@ -5,6 +5,7 @@
   "title": "Line chart",
   "description": "A card with a line chart built on the Chart component: daily active users, desktop and mobile.",
   "version": "1.0.0",
+  "added": "0.10.0",
   "categories": ["charts"],
   "dependencies": [],
   "registryDependencies": ["chart", "card"],

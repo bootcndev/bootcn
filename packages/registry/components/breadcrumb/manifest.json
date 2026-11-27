@@ -5,6 +5,7 @@
   "title": "Breadcrumb",
   "description": "Shows where the current page sits in the site hierarchy, with links to each parent.",
   "version": "1.0.0",
+  "added": "0.6.0",
   "categories": ["navigation"],
   "dependencies": [],
   "registryDependencies": [],

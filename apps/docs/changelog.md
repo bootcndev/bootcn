@@ -18,6 +18,9 @@ Everyday UI.
   the name; saved as PNG in the form, exportable as SVG.
 - Context menu 1.1.0: submenus, checkable and radio items, keyboard
   shortcuts named with aria-keyshortcuts.
+- Site: components, blocks and templates from the last two releases carry a
+  "New" badge in the sidebar, the lists and on their page; every other page
+  says which release added it.
 
 ### 0.35.0
 

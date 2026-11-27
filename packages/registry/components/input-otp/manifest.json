@@ -5,6 +5,7 @@
   "title": "Input OTP",
   "description": "A one-time code field shown as separate boxes, backed by one real input that autofills from SMS and accepts paste.",
   "version": "1.0.2",
+  "added": "0.8.0",
   "categories": ["forms"],
   "dependencies": [],
   "registryDependencies": ["label"],

@@ -5,6 +5,7 @@
   "title": "FAQ section",
   "description": "Frequently asked questions in an accordion, beside a heading and a contact link.",
   "version": "1.0.0",
+  "added": "0.17.0",
   "categories": ["marketing"],
   "dependencies": [],
   "registryDependencies": ["accordion"],

@@ -5,6 +5,7 @@
   "title": "Checkbox group",
   "description": "Related checkboxes in a fieldset, with a \"Select all\" box, a minimum selection and an error message.",
   "version": "1.1.0",
+  "added": "0.15.0",
   "categories": ["forms"],
   "dependencies": [],
   "registryDependencies": ["checkbox"],

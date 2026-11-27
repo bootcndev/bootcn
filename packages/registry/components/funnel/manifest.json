@@ -5,6 +5,7 @@
   "title": "Funnel",
   "description": "A conversion funnel as an ordered list: each step with its count, its share of the first step and of the previous one, and a bar.",
   "version": "1.0.0",
+  "added": "0.25.0",
   "categories": ["data-display"],
   "dependencies": [],
   "registryDependencies": [],

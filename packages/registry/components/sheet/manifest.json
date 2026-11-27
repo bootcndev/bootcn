@@ -5,6 +5,7 @@
   "title": "Sheet",
   "description": "A panel that slides in from the edge of the screen for secondary tasks, built on Bootstrap Offcanvas.",
   "version": "1.0.0",
+  "added": "0.6.0",
   "categories": ["overlays"],
   "dependencies": [],
   "registryDependencies": ["button", "input"],

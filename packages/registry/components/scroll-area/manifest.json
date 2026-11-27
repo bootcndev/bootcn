@@ -5,6 +5,7 @@
   "title": "Scroll area",
   "description": "A scrollable region with thin, theme-aware scrollbars that keyboard users can reach and scroll.",
   "version": "1.0.0",
+  "added": "0.6.0",
   "categories": ["layout"],
   "dependencies": [],
   "registryDependencies": [],

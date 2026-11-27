@@ -5,6 +5,7 @@
   "title": "Item",
   "description": "A row with media, a title, a description and actions, for settings lists, files or people.",
   "version": "1.0.0",
+  "added": "0.6.0",
   "categories": ["data-display"],
   "dependencies": [],
   "registryDependencies": ["button", "avatar"],

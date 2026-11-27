@@ -5,6 +5,7 @@
   "title": "Navigation menu",
   "description": "Site navigation with panels of links and descriptions that open from the top bar, built on Bootstrap Dropdown.",
   "version": "1.0.0",
+  "added": "0.8.0",
   "categories": ["navigation"],
   "dependencies": [],
   "registryDependencies": [],

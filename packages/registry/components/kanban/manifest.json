@@ -5,6 +5,7 @@
   "title": "Kanban",
   "description": "A kanban board: columns with counts and optional limits, cards with tags, due dates, comments and people, drag and drop with the mouse or touch, keyboard moves that are announced, and adding cards in place.",
   "version": "1.0.0",
+  "added": "0.33.0",
   "categories": ["data-display"],
   "dependencies": [],
   "registryDependencies": ["avatar", "button", "textarea"],

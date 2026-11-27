@@ -5,6 +5,7 @@
   "title": "Empty state",
   "description": "Fills an empty list or page with an icon, a short explanation and the next action to take.",
   "version": "1.0.0",
+  "added": "0.6.0",
   "categories": ["feedback"],
   "dependencies": [],
   "registryDependencies": ["button"],

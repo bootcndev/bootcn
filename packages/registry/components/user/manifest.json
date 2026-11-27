@@ -5,6 +5,7 @@
   "title": "User",
   "description": "A person at a glance: avatar, name and a second line (role, email or handle), in three sizes or as a link.",
   "version": "1.0.0",
+  "added": "0.23.0",
   "categories": ["data-display"],
   "dependencies": [],
   "registryDependencies": ["avatar"],

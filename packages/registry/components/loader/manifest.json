@@ -5,6 +5,7 @@
   "title": "Loader",
   "description": "Small loading indicators: typing dots, pulse, bars and a shimmering \"Thinking…\" text, in three sizes, still under reduced motion.",
   "version": "1.0.0",
+  "added": "0.24.0",
   "categories": ["feedback"],
   "dependencies": [],
   "registryDependencies": [],

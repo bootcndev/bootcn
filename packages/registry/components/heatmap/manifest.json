@@ -5,6 +5,7 @@
   "title": "Heatmap",
   "description": "A table of values coloured by intensity (days by hours, weeks by days), with every number readable and a Less–More legend.",
   "version": "1.0.0",
+  "added": "0.25.0",
   "categories": ["data-display"],
   "dependencies": [],
   "registryDependencies": [],

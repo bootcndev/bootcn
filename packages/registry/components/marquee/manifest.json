@@ -5,6 +5,7 @@
   "title": "Marquee",
   "description": "A strip of logos or quotes that scrolls on its own, pauses on hover, focus or its button, and stands still under reduced motion.",
   "version": "1.0.0",
+  "added": "0.24.0",
   "categories": ["data-display"],
   "dependencies": [],
   "registryDependencies": [],

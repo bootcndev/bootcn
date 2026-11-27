@@ -5,6 +5,7 @@
   "title": "Resizable",
   "description": "Panels with a draggable divider that also resizes from the keyboard, horizontally or vertically.",
   "version": "1.1.0",
+  "added": "0.8.0",
   "categories": ["layout"],
   "dependencies": [],
   "registryDependencies": [],

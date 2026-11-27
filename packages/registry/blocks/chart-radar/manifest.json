@@ -5,6 +5,7 @@
   "title": "Radar chart",
   "description": "A card with a radar chart built on the Chart component: desktop and mobile visitors across the months.",
   "version": "1.0.0",
+  "added": "0.10.0",
   "categories": ["charts"],
   "dependencies": [],
   "registryDependencies": ["chart", "card"],

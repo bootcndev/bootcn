@@ -5,6 +5,7 @@
   "title": "Search field",
   "description": "A search input with an icon and a clear button that appears when there is text; Escape clears it too.",
   "version": "1.0.1",
+  "added": "0.12.0",
   "categories": ["forms"],
   "dependencies": [],
   "registryDependencies": ["label"],

@@ -5,6 +5,7 @@
   "title": "Hover card",
   "description": "A preview card that appears when the pointer rests on or keyboard focus reaches a link, built on Bootstrap Popover.",
   "version": "1.0.0",
+  "added": "0.6.0",
   "categories": ["overlays"],
   "dependencies": [],
   "registryDependencies": ["avatar"],

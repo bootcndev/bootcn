@@ -5,6 +5,7 @@
   "title": "Collapsible",
   "description": "A panel that shows a summary and expands to reveal more, built on Bootstrap Collapse.",
   "version": "1.0.0",
+  "added": "0.6.0",
   "categories": ["layout"],
   "dependencies": [],
   "registryDependencies": ["button"],

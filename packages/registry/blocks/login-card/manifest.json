@@ -5,6 +5,7 @@
   "title": "Login card",
   "description": "A centered sign-in card with email, password, a remember-me option and links to reset the password or sign up.",
   "version": "1.0.0",
+  "added": "0.3.0",
   "categories": ["authentication"],
   "dependencies": [],
   "registryDependencies": ["card", "input", "checkbox", "button"],

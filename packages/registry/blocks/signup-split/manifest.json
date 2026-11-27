@@ -5,6 +5,7 @@
   "title": "Sign-up split screen",
   "description": "A two-column sign-up page: what you get on one side, the registration form on the other.",
   "version": "1.0.0",
+  "added": "0.11.0",
   "categories": ["authentication"],
   "dependencies": [],
   "registryDependencies": ["input", "checkbox", "button"],

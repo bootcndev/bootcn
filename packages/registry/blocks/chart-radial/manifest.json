@@ -5,6 +5,7 @@
   "title": "Radial chart",
   "description": "A card with a radial chart built on the Chart component: share of visitors by browser.",
   "version": "1.0.0",
+  "added": "0.10.0",
   "categories": ["charts"],
   "dependencies": [],
   "registryDependencies": ["chart", "card"],

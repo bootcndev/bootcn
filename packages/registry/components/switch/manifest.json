@@ -5,6 +5,7 @@
   "title": "Switch",
   "description": "An on/off toggle built on Bootstrap form switches, with sizes and descriptions.",
   "version": "1.1.1",
+  "added": "0.1.0",
   "categories": ["forms", "selection"],
   "dependencies": [],
   "registryDependencies": [],

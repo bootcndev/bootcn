@@ -5,6 +5,7 @@
   "title": "Color area",
   "description": "A two-dimensional saturation and brightness picker with a hue slider and a hex field, usable with the keyboard.",
   "version": "1.0.1",
+  "added": "0.15.0",
   "categories": ["forms"],
   "dependencies": [],
   "registryDependencies": ["color-slider", "label", "input"],

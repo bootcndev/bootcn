@@ -119,6 +119,17 @@ describe('validateRegistry', () => {
     expect(result.items.map((item) => item.manifest.name)).toEqual(REAL_ITEMS);
   });
 
+  it('says when each real item was added', async () => {
+    const result = await validateRegistry(REGISTRY_DIR);
+    const missing = result.items.filter((item) => !item.manifest.added);
+    expect(missing.map((item) => item.relDir)).toEqual([]);
+  });
+
+  it('fails when "added" is later than the registry', async () => {
+    const errors = await errorsFor(component('alpha', { added: '99.0.0' }));
+    expect(errors.join('\n')).toMatch(/"added" is 99\.0\.0, later than the registry version/);
+  });
+
   it('passes on a minimal valid registry', async () => {
     expect(await errorsFor(component('alpha'))).toEqual([]);
   });
@@ -342,6 +353,10 @@ describe('buildRegistry', () => {
     expect(js?.content).toBe(
       await readFile(resolve(REGISTRY_DIR, 'components/dialog/dialog.js'), 'utf8'),
     );
+
+    // Published CLIs reject unknown keys, so "added" stays out of the output.
+    expect(JSON.stringify(index)).not.toContain('"added"');
+    expect(dialog).not.toHaveProperty('added');
   });
 
   it('refuses to build an invalid registry', async () => {

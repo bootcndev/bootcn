@@ -5,6 +5,7 @@
   "title": "Booking",
   "description": "Book an appointment: a calendar for the day, a grid of available times and a summary with the confirm button.",
   "version": "1.0.0",
+  "added": "0.23.0",
   "categories": ["dashboard"],
   "dependencies": [],
   "registryDependencies": ["calendar", "card", "button"],

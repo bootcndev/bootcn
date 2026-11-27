@@ -5,6 +5,7 @@
   "title": "Checkout",
   "description": "A one-page checkout: contact, delivery address, shipping method and card details with formatting and checks, beside an order summary with a discount code and totals, ending on an order confirmation.",
   "version": "1.0.0",
+  "added": "0.34.0",
   "categories": ["forms"],
   "dependencies": [],
   "registryDependencies": [

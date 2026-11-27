@@ -5,6 +5,7 @@
   "title": "Modal",
   "description": "Modals for forms and longer content: sizes, top placement, a bottom sheet on phones, blurred backdrop, scrolling with shadows, form validation and an unsaved-changes guard.",
   "version": "1.0.0",
+  "added": "0.31.0",
   "categories": ["overlays", "dialogs"],
   "dependencies": [],
   "registryDependencies": ["dialog", "button", "input"],
@@ -14,8 +15,20 @@
   },
   "license": "MIT",
   "files": [
-    { "path": "modal.html", "target": "modal.html", "type": "registry:component" },
-    { "path": "modal.css", "target": "modal.css", "type": "registry:style" },
-    { "path": "modal.js", "target": "modal.js", "type": "registry:script" }
+    {
+      "path": "modal.html",
+      "target": "modal.html",
+      "type": "registry:component"
+    },
+    {
+      "path": "modal.css",
+      "target": "modal.css",
+      "type": "registry:style"
+    },
+    {
+      "path": "modal.js",
+      "target": "modal.js",
+      "type": "registry:script"
+    }
   ]
 }

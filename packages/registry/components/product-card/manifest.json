@@ -5,6 +5,7 @@
   "title": "Product card",
   "description": "A product tile for shop grids: picture, sale or new badge, wishlist toggle, category, name linking to the product, rating, colours, price with the old price and saving, and an add-to-cart button.",
   "version": "1.0.0",
+  "added": "0.34.0",
   "categories": ["data-display", "cards"],
   "dependencies": [],
   "registryDependencies": ["rating", "button"],

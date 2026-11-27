@@ -5,6 +5,7 @@
   "title": "Testimonials",
   "description": "Customer quotes in a masonry-style grid of cards, each with the person's name, role and avatar.",
   "version": "1.0.0",
+  "added": "0.5.0",
   "categories": ["marketing"],
   "dependencies": [],
   "registryDependencies": ["avatar"],

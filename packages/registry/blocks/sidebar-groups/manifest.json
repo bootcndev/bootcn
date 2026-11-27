@@ -5,6 +5,7 @@
   "title": "Sidebar with groups",
   "description": "A sidebar with a team switcher, search, collapsible navigation groups, projects and the user menu.",
   "version": "1.0.1",
+  "added": "0.11.0",
   "categories": ["navigation"],
   "dependencies": [],
   "registryDependencies": ["dropdown", "input", "user-menu", "button"],

@@ -5,6 +5,7 @@
   "title": "Button with icons",
   "description": "Buttons with a leading or trailing icon, icon-only buttons in three sizes, an icon that becomes a spinner while loading, and a count badge.",
   "version": "1.0.0",
+  "added": "0.27.0",
   "categories": ["actions"],
   "dependencies": [],
   "registryDependencies": ["button"],

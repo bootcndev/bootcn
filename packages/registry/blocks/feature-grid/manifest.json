@@ -5,6 +5,7 @@
   "title": "Feature grid",
   "description": "A section heading with a responsive grid of features, each with an icon, a title and a short description.",
   "version": "1.0.0",
+  "added": "0.5.0",
   "categories": ["marketing"],
   "dependencies": [],
   "registryDependencies": [],

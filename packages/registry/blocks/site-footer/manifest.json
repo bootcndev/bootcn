@@ -5,6 +5,7 @@
   "title": "Site footer",
   "description": "A footer with the logo, a newsletter sign-up, three columns of links, the copyright and social links.",
   "version": "1.0.0",
+  "added": "0.17.0",
   "categories": ["marketing"],
   "dependencies": [],
   "registryDependencies": ["input", "button"],

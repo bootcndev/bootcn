@@ -8,6 +8,10 @@ import { resolve } from 'node:path';
 import AxeBuilder from '@axe-core/playwright';
 import { expect, test, type Page } from '@playwright/test';
 
+function escapeRegExp(text: string): string {
+  return text.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+}
+
 interface IndexItem {
   name: string;
   type: string;
@@ -87,7 +91,8 @@ test('home page links to the guide and the components', async ({ page }) => {
     // Each card is a link whose title is the item name.
     await expect(
       page.locator('.bootcn-grid a').filter({
-        has: page.locator('strong').getByText(item.title, { exact: true }),
+        // Recent items end with a "New" badge.
+        has: page.locator('strong').getByText(new RegExp(`^${escapeRegExp(item.title)}( New)?$`)),
       }),
     ).toBeVisible();
   }
@@ -223,6 +228,40 @@ test('copy button copies the install command', async ({ page }) => {
 test('sidebar marks the current page', async ({ page }) => {
   await page.goto('components/tabs');
   await expect(page.locator('.VPSidebar .is-active').first()).toContainText('Tabs');
+});
+
+test('items from the latest releases are marked New', async ({ page }) => {
+  const registry = resolve(import.meta.dirname, '../../packages/registry');
+  const { version } = JSON.parse(readFileSync(resolve(registry, 'registry.json'), 'utf8')) as {
+    version: string;
+  };
+  const added = (name: string) =>
+    (
+      JSON.parse(readFileSync(resolve(registry, 'components', name, 'manifest.json'), 'utf8')) as {
+        added?: string;
+      }
+    ).added;
+  const latest = ['tree', 'button'].find((name) => added(name) === version);
+  test.skip(!latest, 'no component in this release to check');
+
+  await page.goto(`components/${latest}`);
+  await expect(page.locator('.bootcn-meta__new')).toHaveText(`New in ${version}`);
+  const title = index.items.find((item) => item.name === latest)!.title;
+  await expect(
+    page.locator('.VPSidebar').getByRole('link', { name: `${title} New`, exact: true }),
+  ).toBeVisible();
+
+  await page.goto('components/');
+  await expect(
+    page.locator('.bootcn-grid').getByRole('link', { name: new RegExp(`^${title} New`) }),
+  ).toHaveCount(1);
+
+  await page.goto('components/button');
+  await expect(page.locator('.bootcn-meta__new')).toHaveCount(0);
+  await expect(page.locator('.bootcn-meta')).toContainText(`Since ${added('button')}`);
+  await expect(
+    page.locator('.VPSidebar').getByRole('link', { name: 'Button', exact: true }),
+  ).toBeVisible();
 });
 
 test('every internal link resolves', async ({ request, browserName }) => {

@@ -5,6 +5,7 @@
   "title": "Badge",
   "description": "A small status label with default, secondary, outline and destructive variants.",
   "version": "1.1.0",
+  "added": "0.1.0",
   "categories": ["badges", "data-display"],
   "dependencies": [],
   "registryDependencies": [],

@@ -24,7 +24,7 @@ Templates need `bootcn` 0.2.0 or newer.
   <h2 v-if="groups.length > 1" :id="group.label.toLowerCase().replace(/\s+/g, '-')">{{ group.label }}</h2>
   <ul class="bootcn-grid">
     <li v-for="item in group.items" :key="item.name">
-      <a :href="`./${item.name}`"><strong>{{ item.title }}</strong><span>{{ item.description }}</span></a>
+      <a :href="`./${item.name}`"><strong>{{ item.title }}{{ item.isNew ? ' ' : '' }}<span v-if="item.isNew" class="bootcn-new">New</span></strong><span>{{ item.description }}</span></a>
     </li>
   </ul>
 </template>

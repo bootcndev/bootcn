@@ -5,6 +5,7 @@
   "title": "Stepper",
   "description": "Steps for multi-step forms and progress: numbered markers that turn into checks, horizontal or vertical, with validation before each step and an optional closing panel.",
   "version": "1.0.0",
+  "added": "0.31.0",
   "categories": ["forms", "navigation"],
   "dependencies": [],
   "registryDependencies": ["button", "input"],

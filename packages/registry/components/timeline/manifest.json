@@ -5,6 +5,7 @@
   "title": "Timeline",
   "description": "A timeline for activity and progress: icons with a status (done, current, upcoming, error), titles, times shown as \"2 hours ago\" and notes; vertical, or horizontal steps that stack on phones.",
   "version": "1.0.0",
+  "added": "0.35.0",
   "categories": ["data-display"],
   "dependencies": [],
   "registryDependencies": [],

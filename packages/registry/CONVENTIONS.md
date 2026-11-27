@@ -164,6 +164,11 @@ always installed and does not need to be listed. Platform requirements
 (Bootstrap CSS, Bootstrap JS bundle) go in `compatibility.platform`; npm-style
 packages go in `dependencies` and are only displayed, never installed.
 
+`added` is the registry version that first ships the item (for a new item, the
+version in `registry.json` you are releasing). The site marks items from the
+last two releases as **New**. It is left out of the published JSON, because
+CLIs up to 0.6 reject keys they do not know.
+
 Run `pnpm registry:validate` after any change; CI runs it too.
 
 ## 10. Blocks and templates

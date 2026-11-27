@@ -5,6 +5,7 @@
   "title": "Notification center",
   "description": "A notification center: a bell with the unread count that opens a panel of notifications grouped by day, with All and Unread, unread markers, mark one or all as read, relative times and an empty state.",
   "version": "1.0.0",
+  "added": "0.35.0",
   "categories": ["overlays", "feedback"],
   "dependencies": [],
   "registryDependencies": ["avatar", "button", "timeline"],

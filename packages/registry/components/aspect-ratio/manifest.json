@@ -5,6 +5,7 @@
   "title": "Aspect ratio",
   "description": "Keeps media at a fixed width-to-height ratio, cropping images to fill.",
   "version": "1.0.0",
+  "added": "0.6.0",
   "categories": ["layout"],
   "dependencies": [],
   "registryDependencies": [],

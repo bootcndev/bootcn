@@ -5,6 +5,7 @@
   "title": "Login with image",
   "description": "A wide sign-in card with the form on one side and an image on the other, which hides on phones.",
   "version": "1.0.0",
+  "added": "0.11.0",
   "categories": ["authentication"],
   "dependencies": [],
   "registryDependencies": ["card", "input", "button"],

@@ -5,6 +5,7 @@
   "title": "Experience timeline",
   "description": "Work history as on LinkedIn: company logos, roles with dates and durations (\"2 yrs 3 mos\"), several roles at one company joined by a line, locations, descriptions and skills.",
   "version": "1.0.0",
+  "added": "0.33.0",
   "categories": ["data-display"],
   "dependencies": [],
   "registryDependencies": [],

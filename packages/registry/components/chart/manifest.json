@@ -5,6 +5,7 @@
   "title": "Chart",
   "description": "Accessible SVG charts (area, bar, line, pie, radar, radial) from a small JSON configuration, with tooltips, a legend and a data table.",
   "version": "1.0.1",
+  "added": "0.10.0",
   "categories": ["data-display"],
   "dependencies": [],
   "registryDependencies": [],

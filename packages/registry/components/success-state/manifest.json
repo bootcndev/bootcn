@@ -5,6 +5,7 @@
   "title": "Success state",
   "description": "A \"You're all set\" screen: a check that draws itself, a title, a message and next steps, with optional confetti.",
   "version": "1.0.0",
+  "added": "0.31.0",
   "categories": ["feedback"],
   "dependencies": [],
   "registryDependencies": ["button"],

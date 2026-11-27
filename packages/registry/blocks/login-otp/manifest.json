@@ -5,6 +5,7 @@
   "title": "Verify with a code",
   "description": "A second-step card that asks for the six-digit code sent by SMS or email, with resend.",
   "version": "1.0.0",
+  "added": "0.11.0",
   "categories": ["authentication"],
   "dependencies": [],
   "registryDependencies": ["card", "input-otp", "button", "label"],

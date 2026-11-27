@@ -5,6 +5,7 @@
   "title": "Delivery tracker",
   "description": "Live order tracking like a delivery or ride app: the courier moves on the map towards your address, with arrival time, order progress and the courier's details in a sheet.",
   "version": "1.0.0",
+  "added": "0.30.0",
   "categories": ["data-display"],
   "dependencies": [],
   "registryDependencies": ["avatar", "button", "location-pin"],
@@ -19,7 +20,15 @@
       "target": "delivery-tracker.html",
       "type": "registry:component"
     },
-    { "path": "delivery-tracker.css", "target": "delivery-tracker.css", "type": "registry:style" },
-    { "path": "delivery-tracker.js", "target": "delivery-tracker.js", "type": "registry:script" }
+    {
+      "path": "delivery-tracker.css",
+      "target": "delivery-tracker.css",
+      "type": "registry:style"
+    },
+    {
+      "path": "delivery-tracker.js",
+      "target": "delivery-tracker.js",
+      "type": "registry:script"
+    }
   ]
 }

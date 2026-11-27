@@ -5,6 +5,7 @@
   "title": "Location pin",
   "description": "Map markers: a pulsing \"you are here\" dot with an accuracy ring, and a pin that drops into place, in brand or custom colours.",
   "version": "1.0.0",
+  "added": "0.28.0",
   "categories": ["data-display"],
   "dependencies": [],
   "registryDependencies": [],

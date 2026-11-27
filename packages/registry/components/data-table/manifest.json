@@ -5,6 +5,7 @@
   "title": "Data table",
   "description": "A table with sorting, filtering, pagination and row selection, enhancing server-rendered rows.",
   "version": "1.0.0",
+  "added": "0.9.0",
   "categories": ["data-display"],
   "dependencies": [],
   "registryDependencies": ["table", "input", "button", "checkbox"],

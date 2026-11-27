@@ -5,6 +5,7 @@
   "title": "AI chat",
   "description": "A complete chat panel: a header with \"New chat\", the conversation and the prompt input with suggestions and attachments, wired together.",
   "version": "1.0.1",
+  "added": "0.14.0",
   "categories": ["ai"],
   "dependencies": [],
   "registryDependencies": ["conversation", "prompt-input", "button"],

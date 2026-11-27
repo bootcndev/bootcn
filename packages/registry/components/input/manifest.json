@@ -5,6 +5,7 @@
   "title": "Input",
   "description": "A text input with label, help text, invalid and disabled states, and an input-group icon example.",
   "version": "1.1.0",
+  "added": "0.1.0",
   "categories": ["forms", "inputs"],
   "dependencies": [],
   "registryDependencies": [],

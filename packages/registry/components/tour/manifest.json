@@ -5,6 +5,7 @@
   "title": "Tour",
   "description": "A product tour: highlights one element at a time with a card next to it, \"1 of 4\", Back, Next and Skip; keyboard friendly.",
   "version": "1.0.0",
+  "added": "0.31.0",
   "categories": ["overlays"],
   "dependencies": [],
   "registryDependencies": ["button"],

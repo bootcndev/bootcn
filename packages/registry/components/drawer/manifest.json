@@ -5,6 +5,7 @@
   "title": "Drawer",
   "description": "A panel that slides up from the bottom, with a handle, for quick tasks on phones.",
   "version": "1.0.1",
+  "added": "0.6.0",
   "categories": ["overlays"],
   "dependencies": [],
   "registryDependencies": ["button", "input"],

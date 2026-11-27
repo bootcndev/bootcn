@@ -5,6 +5,7 @@
   "title": "Date range input",
   "description": "A start and an end date typed in one segmented field, with a check that the end is not before the start.",
   "version": "1.2.0",
+  "added": "0.23.0",
   "categories": ["forms"],
   "dependencies": [],
   "registryDependencies": ["date-input", "label"],

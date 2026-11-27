@@ -5,6 +5,7 @@
   "title": "Landing page",
   "description": "A product landing page: sticky header, hero, customer logos, features, testimonials, pricing, FAQ, a call to action and the footer, with dark mode.",
   "version": "1.0.0",
+  "added": "0.17.0",
   "categories": ["marketing"],
   "dependencies": [],
   "registryDependencies": [

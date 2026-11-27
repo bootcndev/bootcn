@@ -5,6 +5,7 @@
   "title": "Donut chart",
   "description": "A card with a donut chart built on the Chart component: where visitors came from this month.",
   "version": "1.0.0",
+  "added": "0.10.0",
   "categories": ["charts"],
   "dependencies": [],
   "registryDependencies": ["chart", "card"],

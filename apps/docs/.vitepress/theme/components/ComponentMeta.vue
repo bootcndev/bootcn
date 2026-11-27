@@ -8,6 +8,8 @@ import { ref } from 'vue';
 
 const props = defineProps<{
   version: string;
+  added?: string;
+  isNew?: boolean;
   bootstrap: string;
   requires: string;
   source: string;
@@ -44,7 +46,9 @@ async function copy(): Promise<void> {
 <template>
   <div class="bootcn-meta-row">
     <ul class="bootcn-meta" aria-label="Details">
+      <li v-if="isNew" class="bootcn-meta__new">New in {{ added }}</li>
       <li v-if="version"><span>Version</span> {{ version }}</li>
+      <li v-if="added && !isNew"><span>Since</span> {{ added }}</li>
       <li>
         <a href="https://getbootstrap.com/" target="_blank" rel="noreferrer"
           ><span>Bootstrap</span> {{ bootstrap }}+</a

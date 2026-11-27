@@ -5,6 +5,7 @@
   "title": "Logo cloud",
   "description": "A row of customer logos under a short line of social proof, wrapping on small screens.",
   "version": "1.0.0",
+  "added": "0.17.0",
   "categories": ["marketing"],
   "dependencies": [],
   "registryDependencies": [],

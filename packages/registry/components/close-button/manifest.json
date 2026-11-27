@@ -5,6 +5,7 @@
   "title": "Close button",
   "description": "An icon button that closes dialogs, sheets, alerts and banners, in three sizes.",
   "version": "1.0.0",
+  "added": "0.15.0",
   "categories": ["actions"],
   "dependencies": [],
   "registryDependencies": [],

@@ -5,6 +5,7 @@
   "title": "Rating",
   "description": "Star ratings: a display that fills to any value (4.6 shows six tenths of a star) with the review count, and a rating input made of five native radio buttons.",
   "version": "1.0.0",
+  "added": "0.34.0",
   "categories": ["data-display", "forms"],
   "dependencies": [],
   "registryDependencies": [],

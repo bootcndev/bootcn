@@ -66,6 +66,10 @@ export interface RegistryIndex {
     description: string;
     version: string;
     categories?: string[];
+    /** Registry version that first shipped the item (from its source manifest). */
+    added?: string;
+    /** Shipped in one of the last NEW_RELEASES registry releases. */
+    isNew?: boolean;
   }[];
 }
 
@@ -93,8 +97,35 @@ export const KINDS = {
 
 export type Kind = keyof typeof KINDS;
 
+/** How many registry releases, counting the current one, mark an item as new. */
+export const NEW_RELEASES = 2;
+
+/**
+ * The registry version that first shipped an item. It lives only in the
+ * source manifest: published JSON leaves it out for older CLIs.
+ */
+export function addedOf(name: string, type: string): string | undefined {
+  const file = resolve(sourceDir(name, type), 'manifest.json');
+  if (!existsSync(file)) return undefined;
+  return (JSON.parse(readFileSync(file, 'utf8')) as { added?: string }).added;
+}
+
+/** True when `added` is one of the last NEW_RELEASES minor releases before `current`. */
+export function isNew(added: string | undefined, current: string): boolean {
+  if (!added) return false;
+  const [aMajor, aMinor] = added.split('.').map(Number);
+  const [cMajor, cMinor] = current.split('.').map(Number);
+  return aMajor === cMajor && cMinor! - aMinor! >= 0 && cMinor! - aMinor! < NEW_RELEASES;
+}
+
 export function itemsOf(kind: Kind): RegistryIndex['items'] {
-  return readIndex().items.filter((item) => item.type === KINDS[kind].type);
+  const index = readIndex();
+  return index.items
+    .filter((item) => item.type === KINDS[kind].type)
+    .map((item) => {
+      const added = addedOf(item.name, item.type);
+      return { ...item, added, isNew: isNew(added, index.version) };
+    });
 }
 
 /** Registry items shown as component pages. */

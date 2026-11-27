@@ -5,6 +5,7 @@
   "title": "Audio player",
   "description": "A music player over the native audio element: play, pause, previous and next, a seek bar with times, volume and mute, and a playlist.",
   "version": "1.0.0",
+  "added": "0.28.0",
   "categories": ["data-display"],
   "dependencies": [],
   "registryDependencies": [],

@@ -5,6 +5,7 @@
   "title": "Password strength",
   "description": "A new-password field with a strength meter, a checklist of rules that ticks as you type, and a show/hide button.",
   "version": "1.0.0",
+  "added": "0.24.0",
   "categories": ["forms"],
   "dependencies": [],
   "registryDependencies": ["label", "input"],

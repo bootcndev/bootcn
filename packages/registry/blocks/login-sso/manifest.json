@@ -5,6 +5,7 @@
   "title": "Login with SSO",
   "description": "A sign-in card offering single sign-on and an email link first, then email and password.",
   "version": "1.0.0",
+  "added": "0.11.0",
   "categories": ["authentication"],
   "dependencies": [],
   "registryDependencies": ["card", "input", "button", "separator"],

@@ -5,6 +5,7 @@
   "title": "Calendar",
   "description": "A month grid for picking a date, with full keyboard navigation, localized names and optional limits; single date or a date range.",
   "version": "1.2.0",
+  "added": "0.9.0",
   "categories": ["forms"],
   "dependencies": [],
   "registryDependencies": [],

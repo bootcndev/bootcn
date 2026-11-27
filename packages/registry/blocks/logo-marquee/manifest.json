@@ -5,6 +5,7 @@
   "title": "Logo marquee",
   "description": "Customer logos that scroll in a loop under a line of social proof, with a pause button.",
   "version": "1.0.0",
+  "added": "0.24.0",
   "categories": ["marketing"],
   "dependencies": [],
   "registryDependencies": ["marquee"],

@@ -5,6 +5,7 @@
   "title": "Typography",
   "description": "Readable styles for long-form text: headings, paragraphs, lists, quotes, inline code and tables.",
   "version": "1.0.1",
+  "added": "0.6.0",
   "categories": ["layout"],
   "dependencies": [],
   "registryDependencies": [],

@@ -5,6 +5,7 @@
   "title": "Label",
   "description": "A text label for a form control, in the compact text-sm style.",
   "version": "1.0.0",
+  "added": "0.6.0",
   "categories": ["forms"],
   "dependencies": [],
   "registryDependencies": ["input"],

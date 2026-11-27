@@ -5,6 +5,7 @@
   "title": "Floating sidebar",
   "description": "A sidebar that floats as a rounded card with a shadow, inset from the window edges, with grouped links.",
   "version": "1.0.0",
+  "added": "0.23.0",
   "categories": ["navigation"],
   "dependencies": [],
   "registryDependencies": [],

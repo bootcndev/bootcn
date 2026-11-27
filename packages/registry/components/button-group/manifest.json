@@ -5,6 +5,7 @@
   "title": "Button group",
   "description": "Joins related buttons into one control, horizontally or vertically.",
   "version": "1.0.0",
+  "added": "0.6.0",
   "categories": ["actions"],
   "dependencies": [],
   "registryDependencies": ["button"],

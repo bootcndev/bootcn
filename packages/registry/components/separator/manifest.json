@@ -5,6 +5,7 @@
   "title": "Separator",
   "description": "A horizontal or vertical divider, with an optional centered label.",
   "version": "1.0.1",
+  "added": "0.1.0",
   "categories": ["layout", "separators"],
   "dependencies": [],
   "registryDependencies": [],

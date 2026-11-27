@@ -5,6 +5,7 @@
   "title": "Meter",
   "description": "A gauge for a value within a known range, colored good, average or poor on the native meter element.",
   "version": "1.0.0",
+  "added": "0.12.0",
   "categories": ["feedback"],
   "dependencies": [],
   "registryDependencies": [],

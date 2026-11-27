@@ -48,6 +48,16 @@ export const PAGE_PLACEHOLDERS = ['components', 'css', 'js', 'lib'] as const;
 const SEMVER =
   /^(0|[1-9]\d*)\.(0|[1-9]\d*)\.(0|[1-9]\d*)(?:-[0-9A-Za-z-.]+)?(?:\+[0-9A-Za-z-.]+)?$/;
 
+/** True when semantic version `a` is later than `b` (release parts only). */
+export function newer(a: string, b: string): boolean {
+  const pa = a.split(/[-+]/)[0]!.split('.').map(Number);
+  const pb = b.split(/[-+]/)[0]!.split('.').map(Number);
+  for (let i = 0; i < 3; i += 1) {
+    if (pa[i] !== pb[i]) return pa[i]! > pb[i]!;
+  }
+  return false;
+}
+
 export interface ManifestFile {
   path: string;
   target: string;
@@ -62,6 +72,8 @@ export interface Manifest {
   title: string;
   description: string;
   version?: string;
+  /** Registry version that first shipped the item. */
+  added?: string;
   categories?: string[];
   dependencies?: string[];
   registryDependencies?: string[];
@@ -282,6 +294,11 @@ export async function validateRegistry(registryDir: string): Promise<ValidationR
       if (manifest.version === undefined) {
         errors.push(`${label}: "version" is required.`);
       }
+      if (manifest.added !== undefined && meta && newer(manifest.added, meta.version)) {
+        errors.push(
+          `${label}: "added" is ${manifest.added}, later than the registry version ${meta.version}.`,
+        );
+      }
 
       const seenPaths = new Set<string>();
       const seenTargets = new Set<string>();
@@ -448,8 +465,10 @@ export async function buildRegistry(registryDir: string, outDir: string): Promis
   await writeFile(resolve(outDir, 'index.json'), toJson(index), 'utf8');
 
   for (const { dir, manifest } of result.items) {
-    const { $schema: _schema, ...rest } = manifest;
+    // "added" is for the docs site only: CLIs up to 0.6 reject unknown keys.
+    const { $schema: _schema, added: _added, ...rest } = manifest;
     void _schema;
+    void _added;
     const files = await Promise.all(
       manifest.files.map(async (file) => ({
         ...file,

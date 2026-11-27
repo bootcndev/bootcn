@@ -5,6 +5,7 @@
   "title": "User menu",
   "description": "An avatar button that opens an account menu with the user's name, email, links and sign out.",
   "version": "1.0.1",
+  "added": "0.3.0",
   "categories": ["navigation"],
   "dependencies": [],
   "registryDependencies": ["dropdown", "avatar"],

@@ -5,6 +5,7 @@
   "title": "Onboarding flow",
   "description": "A first-run setup card: three steps (workspace, about you, invite the team) with validation, ending on a \"You're all set\" screen with confetti.",
   "version": "1.0.0",
+  "added": "0.31.0",
   "categories": ["forms", "authentication"],
   "dependencies": [],
   "registryDependencies": [

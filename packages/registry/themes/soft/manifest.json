@@ -5,6 +5,7 @@
   "title": "Soft style",
   "description": "A rounder, filled look for every component: tinted fields instead of outlines, cards on soft shadows and larger corners. Load it after tokens.css.",
   "version": "1.0.0",
+  "added": "0.18.0",
   "categories": ["theming"],
   "dependencies": [],
   "registryDependencies": ["tokens"],

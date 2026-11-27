@@ -5,6 +5,7 @@
   "title": "Invoice",
   "description": "An invoice page: brand, number and status, billing addresses and dates, line items with totals and VAT worked out from quantity and price, payment notes, and a clean printed or PDF version.",
   "version": "1.0.0",
+  "added": "0.33.0",
   "categories": ["dashboard"],
   "dependencies": [],
   "registryDependencies": ["button", "badge", "table"],

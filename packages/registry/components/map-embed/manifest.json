@@ -5,6 +5,7 @@
   "title": "Map embed",
   "description": "An OpenStreetMap map that loads only when asked, with a caption and a link to the full map; no library and no third-party request before the click.",
   "version": "1.0.0",
+  "added": "0.25.0",
   "categories": ["data-display"],
   "dependencies": [],
   "registryDependencies": ["button"],

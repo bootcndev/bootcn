@@ -5,6 +5,7 @@
   "title": "Color slider",
   "description": "Sliders for one color channel each (hue, saturation, lightness, opacity), with the channel painted on the track and a live swatch.",
   "version": "1.0.1",
+  "added": "0.15.0",
   "categories": ["forms"],
   "dependencies": [],
   "registryDependencies": ["label"],

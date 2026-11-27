@@ -5,6 +5,7 @@
   "title": "Admin dashboard",
   "description": "A complete admin page: responsive sidebar, top bar with search, theme toggle and user menu, metric cards, a revenue chart, recent activity and a transactions table.",
   "version": "1.0.1",
+  "added": "0.3.0",
   "categories": ["dashboard"],
   "dependencies": [],
   "registryDependencies": [

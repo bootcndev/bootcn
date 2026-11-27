@@ -5,6 +5,7 @@
   "title": "Number field",
   "description": "A number input with decrement and increment buttons that respect min, max and step.",
   "version": "1.0.1",
+  "added": "0.12.0",
   "categories": ["forms"],
   "dependencies": [],
   "registryDependencies": ["label", "input"],

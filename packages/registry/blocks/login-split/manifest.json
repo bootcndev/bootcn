@@ -5,6 +5,7 @@
   "title": "Login split screen",
   "description": "A two-column sign-in page: a brand panel with a quote beside the form, stacking on small screens.",
   "version": "1.0.0",
+  "added": "0.3.0",
   "categories": ["authentication"],
   "dependencies": [],
   "registryDependencies": ["input", "checkbox", "button"],

@@ -5,6 +5,7 @@
   "title": "Activity feed",
   "description": "A card listing recent team activity with avatars, links and relative times.",
   "version": "1.1.0",
+  "added": "0.3.0",
   "categories": ["dashboard"],
   "dependencies": [],
   "registryDependencies": ["card", "avatar"],

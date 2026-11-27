@@ -5,6 +5,7 @@
   "title": "Location card",
   "description": "Where to find you: the address, opening hours, phone and email, a directions link and a map that loads on request.",
   "version": "1.0.0",
+  "added": "0.25.0",
   "categories": ["marketing"],
   "dependencies": [],
   "registryDependencies": ["map-embed", "card", "button"],

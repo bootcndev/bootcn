@@ -5,6 +5,7 @@
   "title": "Range slider",
   "description": "A slider with two thumbs for choosing a range (a minimum and a maximum), built on two native range inputs.",
   "version": "1.0.0",
+  "added": "0.23.0",
   "categories": ["forms"],
   "dependencies": [],
   "registryDependencies": ["label"],

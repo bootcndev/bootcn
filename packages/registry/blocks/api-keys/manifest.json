@@ -5,6 +5,7 @@
   "title": "API keys",
   "description": "API key management: a table of keys with permissions and last use, a dialog that creates a key and shows it once with a copy button, and revoking with confirmation.",
   "version": "1.0.0",
+  "added": "0.33.0",
   "categories": ["dashboard", "forms"],
   "dependencies": [],
   "registryDependencies": [

@@ -5,6 +5,7 @@
   "title": "Carousel",
   "description": "A slideshow of cards with previous and next buttons, built on Bootstrap Carousel, without autoplay.",
   "version": "1.0.1",
+  "added": "0.8.0",
   "categories": ["data-display"],
   "dependencies": [],
   "registryDependencies": [],

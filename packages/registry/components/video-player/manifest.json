@@ -5,6 +5,7 @@
   "title": "Video player",
   "description": "Custom controls over the native video element: play, seek with buffering, skip, volume, speed, captions, picture in picture, full screen and keyboard shortcuts; controls fade out while playing.",
   "version": "1.0.0",
+  "added": "0.32.0",
   "categories": ["data-display"],
   "dependencies": [],
   "registryDependencies": [],
@@ -14,8 +15,20 @@
   },
   "license": "MIT",
   "files": [
-    { "path": "video-player.html", "target": "video-player.html", "type": "registry:component" },
-    { "path": "video-player.css", "target": "video-player.css", "type": "registry:style" },
-    { "path": "video-player.js", "target": "video-player.js", "type": "registry:script" }
+    {
+      "path": "video-player.html",
+      "target": "video-player.html",
+      "type": "registry:component"
+    },
+    {
+      "path": "video-player.css",
+      "target": "video-player.css",
+      "type": "registry:style"
+    },
+    {
+      "path": "video-player.js",
+      "target": "video-player.js",
+      "type": "registry:script"
+    }
   ]
 }

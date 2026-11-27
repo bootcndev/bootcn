@@ -5,6 +5,7 @@
   "title": "CRM",
   "description": "A CRM in three pages: a deals pipeline on a kanban board with totals per stage, a contacts table with a filter bar and an add-contact dialog, and a contact page with details, open deals and an activity timeline you can add notes to.",
   "version": "1.0.0",
+  "added": "0.35.0",
   "categories": ["dashboard"],
   "dependencies": [],
   "registryDependencies": [

@@ -5,6 +5,7 @@
   "title": "Inset sidebar",
   "description": "The collapsible Sidebar with the page content raised in a rounded panel beside it.",
   "version": "1.0.1",
+  "added": "0.11.0",
   "categories": ["navigation"],
   "dependencies": [],
   "registryDependencies": ["sidebar"],

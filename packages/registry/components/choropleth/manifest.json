@@ -5,6 +5,7 @@
   "title": "Choropleth map",
   "description": "A map of regions coloured by a value, from any GeoJSON: a metric selector, tooltips, zoom and pan, a legend and the data as a table.",
   "version": "1.0.0",
+  "added": "0.26.0",
   "categories": ["data-display"],
   "dependencies": [],
   "registryDependencies": ["label", "select"],

@@ -5,6 +5,7 @@
   "title": "Radio group",
   "description": "A labeled group of radio options, as a list or as selectable cards.",
   "version": "1.1.1",
+  "added": "0.1.0",
   "categories": ["forms", "selection"],
   "dependencies": [],
   "registryDependencies": [],

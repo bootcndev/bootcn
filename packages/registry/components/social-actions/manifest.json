@@ -5,6 +5,7 @@
   "title": "Social actions",
   "description": "Like and follow buttons that keep their counts, compact numbers (12.4K subscribers) and a \"Followed by\" line with avatars, and a like/dislike pair.",
   "version": "1.1.0",
+  "added": "0.28.0",
   "categories": ["actions"],
   "dependencies": [],
   "registryDependencies": ["avatar", "button"],

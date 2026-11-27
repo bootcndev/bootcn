@@ -5,6 +5,7 @@
   "title": "Confetti",
   "description": "A burst of confetti from a button or any point, drawn on a canvas in the theme colours, with no library; skipped under reduced motion.",
   "version": "1.0.0",
+  "added": "0.27.0",
   "categories": ["feedback"],
   "dependencies": [],
   "registryDependencies": ["button"],

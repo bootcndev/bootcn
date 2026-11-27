@@ -5,6 +5,7 @@
   "title": "Payment methods",
   "description": "Saved payment cards: a list with the default card, Set as default, Edit and Remove (confirmed), and an Add card dialog whose card picture follows the form.",
   "version": "1.0.0",
+  "added": "0.35.0",
   "categories": ["dashboard", "forms"],
   "dependencies": [],
   "registryDependencies": [

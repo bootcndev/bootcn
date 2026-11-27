@@ -5,6 +5,7 @@
   "title": "Area chart",
   "description": "A card with a area chart built on the Chart component: visitors for the last six months, stacked by device.",
   "version": "1.0.0",
+  "added": "0.10.0",
   "categories": ["charts"],
   "dependencies": [],
   "registryDependencies": ["chart", "card"],

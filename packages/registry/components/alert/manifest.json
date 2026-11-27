@@ -5,6 +5,7 @@
   "title": "Alert",
   "description": "A callout for important information, with an icon, title and description, in default and destructive styles.",
   "version": "1.0.0",
+  "added": "0.6.0",
   "categories": ["feedback"],
   "dependencies": [],
   "registryDependencies": [],

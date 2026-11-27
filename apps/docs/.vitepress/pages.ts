@@ -12,6 +12,9 @@ import {
   readItem,
   readReadme,
   templatePreviewPath,
+  addedOf,
+  isNew,
+  readIndex,
 } from './registry';
 
 const LANG: Record<string, string> = { '.html': 'html', '.css': 'css', '.js': 'js', '.php': 'php' };
@@ -56,6 +59,7 @@ function defaultLocation(file: { type: string; target: string }): string {
 
 function page(item: RegistryItem, kind: Kind): string {
   const deps = item.registryDependencies ?? [];
+  const added = addedOf(item.name, item.type);
   const sourceUrl = `${GITHUB_URL}/tree/main/packages/registry/${KINDS[kind].dir}/${item.name}`;
   const depLinks = deps.length ? deps.map((dep) => itemLink(dep, kind)).join(', ') : 'none';
   const fileRows = item.files
@@ -97,7 +101,7 @@ ${fileRows}`;
 
 <p class="bootcn-lead">${item.description}</p>
 
-<ComponentMeta version="${item.version ?? ''}" bootstrap="${item.compatibility?.bootstrap ?? '5.3'}" requires="${requirements(item)}" source="${sourceUrl}" name="${item.name}" title="${item.title}" kind="${kind}" />
+<ComponentMeta version="${item.version ?? ''}" added="${added ?? ''}" ${isNew(added, readIndex().version) ? 'is-new ' : ''}bootstrap="${item.compatibility?.bootstrap ?? '5.3'}" requires="${requirements(item)}" source="${sourceUrl}" name="${item.name}" title="${item.title}" kind="${kind}" />
 
 <ComponentPreview name="${item.name}" title="${item.title}" ${previewProps}>
 <template #code>

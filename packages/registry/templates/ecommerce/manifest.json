@@ -5,6 +5,7 @@
   "title": "E-commerce",
   "description": "An online shop in three pages: a catalogue with filters and sorting, a product page with gallery and options, and a one-page checkout, sharing a cart drawer that keeps its items between pages.",
   "version": "1.0.0",
+  "added": "0.34.0",
   "categories": ["marketing"],
   "dependencies": [],
   "registryDependencies": [

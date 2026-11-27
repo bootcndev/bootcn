@@ -5,6 +5,7 @@
   "title": "Table",
   "description": "A responsive data table with a caption, header, row hover and a totals footer.",
   "version": "1.0.0",
+  "added": "0.6.0",
   "categories": ["data-display"],
   "dependencies": [],
   "registryDependencies": [],

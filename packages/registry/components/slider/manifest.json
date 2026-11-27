@@ -5,6 +5,7 @@
   "title": "Slider",
   "description": "A native range input with a filled track, a visible value and keyboard support.",
   "version": "1.0.1",
+  "added": "0.6.0",
   "categories": ["forms"],
   "dependencies": [],
   "registryDependencies": ["label"],

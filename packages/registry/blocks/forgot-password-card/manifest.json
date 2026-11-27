@@ -5,6 +5,7 @@
   "title": "Forgot password card",
   "description": "Asks for an email address to send a reset link, with a status message and a way back to sign in.",
   "version": "1.0.1",
+  "added": "0.3.0",
   "categories": ["authentication"],
   "dependencies": [],
   "registryDependencies": ["card", "input", "button"],

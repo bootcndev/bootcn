@@ -5,6 +5,7 @@
   "title": "Cart",
   "description": "A shopping cart in a side drawer: a header button with the item count, line items with pictures, options, quantity steps and remove, a free-shipping progress bar, the subtotal and checkout; add-to-cart buttons and product forms feed it.",
   "version": "1.0.0",
+  "added": "0.34.0",
   "categories": ["overlays", "data-display"],
   "dependencies": [],
   "registryDependencies": ["sheet", "button", "product-card"],

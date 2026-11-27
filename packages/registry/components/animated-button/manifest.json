@@ -5,6 +5,7 @@
   "title": "Animated button",
   "description": "Button effects for calls to action: a shimmer sweep, a glowing animated border, a ripple on click and a press effect.",
   "version": "1.0.0",
+  "added": "0.24.0",
   "categories": ["actions"],
   "dependencies": [],
   "registryDependencies": ["button"],

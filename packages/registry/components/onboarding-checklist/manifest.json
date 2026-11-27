@@ -5,6 +5,7 @@
   "title": "Onboarding checklist",
   "description": "A \"Get started\" card: tasks that tick off with a progress bar, collapse and dismiss, and a message when everything is done; progress can be remembered.",
   "version": "1.0.0",
+  "added": "0.31.0",
   "categories": ["feedback", "data-display"],
   "dependencies": [],
   "registryDependencies": ["button", "progress"],

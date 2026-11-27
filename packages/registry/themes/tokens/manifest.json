@@ -5,6 +5,7 @@
   "title": "Design tokens",
   "description": "Shared --bootcn-* custom properties for radius, borders, shadows, focus ring, motion and component dimensions, with dark-mode values.",
   "version": "2.2.0",
+  "added": "0.1.0",
   "categories": ["theming", "tokens"],
   "dependencies": [],
   "registryDependencies": [],

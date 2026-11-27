@@ -5,6 +5,7 @@
   "title": "Share card",
   "description": "A share card: a preview of the link, a field with Copy, links to share on X, LinkedIn, Facebook, WhatsApp, Reddit and by email, and the system share sheet on phones.",
   "version": "1.0.0",
+  "added": "0.36.0",
   "categories": ["actions"],
   "dependencies": [],
   "registryDependencies": ["input", "button"],

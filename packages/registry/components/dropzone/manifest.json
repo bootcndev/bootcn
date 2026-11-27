@@ -5,6 +5,7 @@
   "title": "Dropzone",
   "description": "Drag-and-drop file upload: a large target that also opens the file picker, a list of files with thumbnails, progress and errors (type and size checked), and remove buttons; uploads to a URL or through your own code.",
   "version": "1.0.0",
+  "added": "0.33.0",
   "categories": ["forms", "inputs"],
   "dependencies": [],
   "registryDependencies": [],

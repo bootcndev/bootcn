@@ -21,8 +21,9 @@ const index = readIndex();
 
 /** Sidebar sections for one kind: an overview link, then one group per category. */
 function kindSidebar(kind: Kind) {
-  const link = (item: { name: string; title: string }) => ({
-    text: item.title,
+  // VitePress renders sidebar text as HTML; titles come from our own manifests.
+  const link = (item: { name: string; title: string; isNew?: boolean }) => ({
+    text: item.isNew ? `${item.title} <span class="bootcn-new">New</span>` : item.title,
     link: `/${kind}/${item.name}`,
   });
   const overview = { text: 'Overview', link: `/${kind}/` };

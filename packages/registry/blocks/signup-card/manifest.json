@@ -5,6 +5,7 @@
   "title": "Sign-up card",
   "description": "A registration card with name, email, password rules and a terms checkbox.",
   "version": "1.0.0",
+  "added": "0.3.0",
   "categories": ["authentication"],
   "dependencies": [],
   "registryDependencies": ["card", "input", "checkbox", "button"],

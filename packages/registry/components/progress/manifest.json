@@ -5,6 +5,7 @@
   "title": "Progress",
   "description": "Shows how far a task has got, on the native progress element, with an optional label and value.",
   "version": "1.0.0",
+  "added": "0.6.0",
   "categories": ["feedback"],
   "dependencies": [],
   "registryDependencies": [],

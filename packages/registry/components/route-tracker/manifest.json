@@ -5,6 +5,7 @@
   "title": "Route tracker",
   "description": "Tracks the device's position and draws the route on an OpenStreetMap map as it goes, with distance, time and average speed; pan, zoom, fit and export as GeoJSON.",
   "version": "1.0.0",
+  "added": "0.29.0",
   "categories": ["data-display"],
   "dependencies": [],
   "registryDependencies": ["button", "location-pin"],
@@ -14,8 +15,20 @@
   },
   "license": "MIT",
   "files": [
-    { "path": "route-tracker.html", "target": "route-tracker.html", "type": "registry:component" },
-    { "path": "route-tracker.css", "target": "route-tracker.css", "type": "registry:style" },
-    { "path": "route-tracker.js", "target": "route-tracker.js", "type": "registry:script" }
+    {
+      "path": "route-tracker.html",
+      "target": "route-tracker.html",
+      "type": "registry:component"
+    },
+    {
+      "path": "route-tracker.css",
+      "target": "route-tracker.css",
+      "type": "registry:style"
+    },
+    {
+      "path": "route-tracker.js",
+      "target": "route-tracker.js",
+      "type": "registry:script"
+    }
   ]
 }
