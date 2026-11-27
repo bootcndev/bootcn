@@ -1,0 +1,292 @@
+<div class="bootcn-feedback bootcn-feedback--floating" data-bootcn-feedback>
+  <button
+    type="button"
+    class="bootcn-feedback__toggle"
+    aria-expanded="false"
+    aria-controls="bootcn-feedback-panel"
+  >
+    <svg
+      class="bootcn-icon"
+      width="16"
+      height="16"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      stroke-width="2"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+      aria-hidden="true"
+      focusable="false"
+    >
+      <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" /></svg
+    ><span>Feedback</span>
+  </button>
+  <div
+    class="bootcn-feedback__panel"
+    id="bootcn-feedback-panel"
+    role="dialog"
+    aria-labelledby="bootcn-feedback-title"
+    hidden
+  >
+    <form class="bootcn-feedback__form" data-feedback-form novalidate>
+      <div class="bootcn-feedback__head">
+        <h2 class="bootcn-feedback__title" id="bootcn-feedback-title">How is your experience?</h2>
+        <button
+          type="button"
+          class="bootcn-feedback__close"
+          data-feedback-close
+          aria-label="Close feedback"
+        >
+          <svg
+            class="bootcn-icon"
+            width="16"
+            height="16"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            aria-hidden="true"
+            focusable="false"
+          >
+            <path d="M18 6 6 18M6 6l12 12" />
+          </svg>
+        </button>
+      </div>
+      <fieldset class="bootcn-feedback__scale" aria-describedby="bootcn-feedback-rating-error">
+        <legend class="visually-hidden">Your rating</legend>
+        <div class="bootcn-feedback__faces">
+          <input
+            class="bootcn-feedback__radio"
+            type="radio"
+            name="rating"
+            id="bootcn-feedback-1"
+            value="1"
+            data-label="Terrible"
+          />
+          <label class="bootcn-feedback__face" for="bootcn-feedback-1" title="Terrible"
+            ><span aria-hidden="true">😞</span><span class="visually-hidden">Terrible</span></label
+          >
+          <input
+            class="bootcn-feedback__radio"
+            type="radio"
+            name="rating"
+            id="bootcn-feedback-2"
+            value="2"
+            data-label="Bad"
+          />
+          <label class="bootcn-feedback__face" for="bootcn-feedback-2" title="Bad"
+            ><span aria-hidden="true">🙁</span><span class="visually-hidden">Bad</span></label
+          >
+          <input
+            class="bootcn-feedback__radio"
+            type="radio"
+            name="rating"
+            id="bootcn-feedback-3"
+            value="3"
+            data-label="Okay"
+          />
+          <label class="bootcn-feedback__face" for="bootcn-feedback-3" title="Okay"
+            ><span aria-hidden="true">😐</span><span class="visually-hidden">Okay</span></label
+          >
+          <input
+            class="bootcn-feedback__radio"
+            type="radio"
+            name="rating"
+            id="bootcn-feedback-4"
+            value="4"
+            data-label="Good"
+          />
+          <label class="bootcn-feedback__face" for="bootcn-feedback-4" title="Good"
+            ><span aria-hidden="true">🙂</span><span class="visually-hidden">Good</span></label
+          >
+          <input
+            class="bootcn-feedback__radio"
+            type="radio"
+            name="rating"
+            id="bootcn-feedback-5"
+            value="5"
+            data-label="Great"
+          />
+          <label class="bootcn-feedback__face" for="bootcn-feedback-5" title="Great"
+            ><span aria-hidden="true">😍</span><span class="visually-hidden">Great</span></label
+          >
+        </div>
+        <p class="bootcn-feedback__picked" data-feedback-picked aria-hidden="true"></p>
+        <p
+          class="bootcn-feedback__error"
+          id="bootcn-feedback-rating-error"
+          data-feedback-error
+          hidden
+        >
+          Pick how you feel first.
+        </p>
+      </fieldset>
+      <div>
+        <label class="form-label" for="bootcn-feedback-comment"
+          >Tell us more <span class="bootcn-feedback__optional">(optional)</span></label
+        >
+        <textarea
+          class="form-control"
+          id="bootcn-feedback-comment"
+          name="comment"
+          rows="3"
+          maxlength="1000"
+          placeholder="What works, what doesn’t, what you’d love to see"
+        ></textarea>
+      </div>
+      <div class="form-check">
+        <input
+          class="form-check-input"
+          type="checkbox"
+          id="bootcn-feedback-contact"
+          name="contact"
+          data-feedback-contact
+        />
+        <label class="form-check-label" for="bootcn-feedback-contact"
+          >You can contact me about this</label
+        >
+      </div>
+      <div data-feedback-email hidden>
+        <label class="form-label" for="bootcn-feedback-email">Email</label>
+        <input
+          class="form-control"
+          id="bootcn-feedback-email"
+          name="email"
+          type="email"
+          autocomplete="email"
+        />
+      </div>
+      <button type="submit" class="btn bootcn-button bootcn-button--default">Send feedback</button>
+    </form>
+    <div class="bootcn-feedback__thanks" data-feedback-thanks tabindex="-1" hidden>
+      <span class="bootcn-feedback__tick" aria-hidden="true"
+        ><svg
+          class="bootcn-icon"
+          width="20"
+          height="20"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          aria-hidden="true"
+          focusable="false"
+        >
+          <path d="M20 6 9 17l-5-5" /></svg
+      ></span>
+      <p class="bootcn-feedback__thanks-title">Thanks for your feedback!</p>
+      <p class="bootcn-feedback__thanks-text">
+        We read every message and use it to decide what to build next.
+      </p>
+      <button
+        type="button"
+        class="btn bootcn-button bootcn-button--outline bootcn-button--sm"
+        data-feedback-close
+      >
+        Close
+      </button>
+    </div>
+  </div>
+</div>
+
+<div class="bootcn-feedback-inline" data-bootcn-feedback-inline>
+  <div
+    class="bootcn-feedback-inline__ask"
+    role="group"
+    aria-labelledby="bootcn-feedback-inline-title"
+  >
+    <p class="bootcn-feedback-inline__title" id="bootcn-feedback-inline-title">
+      Was this page helpful?
+    </p>
+    <button
+      type="button"
+      class="btn bootcn-button bootcn-button--outline bootcn-button--sm"
+      data-feedback-answer="yes"
+    >
+      <svg
+        class="bootcn-icon"
+        width="14"
+        height="14"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        aria-hidden="true"
+        focusable="false"
+      >
+        <path
+          d="M7 10v11M3 11h4v10H3zM7 11l4-8a2 2 0 0 1 3 2l-1 5h6a2 2 0 0 1 2 2.3l-1.4 7A2 2 0 0 1 17.6 21H7"
+        /></svg
+      >Yes
+    </button>
+    <button
+      type="button"
+      class="btn bootcn-button bootcn-button--outline bootcn-button--sm"
+      data-feedback-answer="no"
+    >
+      <svg
+        class="bootcn-icon"
+        width="14"
+        height="14"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        aria-hidden="true"
+        focusable="false"
+      >
+        <path
+          d="M17 14V3M21 13h-4V3h4zM17 13l-4 8a2 2 0 0 1-3-2l1-5H5a2 2 0 0 1-2-2.3l1.4-7A2 2 0 0 1 6.4 3H17"
+        /></svg
+      >No
+    </button>
+  </div>
+  <form class="bootcn-feedback-inline__more" data-feedback-more hidden>
+    <label class="form-label" for="bootcn-feedback-inline-comment" data-feedback-more-label
+      >What could we do better?</label
+    >
+    <textarea
+      class="form-control"
+      id="bootcn-feedback-inline-comment"
+      name="comment"
+      rows="2"
+      maxlength="1000"
+    ></textarea>
+    <div class="bootcn-feedback-inline__actions">
+      <button type="submit" class="btn bootcn-button bootcn-button--default bootcn-button--sm">
+        Send
+      </button>
+      <button
+        type="button"
+        class="btn bootcn-button bootcn-button--ghost bootcn-button--sm"
+        data-feedback-skip
+      >
+        Skip
+      </button>
+    </div>
+  </form>
+  <p class="bootcn-feedback-inline__thanks" data-feedback-thanks tabindex="-1" hidden>
+    <svg
+      class="bootcn-icon"
+      width="16"
+      height="16"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      stroke-width="2"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+      aria-hidden="true"
+      focusable="false"
+    >
+      <path d="M20 6 9 17l-5-5" /></svg
+    >Thanks for letting us know.
+  </p>
+</div>

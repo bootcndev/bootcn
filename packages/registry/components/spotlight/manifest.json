@@ -1,0 +1,34 @@
+{
+  "$schema": "../../schema/registry-item.schema.json",
+  "name": "spotlight",
+  "type": "registry:ui",
+  "title": "Spotlight search",
+  "description": "A Ctrl/\u2318 K search for your whole app: pages, people, projects, files and actions in groups, from the page, a JSON URL or your own function, with recent picks, highlighted matches and full keyboard support.",
+  "version": "1.0.0",
+  "added": "0.39.0",
+  "categories": ["navigation", "overlays"],
+  "dependencies": [],
+  "registryDependencies": [],
+  "compatibility": {
+    "bootstrap": "5.3",
+    "platform": ["Bootstrap CSS"]
+  },
+  "license": "MIT",
+  "files": [
+    {
+      "path": "spotlight.html",
+      "target": "spotlight.html",
+      "type": "registry:component"
+    },
+    {
+      "path": "spotlight.css",
+      "target": "spotlight.css",
+      "type": "registry:style"
+    },
+    {
+      "path": "spotlight.js",
+      "target": "spotlight.js",
+      "type": "registry:script"
+    }
+  ]
+}

@@ -10,6 +10,21 @@ each published version stays available under `/v/<version>/`) and the **CLI**
 
 ## Registry
 
+### 0.39.0
+
+Search and feedback.
+
+- Spotlight search: a Ctrl/⌘ K search for your whole app. Pages, people,
+  projects, files and actions in groups, from the page, a JSON URL or your
+  own function; recent picks, suggestions, matches that ignore case and
+  accents, and full keyboard support in a native dialog.
+- Reviews block: the average with a bar per star that filters the list,
+  sorting, helpful votes, replies from your team, and a "Write a review"
+  dialog that updates the numbers.
+- Feedback: a floating Feedback button with a five-face rating, a comment
+  and an optional email, and an inline "Was this page helpful?" with a
+  follow-up question. Sends to your URL as JSON or to your own code.
+
 ### 0.38.0
 
 The SaaS template and a blog.

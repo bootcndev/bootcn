@@ -70,7 +70,7 @@ describe('component and block HTML', () => {
       );
       expect(snippetReport.valid, describeReport(snippetReport)).toBe(true);
     }
-  });
+  }, 60_000); // hundreds of files: well past the 5 s default on CI
 });
 
 describe('template pages', () => {
@@ -92,5 +92,5 @@ describe('template pages', () => {
         expect(report.valid, describeReport(report)).toBe(true);
       }
     }
-  });
+  }, 60_000); // hundreds of files: well past the 5 s default on CI
 });

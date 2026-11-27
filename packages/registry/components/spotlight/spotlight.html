@@ -1,0 +1,201 @@
+<button
+  type="button"
+  class="bootcn-spotlight-trigger"
+  data-bootcn-spotlight-open="#bootcn-spotlight"
+  aria-haspopup="dialog"
+>
+  <svg
+    class="bootcn-icon"
+    width="16"
+    height="16"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    stroke-width="2"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+    aria-hidden="true"
+    focusable="false"
+  >
+    <circle cx="11" cy="11" r="7" />
+    <path d="m20 20-3.5-3.5" />
+  </svg>
+  <span class="bootcn-spotlight-trigger__label">Search…</span>
+  <kbd class="bootcn-spotlight-trigger__kbd" aria-hidden="true">⌘K</kbd>
+</button>
+
+<dialog
+  class="bootcn-spotlight"
+  id="bootcn-spotlight"
+  data-bootcn-spotlight
+  data-shortcut="k"
+  data-recent="acme-search"
+  aria-labelledby="bootcn-spotlight-label"
+>
+  <div class="bootcn-spotlight__panel">
+    <div class="bootcn-spotlight__search">
+      <svg
+        class="bootcn-icon"
+        width="18"
+        height="18"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        aria-hidden="true"
+        focusable="false"
+      >
+        <circle cx="11" cy="11" r="7" />
+        <path d="m20 20-3.5-3.5" />
+      </svg>
+      <label class="visually-hidden" id="bootcn-spotlight-label" for="bootcn-spotlight-input"
+        >Search</label
+      >
+      <input
+        class="bootcn-spotlight__input"
+        id="bootcn-spotlight-input"
+        type="text"
+        role="combobox"
+        aria-expanded="true"
+        aria-controls="bootcn-spotlight-list"
+        aria-autocomplete="list"
+        placeholder="Search pages, people, projects…"
+        autocomplete="off"
+        spellcheck="false"
+      />
+      <span class="bootcn-spotlight__spinner" aria-hidden="true"></span>
+      <button type="button" class="bootcn-spotlight__close" data-bootcn-spotlight-close>
+        <kbd>Esc</kbd><span class="visually-hidden">Close search</span>
+      </button>
+    </div>
+    <div
+      class="bootcn-spotlight__results"
+      id="bootcn-spotlight-list"
+      role="listbox"
+      aria-label="Results"
+    ></div>
+    <p class="bootcn-spotlight__empty" data-spotlight-empty hidden>
+      No results for “<span data-spotlight-query></span>”.
+    </p>
+    <footer class="bootcn-spotlight__footer" aria-hidden="true">
+      <span><kbd>↑</kbd><kbd>↓</kbd> to move</span>
+      <span><kbd>↵</kbd> to open</span>
+      <span><kbd>Esc</kbd> to close</span>
+    </footer>
+    <p class="visually-hidden" role="status" data-spotlight-status></p>
+  </div>
+  <script type="application/json" data-spotlight-items>
+    [
+      {
+        "group": "Pages",
+        "title": "Dashboard",
+        "href": "#dashboard",
+        "icon": "page",
+        "keywords": "home overview"
+      },
+      {
+        "group": "Pages",
+        "title": "Billing",
+        "subtitle": "Plan, invoices and payment methods",
+        "href": "#billing",
+        "icon": "page"
+      },
+      {
+        "group": "Pages",
+        "title": "Team settings",
+        "href": "#team",
+        "icon": "settings",
+        "keywords": "members invite roles"
+      },
+      {
+        "group": "People",
+        "title": "Lena Fischer",
+        "subtitle": "Staff engineer · lena@acme.example",
+        "href": "#lena",
+        "avatar": "LF"
+      },
+      {
+        "group": "People",
+        "title": "Marco Bianchi",
+        "subtitle": "Product lead · marco@acme.example",
+        "href": "#marco",
+        "avatar": "MB"
+      },
+      {
+        "group": "People",
+        "title": "Ava Martinez",
+        "subtitle": "Growth · ava@acme.example",
+        "href": "#ava",
+        "avatar": "AM"
+      },
+      {
+        "group": "People",
+        "title": "Noah Brown",
+        "subtitle": "Design · noah@acme.example",
+        "href": "#noah",
+        "avatar": "NB"
+      },
+      {
+        "group": "Projects",
+        "title": "Website redesign",
+        "subtitle": "12 open tasks",
+        "href": "#website",
+        "icon": "folder",
+        "suggested": true
+      },
+      {
+        "group": "Projects",
+        "title": "Mobile app launch",
+        "subtitle": "Due 15 December",
+        "href": "#mobile",
+        "icon": "folder",
+        "suggested": true
+      },
+      {
+        "group": "Projects",
+        "title": "Pricing experiment",
+        "subtitle": "Archived",
+        "href": "#pricing",
+        "icon": "folder"
+      },
+      {
+        "group": "Files",
+        "title": "Brand guidelines.pdf",
+        "subtitle": "Website redesign",
+        "href": "#brand",
+        "icon": "file"
+      },
+      {
+        "group": "Files",
+        "title": "Q4 roadmap.sheet",
+        "subtitle": "Mobile app launch",
+        "href": "#roadmap",
+        "icon": "file"
+      },
+      {
+        "group": "Actions",
+        "title": "Create a project",
+        "value": "new-project",
+        "icon": "plus",
+        "shortcut": "N",
+        "suggested": true
+      },
+      {
+        "group": "Actions",
+        "title": "Invite people",
+        "value": "invite",
+        "icon": "user-plus",
+        "keywords": "add member team"
+      },
+      {
+        "group": "Actions",
+        "title": "Switch theme",
+        "value": "theme",
+        "icon": "moon",
+        "keywords": "dark light mode"
+      }
+    ]
+  </script>
+</dialog>

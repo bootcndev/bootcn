@@ -1,0 +1,920 @@
+<section class="bootcn-reviews" data-bootcn-reviews aria-labelledby="bootcn-reviews-title">
+  <header class="bootcn-reviews__header">
+    <h2 class="bootcn-reviews__title" id="bootcn-reviews-title">Customer reviews</h2>
+    <button type="button" class="btn bootcn-button bootcn-button--default" data-reviews-write>
+      Write a review
+    </button>
+  </header>
+  <div class="bootcn-reviews__layout">
+    <div class="bootcn-reviews__summary">
+      <p class="bootcn-reviews__average">
+        <span data-reviews-average>4.6</span><span class="bootcn-reviews__outof"> out of 5</span>
+      </p>
+      <span
+        class="bootcn-rating bootcn-rating--lg"
+        role="img"
+        aria-label="Rated 4.6 out of 5"
+        data-reviews-stars
+        ><span
+          class="bootcn-rating__stars"
+          style="--bootcn-rating-value: 91%"
+          aria-hidden="true"
+        ></span
+      ></span>
+      <p class="bootcn-reviews__total">Based on <span data-reviews-total>128</span> reviews</p>
+      <div class="bootcn-reviews__bars" role="group" aria-label="Show reviews by rating">
+        <button
+          type="button"
+          class="bootcn-reviews__bar"
+          data-reviews-filter="5"
+          aria-pressed="false"
+        >
+          <span class="bootcn-reviews__bar-label">5 stars</span>
+          <span class="bootcn-reviews__track" aria-hidden="true"
+            ><span style="--bootcn-reviews-share: 72%"></span
+          ></span>
+          <span class="bootcn-reviews__bar-count" data-reviews-count>92</span>
+        </button>
+        <button
+          type="button"
+          class="bootcn-reviews__bar"
+          data-reviews-filter="4"
+          aria-pressed="false"
+        >
+          <span class="bootcn-reviews__bar-label">4 stars</span>
+          <span class="bootcn-reviews__track" aria-hidden="true"
+            ><span style="--bootcn-reviews-share: 19%"></span
+          ></span>
+          <span class="bootcn-reviews__bar-count" data-reviews-count>24</span>
+        </button>
+        <button
+          type="button"
+          class="bootcn-reviews__bar"
+          data-reviews-filter="3"
+          aria-pressed="false"
+        >
+          <span class="bootcn-reviews__bar-label">3 stars</span>
+          <span class="bootcn-reviews__track" aria-hidden="true"
+            ><span style="--bootcn-reviews-share: 5%"></span
+          ></span>
+          <span class="bootcn-reviews__bar-count" data-reviews-count>7</span>
+        </button>
+        <button
+          type="button"
+          class="bootcn-reviews__bar"
+          data-reviews-filter="2"
+          aria-pressed="false"
+        >
+          <span class="bootcn-reviews__bar-label">2 stars</span>
+          <span class="bootcn-reviews__track" aria-hidden="true"
+            ><span style="--bootcn-reviews-share: 2%"></span
+          ></span>
+          <span class="bootcn-reviews__bar-count" data-reviews-count>3</span>
+        </button>
+        <button
+          type="button"
+          class="bootcn-reviews__bar"
+          data-reviews-filter="1"
+          aria-pressed="false"
+        >
+          <span class="bootcn-reviews__bar-label">1 star</span>
+          <span class="bootcn-reviews__track" aria-hidden="true"
+            ><span style="--bootcn-reviews-share: 2%"></span
+          ></span>
+          <span class="bootcn-reviews__bar-count" data-reviews-count>2</span>
+        </button>
+      </div>
+    </div>
+    <div class="bootcn-reviews__main">
+      <div class="bootcn-reviews__toolbar">
+        <p class="bootcn-reviews__showing" data-reviews-showing aria-live="polite">
+          Showing 5 reviews
+        </p>
+        <label class="bootcn-reviews__sort-label" for="bootcn-reviews-sort">Sort by</label>
+        <select
+          class="form-select form-select-sm bootcn-reviews__sort"
+          id="bootcn-reviews-sort"
+          data-reviews-sort
+        >
+          <option value="recent">Most recent</option>
+          <option value="helpful">Most helpful</option>
+          <option value="high">Highest rated</option>
+          <option value="low">Lowest rated</option>
+        </select>
+      </div>
+      <ol class="bootcn-reviews__list" data-reviews-list>
+        <li class="bootcn-reviews__item" data-rating="5" data-date="2026-11-18" data-helpful="24">
+          <article class="bootcn-reviews__review" aria-labelledby="bootcn-reviews-r1">
+            <header class="bootcn-reviews__author">
+              <span class="bootcn-avatar bootcn-avatar--sm" aria-hidden="true"
+                ><span class="bootcn-avatar__fallback">LF</span></span
+              >
+              <p class="bootcn-reviews__name">Lena Fischer</p>
+              <p class="bootcn-reviews__verified">
+                <svg
+                  class="bootcn-icon"
+                  width="12"
+                  height="12"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  aria-hidden="true"
+                  focusable="false"
+                >
+                  <path d="M20 6 9 17l-5-5" /></svg
+                >Verified customer
+              </p>
+              <time class="bootcn-reviews__date" datetime="2026-11-18">18 Nov 2026</time>
+            </header>
+            <span class="bootcn-rating bootcn-rating--sm" role="img" aria-label="Rated 5 out of 5"
+              ><span
+                class="bootcn-rating__stars"
+                style="--bootcn-rating-value: 100%"
+                aria-hidden="true"
+              ></span
+            ></span>
+            <h3 class="bootcn-reviews__review-title" id="bootcn-reviews-r1">
+              Set up in ten minutes
+            </h3>
+            <p class="bootcn-reviews__text">
+              We moved our team over on a Friday afternoon. Importing our old projects worked first
+              time and the keyboard shortcuts are a joy.
+            </p>
+            <footer
+              class="bootcn-reviews__votes"
+              role="group"
+              aria-label="Was this review helpful?"
+            >
+              <span aria-hidden="true">Helpful?</span>
+              <button
+                type="button"
+                class="bootcn-reviews__vote"
+                data-reviews-vote="up"
+                aria-pressed="false"
+              >
+                <svg
+                  class="bootcn-icon"
+                  width="14"
+                  height="14"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  aria-hidden="true"
+                  focusable="false"
+                >
+                  <path
+                    d="M7 10v11M3 11h4v10H3zM7 11l4-8a2 2 0 0 1 3 2l-1 5h6a2 2 0 0 1 2 2.3l-1.4 7A2 2 0 0 1 17.6 21H7"
+                  /></svg
+                ><span class="visually-hidden">Yes, helpful</span><span data-reviews-votes>24</span>
+              </button>
+              <button
+                type="button"
+                class="bootcn-reviews__vote"
+                data-reviews-vote="down"
+                aria-pressed="false"
+              >
+                <svg
+                  class="bootcn-icon"
+                  width="14"
+                  height="14"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  aria-hidden="true"
+                  focusable="false"
+                >
+                  <path
+                    d="M17 14V3M21 13h-4V3h4zM17 13l-4 8a2 2 0 0 1-3-2l1-5H5a2 2 0 0 1-2-2.3l1.4-7A2 2 0 0 1 6.4 3H17"
+                  /></svg
+                ><span class="visually-hidden">Not helpful</span><span data-reviews-votes>1</span>
+              </button>
+            </footer>
+            <div class="bootcn-reviews__reply">
+              <p class="bootcn-reviews__reply-name">Reply from the Acme team</p>
+              <p class="bootcn-reviews__reply-text">
+                Thank you, Lena! Glad the import went smoothly.
+              </p>
+            </div>
+          </article>
+        </li>
+        <li class="bootcn-reviews__item" data-rating="4" data-date="2026-11-12" data-helpful="9">
+          <article class="bootcn-reviews__review" aria-labelledby="bootcn-reviews-r2">
+            <header class="bootcn-reviews__author">
+              <span class="bootcn-avatar bootcn-avatar--sm" aria-hidden="true"
+                ><span class="bootcn-avatar__fallback">MB</span></span
+              >
+              <p class="bootcn-reviews__name">Marco Bianchi</p>
+              <p class="bootcn-reviews__verified">
+                <svg
+                  class="bootcn-icon"
+                  width="12"
+                  height="12"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  aria-hidden="true"
+                  focusable="false"
+                >
+                  <path d="M20 6 9 17l-5-5" /></svg
+                >Verified customer
+              </p>
+              <time class="bootcn-reviews__date" datetime="2026-11-12">12 Nov 2026</time>
+            </header>
+            <span class="bootcn-rating bootcn-rating--sm" role="img" aria-label="Rated 4 out of 5"
+              ><span
+                class="bootcn-rating__stars"
+                style="--bootcn-rating-value: 80%"
+                aria-hidden="true"
+              ></span
+            ></span>
+            <h3 class="bootcn-reviews__review-title" id="bootcn-reviews-r2">
+              Great, but I miss an offline mode
+            </h3>
+            <p class="bootcn-reviews__text">
+              Fast and pleasant to use every day. I travel a lot and would love to work on a plane;
+              until then it is four stars.
+            </p>
+            <footer
+              class="bootcn-reviews__votes"
+              role="group"
+              aria-label="Was this review helpful?"
+            >
+              <span aria-hidden="true">Helpful?</span>
+              <button
+                type="button"
+                class="bootcn-reviews__vote"
+                data-reviews-vote="up"
+                aria-pressed="false"
+              >
+                <svg
+                  class="bootcn-icon"
+                  width="14"
+                  height="14"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  aria-hidden="true"
+                  focusable="false"
+                >
+                  <path
+                    d="M7 10v11M3 11h4v10H3zM7 11l4-8a2 2 0 0 1 3 2l-1 5h6a2 2 0 0 1 2 2.3l-1.4 7A2 2 0 0 1 17.6 21H7"
+                  /></svg
+                ><span class="visually-hidden">Yes, helpful</span><span data-reviews-votes>9</span>
+              </button>
+              <button
+                type="button"
+                class="bootcn-reviews__vote"
+                data-reviews-vote="down"
+                aria-pressed="false"
+              >
+                <svg
+                  class="bootcn-icon"
+                  width="14"
+                  height="14"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  aria-hidden="true"
+                  focusable="false"
+                >
+                  <path
+                    d="M17 14V3M21 13h-4V3h4zM17 13l-4 8a2 2 0 0 1-3-2l1-5H5a2 2 0 0 1-2-2.3l1.4-7A2 2 0 0 1 6.4 3H17"
+                  /></svg
+                ><span class="visually-hidden">Not helpful</span><span data-reviews-votes>2</span>
+              </button>
+            </footer>
+          </article>
+        </li>
+        <li class="bootcn-reviews__item" data-rating="5" data-date="2026-11-02" data-helpful="15">
+          <article class="bootcn-reviews__review" aria-labelledby="bootcn-reviews-r3">
+            <header class="bootcn-reviews__author">
+              <span class="bootcn-avatar bootcn-avatar--sm" aria-hidden="true"
+                ><span class="bootcn-avatar__fallback">AM</span></span
+              >
+              <p class="bootcn-reviews__name">Ava Martinez</p>
+              <p class="bootcn-reviews__verified">
+                <svg
+                  class="bootcn-icon"
+                  width="12"
+                  height="12"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  aria-hidden="true"
+                  focusable="false"
+                >
+                  <path d="M20 6 9 17l-5-5" /></svg
+                >Verified customer
+              </p>
+              <time class="bootcn-reviews__date" datetime="2026-11-02">2 Nov 2026</time>
+            </header>
+            <span class="bootcn-rating bootcn-rating--sm" role="img" aria-label="Rated 5 out of 5"
+              ><span
+                class="bootcn-rating__stars"
+                style="--bootcn-rating-value: 100%"
+                aria-hidden="true"
+              ></span
+            ></span>
+            <h3 class="bootcn-reviews__review-title" id="bootcn-reviews-r3">
+              Support answered within the hour
+            </h3>
+            <p class="bootcn-reviews__text">
+              I got stuck on single sign-on and support walked me through it the same morning. Rare
+              these days.
+            </p>
+            <footer
+              class="bootcn-reviews__votes"
+              role="group"
+              aria-label="Was this review helpful?"
+            >
+              <span aria-hidden="true">Helpful?</span>
+              <button
+                type="button"
+                class="bootcn-reviews__vote"
+                data-reviews-vote="up"
+                aria-pressed="false"
+              >
+                <svg
+                  class="bootcn-icon"
+                  width="14"
+                  height="14"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  aria-hidden="true"
+                  focusable="false"
+                >
+                  <path
+                    d="M7 10v11M3 11h4v10H3zM7 11l4-8a2 2 0 0 1 3 2l-1 5h6a2 2 0 0 1 2 2.3l-1.4 7A2 2 0 0 1 17.6 21H7"
+                  /></svg
+                ><span class="visually-hidden">Yes, helpful</span><span data-reviews-votes>15</span>
+              </button>
+              <button
+                type="button"
+                class="bootcn-reviews__vote"
+                data-reviews-vote="down"
+                aria-pressed="false"
+              >
+                <svg
+                  class="bootcn-icon"
+                  width="14"
+                  height="14"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  aria-hidden="true"
+                  focusable="false"
+                >
+                  <path
+                    d="M17 14V3M21 13h-4V3h4zM17 13l-4 8a2 2 0 0 1-3-2l1-5H5a2 2 0 0 1-2-2.3l1.4-7A2 2 0 0 1 6.4 3H17"
+                  /></svg
+                ><span class="visually-hidden">Not helpful</span><span data-reviews-votes>0</span>
+              </button>
+            </footer>
+          </article>
+        </li>
+        <li class="bootcn-reviews__item" data-rating="3" data-date="2026-10-28" data-helpful="6">
+          <article class="bootcn-reviews__review" aria-labelledby="bootcn-reviews-r4">
+            <header class="bootcn-reviews__author">
+              <span class="bootcn-avatar bootcn-avatar--sm" aria-hidden="true"
+                ><span class="bootcn-avatar__fallback">NB</span></span
+              >
+              <p class="bootcn-reviews__name">Noah Brown</p>
+              <p class="bootcn-reviews__verified">
+                <svg
+                  class="bootcn-icon"
+                  width="12"
+                  height="12"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  aria-hidden="true"
+                  focusable="false"
+                >
+                  <path d="M20 6 9 17l-5-5" /></svg
+                >Verified customer
+              </p>
+              <time class="bootcn-reviews__date" datetime="2026-10-28">28 Oct 2026</time>
+            </header>
+            <span class="bootcn-rating bootcn-rating--sm" role="img" aria-label="Rated 3 out of 5"
+              ><span
+                class="bootcn-rating__stars"
+                style="--bootcn-rating-value: 60%"
+                aria-hidden="true"
+              ></span
+            ></span>
+            <h3 class="bootcn-reviews__review-title" id="bootcn-reviews-r4">
+              Good start, reports need work
+            </h3>
+            <p class="bootcn-reviews__text">
+              The core is solid, but the reports cannot be exported the way our finance team needs
+              them yet.
+            </p>
+            <footer
+              class="bootcn-reviews__votes"
+              role="group"
+              aria-label="Was this review helpful?"
+            >
+              <span aria-hidden="true">Helpful?</span>
+              <button
+                type="button"
+                class="bootcn-reviews__vote"
+                data-reviews-vote="up"
+                aria-pressed="false"
+              >
+                <svg
+                  class="bootcn-icon"
+                  width="14"
+                  height="14"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  aria-hidden="true"
+                  focusable="false"
+                >
+                  <path
+                    d="M7 10v11M3 11h4v10H3zM7 11l4-8a2 2 0 0 1 3 2l-1 5h6a2 2 0 0 1 2 2.3l-1.4 7A2 2 0 0 1 17.6 21H7"
+                  /></svg
+                ><span class="visually-hidden">Yes, helpful</span><span data-reviews-votes>6</span>
+              </button>
+              <button
+                type="button"
+                class="bootcn-reviews__vote"
+                data-reviews-vote="down"
+                aria-pressed="false"
+              >
+                <svg
+                  class="bootcn-icon"
+                  width="14"
+                  height="14"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  aria-hidden="true"
+                  focusable="false"
+                >
+                  <path
+                    d="M17 14V3M21 13h-4V3h4zM17 13l-4 8a2 2 0 0 1-3-2l1-5H5a2 2 0 0 1-2-2.3l1.4-7A2 2 0 0 1 6.4 3H17"
+                  /></svg
+                ><span class="visually-hidden">Not helpful</span><span data-reviews-votes>3</span>
+              </button>
+            </footer>
+            <div class="bootcn-reviews__reply">
+              <p class="bootcn-reviews__reply-name">Reply from the Acme team</p>
+              <p class="bootcn-reviews__reply-text">
+                Thanks for the honest review, Noah. CSV and PDF export for every report arrives this
+                month.
+              </p>
+            </div>
+          </article>
+        </li>
+        <li class="bootcn-reviews__item" data-rating="5" data-date="2026-10-20" data-helpful="3">
+          <article class="bootcn-reviews__review" aria-labelledby="bootcn-reviews-r5">
+            <header class="bootcn-reviews__author">
+              <span class="bootcn-avatar bootcn-avatar--sm" aria-hidden="true"
+                ><span class="bootcn-avatar__fallback">SD</span></span
+              >
+              <p class="bootcn-reviews__name">Sofia Davis</p>
+              <p class="bootcn-reviews__verified">
+                <svg
+                  class="bootcn-icon"
+                  width="12"
+                  height="12"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  aria-hidden="true"
+                  focusable="false"
+                >
+                  <path d="M20 6 9 17l-5-5" /></svg
+                >Verified customer
+              </p>
+              <time class="bootcn-reviews__date" datetime="2026-10-20">20 Oct 2026</time>
+            </header>
+            <span class="bootcn-rating bootcn-rating--sm" role="img" aria-label="Rated 5 out of 5"
+              ><span
+                class="bootcn-rating__stars"
+                style="--bootcn-rating-value: 100%"
+                aria-hidden="true"
+              ></span
+            ></span>
+            <h3 class="bootcn-reviews__review-title" id="bootcn-reviews-r5">
+              Our whole team uses it daily
+            </h3>
+            <p class="bootcn-reviews__text">
+              From design to sales, everyone ended up in the same place. That alone was worth it.
+            </p>
+            <footer
+              class="bootcn-reviews__votes"
+              role="group"
+              aria-label="Was this review helpful?"
+            >
+              <span aria-hidden="true">Helpful?</span>
+              <button
+                type="button"
+                class="bootcn-reviews__vote"
+                data-reviews-vote="up"
+                aria-pressed="false"
+              >
+                <svg
+                  class="bootcn-icon"
+                  width="14"
+                  height="14"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  aria-hidden="true"
+                  focusable="false"
+                >
+                  <path
+                    d="M7 10v11M3 11h4v10H3zM7 11l4-8a2 2 0 0 1 3 2l-1 5h6a2 2 0 0 1 2 2.3l-1.4 7A2 2 0 0 1 17.6 21H7"
+                  /></svg
+                ><span class="visually-hidden">Yes, helpful</span><span data-reviews-votes>3</span>
+              </button>
+              <button
+                type="button"
+                class="bootcn-reviews__vote"
+                data-reviews-vote="down"
+                aria-pressed="false"
+              >
+                <svg
+                  class="bootcn-icon"
+                  width="14"
+                  height="14"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  aria-hidden="true"
+                  focusable="false"
+                >
+                  <path
+                    d="M17 14V3M21 13h-4V3h4zM17 13l-4 8a2 2 0 0 1-3-2l1-5H5a2 2 0 0 1-2-2.3l1.4-7A2 2 0 0 1 6.4 3H17"
+                  /></svg
+                ><span class="visually-hidden">Not helpful</span><span data-reviews-votes>0</span>
+              </button>
+            </footer>
+          </article>
+        </li>
+      </ol>
+      <p class="bootcn-reviews__empty" data-reviews-empty hidden>
+        No reviews with this rating yet.
+      </p>
+    </div>
+  </div>
+  <dialog
+    class="bootcn-reviews__dialog"
+    data-reviews-dialog
+    aria-labelledby="bootcn-reviews-dialog-title"
+  >
+    <form class="bootcn-reviews__form" data-reviews-form novalidate>
+      <h2 class="bootcn-reviews__dialog-title" id="bootcn-reviews-dialog-title">Write a review</h2>
+      <fieldset class="bootcn-rating-input" aria-describedby="bootcn-reviews-rating-error">
+        <legend class="bootcn-rating-input__legend">Your rating</legend>
+        <div class="bootcn-rating-input__stars">
+          <input
+            class="bootcn-rating-input__radio"
+            type="radio"
+            name="rating"
+            id="bootcn-reviews-rating-1"
+            value="1"
+            required
+          />
+          <label class="bootcn-rating-input__star" for="bootcn-reviews-rating-1"
+            ><svg
+              class="bootcn-icon"
+              width="28"
+              height="28"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              aria-hidden="true"
+              focusable="false"
+            >
+              <path
+                d="M12 2.5l2.9 6 6.6.9-4.8 4.6 1.2 6.5L12 17.4l-5.9 3.1 1.2-6.5L2.5 9.4l6.6-.9z"
+              /></svg
+            ><span class="visually-hidden">1 star</span></label
+          >
+          <input
+            class="bootcn-rating-input__radio"
+            type="radio"
+            name="rating"
+            id="bootcn-reviews-rating-2"
+            value="2"
+            required
+          />
+          <label class="bootcn-rating-input__star" for="bootcn-reviews-rating-2"
+            ><svg
+              class="bootcn-icon"
+              width="28"
+              height="28"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              aria-hidden="true"
+              focusable="false"
+            >
+              <path
+                d="M12 2.5l2.9 6 6.6.9-4.8 4.6 1.2 6.5L12 17.4l-5.9 3.1 1.2-6.5L2.5 9.4l6.6-.9z"
+              /></svg
+            ><span class="visually-hidden">2 stars</span></label
+          >
+          <input
+            class="bootcn-rating-input__radio"
+            type="radio"
+            name="rating"
+            id="bootcn-reviews-rating-3"
+            value="3"
+            required
+          />
+          <label class="bootcn-rating-input__star" for="bootcn-reviews-rating-3"
+            ><svg
+              class="bootcn-icon"
+              width="28"
+              height="28"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              aria-hidden="true"
+              focusable="false"
+            >
+              <path
+                d="M12 2.5l2.9 6 6.6.9-4.8 4.6 1.2 6.5L12 17.4l-5.9 3.1 1.2-6.5L2.5 9.4l6.6-.9z"
+              /></svg
+            ><span class="visually-hidden">3 stars</span></label
+          >
+          <input
+            class="bootcn-rating-input__radio"
+            type="radio"
+            name="rating"
+            id="bootcn-reviews-rating-4"
+            value="4"
+            required
+          />
+          <label class="bootcn-rating-input__star" for="bootcn-reviews-rating-4"
+            ><svg
+              class="bootcn-icon"
+              width="28"
+              height="28"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              aria-hidden="true"
+              focusable="false"
+            >
+              <path
+                d="M12 2.5l2.9 6 6.6.9-4.8 4.6 1.2 6.5L12 17.4l-5.9 3.1 1.2-6.5L2.5 9.4l6.6-.9z"
+              /></svg
+            ><span class="visually-hidden">4 stars</span></label
+          >
+          <input
+            class="bootcn-rating-input__radio"
+            type="radio"
+            name="rating"
+            id="bootcn-reviews-rating-5"
+            value="5"
+            required
+          />
+          <label class="bootcn-rating-input__star" for="bootcn-reviews-rating-5"
+            ><svg
+              class="bootcn-icon"
+              width="28"
+              height="28"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              aria-hidden="true"
+              focusable="false"
+            >
+              <path
+                d="M12 2.5l2.9 6 6.6.9-4.8 4.6 1.2 6.5L12 17.4l-5.9 3.1 1.2-6.5L2.5 9.4l6.6-.9z"
+              /></svg
+            ><span class="visually-hidden">5 stars</span></label
+          >
+        </div>
+        <p
+          class="bootcn-reviews__error"
+          id="bootcn-reviews-rating-error"
+          data-reviews-error="rating"
+          hidden
+        >
+          Choose a rating.
+        </p>
+      </fieldset>
+      <div>
+        <label class="form-label" for="bootcn-reviews-review-title"
+          >Title <span class="bootcn-reviews__optional">(optional)</span></label
+        >
+        <input
+          class="form-control"
+          id="bootcn-reviews-review-title"
+          name="title"
+          type="text"
+          maxlength="80"
+          autocomplete="off"
+        />
+      </div>
+      <div>
+        <label class="form-label" for="bootcn-reviews-text">Your review</label>
+        <textarea
+          class="form-control"
+          id="bootcn-reviews-text"
+          name="text"
+          rows="4"
+          minlength="20"
+          maxlength="1000"
+          required
+          aria-describedby="bootcn-reviews-text-hint bootcn-reviews-text-error"
+        ></textarea>
+        <p class="bootcn-reviews__hint" id="bootcn-reviews-text-hint">
+          At least 20 characters. <span data-reviews-counter>0</span> / 1000
+        </p>
+        <p
+          class="bootcn-reviews__error"
+          id="bootcn-reviews-text-error"
+          data-reviews-error="text"
+          hidden
+        >
+          Write at least 20 characters.
+        </p>
+      </div>
+      <div>
+        <label class="form-label" for="bootcn-reviews-name">Your name</label>
+        <input
+          class="form-control"
+          id="bootcn-reviews-name"
+          name="name"
+          type="text"
+          autocomplete="name"
+          required
+          aria-describedby="bootcn-reviews-name-error"
+        />
+        <p
+          class="bootcn-reviews__error"
+          id="bootcn-reviews-name-error"
+          data-reviews-error="name"
+          hidden
+        >
+          Enter your name.
+        </p>
+      </div>
+      <div class="bootcn-reviews__actions">
+        <button type="button" class="btn bootcn-button bootcn-button--outline" data-reviews-cancel>
+          Cancel
+        </button>
+        <button type="submit" class="btn bootcn-button bootcn-button--default">Post review</button>
+      </div>
+    </form>
+  </dialog>
+  <p class="visually-hidden" role="status" data-reviews-status></p>
+  <template data-reviews-template>
+    <li class="bootcn-reviews__item">
+      <article class="bootcn-reviews__review" aria-labelledby="bootcn-reviews-new">
+        <header class="bootcn-reviews__author">
+          <span class="bootcn-avatar bootcn-avatar--sm" aria-hidden="true"
+            ><span class="bootcn-avatar__fallback">N</span></span
+          >
+          <p class="bootcn-reviews__name">NAME</p>
+          <p class="bootcn-reviews__verified">
+            <svg
+              class="bootcn-icon"
+              width="12"
+              height="12"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              aria-hidden="true"
+              focusable="false"
+            >
+              <path d="M20 6 9 17l-5-5" /></svg
+            >Verified customer
+          </p>
+          <time class="bootcn-reviews__date" datetime="">Just now</time>
+        </header>
+        <span class="bootcn-rating bootcn-rating--sm" role="img" aria-label="Rated 5 out of 5"
+          ><span
+            class="bootcn-rating__stars"
+            style="--bootcn-rating-value: 100%"
+            aria-hidden="true"
+          ></span
+        ></span>
+        <h3 class="bootcn-reviews__review-title" id="bootcn-reviews-new">TITLE</h3>
+        <p class="bootcn-reviews__text">TEXT</p>
+        <footer class="bootcn-reviews__votes" role="group" aria-label="Was this review helpful?">
+          <span aria-hidden="true">Helpful?</span>
+          <button
+            type="button"
+            class="bootcn-reviews__vote"
+            data-reviews-vote="up"
+            aria-pressed="false"
+          >
+            <svg
+              class="bootcn-icon"
+              width="14"
+              height="14"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              aria-hidden="true"
+              focusable="false"
+            >
+              <path
+                d="M7 10v11M3 11h4v10H3zM7 11l4-8a2 2 0 0 1 3 2l-1 5h6a2 2 0 0 1 2 2.3l-1.4 7A2 2 0 0 1 17.6 21H7"
+              /></svg
+            ><span class="visually-hidden">Yes, helpful</span><span data-reviews-votes>0</span>
+          </button>
+          <button
+            type="button"
+            class="bootcn-reviews__vote"
+            data-reviews-vote="down"
+            aria-pressed="false"
+          >
+            <svg
+              class="bootcn-icon"
+              width="14"
+              height="14"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              aria-hidden="true"
+              focusable="false"
+            >
+              <path
+                d="M17 14V3M21 13h-4V3h4zM17 13l-4 8a2 2 0 0 1-3-2l1-5H5a2 2 0 0 1-2-2.3l1.4-7A2 2 0 0 1 6.4 3H17"
+              /></svg
+            ><span class="visually-hidden">Not helpful</span><span data-reviews-votes>0</span>
+          </button>
+        </footer>
+      </article>
+    </li>
+  </template>
+</section>

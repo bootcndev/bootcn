@@ -66,6 +66,9 @@ const latest = [
 ];
 
 const alsoNew = [
+  { text: 'Spotlight search', href: '/components/spotlight' },
+  { text: 'Reviews', href: '/blocks/reviews' },
+  { text: 'Feedback', href: '/components/feedback' },
   { text: 'SaaS template', href: '/templates/saas' },
   { text: 'Blog article', href: '/blocks/blog-article' },
   { text: 'Flow builder', href: '/components/flow-builder' },
@@ -73,9 +76,6 @@ const alsoNew = [
   { text: 'Tab bar', href: '/components/tab-bar' },
   { text: 'Large title', href: '/components/large-title' },
   { text: 'Tree', href: '/components/tree' },
-  { text: 'Signature pad', href: '/components/signature-pad' },
-  { text: 'Route tracker', href: '/components/route-tracker' },
-  { text: 'Product tour', href: '/components/tour' },
 ];
 
 const live = [
@@ -149,7 +149,7 @@ const features = [
       />
       <a class="bootcn-landing__pill" :href="withBase('/changelog')">
         <span class="bootcn-landing__pill-tag">New</span>
-        A SaaS template, a blog and a flow builder
+        Spotlight search, reviews and feedback
         <span aria-hidden="true">→</span>
       </a>
       <h1 id="bootcn-landing-title" class="bootcn-landing__title">

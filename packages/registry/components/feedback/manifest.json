@@ -1,0 +1,34 @@
+{
+  "$schema": "../../schema/registry-item.schema.json",
+  "name": "feedback",
+  "type": "registry:ui",
+  "title": "Feedback",
+  "description": "Collect feedback where it happens: a floating Feedback button with a five-face rating, a comment and an optional email, and an inline \"Was this page helpful?\" with a follow-up question.",
+  "version": "1.0.0",
+  "added": "0.39.0",
+  "categories": ["forms", "feedback"],
+  "dependencies": [],
+  "registryDependencies": ["button", "input", "textarea", "checkbox"],
+  "compatibility": {
+    "bootstrap": "5.3",
+    "platform": ["Bootstrap CSS"]
+  },
+  "license": "MIT",
+  "files": [
+    {
+      "path": "feedback.html",
+      "target": "feedback.html",
+      "type": "registry:component"
+    },
+    {
+      "path": "feedback.css",
+      "target": "feedback.css",
+      "type": "registry:style"
+    },
+    {
+      "path": "feedback.js",
+      "target": "feedback.js",
+      "type": "registry:script"
+    }
+  ]
+}

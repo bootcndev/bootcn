@@ -9,7 +9,7 @@ build with plain HTML and native PHP. Components are installed as editable
 HTML, CSS and JavaScript source files that you own. No React, Vue, jQuery,
 bundler or Node.js is required at runtime.
 
-> **Status:** early (0.x). 128 components, 51 blocks (authentication, dashboard, navigation, marketing, blog, commerce, charts, AI chat), admin dashboard, analytics dashboard, landing page, settings, e-commerce, CRM and SaaS templates and design
+> **Status:** early (0.x). 130 components, 52 blocks (authentication, dashboard, navigation, marketing, blog, commerce, charts, AI chat), admin dashboard, analytics dashboard, landing page, settings, e-commerce, CRM and SaaS templates and design
 > tokens, with a Tailwind-like look built on Bootstrap. The CLI is on
 > [npm](https://www.npmjs.com/package/bootcn); documentation, live previews and
 > the registry are at <https://bootcn.dev/>. News: [@bootcndev](https://x.com/bootcndev) on X.
@@ -89,6 +89,7 @@ the `<link>` and `<script>` tags to add to your layout.
 | `dropzone`             | ui    | HTML, CSS, JS | Bootstrap CSS             | —                                                                   |
 | `empty`                | ui    | HTML, CSS     | Bootstrap CSS             | `button`                                                            |
 | `experience-timeline`  | ui    | HTML, CSS, JS | Bootstrap CSS             | —                                                                   |
+| `feedback`             | ui    | HTML, CSS, JS | Bootstrap CSS             | `button`, `input`, `textarea`, `checkbox`                           |
 | `field`                | ui    | HTML, CSS     | Bootstrap CSS             | `input`, `select`, `switch`, `label`                                |
 | `file-manager`         | ui    | HTML, CSS, JS | Bootstrap CSS + JS bundle | `dropzone`, `breadcrumb`, `input`, `checkbox`, `dropdown`, `button` |
 | `filter-bar`           | ui    | HTML, CSS, JS | Bootstrap CSS             | `input`, `checkbox`, `radio-group`, `button`, `table`               |
@@ -150,6 +151,7 @@ the `<link>` and `<script>` tags to add to your layout.
 | `social-actions`       | ui    | HTML, CSS, JS | Bootstrap CSS             | `avatar`, `button`                                                  |
 | `sparkline`            | ui    | HTML, CSS, JS | Bootstrap CSS             | —                                                                   |
 | `spinner`              | ui    | HTML, CSS     | Bootstrap CSS             | —                                                                   |
+| `spotlight`            | ui    | HTML, CSS, JS | Bootstrap CSS             | —                                                                   |
 | `stepper`              | ui    | HTML, CSS, JS | Bootstrap CSS             | `button`, `input`                                                   |
 | `success-state`        | ui    | HTML, CSS, JS | Bootstrap CSS             | `button`                                                            |
 | `swipe-actions`        | ui    | HTML, CSS, JS | Bootstrap CSS             | —                                                                   |
@@ -222,6 +224,7 @@ pages. `bootcn add` installs the components a block or template uses.
 | `pricing-table`        | block    | HTML, CSS            | Bootstrap CSS             | `button`, `badge`                                                                                                                                                                                                                                                                                          |
 | `product-detail`       | block    | HTML, CSS, JS        | Bootstrap CSS             | `product-card`, `rating`, `variant-picker`, `cart`, `breadcrumb`, `input`, `button`                                                                                                                                                                                                                        |
 | `product-listing`      | block    | HTML, CSS, JS        | Bootstrap CSS + JS bundle | `product-card`, `rating`, `button`, `input`, `select`, `checkbox`, `radio-group`, `sheet`                                                                                                                                                                                                                  |
+| `reviews`              | block    | HTML, CSS, JS        | Bootstrap CSS             | `button`, `avatar`, `rating`, `input`, `textarea`, `select`                                                                                                                                                                                                                                                |
 | `sidebar-floating`     | block    | HTML, CSS            | Bootstrap CSS             | —                                                                                                                                                                                                                                                                                                          |
 | `sidebar-groups`       | block    | HTML, CSS            | Bootstrap CSS + JS bundle | `dropdown`, `input`, `user-menu`, `button`                                                                                                                                                                                                                                                                 |
 | `sidebar-inset`        | block    | HTML, CSS            | Bootstrap CSS + JS bundle | `sidebar`                                                                                                                                                                                                                                                                                                  |

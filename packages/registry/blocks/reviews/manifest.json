@@ -1,0 +1,34 @@
+{
+  "$schema": "../../schema/registry-item.schema.json",
+  "name": "reviews",
+  "type": "registry:block",
+  "title": "Reviews",
+  "description": "Customer reviews: the average with a bar per star that filters the list, sorting, helpful votes, replies from your team, and a \"Write a review\" dialog with a star rating and checks that updates the numbers.",
+  "version": "1.0.0",
+  "added": "0.39.0",
+  "categories": ["commerce", "marketing"],
+  "dependencies": [],
+  "registryDependencies": ["button", "avatar", "rating", "input", "textarea", "select"],
+  "compatibility": {
+    "bootstrap": "5.3",
+    "platform": ["Bootstrap CSS"]
+  },
+  "license": "MIT",
+  "files": [
+    {
+      "path": "reviews.html",
+      "target": "reviews.html",
+      "type": "registry:component"
+    },
+    {
+      "path": "reviews.css",
+      "target": "reviews.css",
+      "type": "registry:style"
+    },
+    {
+      "path": "reviews.js",
+      "target": "reviews.js",
+      "type": "registry:script"
+    }
+  ]
+}
