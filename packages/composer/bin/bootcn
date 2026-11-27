@@ -1,0 +1,19 @@
+#!/usr/bin/env php
+<?php
+
+declare(strict_types=1);
+
+/*
+ * vendor/bin/bootcn: the bootcn CLI for PHP and Laravel projects, without
+ * Node.js. Same commands as `npx bootcn`: init, add, list, mcp, ...
+ */
+
+require __DIR__ . '/../src/binary.php';
+
+try {
+    $executable = \Bootcn\Composer\executable(dirname(__DIR__));
+    exit(\Bootcn\Composer\run($executable, array_slice($argv, 1)));
+} catch (\Throwable $error) {
+    fwrite(STDERR, 'bootcn: ' . $error->getMessage() . "\n");
+    exit(1);
+}

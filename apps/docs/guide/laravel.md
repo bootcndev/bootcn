@@ -13,6 +13,14 @@ Run the CLI in the project root:
 npx bootcn@latest init
 ```
 
+No Node.js in your Laravel project? Use the Composer package instead; the
+commands are the same:
+
+```bash
+composer require --dev bootcndev/bootcn
+vendor/bin/bootcn init
+```
+
 It recognizes Laravel (an `artisan` file and `laravel/framework` in
 `composer.json`) and writes a `bootcn.json` with `"framework": "laravel"`:
 

@@ -292,6 +292,16 @@ The App UI pack.
 
 ## CLI
 
+### 0.6.0
+
+- Standalone executables for Linux, macOS and Windows (x64 and arm64) on
+  every release: the same CLI with no Node.js needed.
+- `curl -fsSL https://bootcn.dev/install.sh | sh` installs it on macOS and
+  Linux after checking its SHA-256.
+- Composer package `bootcndev/bootcn`: `composer require --dev
+bootcndev/bootcn`, then `vendor/bin/bootcn`, for PHP and Laravel projects.
+  See [Installation](./guide/installation#without-node-js).
+
 ### 0.5.0
 
 - `bootcn mcp`: a Model Context Protocol server on stdio with `list_items`,

@@ -4,7 +4,41 @@
 
 - A project that loads **[Bootstrap 5.3](https://getbootstrap.com/docs/5.3/getting-started/introduction/)** (CSS, and the JS bundle for
   interactive components such as Dialog or Tooltip).
-- **Node.js 20 or newer**, only on the machine where you run the CLI.
+- To run the CLI: **Node.js 20 or newer**, or one of the standalone
+  versions below, which need no Node.js at all.
+
+### Without Node.js
+
+From CLI 0.6.0 the same CLI also comes as a single executable for Linux,
+macOS and Windows (x64 and arm64), so PHP and Laravel projects do not need
+Node.js:
+
+- **Composer** (PHP and Laravel projects):
+
+  ```bash
+  composer require --dev bootcndev/bootcn
+  vendor/bin/bootcn init
+  ```
+
+  The first run downloads the executable of the same version, checks it
+  against the release's checksums and keeps it in the package.
+
+- **macOS and Linux**, installed to `~/.local/bin`:
+
+  ```bash
+  curl -fsSL https://bootcn.dev/install.sh | sh
+  ```
+
+  The script checks the download's SHA-256 before installing it;
+  `BOOTCN_VERSION` picks a version and `BOOTCN_INSTALL` another folder.
+  [Read it first](https://bootcn.dev/install.sh) if you like.
+
+- **Windows**: download `bootcn-windows-x64.exe` from the
+  [releases](https://github.com/bootcndev/bootcn/releases) and run it from a
+  terminal.
+
+Then use `bootcn` (or `vendor/bin/bootcn`) wherever this guide says
+`npx bootcn`.
 
 If your pages do not load Bootstrap yet, add it from the CDN:
 

@@ -1,6 +1,7 @@
 name: Release CLI
 
-# Publishes packages/cli to npm when a cli-v<version> tag is pushed.
+# Publishes packages/cli to npm when a cli-v<version> tag is pushed, then
+# attaches standalone executables (no Node.js needed) to the GitHub release.
 # Authentication is npm trusted publishing (OIDC): no token is stored here.
 # npm adds provenance attestations automatically.
 on:
@@ -38,6 +39,10 @@ jobs:
             echo "::error::Tag ${GITHUB_REF_NAME} does not match packages/cli version ${version}."
             exit 1
           fi
+          if [ "$(cat packages/composer/VERSION)" != "${version}" ]; then
+            echo "::error::packages/composer/VERSION must be ${version}."
+            exit 1
+          fi
           if npm view "bootcn@${version}" version >/dev/null 2>&1; then
             echo "::error::bootcn@${version} is already on npm."
             exit 1
@@ -66,3 +71,70 @@ jobs:
             --notes "Published to npm: https://www.npmjs.com/package/bootcn/v/${GITHUB_REF_NAME#cli-v}"
         env:
           GH_TOKEN: ${{ github.token }}
+
+  # Standalone executables for people without Node.js (the install script
+  # and the Composer package download these).
+  binaries:
+    needs: github-release
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 11.10.0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: pnpm
+      - uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: 1.3.5
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm build
+      - run: scripts/build-binaries.sh dist-bin
+      - name: The Linux executable reports this version
+        run: |
+          set -euo pipefail
+          test "$(env -i PATH=/usr/bin:/bin dist-bin/bootcn-linux-x64 --version)" = "${GITHUB_REF_NAME#cli-v}"
+      - name: Attach to the release
+        run: gh release upload "$GITHUB_REF_NAME" dist-bin/* --repo "$GITHUB_REPOSITORY" --clobber
+        env:
+          GH_TOKEN: ${{ github.token }}
+
+  # The Composer package lives in its own repository (Packagist reads
+  # composer.json from a repository's root): copy packages/composer there and
+  # tag it, after the executables it downloads are on the release.
+  composer:
+    needs: binaries
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Publish to bootcndev/bootcn-composer
+        env:
+          DEPLOY_KEY: ${{ secrets.COMPOSER_DEPLOY_KEY }}
+        run: |
+          set -euo pipefail
+          if [ -z "${DEPLOY_KEY}" ]; then
+            echo "::notice::COMPOSER_DEPLOY_KEY is not set; the Composer package was not published."
+            exit 0
+          fi
+          version="${GITHUB_REF_NAME#cli-v}"
+          mkdir -p ~/.ssh
+          printf '%s\n' "$DEPLOY_KEY" > ~/.ssh/composer_key
+          chmod 600 ~/.ssh/composer_key
+          ssh-keyscan github.com >> ~/.ssh/known_hosts 2>/dev/null
+          export GIT_SSH_COMMAND="ssh -i ~/.ssh/composer_key -o IdentitiesOnly=yes"
+          git clone --depth 1 git@github.com:bootcndev/bootcn-composer.git split
+          find split -mindepth 1 -maxdepth 1 ! -name .git -exec rm -rf {} +
+          cp -R packages/composer/. split/
+          cp LICENSE split/LICENSE
+          rm -rf split/tests
+          cd split
+          git config user.name "bootcn release"
+          git config user.email "release@bootcn.dev"
+          git add -A
+          git commit -m "bootcn ${version}" || echo "No changes"
+          git tag -a "v${version}" -m "bootcn ${version}"
+          git push origin HEAD:main "v${version}"

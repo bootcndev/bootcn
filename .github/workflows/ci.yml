@@ -25,6 +25,12 @@ jobs:
       - run: pnpm test
       - run: pnpm exec playwright install --with-deps chromium firefox webkit
       - run: php --version
+      - name: Composer package
+        run: |
+          set -euo pipefail
+          composer validate --strict packages/composer/composer.json
+          test "$(cat packages/composer/VERSION)" = "$(node -p "require('./packages/cli/package.json').version")"
+          php packages/composer/tests/run.php
       - run: pnpm test:e2e
       - run: pnpm site:build
       - run: pnpm exec playwright test --config tests/docs/playwright.config.ts
@@ -64,3 +70,54 @@ jobs:
           npx bootcn init --yes --registry "$registry"
           npx bootcn add dialog --yes
           test -s assets/js/dialog.js
+
+  # The standalone executable (Bun-compiled, no Node.js needed): built for
+  # Linux and run through the same init and add as the npm package.
+  binary:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 11.10.0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: pnpm
+      - uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: 1.3.5
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm build
+      - run: scripts/build-binaries.sh "$RUNNER_TEMP/bin" linux-x64
+      - name: Run the executable without Node.js on the PATH
+        run: |
+          set -euo pipefail
+          bin="$RUNNER_TEMP/bin/bootcn-linux-x64"
+          registry="$GITHUB_WORKSPACE/packages/registry/dist"
+          expected="$(node -p "require('./packages/cli/package.json').version")"
+          project="$(mktemp -d)"
+          cp -R examples/plain-html/. "$project/"
+          cd "$project"
+          # A PATH without node proves the binary needs nothing else.
+          env -i HOME="$HOME" PATH="/usr/bin:/bin" "$bin" --version | grep -qx "$expected"
+          env -i HOME="$HOME" PATH="/usr/bin:/bin" "$bin" init --yes --registry "$registry"
+          env -i HOME="$HOME" PATH="/usr/bin:/bin" "$bin" add dialog --yes
+          test -s assets/js/dialog.js
+          ( cd "$RUNNER_TEMP/bin" && sha256sum -c SHA256SUMS )
+      - name: The install script installs it (from a local copy of the release)
+        run: |
+          set -euo pipefail
+          version="$(node -p "require('./packages/cli/package.json').version")"
+          mkdir -p "$RUNNER_TEMP/srv/cli-v$version"
+          cp "$RUNNER_TEMP/bin/"* "$RUNNER_TEMP/srv/cli-v$version/"
+          (cd "$RUNNER_TEMP/srv" && python3 -m http.server 8765 >/dev/null 2>&1 &)
+          for i in $(seq 1 20); do curl -fs -o /dev/null http://127.0.0.1:8765/ && break; sleep 0.5; done
+          BOOTCN_VERSION="$version" BOOTCN_BASE_URL=http://127.0.0.1:8765 BOOTCN_INSTALL="$RUNNER_TEMP/installed" \
+            sh apps/docs/public/install.sh
+          test "$("$RUNNER_TEMP/installed/bootcn" --version)" = "$version"
+          # A changed download is refused.
+          echo x >> "$RUNNER_TEMP/srv/cli-v$version/bootcn-linux-x64"
+          if BOOTCN_VERSION="$version" BOOTCN_BASE_URL=http://127.0.0.1:8765 BOOTCN_INSTALL="$RUNNER_TEMP/bad" \
+            sh apps/docs/public/install.sh; then exit 1; fi
+          test ! -e "$RUNNER_TEMP/bad/bootcn"
