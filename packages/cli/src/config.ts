@@ -12,7 +12,15 @@ export type PathKey = 'components' | 'css' | 'js' | 'lib';
 export type ProjectPaths = Record<PathKey, string> & { pages?: string };
 
 /** Frameworks with their own file conventions. */
-export type Framework = 'laravel';
+export type Framework = 'laravel' | 'react' | 'vue';
+
+/** Frameworks whose components come as .tsx or .vue files (registry overlays). */
+export const COMPONENT_FRAMEWORKS = ['react', 'vue'] as const;
+export type ComponentFramework = (typeof COMPONENT_FRAMEWORKS)[number];
+
+export function componentFramework(config: Config): ComponentFramework | null {
+  return config.framework === 'react' || config.framework === 'vue' ? config.framework : null;
+}
 
 export interface Config {
   $schema?: string;
@@ -31,6 +39,8 @@ export const FILE_TYPE_TO_PATH: Record<string, PathKey | 'pages'> = {
   'registry:script': 'js',
   'registry:lib': 'lib',
   'registry:page': 'pages',
+  'registry:react': 'components',
+  'registry:vue': 'components',
 };
 
 export function configPath(root: string): string {

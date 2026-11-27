@@ -23,7 +23,7 @@ const browsers = [
 export default defineConfig({
   testDir: '..',
   // The docs site and the screenshots have their own configs (tests/docs, tests/visual).
-  testIgnore: ['docs/**', 'visual/**'],
+  testIgnore: ['docs/**', 'visual/**', 'frameworks/**'],
   fullyParallel: true,
   forbidOnly: Boolean(process.env.CI),
   retries: process.env.CI ? 2 : 0,

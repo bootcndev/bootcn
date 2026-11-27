@@ -60,7 +60,7 @@ test('grouped list: labelled groups, links with values, real switches', async ({
 
 test('tab bar: a named navigation with the current page and a badge', async ({ page }) => {
   await openPreview(page, 'tab-bar');
-  const nav = page.getByRole('navigation', { name: 'Main' });
+  const nav = page.getByRole('navigation', { name: 'Main', exact: true });
   await expect(nav.getByRole('link')).toHaveCount(4);
   await expect(nav.getByRole('link', { name: 'Home' })).toHaveAttribute('aria-current', 'page');
   await expect(nav.getByRole('link', { name: 'Activity 3 new' })).toBeVisible();

@@ -10,6 +10,17 @@ each published version stays available under `/v/<version>/`) and the **CLI**
 
 ## Registry
 
+### 0.43.0
+
+React and Vue.
+
+- The first React (`.tsx`) and Vue (`.vue`) components: Button, Dialog and
+  Toaster. They use the same markup, CSS and JavaScript as the HTML
+  versions, load their JavaScript in the browser only (server rendering
+  works) and fit each framework: props and `onOpenChange` in React,
+  `v-model:open` and slots in Vue. Install them with CLI 0.8.
+- Guides for [React](/guide/react) and [Vue](/guide/vue).
+
 ### 0.42.0
 
 Effects, motion and colour.
@@ -419,6 +430,13 @@ The App UI pack.
 - The first public registry: 20 components and the design tokens.
 
 ## CLI
+
+### 0.8.0
+
+- React and Vue projects: `init` recognises them from `package.json` and
+  puts everything under `src/`; `add` copies each item's `.tsx` or `.vue`
+  component with its CSS and JavaScript, skips the HTML snippet, and says
+  when an item has no component for your framework yet.
 
 ### 0.7.0
 

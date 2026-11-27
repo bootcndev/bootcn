@@ -1,0 +1,24 @@
+{
+  "$schema": "../../schema/registry-item.schema.json",
+  "name": "toaster",
+  "type": "registry:ui",
+  "title": "Toaster (Vue)",
+  "description": "The toaster as a Vue component: toast notifications from one line of JavaScript: types, descriptions, an action, promise states, stacking that expands on hover, swipe to dismiss and a pausable timer.",
+  "version": "1.0.0",
+  "added": "0.43.0",
+  "categories": ["feedback"],
+  "dependencies": [],
+  "registryDependencies": [],
+  "compatibility": {
+    "bootstrap": "5.3",
+    "platform": ["Bootstrap CSS"]
+  },
+  "license": "MIT",
+  "files": [
+    {
+      "path": "Toaster.vue",
+      "target": "Toaster.vue",
+      "type": "registry:vue"
+    }
+  ]
+}

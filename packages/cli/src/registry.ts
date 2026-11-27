@@ -222,6 +222,30 @@ export class RegistryClient {
     return value as RegistryIndex;
   }
 
+  /**
+   * The React or Vue component for an item (r/react/<name>.json), or null
+   * when the item has none yet.
+   */
+  async getOverlay(framework: 'react' | 'vue', name: string): Promise<RegistryItem | null> {
+    const key = `${framework}/${name}`;
+    const cached = this.cache.get(key);
+    if (cached) return cached;
+    let text: string;
+    try {
+      text = await this.read(`r/${framework}/${name}.json`);
+    } catch (error) {
+      if (error instanceof NotFoundError) return null;
+      throw error;
+    }
+    const overlay = validateRegistryItem(parseJson(text, `"${key}"`), name);
+    const fileType = `registry:${framework}`;
+    if (overlay.files.some((file) => file.type !== fileType)) {
+      throw registryError(`Registry overlay "${key}" may only contain ${fileType} files.`);
+    }
+    this.cache.set(key, overlay);
+    return overlay;
+  }
+
   async getItem(name: string): Promise<RegistryItem> {
     const cached = this.cache.get(name);
     if (cached) return cached;

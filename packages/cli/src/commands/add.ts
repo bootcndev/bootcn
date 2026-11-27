@@ -1,5 +1,5 @@
 import { BOOTSTRAP_JS_TAG, BRAND, EXIT, TOKENS_ITEM } from '../constants.js';
-import { type Config, loadConfig } from '../config.js';
+import { type Config, componentFramework, loadConfig } from '../config.js';
 import type { Context } from '../context.js';
 import { userError } from '../errors.js';
 import {
@@ -103,6 +103,28 @@ function printManualSteps(ctx: Context, config: Config, items: readonly Registry
 
   out.info('');
   out.info('Next steps:');
+  const framework = componentFramework(config);
+  if (framework) {
+    const components = items.flatMap((item) =>
+      item.files
+        .filter((file) => file.type === `registry:${framework}`)
+        .map((file) => targetPath(config, file)),
+    );
+    if (components.length > 0) {
+      out.info('  Import the components where you need them (paths from the project root):');
+      for (const path of components) {
+        const name = path
+          .split('/')
+          .pop()!
+          .replace(/\.(tsx|vue)$/, '');
+        const from = framework === 'react' ? path.replace(/\.tsx$/, '') : path;
+        out.info(`    import ${framework === 'react' ? `{ ${name} }` : name} from '${from}';`);
+      }
+      out.info('  Each component imports its own CSS and loads its JavaScript in the browser.');
+    }
+    if (needsBootstrapJs) out.info("  It uses Bootstrap's JavaScript: npm install bootstrap");
+    return;
+  }
   if (config.framework === 'laravel') {
     printLaravelSteps(ctx, { styles, scripts, snippets, pages, needsBootstrapJs });
     return;
@@ -184,13 +206,46 @@ function printReport(ctx: Context, report: InstallReport): void {
  * Resolves, plans and installs items. Shared by `add` and `init`.
  * Returns the exit code.
  */
+/**
+ * React and Vue projects: each item's HTML snippet and pages give way to its
+ * .tsx or .vue component (a registry overlay); its CSS and JavaScript stay.
+ */
+async function withFramework(
+  ctx: Context,
+  config: Config,
+  client: RegistryClient,
+  items: RegistryItem[],
+  requested: readonly string[],
+): Promise<RegistryItem[]> {
+  const framework = componentFramework(config);
+  if (!framework) return items;
+  const label = framework === 'react' ? 'React' : 'Vue';
+  const missing: string[] = [];
+  const result: RegistryItem[] = [];
+  for (const item of items) {
+    const overlay = await client.getOverlay(framework, item.name);
+    if (!overlay && requested.includes(item.name)) missing.push(item.name);
+    const files = item.files.filter(
+      (file) => file.type !== 'registry:component' && file.type !== 'registry:page',
+    );
+    result.push({ ...item, files: [...files, ...(overlay?.files ?? [])] });
+  }
+  for (const name of missing) {
+    ctx.out.warn(
+      `"${name}" has no ${label} component yet: its CSS and JavaScript are installed; use its markup from https://${BRAND}.dev in your templates.`,
+    );
+  }
+  return result;
+}
+
 export async function installItems(
   ctx: Context,
   config: Config,
   client: RegistryClient,
   names: readonly string[],
 ): Promise<number> {
-  const items = await resolveItems(names, (name) => client.getItem(name));
+  const resolved = await resolveItems(names, (name) => client.getItem(name));
+  const items = await withFramework(ctx, config, client, resolved, names);
   const plan = await planInstall(ctx.root, config, items);
   printPlan(ctx, items, plan);
 

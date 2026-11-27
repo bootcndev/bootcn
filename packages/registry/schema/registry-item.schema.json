@@ -142,7 +142,9 @@
         "registry:style",
         "registry:script",
         "registry:lib",
-        "registry:page"
+        "registry:page",
+        "registry:react",
+        "registry:vue"
       ]
     },
     "safePath": {

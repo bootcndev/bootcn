@@ -16,8 +16,8 @@
       "description": "The Bootstrap version the project uses: 5.3, or 6.0 while Bootstrap 6 is a preview."
     },
     "framework": {
-      "enum": ["laravel"],
-      "description": "Laravel: components and pages are written as Blade views (.blade.php) and pages link assets with asset()."
+      "enum": ["laravel", "react", "vue"],
+      "description": "laravel: components and pages are Blade views. react / vue: components are .tsx / .vue files that import their CSS and load their JavaScript."
     },
     "paths": {
       "type": "object",

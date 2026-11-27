@@ -83,6 +83,14 @@ export function renderContent(
   file: { type: string; target: string; content: string },
 ): string {
   const blade = isBladeFile(config, file);
+  if (file.type === 'registry:react' || file.type === 'registry:vue') {
+    // Imports of the item's CSS and JavaScript, relative to the component.
+    const componentDir = posix.dirname(targetPath(config, file));
+    return file.content.replace(PAGE_PLACEHOLDER, (_match, key: keyof Config['paths']) => {
+      const relative = posix.relative(componentDir, config.paths[key] ?? '.') || '.';
+      return relative.startsWith('.') ? relative : `./${relative}`;
+    });
+  }
   if (file.type !== 'registry:page') return blade ? escapeBlade(file.content) : file.content;
   if (blade) {
     // Placeholders become markers, the markup is escaped, then the markers

@@ -213,6 +213,11 @@ for (const example of cases) {
 
       await trigger.click();
       await expect(dialog).toBeVisible();
+      // Bootstrap ignores closing while the dialog is still opening.
+      await page.waitForFunction(() => {
+        const modal = document.querySelector('.bootcn-dialog.show');
+        return Boolean(modal?.contains(document.activeElement));
+      });
       await page.locator('[data-bootcn-dialog-confirm-button]').click();
       await expect(dialog).toBeHidden();
       await expect(page.locator('#confirm-status')).toHaveText('Confirmed.');

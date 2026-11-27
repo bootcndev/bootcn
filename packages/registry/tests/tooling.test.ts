@@ -328,7 +328,10 @@ describe('buildRegistry', () => {
     await buildRegistry(REGISTRY_DIR, outA);
     await buildRegistry(REGISTRY_DIR, outB);
 
-    const filesA = (await readdir(resolve(outA, 'r'))).sort();
+    // Item files only: r/react/ and r/vue/ hold the framework overlays.
+    const filesA = (await readdir(resolve(outA, 'r')))
+      .filter((name) => name.endsWith('.json'))
+      .sort();
     // Sort the file names themselves: "alert-dialog.json" sorts before "alert.json".
     expect(filesA).toEqual(REAL_ITEMS.map((name) => `${name}.json`).sort());
     for (const name of ['index.json', ...filesA.map((file) => `r/${file}`)]) {

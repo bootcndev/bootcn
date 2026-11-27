@@ -1,0 +1,24 @@
+{
+  "$schema": "../../schema/registry-item.schema.json",
+  "name": "dialog",
+  "type": "registry:ui",
+  "title": "Dialog (React)",
+  "description": "The dialog as a React component: an accessible confirm dialog built on Bootstrap's modal, with a declarative confirm event.",
+  "version": "1.0.0",
+  "added": "0.43.0",
+  "categories": ["overlays", "dialogs"],
+  "dependencies": [],
+  "registryDependencies": [],
+  "compatibility": {
+    "bootstrap": "5.3",
+    "platform": ["Bootstrap CSS", "Bootstrap JS bundle"]
+  },
+  "license": "MIT",
+  "files": [
+    {
+      "path": "Dialog.tsx",
+      "target": "Dialog.tsx",
+      "type": "registry:react"
+    }
+  ]
+}

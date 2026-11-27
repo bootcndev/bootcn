@@ -66,6 +66,8 @@ const latest = [
 ];
 
 const alsoNew = [
+  { text: 'React components', href: '/guide/react' },
+  { text: 'Vue components', href: '/guide/vue' },
   { text: 'Border beam', href: '/components/border-beam' },
   { text: 'Gradient text', href: '/components/gradient-text' },
   { text: 'Scroll reveal', href: '/components/scroll-reveal' },
@@ -74,8 +76,6 @@ const alsoNew = [
   { text: 'Colour palette', href: '/themes/#colour-palette' },
   { text: 'Chat', href: '/blocks/chat' },
   { text: 'Email inbox', href: '/blocks/email-inbox' },
-  { text: 'Flow builder', href: '/components/flow-builder' },
-  { text: 'Spotlight search', href: '/components/spotlight' },
 ];
 
 const live = [
@@ -149,7 +149,7 @@ const features = [
       />
       <a class="bootcn-landing__pill" :href="withBase('/changelog')">
         <span class="bootcn-landing__pill-tag">New</span>
-        Effects, a colour palette and a floating tab bar
+        React and Vue components, effects and a colour palette
         <span aria-hidden="true">→</span>
       </a>
       <h1 id="bootcn-landing-title" class="bootcn-landing__title">

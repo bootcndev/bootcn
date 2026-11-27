@@ -1,0 +1,5 @@
+# Written by "bootcn init" and "bootcn add" when the tests run.
+bootcn.json
+src/components/ui/
+src/bootcn/
+dist/

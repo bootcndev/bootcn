@@ -3,7 +3,7 @@ import { extname, join } from 'node:path';
 
 import type { ProjectPaths } from './config.js';
 
-export type ProjectType = 'php' | 'html' | 'laravel';
+export type ProjectType = 'php' | 'html' | 'laravel' | 'react' | 'vue';
 
 const SKIP_DIRS = new Set(['node_modules', 'vendor', '.git', 'dist', 'build', '.cache']);
 const MAX_FILES = 300;
@@ -60,9 +60,29 @@ async function isLaravel(root: string): Promise<boolean> {
   }
 }
 
+async function readJson(path: string): Promise<Record<string, unknown> | null> {
+  try {
+    return JSON.parse(await readFile(path, 'utf8')) as Record<string, unknown>;
+  } catch {
+    return null;
+  }
+}
+
+/** React or Vue from package.json (Next.js, Vite, Nuxt and friends). */
+async function jsFramework(root: string): Promise<'react' | 'vue' | null> {
+  const json = await readJson(join(root, 'package.json'));
+  if (!json) return null;
+  const deps = { ...(json.dependencies as object), ...(json.devDependencies as object) };
+  if ('vue' in deps || 'nuxt' in deps) return 'vue';
+  if ('react' in deps || 'next' in deps) return 'react';
+  return null;
+}
+
 export async function detectProject(root: string): Promise<ProjectInfo> {
   const hasPublicDir = await isDirectory(join(root, 'public'));
   if (await isLaravel(root)) return { type: 'laravel', hasPublicDir };
+  const framework = await jsFramework(root);
+  if (framework) return { type: framework, hasPublicDir };
   const files = await markupFiles(root);
   const isPhp =
     (await exists(join(root, 'composer.json'))) ||
@@ -74,6 +94,15 @@ export async function detectProject(root: string): Promise<ProjectInfo> {
 
 /** Default install paths for a project. Pages go to the web root. */
 export function defaultPaths(type: ProjectType, hasPublicDir: boolean): ProjectPaths {
+  if (type === 'react' || type === 'vue') {
+    // Components import their CSS and JavaScript, so everything lives in src/.
+    return {
+      components: 'src/components/ui',
+      css: 'src/bootcn/css',
+      js: 'src/bootcn/js',
+      lib: 'src/bootcn/js/lib',
+    };
+  }
   if (type === 'laravel') {
     // Blade views under resources/views; static files under public/, so
     // asset('vendor/bootcn/...') serves them without touching Vite.
@@ -117,14 +146,6 @@ export interface BootstrapInfo {
 export function bootstrapMinor(version: string | undefined): string | undefined {
   const match = version ? VERSION.exec(version) : null;
   return match ? `${match[1]}.${match[2]}` : undefined;
-}
-
-async function readJson(path: string): Promise<Record<string, unknown> | null> {
-  try {
-    return JSON.parse(await readFile(path, 'utf8')) as Record<string, unknown>;
-  } catch {
-    return null;
-  }
 }
 
 /**

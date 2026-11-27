@@ -13,6 +13,9 @@ export default tseslint.config(
       '_site/**',
       '**/.vitepress/cache/**',
       'apps/docs/public/previews/**',
+      // Written by the CLI when the framework tests run.
+      'examples/*/src/components/ui/**',
+      'examples/*/src/bootcn/**',
     ],
   },
   js.configs.recommended,
@@ -23,6 +26,14 @@ export default tseslint.config(
       globals: {
         ...globals.browser,
       },
+    },
+  },
+  {
+    // React components ignore a missing declaration for bootstrap's modal: with
+    // @types/bootstrap installed, @ts-expect-error would break the build instead.
+    files: ['packages/registry/react/**/*.tsx'],
+    rules: {
+      '@typescript-eslint/ban-ts-comment': ['error', { 'ts-ignore': 'allow-with-description' }],
     },
   },
   {

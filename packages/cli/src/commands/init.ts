@@ -108,12 +108,18 @@ export async function initCommand(ctx: Context, options: InitOptions = {}): Prom
     php: 'native PHP',
     html: 'plain HTML',
     laravel: 'Laravel',
+    react: 'React',
+    vue: 'Vue',
   };
   if (project.type) {
     out.info(`Detected a ${TYPE_NAMES[type]} project.`);
     if (type === 'laravel') {
       out.info(
         '  Components and pages will be Blade views; CSS and JS go under public/vendor/bootcn.',
+      );
+    } else if (type === 'react' || type === 'vue') {
+      out.info(
+        `  Components will be ${type === 'react' ? '.tsx' : '.vue'} files that import their own CSS and JavaScript.`,
       );
     }
   } else if (ctx.interactive) {
@@ -123,6 +129,8 @@ export async function initCommand(ctx: Context, options: InitOptions = {}): Prom
         { value: 'html', label: 'Plain HTML' },
         { value: 'php', label: 'Native PHP' },
         { value: 'laravel', label: 'Laravel (Blade)' },
+        { value: 'react', label: 'React (Vite, Next.js…)' },
+        { value: 'vue', label: 'Vue (Vite, Nuxt…)' },
       ],
       'html',
     );
@@ -161,7 +169,7 @@ export async function initCommand(ctx: Context, options: InitOptions = {}): Prom
       'Bootstrap 6 is still in alpha. Bootcn items are built and tested for Bootstrap 5.3; most work with 6, but check each one in your pages.',
     );
   }
-  if (!bootstrap.found) {
+  if (!bootstrap.found && type !== 'react' && type !== 'vue') {
     out.warn('Bootstrap was not found. Components need it. Add these tags to your layout:');
     out.info(`    ${BOOTSTRAP_CSS_TAG}`);
     out.info(`    ${BOOTSTRAP_JS_TAG}`);
@@ -203,7 +211,7 @@ export async function initCommand(ctx: Context, options: InitOptions = {}): Prom
       registryConfigValue(location, ctx.root),
       bootstrapVersion,
       paths,
-      type === 'laravel' ? 'laravel' : undefined,
+      type === 'laravel' || type === 'react' || type === 'vue' ? type : undefined,
       style,
     ),
   );
@@ -228,7 +236,15 @@ export async function initCommand(ctx: Context, options: InitOptions = {}): Prom
   const code = await installItems(ctx, config, client, style === 'default' ? [] : [style]);
   if (code !== EXIT.ok) return code;
 
-  if (style !== 'default') {
+  if (type === 'react' || type === 'vue') {
+    const tokens = `${paths.css}/tokens.css`;
+    out.info('In your entry file (for example src/main.ts), before your own styles:');
+    out.info(`  import 'bootstrap/dist/css/bootstrap.min.css';`);
+    out.info(`  import './${tokens.replace(/^src\//, '')}';`);
+    if (style !== 'default')
+      out.info(`  import './${paths.css.replace(/^src\//, '')}/${style}.css';`);
+    if (!bootstrap.found) out.info('Install Bootstrap: npm install bootstrap');
+  } else if (style !== 'default') {
     out.info(`Keep ${style}.css last: after the CSS of the components you add.`);
   }
   out.info('');

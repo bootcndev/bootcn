@@ -424,6 +424,55 @@ describe('add', () => {
   });
 });
 
+describe('react and vue', () => {
+  it('installs .tsx components with their CSS and JavaScript, not the HTML', async () => {
+    const root = await tempDir();
+    await writeFiles(root, {
+      'package.json': '{"dependencies":{"react":"19.3.1","bootstrap":"5.3.9"}}',
+    });
+    const init = await runCli(['init', '--yes', '--cwd', root, '--registry', registry]);
+    expect(init.code, init.output).toBe(EXIT.ok);
+    expect(init.output).toMatch(/Detected a React project/);
+    expect(init.output).toMatch(/import '\.\/bootcn\/css\/tokens\.css';/);
+    expect(JSON.parse(await read(root, 'bootcn.json'))).toMatchObject({
+      framework: 'react',
+      paths: { components: 'src/components/ui', css: 'src/bootcn/css' },
+    });
+
+    const add = await runCli(['add', 'dialog', '--yes', '--cwd', root, '--registry', registry]);
+    expect(add.code, add.output).toBe(EXIT.ok);
+    const dialog = await read(root, 'src/components/ui/Dialog.tsx');
+    expect(dialog).toContain("import '../../bootcn/css/dialog.css';");
+    expect(dialog).not.toContain('{{bootcn:');
+    expect(await exists(resolve(root, 'src/components/ui/Button.tsx'))).toBe(true);
+    expect(await exists(resolve(root, 'src/bootcn/css/button.css'))).toBe(true);
+    expect(await exists(resolve(root, 'src/components/ui/dialog.html'))).toBe(false);
+    expect(add.output).toMatch(/import \{ Dialog \} from 'src\/components\/ui\/Dialog';/);
+  });
+
+  it('installs .vue components, and says when an item has none yet', async () => {
+    const root = await tempDir();
+    await writeFiles(root, { 'package.json': '{"dependencies":{"vue":"3.5.46"}}' });
+    await runCli(['init', '--yes', '--cwd', root, '--registry', registry]);
+    const add = await runCli([
+      'add',
+      'toaster',
+      'tree',
+      '--yes',
+      '--cwd',
+      root,
+      '--registry',
+      registry,
+    ]);
+    expect(add.code, add.output).toBe(EXIT.ok);
+    const toaster = await read(root, 'src/components/ui/Toaster.vue');
+    expect(toaster).toContain("import('../../bootcn/js/toaster.js')");
+    expect(add.output).toMatch(/"tree" has no Vue component yet/);
+    expect(await exists(resolve(root, 'src/bootcn/js/tree.js'))).toBe(true);
+    expect(await exists(resolve(root, 'src/components/ui/tree.html'))).toBe(false);
+  });
+});
+
 describe('list and info', () => {
   it('lists items grouped by type and marks installed ones', async () => {
     const root = await initProject();

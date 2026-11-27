@@ -1,0 +1,24 @@
+{
+  "$schema": "../../schema/registry-item.schema.json",
+  "name": "button",
+  "type": "registry:ui",
+  "title": "Button (React)",
+  "description": "The button as a React component: a customizable button built on Bootstrap with variants, sizes, icons and a CSS loading state.",
+  "version": "1.0.0",
+  "added": "0.43.0",
+  "categories": ["buttons", "actions"],
+  "dependencies": [],
+  "registryDependencies": [],
+  "compatibility": {
+    "bootstrap": "5.3",
+    "platform": ["Bootstrap CSS"]
+  },
+  "license": "MIT",
+  "files": [
+    {
+      "path": "Button.tsx",
+      "target": "Button.tsx",
+      "type": "registry:react"
+    }
+  ]
+}

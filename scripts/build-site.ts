@@ -115,6 +115,12 @@ async function writeLlmsTxt(): Promise<void> {
     ['Translations', 'guide/i18n', 'window.Bootcn.messages and plurals for announced texts.'],
     ['Animations', 'guide/animations', 'Motion tokens, reduced motion and your own transitions.'],
     ['Laravel', 'guide/laravel', 'Blade views, asset paths, Vite and Livewire.'],
+    [
+      'React',
+      'guide/react',
+      '.tsx components with their CSS and JavaScript, for Vite and Next.js.',
+    ],
+    ['Vue', 'guide/vue', '.vue components with v-model and slots, for Vite and Nuxt.'],
     ['AI assistants (MCP)', 'guide/mcp', 'The bootcn mcp server for Claude, Cursor and VS Code.'],
     ['Contributing', 'guide/contributing', 'Set up the repository, the conventions and the tests.'],
     [

@@ -30,8 +30,22 @@ export const KIND_DIRS = {
   lib: 'registry:lib',
 } as const;
 
+/**
+ * Framework overlays: react/<name> and vue/<name> hold only the React or Vue
+ * component for the item <name>, whose CSS and JavaScript they reuse. They
+ * are published under r/react/ and r/vue/, which CLIs before 0.8 never ask
+ * for, so those keep working.
+ */
+export const FRAMEWORK_DIRS = {
+  react: 'registry:react',
+  vue: 'registry:vue',
+} as const;
+export type Framework = keyof typeof FRAMEWORK_DIRS;
+
 /** File extensions allowed anywhere inside an item directory. */
 export const ALLOWED_EXTENSIONS = new Set(['.html', '.css', '.js', '.md', '.json', '.php']);
+/** And inside framework overlays. */
+const OVERLAY_EXTENSIONS = new Set(['.tsx', '.vue', '.md', '.json']);
 
 /** Allowed source extensions per registry file type. */
 export const FILE_TYPE_EXTENSIONS: Record<string, readonly string[]> = {
@@ -40,6 +54,8 @@ export const FILE_TYPE_EXTENSIONS: Record<string, readonly string[]> = {
   'registry:script': ['.js'],
   'registry:lib': ['.js'],
   'registry:page': ['.html', '.php'],
+  'registry:react': ['.tsx'],
+  'registry:vue': ['.vue'],
 };
 
 /** Placeholders a registry:page may use; the CLI replaces them on install. */
@@ -94,9 +110,14 @@ export interface RegistryMeta {
   version: string;
 }
 
+export interface LoadedOverlay extends LoadedItem {
+  framework: Framework;
+}
+
 export interface ValidationResult {
   meta: RegistryMeta | null;
   items: LoadedItem[];
+  overlays: LoadedOverlay[];
   errors: string[];
 }
 
@@ -405,7 +426,100 @@ export async function validateRegistry(registryDir: string): Promise<ValidationR
   }
 
   items.sort((a, b) => a.manifest.name.localeCompare(b.manifest.name));
-  return { meta, items, errors };
+  const overlays = await validateOverlays(registryDir, byName, validate, errors);
+  return { meta, items, overlays, errors };
+}
+
+/**
+ * react/<name> and vue/<name>: the component for an existing item, nothing
+ * else (its CSS and JavaScript come from the item itself).
+ */
+async function validateOverlays(
+  registryDir: string,
+  base: Map<string, LoadedItem>,
+  validate: ValidateFunction,
+  errors: string[],
+): Promise<LoadedOverlay[]> {
+  const overlays: LoadedOverlay[] = [];
+  for (const [framework, fileType] of Object.entries(FRAMEWORK_DIRS) as [Framework, string][]) {
+    const frameworkPath = resolve(registryDir, framework);
+    if (!(await exists(frameworkPath))) continue;
+    const entries = await readdir(frameworkPath, { withFileTypes: true });
+    for (const entry of entries.sort((a, b) => a.name.localeCompare(b.name))) {
+      const relDir = `${framework}/${entry.name}`;
+      const dir = resolve(frameworkPath, entry.name);
+      if (entry.isSymbolicLink() || !entry.isDirectory()) {
+        if (entry.name !== '.gitkeep') errors.push(`${relDir}: expected an overlay directory.`);
+        continue;
+      }
+      const { files, symlinks } = await walk(dir);
+      for (const link of symlinks) {
+        errors.push(`${toPosix(relative(registryDir, link))}: symlinks are not allowed.`);
+      }
+      for (const file of files) {
+        const ext = extname(file).toLowerCase();
+        if (!OVERLAY_EXTENSIONS.has(ext)) {
+          errors.push(
+            `${toPosix(relative(registryDir, file))}: extension "${ext}" is not allowed in ${framework}/.`,
+          );
+        }
+      }
+      let manifest: Manifest;
+      try {
+        manifest = (await readJson(resolve(dir, 'manifest.json'))) as Manifest;
+      } catch (error) {
+        errors.push(`${relDir}/manifest.json: missing or invalid (${(error as Error).message}).`);
+        continue;
+      }
+      if (!validate(manifest)) {
+        for (const message of formatAjvErrors(validate.errors)) {
+          errors.push(`${relDir}/manifest.json: ${message}`);
+        }
+        continue;
+      }
+      const label = `${relDir}/manifest.json`;
+      const item = base.get(entry.name);
+      if (manifest.name !== entry.name) {
+        errors.push(`${label}: "name" is "${manifest.name}" but the directory is "${entry.name}".`);
+      }
+      if (!item) {
+        errors.push(`${label}: there is no item "${entry.name}" for this ${framework} component.`);
+      } else if (manifest.type !== item.manifest.type) {
+        errors.push(`${label}: type must be "${item.manifest.type}", like the item it belongs to.`);
+      }
+      if ((manifest.registryDependencies ?? []).length > 0) {
+        errors.push(
+          `${label}: overlays take their dependencies from the item; leave registryDependencies empty.`,
+        );
+      }
+      for (const file of manifest.files) {
+        if (file.type !== fileType) {
+          errors.push(`${label}: "${file.path}" must have type ${fileType}.`);
+          continue;
+        }
+        const reason = unsafePathReason(file.path) ?? unsafePathReason(file.target);
+        if (reason) errors.push(`${label}: "${file.path}" ${reason}.`);
+        const allowed = FILE_TYPE_EXTENSIONS[file.type] ?? [];
+        if (!allowed.includes(posix.extname(file.path).toLowerCase())) {
+          errors.push(
+            `${label}: "${file.path}" has type ${file.type}, which expects ${allowed.join(' or ')}.`,
+          );
+        }
+        const text = await readFile(resolve(dir, file.path), 'utf8').catch(() => null);
+        if (text === null) {
+          errors.push(`${label}: file "${file.path}" does not exist.`);
+          continue;
+        }
+        for (const match of text.matchAll(/\{\{\s*bootcn:([^}]*)\}\}/g)) {
+          if (!(PAGE_PLACEHOLDERS as readonly string[]).includes(match[1] ?? '')) {
+            errors.push(`${label}: "${file.path}" uses unknown placeholder ${match[0]}.`);
+          }
+        }
+      }
+      overlays.push({ dir, relDir, manifest, framework });
+    }
+  }
+  return overlays;
 }
 
 /** Recursively sorts object keys so JSON output is deterministic. */
@@ -478,6 +592,33 @@ export async function buildRegistry(registryDir: string, outDir: string): Promis
     await writeFile(
       resolve(outDir, 'r', `${manifest.name}.json`),
       toJson({ ...rest, files }),
+      'utf8',
+    );
+  }
+
+  // Framework overlays, and a list of them per framework.
+  for (const framework of Object.keys(FRAMEWORK_DIRS) as Framework[]) {
+    const list = result.overlays.filter((overlay) => overlay.framework === framework);
+    await mkdir(resolve(outDir, 'r', framework), { recursive: true });
+    for (const { dir, manifest } of list) {
+      const { $schema: _schema, added: _added, ...rest } = manifest;
+      void _schema;
+      void _added;
+      const files = await Promise.all(
+        manifest.files.map(async (file) => ({
+          ...file,
+          content: (await readFile(resolve(dir, file.path), 'utf8')).replace(/\r\n/g, '\n'),
+        })),
+      );
+      await writeFile(
+        resolve(outDir, 'r', framework, `${manifest.name}.json`),
+        toJson({ ...rest, files }),
+        'utf8',
+      );
+    }
+    await writeFile(
+      resolve(outDir, 'r', framework, 'index.json'),
+      toJson({ framework, items: list.map(({ manifest }) => manifest.name) }),
       'utf8',
     );
   }

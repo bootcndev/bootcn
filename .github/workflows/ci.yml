@@ -32,6 +32,8 @@ jobs:
           test "$(cat packages/composer/VERSION)" = "$(node -p "require('./packages/cli/package.json').version")"
           php packages/composer/tests/run.php
       - run: pnpm test:e2e
+      - name: React and Vue apps, set up with the CLI
+        run: pnpm exec playwright test --config tests/frameworks/playwright.config.ts
       - run: pnpm site:build
       - run: pnpm exec playwright test --config tests/docs/playwright.config.ts
 

@@ -233,6 +233,8 @@ export default defineConfig({
           { text: 'Translations', link: '/guide/i18n' },
           { text: 'Animations', link: '/guide/animations' },
           { text: 'Laravel', link: '/guide/laravel' },
+          { text: 'React', link: '/guide/react' },
+          { text: 'Vue', link: '/guide/vue' },
           { text: 'AI assistants (MCP)', link: '/guide/mcp' },
         ],
       },

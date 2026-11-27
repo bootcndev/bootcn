@@ -1,0 +1,18 @@
+{
+  "name": "@bootcn/example-vue",
+  "private": true,
+  "type": "module",
+  "description": "A Vite + Vue app the tests install Bootcn into with the CLI.",
+  "scripts": {
+    "example:build": "vite build"
+  },
+  "dependencies": {
+    "bootstrap": "5.3.9",
+    "vue": "3.5.46"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-vue": "6.0.11",
+    "typescript": "5.9.3",
+    "vite": "8.4.0"
+  }
+}
