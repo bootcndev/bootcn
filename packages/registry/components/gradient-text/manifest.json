@@ -1,0 +1,29 @@
+{
+  "$schema": "../../schema/registry-item.schema.json",
+  "name": "gradient-text",
+  "type": "registry:ui",
+  "title": "Gradient text",
+  "description": "Text filled with a colour gradient, still or slowly moving, readable in light and dark and plain in high-contrast mode.",
+  "version": "1.0.0",
+  "added": "0.42.0",
+  "categories": ["effects"],
+  "dependencies": [],
+  "registryDependencies": [],
+  "compatibility": {
+    "bootstrap": "5.3",
+    "platform": ["Bootstrap CSS"]
+  },
+  "license": "MIT",
+  "files": [
+    {
+      "path": "gradient-text.html",
+      "target": "gradient-text.html",
+      "type": "registry:component"
+    },
+    {
+      "path": "gradient-text.css",
+      "target": "gradient-text.css",
+      "type": "registry:style"
+    }
+  ]
+}

@@ -3,14 +3,22 @@
  */
 import { expect, test } from '@playwright/test';
 
-import { expectNoAxeViolations, openPreview } from './helpers.js';
+import {
+  expectNoAxeViolations,
+  expectNoAxeViolationsExceptFirefox,
+  openPreview,
+} from './helpers.js';
 
-test('chat: switch conversations, send safely, receive, react', async ({ page }) => {
+test('chat: switch conversations, send safely, receive, react', async ({ page, browserName }) => {
   await openPreview(page, 'chat', 'blocks');
   await page.emulateMedia({ reducedMotion: 'reduce' });
   const chat = page.locator('[data-bootcn-chat]');
   await expect(chat.getByRole('log', { name: 'Messages with Lena Fischer' })).toBeVisible();
-  await expectNoAxeViolations(page);
+  await expectNoAxeViolationsExceptFirefox(
+    page,
+    browserName,
+    'axe crashes this page in Firefox on CI; covered in Chromium and WebKit',
+  );
 
   // Opening the design team clears its unread count.
   const team = chat.getByRole('link', { name: /Design team/ });

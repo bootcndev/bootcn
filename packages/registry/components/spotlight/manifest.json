@@ -4,7 +4,7 @@
   "type": "registry:ui",
   "title": "Spotlight search",
   "description": "A Ctrl/\u2318 K search for your whole app: pages, people, projects, files and actions in groups, from the page, a JSON URL or your own function, with recent picks, highlighted matches and full keyboard support.",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "added": "0.39.0",
   "categories": ["navigation", "overlays"],
   "dependencies": [],

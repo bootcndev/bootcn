@@ -1,0 +1,143 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Bootcn Recent purchase preview</title>
+    <script>
+      // Preview theme: ?theme=dark|light, else the docs page around the frame, else light.
+      (function () {
+        var theme = new URLSearchParams(location.search).get('theme');
+        if (!theme) {
+          try {
+            theme =
+              window.parent !== window &&
+              window.parent.document.documentElement.classList.contains('dark')
+                ? 'dark'
+                : 'light';
+          } catch (error) {
+            theme = 'light';
+          }
+        }
+        document.documentElement.setAttribute('data-bs-theme', theme === 'dark' ? 'dark' : 'light');
+        // ?dir=rtl: right to left, with Bootstrap's RTL stylesheet.
+        if (new URLSearchParams(location.search).get('dir') === 'rtl') {
+          document.documentElement.setAttribute('dir', 'rtl');
+          new MutationObserver(function (records, observer) {
+            var link = document.querySelector('link[href*="bootstrap.min.css"]');
+            if (!link) return;
+            link.href = link.href.replace('bootstrap.min.css', 'bootstrap.rtl.min.css');
+            observer.disconnect();
+          }).observe(document.documentElement, { childList: true, subtree: true });
+        }
+      })();
+    </script>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.9/dist/css/bootstrap.min.css"
+    />
+    <link rel="stylesheet" href="../../themes/tokens/tokens.css" />
+    <link rel="stylesheet" href="../button/button.css" />
+    <link rel="stylesheet" href="recent-purchase.css" />
+  </head>
+  <body>
+    <main class="container py-4" style="min-height: 24rem">
+      <h1 class="h4 mb-4">Recent purchase</h1>
+      <p class="text-body-secondary">
+        Notices show in the bottom corner, one at a time. The button sends three sample orders.
+      </p>
+      <button type="button" class="btn bootcn-button bootcn-button--outline" data-demo-purchase>
+        Show sample orders
+      </button>
+      <div class="bootcn-purchase" data-bootcn-purchase data-duration="6000" aria-live="polite">
+        <template data-purchase-template>
+          <div class="bootcn-purchase__notice">
+            <span class="bootcn-purchase__image" aria-hidden="true"
+              ><svg
+                class="bootcn-icon"
+                width="20"
+                height="20"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+                focusable="false"
+              >
+                <path d="M6 7h12l1 14H5z" />
+                <path d="M9 7a3 3 0 0 1 6 0" /></svg
+            ></span>
+            <p class="bootcn-purchase__text">
+              <span data-purchase-who></span> bought
+              <a class="bootcn-purchase__product" href="#" data-purchase-product>Product</a>
+              <time class="bootcn-purchase__time" data-purchase-time></time>
+            </p>
+            <button
+              type="button"
+              class="bootcn-purchase__close"
+              data-purchase-close
+              aria-label="Hide purchase notifications"
+            >
+              <svg
+                class="bootcn-icon"
+                width="14"
+                height="14"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+                focusable="false"
+              >
+                <path d="M18 6 6 18M6 6l12 12" />
+              </svg>
+            </button>
+          </div>
+        </template>
+      </div>
+    </main>
+    <script src="recent-purchase.js"></script>
+    <script>
+      // Demo only, with sample orders: use your real ones from your server.
+      (function () {
+        var root = document.querySelector('[data-bootcn-purchase]');
+        var now = Date.now();
+        var sample = [
+          {
+            id: 'o1',
+            name: 'Lena',
+            place: 'Berlin',
+            product: 'Linen shirt',
+            href: '#linen-shirt',
+            time: new Date(now - 2 * 60000).toISOString(),
+          },
+          {
+            id: 'o2',
+            name: 'Marco',
+            place: 'Milan',
+            product: 'Canvas tote',
+            href: '#canvas-tote',
+            time: new Date(now - 9 * 60000).toISOString(),
+          },
+          {
+            id: 'o3',
+            name: 'Ava',
+            place: 'Lisbon',
+            product: 'Ceramic mug',
+            href: '#ceramic-mug',
+            time: new Date(now - 25 * 60000).toISOString(),
+          },
+        ];
+        document.querySelector('[data-demo-purchase]').addEventListener('click', function () {
+          sample.forEach(function (p) {
+            Bootcn.purchases.show(root, Object.assign({}, p, { id: p.id + '-' + Date.now() }));
+          });
+        });
+      })();
+    </script>
+  </body>
+</html>

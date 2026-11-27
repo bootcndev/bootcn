@@ -1,0 +1,107 @@
+.bootcn-purchase {
+  position: fixed;
+  inset-inline-start: 1rem;
+  bottom: calc(1rem + env(safe-area-inset-bottom));
+  z-index: 1080;
+  width: min(22rem, calc(100vw - 2rem));
+  pointer-events: none;
+}
+
+.bootcn-purchase__notice {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.75rem 2.5rem 0.75rem 0.75rem;
+  border: var(--bootcn-border-width) solid var(--bootcn-border-color);
+  border-radius: var(--bootcn-radius-xl);
+  background-color: var(--bootcn-background);
+  box-shadow: var(--bootcn-shadow-lg);
+  color: var(--bootcn-foreground);
+  pointer-events: auto;
+  animation: bootcn-purchase-in 300ms cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.bootcn-purchase__notice.is-leaving {
+  animation: bootcn-purchase-out 200ms ease forwards;
+}
+
+@keyframes bootcn-purchase-in {
+  from {
+    opacity: 0;
+    transform: translateY(1rem);
+  }
+}
+
+@keyframes bootcn-purchase-out {
+  to {
+    opacity: 0;
+    transform: translateY(0.5rem);
+  }
+}
+
+.bootcn-purchase__image {
+  display: inline-flex;
+  flex: none;
+  align-items: center;
+  justify-content: center;
+  width: 3rem;
+  height: 3rem;
+  overflow: hidden;
+  border-radius: var(--bootcn-radius-lg);
+  background-color: var(--bootcn-muted);
+  color: var(--bootcn-muted-foreground);
+}
+
+.bootcn-purchase__image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.bootcn-purchase__text {
+  margin: 0;
+  font-size: 0.875rem;
+  line-height: 1.4;
+}
+
+.bootcn-purchase__product {
+  color: var(--bootcn-foreground);
+  font-weight: 600;
+}
+
+.bootcn-purchase__time {
+  display: block;
+  margin-top: 0.125rem;
+  color: var(--bootcn-muted-foreground);
+  font-size: 0.75rem;
+}
+
+.bootcn-purchase__close {
+  position: absolute;
+  top: 0.375rem;
+  inset-inline-end: 0.375rem;
+  display: inline-flex;
+  padding: 0.25rem;
+  border: 0;
+  border-radius: var(--bootcn-radius-md);
+  background: transparent;
+  color: var(--bootcn-muted-foreground);
+}
+
+.bootcn-purchase__close:hover {
+  background-color: var(--bootcn-accent);
+  color: var(--bootcn-foreground);
+}
+
+.bootcn-purchase :is(a, button):focus-visible {
+  outline: 0;
+  box-shadow: var(--bootcn-focus-ring);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .bootcn-purchase__notice,
+  .bootcn-purchase__notice.is-leaving {
+    animation: none;
+  }
+}

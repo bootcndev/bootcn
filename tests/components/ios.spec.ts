@@ -117,5 +117,7 @@ test('large title: collapses into the bar when it scrolls away', async ({ page }
     document.querySelector('.bootcn-large-title-demo')!.scrollTop = 0;
   });
   await expect(header).not.toHaveClass(/is-collapsed/);
+  // The small title fades out; axe measures the bar at rest.
+  await settleTransitions(page);
   await expectNoAxeViolations(page);
 });

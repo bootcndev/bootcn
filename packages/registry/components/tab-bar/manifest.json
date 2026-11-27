@@ -4,7 +4,7 @@
   "type": "registry:ui",
   "title": "Tab bar",
   "description": "A bottom navigation bar for phones, iOS style: icons with labels, the current page highlighted, badges, and a translucent bar that respects the home indicator.",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "added": "0.37.0",
   "categories": ["navigation"],
   "dependencies": [],

@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Bootcn Glow card preview</title>
+    <script>
+      // Preview theme: ?theme=dark|light, else the docs page around the frame, else light.
+      (function () {
+        var theme = new URLSearchParams(location.search).get('theme');
+        if (!theme) {
+          try {
+            theme =
+              window.parent !== window &&
+              window.parent.document.documentElement.classList.contains('dark')
+                ? 'dark'
+                : 'light';
+          } catch (error) {
+            theme = 'light';
+          }
+        }
+        document.documentElement.setAttribute('data-bs-theme', theme === 'dark' ? 'dark' : 'light');
+        // ?dir=rtl: right to left, with Bootstrap's RTL stylesheet.
+        if (new URLSearchParams(location.search).get('dir') === 'rtl') {
+          document.documentElement.setAttribute('dir', 'rtl');
+          new MutationObserver(function (records, observer) {
+            var link = document.querySelector('link[href*="bootstrap.min.css"]');
+            if (!link) return;
+            link.href = link.href.replace('bootstrap.min.css', 'bootstrap.rtl.min.css');
+            observer.disconnect();
+          }).observe(document.documentElement, { childList: true, subtree: true });
+        }
+      })();
+    </script>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.9/dist/css/bootstrap.min.css"
+    />
+    <link rel="stylesheet" href="../../themes/tokens/tokens.css" />
+    <link rel="stylesheet" href="glow-card.css" />
+  </head>
+  <body>
+    <main class="container py-4" style="max-width: 56rem">
+      <h1 class="h4 mb-4">Glow card</h1>
+      <div class="bootcn-glow-grid" data-bootcn-glow>
+        <article class="bootcn-glow-card">
+          <h2 class="bootcn-glow-card__title">Fast by default</h2>
+          <p class="bootcn-glow-card__text">Pages load in under a second, on any connection.</p>
+        </article>
+        <article class="bootcn-glow-card">
+          <h2 class="bootcn-glow-card__title">Private</h2>
+          <p class="bootcn-glow-card__text">Your data stays in your region, encrypted at rest.</p>
+        </article>
+        <article class="bootcn-glow-card">
+          <h2 class="bootcn-glow-card__title">Yours to change</h2>
+          <p class="bootcn-glow-card__text">Copy the code and make it your own.</p>
+        </article>
+      </div>
+    </main>
+    <script src="glow-card.js"></script>
+  </body>
+</html>

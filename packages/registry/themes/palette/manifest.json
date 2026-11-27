@@ -1,0 +1,24 @@
+{
+  "$schema": "../../schema/registry-item.schema.json",
+  "name": "palette",
+  "type": "registry:theme",
+  "title": "Colour palette",
+  "description": "A colour palette of 22 colours in 11 shades each (50 to 950) as CSS variables, for your own components, charts and illustrations.",
+  "version": "1.0.0",
+  "added": "0.42.0",
+  "categories": ["theming"],
+  "dependencies": [],
+  "registryDependencies": [],
+  "compatibility": {
+    "bootstrap": "5.3",
+    "platform": ["Bootstrap CSS"]
+  },
+  "license": "MIT",
+  "files": [
+    {
+      "path": "palette.css",
+      "target": "palette.css",
+      "type": "registry:style"
+    }
+  ]
+}

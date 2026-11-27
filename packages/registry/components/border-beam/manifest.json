@@ -1,0 +1,29 @@
+{
+  "$schema": "../../schema/registry-item.schema.json",
+  "name": "border-beam",
+  "type": "registry:ui",
+  "title": "Border beam",
+  "description": "A light that travels around the border of a card, button or panel, in your colours, with no JavaScript.",
+  "version": "1.0.0",
+  "added": "0.42.0",
+  "categories": ["effects"],
+  "dependencies": [],
+  "registryDependencies": [],
+  "compatibility": {
+    "bootstrap": "5.3",
+    "platform": ["Bootstrap CSS"]
+  },
+  "license": "MIT",
+  "files": [
+    {
+      "path": "border-beam.html",
+      "target": "border-beam.html",
+      "type": "registry:component"
+    },
+    {
+      "path": "border-beam.css",
+      "target": "border-beam.css",
+      "type": "registry:style"
+    }
+  ]
+}

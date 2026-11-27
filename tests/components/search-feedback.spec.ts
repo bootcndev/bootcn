@@ -86,6 +86,7 @@ test('spotlight: your own source and recent picks', async ({ page }) => {
 
   // Picking a link remembers it for next time.
   await dialog.getByRole('combobox').fill('billing');
+  await expect(page.locator('[data-bootcn-spotlight]')).not.toHaveClass(/is-loading/);
   await dialog.getByRole('option', { name: /Billing/ }).click();
   await expect(page).toHaveURL(/#billing$/);
   await page.getByRole('button', { name: /Search…/ }).click();
@@ -94,6 +95,8 @@ test('spotlight: your own source and recent picks', async ({ page }) => {
 
 test('reviews: filter by stars, sort, vote and write a review', async ({ page, browserName }) => {
   await openPreview(page, 'reviews', 'blocks');
+  // The new review fades in; axe measures it at rest.
+  await page.emulateMedia({ reducedMotion: 'reduce' });
   const reviews = page.locator('.bootcn-reviews__item:visible');
   await expect(reviews).toHaveCount(5);
 
@@ -116,7 +119,9 @@ test('reviews: filter by stars, sort, vote and write a review', async ({ page, b
   await dialog.getByRole('button', { name: 'Post review' }).click();
   await expect(dialog.getByText('Choose a rating.')).toBeVisible();
   await expect(dialog.getByText('Write at least 20 characters.')).toBeVisible();
-  await dialog.getByText('4 stars').click({ force: true });
+  // The visible star is the radio's label, as a person would click it.
+  await dialog.locator('label[for="bootcn-reviews-rating-4"]').click();
+  await expect(dialog.getByRole('radio', { name: '4 stars' })).toBeChecked();
   await dialog.getByLabel('Your review').fill('Solid tool, the reports finally export to PDF.');
   await dialog.getByLabel('Your name').fill('Grace Lee');
   await dialog.getByRole('button', { name: 'Post review' }).click();

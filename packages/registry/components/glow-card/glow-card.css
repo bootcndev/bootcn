@@ -1,0 +1,81 @@
+.bootcn-glow-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 14rem), 1fr));
+  gap: 1rem;
+}
+
+/* A soft light follows the pointer across the card and lights its border. */
+.bootcn-glow-card {
+  --bootcn-glow-color: var(--bootcn-primary);
+  --bootcn-glow-x: 50%;
+  --bootcn-glow-y: -20%;
+  position: relative;
+  padding: 1.25rem;
+  overflow: hidden;
+  border: var(--bootcn-border-width) solid var(--bootcn-border-color);
+  border-radius: var(--bootcn-radius-xl);
+  background-color: var(--bootcn-background);
+  isolation: isolate;
+}
+
+.bootcn-glow-card::before,
+.bootcn-glow-card::after {
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  content: '';
+  opacity: 0;
+  transition: opacity 200ms ease;
+  pointer-events: none;
+}
+
+.bootcn-glow-card::before {
+  z-index: -1;
+  background: radial-gradient(
+    20rem circle at var(--bootcn-glow-x) var(--bootcn-glow-y),
+    color-mix(in srgb, var(--bootcn-glow-color) 12%, transparent),
+    transparent 60%
+  );
+}
+
+.bootcn-glow-card::after {
+  padding: 1px;
+  background: radial-gradient(
+    14rem circle at var(--bootcn-glow-x) var(--bootcn-glow-y),
+    color-mix(in srgb, var(--bootcn-glow-color) 70%, transparent),
+    transparent 60%
+  );
+  -webkit-mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask:
+    linear-gradient(#000 0 0) content-box exclude,
+    linear-gradient(#000 0 0);
+}
+
+.bootcn-glow-card.is-glowing::before,
+.bootcn-glow-card.is-glowing::after,
+.bootcn-glow-card:focus-within::before,
+.bootcn-glow-card:focus-within::after {
+  opacity: 1;
+}
+
+.bootcn-glow-card__title {
+  margin: 0 0 0.375rem;
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.bootcn-glow-card__text {
+  margin: 0;
+  color: var(--bootcn-muted-foreground);
+  font-size: 0.9375rem;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .bootcn-glow-card::before,
+  .bootcn-glow-card::after {
+    transition: none;
+  }
+}

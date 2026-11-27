@@ -154,6 +154,7 @@ const GROUPS: Record<Kind, [label: string, categories: string[]][]> = {
     ['Feedback', ['feedback']],
     ['Data display', ['data-display']],
     ['Layout', ['layout']],
+    ['Effects', ['effects']],
     ['AI', ['ai']],
   ],
   blocks: [

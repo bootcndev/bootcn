@@ -1,0 +1,29 @@
+{
+  "$schema": "../../schema/registry-item.schema.json",
+  "name": "aurora",
+  "type": "registry:ui",
+  "title": "Aurora background",
+  "description": "A background of soft, slowly drifting coloured light for hero sections, with no JavaScript and readable text on top.",
+  "version": "1.0.0",
+  "added": "0.42.0",
+  "categories": ["effects"],
+  "dependencies": [],
+  "registryDependencies": ["button"],
+  "compatibility": {
+    "bootstrap": "5.3",
+    "platform": ["Bootstrap CSS"]
+  },
+  "license": "MIT",
+  "files": [
+    {
+      "path": "aurora.html",
+      "target": "aurora.html",
+      "type": "registry:component"
+    },
+    {
+      "path": "aurora.css",
+      "target": "aurora.css",
+      "type": "registry:style"
+    }
+  ]
+}

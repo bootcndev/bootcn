@@ -1,0 +1,31 @@
+.bootcn-ticker-stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 10rem), 1fr));
+  gap: 1.5rem;
+  margin: 0;
+}
+
+.bootcn-ticker-stat {
+  display: flex;
+  flex-direction: column-reverse;
+  gap: 0.25rem;
+}
+
+.bootcn-ticker-stat__label {
+  color: var(--bootcn-muted-foreground);
+  font-size: 0.875rem;
+  font-weight: 400;
+}
+
+.bootcn-ticker-stat__value {
+  margin: 0;
+  font-size: clamp(2rem, 1.5rem + 2vw, 2.75rem);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+}
+
+/* Digits keep the same width while they count. */
+[data-bootcn-ticker] {
+  font-variant-numeric: tabular-nums;
+}

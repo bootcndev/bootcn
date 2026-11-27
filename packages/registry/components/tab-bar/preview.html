@@ -39,6 +39,17 @@
     <link rel="stylesheet" href="../../themes/tokens/tokens.css" />
     <link rel="stylesheet" href="tab-bar.css" />
     <style>
+      .bootcn-tab-bar-demos {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1.5rem;
+      }
+      .bootcn-tab-bar-demo--photo {
+        background: linear-gradient(160deg, #c7d2fe, #fbcfe8 55%, #fde68a);
+      }
+      [data-bs-theme='dark'] .bootcn-tab-bar-demo--photo {
+        background: linear-gradient(160deg, #312e81, #831843 55%, #78350f);
+      }
       .bootcn-tab-bar-demo {
         display: flex;
         flex-direction: column;
@@ -59,102 +70,201 @@
   <body>
     <main class="container py-4">
       <h1 class="h4 mb-4">Tab bar</h1>
-      <div class="bootcn-tab-bar-demo">
-        <div class="bootcn-tab-bar-demo__screen">
-          <p class="h5 mb-1">Home</p>
-          <p class="text-body-secondary small mb-0">Your latest activity shows here.</p>
+      <div class="bootcn-tab-bar-demos">
+        <div class="bootcn-tab-bar-demo">
+          <div class="bootcn-tab-bar-demo__screen">
+            <p class="h5 mb-1">Home</p>
+            <p class="text-body-secondary small mb-0">Your latest activity shows here.</p>
+          </div>
+          <nav class="bootcn-tab-bar" aria-label="Main">
+            <ul class="bootcn-tab-bar__list">
+              <li>
+                <a class="bootcn-tab-bar__item" href="#" aria-current="page"
+                  ><span class="bootcn-tab-bar__icon"
+                    ><svg
+                      class="bootcn-icon"
+                      width="24"
+                      height="24"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="1.75"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      aria-hidden="true"
+                      focusable="false"
+                    >
+                      <path
+                        d="M3 10.5 12 3l9 7.5V20a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z"
+                      /></svg></span
+                  ><span class="bootcn-tab-bar__label">Home</span></a
+                >
+              </li>
+              <li>
+                <a class="bootcn-tab-bar__item" href="#"
+                  ><span class="bootcn-tab-bar__icon"
+                    ><svg
+                      class="bootcn-icon"
+                      width="24"
+                      height="24"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="1.75"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      aria-hidden="true"
+                      focusable="false"
+                    >
+                      <circle cx="11" cy="11" r="7" />
+                      <path d="m20 20-3.5-3.5" /></svg></span
+                  ><span class="bootcn-tab-bar__label">Search</span></a
+                >
+              </li>
+              <li>
+                <a class="bootcn-tab-bar__item" href="#"
+                  ><span class="bootcn-tab-bar__icon"
+                    ><svg
+                      class="bootcn-icon"
+                      width="24"
+                      height="24"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="1.75"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      aria-hidden="true"
+                      focusable="false"
+                    >
+                      <path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9" />
+                      <path d="M10.3 21a1.9 1.9 0 0 0 3.4 0" /></svg
+                    ><span class="bootcn-tab-bar__badge" aria-hidden="true">3</span></span
+                  ><span class="bootcn-tab-bar__label">Activity</span
+                  ><span class="visually-hidden">3 new</span></a
+                >
+              </li>
+              <li>
+                <a class="bootcn-tab-bar__item" href="#"
+                  ><span class="bootcn-tab-bar__icon"
+                    ><svg
+                      class="bootcn-icon"
+                      width="24"
+                      height="24"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="1.75"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      aria-hidden="true"
+                      focusable="false"
+                    >
+                      <circle cx="12" cy="8" r="4" />
+                      <path d="M4 21a8 8 0 0 1 16 0" /></svg></span
+                  ><span class="bootcn-tab-bar__label">Profile</span></a
+                >
+              </li>
+            </ul>
+          </nav>
         </div>
-        <nav class="bootcn-tab-bar" aria-label="Main">
-          <ul class="bootcn-tab-bar__list">
-            <li>
-              <a class="bootcn-tab-bar__item" href="#" aria-current="page"
-                ><span class="bootcn-tab-bar__icon"
-                  ><svg
-                    class="bootcn-icon"
-                    width="24"
-                    height="24"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    stroke-width="1.75"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    aria-hidden="true"
-                    focusable="false"
-                  >
-                    <path
-                      d="M3 10.5 12 3l9 7.5V20a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z"
-                    /></svg></span
-                ><span class="bootcn-tab-bar__label">Home</span></a
-              >
-            </li>
-            <li>
-              <a class="bootcn-tab-bar__item" href="#"
-                ><span class="bootcn-tab-bar__icon"
-                  ><svg
-                    class="bootcn-icon"
-                    width="24"
-                    height="24"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    stroke-width="1.75"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    aria-hidden="true"
-                    focusable="false"
-                  >
-                    <circle cx="11" cy="11" r="7" />
-                    <path d="m20 20-3.5-3.5" /></svg></span
-                ><span class="bootcn-tab-bar__label">Search</span></a
-              >
-            </li>
-            <li>
-              <a class="bootcn-tab-bar__item" href="#"
-                ><span class="bootcn-tab-bar__icon"
-                  ><svg
-                    class="bootcn-icon"
-                    width="24"
-                    height="24"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    stroke-width="1.75"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    aria-hidden="true"
-                    focusable="false"
-                  >
-                    <path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9" />
-                    <path d="M10.3 21a1.9 1.9 0 0 0 3.4 0" /></svg
-                  ><span class="bootcn-tab-bar__badge" aria-hidden="true">3</span></span
-                ><span class="bootcn-tab-bar__label">Activity</span
-                ><span class="visually-hidden">3 new</span></a
-              >
-            </li>
-            <li>
-              <a class="bootcn-tab-bar__item" href="#"
-                ><span class="bootcn-tab-bar__icon"
-                  ><svg
-                    class="bootcn-icon"
-                    width="24"
-                    height="24"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    stroke-width="1.75"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    aria-hidden="true"
-                    focusable="false"
-                  >
-                    <circle cx="12" cy="8" r="4" />
-                    <path d="M4 21a8 8 0 0 1 16 0" /></svg></span
-                ><span class="bootcn-tab-bar__label">Profile</span></a
-              >
-            </li>
-          </ul>
-        </nav>
+        <div class="bootcn-tab-bar-demo bootcn-tab-bar-demo--photo">
+          <div class="bootcn-tab-bar-demo__screen">
+            <p class="h5 mb-1">Floating</p>
+            <p class="small mb-0">A glass pill over the content.</p>
+          </div>
+          <nav class="bootcn-tab-bar bootcn-tab-bar--floating" aria-label="Main (floating)">
+            <ul class="bootcn-tab-bar__list">
+              <li>
+                <a class="bootcn-tab-bar__item" href="#" aria-current="page"
+                  ><span class="bootcn-tab-bar__icon"
+                    ><svg
+                      class="bootcn-icon"
+                      width="24"
+                      height="24"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="1.75"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      aria-hidden="true"
+                      focusable="false"
+                    >
+                      <path
+                        d="M3 10.5 12 3l9 7.5V20a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z"
+                      /></svg></span
+                  ><span class="bootcn-tab-bar__label">Home</span></a
+                >
+              </li>
+              <li>
+                <a class="bootcn-tab-bar__item" href="#"
+                  ><span class="bootcn-tab-bar__icon"
+                    ><svg
+                      class="bootcn-icon"
+                      width="24"
+                      height="24"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="1.75"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      aria-hidden="true"
+                      focusable="false"
+                    >
+                      <circle cx="11" cy="11" r="7" />
+                      <path d="m20 20-3.5-3.5" /></svg></span
+                  ><span class="bootcn-tab-bar__label">Search</span></a
+                >
+              </li>
+              <li>
+                <a class="bootcn-tab-bar__item" href="#"
+                  ><span class="bootcn-tab-bar__icon"
+                    ><svg
+                      class="bootcn-icon"
+                      width="24"
+                      height="24"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="1.75"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      aria-hidden="true"
+                      focusable="false"
+                    >
+                      <path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9" />
+                      <path d="M10.3 21a1.9 1.9 0 0 0 3.4 0" /></svg
+                    ><span class="bootcn-tab-bar__badge" aria-hidden="true">3</span></span
+                  ><span class="bootcn-tab-bar__label">Activity</span
+                  ><span class="visually-hidden">3 new</span></a
+                >
+              </li>
+              <li>
+                <a class="bootcn-tab-bar__item" href="#"
+                  ><span class="bootcn-tab-bar__icon"
+                    ><svg
+                      class="bootcn-icon"
+                      width="24"
+                      height="24"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="1.75"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      aria-hidden="true"
+                      focusable="false"
+                    >
+                      <circle cx="12" cy="8" r="4" />
+                      <path d="M4 21a8 8 0 0 1 16 0" /></svg></span
+                  ><span class="bootcn-tab-bar__label">Profile</span></a
+                >
+              </li>
+            </ul>
+          </nav>
+        </div>
       </div>
     </main>
   </body>

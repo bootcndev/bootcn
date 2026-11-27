@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Bootcn Number ticker preview</title>
+    <script>
+      // Preview theme: ?theme=dark|light, else the docs page around the frame, else light.
+      (function () {
+        var theme = new URLSearchParams(location.search).get('theme');
+        if (!theme) {
+          try {
+            theme =
+              window.parent !== window &&
+              window.parent.document.documentElement.classList.contains('dark')
+                ? 'dark'
+                : 'light';
+          } catch (error) {
+            theme = 'light';
+          }
+        }
+        document.documentElement.setAttribute('data-bs-theme', theme === 'dark' ? 'dark' : 'light');
+        // ?dir=rtl: right to left, with Bootstrap's RTL stylesheet.
+        if (new URLSearchParams(location.search).get('dir') === 'rtl') {
+          document.documentElement.setAttribute('dir', 'rtl');
+          new MutationObserver(function (records, observer) {
+            var link = document.querySelector('link[href*="bootstrap.min.css"]');
+            if (!link) return;
+            link.href = link.href.replace('bootstrap.min.css', 'bootstrap.rtl.min.css');
+            observer.disconnect();
+          }).observe(document.documentElement, { childList: true, subtree: true });
+        }
+      })();
+    </script>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.9/dist/css/bootstrap.min.css"
+    />
+    <link rel="stylesheet" href="../../themes/tokens/tokens.css" />
+    <link rel="stylesheet" href="number-ticker.css" />
+  </head>
+  <body>
+    <main class="container py-4" style="max-width: 56rem">
+      <h1 class="h4 mb-4">Number ticker</h1>
+      <dl class="bootcn-ticker-stats">
+        <div class="bootcn-ticker-stat">
+          <dt class="bootcn-ticker-stat__label">Teams</dt>
+          <dd class="bootcn-ticker-stat__value">
+            <span data-bootcn-ticker data-value="12400" data-suffix="+">12400+</span>
+          </dd>
+        </div>
+        <div class="bootcn-ticker-stat">
+          <dt class="bootcn-ticker-stat__label">Uptime</dt>
+          <dd class="bootcn-ticker-stat__value">
+            <span data-bootcn-ticker data-value="99.98" data-suffix="%" data-decimals="2"
+              >99.98%</span
+            >
+          </dd>
+        </div>
+        <div class="bootcn-ticker-stat">
+          <dt class="bootcn-ticker-stat__label">Pages served daily</dt>
+          <dd class="bootcn-ticker-stat__value">
+            <span data-bootcn-ticker data-value="2.4" data-suffix="M" data-decimals="1">2.4M</span>
+          </dd>
+        </div>
+        <div class="bootcn-ticker-stat">
+          <dt class="bootcn-ticker-stat__label">Countries</dt>
+          <dd class="bootcn-ticker-stat__value">
+            <span data-bootcn-ticker data-value="48">48</span>
+          </dd>
+        </div>
+      </dl>
+    </main>
+    <script src="number-ticker.js"></script>
+  </body>
+</html>

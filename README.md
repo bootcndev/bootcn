@@ -9,7 +9,7 @@ build with plain HTML and native PHP. Components are installed as editable
 HTML, CSS and JavaScript source files that you own. No React, Vue, jQuery,
 bundler or Node.js is required at runtime.
 
-> **Status:** early (0.x). 130 components, 55 blocks (authentication, dashboard, navigation, marketing, blog, commerce, communication, charts, AI chat), admin dashboard, analytics dashboard, landing page, settings, e-commerce, CRM and SaaS templates and design
+> **Status:** early (0.x). 137 components, 55 blocks (authentication, dashboard, navigation, marketing, blog, commerce, communication, charts, AI chat), admin dashboard, analytics dashboard, landing page, settings, e-commerce, CRM and SaaS templates and design
 > tokens, with a Tailwind-like look built on Bootstrap. The CLI is on
 > [npm](https://www.npmjs.com/package/bootcn); documentation, live previews and
 > the registry are at <https://bootcn.dev/>. News: [@bootcndev](https://x.com/bootcndev) on X.
@@ -60,9 +60,11 @@ and any docs page as Markdown by adding `.md` to its address. See
 | `animated-button`      | ui    | HTML, CSS, JS | Bootstrap CSS             | `button`                                                            |
 | `aspect-ratio`         | ui    | HTML, CSS     | Bootstrap CSS             | —                                                                   |
 | `audio-player`         | ui    | HTML, CSS, JS | Bootstrap CSS             | —                                                                   |
+| `aurora`               | ui    | HTML, CSS     | Bootstrap CSS             | `button`                                                            |
 | `autocomplete`         | ui    | HTML, CSS, JS | Bootstrap CSS             | `label`                                                             |
 | `avatar`               | ui    | HTML, CSS     | Bootstrap CSS             | —                                                                   |
 | `badge`                | ui    | HTML, CSS     | Bootstrap CSS             | —                                                                   |
+| `border-beam`          | ui    | HTML, CSS     | Bootstrap CSS             | —                                                                   |
 | `breadcrumb`           | ui    | HTML, CSS     | Bootstrap CSS             | —                                                                   |
 | `button-group`         | ui    | HTML, CSS     | Bootstrap CSS             | `button`                                                            |
 | `button`               | ui    | HTML, CSS     | Bootstrap CSS             | —                                                                   |
@@ -105,6 +107,8 @@ and any docs page as Markdown by adding `.md` to its address. See
 | `flow-builder`         | ui    | HTML, CSS, JS | Bootstrap CSS             | —                                                                   |
 | `form`                 | ui    | HTML, CSS, JS | Bootstrap CSS             | `field`, `label`, `input`, `select`, `checkbox`, `button`           |
 | `funnel`               | ui    | HTML, CSS     | Bootstrap CSS             | —                                                                   |
+| `glow-card`            | ui    | HTML, CSS, JS | Bootstrap CSS             | —                                                                   |
+| `gradient-text`        | ui    | HTML, CSS     | Bootstrap CSS             | —                                                                   |
 | `grouped-list`         | ui    | HTML, CSS     | Bootstrap CSS             | `switch`                                                            |
 | `heatmap`              | ui    | HTML, CSS     | Bootstrap CSS             | —                                                                   |
 | `hover-card`           | ui    | HTML, CSS, JS | Bootstrap CSS + JS bundle | `avatar`                                                            |
@@ -130,6 +134,7 @@ and any docs page as Markdown by adding `.md` to its address. See
 | `navigation-menu`      | ui    | HTML, CSS     | Bootstrap CSS + JS bundle | —                                                                   |
 | `notification-center`  | ui    | HTML, CSS, JS | Bootstrap CSS             | `avatar`, `button`, `timeline`                                      |
 | `number-field`         | ui    | HTML, CSS, JS | Bootstrap CSS             | `label`, `input`                                                    |
+| `number-ticker`        | ui    | HTML, CSS, JS | Bootstrap CSS             | —                                                                   |
 | `onboarding-checklist` | ui    | HTML, CSS, JS | Bootstrap CSS             | `button`, `progress`                                                |
 | `pagination`           | ui    | HTML, CSS     | Bootstrap CSS             | —                                                                   |
 | `password-strength`    | ui    | HTML, CSS, JS | Bootstrap CSS             | `label`, `input`                                                    |
@@ -142,9 +147,11 @@ and any docs page as Markdown by adding `.md` to its address. See
 | `radio-group`          | ui    | HTML, CSS     | Bootstrap CSS             | —                                                                   |
 | `range-slider`         | ui    | HTML, CSS, JS | Bootstrap CSS             | `label`                                                             |
 | `rating`               | ui    | HTML, CSS     | Bootstrap CSS             | —                                                                   |
+| `recent-purchase`      | ui    | HTML, CSS, JS | Bootstrap CSS             | —                                                                   |
 | `resizable`            | ui    | HTML, CSS, JS | Bootstrap CSS             | —                                                                   |
 | `route-tracker`        | ui    | HTML, CSS, JS | Bootstrap CSS             | `button`, `location-pin`                                            |
 | `scroll-area`          | ui    | HTML, CSS     | Bootstrap CSS             | —                                                                   |
+| `scroll-reveal`        | ui    | HTML, CSS, JS | Bootstrap CSS             | —                                                                   |
 | `scroll-shadow`        | ui    | HTML, CSS     | Bootstrap CSS             | —                                                                   |
 | `search-field`         | ui    | HTML, CSS, JS | Bootstrap CSS             | `label`                                                             |
 | `segmented-control`    | ui    | HTML, CSS     | Bootstrap CSS             | —                                                                   |

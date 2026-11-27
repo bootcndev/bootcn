@@ -1,0 +1,34 @@
+{
+  "$schema": "../../schema/registry-item.schema.json",
+  "name": "number-ticker",
+  "type": "registry:ui",
+  "title": "Number ticker",
+  "description": "Numbers that count up when they scroll into view, formatted for the page language, with the final value always in the page.",
+  "version": "1.0.0",
+  "added": "0.42.0",
+  "categories": ["effects", "data-display"],
+  "dependencies": [],
+  "registryDependencies": [],
+  "compatibility": {
+    "bootstrap": "5.3",
+    "platform": ["Bootstrap CSS"]
+  },
+  "license": "MIT",
+  "files": [
+    {
+      "path": "number-ticker.html",
+      "target": "number-ticker.html",
+      "type": "registry:component"
+    },
+    {
+      "path": "number-ticker.css",
+      "target": "number-ticker.css",
+      "type": "registry:style"
+    },
+    {
+      "path": "number-ticker.js",
+      "target": "number-ticker.js",
+      "type": "registry:script"
+    }
+  ]
+}

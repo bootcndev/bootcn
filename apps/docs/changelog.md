@@ -10,6 +10,27 @@ each published version stays available under `/v/<version>/`) and the **CLI**
 
 ## Registry
 
+### 0.42.0
+
+Effects, motion and colour.
+
+- Border beam: a light that travels around a card's border.
+- Glow card: a soft light that follows the pointer and lights the border.
+- Gradient text: still or moving gradient words that keep 4.5:1.
+- Aurora background: slowly drifting coloured light behind a hero.
+- Number ticker: numbers that count up as they scroll into view; screen
+  readers get the final value once.
+- Scroll reveal: parts that fade and slide in as they appear, one after
+  another in lists, and never hidden without the script.
+- Tab bar 1.1.0: a floating glass variant.
+- Recent purchase: a corner notice for real orders from your shop, one at
+  a time, with a way to switch it off.
+- Colour palette: 22 colours in 11 shades as CSS variables
+  (`npx bootcn add palette`).
+- Spotlight search 1.0.1: the list no longer redraws when a slower source
+  returns the same results.
+- Every effect stands still under reduced motion.
+
 ### 0.41.0
 
 The event calendar.

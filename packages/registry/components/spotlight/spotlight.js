@@ -218,6 +218,19 @@
     const s = state(root);
     const list = root.querySelector('[role="listbox"]');
     const input = root.querySelector('[role="combobox"]');
+    // Same results as on screen: leave the list alone, so nothing moves under
+    // the pointer when a slower source answers.
+    const signature =
+      query +
+      '|' +
+      [...groups]
+        .map(
+          ([name, items]) =>
+            name + ':' + items.map((i) => i.title + '>' + (i.href || i.value || '')).join(','),
+        )
+        .join(';');
+    if (signature === s.signature) return;
+    s.signature = signature;
     s.results = [];
     let html = '';
     groups.forEach((items, name) => {

@@ -8,6 +8,9 @@ A `<nav class="bootcn-tab-bar" aria-label="Main">` with a list of links,
 three to five of them. Mark the page you are on with
 `aria-current="page"`: its icon fills in and takes the primary colour.
 
+- `.bootcn-tab-bar--floating` turns the bar into a glass pill that floats
+  above the content, the current tab in a tinted capsule. Combine it with
+  `--fixed` to float it at the bottom of the screen.
 - `.bootcn-tab-bar--fixed` pins the bar to the bottom of the screen; give
   the page `padding-bottom` (about 4.5rem) so nothing hides behind it. Add
   `.bootcn-tab-bar--phone-only` to hide it from 768px up, where a sidebar

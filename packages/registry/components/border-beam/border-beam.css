@@ -1,0 +1,56 @@
+/* The beam's angle animates as a typed custom property. */
+@property --bootcn-beam-angle {
+  syntax: '<angle>';
+  inherits: false;
+  initial-value: 0deg;
+}
+
+.bootcn-border-beam {
+  --bootcn-beam-color: var(--bootcn-primary);
+  --bootcn-beam-accent: #a855f7;
+  --bootcn-beam-width: 2px;
+  --bootcn-beam-duration: 4s;
+  position: relative;
+  isolation: isolate;
+}
+
+.bootcn-border-beam::before {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  padding: var(--bootcn-beam-width);
+  border-radius: inherit;
+  background: conic-gradient(
+    from var(--bootcn-beam-angle),
+    transparent 0deg,
+    transparent 200deg,
+    var(--bootcn-beam-accent) 280deg,
+    var(--bootcn-beam-color) 340deg,
+    transparent 360deg
+  );
+  content: '';
+  animation: bootcn-border-beam var(--bootcn-beam-duration) linear infinite;
+  pointer-events: none;
+  /* Only the border ring shows: the content box is cut out. */
+  -webkit-mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask:
+    linear-gradient(#000 0 0) content-box exclude,
+    linear-gradient(#000 0 0);
+}
+
+@keyframes bootcn-border-beam {
+  to {
+    --bootcn-beam-angle: 360deg;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .bootcn-border-beam::before {
+    animation: none;
+    background: linear-gradient(135deg, var(--bootcn-beam-accent), var(--bootcn-beam-color));
+    opacity: 0.6;
+  }
+}

@@ -1,0 +1,938 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Bootcn Colour palette preview</title>
+    <script>
+      // Preview theme: ?theme=dark|light, else the docs page around the frame, else light.
+      (function () {
+        var theme = new URLSearchParams(location.search).get('theme');
+        if (!theme) {
+          try {
+            theme =
+              window.parent !== window &&
+              window.parent.document.documentElement.classList.contains('dark')
+                ? 'dark'
+                : 'light';
+          } catch (error) {
+            theme = 'light';
+          }
+        }
+        document.documentElement.setAttribute('data-bs-theme', theme === 'dark' ? 'dark' : 'light');
+        // ?dir=rtl: right to left, with Bootstrap's RTL stylesheet.
+        if (new URLSearchParams(location.search).get('dir') === 'rtl') {
+          document.documentElement.setAttribute('dir', 'rtl');
+          new MutationObserver(function (records, observer) {
+            var link = document.querySelector('link[href*="bootstrap.min.css"]');
+            if (!link) return;
+            link.href = link.href.replace('bootstrap.min.css', 'bootstrap.rtl.min.css');
+            observer.disconnect();
+          }).observe(document.documentElement, { childList: true, subtree: true });
+        }
+      })();
+    </script>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.9/dist/css/bootstrap.min.css"
+    />
+    <link rel="stylesheet" href="../tokens/tokens.css" />
+    <link rel="stylesheet" href="palette.css" />
+    <style>
+      .bootcn-palette {
+        display: grid;
+        gap: 0.375rem;
+      }
+      .bootcn-palette__row {
+        display: grid;
+        grid-template-columns: 4.5rem minmax(0, 1fr);
+        align-items: center;
+        gap: 0.75rem;
+      }
+      .bootcn-palette__name {
+        margin: 0;
+        font-size: 0.8125rem;
+        font-weight: 500;
+        text-transform: capitalize;
+      }
+      .bootcn-palette__swatches,
+      .bootcn-palette__shades {
+        display: grid;
+        grid-template-columns: repeat(11, minmax(0, 1fr));
+        gap: 0.25rem;
+        margin: 0;
+        padding: 0;
+        list-style: none;
+      }
+      .bootcn-palette__swatch {
+        height: 2rem;
+        border-radius: 0.375rem;
+        box-shadow: inset 0 0 0 1px rgb(0 0 0 / 8%);
+      }
+      .bootcn-palette__shades li {
+        color: var(--bootcn-muted-foreground);
+        font-size: 0.6875rem;
+        text-align: center;
+      }
+    </style>
+  </head>
+  <body>
+    <main class="container py-4" style="max-width: 64rem">
+      <h1 class="h4 mb-4">Colour palette</h1>
+      <div class="bootcn-palette">
+        <div class="bootcn-palette__row bootcn-palette__head" aria-hidden="true">
+          <span></span>
+          <ol class="bootcn-palette__shades">
+            <li>50</li>
+            <li>100</li>
+            <li>200</li>
+            <li>300</li>
+            <li>400</li>
+            <li>500</li>
+            <li>600</li>
+            <li>700</li>
+            <li>800</li>
+            <li>900</li>
+            <li>950</li>
+          </ol>
+        </div>
+        <div class="bootcn-palette__row">
+          <p class="bootcn-palette__name">slate</p>
+          <ul class="bootcn-palette__swatches" aria-label="Slate">
+            <li class="bootcn-palette__swatch" style="background-color: var(--bootcn-slate-50)">
+              <span class="visually-hidden">slate 50: #f8fafc</span>
+            </li>
+            <li class="bootcn-palette__swatch" style="background-color: var(--bootcn-slate-100)">
+              <span class="visually-hidden">slate 100: #f1f5f9</span>
+            </li>
+            <li class="bootcn-palette__swatch" style="background-color: var(--bootcn-slate-200)">
+              <span class="visually-hidden">slate 200: #e2e8f0</span>
+            </li>
+            <li class="bootcn-palette__swatch" style="background-color: var(--bootcn-slate-300)">
+              <span class="visually-hidden">slate 300: #cbd5e1</span>
+            </li>
+            <li class="bootcn-palette__swatch" style="background-color: var(--bootcn-slate-400)">
+              <span class="visually-hidden">slate 400: #94a3b8</span>
+            </li>
+            <li class="bootcn-palette__swatch" style="background-color: var(--bootcn-slate-500)">
+              <span class="visually-hidden">slate 500: #64748b</span>
+            </li>
+            <li class="bootcn-palette__swatch" style="background-color: var(--bootcn-slate-600)">
+              <span class="visually-hidden">slate 600: #475569</span>
+            </li>
+            <li class="bootcn-palette__swatch" style="background-color: var(--bootcn-slate-700)">
+              <span class="visually-hidden">slate 700: #334155</span>
+            </li>
+            <li class="bootcn-palette__swatch" style="background-color: var(--bootcn-slate-800)">
+              <span class="visually-hidden">slate 800: #1e293b</span>
+            </li>
+            <li class="bootcn-palette__swatch" style="background-color: var(--bootcn-slate-900)">
+              <span class="visually-hidden">slate 900: #0f172a</span>
+            </li>
+            <li class="bootcn-palette__swatch" style="background-color: var(--bootcn-slate-950)">
+              <span class="visually-hidden">slate 950: #020617</span>
+            </li>
+          </ul>
+        </div>
+        <div class="bootcn-palette__row">
+          <p class="bootcn-palette__name">gray</p>
+          <ul class="bootcn-palette__swatches" aria-label="Gray">
+            <li class="bootcn-palette__swatch" style="background-color: var(--bootcn-gray-50)">
+              <span class="visually-hidden">gray 50: #f9fafb</span>
+            </li>
+            <li class="bootcn-palette__swatch" style="background-color: var(--bootcn-gray-100)">
+              <span class="visually-hidden">gray 100: #f3f4f6</span>
+            </li>
+            <li class="bootcn-palette__swatch" style="background-color: var(--bootcn-gray-200)">
+              <span class="visually-hidden">gray 200: #e5e7eb</span>
+            </li>
+            <li class="bootcn-palette__swatch" style="background-color: var(--bootcn-gray-300)">
+              <span class="visually-hidden">gray 300: #d1d5db</span>
+            </li>
+            <li class="bootcn-palette__swatch" style="background-color: var(--bootcn-gray-400)">
+              <span class="visually-hidden">gray 400: #9ca3af</span>
+            </li>
+            <li class="bootcn-palette__swatch" style="background-color: var(--bootcn-gray-500)">
+              <span class="visually-hidden">gray 500: #6b7280</span>
+            </li>
+            <li class="bootcn-palette__swatch" style="background-color: var(--bootcn-gray-600)">
+              <span class="visually-hidden">gray 600: #4b5563</span>
+            </li>
+            <li class="bootcn-palette__swatch" style="background-color: var(--bootcn-gray-700)">
+              <span class="visually-hidden">gray 700: #374151</span>
+            </li>
+            <li class="bootcn-palette__swatch" style="background-color: var(--bootcn-gray-800)">
+              <span class="visually-hidden">gray 800: #1f2937</span>
+            </li>
+            <li class="bootcn-palette__swatch" style="background-color: var(--bootcn-gray-900)">
+              <span class="visually-hidden">gray 900: #111827</span>
+            </li>
+            <li class="bootcn-palette__swatch" style="background-color: var(--bootcn-gray-950)">
+              <span class="visually-hidden">gray 950: #030712</span>
+            </li>
+          </ul>
+        </div>
+        <div class="bootcn-palette__row">
+          <p class="bootcn-palette__name">zinc</p>
+          <ul class="bootcn-palette__swatches" aria-label="Zinc">
+            <li class="bootcn-palette__swatch" style="background-color: var(--bootcn-zinc-50)">
+              <span class="visually-hidden">zinc 50: #fafafa</span>
+            </li>
+            <li class="bootcn-palette__swatch" style="background-color: var(--bootcn-zinc-100)">
+              <span class="visually-hidden">zinc 100: #f4f4f5</span>
+            </li>
+            <li class="bootcn-palette__swatch" style="background-color: var(--bootcn-zinc-200)">
+              <span class="visually-hidden">zinc 200: #e4e4e7</span>
+            </li>
+            <li class="bootcn-palette__swatch" style="background-color: var(--bootcn-zinc-300)">
+              <span class="visually-hidden">zinc 300: #d4d4d8</span>
+            </li>
+            <li class="bootcn-palette__swatch" style="background-color: var(--bootcn-zinc-400)">
+              <span class="visually-hidden">zinc 400: #a1a1aa</span>
+            </li>
+            <li class="bootcn-palette__swatch" style="background-color: var(--bootcn-zinc-500)">
+              <span class="visually-hidden">zinc 500: #71717a</span>
+            </li>
+            <li class="bootcn-palette__swatch" style="background-color: var(--bootcn-zinc-600)">
+              <span class="visually-hidden">zinc 600: #52525b</span>
+            </li>
+            <li class="bootcn-palette__swatch" style="background-color: var(--bootcn-zinc-700)">
+              <span class="visually-hidden">zinc 700: #3f3f46</span>
+            </li>
+            <li class="bootcn-palette__swatch" style="background-color: var(--bootcn-zinc-800)">
+              <span class="visually-hidden">zinc 800: #27272a</span>
+            </li>
+            <li class="bootcn-palette__swatch" style="background-color: var(--bootcn-zinc-900)">
+              <span class="visually-hidden">zinc 900: #18181b</span>
+            </li>
+            <li class="bootcn-palette__swatch" style="background-color: var(--bootcn-zinc-950)">
+              <span class="visually-hidden">zinc 950: #09090b</span>
+            </li>
+          </ul>
+        </div>
+        <div class="bootcn-palette__row">
+          <p class="bootcn-palette__name">neutral</p>
+          <ul class="bootcn-palette__swatches" aria-label="Neutral">
+            <li class="bootcn-palette__swatch" style="background-color: var(--bootcn-neutral-50)">
+              <span class="visually-hidden">neutral 50: #fafafa</span>
+            </li>
+            <li class="bootcn-palette__swatch" style="background-color: var(--bootcn-neutral-100)">
+              <span class="visually-hidden">neutral 100: #f5f5f5</span>
+            </li>
+            <li class="bootcn-palette__swatch" style="background-color: var(--bootcn-neutral-200)">
+              <span class="visually-hidden">neutral 200: #e5e5e5</span>
+            </li>
+            <li class="bootcn-palette__swatch" style="background-color: var(--bootcn-neutral-300)">
+              <span class="visually-hidden">neutral 300: #d4d4d4</span>
+            </li>
+            <li class="bootcn-palette__swatch" style="background-color: var(--bootcn-neutral-400)">
+              <span class="visually-hidden">neutral 400: #a3a3a3</span>
+            </li>
+            <li class="bootcn-palette__swatch" style="background-color: var(--bootcn-neutral-500)">
+              <span class="visually-hidden">neutral 500: #737373</span>
+            </li>
+            <li class="bootcn-palette__swatch" style="background-color: var(--bootcn-neutral-600)">
+              <span class="visually-hidden">neutral 600: #525252</span>
+            </li>
+            <li class="bootcn-palette__swatch" style="background-color: var(--bootcn-neutral-700)">
+              <span class="visually-hidden">neutral 700: #404040</span>
+            </li>
+            <li class="bootcn-palette__swatch" style="background-color: var(--bootcn-neutral-800)">
+              <span class="visually-hidden">neutral 800: #262626</span>
+            </li>
+            <li class="bootcn-palette__swatch" style="background-color: var(--bootcn-neutral-900)">
+              <span class="visually-hidden">neutral 900: #171717</span>
+            </li>
+            <li class="bootcn-palette__swatch" style="background-color: var(--bootcn-neutral-950)">
+              <span class="visually-hidden">neutral 950: #0a0a0a</span>
+            </li>
+          </ul>
+        </div>
+        <div class="bootcn-palette__row">
+          <p class="bootcn-palette__name">stone</p>
+          <ul class="bootcn-palette__swatches" aria-label="Stone">
+            <li class="bootcn-palette__swatch" style="background-color: var(--bootcn-stone-50)">
+              <span class="visually-hidden">stone 50: #fafaf9</span>
+            </li>
+            <li class="bootcn-palette__swatch" style="background-color: var(--bootcn-stone-100)">
+              <span class="visually-hidden">stone 100: #f5f5f4</span>
+            </li>
+            <li class="bootcn-palette__swatch" style="background-color: var(--bootcn-stone-200)">
+              <span class="visually-hidden">stone 200: #e7e5e4</span>
+            </li>
+            <li class="bootcn-palette__swatch" style="background-color: var(--bootcn-stone-300)">
+              <span class="visually-hidden">stone 300: #d6d3d1</span>
+            </li>
+            <li class="bootcn-palette__swatch" style="background-color: var(--bootcn-stone-400)">
+              <span class="visually-hidden">stone 400: #a8a29e</span>
+            </li>
+            <li class="bootcn-palette__swatch" style="background-color: var(--bootcn-stone-500)">
+              <span class="visually-hidden">stone 500: #78716c</span>
+            </li>
+            <li class="bootcn-palette__swatch" style="background-color: var(--bootcn-stone-600)">
+              <span class="visually-hidden">stone 600: #57534e</span>
+            </li>
+            <li class="bootcn-palette__swatch" style="background-color: var(--bootcn-stone-700)">
+              <span class="visually-hidden">stone 700: #44403c</span>
+            </li>
+            <li class="bootcn-palette__swatch" style="background-color: var(--bootcn-stone-800)">
+              <span class="visually-hidden">stone 800: #292524</span>
+            </li>
+            <li class="bootcn-palette__swatch" style="background-color: var(--bootcn-stone-900)">
+              <span class="visually-hidden">stone 900: #1c1917</span>
+            </li>
+            <li class="bootcn-palette__swatch" style="background-color: var(--bootcn-stone-950)">
+              <span class="visually-hidden">stone 950: #0c0a09</span>
+            </li>
+          </ul>
+        </div>
+        <div class="bootcn-palette__row">
+          <p class="bootcn-palette__name">red</p>
+          <ul class="bootcn-palette__swatches" aria-label="Red">
+            <li class="bootcn-palette__swatch" style="background-color: var(--bootcn-red-50)">
+              <span class="visually-hidden">red 50: #fef2f2</span>
+            </li>
+            <li class="bootcn-palette__swatch" style="background-color: var(--bootcn-red-100)">
+              <span class="visually-hidden">red 100: #fee2e2</span>
+            </li>
+            <li class="bootcn-palette__swatch" style="background-color: var(--bootcn-red-200)">
+              <span class="visually-hidden">red 200: #fecaca</span>
+            </li>
+            <li class="bootcn-palette__swatch" style="background-color: var(--bootcn-red-300)">
+              <span class="visually-hidden">red 300: #fca5a5</span>
+            </li>
+            <li class="bootcn-palette__swatch" style="background-color: var(--bootcn-red-400)">
+              <span class="visually-hidden">red 400: #f87171</span>
+            </li>
+            <li class="bootcn-palette__swatch" style="background-color: var(--bootcn-red-500)">
+              <span class="visually-hidden">red 500: #ef4444</span>
+            </li>
+            <li class="bootcn-palette__swatch" style="background-color: var(--bootcn-red-600)">
+              <span class="visually-hidden">red 600: #dc2626</span>
+            </li>
+            <li class="bootcn-palette__swatch" style="background-color: var(--bootcn-red-700)">
+              <span class="visually-hidden">red 700: #b91c1c</span>
+            </li>
+            <li class="bootcn-palette__swatch" style="background-color: var(--bootcn-red-800)">
+              <span class="visually-hidden">red 800: #991b1b</span>
+            </li>
+            <li class="bootcn-palette__swatch" style="background-color: var(--bootcn-red-900)">
+              <span class="visually-hidden">red 900: #7f1d1d</span>
+            </li>
+            <li class="bootcn-palette__swatch" style="background-color: var(--bootcn-red-950)">
+              <span class="visually-hidden">red 950: #450a0a</span>
+            </li>
+          </ul>
+        </div>
+        <div class="bootcn-palette__row">
+          <p class="bootcn-palette__name">orange</p>
+          <ul class="bootcn-palette__swatches" aria-label="Orange">
+            <li class="bootcn-palette__swatch" style="background-color: var(--bootcn-orange-50)">
+              <span class="visually-hidden">orange 50: #fff7ed</span>
+            </li>
+            <li class="bootcn-palette__swatch" style="background-color: var(--bootcn-orange-100)">
+              <span class="visually-hidden">orange 100: #ffedd5</span>
+            </li>
+            <li class="bootcn-palette__swatch" style="background-color: var(--bootcn-orange-200)">
+              <span class="visually-hidden">orange 200: #fed7aa</span>
+            </li>
+            <li class="bootcn-palette__swatch" style="background-color: var(--bootcn-orange-300)">
+              <span class="visually-hidden">orange 300: #fdba74</span>
+            </li>
+            <li class="bootcn-palette__swatch" style="background-color: var(--bootcn-orange-400)">
+              <span class="visually-hidden">orange 400: #fb923c</span>
+            </li>
+            <li class="bootcn-palette__swatch" style="background-color: var(--bootcn-orange-500)">
+              <span class="visually-hidden">orange 500: #f97316</span>
+            </li>
+            <li class="bootcn-palette__swatch" style="background-color: var(--bootcn-orange-600)">
+              <span class="visually-hidden">orange 600: #ea580c</span>
+            </li>
+            <li class="bootcn-palette__swatch" style="background-color: var(--bootcn-orange-700)">
+              <span class="visually-hidden">orange 700: #c2410c</span>
+            </li>
+            <li class="bootcn-palette__swatch" style="background-color: var(--bootcn-orange-800)">
+              <span class="visually-hidden">orange 800: #9a3412</span>
+            </li>
+            <li class="bootcn-palette__swatch" style="background-color: var(--bootcn-orange-900)">
+              <span class="visually-hidden">orange 900: #7c2d12</span>
+            </li>
+            <li class="bootcn-palette__swatch" style="background-color: var(--bootcn-orange-950)">
+              <span class="visually-hidden">orange 950: #431407</span>
+            </li>
+          </ul>
+        </div>
+        <div class="bootcn-palette__row">
+          <p class="bootcn-palette__name">amber</p>
+          <ul class="bootcn-palette__swatches" aria-label="Amber">
+            <li class="bootcn-palette__swatch" style="background-color: var(--bootcn-amber-50)">
+              <span class="visually-hidden">amber 50: #fffbeb</span>
+            </li>
+            <li class="bootcn-palette__swatch" style="background-color: var(--bootcn-amber-100)">
+              <span class="visually-hidden">amber 100: #fef3c7</span>
+            </li>
+            <li class="bootcn-palette__swatch" style="background-color: var(--bootcn-amber-200)">
+              <span class="visually-hidden">amber 200: #fde68a</span>
+            </li>
+            <li class="bootcn-palette__swatch" style="background-color: var(--bootcn-amber-300)">
+              <span class="visually-hidden">amber 300: #fcd34d</span>
+            </li>
+            <li class="bootcn-palette__swatch" style="background-color: var(--bootcn-amber-400)">
+              <span class="visually-hidden">amber 400: #fbbf24</span>
+            </li>
+            <li class="bootcn-palette__swatch" style="background-color: var(--bootcn-amber-500)">
+              <span class="visually-hidden">amber 500: #f59e0b</span>
+            </li>
+            <li class="bootcn-palette__swatch" style="background-color: var(--bootcn-amber-600)">
+              <span class="visually-hidden">amber 600: #d97706</span>
+            </li>
+            <li class="bootcn-palette__swatch" style="background-color: var(--bootcn-amber-700)">
+              <span class="visually-hidden">amber 700: #b45309</span>
+            </li>
+            <li class="bootcn-palette__swatch" style="background-color: var(--bootcn-amber-800)">
+              <span class="visually-hidden">amber 800: #92400e</span>
+            </li>
+            <li class="bootcn-palette__swatch" style="background-color: var(--bootcn-amber-900)">
+              <span class="visually-hidden">amber 900: #78350f</span>
+            </li>
+            <li class="bootcn-palette__swatch" style="background-color: var(--bootcn-amber-950)">
+              <span class="visually-hidden">amber 950: #451a03</span>
+            </li>
+          </ul>
+        </div>
+        <div class="bootcn-palette__row">
+          <p class="bootcn-palette__name">yellow</p>
+          <ul class="bootcn-palette__swatches" aria-label="Yellow">
+            <li class="bootcn-palette__swatch" style="background-color: var(--bootcn-yellow-50)">
+              <span class="visually-hidden">yellow 50: #fefce8</span>
+            </li>
+            <li class="bootcn-palette__swatch" style="background-color: var(--bootcn-yellow-100)">
+              <span class="visually-hidden">yellow 100: #fef9c3</span>
+            </li>
+            <li class="bootcn-palette__swatch" style="background-color: var(--bootcn-yellow-200)">
+              <span class="visually-hidden">yellow 200: #fef08a</span>
+            </li>
+            <li class="bootcn-palette__swatch" style="background-color: var(--bootcn-yellow-300)">
+              <span class="visually-hidden">yellow 300: #fde047</span>
+            </li>
+            <li class="bootcn-palette__swatch" style="background-color: var(--bootcn-yellow-400)">
+              <span class="visually-hidden">yellow 400: #facc15</span>
+            </li>
+            <li class="bootcn-palette__swatch" style="background-color: var(--bootcn-yellow-500)">
+              <span class="visually-hidden">yellow 500: #eab308</span>
+            </li>
+            <li class="bootcn-palette__swatch" style="background-color: var(--bootcn-yellow-600)">
+              <span class="visually-hidden">yellow 600: #ca8a04</span>
+            </li>
+            <li class="bootcn-palette__swatch" style="background-color: var(--bootcn-yellow-700)">
+              <span class="visually-hidden">yellow 700: #a16207</span>
+            </li>
+            <li class="bootcn-palette__swatch" style="background-color: var(--bootcn-yellow-800)">
+              <span class="visually-hidden">yellow 800: #854d0e</span>
+            </li>
+            <li class="bootcn-palette__swatch" style="background-color: var(--bootcn-yellow-900)">
+              <span class="visually-hidden">yellow 900: #713f12</span>
+            </li>
+            <li class="bootcn-palette__swatch" style="background-color: var(--bootcn-yellow-950)">
+              <span class="visually-hidden">yellow 950: #422006</span>
+            </li>
+          </ul>
+        </div>
+        <div class="bootcn-palette__row">
+          <p class="bootcn-palette__name">lime</p>
+          <ul class="bootcn-palette__swatches" aria-label="Lime">
+            <li class="bootcn-palette__swatch" style="background-color: var(--bootcn-lime-50)">
+              <span class="visually-hidden">lime 50: #f7fee7</span>
+            </li>
+            <li class="bootcn-palette__swatch" style="background-color: var(--bootcn-lime-100)">
+              <span class="visually-hidden">lime 100: #ecfccb</span>
+            </li>
+            <li class="bootcn-palette__swatch" style="background-color: var(--bootcn-lime-200)">
+              <span class="visually-hidden">lime 200: #d9f99d</span>
+            </li>
+            <li class="bootcn-palette__swatch" style="background-color: var(--bootcn-lime-300)">
+              <span class="visually-hidden">lime 300: #bef264</span>
+            </li>
+            <li class="bootcn-palette__swatch" style="background-color: var(--bootcn-lime-400)">
+              <span class="visually-hidden">lime 400: #a3e635</span>
+            </li>
+            <li class="bootcn-palette__swatch" style="background-color: var(--bootcn-lime-500)">
+              <span class="visually-hidden">lime 500: #84cc16</span>
+            </li>
+            <li class="bootcn-palette__swatch" style="background-color: var(--bootcn-lime-600)">
+              <span class="visually-hidden">lime 600: #65a30d</span>
+            </li>
+            <li class="bootcn-palette__swatch" style="background-color: var(--bootcn-lime-700)">
+              <span class="visually-hidden">lime 700: #4d7c0f</span>
+            </li>
+            <li class="bootcn-palette__swatch" style="background-color: var(--bootcn-lime-800)">
+              <span class="visually-hidden">lime 800: #3f6212</span>
+            </li>
+            <li class="bootcn-palette__swatch" style="background-color: var(--bootcn-lime-900)">
+              <span class="visually-hidden">lime 900: #365314</span>
+            </li>
+            <li class="bootcn-palette__swatch" style="background-color: var(--bootcn-lime-950)">
+              <span class="visually-hidden">lime 950: #1a2e05</span>
+            </li>
+          </ul>
+        </div>
+        <div class="bootcn-palette__row">
+          <p class="bootcn-palette__name">green</p>
+          <ul class="bootcn-palette__swatches" aria-label="Green">
+            <li class="bootcn-palette__swatch" style="background-color: var(--bootcn-green-50)">
+              <span class="visually-hidden">green 50: #f0fdf4</span>
+            </li>
+            <li class="bootcn-palette__swatch" style="background-color: var(--bootcn-green-100)">
+              <span class="visually-hidden">green 100: #dcfce7</span>
+            </li>
+            <li class="bootcn-palette__swatch" style="background-color: var(--bootcn-green-200)">
+              <span class="visually-hidden">green 200: #bbf7d0</span>
+            </li>
+            <li class="bootcn-palette__swatch" style="background-color: var(--bootcn-green-300)">
+              <span class="visually-hidden">green 300: #86efac</span>
+            </li>
+            <li class="bootcn-palette__swatch" style="background-color: var(--bootcn-green-400)">
+              <span class="visually-hidden">green 400: #4ade80</span>
+            </li>
+            <li class="bootcn-palette__swatch" style="background-color: var(--bootcn-green-500)">
+              <span class="visually-hidden">green 500: #22c55e</span>
+            </li>
+            <li class="bootcn-palette__swatch" style="background-color: var(--bootcn-green-600)">
+              <span class="visually-hidden">green 600: #16a34a</span>
+            </li>
+            <li class="bootcn-palette__swatch" style="background-color: var(--bootcn-green-700)">
+              <span class="visually-hidden">green 700: #15803d</span>
+            </li>
+            <li class="bootcn-palette__swatch" style="background-color: var(--bootcn-green-800)">
+              <span class="visually-hidden">green 800: #166534</span>
+            </li>
+            <li class="bootcn-palette__swatch" style="background-color: var(--bootcn-green-900)">
+              <span class="visually-hidden">green 900: #14532d</span>
+            </li>
+            <li class="bootcn-palette__swatch" style="background-color: var(--bootcn-green-950)">
+              <span class="visually-hidden">green 950: #052e16</span>
+            </li>
+          </ul>
+        </div>
+        <div class="bootcn-palette__row">
+          <p class="bootcn-palette__name">emerald</p>
+          <ul class="bootcn-palette__swatches" aria-label="Emerald">
+            <li class="bootcn-palette__swatch" style="background-color: var(--bootcn-emerald-50)">
+              <span class="visually-hidden">emerald 50: #ecfdf5</span>
+            </li>
+            <li class="bootcn-palette__swatch" style="background-color: var(--bootcn-emerald-100)">
+              <span class="visually-hidden">emerald 100: #d1fae5</span>
+            </li>
+            <li class="bootcn-palette__swatch" style="background-color: var(--bootcn-emerald-200)">
+              <span class="visually-hidden">emerald 200: #a7f3d0</span>
+            </li>
+            <li class="bootcn-palette__swatch" style="background-color: var(--bootcn-emerald-300)">
+              <span class="visually-hidden">emerald 300: #6ee7b7</span>
+            </li>
+            <li class="bootcn-palette__swatch" style="background-color: var(--bootcn-emerald-400)">
+              <span class="visually-hidden">emerald 400: #34d399</span>
+            </li>
+            <li class="bootcn-palette__swatch" style="background-color: var(--bootcn-emerald-500)">
+              <span class="visually-hidden">emerald 500: #10b981</span>
+            </li>
+            <li class="bootcn-palette__swatch" style="background-color: var(--bootcn-emerald-600)">
+              <span class="visually-hidden">emerald 600: #059669</span>
+            </li>
+            <li class="bootcn-palette__swatch" style="background-color: var(--bootcn-emerald-700)">
+              <span class="visually-hidden">emerald 700: #047857</span>
+            </li>
+            <li class="bootcn-palette__swatch" style="background-color: var(--bootcn-emerald-800)">
+              <span class="visually-hidden">emerald 800: #065f46</span>
+            </li>
+            <li class="bootcn-palette__swatch" style="background-color: var(--bootcn-emerald-900)">
+              <span class="visually-hidden">emerald 900: #064e3b</span>
+            </li>
+            <li class="bootcn-palette__swatch" style="background-color: var(--bootcn-emerald-950)">
+              <span class="visually-hidden">emerald 950: #022c22</span>
+            </li>
+          </ul>
+        </div>
+        <div class="bootcn-palette__row">
+          <p class="bootcn-palette__name">teal</p>
+          <ul class="bootcn-palette__swatches" aria-label="Teal">
+            <li class="bootcn-palette__swatch" style="background-color: var(--bootcn-teal-50)">
+              <span class="visually-hidden">teal 50: #f0fdfa</span>
+            </li>
+            <li class="bootcn-palette__swatch" style="background-color: var(--bootcn-teal-100)">
+              <span class="visually-hidden">teal 100: #ccfbf1</span>
+            </li>
+            <li class="bootcn-palette__swatch" style="background-color: var(--bootcn-teal-200)">
+              <span class="visually-hidden">teal 200: #99f6e4</span>
+            </li>
+            <li class="bootcn-palette__swatch" style="background-color: var(--bootcn-teal-300)">
+              <span class="visually-hidden">teal 300: #5eead4</span>
+            </li>
+            <li class="bootcn-palette__swatch" style="background-color: var(--bootcn-teal-400)">
+              <span class="visually-hidden">teal 400: #2dd4bf</span>
+            </li>
+            <li class="bootcn-palette__swatch" style="background-color: var(--bootcn-teal-500)">
+              <span class="visually-hidden">teal 500: #14b8a6</span>
+            </li>
+            <li class="bootcn-palette__swatch" style="background-color: var(--bootcn-teal-600)">
+              <span class="visually-hidden">teal 600: #0d9488</span>
+            </li>
+            <li class="bootcn-palette__swatch" style="background-color: var(--bootcn-teal-700)">
+              <span class="visually-hidden">teal 700: #0f766e</span>
+            </li>
+            <li class="bootcn-palette__swatch" style="background-color: var(--bootcn-teal-800)">
+              <span class="visually-hidden">teal 800: #115e59</span>
+            </li>
+            <li class="bootcn-palette__swatch" style="background-color: var(--bootcn-teal-900)">
+              <span class="visually-hidden">teal 900: #134e4a</span>
+            </li>
+            <li class="bootcn-palette__swatch" style="background-color: var(--bootcn-teal-950)">
+              <span class="visually-hidden">teal 950: #042f2e</span>
+            </li>
+          </ul>
+        </div>
+        <div class="bootcn-palette__row">
+          <p class="bootcn-palette__name">cyan</p>
+          <ul class="bootcn-palette__swatches" aria-label="Cyan">
+            <li class="bootcn-palette__swatch" style="background-color: var(--bootcn-cyan-50)">
+              <span class="visually-hidden">cyan 50: #ecfeff</span>
+            </li>
+            <li class="bootcn-palette__swatch" style="background-color: var(--bootcn-cyan-100)">
+              <span class="visually-hidden">cyan 100: #cffafe</span>
+            </li>
+            <li class="bootcn-palette__swatch" style="background-color: var(--bootcn-cyan-200)">
+              <span class="visually-hidden">cyan 200: #a5f3fc</span>
+            </li>
+            <li class="bootcn-palette__swatch" style="background-color: var(--bootcn-cyan-300)">
+              <span class="visually-hidden">cyan 300: #67e8f9</span>
+            </li>
+            <li class="bootcn-palette__swatch" style="background-color: var(--bootcn-cyan-400)">
+              <span class="visually-hidden">cyan 400: #22d3ee</span>
+            </li>
+            <li class="bootcn-palette__swatch" style="background-color: var(--bootcn-cyan-500)">
+              <span class="visually-hidden">cyan 500: #06b6d4</span>
+            </li>
+            <li class="bootcn-palette__swatch" style="background-color: var(--bootcn-cyan-600)">
+              <span class="visually-hidden">cyan 600: #0891b2</span>
+            </li>
+            <li class="bootcn-palette__swatch" style="background-color: var(--bootcn-cyan-700)">
+              <span class="visually-hidden">cyan 700: #0e7490</span>
+            </li>
+            <li class="bootcn-palette__swatch" style="background-color: var(--bootcn-cyan-800)">
+              <span class="visually-hidden">cyan 800: #155e75</span>
+            </li>
+            <li class="bootcn-palette__swatch" style="background-color: var(--bootcn-cyan-900)">
+              <span class="visually-hidden">cyan 900: #164e63</span>
+            </li>
+            <li class="bootcn-palette__swatch" style="background-color: var(--bootcn-cyan-950)">
+              <span class="visually-hidden">cyan 950: #083344</span>
+            </li>
+          </ul>
+        </div>
+        <div class="bootcn-palette__row">
+          <p class="bootcn-palette__name">sky</p>
+          <ul class="bootcn-palette__swatches" aria-label="Sky">
+            <li class="bootcn-palette__swatch" style="background-color: var(--bootcn-sky-50)">
+              <span class="visually-hidden">sky 50: #f0f9ff</span>
+            </li>
+            <li class="bootcn-palette__swatch" style="background-color: var(--bootcn-sky-100)">
+              <span class="visually-hidden">sky 100: #e0f2fe</span>
+            </li>
+            <li class="bootcn-palette__swatch" style="background-color: var(--bootcn-sky-200)">
+              <span class="visually-hidden">sky 200: #bae6fd</span>
+            </li>
+            <li class="bootcn-palette__swatch" style="background-color: var(--bootcn-sky-300)">
+              <span class="visually-hidden">sky 300: #7dd3fc</span>
+            </li>
+            <li class="bootcn-palette__swatch" style="background-color: var(--bootcn-sky-400)">
+              <span class="visually-hidden">sky 400: #38bdf8</span>
+            </li>
+            <li class="bootcn-palette__swatch" style="background-color: var(--bootcn-sky-500)">
+              <span class="visually-hidden">sky 500: #0ea5e9</span>
+            </li>
+            <li class="bootcn-palette__swatch" style="background-color: var(--bootcn-sky-600)">
+              <span class="visually-hidden">sky 600: #0284c7</span>
+            </li>
+            <li class="bootcn-palette__swatch" style="background-color: var(--bootcn-sky-700)">
+              <span class="visually-hidden">sky 700: #0369a1</span>
+            </li>
+            <li class="bootcn-palette__swatch" style="background-color: var(--bootcn-sky-800)">
+              <span class="visually-hidden">sky 800: #075985</span>
+            </li>
+            <li class="bootcn-palette__swatch" style="background-color: var(--bootcn-sky-900)">
+              <span class="visually-hidden">sky 900: #0c4a6e</span>
+            </li>
+            <li class="bootcn-palette__swatch" style="background-color: var(--bootcn-sky-950)">
+              <span class="visually-hidden">sky 950: #082f49</span>
+            </li>
+          </ul>
+        </div>
+        <div class="bootcn-palette__row">
+          <p class="bootcn-palette__name">blue</p>
+          <ul class="bootcn-palette__swatches" aria-label="Blue">
+            <li class="bootcn-palette__swatch" style="background-color: var(--bootcn-blue-50)">
+              <span class="visually-hidden">blue 50: #eff6ff</span>
+            </li>
+            <li class="bootcn-palette__swatch" style="background-color: var(--bootcn-blue-100)">
+              <span class="visually-hidden">blue 100: #dbeafe</span>
+            </li>
+            <li class="bootcn-palette__swatch" style="background-color: var(--bootcn-blue-200)">
+              <span class="visually-hidden">blue 200: #bfdbfe</span>
+            </li>
+            <li class="bootcn-palette__swatch" style="background-color: var(--bootcn-blue-300)">
+              <span class="visually-hidden">blue 300: #93c5fd</span>
+            </li>
+            <li class="bootcn-palette__swatch" style="background-color: var(--bootcn-blue-400)">
+              <span class="visually-hidden">blue 400: #60a5fa</span>
+            </li>
+            <li class="bootcn-palette__swatch" style="background-color: var(--bootcn-blue-500)">
+              <span class="visually-hidden">blue 500: #3b82f6</span>
+            </li>
+            <li class="bootcn-palette__swatch" style="background-color: var(--bootcn-blue-600)">
+              <span class="visually-hidden">blue 600: #2563eb</span>
+            </li>
+            <li class="bootcn-palette__swatch" style="background-color: var(--bootcn-blue-700)">
+              <span class="visually-hidden">blue 700: #1d4ed8</span>
+            </li>
+            <li class="bootcn-palette__swatch" style="background-color: var(--bootcn-blue-800)">
+              <span class="visually-hidden">blue 800: #1e40af</span>
+            </li>
+            <li class="bootcn-palette__swatch" style="background-color: var(--bootcn-blue-900)">
+              <span class="visually-hidden">blue 900: #1e3a8a</span>
+            </li>
+            <li class="bootcn-palette__swatch" style="background-color: var(--bootcn-blue-950)">
+              <span class="visually-hidden">blue 950: #172554</span>
+            </li>
+          </ul>
+        </div>
+        <div class="bootcn-palette__row">
+          <p class="bootcn-palette__name">indigo</p>
+          <ul class="bootcn-palette__swatches" aria-label="Indigo">
+            <li class="bootcn-palette__swatch" style="background-color: var(--bootcn-indigo-50)">
+              <span class="visually-hidden">indigo 50: #eef2ff</span>
+            </li>
+            <li class="bootcn-palette__swatch" style="background-color: var(--bootcn-indigo-100)">
+              <span class="visually-hidden">indigo 100: #e0e7ff</span>
+            </li>
+            <li class="bootcn-palette__swatch" style="background-color: var(--bootcn-indigo-200)">
+              <span class="visually-hidden">indigo 200: #c7d2fe</span>
+            </li>
+            <li class="bootcn-palette__swatch" style="background-color: var(--bootcn-indigo-300)">
+              <span class="visually-hidden">indigo 300: #a5b4fc</span>
+            </li>
+            <li class="bootcn-palette__swatch" style="background-color: var(--bootcn-indigo-400)">
+              <span class="visually-hidden">indigo 400: #818cf8</span>
+            </li>
+            <li class="bootcn-palette__swatch" style="background-color: var(--bootcn-indigo-500)">
+              <span class="visually-hidden">indigo 500: #6366f1</span>
+            </li>
+            <li class="bootcn-palette__swatch" style="background-color: var(--bootcn-indigo-600)">
+              <span class="visually-hidden">indigo 600: #4f46e5</span>
+            </li>
+            <li class="bootcn-palette__swatch" style="background-color: var(--bootcn-indigo-700)">
+              <span class="visually-hidden">indigo 700: #4338ca</span>
+            </li>
+            <li class="bootcn-palette__swatch" style="background-color: var(--bootcn-indigo-800)">
+              <span class="visually-hidden">indigo 800: #3730a3</span>
+            </li>
+            <li class="bootcn-palette__swatch" style="background-color: var(--bootcn-indigo-900)">
+              <span class="visually-hidden">indigo 900: #312e81</span>
+            </li>
+            <li class="bootcn-palette__swatch" style="background-color: var(--bootcn-indigo-950)">
+              <span class="visually-hidden">indigo 950: #1e1b4b</span>
+            </li>
+          </ul>
+        </div>
+        <div class="bootcn-palette__row">
+          <p class="bootcn-palette__name">violet</p>
+          <ul class="bootcn-palette__swatches" aria-label="Violet">
+            <li class="bootcn-palette__swatch" style="background-color: var(--bootcn-violet-50)">
+              <span class="visually-hidden">violet 50: #f5f3ff</span>
+            </li>
+            <li class="bootcn-palette__swatch" style="background-color: var(--bootcn-violet-100)">
+              <span class="visually-hidden">violet 100: #ede9fe</span>
+            </li>
+            <li class="bootcn-palette__swatch" style="background-color: var(--bootcn-violet-200)">
+              <span class="visually-hidden">violet 200: #ddd6fe</span>
+            </li>
+            <li class="bootcn-palette__swatch" style="background-color: var(--bootcn-violet-300)">
+              <span class="visually-hidden">violet 300: #c4b5fd</span>
+            </li>
+            <li class="bootcn-palette__swatch" style="background-color: var(--bootcn-violet-400)">
+              <span class="visually-hidden">violet 400: #a78bfa</span>
+            </li>
+            <li class="bootcn-palette__swatch" style="background-color: var(--bootcn-violet-500)">
+              <span class="visually-hidden">violet 500: #8b5cf6</span>
+            </li>
+            <li class="bootcn-palette__swatch" style="background-color: var(--bootcn-violet-600)">
+              <span class="visually-hidden">violet 600: #7c3aed</span>
+            </li>
+            <li class="bootcn-palette__swatch" style="background-color: var(--bootcn-violet-700)">
+              <span class="visually-hidden">violet 700: #6d28d9</span>
+            </li>
+            <li class="bootcn-palette__swatch" style="background-color: var(--bootcn-violet-800)">
+              <span class="visually-hidden">violet 800: #5b21b6</span>
+            </li>
+            <li class="bootcn-palette__swatch" style="background-color: var(--bootcn-violet-900)">
+              <span class="visually-hidden">violet 900: #4c1d95</span>
+            </li>
+            <li class="bootcn-palette__swatch" style="background-color: var(--bootcn-violet-950)">
+              <span class="visually-hidden">violet 950: #2e1065</span>
+            </li>
+          </ul>
+        </div>
+        <div class="bootcn-palette__row">
+          <p class="bootcn-palette__name">purple</p>
+          <ul class="bootcn-palette__swatches" aria-label="Purple">
+            <li class="bootcn-palette__swatch" style="background-color: var(--bootcn-purple-50)">
+              <span class="visually-hidden">purple 50: #faf5ff</span>
+            </li>
+            <li class="bootcn-palette__swatch" style="background-color: var(--bootcn-purple-100)">
+              <span class="visually-hidden">purple 100: #f3e8ff</span>
+            </li>
+            <li class="bootcn-palette__swatch" style="background-color: var(--bootcn-purple-200)">
+              <span class="visually-hidden">purple 200: #e9d5ff</span>
+            </li>
+            <li class="bootcn-palette__swatch" style="background-color: var(--bootcn-purple-300)">
+              <span class="visually-hidden">purple 300: #d8b4fe</span>
+            </li>
+            <li class="bootcn-palette__swatch" style="background-color: var(--bootcn-purple-400)">
+              <span class="visually-hidden">purple 400: #c084fc</span>
+            </li>
+            <li class="bootcn-palette__swatch" style="background-color: var(--bootcn-purple-500)">
+              <span class="visually-hidden">purple 500: #a855f7</span>
+            </li>
+            <li class="bootcn-palette__swatch" style="background-color: var(--bootcn-purple-600)">
+              <span class="visually-hidden">purple 600: #9333ea</span>
+            </li>
+            <li class="bootcn-palette__swatch" style="background-color: var(--bootcn-purple-700)">
+              <span class="visually-hidden">purple 700: #7e22ce</span>
+            </li>
+            <li class="bootcn-palette__swatch" style="background-color: var(--bootcn-purple-800)">
+              <span class="visually-hidden">purple 800: #6b21a8</span>
+            </li>
+            <li class="bootcn-palette__swatch" style="background-color: var(--bootcn-purple-900)">
+              <span class="visually-hidden">purple 900: #581c87</span>
+            </li>
+            <li class="bootcn-palette__swatch" style="background-color: var(--bootcn-purple-950)">
+              <span class="visually-hidden">purple 950: #3b0764</span>
+            </li>
+          </ul>
+        </div>
+        <div class="bootcn-palette__row">
+          <p class="bootcn-palette__name">fuchsia</p>
+          <ul class="bootcn-palette__swatches" aria-label="Fuchsia">
+            <li class="bootcn-palette__swatch" style="background-color: var(--bootcn-fuchsia-50)">
+              <span class="visually-hidden">fuchsia 50: #fdf4ff</span>
+            </li>
+            <li class="bootcn-palette__swatch" style="background-color: var(--bootcn-fuchsia-100)">
+              <span class="visually-hidden">fuchsia 100: #fae8ff</span>
+            </li>
+            <li class="bootcn-palette__swatch" style="background-color: var(--bootcn-fuchsia-200)">
+              <span class="visually-hidden">fuchsia 200: #f5d0fe</span>
+            </li>
+            <li class="bootcn-palette__swatch" style="background-color: var(--bootcn-fuchsia-300)">
+              <span class="visually-hidden">fuchsia 300: #f0abfc</span>
+            </li>
+            <li class="bootcn-palette__swatch" style="background-color: var(--bootcn-fuchsia-400)">
+              <span class="visually-hidden">fuchsia 400: #e879f9</span>
+            </li>
+            <li class="bootcn-palette__swatch" style="background-color: var(--bootcn-fuchsia-500)">
+              <span class="visually-hidden">fuchsia 500: #d946ef</span>
+            </li>
+            <li class="bootcn-palette__swatch" style="background-color: var(--bootcn-fuchsia-600)">
+              <span class="visually-hidden">fuchsia 600: #c026d3</span>
+            </li>
+            <li class="bootcn-palette__swatch" style="background-color: var(--bootcn-fuchsia-700)">
+              <span class="visually-hidden">fuchsia 700: #a21caf</span>
+            </li>
+            <li class="bootcn-palette__swatch" style="background-color: var(--bootcn-fuchsia-800)">
+              <span class="visually-hidden">fuchsia 800: #86198f</span>
+            </li>
+            <li class="bootcn-palette__swatch" style="background-color: var(--bootcn-fuchsia-900)">
+              <span class="visually-hidden">fuchsia 900: #701a75</span>
+            </li>
+            <li class="bootcn-palette__swatch" style="background-color: var(--bootcn-fuchsia-950)">
+              <span class="visually-hidden">fuchsia 950: #4a044e</span>
+            </li>
+          </ul>
+        </div>
+        <div class="bootcn-palette__row">
+          <p class="bootcn-palette__name">pink</p>
+          <ul class="bootcn-palette__swatches" aria-label="Pink">
+            <li class="bootcn-palette__swatch" style="background-color: var(--bootcn-pink-50)">
+              <span class="visually-hidden">pink 50: #fdf2f8</span>
+            </li>
+            <li class="bootcn-palette__swatch" style="background-color: var(--bootcn-pink-100)">
+              <span class="visually-hidden">pink 100: #fce7f3</span>
+            </li>
+            <li class="bootcn-palette__swatch" style="background-color: var(--bootcn-pink-200)">
+              <span class="visually-hidden">pink 200: #fbcfe8</span>
+            </li>
+            <li class="bootcn-palette__swatch" style="background-color: var(--bootcn-pink-300)">
+              <span class="visually-hidden">pink 300: #f9a8d4</span>
+            </li>
+            <li class="bootcn-palette__swatch" style="background-color: var(--bootcn-pink-400)">
+              <span class="visually-hidden">pink 400: #f472b6</span>
+            </li>
+            <li class="bootcn-palette__swatch" style="background-color: var(--bootcn-pink-500)">
+              <span class="visually-hidden">pink 500: #ec4899</span>
+            </li>
+            <li class="bootcn-palette__swatch" style="background-color: var(--bootcn-pink-600)">
+              <span class="visually-hidden">pink 600: #db2777</span>
+            </li>
+            <li class="bootcn-palette__swatch" style="background-color: var(--bootcn-pink-700)">
+              <span class="visually-hidden">pink 700: #be185d</span>
+            </li>
+            <li class="bootcn-palette__swatch" style="background-color: var(--bootcn-pink-800)">
+              <span class="visually-hidden">pink 800: #9d174d</span>
+            </li>
+            <li class="bootcn-palette__swatch" style="background-color: var(--bootcn-pink-900)">
+              <span class="visually-hidden">pink 900: #831843</span>
+            </li>
+            <li class="bootcn-palette__swatch" style="background-color: var(--bootcn-pink-950)">
+              <span class="visually-hidden">pink 950: #500724</span>
+            </li>
+          </ul>
+        </div>
+        <div class="bootcn-palette__row">
+          <p class="bootcn-palette__name">rose</p>
+          <ul class="bootcn-palette__swatches" aria-label="Rose">
+            <li class="bootcn-palette__swatch" style="background-color: var(--bootcn-rose-50)">
+              <span class="visually-hidden">rose 50: #fff1f2</span>
+            </li>
+            <li class="bootcn-palette__swatch" style="background-color: var(--bootcn-rose-100)">
+              <span class="visually-hidden">rose 100: #ffe4e6</span>
+            </li>
+            <li class="bootcn-palette__swatch" style="background-color: var(--bootcn-rose-200)">
+              <span class="visually-hidden">rose 200: #fecdd3</span>
+            </li>
+            <li class="bootcn-palette__swatch" style="background-color: var(--bootcn-rose-300)">
+              <span class="visually-hidden">rose 300: #fda4af</span>
+            </li>
+            <li class="bootcn-palette__swatch" style="background-color: var(--bootcn-rose-400)">
+              <span class="visually-hidden">rose 400: #fb7185</span>
+            </li>
+            <li class="bootcn-palette__swatch" style="background-color: var(--bootcn-rose-500)">
+              <span class="visually-hidden">rose 500: #f43f5e</span>
+            </li>
+            <li class="bootcn-palette__swatch" style="background-color: var(--bootcn-rose-600)">
+              <span class="visually-hidden">rose 600: #e11d48</span>
+            </li>
+            <li class="bootcn-palette__swatch" style="background-color: var(--bootcn-rose-700)">
+              <span class="visually-hidden">rose 700: #be123c</span>
+            </li>
+            <li class="bootcn-palette__swatch" style="background-color: var(--bootcn-rose-800)">
+              <span class="visually-hidden">rose 800: #9f1239</span>
+            </li>
+            <li class="bootcn-palette__swatch" style="background-color: var(--bootcn-rose-900)">
+              <span class="visually-hidden">rose 900: #881337</span>
+            </li>
+            <li class="bootcn-palette__swatch" style="background-color: var(--bootcn-rose-950)">
+              <span class="visually-hidden">rose 950: #4c0519</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </main>
+  </body>
+</html>

@@ -37,45 +37,45 @@ const showcase = [
 const latest = [
   [
     {
+      name: 'aurora',
+      kind: 'components',
+      title: 'Aurora background',
+      text: 'Soft, slowly drifting light behind a hero, in your colours, with no JavaScript.',
+    },
+    {
       name: 'event-calendar',
       kind: 'blocks',
       title: 'Event calendar',
       text: 'Month, week and day views, colour-coded calendars, overlaps side by side, add and edit.',
     },
-    {
-      name: 'chat',
-      kind: 'blocks',
-      title: 'Chat',
-      text: 'Conversations, read receipts, reactions, files and "is typing", one pane at a time on phones.',
-    },
   ],
   [
     {
-      name: 'email-inbox',
-      kind: 'blocks',
-      title: 'Email inbox',
-      text: 'Folders, a message list and a reader, with Gmail-style keys, bulk actions and Undo.',
+      name: 'glow-card',
+      kind: 'components',
+      title: 'Glow card',
+      text: 'A light that follows the pointer and lights up the border.',
     },
     {
-      name: 'flow-builder',
+      name: 'number-ticker',
       kind: 'components',
-      title: 'Flow builder',
-      text: 'Automations such as email sequences: steps, yes/no branches, + menus, pan and zoom.',
+      title: 'Number ticker',
+      text: 'Numbers that count up as they scroll into view, read once by screen readers.',
     },
   ],
 ];
 
 const alsoNew = [
-  { text: 'Feedback', href: '/components/feedback' },
+  { text: 'Border beam', href: '/components/border-beam' },
+  { text: 'Gradient text', href: '/components/gradient-text' },
+  { text: 'Scroll reveal', href: '/components/scroll-reveal' },
+  { text: 'Recent purchase', href: '/components/recent-purchase' },
+  { text: 'Floating tab bar', href: '/components/tab-bar' },
+  { text: 'Colour palette', href: '/themes/#colour-palette' },
+  { text: 'Chat', href: '/blocks/chat' },
+  { text: 'Email inbox', href: '/blocks/email-inbox' },
+  { text: 'Flow builder', href: '/components/flow-builder' },
   { text: 'Spotlight search', href: '/components/spotlight' },
-  { text: 'Reviews', href: '/blocks/reviews' },
-  { text: 'SaaS template', href: '/templates/saas' },
-  { text: 'Blog article', href: '/blocks/blog-article' },
-  { text: 'Swipe actions', href: '/components/swipe-actions' },
-  { text: 'Tab bar', href: '/components/tab-bar' },
-  { text: 'Large title', href: '/components/large-title' },
-  { text: 'Tree', href: '/components/tree' },
-  { text: 'Signature pad', href: '/components/signature-pad' },
 ];
 
 const live = [
@@ -149,7 +149,7 @@ const features = [
       />
       <a class="bootcn-landing__pill" :href="withBase('/changelog')">
         <span class="bootcn-landing__pill-tag">New</span>
-        An event calendar, chat and an email inbox
+        Effects, a colour palette and a floating tab bar
         <span aria-hidden="true">→</span>
       </a>
       <h1 id="bootcn-landing-title" class="bootcn-landing__title">
@@ -220,8 +220,8 @@ const features = [
       <div class="bootcn-landing__heading">
         <h2 id="bootcn-landing-new">New in Bootcn</h2>
         <p>
-          Calendars, messaging and mail for your app, built the same way as everything else: plain
-          HTML, CSS and JavaScript you own.
+          Light, motion and colour for your pages, with no library and calm under reduced motion,
+          next to calendars, messaging and mail for your app.
         </p>
       </div>
       <div class="bootcn-landing__new">
