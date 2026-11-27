@@ -37,3 +37,64 @@
   z-index: 1060;
   margin: 0;
 }
+
+/* Submenus: positioned next to their item by context-menu.js. */
+.bootcn-context-menu__chevron {
+  margin-inline-start: auto;
+  color: var(--bootcn-muted-foreground);
+}
+
+[dir='rtl'] .bootcn-context-menu__chevron {
+  transform: scaleX(-1);
+}
+
+.bootcn-context-menu [aria-haspopup='menu'] {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+.bootcn-context-menu [aria-haspopup='menu'][aria-expanded='true'] {
+  background-color: var(--bootcn-accent);
+}
+
+/* Checkable items: a tick or a dot in front, room kept for it. */
+.bootcn-context-menu__checkable {
+  position: relative;
+  padding-inline-start: 2rem !important;
+}
+
+.bootcn-context-menu__check,
+.bootcn-context-menu__dot {
+  position: absolute;
+  top: 50%;
+  inset-inline-start: 0.625rem;
+  transform: translateY(-50%);
+  visibility: hidden;
+}
+
+.bootcn-context-menu__dot {
+  width: 0.4375rem;
+  height: 0.4375rem;
+  margin-inline-start: 0.1875rem;
+  border-radius: 9999px;
+  background-color: currentColor;
+}
+
+.bootcn-context-menu__checkable[aria-checked='true'] .bootcn-context-menu__check,
+.bootcn-context-menu__checkable[aria-checked='true'] .bootcn-context-menu__dot {
+  visibility: visible;
+}
+
+.bootcn-context-menu__group {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.bootcn-context-menu__label {
+  padding: 0.25rem 0.75rem 0.125rem 2rem;
+  color: var(--bootcn-muted-foreground);
+  font-size: 0.75rem;
+  font-weight: 600;
+}

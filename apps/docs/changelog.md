@@ -6,6 +6,19 @@ each published version stays available under `/v/<version>/`) and the **CLI**
 
 ## Registry
 
+### 0.36.0
+
+Everyday UI.
+
+- Tree: expand and collapse, full keyboard, single or multiple selection,
+  checkboxes with a partial state, children loaded on demand.
+- Share card: link preview, Copy, share links for X, LinkedIn, Facebook,
+  WhatsApp, Reddit and email, and the system share sheet on phones.
+- Signature pad: draw with mouse, pen or finger, undo and clear, or type
+  the name; saved as PNG in the form, exportable as SVG.
+- Context menu 1.1.0: submenus, checkable and radio items, keyboard
+  shortcuts named with aria-keyshortcuts.
+
 ### 0.35.0
 
 The CRM pack.
@@ -291,6 +304,12 @@ The App UI pack.
 - The first public registry: 20 components and the design tokens.
 
 ## CLI
+
+### 0.6.1
+
+- The macOS executables are signed. Those of 0.6.0 were built on Linux
+  without a signature, and macOS on Apple silicon refused to run them; the
+  npm package and the Linux and Windows executables were not affected.
 
 ### 0.6.0
 

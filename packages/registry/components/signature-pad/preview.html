@@ -1,0 +1,189 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Bootcn Signature pad preview</title>
+    <script>
+      // Preview theme: ?theme=dark|light, else the docs page around the frame, else light.
+      (function () {
+        var theme = new URLSearchParams(location.search).get('theme');
+        if (!theme) {
+          try {
+            theme =
+              window.parent !== window &&
+              window.parent.document.documentElement.classList.contains('dark')
+                ? 'dark'
+                : 'light';
+          } catch (error) {
+            theme = 'light';
+          }
+        }
+        document.documentElement.setAttribute('data-bs-theme', theme === 'dark' ? 'dark' : 'light');
+        // ?dir=rtl: right to left, with Bootstrap's RTL stylesheet.
+        if (new URLSearchParams(location.search).get('dir') === 'rtl') {
+          document.documentElement.setAttribute('dir', 'rtl');
+          new MutationObserver(function (records, observer) {
+            var link = document.querySelector('link[href*="bootstrap.min.css"]');
+            if (!link) return;
+            link.href = link.href.replace('bootstrap.min.css', 'bootstrap.rtl.min.css');
+            observer.disconnect();
+          }).observe(document.documentElement, { childList: true, subtree: true });
+        }
+      })();
+    </script>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.9/dist/css/bootstrap.min.css"
+    />
+    <link rel="stylesheet" href="../../themes/tokens/tokens.css" />
+    <link rel="stylesheet" href="../input/input.css" />
+    <link rel="stylesheet" href="../button/button.css" />
+    <link rel="stylesheet" href="signature-pad.css" />
+  </head>
+  <body>
+    <main class="container py-4">
+      <h1 class="h4 mb-4">Signature pad</h1>
+      <form class="bootcn-signature-demo" data-signature-demo novalidate>
+        <h2 class="bootcn-signature-demo__title">Sign the agreement</h2>
+        <p class="bootcn-signature-demo__text">
+          By signing you accept the terms of the service agreement dated 1 December.
+        </p>
+        <div class="bootcn-signature" data-bootcn-signature data-required>
+          <div class="bootcn-signature__tabs" role="tablist" aria-label="How to sign">
+            <button
+              type="button"
+              role="tab"
+              id="bootcn-signature-tab-draw"
+              aria-selected="true"
+              aria-controls="bootcn-signature-draw"
+              data-bootcn-signature-tab="draw"
+            >
+              Draw
+            </button>
+            <button
+              type="button"
+              role="tab"
+              id="bootcn-signature-tab-type"
+              aria-selected="false"
+              aria-controls="bootcn-signature-type"
+              tabindex="-1"
+              data-bootcn-signature-tab="type"
+            >
+              Type
+            </button>
+          </div>
+          <div
+            class="bootcn-signature__panel"
+            id="bootcn-signature-draw"
+            role="tabpanel"
+            aria-labelledby="bootcn-signature-tab-draw"
+          >
+            <div class="bootcn-signature__pad">
+              <canvas
+                class="bootcn-signature__canvas"
+                role="img"
+                aria-label="Signature drawing area. Use Type to sign with the keyboard."
+                data-bootcn-signature-canvas
+              ></canvas>
+              <span class="bootcn-signature__hint" aria-hidden="true">Sign here</span>
+              <span class="bootcn-signature__line" aria-hidden="true"></span>
+            </div>
+            <div class="bootcn-signature__tools">
+              <button
+                type="button"
+                class="btn bootcn-button bootcn-button--ghost bootcn-button--sm"
+                data-bootcn-signature-undo
+                disabled
+              >
+                <svg
+                  class="bootcn-icon"
+                  width="16"
+                  height="16"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  aria-hidden="true"
+                  focusable="false"
+                >
+                  <path d="M9 14 4 9l5-5" />
+                  <path d="M4 9h11a5 5 0 0 1 0 10h-3" />
+                </svg>
+                Undo
+              </button>
+              <button
+                type="button"
+                class="btn bootcn-button bootcn-button--ghost bootcn-button--sm"
+                data-bootcn-signature-clear
+                disabled
+              >
+                <svg
+                  class="bootcn-icon"
+                  width="16"
+                  height="16"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  aria-hidden="true"
+                  focusable="false"
+                >
+                  <path d="M3 6h18M8 6V4h8v2M6 6l1 14h10l1-14" />
+                </svg>
+                Clear
+              </button>
+            </div>
+          </div>
+          <div
+            class="bootcn-signature__panel"
+            id="bootcn-signature-type"
+            role="tabpanel"
+            aria-labelledby="bootcn-signature-tab-type"
+            hidden
+          >
+            <label class="form-label bootcn-label" for="bootcn-signature-name"
+              >Type your full name</label
+            >
+            <input
+              type="text"
+              class="form-control bootcn-input"
+              id="bootcn-signature-name"
+              autocomplete="name"
+              data-bootcn-signature-name
+            />
+            <p class="bootcn-signature__typed" aria-hidden="true" data-bootcn-signature-typed></p>
+          </div>
+          <input type="hidden" name="signature" data-bootcn-signature-value />
+          <p class="bootcn-signature__error" role="alert" data-bootcn-signature-error hidden>
+            Sign above to continue.
+          </p>
+          <p class="visually-hidden" aria-live="polite" data-bootcn-signature-live></p>
+        </div>
+        <button type="submit" class="btn bootcn-button bootcn-button--default">
+          Sign and continue
+        </button>
+      </form>
+    </main>
+    <script src="signature-pad.js"></script>
+    <script>
+      // Preview only: show the signed result instead of sending it.
+      document.querySelector('[data-signature-demo]').addEventListener('submit', function (event) {
+        event.preventDefault();
+        var value = event.target.querySelector('[name="signature"]').value;
+        var img =
+          document.querySelector('[data-signature-result]') || document.createElement('img');
+        img.setAttribute('data-signature-result', '');
+        img.alt = 'Your signature';
+        img.className = 'mt-3 border rounded';
+        img.style.maxWidth = '100%';
+        img.src = value;
+        event.target.after(img);
+      });
+    </script>
+  </body>
+</html>

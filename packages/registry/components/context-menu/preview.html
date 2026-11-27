@@ -86,6 +86,7 @@
             role="menuitem"
             tabindex="-1"
             data-value="open"
+            aria-keyshortcuts="Meta+O"
           >
             Open <span class="bootcn-dropdown__shortcut" aria-hidden="true">⌘O</span>
           </button>
@@ -97,6 +98,7 @@
             role="menuitem"
             tabindex="-1"
             data-value="rename"
+            aria-keyshortcuts="Meta+R"
           >
             Rename <span class="bootcn-dropdown__shortcut" aria-hidden="true">⌘R</span>
           </button>
@@ -108,9 +110,173 @@
             role="menuitem"
             tabindex="-1"
             data-value="duplicate"
+            aria-keyshortcuts="Meta+D"
           >
             Duplicate <span class="bootcn-dropdown__shortcut" aria-hidden="true">⌘D</span>
           </button>
+        </li>
+        <li role="none">
+          <button
+            class="dropdown-item bootcn-dropdown__item"
+            type="button"
+            role="menuitem"
+            tabindex="-1"
+            aria-haspopup="menu"
+            aria-expanded="false"
+            aria-controls="bootcn-context-menu-share"
+          >
+            Share<svg
+              class="bootcn-icon bootcn-context-menu__chevron"
+              width="14"
+              height="14"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              aria-hidden="true"
+              focusable="false"
+            >
+              <path d="m9 6 6 6-6 6" />
+            </svg>
+          </button>
+          <ul
+            class="dropdown-menu bootcn-dropdown__menu bootcn-context-menu bootcn-context-menu__submenu"
+            id="bootcn-context-menu-share"
+            role="menu"
+            aria-label="Share"
+          >
+            <li role="none">
+              <button
+                class="dropdown-item bootcn-dropdown__item"
+                type="button"
+                role="menuitem"
+                tabindex="-1"
+                data-value="copy-link"
+                aria-keyshortcuts="Meta+L"
+              >
+                Copy link <span class="bootcn-dropdown__shortcut" aria-hidden="true">⌘L</span>
+              </button>
+            </li>
+            <li role="none">
+              <button
+                class="dropdown-item bootcn-dropdown__item"
+                type="button"
+                role="menuitem"
+                tabindex="-1"
+                data-value="email"
+              >
+                Email
+              </button>
+            </li>
+            <li role="none">
+              <button
+                class="dropdown-item bootcn-dropdown__item"
+                type="button"
+                role="menuitem"
+                tabindex="-1"
+                data-value="message"
+              >
+                Message a teammate
+              </button>
+            </li>
+          </ul>
+        </li>
+        <li role="separator"><hr class="dropdown-divider bootcn-dropdown__divider" /></li>
+        <li role="none">
+          <button
+            class="dropdown-item bootcn-dropdown__item bootcn-context-menu__checkable"
+            type="button"
+            role="menuitemcheckbox"
+            tabindex="-1"
+            aria-checked="false"
+            data-value="hidden-files"
+          >
+            <svg
+              class="bootcn-icon bootcn-context-menu__check"
+              width="14"
+              height="14"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2.5"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              aria-hidden="true"
+              focusable="false"
+            >
+              <path d="M20 6 9 17l-5-5" /></svg
+            >Show hidden files
+          </button>
+        </li>
+        <li role="none">
+          <button
+            class="dropdown-item bootcn-dropdown__item bootcn-context-menu__checkable"
+            type="button"
+            role="menuitemcheckbox"
+            tabindex="-1"
+            aria-checked="true"
+            data-value="extensions"
+          >
+            <svg
+              class="bootcn-icon bootcn-context-menu__check"
+              width="14"
+              height="14"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2.5"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              aria-hidden="true"
+              focusable="false"
+            >
+              <path d="M20 6 9 17l-5-5" /></svg
+            >Show file extensions
+          </button>
+        </li>
+        <li role="separator"><hr class="dropdown-divider bootcn-dropdown__divider" /></li>
+        <li role="none">
+          <ul class="bootcn-context-menu__group" role="group" aria-label="Sort by">
+            <li role="none" class="bootcn-context-menu__label" aria-hidden="true">Sort by</li>
+            <li role="none">
+              <button
+                class="dropdown-item bootcn-dropdown__item bootcn-context-menu__checkable"
+                type="button"
+                role="menuitemradio"
+                tabindex="-1"
+                aria-checked="true"
+                data-value="sort-name"
+              >
+                <span class="bootcn-context-menu__dot" aria-hidden="true"></span>Name
+              </button>
+            </li>
+            <li role="none">
+              <button
+                class="dropdown-item bootcn-dropdown__item bootcn-context-menu__checkable"
+                type="button"
+                role="menuitemradio"
+                tabindex="-1"
+                aria-checked="false"
+                data-value="sort-date"
+              >
+                <span class="bootcn-context-menu__dot" aria-hidden="true"></span>Date modified
+              </button>
+            </li>
+            <li role="none">
+              <button
+                class="dropdown-item bootcn-dropdown__item bootcn-context-menu__checkable"
+                type="button"
+                role="menuitemradio"
+                tabindex="-1"
+                aria-checked="false"
+                data-value="sort-size"
+              >
+                <span class="bootcn-context-menu__dot" aria-hidden="true"></span>Size
+              </button>
+            </li>
+          </ul>
         </li>
         <li role="separator"><hr class="dropdown-divider bootcn-dropdown__divider" /></li>
         <li role="none">
@@ -120,8 +286,9 @@
             role="menuitem"
             tabindex="-1"
             data-value="delete"
+            aria-keyshortcuts="Delete"
           >
-            Delete
+            Delete <span class="bootcn-dropdown__shortcut" aria-hidden="true">⌫</span>
           </button>
         </li>
       </ul>

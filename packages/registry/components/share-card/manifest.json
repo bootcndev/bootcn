@@ -1,0 +1,33 @@
+{
+  "$schema": "../../schema/registry-item.schema.json",
+  "name": "share-card",
+  "type": "registry:ui",
+  "title": "Share card",
+  "description": "A share card: a preview of the link, a field with Copy, links to share on X, LinkedIn, Facebook, WhatsApp, Reddit and by email, and the system share sheet on phones.",
+  "version": "1.0.0",
+  "categories": ["actions"],
+  "dependencies": [],
+  "registryDependencies": ["input", "button"],
+  "compatibility": {
+    "bootstrap": "5.3",
+    "platform": ["Bootstrap CSS"]
+  },
+  "license": "MIT",
+  "files": [
+    {
+      "path": "share-card.html",
+      "target": "share-card.html",
+      "type": "registry:component"
+    },
+    {
+      "path": "share-card.css",
+      "target": "share-card.css",
+      "type": "registry:style"
+    },
+    {
+      "path": "share-card.js",
+      "target": "share-card.js",
+      "type": "registry:script"
+    }
+  ]
+}

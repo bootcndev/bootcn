@@ -1,0 +1,33 @@
+{
+  "$schema": "../../schema/registry-item.schema.json",
+  "name": "tree",
+  "type": "registry:ui",
+  "title": "Tree",
+  "description": "A tree view for folders, categories and permissions: expand and collapse, full keyboard support, single or multiple selection, checkboxes with a partial state, and children loaded on demand.",
+  "version": "1.0.0",
+  "categories": ["data-display", "navigation"],
+  "dependencies": [],
+  "registryDependencies": [],
+  "compatibility": {
+    "bootstrap": "5.3",
+    "platform": ["Bootstrap CSS"]
+  },
+  "license": "MIT",
+  "files": [
+    {
+      "path": "tree.html",
+      "target": "tree.html",
+      "type": "registry:component"
+    },
+    {
+      "path": "tree.css",
+      "target": "tree.css",
+      "type": "registry:style"
+    },
+    {
+      "path": "tree.js",
+      "target": "tree.js",
+      "type": "registry:script"
+    }
+  ]
+}

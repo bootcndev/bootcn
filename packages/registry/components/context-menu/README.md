@@ -19,6 +19,21 @@ never right-click.
 - `Bootcn.contextMenu.show(trigger, x, y)` / `hide(returnFocus)`;
   `init()` / `destroy()`.
 
+## Submenus, checks and shortcuts
+
+- **Submenu**: an item with `aria-haspopup="menu"`, `aria-expanded` and
+  `aria-controls` pointing at a nested `<ul role="menu">` (class
+  `bootcn-context-menu__submenu`). Right arrow, Enter or Space opens it,
+  Left arrow or Escape goes back; pointing at it opens it too. It opens on
+  the other side when there is no room (and mirrors right to left).
+- **Checkable**: `role="menuitemcheckbox"` with `aria-checked`; radio
+  choices are `role="menuitemradio"` in a `role="group"` with a name. They
+  toggle and keep the menu open; `bootcn:context-menu:select` then has
+  `detail.checked`.
+- **Shortcuts**: show them in `.bootcn-dropdown__shortcut` (hidden from
+  screen readers) and name them with `aria-keyshortcuts` on the item. The
+  menu only shows them: handle the keys in your page.
+
 ## Accessibility
 
 - The trigger is focusable and announces `aria-haspopup="menu"`; a visible

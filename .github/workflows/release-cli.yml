@@ -76,7 +76,9 @@ jobs:
   # and the Composer package download these).
   binaries:
     needs: github-release
-    runs-on: ubuntu-latest
+    # macOS, because the macOS executables must be signed (codesign); Bun
+    # builds the Linux and Windows ones from here too.
+    runs-on: macos-latest
     permissions:
       contents: write
     steps:
@@ -94,10 +96,11 @@ jobs:
       - run: pnpm install --frozen-lockfile
       - run: pnpm build
       - run: scripts/build-binaries.sh dist-bin
-      - name: The Linux executable reports this version
+      - name: The macOS executable is signed, runs and reports this version
         run: |
           set -euo pipefail
-          test "$(env -i PATH=/usr/bin:/bin dist-bin/bootcn-linux-x64 --version)" = "${GITHUB_REF_NAME#cli-v}"
+          codesign --verify dist-bin/bootcn-darwin-arm64
+          test "$(env -i PATH=/usr/bin:/bin dist-bin/bootcn-darwin-arm64 --version)" = "${GITHUB_REF_NAME#cli-v}"
       - name: Attach to the release
         run: gh release upload "$GITHUB_REF_NAME" dist-bin/* --repo "$GITHUB_REPOSITORY" --clobber
         env:

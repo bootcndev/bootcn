@@ -1,0 +1,33 @@
+{
+  "$schema": "../../schema/registry-item.schema.json",
+  "name": "signature-pad",
+  "type": "registry:ui",
+  "title": "Signature pad",
+  "description": "A signature field: draw with a mouse, pen (with pressure) or finger, undo and clear, or type a name shown in a handwriting style; the signature goes into the form as a PNG and can be exported as SVG.",
+  "version": "1.0.0",
+  "categories": ["forms", "inputs"],
+  "dependencies": [],
+  "registryDependencies": ["input", "button"],
+  "compatibility": {
+    "bootstrap": "5.3",
+    "platform": ["Bootstrap CSS"]
+  },
+  "license": "MIT",
+  "files": [
+    {
+      "path": "signature-pad.html",
+      "target": "signature-pad.html",
+      "type": "registry:component"
+    },
+    {
+      "path": "signature-pad.css",
+      "target": "signature-pad.css",
+      "type": "registry:style"
+    },
+    {
+      "path": "signature-pad.js",
+      "target": "signature-pad.js",
+      "type": "registry:script"
+    }
+  ]
+}

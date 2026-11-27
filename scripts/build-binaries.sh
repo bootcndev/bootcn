@@ -24,6 +24,15 @@ for target in "${targets[@]}"; do
     --compile --minify --sourcemap=none \
     --target="bun-${target}" \
     --outfile "${out}/${name}"
+  # macOS refuses unsigned executables on Apple silicon (the process is
+  # killed): sign them ad hoc. That needs codesign, so build them on macOS.
+  if [ "${target%%-*}" = "darwin" ]; then
+    if command -v codesign >/dev/null 2>&1; then
+      codesign --sign - --force "${out}/${name}"
+    else
+      echo "::warning::${name} is not signed (no codesign here); macOS will refuse it. Build macOS targets on macOS."
+    fi
+  fi
 done
 
 (
