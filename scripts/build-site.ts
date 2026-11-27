@@ -116,6 +116,7 @@ async function writeLlmsTxt(): Promise<void> {
     ['Animations', 'guide/animations', 'Motion tokens, reduced motion and your own transitions.'],
     ['Laravel', 'guide/laravel', 'Blade views, asset paths, Vite and Livewire.'],
     ['AI assistants (MCP)', 'guide/mcp', 'The bootcn mcp server for Claude, Cursor and VS Code.'],
+    ['Contributing', 'guide/contributing', 'Set up the repository, the conventions and the tests.'],
     [
       'Right to left',
       'guide/rtl',
@@ -127,7 +128,8 @@ async function writeLlmsTxt(): Promise<void> {
     '',
     `> Copy-paste UI components, blocks and templates for Bootstrap 5.3 and vanilla JavaScript, with a Tailwind-like look. Install with \`npx bootcn add <name>\`. Registry ${index.version}.`,
     '',
-    'Each item below links to its documentation; its machine-readable source (all files inlined) is at `r/<name>.json`.',
+    'Each item below links to its documentation in Markdown; its machine-readable source (all files inlined) is at `r/<name>.json`. Everything in one file: ' +
+      `${SITE_URL}/llms-full.txt. An agent skill for AI assistants: ${SITE_URL}/skills/bootcn/SKILL.md.`,
     '',
     '## Docs',
     '',
@@ -137,11 +139,77 @@ async function writeLlmsTxt(): Promise<void> {
     lines.push('', `## ${title}`, '');
     for (const item of index.items.filter((entry) => entry.type === type)) {
       lines.push(
-        `- [${item.title}](${SITE_URL}/${dir}/${item.name}): ${item.description} Source: ${SITE_URL}/r/${item.name}.json`,
+        `- [${item.title}](${SITE_URL}/${dir}/${item.name}.md): ${item.description} Source: ${SITE_URL}/r/${item.name}.json`,
       );
     }
   }
   await writeFile(resolve(OUT_DIR, 'llms.txt'), `${lines.join('\n')}\n`, 'utf8');
+  await writeMarkdown(index, guide, sections);
+}
+
+/** Front matter and Vue-only lines are of no use outside the site. */
+function plainMarkdown(source: string): string {
+  return source
+    .replace(/^---\n[\s\S]*?\n---\n+/, '')
+    .replace(/<script setup>[\s\S]*?<\/script>\n*/g, '')
+    .trim();
+}
+
+/**
+ * Markdown for AI assistants and other tools: every guide page and item page
+ * next to its HTML page (/components/dialog.md), all of them in
+ * llms-full.txt, and the agent skill.
+ */
+async function writeMarkdown(
+  index: {
+    version: string;
+    items: { name: string; type: string; title: string; description: string }[];
+  },
+  guide: string[][],
+  sections: [string, string, string][],
+): Promise<void> {
+  const full: string[] = [
+    '# Bootcn',
+    '',
+    `> Copy-paste UI components, blocks and templates for Bootstrap 5.3 in plain HTML, CSS and vanilla JavaScript. Registry ${index.version}. Install with \`npx bootcn@latest add <name>\`.`,
+  ];
+  const docs = resolve(ROOT, 'apps', 'docs');
+  for (const [, path] of guide) {
+    const text = plainMarkdown(await readFile(resolve(docs, `${path}.md`), 'utf8'));
+    await writeFile(resolve(OUT_DIR, `${path}.md`), `${text}\n`, 'utf8');
+    full.push('', '---', '', `Source: ${SITE_URL}/${path}`, '', text);
+  }
+  for (const [, type, dir] of sections) {
+    for (const item of index.items.filter((entry) => entry.type === type)) {
+      const manifest = JSON.parse(
+        await readFile(resolve(REGISTRY_DIR, dir, item.name, 'manifest.json'), 'utf8'),
+      ) as { files: { target: string }[]; registryDependencies?: string[] };
+      const readme = await readFile(
+        resolve(REGISTRY_DIR, dir, item.name, 'README.md'),
+        'utf8',
+      ).catch(() => '');
+      // The README starts with the title and description: keep the rest.
+      const body = readme.replace(/^# .*\n+(?:.*\n)*?\n/, '').trim();
+      const deps = manifest.registryDependencies ?? [];
+      const page = [
+        `# ${item.title}`,
+        '',
+        `> ${item.description}`,
+        '',
+        `- Install: \`npx bootcn@latest add ${item.name}\``,
+        `- Docs: ${SITE_URL}/${dir}/${item.name}`,
+        `- Source with every file: ${SITE_URL}/r/${item.name}.json`,
+        `- Files: ${manifest.files.map((file) => file.target).join(', ')}`,
+        ...(deps.length ? [`- Installs too: ${deps.join(', ')}`] : []),
+        '',
+        body,
+      ].join('\n');
+      await writeFile(resolve(OUT_DIR, dir, `${item.name}.md`), `${page}\n`, 'utf8');
+      full.push('', '---', '', page);
+    }
+  }
+  await writeFile(resolve(OUT_DIR, 'llms-full.txt'), `${full.join('\n')}\n`, 'utf8');
+  await cp(resolve(ROOT, 'skills'), resolve(OUT_DIR, 'skills'), { recursive: true });
 }
 
 async function copyDocs(): Promise<void> {

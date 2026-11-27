@@ -31,6 +31,15 @@ files should go, writes `bootcn.json` and installs the design tokens. `add`
 shows the files it will create, asks before overwriting anything, and prints
 the `<link>` and `<script>` tags to add to your layout.
 
+### With an AI assistant
+
+Give your assistant the [Bootcn skill](https://bootcn.dev/skills/bootcn/SKILL.md)
+(for Claude Code, save it as `.claude/skills/bootcn/SKILL.md`) or connect the
+MCP server (`npx bootcn@latest mcp`). Assistants can also read
+[llms.txt](https://bootcn.dev/llms.txt), [llms-full.txt](https://bootcn.dev/llms-full.txt)
+and any docs page as Markdown by adding `.md` to its address. See
+[AI assistants](https://bootcn.dev/guide/mcp).
+
 ## Core principles
 
 - **Source ownership:** installed files live in your project and are yours to edit.

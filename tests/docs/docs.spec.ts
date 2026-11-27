@@ -570,6 +570,39 @@ test('llms.txt lists the docs and every item with its source', async ({ request 
   }
 });
 
+test('AI assistants get Markdown pages, llms-full.txt, the skill and a welcome', async ({
+  request,
+  page,
+}) => {
+  const items = index.items.filter((entry) => entry.type !== 'registry:theme');
+  const full = await (await request.get('llms-full.txt')).text();
+  expect(full.startsWith('# Bootcn')).toBe(true);
+  for (const item of items) expect(full).toContain(`npx bootcn@latest add ${item.name}`);
+
+  const md = await request.get('components/dialog.md');
+  expect(md.ok()).toBe(true);
+  const text = await md.text();
+  expect(text.startsWith('# Dialog')).toBe(true);
+  expect(text).toContain('https://bootcn.dev/r/dialog.json');
+  expect(text).not.toContain('---\ndescription');
+  expect(await (await request.get('guide/cli.md')).text()).toContain('# CLI');
+
+  const skill = await (await request.get('skills/bootcn/SKILL.md')).text();
+  expect(skill).toMatch(/^---\nname: bootcn\ndescription: /);
+
+  const robots = await (await request.get('robots.txt')).text();
+  for (const bot of ['GPTBot', 'ClaudeBot', 'PerplexityBot', 'Google-Extended']) {
+    expect(robots).toContain(`User-agent: ${bot}`);
+  }
+  expect(robots).not.toMatch(/Disallow: \/\s/);
+
+  await page.goto('components/dialog');
+  await expect(page.locator('head link[rel="alternate"][type="text/markdown"]')).toHaveAttribute(
+    'href',
+    'https://bootcn.dev/components/dialog.md',
+  );
+});
+
 test('item pages copy a prompt for AI assistants', async ({ page }) => {
   await page.addInitScript(() => {
     const copied: string[] = [];

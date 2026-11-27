@@ -1,6 +1,26 @@
 # Bootcn: docs and registry. Everything is public, for people, search
-# engines and AI assistants alike.
+# engines and AI assistants alike. Assistants: start at /llms.txt (or
+# /llms-full.txt), read any page as Markdown by adding .md to its URL, and
+# fetch an item's source from /r/<name>.json.
 User-agent: *
+Allow: /
+
+# AI crawlers and assistants are welcome too.
+User-agent: GPTBot
+User-agent: OAI-SearchBot
+User-agent: ChatGPT-User
+User-agent: ClaudeBot
+User-agent: Claude-SearchBot
+User-agent: Claude-User
+User-agent: PerplexityBot
+User-agent: Perplexity-User
+User-agent: Google-Extended
+User-agent: Applebot-Extended
+User-agent: CCBot
+User-agent: Amazonbot
+User-agent: DuckAssistBot
+User-agent: MistralAI-User
+User-agent: meta-externalagent
 Allow: /
 
 Sitemap: https://bootcn.dev/sitemap.xml

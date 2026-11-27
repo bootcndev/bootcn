@@ -183,6 +183,10 @@ export default defineConfig({
       ['meta', { name: 'twitter:title', content: title }],
       ['meta', { name: 'twitter:description', content: description }],
     ];
+    // The same page as Markdown, for AI assistants (written by build-site.ts).
+    if (/^(guide|components|blocks|templates)\/[^/]+$/.test(path)) {
+      head.push(['link', { rel: 'alternate', type: 'text/markdown', href: `${url}.md` }]);
+    }
     // Structured data for search engines and AI answers, on the home page.
     if (path === '')
       head.push(['script', { type: 'application/ld+json' }, JSON.stringify(STRUCTURED_DATA)]);

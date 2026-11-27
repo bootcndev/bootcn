@@ -21,6 +21,9 @@ The event calendar.
   between days; t, m, w, d and n for today, the views and a new event.
 - Narrow spaces show dots under each day instead of titles.
 - Site: no mentions of other UI libraries.
+- AI assistants: an agent skill (bootcn.dev/skills/bootcn/SKILL.md),
+  llms-full.txt, every guide and item page as Markdown (add `.md` to its
+  address) and a robots.txt that welcomes AI crawlers by name.
 
 ### 0.40.0
 
