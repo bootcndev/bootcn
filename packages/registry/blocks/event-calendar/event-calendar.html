@@ -1,0 +1,466 @@
+<section
+  class="bootcn-event-calendar"
+  data-bootcn-event-calendar
+  data-view="month"
+  data-today="2026-12-10"
+  aria-labelledby="bootcn-event-calendar-title"
+>
+  <div class="bootcn-event-calendar__toolbar">
+    <div class="bootcn-event-calendar__nav">
+      <button
+        type="button"
+        class="btn bootcn-button bootcn-button--outline bootcn-button--sm"
+        data-calendar-nav="today"
+        aria-keyshortcuts="t"
+      >
+        Today
+      </button>
+      <button
+        type="button"
+        class="bootcn-event-calendar__icon-button"
+        data-calendar-nav="prev"
+        aria-label="Previous month"
+      >
+        <svg
+          class="bootcn-icon bootcn-rtl-flip"
+          width="18"
+          height="18"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          aria-hidden="true"
+          focusable="false"
+        >
+          <path d="m15 18-6-6 6-6" />
+        </svg>
+      </button>
+      <button
+        type="button"
+        class="bootcn-event-calendar__icon-button"
+        data-calendar-nav="next"
+        aria-label="Next month"
+      >
+        <svg
+          class="bootcn-icon bootcn-rtl-flip"
+          width="18"
+          height="18"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          aria-hidden="true"
+          focusable="false"
+        >
+          <path d="m9 18 6-6-6-6" />
+        </svg>
+      </button>
+    </div>
+    <h2
+      class="bootcn-event-calendar__title"
+      id="bootcn-event-calendar-title"
+      data-calendar-title
+      aria-live="polite"
+    >
+      December 2026
+    </h2>
+    <div class="bootcn-event-calendar__views" role="group" aria-label="View">
+      <button type="button" data-calendar-view="month" aria-pressed="true" aria-keyshortcuts="m">
+        Month
+      </button>
+      <button type="button" data-calendar-view="week" aria-pressed="false" aria-keyshortcuts="w">
+        Week
+      </button>
+      <button type="button" data-calendar-view="day" aria-pressed="false" aria-keyshortcuts="d">
+        Day
+      </button>
+    </div>
+    <button
+      type="button"
+      class="btn bootcn-button bootcn-button--default bootcn-button--sm"
+      data-calendar-new
+      aria-keyshortcuts="n"
+    >
+      <svg
+        class="bootcn-icon"
+        width="14"
+        height="14"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        aria-hidden="true"
+        focusable="false"
+      >
+        <path d="M12 5v14M5 12h14" />
+      </svg>
+      New event
+    </button>
+  </div>
+  <div
+    class="bootcn-event-calendar__legend"
+    role="group"
+    aria-label="Calendars"
+    data-calendar-legend
+  ></div>
+  <div class="bootcn-event-calendar__body" data-calendar-body>
+    <ol class="bootcn-event-calendar__agenda">
+      <li><time datetime="2026-12-03T19:00">2026-12-03 19:00</time> Book club</li>
+      <li><time datetime="2026-12-07T09:30">2026-12-07 09:30</time> Sprint planning</li>
+      <li><time datetime="2026-12-08T15:00">2026-12-08 15:00</time> 1:1 with Lena</li>
+      <li><time datetime="2026-12-09T18:00">2026-12-09 18:00</time> Yoga</li>
+      <li><time datetime="2026-12-10T09:00">2026-12-10 09:00</time> Standup</li>
+      <li><time datetime="2026-12-10T10:00">2026-12-10 10:00</time> Design review</li>
+      <li><time datetime="2026-12-10T10:30">2026-12-10 10:30</time> Interview: product designer</li>
+      <li><time datetime="2026-12-10T12:30">2026-12-10 12:30</time> Lunch with Marco</li>
+      <li><time datetime="2026-12-10T16:00">2026-12-10 16:00</time> Customer call</li>
+      <li><time datetime="2026-12-11T08:30">2026-12-11 08:30</time> Dentist</li>
+      <li><time datetime="2026-12-15">2026-12-15</time> Launch day</li>
+      <li><time datetime="2026-12-16T18:00">2026-12-16 18:00</time> Yoga</li>
+      <li><time datetime="2026-12-17">2026-12-17</time> Team offsite</li>
+      <li><time datetime="2026-12-18T19:00">2026-12-18 19:00</time> Holiday party</li>
+      <li><time datetime="2026-12-21T14:00">2026-12-21 14:00</time> Quarterly review</li>
+      <li><time datetime="2026-12-22">2026-12-22</time> Code freeze</li>
+    </ol>
+  </div>
+  <div
+    class="bootcn-event-calendar__popover"
+    role="dialog"
+    aria-labelledby="bootcn-event-calendar-popover-title"
+    data-calendar-popover
+    hidden
+  >
+    <button
+      type="button"
+      class="bootcn-event-calendar__icon-button bootcn-event-calendar__popover-close"
+      data-popover-close
+      aria-label="Close"
+    >
+      <svg
+        class="bootcn-icon"
+        width="16"
+        height="16"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        aria-hidden="true"
+        focusable="false"
+      >
+        <path d="M18 6 6 18M6 6l12 12" />
+      </svg>
+    </button>
+    <h3
+      class="bootcn-event-calendar__popover-title"
+      id="bootcn-event-calendar-popover-title"
+      tabindex="-1"
+      data-popover-title
+    >
+      Event
+    </h3>
+    <p class="bootcn-event-calendar__popover-when" data-popover-when></p>
+    <p class="bootcn-event-calendar__popover-calendar" data-popover-calendar></p>
+    <p class="bootcn-event-calendar__popover-location" data-popover-location></p>
+    <p class="bootcn-event-calendar__popover-notes" data-popover-notes></p>
+    <div class="bootcn-event-calendar__popover-actions">
+      <button
+        type="button"
+        class="btn bootcn-button bootcn-button--outline bootcn-button--sm"
+        data-popover-edit
+      >
+        Edit
+      </button>
+      <button
+        type="button"
+        class="btn bootcn-button bootcn-button--ghost bootcn-button--sm"
+        data-popover-delete
+      >
+        Delete
+      </button>
+    </div>
+  </div>
+  <dialog
+    class="bootcn-event-calendar__dialog"
+    aria-labelledby="bootcn-event-calendar-form-title"
+    data-calendar-dialog
+  >
+    <form class="bootcn-event-calendar__form" data-calendar-form novalidate>
+      <h2
+        class="bootcn-event-calendar__form-title"
+        id="bootcn-event-calendar-form-title"
+        data-calendar-dialog-title
+      >
+        New event
+      </h2>
+      <div>
+        <label class="form-label" for="bootcn-event-calendar-name">Title</label>
+        <input
+          class="form-control"
+          id="bootcn-event-calendar-name"
+          name="title"
+          type="text"
+          required
+          aria-describedby="bootcn-event-calendar-name-error"
+        />
+        <p
+          class="bootcn-event-calendar__error"
+          id="bootcn-event-calendar-name-error"
+          data-calendar-error="title"
+          hidden
+        >
+          Give the event a title.
+        </p>
+      </div>
+      <div class="bootcn-event-calendar__times" data-calendar-times>
+        <div>
+          <label class="form-label" for="bootcn-event-calendar-date">Date</label>
+          <input
+            class="form-control"
+            id="bootcn-event-calendar-date"
+            name="date"
+            type="date"
+            required
+            aria-describedby="bootcn-event-calendar-date-error"
+          />
+          <p
+            class="bootcn-event-calendar__error"
+            id="bootcn-event-calendar-date-error"
+            data-calendar-error="date"
+            hidden
+          >
+            Choose a date.
+          </p>
+        </div>
+        <div>
+          <label class="form-label" for="bootcn-event-calendar-start">Starts</label>
+          <input class="form-control" id="bootcn-event-calendar-start" name="start" type="time" />
+        </div>
+        <div>
+          <label class="form-label" for="bootcn-event-calendar-end">Ends</label>
+          <input
+            class="form-control"
+            id="bootcn-event-calendar-end"
+            name="end"
+            type="time"
+            aria-describedby="bootcn-event-calendar-end-error"
+          />
+          <p
+            class="bootcn-event-calendar__error"
+            id="bootcn-event-calendar-end-error"
+            data-calendar-error="end"
+            hidden
+          >
+            End after it starts.
+          </p>
+        </div>
+      </div>
+      <div class="form-check">
+        <input
+          class="form-check-input"
+          id="bootcn-event-calendar-all-day"
+          name="allDay"
+          type="checkbox"
+        />
+        <label class="form-check-label" for="bootcn-event-calendar-all-day">All day</label>
+      </div>
+      <div>
+        <label class="form-label" for="bootcn-event-calendar-calendar">Calendar</label>
+        <select class="form-select" id="bootcn-event-calendar-calendar" name="calendar"></select>
+      </div>
+      <div>
+        <label class="form-label" for="bootcn-event-calendar-location"
+          >Location <span class="text-body-secondary">(optional)</span></label
+        >
+        <input
+          class="form-control"
+          id="bootcn-event-calendar-location"
+          name="location"
+          type="text"
+        />
+      </div>
+      <div>
+        <label class="form-label" for="bootcn-event-calendar-notes"
+          >Notes <span class="text-body-secondary">(optional)</span></label
+        >
+        <textarea
+          class="form-control"
+          id="bootcn-event-calendar-notes"
+          name="description"
+          rows="2"
+        ></textarea>
+      </div>
+      <div class="bootcn-event-calendar__form-actions">
+        <button
+          type="button"
+          class="btn bootcn-button bootcn-button--ghost"
+          data-calendar-delete
+          hidden
+        >
+          Delete
+        </button>
+        <button type="button" class="btn bootcn-button bootcn-button--outline" data-calendar-cancel>
+          Cancel
+        </button>
+        <button type="submit" class="btn bootcn-button bootcn-button--default">Save</button>
+      </div>
+    </form>
+  </dialog>
+  <p class="visually-hidden" role="status" data-calendar-status></p>
+  <script type="application/json" data-calendar-calendars>
+    [
+      {
+        "id": "work",
+        "name": "Work",
+        "color": "#2563eb"
+      },
+      {
+        "id": "personal",
+        "name": "Personal",
+        "color": "#16a34a"
+      },
+      {
+        "id": "team",
+        "name": "Team",
+        "color": "#9333ea"
+      }
+    ]
+  </script>
+  <script type="application/json" data-calendar-events>
+    [
+      {
+        "id": "e1",
+        "title": "Design review",
+        "start": "2026-12-10T10:00",
+        "end": "2026-12-10T11:00",
+        "calendar": "work",
+        "location": "Room 3",
+        "description": "Bring the onboarding numbers."
+      },
+      {
+        "id": "e2",
+        "title": "Interview: product designer",
+        "start": "2026-12-10T10:30",
+        "end": "2026-12-10T11:30",
+        "calendar": "work",
+        "location": "Video call"
+      },
+      {
+        "id": "e3",
+        "title": "Lunch with Marco",
+        "start": "2026-12-10T12:30",
+        "end": "2026-12-10T13:30",
+        "calendar": "personal",
+        "location": "Corner café"
+      },
+      {
+        "id": "e4",
+        "title": "Customer call",
+        "start": "2026-12-10T16:00",
+        "end": "2026-12-10T16:45",
+        "calendar": "work"
+      },
+      {
+        "id": "e5",
+        "title": "Sprint planning",
+        "start": "2026-12-07T09:30",
+        "end": "2026-12-07T11:00",
+        "calendar": "team",
+        "location": "Room 1"
+      },
+      {
+        "id": "e6",
+        "title": "1:1 with Lena",
+        "start": "2026-12-08T15:00",
+        "end": "2026-12-08T15:30",
+        "calendar": "work"
+      },
+      {
+        "id": "e7",
+        "title": "Yoga",
+        "start": "2026-12-09T18:00",
+        "end": "2026-12-09T19:00",
+        "calendar": "personal",
+        "location": "Studio North"
+      },
+      {
+        "id": "e8",
+        "title": "Dentist",
+        "start": "2026-12-11T08:30",
+        "end": "2026-12-11T09:15",
+        "calendar": "personal"
+      },
+      {
+        "id": "e9",
+        "title": "Launch day",
+        "start": "2026-12-15",
+        "end": "2026-12-15",
+        "calendar": "team",
+        "allDay": true,
+        "description": "Version 3 goes live."
+      },
+      {
+        "id": "e10",
+        "title": "Yoga",
+        "start": "2026-12-16T18:00",
+        "end": "2026-12-16T19:00",
+        "calendar": "personal",
+        "location": "Studio North"
+      },
+      {
+        "id": "e11",
+        "title": "Team offsite",
+        "start": "2026-12-17",
+        "end": "2026-12-18",
+        "calendar": "team",
+        "allDay": true,
+        "location": "Lakeside lodge"
+      },
+      {
+        "id": "e12",
+        "title": "Holiday party",
+        "start": "2026-12-18T19:00",
+        "end": "2026-12-18T23:00",
+        "calendar": "team",
+        "location": "The Old Mill"
+      },
+      {
+        "id": "e13",
+        "title": "Quarterly review",
+        "start": "2026-12-21T14:00",
+        "end": "2026-12-21T16:00",
+        "calendar": "work",
+        "location": "Room 3"
+      },
+      {
+        "id": "e14",
+        "title": "Code freeze",
+        "start": "2026-12-22",
+        "end": "2026-12-22",
+        "calendar": "work",
+        "allDay": true
+      },
+      {
+        "id": "e15",
+        "title": "Standup",
+        "start": "2026-12-10T09:00",
+        "end": "2026-12-10T09:15",
+        "calendar": "team"
+      },
+      {
+        "id": "e16",
+        "title": "Book club",
+        "start": "2026-12-03T19:00",
+        "end": "2026-12-03T20:30",
+        "calendar": "personal"
+      }
+    ]
+  </script>
+</section>

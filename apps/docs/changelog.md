@@ -10,6 +10,18 @@ each published version stays available under `/v/<version>/`) and the **CLI**
 
 ## Registry
 
+### 0.41.0
+
+The event calendar.
+
+- Event calendar block: month, week and day views with events coloured by
+  calendar, all-day and multi-day events, overlapping events side by side,
+  a line at the current time, a details popover, a form to add, edit and
+  delete events with checks, and calendars you can hide. Arrow keys move
+  between days; t, m, w, d and n for today, the views and a new event.
+- Narrow spaces show dots under each day instead of titles.
+- Site: no mentions of other UI libraries.
+
 ### 0.40.0
 
 Chat and an email inbox.

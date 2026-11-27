@@ -1,0 +1,552 @@
+.bootcn-event-calendar {
+  --bootcn-event-hour: 48px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  border: var(--bootcn-border-width) solid var(--bootcn-border-color);
+  border-radius: var(--bootcn-radius-xl);
+  background-color: var(--bootcn-background);
+  container-type: inline-size;
+}
+
+/* ------------------------------------------------------------- toolbar */
+
+.bootcn-event-calendar__toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem 0.75rem;
+  padding: 0.75rem 1rem;
+  border-bottom: var(--bootcn-border-width) solid var(--bootcn-border-color);
+}
+
+.bootcn-event-calendar__nav {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.bootcn-event-calendar__icon-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2rem;
+  height: 2rem;
+  padding: 0;
+  border: 0;
+  border-radius: var(--bootcn-radius-md);
+  background: transparent;
+  color: var(--bootcn-foreground);
+}
+
+.bootcn-event-calendar__icon-button:hover {
+  background-color: var(--bootcn-accent);
+}
+
+.bootcn-event-calendar__title {
+  flex: 1;
+  min-width: 10rem;
+  margin: 0;
+  font-size: 1.125rem;
+  font-weight: 600;
+}
+
+.bootcn-event-calendar__views {
+  display: inline-flex;
+  padding: 0.1875rem;
+  border-radius: var(--bootcn-radius-md);
+  background-color: var(--bootcn-muted);
+}
+
+.bootcn-event-calendar__views button {
+  padding: 0.25rem 0.75rem;
+  border: 0;
+  border-radius: calc(var(--bootcn-radius-md) - 0.125rem);
+  background: transparent;
+  color: var(--bootcn-muted-foreground);
+  font-size: 0.8125rem;
+  font-weight: 500;
+}
+
+.bootcn-event-calendar__views button[aria-pressed='true'] {
+  background-color: var(--bootcn-background);
+  box-shadow: var(--bootcn-shadow-sm);
+  color: var(--bootcn-foreground);
+}
+
+.bootcn-event-calendar :is(button, a):focus-visible {
+  outline: 0;
+  box-shadow: var(--bootcn-focus-ring);
+}
+
+.bootcn-event-calendar__legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25rem 1rem;
+  padding: 0.5rem 1rem;
+  border-bottom: var(--bootcn-border-width) solid var(--bootcn-border-color);
+  font-size: 0.8125rem;
+}
+
+.bootcn-event-calendar__legend:empty {
+  display: none;
+}
+
+.bootcn-event-calendar__legend-item {
+  margin: 0;
+}
+
+.bootcn-event-calendar__legend-item .form-check-input:checked {
+  border-color: var(--bootcn-event-color);
+  background-color: var(--bootcn-event-color);
+}
+
+/* ---------------------------------------------------------- the events */
+
+.bootcn-event-calendar__event {
+  --bootcn-event-color: #71717a;
+  display: flex;
+  align-items: baseline;
+  gap: 0.25rem;
+  width: 100%;
+  min-width: 0;
+  padding: 0.0625rem 0.375rem;
+  border: 0;
+  border-inline-start: 3px solid var(--bootcn-event-color);
+  border-radius: 0.25rem;
+  background-color: color-mix(in srgb, var(--bootcn-event-color) 14%, var(--bootcn-background));
+  color: var(--bootcn-foreground);
+  font-size: 0.75rem;
+  line-height: 1.35;
+  text-align: start;
+}
+
+.bootcn-event-calendar__event:hover {
+  background-color: color-mix(in srgb, var(--bootcn-event-color) 22%, var(--bootcn-background));
+}
+
+.bootcn-event-calendar__event.is-all-day {
+  border-inline-start-width: 0;
+  background-color: var(--bootcn-event-color);
+  color: #fff;
+}
+
+.bootcn-event-calendar__event-time {
+  flex: none;
+  font-variant-numeric: tabular-nums;
+}
+
+.bootcn-event-calendar__event-title {
+  min-width: 0;
+  overflow: hidden;
+  font-weight: 600;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* --------------------------------------------------------------- month */
+
+.bootcn-event-calendar__month {
+  width: 100%;
+  border-collapse: collapse;
+  table-layout: fixed;
+}
+
+.bootcn-event-calendar__month th {
+  padding: 0.5rem;
+  border-bottom: var(--bootcn-border-width) solid var(--bootcn-border-color);
+  color: var(--bootcn-muted-foreground);
+  font-size: 0.75rem;
+  font-weight: 500;
+  text-align: center;
+}
+
+.bootcn-event-calendar__day {
+  height: 7rem;
+  padding: 0.25rem;
+  border: var(--bootcn-border-width) solid var(--bootcn-border-color);
+  border-width: 0 var(--bootcn-border-width) var(--bootcn-border-width) 0;
+  vertical-align: top;
+}
+
+.bootcn-event-calendar__day:last-child {
+  border-inline-end-width: 0;
+}
+
+.bootcn-event-calendar__day.is-outside {
+  background-color: color-mix(in srgb, var(--bootcn-muted) 55%, var(--bootcn-background));
+}
+
+.bootcn-event-calendar__day.is-outside .bootcn-event-calendar__date {
+  color: var(--bootcn-muted-foreground);
+}
+
+.bootcn-event-calendar__date {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 1.75rem;
+  height: 1.75rem;
+  margin-bottom: 0.125rem;
+  padding: 0 0.25rem;
+  border: 0;
+  border-radius: 9999px;
+  background: transparent;
+  color: var(--bootcn-foreground);
+  font-size: 0.8125rem;
+  font-weight: 500;
+}
+
+.bootcn-event-calendar__date:hover {
+  background-color: var(--bootcn-accent);
+}
+
+.bootcn-event-calendar__day.is-today .bootcn-event-calendar__date {
+  background-color: var(--bootcn-primary);
+  color: var(--bootcn-primary-foreground);
+}
+
+.bootcn-event-calendar__chips {
+  display: grid;
+  gap: 0.125rem;
+}
+
+.bootcn-event-calendar__more {
+  padding: 0 0.375rem;
+  border: 0;
+  border-radius: 0.25rem;
+  background: transparent;
+  color: var(--bootcn-muted-foreground);
+  font-size: 0.75rem;
+  font-weight: 500;
+  text-align: start;
+}
+
+.bootcn-event-calendar__more:hover {
+  color: var(--bootcn-foreground);
+}
+
+.bootcn-event-calendar__dots {
+  display: none;
+}
+
+/* ------------------------------------------------------- week and day */
+
+.bootcn-event-calendar__time {
+  --bootcn-event-gutter: 3.5rem;
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+}
+
+.bootcn-event-calendar__time-head,
+.bootcn-event-calendar__all-day,
+.bootcn-event-calendar__hours {
+  display: grid;
+  grid-template-columns: var(--bootcn-event-gutter) repeat(var(--bootcn-event-days), minmax(0, 1fr));
+}
+
+.bootcn-event-calendar__time-head {
+  border-bottom: var(--bootcn-border-width) solid var(--bootcn-border-color);
+}
+
+.bootcn-event-calendar__col-head {
+  display: grid;
+  justify-items: center;
+  gap: 0.125rem;
+  padding: 0.5rem 0.25rem;
+  border: 0;
+  background: transparent;
+  color: var(--bootcn-muted-foreground);
+}
+
+.bootcn-event-calendar__col-day {
+  font-size: 0.75rem;
+}
+
+.bootcn-event-calendar__col-num {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 2rem;
+  height: 2rem;
+  border-radius: 9999px;
+  color: var(--bootcn-foreground);
+  font-size: 1.125rem;
+  font-weight: 600;
+}
+
+.bootcn-event-calendar__col-head.is-today .bootcn-event-calendar__col-num {
+  background-color: var(--bootcn-primary);
+  color: var(--bootcn-primary-foreground);
+}
+
+.bootcn-event-calendar__all-day {
+  border-bottom: var(--bootcn-border-width) solid var(--bootcn-border-color);
+}
+
+.bootcn-event-calendar__gutter-label {
+  align-self: center;
+  padding-inline-end: 0.5rem;
+  color: var(--bootcn-muted-foreground);
+  font-size: 0.6875rem;
+  text-align: end;
+}
+
+.bootcn-event-calendar__all-day-cell {
+  display: grid;
+  align-content: start;
+  gap: 0.125rem;
+  min-height: 1.75rem;
+  padding: 0.25rem;
+  border-inline-start: var(--bootcn-border-width) solid var(--bootcn-border-color);
+}
+
+.bootcn-event-calendar__scroll {
+  height: var(--bootcn-event-calendar-height, 28rem);
+  overflow-y: auto;
+  overscroll-behavior: contain;
+}
+
+.bootcn-event-calendar__hours {
+  position: relative;
+  height: calc(var(--bootcn-event-hour) * 24);
+  background-image: linear-gradient(var(--bootcn-border-color) 1px, transparent 1px);
+  background-position: 0 -1px;
+  background-size: 100% var(--bootcn-event-hour);
+}
+
+.bootcn-event-calendar__hour-labels {
+  position: relative;
+  background-color: var(--bootcn-background);
+}
+
+.bootcn-event-calendar__hour-labels span {
+  position: absolute;
+  inset-inline-end: 0.5rem;
+  color: var(--bootcn-muted-foreground);
+  font-size: 0.6875rem;
+  transform: translateY(-50%);
+}
+
+.bootcn-event-calendar__col {
+  position: relative;
+  border-inline-start: var(--bootcn-border-width) solid var(--bootcn-border-color);
+  cursor: cell;
+}
+
+.bootcn-event-calendar__col.is-today {
+  background-color: color-mix(in srgb, var(--bootcn-primary) 4%, transparent);
+}
+
+.bootcn-event-calendar__col-events {
+  position: absolute;
+  inset: 0 0.25rem 0 0.125rem;
+}
+
+.bootcn-event-calendar__event.is-timed {
+  position: absolute;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 0;
+  padding: 0.1875rem 0.375rem;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.bootcn-event-calendar__event.is-timed .bootcn-event-calendar__event-title {
+  white-space: normal;
+}
+
+/* Short events: the title first, on one line with the time. */
+.bootcn-event-calendar__event.is-short {
+  flex-direction: row;
+  align-items: center;
+  gap: 0.25rem;
+  padding-block: 0;
+}
+
+.bootcn-event-calendar__event.is-short .bootcn-event-calendar__event-title {
+  order: -1;
+  white-space: nowrap;
+}
+
+.bootcn-event-calendar__now {
+  position: absolute;
+  inset-inline: 0;
+  z-index: 1;
+  height: 2px;
+  background-color: #dc2626;
+  pointer-events: none;
+}
+
+.bootcn-event-calendar__now::before {
+  position: absolute;
+  top: -4px;
+  inset-inline-start: -5px;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: #dc2626;
+  content: '';
+}
+
+/* ------------------------------------------------------------- popover */
+
+.bootcn-event-calendar__popover {
+  position: absolute;
+  z-index: 5;
+  width: min(18rem, calc(100% - 1rem));
+  padding: 1rem;
+  border: var(--bootcn-border-width) solid var(--bootcn-border-color);
+  border-radius: var(--bootcn-radius-lg);
+  background-color: var(--bootcn-background);
+  box-shadow: var(--bootcn-shadow-lg);
+}
+
+.bootcn-event-calendar__popover[hidden] {
+  display: none;
+}
+
+.bootcn-event-calendar__popover-title {
+  margin: 0 2rem 0.25rem 0;
+  font-size: 1rem;
+  font-weight: 600;
+  outline: 0;
+}
+
+.bootcn-event-calendar__popover p {
+  margin: 0 0 0.375rem;
+  font-size: 0.8125rem;
+}
+
+.bootcn-event-calendar__popover-when,
+.bootcn-event-calendar__popover-location,
+.bootcn-event-calendar__popover-notes {
+  color: var(--bootcn-muted-foreground);
+}
+
+.bootcn-event-calendar__popover-calendar {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.375rem;
+}
+
+.bootcn-event-calendar__popover-calendar::before {
+  width: 0.625rem;
+  height: 0.625rem;
+  border-radius: 0.1875rem;
+  background-color: var(--bootcn-event-color);
+  content: '';
+}
+
+.bootcn-event-calendar__popover-close {
+  position: absolute;
+  top: 0.5rem;
+  inset-inline-end: 0.5rem;
+}
+
+.bootcn-event-calendar__popover-actions {
+  display: flex;
+  gap: 0.5rem;
+  margin-top: 0.75rem;
+}
+
+/* -------------------------------------------------------------- dialog */
+
+.bootcn-event-calendar__dialog {
+  width: min(30rem, calc(100vw - 2rem));
+  padding: 0;
+  border: var(--bootcn-border-width) solid var(--bootcn-border-color);
+  border-radius: var(--bootcn-radius-xl);
+  background-color: var(--bootcn-background);
+  box-shadow: var(--bootcn-shadow-lg);
+  color: var(--bootcn-foreground);
+}
+
+.bootcn-event-calendar__dialog::backdrop {
+  background-color: rgb(9 9 11 / 45%);
+}
+
+.bootcn-event-calendar__form {
+  display: grid;
+  gap: 0.875rem;
+  padding: 1.5rem;
+}
+
+.bootcn-event-calendar__form-title {
+  margin: 0;
+  font-size: 1.125rem;
+  font-weight: 600;
+}
+
+.bootcn-event-calendar__times {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.75rem;
+}
+
+.bootcn-event-calendar__error {
+  margin: 0.375rem 0 0;
+  color: var(--bs-form-invalid-color, #b91c1c);
+  font-size: 0.8125rem;
+}
+
+.bootcn-event-calendar__form-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.5rem;
+}
+
+.bootcn-event-calendar__form-actions [data-calendar-delete] {
+  margin-inline-end: auto;
+}
+
+/* Without the script: the agenda in the markup is the calendar. */
+.bootcn-event-calendar.is-ready .bootcn-event-calendar__agenda {
+  display: none;
+}
+
+.bootcn-event-calendar__agenda {
+  margin: 0;
+  padding: 1rem 1.25rem;
+}
+
+/* ------------------------------------------------------------- narrow */
+
+@container (max-width: 40rem) {
+  .bootcn-event-calendar__day {
+    height: 3.25rem;
+    text-align: center;
+  }
+
+  .bootcn-event-calendar__chips {
+    display: none;
+  }
+
+  .bootcn-event-calendar__dots {
+    display: flex;
+    justify-content: center;
+    gap: 0.1875rem;
+  }
+
+  .bootcn-event-calendar__dots span {
+    width: 0.375rem;
+    height: 0.375rem;
+    border-radius: 50%;
+    background-color: var(--bootcn-event-color);
+  }
+
+  .bootcn-event-calendar__time {
+    --bootcn-event-gutter: 2.75rem;
+  }
+
+  .bootcn-event-calendar__time:not(.is-day) .bootcn-event-calendar__event-time {
+    display: none;
+  }
+
+  .bootcn-event-calendar__times {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}

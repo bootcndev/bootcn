@@ -1,0 +1,34 @@
+{
+  "$schema": "../../schema/registry-item.schema.json",
+  "name": "event-calendar",
+  "type": "registry:block",
+  "title": "Event calendar",
+  "description": "A calendar app with month, week and day views: events in colour by calendar, overlaps side by side, all-day and multi-day events, a details popover, a form to add and edit, calendars you can hide, and full keyboard support.",
+  "version": "1.0.0",
+  "added": "0.41.0",
+  "categories": ["dashboard"],
+  "dependencies": [],
+  "registryDependencies": ["button", "input", "select", "checkbox", "textarea"],
+  "compatibility": {
+    "bootstrap": "5.3",
+    "platform": ["Bootstrap CSS"]
+  },
+  "license": "MIT",
+  "files": [
+    {
+      "path": "event-calendar.html",
+      "target": "event-calendar.html",
+      "type": "registry:component"
+    },
+    {
+      "path": "event-calendar.css",
+      "target": "event-calendar.css",
+      "type": "registry:style"
+    },
+    {
+      "path": "event-calendar.js",
+      "target": "event-calendar.js",
+      "type": "registry:script"
+    }
+  ]
+}

@@ -37,24 +37,24 @@ const showcase = [
 const latest = [
   [
     {
-      name: 'email-inbox',
+      name: 'event-calendar',
       kind: 'blocks',
-      title: 'Email inbox',
-      text: 'Folders, a message list and a reader, with Gmail-style keys, bulk actions and Undo.',
+      title: 'Event calendar',
+      text: 'Month, week and day views, colour-coded calendars, overlaps side by side, add and edit.',
     },
-    {
-      name: 'feedback',
-      kind: 'components',
-      title: 'Feedback',
-      text: 'A floating feedback button with five faces, and "Was this page helpful?".',
-    },
-  ],
-  [
     {
       name: 'chat',
       kind: 'blocks',
       title: 'Chat',
       text: 'Conversations, read receipts, reactions, files and "is typing", one pane at a time on phones.',
+    },
+  ],
+  [
+    {
+      name: 'email-inbox',
+      kind: 'blocks',
+      title: 'Email inbox',
+      text: 'Folders, a message list and a reader, with Gmail-style keys, bulk actions and Undo.',
     },
     {
       name: 'flow-builder',
@@ -66,6 +66,7 @@ const latest = [
 ];
 
 const alsoNew = [
+  { text: 'Feedback', href: '/components/feedback' },
   { text: 'Spotlight search', href: '/components/spotlight' },
   { text: 'Reviews', href: '/blocks/reviews' },
   { text: 'SaaS template', href: '/templates/saas' },
@@ -75,7 +76,6 @@ const alsoNew = [
   { text: 'Large title', href: '/components/large-title' },
   { text: 'Tree', href: '/components/tree' },
   { text: 'Signature pad', href: '/components/signature-pad' },
-  { text: 'Delivery tracker', href: '/components/delivery-tracker' },
 ];
 
 const live = [
@@ -149,7 +149,7 @@ const features = [
       />
       <a class="bootcn-landing__pill" :href="withBase('/changelog')">
         <span class="bootcn-landing__pill-tag">New</span>
-        Chat, an email inbox, search and feedback
+        An event calendar, chat and an email inbox
         <span aria-hidden="true">→</span>
       </a>
       <h1 id="bootcn-landing-title" class="bootcn-landing__title">
@@ -220,8 +220,8 @@ const features = [
       <div class="bootcn-landing__heading">
         <h2 id="bootcn-landing-new">New in Bootcn</h2>
         <p>
-          Messaging, mail, search and feedback for your app, built the same way as everything else:
-          plain HTML, CSS and JavaScript you own.
+          Calendars, messaging and mail for your app, built the same way as everything else: plain
+          HTML, CSS and JavaScript you own.
         </p>
       </div>
       <div class="bootcn-landing__new">
