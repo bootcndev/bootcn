@@ -1,5 +1,5 @@
 /*
- * Bootcn docs: a neutral, shadcn-like skin over VitePress's default theme.
+ * Bootcn docs: a neutral, minimal skin over VitePress's default theme.
  * Colors are the same zinc palette as the components' tokens, so the docs
  * and the previews read as one system. Every text color keeps 4.5:1.
  */
@@ -182,7 +182,7 @@
   color: currentColor;
 }
 
-/* Wider screens: a bordered "input" with placeholder text, as on ui.shadcn.com. */
+/* Wider screens: the search button looks like a bordered input with placeholder text. */
 @media (min-width: 768px) {
   .VPNavBarSearch .DocSearch-Button {
     width: 15rem;

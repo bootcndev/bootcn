@@ -18,7 +18,7 @@ through a CLI\
 ## 1. Executive Summary
 
 The project is an open-source component ecosystem that brings the
-developer experience popularized by shadcn/ui to Bootstrap developers.
+copy-and-own developer experience to Bootstrap developers.
 
 Developers browse components, inspect live previews and source code,
 then install selected components directly into their own applications.
@@ -1206,14 +1206,14 @@ Do not add subscriptions or accounts before there is a clear user need.
 
 - **Product name:** Bootcn
 - **Primary domain:** `bootcn.dev`
-- **Tagline:** The shadcn/ui experience for Bootstrap.
+- **Tagline:** Build better with Bootstrap.
 - **CLI command:** `bootcn`
 - **npm package:** `bootcn` (availability must be checked before publishing)
 - **Documentation:** `https://bootcn.dev/docs`
 - **Registry:** `https://registry.bootcn.dev`
 - **GitHub organization/repository:** `github.com/bootcn` (availability must be checked)
 
-The name combines the Bootstrap association with the concise, developer-oriented naming style of modern UI tooling. The brand should be presented as an independent, community-oriented ecosystem—not as an official Bootstrap project and not as an official shadcn/ui product.
+The name combines the Bootstrap association with the concise, developer-oriented naming style of modern UI tooling. The brand should be presented as an independent, community-oriented ecosystem—not as an official Bootstrap project.
 
 ### Brand positioning
 
@@ -1231,7 +1231,7 @@ Copy. Customize. Own your UI.
 - Practical rather than marketing-heavy.
 - Clear about dependencies and compatibility.
 - Open-source-first.
-- Confident without implying official affiliation with Bootstrap or shadcn/ui.
+- Confident without implying official affiliation with Bootstrap.
 
 ### Pre-launch name validation
 
@@ -1244,7 +1244,7 @@ The name and domain are selected as the project's working brand, but selection i
 5. Search WIPO and EUIPO trademark databases and obtain professional advice if the project is going to be commercialized.
 6. Check social handles if they will be used.
 7. Avoid using Bootstrap's official logo or implying endorsement by Bootstrap maintainers.
-8. Avoid copying shadcn/ui branding, assets, or documentation. The product may describe its workflow as inspired by the copy-and-paste model, but it must have its own visual identity and implementation.
+8. Avoid copying other projects' branding, assets, or documentation. The product may describe its workflow as inspired by the copy-and-paste model, but it must have its own visual identity and implementation.
 
 Do not announce package installation commands as live until the npm package has actually been published.
 

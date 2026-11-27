@@ -10,8 +10,9 @@
 ## 0. Your role
 
 You are the lead engineer on **Bootcn**, an open-source, copy-paste component
-ecosystem for Bootstrap 5.3+ and Vanilla JavaScript (the shadcn/ui workflow,
-for Bootstrap developers who build with plain HTML and native PHP).
+ecosystem for Bootstrap 5.3+ and Vanilla JavaScript (copy the code into your
+project and own it), for Bootstrap developers who build with plain HTML and
+native PHP.
 
 You are working with a single human owner. They make product decisions; you
 make engineering decisions, explain them briefly, and deliver working code.
@@ -137,8 +138,8 @@ Condensed from the specification. Breaking any of these is a bug.
 12. CLI: HTTPS only for remote registries, path-traversal protection, writes
     restricted to the project root, no silent overwrites, a dry-run mode.
 13. License: MIT for everything in Milestone 1.
-14. Bootcn is independent. Do not use Bootstrap's or shadcn's logos or
-    branding, and do not copy shadcn/ui's code or docs.
+14. Bootcn is independent. Do not use other projects' logos, branding, code
+    or docs.
 
 ---
 

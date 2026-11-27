@@ -15,8 +15,7 @@ backgrounds, in light and dark mode. Switch the site theme to see both.
 
 ## Styles
 
-- **Default**: outlined fields and cards with a hairline border, like
-  shadcn/ui.
+- **Default**: outlined fields and cards with a hairline border.
 - **Soft**: tinted fields instead of outlines, cards on soft shadows and
   larger corners, in the spirit of HeroUI. It is also a registry item:
   `npx bootcn add soft`, then load `soft.css` after the component styles.
