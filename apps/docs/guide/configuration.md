@@ -21,11 +21,12 @@ description: 'The bootcn.json file: where components, CSS and JavaScript are ins
 }
 ```
 
-| Key         | Meaning                                                          |
-| ----------- | ---------------------------------------------------------------- |
-| `registry`  | Where components come from: an `https://` URL or a local folder  |
-| `bootstrap` | The Bootstrap minor version your project uses                    |
-| `paths`     | Where each kind of file is written, relative to the project root |
+| Key         | Meaning                                                            |
+| ----------- | ------------------------------------------------------------------ |
+| `registry`  | Where components come from: an `https://` URL or a local folder    |
+| `bootstrap` | The Bootstrap version your project uses: `5.3`, or `6.0` (preview) |
+| `style`     | `default` or `soft`, the style chosen with `init`                  |
+| `paths`     | Where each kind of file is written, relative to the project root   |
 
 For PHP projects with a `public/` directory, `init` proposes
 `public/assets/...` for CSS and JavaScript, and `"pages": "public"` for

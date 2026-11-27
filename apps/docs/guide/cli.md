@@ -30,6 +30,35 @@ npx bootcn <command> [options]
 | `--verbose`                | Show stack traces on errors                           |
 | `-v, --version`            | Print the CLI version                                 |
 
+## Setting up
+
+`init` looks at the project first: Laravel, PHP or plain HTML, and where
+Bootstrap comes from and which version (`node_modules`, `vendor`,
+`package.json`, `composer.json` or a CDN link in your pages). Then it asks:
+
+1. **Which Bootstrap version?** 5.3, or 6 as a preview while Bootstrap 6
+   is in alpha. The one it found is the default. Older than 5.3 gets a
+   warning: Bootcn needs 5.3 or newer.
+2. **Which style?** Default (outlined fields, hairline borders) or Soft
+   (tinted fields, soft shadows, larger corners). Soft also installs
+   `soft.css`; keep it after the CSS of your components.
+3. **Use these folders?** The usual ones for your kind of project; answer
+   no to choose each folder.
+
+In scripts and CI, answer with flags and skip the questions:
+
+```bash
+npx bootcn@latest init --yes --bootstrap 5.3 --style soft
+```
+
+| Option                  | Values                    |
+| ----------------------- | ------------------------- |
+| `--bootstrap <version>` | `5.3`, or `6.0` (preview) |
+| `--style <style>`       | `default` or `soft`       |
+
+Items are built and tested for Bootstrap 5.3. In a project set up for 6,
+`add` reminds you to check each item in your pages.
+
 ## Updating a component
 
 Installed files are yours, so the CLI never changes them silently. To see what

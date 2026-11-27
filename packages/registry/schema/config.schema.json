@@ -10,7 +10,11 @@
     "$schema": { "type": "string", "format": "uri-reference" },
     "registry": { "type": "string", "minLength": 1 },
     "style": { "type": "string", "minLength": 1 },
-    "bootstrap": { "type": "string", "pattern": "^5\\.\\d+(?:\\.\\d+)?$" },
+    "bootstrap": {
+      "type": "string",
+      "pattern": "^[56]\\.\\d+(?:\\.\\d+)?$",
+      "description": "The Bootstrap version the project uses: 5.3, or 6.0 while Bootstrap 6 is a preview."
+    },
     "framework": {
       "enum": ["laravel"],
       "description": "Laravel: components and pages are written as Blade views (.blade.php) and pages link assets with asset()."

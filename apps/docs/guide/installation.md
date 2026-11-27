@@ -68,10 +68,12 @@ In the root of your project:
 npx bootcn init
 ```
 
-`init` detects whether this is a PHP or plain HTML project, checks whether
-Bootstrap is loaded, asks where components, CSS and JavaScript should go, then
-writes [`bootcn.json`](./configuration) and installs the
-[design tokens](./theming).
+`init` detects whether this is a Laravel, PHP or plain HTML project, finds
+Bootstrap and its version, and asks a few questions: which Bootstrap version
+to set up for, which [style](../themes/) and whether the default folders suit
+you. Then it writes [`bootcn.json`](./configuration) and installs the
+[design tokens](./theming). See [Setting up](./cli#setting-up) for the
+questions and the flags that answer them in scripts.
 
 ## 2. Add components
 

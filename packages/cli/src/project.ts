@@ -97,34 +97,76 @@ export function defaultPaths(type: ProjectType, hasPublicDir: boolean): ProjectP
 }
 
 const BOOTSTRAP_ASSET = /bootstrap[\w.@/-]*\.(?:min\.)?(?:css|js)\b/i;
+/** jsDelivr/unpkg (bootstrap@5.3.9/), cdnjs (twitter-bootstrap/5.3.2/) and others (/bootstrap/5.3.2/), local folders (bootstrap-5.3.3/). */
+const BOOTSTRAP_VERSION_IN_URL = [
+  /bootstrap@(\d+\.\d+(?:\.\d+)?(?:-[\w.]+)?)\//i,
+  /[/-]bootstrap\/(\d+\.\d+(?:\.\d+)?(?:-[\w.]+)?)\//i,
+  /bootstrap-(\d+\.\d+(?:\.\d+)?(?:-[\w.]+)?)(?:-dist)?\//i,
+];
+const VERSION = /(\d+)\.(\d+)(?:\.\d+)?(?:-[\w.]+)?/;
 
-/** Looks for Bootstrap in package.json/composer.json or a CDN/local tag in markup. */
-export async function detectBootstrap(root: string): Promise<{ found: boolean; where?: string }> {
+export interface BootstrapInfo {
+  found: boolean;
+  /** Where it was found: a manifest, an installed package or a markup file. */
+  where?: string;
+  /** The version as written there, for example "5.3.9" or "6.0.0-alpha.2". */
+  version?: string;
+}
+
+/** "5.3.9" → "5.3", "^6.0.0-alpha.2" → "6.0"; undefined when there is no version. */
+export function bootstrapMinor(version: string | undefined): string | undefined {
+  const match = version ? VERSION.exec(version) : null;
+  return match ? `${match[1]}.${match[2]}` : undefined;
+}
+
+async function readJson(path: string): Promise<Record<string, unknown> | null> {
+  try {
+    return JSON.parse(await readFile(path, 'utf8')) as Record<string, unknown>;
+  } catch {
+    return null;
+  }
+}
+
+/**
+ * Finds Bootstrap and, when it can, its version: an installed copy first
+ * (node_modules, vendor), then package.json/composer.json, then a CDN or
+ * local tag in the project's markup.
+ */
+export async function detectBootstrap(root: string): Promise<BootstrapInfo> {
+  for (const installed of [
+    'node_modules/bootstrap/package.json',
+    'vendor/twbs/bootstrap/package.json',
+  ]) {
+    const json = await readJson(join(root, installed));
+    if (json && typeof json.version === 'string') {
+      return { found: true, where: installed.split('/package.json')[0], version: json.version };
+    }
+  }
   for (const manifest of ['package.json', 'composer.json']) {
-    try {
-      const json = JSON.parse(await readFile(join(root, manifest), 'utf8')) as Record<
-        string,
-        unknown
-      >;
-      for (const field of ['dependencies', 'devDependencies', 'require', 'require-dev']) {
-        const deps = json[field];
-        if (
-          deps &&
-          typeof deps === 'object' &&
-          Object.keys(deps).some((name) => /(^|\/)bootstrap$/.test(name))
-        ) {
-          return { found: true, where: manifest };
-        }
+    const json = await readJson(join(root, manifest));
+    if (!json) continue;
+    for (const field of ['dependencies', 'devDependencies', 'require', 'require-dev']) {
+      const deps = json[field];
+      if (!deps || typeof deps !== 'object') continue;
+      const name = Object.keys(deps).find((dep) => /(^|\/)bootstrap$/.test(dep));
+      if (name) {
+        const range = String((deps as Record<string, unknown>)[name]);
+        const match = VERSION.exec(range);
+        return { found: true, where: manifest, ...(match ? { version: match[0] } : {}) };
       }
-    } catch {
-      // Missing or invalid manifest: keep looking.
     }
   }
   for (const file of await markupFiles(root)) {
     const info = await lstat(file).catch(() => null);
     if (!info || info.size > MAX_FILE_SIZE) continue;
     const text = await readFile(file, 'utf8').catch(() => '');
-    if (BOOTSTRAP_ASSET.test(text)) return { found: true, where: file.slice(root.length + 1) };
+    if (!BOOTSTRAP_ASSET.test(text)) continue;
+    const where = file.slice(root.length + 1);
+    for (const pattern of BOOTSTRAP_VERSION_IN_URL) {
+      const match = pattern.exec(text);
+      if (match) return { found: true, where, version: match[1] };
+    }
+    return { found: true, where };
   }
   return { found: false };
 }

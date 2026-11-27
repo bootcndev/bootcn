@@ -73,11 +73,12 @@ export function createConfig(
   bootstrap: string,
   paths: ProjectPaths,
   framework?: Framework,
+  style = 'default',
 ): Config {
   return {
     $schema: CONFIG_SCHEMA_URL,
     registry,
-    style: 'default',
+    style,
     bootstrap,
     ...(framework ? { framework } : {}),
     paths: {

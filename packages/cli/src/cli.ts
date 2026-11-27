@@ -6,7 +6,7 @@ import pkg from '../package.json' with { type: 'json' };
 import { addCommand } from './commands/add.js';
 import { diffCommand } from './commands/diff.js';
 import { infoCommand } from './commands/info.js';
-import { initCommand } from './commands/init.js';
+import { type InitOptions, initCommand } from './commands/init.js';
 import { listCommand } from './commands/list.js';
 import { mcpCommand } from './commands/mcp.js';
 import { BRAND, BRAND_TITLE, EXIT } from './constants.js';
@@ -93,8 +93,13 @@ export async function run(argv: readonly string[], deps: RunDeps = {}): Promise<
   program
     .command('init')
     .description(`create ${BRAND}.json, set up directories and install the design tokens`)
-    .action(async (_options: unknown, command: Command) => {
-      exitCode = await initCommand(buildContext(command.optsWithGlobals<GlobalOptions>()));
+    .option('--bootstrap <version>', 'Bootstrap version to set up for: 5.3, or 6.0 (preview)')
+    .option('--style <style>', 'default or soft')
+    .action(async (options: InitOptions, command: Command) => {
+      exitCode = await initCommand(buildContext(command.optsWithGlobals<GlobalOptions>()), {
+        bootstrap: options.bootstrap,
+        style: options.style,
+      });
     });
 
   program

@@ -227,6 +227,11 @@ export async function addCommand(ctx: Context, names: readonly string[]): Promis
   if (names.length === 0)
     throw userError('Name at least one item to add.', `Example: ${BRAND} add button`);
   const config = await loadConfig(ctx.root);
+  if (config.bootstrap.startsWith('6.')) {
+    ctx.out.warn(
+      'This project is set up for Bootstrap 6 (alpha). Bootcn items are tested with Bootstrap 5.3: check them in your pages.',
+    );
+  }
   const client = clientFor(ctx, config);
   const unique = [...new Set(names.filter((name) => name !== TOKENS_ITEM))];
   return installItems(ctx, config, client, unique);

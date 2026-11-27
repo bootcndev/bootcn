@@ -396,6 +396,20 @@ The App UI pack.
 
 ## CLI
 
+### 0.7.0
+
+- `init` asks a few questions: which Bootstrap version to set up for
+  (5.3, or 6 as a preview while Bootstrap 6 is in alpha), which style
+  (Default or Soft) and whether the default folders suit you. Answer them
+  in scripts with `--bootstrap` and `--style`.
+- `init` finds Bootstrap's version in `node_modules`, `vendor`,
+  `package.json`, `composer.json` or a CDN link, and warns about versions
+  older than 5.3.
+- Choosing Soft installs `soft.css` with the design tokens.
+- `bootcn.json` accepts `"bootstrap": "6.0"`; `add` reminds you that items
+  are tested with 5.3 in such projects.
+- `init` ends with the next steps and the agent skill for AI assistants.
+
 ### 0.6.1
 
 - The macOS executables are signed. Those of 0.6.0 were built on Linux

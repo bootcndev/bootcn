@@ -90,7 +90,7 @@ describe('init', () => {
       '--registry',
       registry,
     ]);
-    expect(found.output).toMatch(/Found Bootstrap \(index.html\)/);
+    expect(found.output).toMatch(/Found Bootstrap 5\.3\.9 \(index.html\)/);
 
     const without = await tempDir();
     await writeFiles(without, { 'index.html': '<p>hi</p>' });
@@ -103,7 +103,7 @@ describe('init', () => {
       '--registry',
       registry,
     ]);
-    expect(missing.output).toMatch(/Bootstrap 5.3\+ was not found/);
+    expect(missing.output).toMatch(/Bootstrap was not found/);
     expect(missing.output).toMatch(/integrity="sha384-/);
     expect(await read(without, 'index.html')).toBe('<p>hi</p>');
   });
@@ -133,8 +133,17 @@ describe('init', () => {
   it('lets the user edit the paths interactively', async () => {
     const root = await tempDir();
     await writeFiles(root, { 'index.html': '' });
-    // components, css, js, lib, then "Install 1 file(s)?"
-    const prompt = scriptedPrompter(['ui', 'static/css', 'static/js', 'static/js/lib', true]);
+    // Bootstrap, style, "Use these folders?" no, the four folders, then "Install 1 file(s)?"
+    const prompt = scriptedPrompter([
+      '5.3',
+      'default',
+      false,
+      'ui',
+      'static/css',
+      'static/js',
+      'static/js/lib',
+      true,
+    ]);
     const result = await runCli(['init', '--cwd', root, '--registry', registry], {
       interactive: true,
       prompt,
@@ -142,6 +151,101 @@ describe('init', () => {
     expect(result.code, result.output).toBe(EXIT.ok);
     expect(await exists(resolve(root, 'static/css/tokens.css'))).toBe(true);
     expect(await exists(resolve(root, 'ui'))).toBe(true);
+  });
+
+  it('asks for the Bootstrap version and the style, and keeps the default folders', async () => {
+    const root = await tempDir();
+    await writeFiles(root, { 'index.html': '' });
+    const prompt = scriptedPrompter(['6.0', 'soft', true, true]);
+    const result = await runCli(['init', '--cwd', root, '--registry', registry], {
+      interactive: true,
+      prompt,
+    });
+    expect(result.code, result.output).toBe(EXIT.ok);
+    expect(prompt.asked).toEqual([
+      'Which Bootstrap version does this project use?',
+      'Which style?',
+      'Use these folders?',
+      expect.stringMatching(/^Install/),
+    ]);
+    const config = JSON.parse(await read(root, 'bootcn.json')) as Record<string, unknown>;
+    expect(config).toMatchObject({ bootstrap: '6.0', style: 'soft' });
+    expect(result.output).toMatch(/Bootstrap 6 is still in alpha/);
+    expect(await exists(resolve(root, 'assets/css/soft.css'))).toBe(true);
+    expect(await exists(resolve(root, 'assets/css/tokens.css'))).toBe(true);
+    expect(result.output).toMatch(/SKILL\.md/);
+  });
+
+  it('reads the Bootstrap version from installs, manifests and CDN links', async () => {
+    const cases: [Record<string, string>, RegExp, string][] = [
+      [
+        { 'node_modules/bootstrap/package.json': '{"version":"5.3.8"}', 'index.html': '' },
+        /Found Bootstrap 5\.3\.8 \(node_modules\/bootstrap\)/,
+        '5.3',
+      ],
+      [
+        { 'package.json': '{"dependencies":{"bootstrap":"6.0.0-alpha.2"}}' },
+        /Found Bootstrap 6\.0\.0-alpha\.2 \(package\.json\)/,
+        '6.0',
+      ],
+      [
+        { 'composer.json': '{"require":{"twbs/bootstrap":"^5.3.3"}}' },
+        /Found Bootstrap 5\.3\.3 \(composer\.json\)/,
+        '5.3',
+      ],
+      [
+        {
+          'index.html':
+            '<link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.2.3/css/bootstrap.min.css" rel="stylesheet">',
+        },
+        /Bootstrap 5\.2\.3 is older than 5\.3/,
+        '5.3',
+      ],
+    ];
+    for (const [files, message, configured] of cases) {
+      const root = await tempDir();
+      await writeFiles(root, files);
+      const result = await runCli(['init', '--yes', '--cwd', root, '--registry', registry]);
+      expect(result.code, result.output).toBe(EXIT.ok);
+      expect(result.output).toMatch(message);
+      const config = JSON.parse(await read(root, 'bootcn.json')) as { bootstrap: string };
+      expect(config.bootstrap).toBe(configured);
+    }
+  });
+
+  it('takes --bootstrap and --style without asking, and rejects unknown values', async () => {
+    const root = await tempDir();
+    await writeFiles(root, { 'index.html': '' });
+    const result = await runCli([
+      'init',
+      '--yes',
+      '--bootstrap',
+      '6.0',
+      '--style',
+      'soft',
+      '--cwd',
+      root,
+      '--registry',
+      registry,
+    ]);
+    expect(result.code, result.output).toBe(EXIT.ok);
+    expect(JSON.parse(await read(root, 'bootcn.json'))).toMatchObject({
+      bootstrap: '6.0',
+      style: 'soft',
+    });
+    const add = await runCli(['add', 'button', '--yes', '--cwd', root, '--registry', registry]);
+    expect(add.output).toMatch(/set up for Bootstrap 6/);
+
+    for (const flags of [
+      ['--bootstrap', '4.6'],
+      ['--style', 'neon'],
+    ]) {
+      const other = await tempDir();
+      await writeFiles(other, { 'index.html': '' });
+      const bad = await runCli(['init', '--yes', ...flags, '--cwd', other, '--registry', registry]);
+      expect(bad.code).toBe(EXIT.user);
+      expect(await readdir(other)).toEqual(['index.html']);
+    }
   });
 
   it('writes nothing with --dry-run', async () => {
