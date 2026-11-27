@@ -1,0 +1,604 @@
+<!doctype html>
+<html lang="en" data-bs-theme="light">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Blog · Acme</title>
+    <script>
+      // Theme before the first paint: the saved choice, else the system setting.
+      (function () {
+        var theme = null;
+        try {
+          theme = localStorage.getItem('bootcn-theme');
+        } catch (error) {
+          theme = null;
+        }
+        if (theme !== 'dark' && theme !== 'light') {
+          theme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+        }
+        document.documentElement.setAttribute('data-bs-theme', theme);
+      })();
+    </script>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.9/dist/css/bootstrap.min.css"
+      integrity="sha384-yEPZ7jP9S0QKiUQ0m3jjsO4ProIW7wvR9gXkI7JOGa2XVsw53Yke2bsdkBbjmmiX"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="{{bootcn:css}}/tokens.css" />
+    <link rel="stylesheet" href="{{bootcn:css}}/button.css" />
+    <link rel="stylesheet" href="{{bootcn:css}}/badge.css" />
+    <link rel="stylesheet" href="{{bootcn:css}}/avatar.css" />
+    <link rel="stylesheet" href="{{bootcn:css}}/site-header.css" />
+    <link rel="stylesheet" href="{{bootcn:css}}/pricing-table.css" />
+    <link rel="stylesheet" href="{{bootcn:css}}/accordion.css" />
+    <link rel="stylesheet" href="{{bootcn:css}}/faq-section.css" />
+    <link rel="stylesheet" href="{{bootcn:css}}/call-to-action.css" />
+    <link rel="stylesheet" href="{{bootcn:css}}/input.css" />
+    <link rel="stylesheet" href="{{bootcn:css}}/table.css" />
+    <link rel="stylesheet" href="{{bootcn:css}}/typography.css" />
+    <link rel="stylesheet" href="{{bootcn:css}}/blog-list.css" />
+    <link rel="stylesheet" href="{{bootcn:css}}/blog-article.css" />
+    <link rel="stylesheet" href="{{bootcn:css}}/site-footer.css" />
+    <link rel="stylesheet" href="{{bootcn:css}}/saas.css" />
+  </head>
+  <body>
+    <a class="visually-hidden-focusable bootcn-skip" href="#main">Skip to content</a>
+    <header class="bootcn-site-header">
+      <nav class="navbar navbar-expand-md bootcn-site-header__nav" aria-label="Main">
+        <div class="container bootcn-site-header__inner">
+          <a class="navbar-brand bootcn-site-header__brand" href="saas.html">
+            <svg
+              class="bootcn-icon"
+              width="16"
+              height="16"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              aria-hidden="true"
+              focusable="false"
+            >
+              <rect x="3" y="3" width="8" height="8" rx="2" />
+              <rect x="13" y="13" width="8" height="8" rx="2" />
+              <path d="M13 7h8M17 3v8M3 17h8" />
+            </svg>
+            Acme
+          </a>
+          <button
+            class="navbar-toggler bootcn-site-header__toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#bootcn-site-header-menu"
+            aria-controls="bootcn-site-header-menu"
+            aria-expanded="false"
+          >
+            <svg
+              class="bootcn-icon"
+              width="16"
+              height="16"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              aria-hidden="true"
+              focusable="false"
+            >
+              <path d="M4 6h16M4 12h16M4 18h16" />
+            </svg>
+            <span class="visually-hidden">Menu</span>
+          </button>
+          <div
+            class="collapse navbar-collapse bootcn-site-header__menu"
+            id="bootcn-site-header-menu"
+          >
+            <ul class="navbar-nav bootcn-site-header__links">
+              <li class="nav-item">
+                <a class="nav-link bootcn-site-header__link" href="saas.html">Pricing</a>
+              </li>
+              <li class="nav-item">
+                <a
+                  class="nav-link bootcn-site-header__link"
+                  href="saas-blog.html"
+                  aria-current="page"
+                  >Blog</a
+                >
+              </li>
+              <li class="nav-item">
+                <a class="nav-link bootcn-site-header__link" href="#customers">Customers</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link bootcn-site-header__link" href="#docs">Docs</a>
+              </li>
+            </ul>
+            <div class="bootcn-site-header__actions">
+              <button
+                type="button"
+                class="btn bootcn-button bootcn-button--ghost bootcn-button--icon bootcn-saas__theme"
+                data-bootcn-theme-toggle
+                aria-pressed="false"
+              >
+                <span class="visually-hidden">Dark mode</span>
+                <svg
+                  class="bootcn-icon bootcn-theme-when-light"
+                  width="16"
+                  height="16"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  aria-hidden="true"
+                  focusable="false"
+                >
+                  <path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5z" />
+                </svg>
+                <svg
+                  class="bootcn-icon bootcn-theme-when-dark"
+                  width="16"
+                  height="16"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  aria-hidden="true"
+                  focusable="false"
+                >
+                  <circle cx="12" cy="12" r="4" />
+                  <path
+                    d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"
+                  />
+                </svg>
+              </button>
+              <a class="btn bootcn-button bootcn-button--ghost" href="saas-app.html">Sign in</a>
+              <a class="btn bootcn-button bootcn-button--default" href="saas-app.html"
+                >Start free trial</a
+              >
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+    <main id="main" tabindex="-1" class="bootcn-saas">
+      <div class="container bootcn-saas__page">
+        <section class="bootcn-blog" data-bootcn-blog aria-labelledby="bootcn-blog-title">
+          <header class="bootcn-blog__header">
+            <p class="bootcn-blog__eyebrow">Blog</p>
+            <h1 class="bootcn-blog__title" id="bootcn-blog-title">Notes from the Acme team</h1>
+            <p class="bootcn-blog__lead">
+              Product news, engineering deep dives and what we learn from our customers.
+            </p>
+          </header>
+          <div class="bootcn-blog__filters" role="group" aria-label="Filter by topic">
+            <button
+              type="button"
+              class="bootcn-blog__filter"
+              data-blog-filter="all"
+              aria-pressed="true"
+            >
+              All
+            </button>
+            <button
+              type="button"
+              class="bootcn-blog__filter"
+              data-blog-filter="product"
+              aria-pressed="false"
+            >
+              Product
+            </button>
+            <button
+              type="button"
+              class="bootcn-blog__filter"
+              data-blog-filter="engineering"
+              aria-pressed="false"
+            >
+              Engineering
+            </button>
+            <button
+              type="button"
+              class="bootcn-blog__filter"
+              data-blog-filter="design"
+              aria-pressed="false"
+            >
+              Design
+            </button>
+            <button
+              type="button"
+              class="bootcn-blog__filter"
+              data-blog-filter="growth"
+              aria-pressed="false"
+            >
+              Growth
+            </button>
+            <button
+              type="button"
+              class="bootcn-blog__filter"
+              data-blog-filter="company"
+              aria-pressed="false"
+            >
+              Company
+            </button>
+          </div>
+          <p class="visually-hidden" role="status" data-blog-status></p>
+          <ul class="bootcn-blog__grid">
+            <li class="bootcn-blog__post" data-category="engineering">
+              <article
+                class="bootcn-blog__card bootcn-blog__card--featured"
+                aria-labelledby="bootcn-blog-page-speed"
+              >
+                <div
+                  class="bootcn-blog__cover"
+                  style="--bootcn-blog-cover: linear-gradient(135deg, #0ea5e9, #6366f1)"
+                  aria-hidden="true"
+                ></div>
+                <div class="bootcn-blog__body">
+                  <p class="bootcn-blog__meta">
+                    <span class="badge bootcn-badge bootcn-badge--secondary">Engineering</span
+                    ><span>8 min read</span>
+                  </p>
+                  <h2 class="bootcn-blog__post-title" id="bootcn-blog-page-speed">
+                    <a class="bootcn-blog__link" href="saas-article.html"
+                      >How we cut our page load time in half</a
+                    >
+                  </h2>
+                  <p class="bootcn-blog__excerpt">
+                    Six months, four fixes and one surprising culprit: what it took to get the
+                    dashboard under one second.
+                  </p>
+                  <p class="bootcn-blog__byline">
+                    <span class="bootcn-avatar bootcn-avatar--sm" aria-hidden="true"
+                      ><span class="bootcn-avatar__fallback">LF</span></span
+                    >
+                    <span
+                      ><span class="bootcn-blog__author">Lena Fischer</span> ·
+                      <time datetime="2026-11-20">20 Nov 2026</time></span
+                    >
+                  </p>
+                </div>
+              </article>
+            </li>
+            <li class="bootcn-blog__post" data-category="product">
+              <article class="bootcn-blog__card" aria-labelledby="bootcn-blog-usage-billing">
+                <div
+                  class="bootcn-blog__cover"
+                  style="--bootcn-blog-cover: linear-gradient(135deg, #8b5cf6, #ec4899)"
+                  aria-hidden="true"
+                ></div>
+                <div class="bootcn-blog__body">
+                  <p class="bootcn-blog__meta">
+                    <span class="badge bootcn-badge bootcn-badge--secondary">Product</span
+                    ><span>4 min read</span>
+                  </p>
+                  <h2 class="bootcn-blog__post-title" id="bootcn-blog-usage-billing">
+                    <a class="bootcn-blog__link" href="#usage-billing"
+                      >Introducing usage-based billing</a
+                    >
+                  </h2>
+                  <p class="bootcn-blog__excerpt">
+                    Pay for what your team actually uses, with a monthly cap you set yourself.
+                  </p>
+                  <p class="bootcn-blog__byline">
+                    <span class="bootcn-avatar bootcn-avatar--sm" aria-hidden="true"
+                      ><span class="bootcn-avatar__fallback">MB</span></span
+                    >
+                    <span
+                      ><span class="bootcn-blog__author">Marco Bianchi</span> ·
+                      <time datetime="2026-11-14">14 Nov 2026</time></span
+                    >
+                  </p>
+                </div>
+              </article>
+            </li>
+            <li class="bootcn-blog__post" data-category="growth">
+              <article class="bootcn-blog__card" aria-labelledby="bootcn-blog-onboarding-emails">
+                <div
+                  class="bootcn-blog__cover"
+                  style="--bootcn-blog-cover: linear-gradient(135deg, #f59e0b, #ef4444)"
+                  aria-hidden="true"
+                ></div>
+                <div class="bootcn-blog__body">
+                  <p class="bootcn-blog__meta">
+                    <span class="badge bootcn-badge bootcn-badge--secondary">Growth</span
+                    ><span>6 min read</span>
+                  </p>
+                  <h2 class="bootcn-blog__post-title" id="bootcn-blog-onboarding-emails">
+                    <a class="bootcn-blog__link" href="#onboarding-emails"
+                      >Five onboarding emails that people actually read</a
+                    >
+                  </h2>
+                  <p class="bootcn-blog__excerpt">
+                    Short, useful and sent at the right moment: the sequence that doubled our
+                    activation rate.
+                  </p>
+                  <p class="bootcn-blog__byline">
+                    <span class="bootcn-avatar bootcn-avatar--sm" aria-hidden="true"
+                      ><span class="bootcn-avatar__fallback">AM</span></span
+                    >
+                    <span
+                      ><span class="bootcn-blog__author">Ava Martinez</span> ·
+                      <time datetime="2026-11-06">6 Nov 2026</time></span
+                    >
+                  </p>
+                </div>
+              </article>
+            </li>
+            <li class="bootcn-blog__post" data-category="design">
+              <article class="bootcn-blog__card" aria-labelledby="bootcn-blog-dark-mode">
+                <div
+                  class="bootcn-blog__cover"
+                  style="--bootcn-blog-cover: linear-gradient(135deg, #10b981, #0ea5e9)"
+                  aria-hidden="true"
+                ></div>
+                <div class="bootcn-blog__body">
+                  <p class="bootcn-blog__meta">
+                    <span class="badge bootcn-badge bootcn-badge--secondary">Design</span
+                    ><span>5 min read</span>
+                  </p>
+                  <h2 class="bootcn-blog__post-title" id="bootcn-blog-dark-mode">
+                    <a class="bootcn-blog__link" href="#dark-mode"
+                      >Designing for dark mode from day one</a
+                    >
+                  </h2>
+                  <p class="bootcn-blog__excerpt">
+                    Tokens, contrast checks and the three mistakes we made before we got it right.
+                  </p>
+                  <p class="bootcn-blog__byline">
+                    <span class="bootcn-avatar bootcn-avatar--sm" aria-hidden="true"
+                      ><span class="bootcn-avatar__fallback">NB</span></span
+                    >
+                    <span
+                      ><span class="bootcn-blog__author">Noah Brown</span> ·
+                      <time datetime="2026-10-29">29 Oct 2026</time></span
+                    >
+                  </p>
+                </div>
+              </article>
+            </li>
+            <li class="bootcn-blog__post" data-category="company">
+              <article class="bootcn-blog__card" aria-labelledby="bootcn-blog-customer-calls">
+                <div
+                  class="bootcn-blog__cover"
+                  style="--bootcn-blog-cover: linear-gradient(135deg, #64748b, #0f172a)"
+                  aria-hidden="true"
+                ></div>
+                <div class="bootcn-blog__body">
+                  <p class="bootcn-blog__meta">
+                    <span class="badge bootcn-badge bootcn-badge--secondary">Company</span
+                    ><span>7 min read</span>
+                  </p>
+                  <h2 class="bootcn-blog__post-title" id="bootcn-blog-customer-calls">
+                    <a class="bootcn-blog__link" href="#customer-calls"
+                      >What we learned from 1,000 customer calls</a
+                    >
+                  </h2>
+                  <p class="bootcn-blog__excerpt">
+                    Patterns, surprises and the feature requests we are glad we said no to.
+                  </p>
+                  <p class="bootcn-blog__byline">
+                    <span class="bootcn-avatar bootcn-avatar--sm" aria-hidden="true"
+                      ><span class="bootcn-avatar__fallback">SD</span></span
+                    >
+                    <span
+                      ><span class="bootcn-blog__author">Sofia Davis</span> ·
+                      <time datetime="2026-10-21">21 Oct 2026</time></span
+                    >
+                  </p>
+                </div>
+              </article>
+            </li>
+            <li class="bootcn-blog__post" data-category="engineering">
+              <article class="bootcn-blog__card" aria-labelledby="bootcn-blog-rate-limits">
+                <div
+                  class="bootcn-blog__cover"
+                  style="--bootcn-blog-cover: linear-gradient(135deg, #0ea5e9, #6366f1)"
+                  aria-hidden="true"
+                ></div>
+                <div class="bootcn-blog__body">
+                  <p class="bootcn-blog__meta">
+                    <span class="badge bootcn-badge bootcn-badge--secondary">Engineering</span
+                    ><span>9 min read</span>
+                  </p>
+                  <h2 class="bootcn-blog__post-title" id="bootcn-blog-rate-limits">
+                    <a class="bootcn-blog__link" href="#rate-limits"
+                      >A practical guide to API rate limits</a
+                    >
+                  </h2>
+                  <p class="bootcn-blog__excerpt">
+                    Token buckets, friendly error messages and headers your users will thank you
+                    for.
+                  </p>
+                  <p class="bootcn-blog__byline">
+                    <span class="bootcn-avatar bootcn-avatar--sm" aria-hidden="true"
+                      ><span class="bootcn-avatar__fallback">LJ</span></span
+                    >
+                    <span
+                      ><span class="bootcn-blog__author">Liam Johnson</span> ·
+                      <time datetime="2026-10-15">15 Oct 2026</time></span
+                    >
+                  </p>
+                </div>
+              </article>
+            </li>
+            <li class="bootcn-blog__post" data-category="company">
+              <article class="bootcn-blog__card" aria-labelledby="bootcn-blog-remote-handbook">
+                <div
+                  class="bootcn-blog__cover"
+                  style="--bootcn-blog-cover: linear-gradient(135deg, #64748b, #0f172a)"
+                  aria-hidden="true"
+                ></div>
+                <div class="bootcn-blog__body">
+                  <p class="bootcn-blog__meta">
+                    <span class="badge bootcn-badge bootcn-badge--secondary">Company</span
+                    ><span>5 min read</span>
+                  </p>
+                  <h2 class="bootcn-blog__post-title" id="bootcn-blog-remote-handbook">
+                    <a class="bootcn-blog__link" href="#remote-handbook"
+                      >Our remote team handbook, now public</a
+                    >
+                  </h2>
+                  <p class="bootcn-blog__excerpt">
+                    How we write, meet and decide across five time zones.
+                  </p>
+                  <p class="bootcn-blog__byline">
+                    <span class="bootcn-avatar bootcn-avatar--sm" aria-hidden="true"
+                      ><span class="bootcn-avatar__fallback">EW</span></span
+                    >
+                    <span
+                      ><span class="bootcn-blog__author">Emma Wilson</span> ·
+                      <time datetime="2026-10-02">2 Oct 2026</time></span
+                    >
+                  </p>
+                </div>
+              </article>
+            </li>
+          </ul>
+          <p class="bootcn-blog__empty" data-blog-empty hidden>No posts on this topic yet.</p>
+          <nav class="bootcn-blog__pager" aria-label="Blog pages">
+            <a class="btn bootcn-button bootcn-button--outline" href="#page-2">Older posts</a>
+          </nav>
+        </section>
+      </div>
+    </main>
+    <footer class="bootcn-site-footer">
+      <div class="bootcn-site-footer__inner">
+        <div class="bootcn-site-footer__about">
+          <a class="bootcn-site-footer__brand" href="#">
+            <svg
+              class="bootcn-icon"
+              width="16"
+              height="16"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              aria-hidden="true"
+              focusable="false"
+            >
+              <rect x="3" y="3" width="8" height="8" rx="2" />
+              <rect x="13" y="13" width="8" height="8" rx="2" />
+              <path d="M13 7h8M17 3v8M3 17h8" />
+            </svg>
+            Acme
+          </a>
+          <p class="bootcn-site-footer__text">Pages, forms and dashboards your team can edit.</p>
+          <form
+            class="bootcn-site-footer__newsletter"
+            action="#"
+            aria-labelledby="bootcn-site-footer-news"
+          >
+            <p class="bootcn-site-footer__news-title" id="bootcn-site-footer-news">
+              Get product updates
+            </p>
+            <div class="bootcn-site-footer__news-row">
+              <label class="visually-hidden" for="bootcn-site-footer-email">Email address</label>
+              <input
+                class="form-control bootcn-input"
+                type="email"
+                id="bootcn-site-footer-email"
+                name="email"
+                autocomplete="email"
+                placeholder="you@example.com"
+                required
+              />
+              <button type="submit" class="btn bootcn-button bootcn-button--default">
+                Subscribe
+              </button>
+            </div>
+          </form>
+        </div>
+        <nav class="bootcn-site-footer__nav" aria-label="Footer">
+          <div class="bootcn-site-footer__column">
+            <h2 class="bootcn-site-footer__heading">Product</h2>
+            <ul class="bootcn-site-footer__links">
+              <li><a href="#">Features</a></li>
+              <li><a href="saas.html">Pricing</a></li>
+              <li><a href="saas-blog.html">Blog</a></li>
+              <li><a href="#">Roadmap</a></li>
+            </ul>
+          </div>
+          <div class="bootcn-site-footer__column">
+            <h2 class="bootcn-site-footer__heading">Company</h2>
+            <ul class="bootcn-site-footer__links">
+              <li><a href="#">About</a></li>
+              <li><a href="#">Customers</a></li>
+              <li><a href="#">Careers</a></li>
+              <li><a href="#">Contact</a></li>
+            </ul>
+          </div>
+          <div class="bootcn-site-footer__column">
+            <h2 class="bootcn-site-footer__heading">Resources</h2>
+            <ul class="bootcn-site-footer__links">
+              <li><a href="#">Documentation</a></li>
+              <li><a href="#">Guides</a></li>
+              <li><a href="#">Status</a></li>
+              <li><a href="#">Privacy</a></li>
+            </ul>
+          </div>
+        </nav>
+      </div>
+      <div class="bootcn-site-footer__bottom">
+        <p class="bootcn-site-footer__copyright">© 2026 Acme, Inc. All rights reserved.</p>
+        <ul class="bootcn-site-footer__social">
+          <li>
+            <a href="#" class="bootcn-site-footer__social-link">
+              <svg
+                class="bootcn-icon"
+                width="16"
+                height="16"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+                focusable="false"
+              >
+                <path d="M4 4l16 16M20 4 4 20" />
+              </svg>
+              <span class="visually-hidden">Acme on X</span>
+            </a>
+          </li>
+          <li>
+            <a href="#" class="bootcn-site-footer__social-link">
+              <svg
+                class="bootcn-icon"
+                width="16"
+                height="16"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+                focusable="false"
+              >
+                <path
+                  d="M9 19c-4.3 1.4-4.3-2.5-6-3m12 5v-3.5c0-1 .1-1.4-.5-2 2.8-.3 5.5-1.4 5.5-6a4.6 4.6 0 0 0-1.3-3.2 4.2 4.2 0 0 0-.1-3.2s-1.1-.3-3.5 1.3a12.3 12.3 0 0 0-6.2 0C6.5 2.8 5.4 3.1 5.4 3.1a4.2 4.2 0 0 0-.1 3.2A4.6 4.6 0 0 0 4 9.5c0 4.6 2.7 5.7 5.5 6-.6.6-.6 1.2-.5 2V21"
+                />
+              </svg>
+              <span class="visually-hidden">Acme on GitHub</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </footer>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.9/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-WyOxWvTyr1QaMPfiPJSv76iReVthorl5uWlFtZPyK0IEB0hGzo9y5Bp9mYanr8Bu"
+      crossorigin="anonymous"
+    ></script>
+    <script src="{{bootcn:js}}/blog-list.js"></script>
+    <script src="{{bootcn:js}}/saas.js"></script>
+  </body>
+</html>

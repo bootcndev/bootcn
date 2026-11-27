@@ -10,6 +10,21 @@ each published version stays available under `/v/<version>/`) and the **CLI**
 
 ## Registry
 
+### 0.38.0
+
+The SaaS template and a blog.
+
+- SaaS template in five pages: pricing with a plan comparison and FAQ, a
+  blog and an article page, an app dashboard with a trial banner, the
+  "Get started" checklist, usage and recent activity, and a billing page
+  with a "Change plan" dialog, payment methods and invoices.
+- Blog list block: a featured post across the row, post cards with
+  covers, topics, reading time and authors, and topic filters that say how
+  many posts they show.
+- Blog article block: readable long-form text, a sticky "On this page" that
+  follows your reading, a reading progress bar, Copy link and share
+  buttons, tags, the author's bio and related posts.
+
 ### 0.37.0
 
 iOS-style UI and a flow builder.

@@ -1,0 +1,220 @@
+.bootcn-blog {
+  display: grid;
+  gap: 1.5rem;
+}
+
+.bootcn-blog__header {
+  max-width: 40rem;
+}
+
+.bootcn-blog__eyebrow {
+  margin: 0 0 0.5rem;
+  color: var(--bootcn-muted-foreground);
+  font-size: 0.875rem;
+  font-weight: 500;
+}
+
+.bootcn-blog__title {
+  margin: 0;
+  font-size: clamp(1.75rem, 1.4rem + 1.5vw, 2.5rem);
+  font-weight: 700;
+  letter-spacing: -0.025em;
+  line-height: 1.15;
+}
+
+.bootcn-blog__lead {
+  margin: 0.75rem 0 0;
+  color: var(--bootcn-muted-foreground);
+  font-size: 1.0625rem;
+}
+
+.bootcn-blog__filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.bootcn-blog__filter {
+  padding: 0.3125rem 0.875rem;
+  border: var(--bootcn-border-width) solid var(--bootcn-border-color);
+  border-radius: 9999px;
+  background-color: var(--bootcn-background);
+  color: var(--bootcn-foreground);
+  font-size: 0.875rem;
+  font-weight: 500;
+}
+
+.bootcn-blog__filter:hover {
+  background-color: var(--bootcn-accent);
+}
+
+.bootcn-blog__filter[aria-pressed='true'] {
+  border-color: var(--bootcn-primary);
+  background-color: var(--bootcn-primary);
+  color: var(--bootcn-primary-foreground);
+}
+
+.bootcn-blog__filter:focus-visible {
+  outline: 0;
+  box-shadow: var(--bootcn-focus-ring);
+}
+
+.bootcn-blog__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 18rem), 1fr));
+  gap: 1.5rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.bootcn-blog__post[hidden] {
+  display: none;
+}
+
+.bootcn-blog__card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  overflow: hidden;
+  border: var(--bootcn-border-width) solid var(--bootcn-border-color);
+  border-radius: var(--bootcn-radius-xl);
+  background-color: var(--bootcn-background);
+  transition:
+    box-shadow 150ms ease,
+    transform 150ms ease;
+}
+
+.bootcn-blog__card:hover {
+  box-shadow: var(--bootcn-shadow-md);
+  transform: translateY(-2px);
+}
+
+.bootcn-blog__card:focus-within {
+  box-shadow: var(--bootcn-focus-ring);
+}
+
+/* Covers are gradients by default; put an <img> inside for a photo. */
+.bootcn-blog__cover {
+  aspect-ratio: 16 / 9;
+  background: var(--bootcn-blog-cover, var(--bootcn-muted));
+}
+
+.bootcn-blog__cover img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.bootcn-blog__body {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding: 1rem 1.25rem 1.25rem;
+}
+
+.bootcn-blog__meta {
+  display: flex;
+  align-items: center;
+  gap: 0.625rem;
+  margin: 0;
+  color: var(--bootcn-muted-foreground);
+  font-size: 0.8125rem;
+}
+
+.bootcn-blog__post-title {
+  margin: 0;
+  font-size: 1.125rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  line-height: 1.35;
+}
+
+.bootcn-blog__link {
+  color: var(--bootcn-foreground);
+  text-decoration: none;
+}
+
+/* The whole card is the link's target. */
+.bootcn-blog__link::after {
+  position: absolute;
+  inset: 0;
+  content: '';
+}
+
+.bootcn-blog__link:focus-visible {
+  outline: 0;
+}
+
+.bootcn-blog__excerpt {
+  margin: 0;
+  color: var(--bootcn-muted-foreground);
+  font-size: 0.9375rem;
+}
+
+.bootcn-blog__byline {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin: auto 0 0;
+  padding-top: 0.5rem;
+  color: var(--bootcn-muted-foreground);
+  font-size: 0.8125rem;
+}
+
+.bootcn-blog__author {
+  color: var(--bootcn-foreground);
+  font-weight: 500;
+}
+
+/* The first post spans the row, picture beside the text from 768px. */
+@media (min-width: 768px) {
+  .bootcn-blog__post:has(.bootcn-blog__card--featured) {
+    grid-column: 1 / -1;
+  }
+
+  .bootcn-blog__card--featured {
+    flex-direction: row;
+  }
+
+  .bootcn-blog__card--featured .bootcn-blog__cover {
+    flex: 0 0 55%;
+    aspect-ratio: auto;
+    min-height: 18rem;
+  }
+
+  .bootcn-blog__card--featured .bootcn-blog__body {
+    justify-content: center;
+    padding: 2rem;
+  }
+
+  .bootcn-blog__card--featured .bootcn-blog__post-title {
+    font-size: 1.625rem;
+  }
+}
+
+.bootcn-blog__empty {
+  margin: 0;
+  padding: 2rem;
+  border: var(--bootcn-border-width) dashed var(--bootcn-border-color);
+  border-radius: var(--bootcn-radius-xl);
+  color: var(--bootcn-muted-foreground);
+  text-align: center;
+}
+
+.bootcn-blog__pager {
+  display: flex;
+  justify-content: center;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .bootcn-blog__card {
+    transition: none;
+  }
+
+  .bootcn-blog__card:hover {
+    transform: none;
+  }
+}

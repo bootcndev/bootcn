@@ -1,0 +1,77 @@
+{
+  "$schema": "../../schema/registry-item.schema.json",
+  "name": "saas",
+  "type": "registry:template",
+  "title": "SaaS",
+  "description": "A SaaS in five pages: pricing with a plan comparison and FAQ, a blog and an article page on the marketing side, and an app dashboard with a trial banner, onboarding and usage, plus a billing page with plan changes, payment methods and invoices.",
+  "version": "1.0.0",
+  "added": "0.38.0",
+  "categories": ["marketing", "dashboard"],
+  "dependencies": [],
+  "registryDependencies": [
+    "site-header",
+    "pricing-table",
+    "faq-section",
+    "call-to-action",
+    "site-footer",
+    "blog-list",
+    "blog-article",
+    "app-sidebar",
+    "user-menu",
+    "activity-feed",
+    "onboarding-checklist",
+    "meter",
+    "payment-methods",
+    "table",
+    "dialog",
+    "radio-group",
+    "card",
+    "badge",
+    "avatar",
+    "button",
+    "input",
+    "typography"
+  ],
+  "compatibility": {
+    "bootstrap": "5.3",
+    "platform": ["Bootstrap CSS", "Bootstrap JS bundle"]
+  },
+  "license": "MIT",
+  "files": [
+    {
+      "path": "saas.html",
+      "target": "saas.html",
+      "type": "registry:page"
+    },
+    {
+      "path": "saas-blog.html",
+      "target": "saas-blog.html",
+      "type": "registry:page"
+    },
+    {
+      "path": "saas-article.html",
+      "target": "saas-article.html",
+      "type": "registry:page"
+    },
+    {
+      "path": "saas-app.html",
+      "target": "saas-app.html",
+      "type": "registry:page"
+    },
+    {
+      "path": "saas-billing.html",
+      "target": "saas-billing.html",
+      "type": "registry:page"
+    },
+    {
+      "path": "saas.css",
+      "target": "saas.css",
+      "type": "registry:style"
+    },
+    {
+      "path": "saas.js",
+      "target": "saas.js",
+      "type": "registry:script"
+    }
+  ]
+}

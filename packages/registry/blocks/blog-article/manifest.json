@@ -1,0 +1,34 @@
+{
+  "$schema": "../../schema/registry-item.schema.json",
+  "name": "blog-article",
+  "type": "registry:block",
+  "title": "Blog article",
+  "description": "A blog post page: breadcrumb, title, lead and author, a cover, readable long-form text, a sticky \"On this page\" that follows your reading, share buttons, a reading progress bar, tags, an author bio and related posts.",
+  "version": "1.0.0",
+  "added": "0.38.0",
+  "categories": ["marketing"],
+  "dependencies": [],
+  "registryDependencies": ["button", "badge", "avatar", "typography", "blog-list"],
+  "compatibility": {
+    "bootstrap": "5.3",
+    "platform": ["Bootstrap CSS"]
+  },
+  "license": "MIT",
+  "files": [
+    {
+      "path": "blog-article.html",
+      "target": "blog-article.html",
+      "type": "registry:component"
+    },
+    {
+      "path": "blog-article.css",
+      "target": "blog-article.css",
+      "type": "registry:style"
+    },
+    {
+      "path": "blog-article.js",
+      "target": "blog-article.js",
+      "type": "registry:script"
+    }
+  ]
+}

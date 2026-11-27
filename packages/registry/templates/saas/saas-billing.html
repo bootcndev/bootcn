@@ -1,0 +1,1059 @@
+<!doctype html>
+<html lang="en" data-bs-theme="light">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Billing · Acme</title>
+    <script>
+      // Theme before the first paint: the saved choice, else the system setting.
+      (function () {
+        var theme = null;
+        try {
+          theme = localStorage.getItem('bootcn-theme');
+        } catch (error) {
+          theme = null;
+        }
+        if (theme !== 'dark' && theme !== 'light') {
+          theme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+        }
+        document.documentElement.setAttribute('data-bs-theme', theme);
+      })();
+    </script>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.9/dist/css/bootstrap.min.css"
+      integrity="sha384-yEPZ7jP9S0QKiUQ0m3jjsO4ProIW7wvR9gXkI7JOGa2XVsw53Yke2bsdkBbjmmiX"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="{{bootcn:css}}/tokens.css" />
+    <link rel="stylesheet" href="{{bootcn:css}}/button.css" />
+    <link rel="stylesheet" href="{{bootcn:css}}/badge.css" />
+    <link rel="stylesheet" href="{{bootcn:css}}/avatar.css" />
+    <link rel="stylesheet" href="{{bootcn:css}}/card.css" />
+    <link rel="stylesheet" href="{{bootcn:css}}/input.css" />
+    <link rel="stylesheet" href="{{bootcn:css}}/dropdown.css" />
+    <link rel="stylesheet" href="{{bootcn:css}}/user-menu.css" />
+    <link rel="stylesheet" href="{{bootcn:css}}/app-sidebar.css" />
+    <link rel="stylesheet" href="{{bootcn:css}}/activity-feed.css" />
+    <link rel="stylesheet" href="{{bootcn:css}}/meter.css" />
+    <link rel="stylesheet" href="{{bootcn:css}}/onboarding-checklist.css" />
+    <link rel="stylesheet" href="{{bootcn:css}}/radio-group.css" />
+    <link rel="stylesheet" href="{{bootcn:css}}/table.css" />
+    <link rel="stylesheet" href="{{bootcn:css}}/dialog.css" />
+    <link rel="stylesheet" href="{{bootcn:css}}/payment-card.css" />
+    <link rel="stylesheet" href="{{bootcn:css}}/payment-methods.css" />
+    <link rel="stylesheet" href="{{bootcn:css}}/saas.css" />
+  </head>
+  <body class="bootcn-saas-app">
+    <a class="visually-hidden-focusable bootcn-saas-app__skip" href="#main">Skip to content</a>
+    <div class="bootcn-saas-app__layout">
+      <aside
+        class="offcanvas-lg offcanvas-start bootcn-sidebar"
+        tabindex="-1"
+        id="bootcn-sidebar"
+        aria-label="Sidebar"
+      >
+        <div class="offcanvas-header bootcn-sidebar__header">
+          <p class="offcanvas-title bootcn-sidebar__brand">
+            <svg
+              class="bootcn-icon"
+              width="16"
+              height="16"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              aria-hidden="true"
+              focusable="false"
+            >
+              <rect x="3" y="3" width="8" height="8" rx="2" />
+              <rect x="13" y="13" width="8" height="8" rx="2" />
+              <path d="M13 7h8M17 3v8M3 17h8" />
+            </svg>
+            Acme
+          </p>
+          <button
+            type="button"
+            class="btn-close"
+            data-bs-dismiss="offcanvas"
+            data-bs-target="#bootcn-sidebar"
+            aria-label="Close menu"
+          ></button>
+        </div>
+        <div class="offcanvas-body bootcn-sidebar__body">
+          <a class="bootcn-sidebar__brand d-none d-lg-flex" href="saas-app.html">
+            <svg
+              class="bootcn-icon"
+              width="16"
+              height="16"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              aria-hidden="true"
+              focusable="false"
+            >
+              <rect x="3" y="3" width="8" height="8" rx="2" />
+              <rect x="13" y="13" width="8" height="8" rx="2" />
+              <path d="M13 7h8M17 3v8M3 17h8" />
+            </svg>
+            Acme
+          </a>
+          <nav class="bootcn-sidebar__nav" aria-label="Main">
+            <p class="bootcn-sidebar__heading" id="bootcn-sidebar-workspace">Workspace</p>
+            <ul class="bootcn-sidebar__list" aria-labelledby="bootcn-sidebar-workspace">
+              <li>
+                <a class="bootcn-sidebar__link" href="saas-app.html">
+                  <svg
+                    class="bootcn-icon"
+                    width="16"
+                    height="16"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    aria-hidden="true"
+                    focusable="false"
+                  >
+                    <path d="M3 11l9-8 9 8" />
+                    <path d="M5 10v10h14V10" />
+                  </svg>
+                  <span>Dashboard</span>
+                </a>
+              </li>
+              <li>
+                <a class="bootcn-sidebar__link" href="#projects">
+                  <svg
+                    class="bootcn-icon"
+                    width="16"
+                    height="16"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    aria-hidden="true"
+                    focusable="false"
+                  >
+                    <path d="M3 6h6l2 2h10v11H3z" />
+                  </svg>
+                  <span>Projects</span>
+                </a>
+              </li>
+              <li>
+                <a class="bootcn-sidebar__link" href="saas-billing.html" aria-current="page">
+                  <svg
+                    class="bootcn-icon"
+                    width="16"
+                    height="16"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    aria-hidden="true"
+                    focusable="false"
+                  >
+                    <rect x="2" y="5" width="20" height="14" rx="2" />
+                    <path d="M2 10h20" />
+                  </svg>
+                  <span>Billing</span>
+                </a>
+              </li>
+              <li>
+                <a class="bootcn-sidebar__link" href="#reports">
+                  <svg
+                    class="bootcn-icon"
+                    width="16"
+                    height="16"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    aria-hidden="true"
+                    focusable="false"
+                  >
+                    <path d="M4 20V10" />
+                    <path d="M10 20V4" />
+                    <path d="M16 20v-7" />
+                    <path d="M2 20h20" />
+                  </svg>
+                  <span>Reports</span>
+                </a>
+              </li>
+            </ul>
+            <p class="bootcn-sidebar__heading" id="bootcn-sidebar-account">Account</p>
+            <ul class="bootcn-sidebar__list" aria-labelledby="bootcn-sidebar-account">
+              <li>
+                <a class="bootcn-sidebar__link" href="#team">
+                  <svg
+                    class="bootcn-icon"
+                    width="16"
+                    height="16"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    aria-hidden="true"
+                    focusable="false"
+                  >
+                    <circle cx="9" cy="8" r="4" />
+                    <path d="M2 21c0-4 3-7 7-7s7 3 7 7" />
+                    <path d="M17 4a4 4 0 0 1 0 8" />
+                    <path d="M22 21c0-3-2-6-5-7" />
+                  </svg>
+                  <span>Team</span>
+                </a>
+              </li>
+              <li>
+                <a class="bootcn-sidebar__link" href="#settings">
+                  <svg
+                    class="bootcn-icon"
+                    width="16"
+                    height="16"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    aria-hidden="true"
+                    focusable="false"
+                  >
+                    <path d="M4 6h9" />
+                    <path d="M19 6h1" />
+                    <circle cx="16" cy="6" r="2" />
+                    <path d="M4 18h3" />
+                    <path d="M13 18h7" />
+                    <circle cx="10" cy="18" r="2" />
+                    <path d="M4 12h1" />
+                    <path d="M11 12h9" />
+                    <circle cx="8" cy="12" r="2" />
+                  </svg>
+                  <span>Settings</span>
+                </a>
+              </li>
+              <li>
+                <a class="bootcn-sidebar__link" href="#help">
+                  <svg
+                    class="bootcn-icon"
+                    width="16"
+                    height="16"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    aria-hidden="true"
+                    focusable="false"
+                  >
+                    <circle cx="12" cy="12" r="9" />
+                    <path d="M9.5 9a2.5 2.5 0 1 1 3.5 2.3c-.6.3-1 .9-1 1.7" />
+                    <path d="M12 17h.01" />
+                  </svg>
+                  <span>Help</span>
+                </a>
+              </li>
+            </ul>
+          </nav>
+          <div class="bootcn-sidebar__user">
+            <span class="bootcn-avatar bootcn-avatar--sm" aria-hidden="true"
+              ><span class="bootcn-avatar__fallback">OM</span></span
+            >
+            <div class="bootcn-sidebar__user-text">
+              <span class="bootcn-sidebar__user-name">Olivia Martin</span>
+              <span class="bootcn-sidebar__user-email">olivia@example.com</span>
+            </div>
+          </div>
+        </div>
+      </aside>
+      <div class="bootcn-saas-app__main">
+        <header class="bootcn-saas-app__topbar">
+          <button
+            class="btn bootcn-button bootcn-button--outline bootcn-button--sm d-lg-none bootcn-sidebar__open"
+            type="button"
+            data-bs-toggle="offcanvas"
+            data-bs-target="#bootcn-sidebar"
+            aria-controls="bootcn-sidebar"
+          >
+            <svg
+              class="bootcn-icon"
+              width="16"
+              height="16"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              aria-hidden="true"
+              focusable="false"
+            >
+              <path d="M4 6h16M4 12h16M4 18h16" />
+            </svg>
+            Menu
+          </button>
+          <form class="bootcn-saas-app__search" role="search" aria-label="Site" action="#">
+            <label class="visually-hidden" for="bootcn-saas-app-search">Search</label>
+            <input
+              class="form-control bootcn-input"
+              type="search"
+              id="bootcn-saas-app-search"
+              name="q"
+              placeholder="Search…"
+            />
+            <button type="submit" class="visually-hidden">Search</button>
+          </form>
+          <div class="bootcn-saas-app__topbar-end">
+            <button
+              type="button"
+              class="btn bootcn-button bootcn-button--ghost bootcn-button--icon"
+              data-bootcn-theme-toggle
+              aria-pressed="false"
+            >
+              <span class="visually-hidden">Dark mode</span>
+              <svg
+                class="bootcn-icon bootcn-saas-app__when-light"
+                width="16"
+                height="16"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+                focusable="false"
+              >
+                <path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5z" />
+              </svg>
+              <svg
+                class="bootcn-icon bootcn-saas-app__when-dark"
+                width="16"
+                height="16"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+                focusable="false"
+              >
+                <circle cx="12" cy="12" r="4" />
+                <path
+                  d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"
+                />
+              </svg>
+            </button>
+            <div class="dropdown bootcn-dropdown bootcn-user-menu">
+              <button
+                class="btn bootcn-user-menu__trigger"
+                type="button"
+                id="bootcn-saas-app-user-trigger"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+              >
+                <span class="bootcn-avatar bootcn-avatar--sm" aria-hidden="true"
+                  ><span class="bootcn-avatar__fallback">OM</span></span
+                >
+                <span class="bootcn-user-menu__name">Olivia Martin</span>
+                <svg
+                  class="bootcn-user-menu__chevron"
+                  width="16"
+                  height="16"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  aria-hidden="true"
+                  focusable="false"
+                >
+                  <path d="M6 9l6 6 6-6" />
+                </svg>
+              </button>
+              <ul
+                class="dropdown-menu dropdown-menu-end bootcn-dropdown__menu"
+                aria-labelledby="bootcn-saas-app-user-trigger"
+              >
+                <li>
+                  <p class="dropdown-header bootcn-user-menu__header">
+                    <span class="bootcn-user-menu__header-name">Olivia Martin</span>
+                    <span class="bootcn-user-menu__email">olivia@example.com</span>
+                  </p>
+                </li>
+                <li><hr class="dropdown-divider bootcn-dropdown__divider" /></li>
+                <li><a class="dropdown-item bootcn-dropdown__item" href="#profile">Profile</a></li>
+                <li>
+                  <a class="dropdown-item bootcn-dropdown__item" href="saas-billing.html"
+                    >Billing</a
+                  >
+                </li>
+                <li>
+                  <a class="dropdown-item bootcn-dropdown__item" href="#settings">Settings</a>
+                </li>
+                <li><hr class="dropdown-divider bootcn-dropdown__divider" /></li>
+                <li>
+                  <button
+                    class="dropdown-item bootcn-dropdown__item bootcn-dropdown__item--destructive"
+                    type="button"
+                  >
+                    Sign out
+                  </button>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </header>
+        <main class="bootcn-saas-app__content" id="main" tabindex="-1">
+          <div class="bootcn-saas-app__head">
+            <div>
+              <h1 class="bootcn-saas-app__title">Billing</h1>
+              <p class="bootcn-saas-app__lead">Your plan, usage, payment methods and invoices.</p>
+            </div>
+          </div>
+          <div class="bootcn-saas-app__grid">
+            <section
+              class="card bootcn-card bootcn-saas__plan"
+              aria-labelledby="bootcn-saas-plan-title"
+              data-saas-plan
+            >
+              <header class="bootcn-card__header">
+                <h2 class="bootcn-card__title" id="bootcn-saas-plan-title">Current plan</h2>
+                <p class="bootcn-card__description">
+                  Trial ends on <time datetime="2026-12-09">9 December 2026</time>.
+                </p>
+              </header>
+              <div class="card-body">
+                <p class="bootcn-saas__plan-current">
+                  <span data-saas-plan-name>Pro</span>
+                  <span class="badge bootcn-badge bootcn-badge--outline">Trial</span>
+                </p>
+                <p class="bootcn-saas__plan-cost">
+                  <span data-saas-plan-price>€19</span> per month, billed monthly
+                </p>
+                <div class="bootcn-saas__plan-actions">
+                  <button
+                    type="button"
+                    class="btn bootcn-button bootcn-button--default"
+                    data-bs-toggle="modal"
+                    data-bs-target="#bootcn-saas-plan-dialog"
+                  >
+                    Change plan
+                  </button>
+                  <a class="btn bootcn-button bootcn-button--ghost" href="#cancel">Cancel trial</a>
+                </div>
+              </div>
+            </section>
+            <section class="card bootcn-card" aria-labelledby="bootcn-saas-billing-usage-title">
+              <header class="bootcn-card__header">
+                <h2 class="bootcn-card__title" id="bootcn-saas-billing-usage-title">
+                  Usage this month
+                </h2>
+                <p class="bootcn-card__description">Resets on 1 December.</p>
+              </header>
+              <div class="card-body bootcn-saas__usage">
+                <div class="bootcn-meter">
+                  <div class="bootcn-meter__head">
+                    <label for="bootcn-saas-seats">Team members</label>
+                    <span aria-hidden="true">4 of 5</span>
+                  </div>
+                  <meter
+                    class="bootcn-meter__bar"
+                    id="bootcn-saas-seats"
+                    min="0"
+                    max="5"
+                    low="3.5"
+                    high="4.5"
+                    optimum="0"
+                    value="4"
+                  >
+                    4 of 5
+                  </meter>
+                </div>
+                <div class="bootcn-meter">
+                  <div class="bootcn-meter__head">
+                    <label for="bootcn-saas-storage">Storage</label>
+                    <span aria-hidden="true">3.2 GB of 10 GB</span>
+                  </div>
+                  <meter
+                    class="bootcn-meter__bar"
+                    id="bootcn-saas-storage"
+                    min="0"
+                    max="10"
+                    low="7"
+                    high="9"
+                    optimum="0"
+                    value="3.2"
+                  >
+                    3.2 GB of 10 GB
+                  </meter>
+                </div>
+                <div class="bootcn-meter">
+                  <div class="bootcn-meter__head">
+                    <label for="bootcn-saas-api">API calls this month</label>
+                    <span aria-hidden="true">612,000 of 1 million</span>
+                  </div>
+                  <meter
+                    class="bootcn-meter__bar"
+                    id="bootcn-saas-api"
+                    min="0"
+                    max="1000"
+                    low="700"
+                    high="900"
+                    optimum="0"
+                    value="612"
+                  >
+                    612,000 of 1 million
+                  </meter>
+                </div>
+              </div>
+            </section>
+          </div>
+          <section
+            class="bootcn-methods"
+            data-bootcn-methods
+            aria-labelledby="bootcn-methods-title"
+          >
+            <header class="bootcn-methods__header">
+              <div>
+                <h2 class="bootcn-methods__heading" id="bootcn-methods-title">Payment methods</h2>
+                <p class="bootcn-methods__description">
+                  Cards used for your subscription and orders.
+                </p>
+              </div>
+              <button
+                type="button"
+                class="btn bootcn-button bootcn-button--default"
+                data-bootcn-methods-add
+              >
+                <svg
+                  class="bootcn-icon"
+                  width="16"
+                  height="16"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  aria-hidden="true"
+                  focusable="false"
+                >
+                  <path d="M12 5v14M5 12h14" />
+                </svg>
+                Add card
+              </button>
+            </header>
+            <ul class="bootcn-methods__list" data-bootcn-methods-list>
+              <li
+                class="bootcn-methods__item"
+                data-card-id="pm1"
+                data-brand="visa"
+                data-last4="4242"
+                data-name="Olivia Martin"
+                data-expiry="12 / 28"
+              >
+                <span
+                  class="bootcn-pay-card bootcn-pay-card--mini"
+                  data-brand="visa"
+                  aria-hidden="true"
+                  ><span class="bootcn-pay-card__inner"
+                    ><span class="bootcn-pay-card__face"
+                      ><span class="bootcn-pay-card__brand">Visa</span></span
+                    ></span
+                  ></span
+                >
+                <div class="bootcn-methods__text">
+                  <p class="bootcn-methods__title">
+                    Visa ending 4242
+                    <span
+                      class="badge bootcn-badge bootcn-badge--secondary"
+                      data-bootcn-methods-default
+                      >Default</span
+                    >
+                  </p>
+                  <p class="bootcn-methods__meta">Expires 12 / 28</p>
+                </div>
+                <div class="bootcn-methods__actions">
+                  <button
+                    type="button"
+                    class="btn bootcn-button bootcn-button--ghost bootcn-button--sm"
+                    data-bootcn-methods-make-default
+                    hidden
+                  >
+                    Set as default
+                  </button>
+                  <button
+                    type="button"
+                    class="btn bootcn-button bootcn-button--outline bootcn-button--sm"
+                    data-bootcn-methods-edit
+                    aria-label="Edit Visa ending 4242"
+                  >
+                    Edit
+                  </button>
+                  <button
+                    type="button"
+                    class="btn bootcn-button bootcn-button--ghost bootcn-button--sm"
+                    data-bootcn-methods-remove
+                    aria-label="Remove Visa ending 4242"
+                  >
+                    Remove
+                  </button>
+                </div>
+              </li>
+              <li
+                class="bootcn-methods__item"
+                data-card-id="pm2"
+                data-brand="mastercard"
+                data-last4="4444"
+                data-name="Olivia Martin"
+                data-expiry="03 / 27"
+              >
+                <span
+                  class="bootcn-pay-card bootcn-pay-card--mini"
+                  data-brand="mastercard"
+                  aria-hidden="true"
+                  ><span class="bootcn-pay-card__inner"
+                    ><span class="bootcn-pay-card__face"
+                      ><span class="bootcn-pay-card__brand">Mastercard</span></span
+                    ></span
+                  ></span
+                >
+                <div class="bootcn-methods__text">
+                  <p class="bootcn-methods__title">Mastercard ending 4444</p>
+                  <p class="bootcn-methods__meta">Expires 03 / 27</p>
+                </div>
+                <div class="bootcn-methods__actions">
+                  <button
+                    type="button"
+                    class="btn bootcn-button bootcn-button--ghost bootcn-button--sm"
+                    data-bootcn-methods-make-default
+                  >
+                    Set as default
+                  </button>
+                  <button
+                    type="button"
+                    class="btn bootcn-button bootcn-button--outline bootcn-button--sm"
+                    data-bootcn-methods-edit
+                    aria-label="Edit Mastercard ending 4444"
+                  >
+                    Edit
+                  </button>
+                  <button
+                    type="button"
+                    class="btn bootcn-button bootcn-button--ghost bootcn-button--sm"
+                    data-bootcn-methods-remove
+                    aria-label="Remove Mastercard ending 4444"
+                  >
+                    Remove
+                  </button>
+                </div>
+              </li>
+            </ul>
+            <p class="bootcn-methods__empty" data-bootcn-methods-empty hidden>No cards yet.</p>
+            <p class="visually-hidden" aria-live="polite" data-bootcn-methods-live></p>
+
+            <div
+              class="modal fade bootcn-dialog bootcn-modal bootcn-modal--sheet"
+              id="bootcn-methods-dialog"
+              tabindex="-1"
+              aria-labelledby="bootcn-methods-dialog-title"
+            >
+              <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h2
+                      class="modal-title bootcn-dialog__title"
+                      id="bootcn-methods-dialog-title"
+                      data-bootcn-methods-dialog-title
+                    >
+                      Add a card
+                    </h2>
+                    <button
+                      type="button"
+                      class="btn-close"
+                      data-bs-dismiss="modal"
+                      aria-label="Close"
+                    ></button>
+                  </div>
+                  <div class="modal-body bootcn-methods__dialog-body">
+                    <div
+                      class="bootcn-pay-card"
+                      id="bootcn-methods-card"
+                      data-bootcn-pay-card
+                      data-brand=""
+                      aria-hidden="true"
+                    >
+                      <div class="bootcn-pay-card__inner">
+                        <div class="bootcn-pay-card__face bootcn-pay-card__front">
+                          <div class="bootcn-pay-card__top">
+                            <span class="bootcn-pay-card__chip"></span>
+                            <span class="bootcn-pay-card__brand" data-bootcn-pay-brand></span>
+                          </div>
+                          <span></span>
+                          <p class="bootcn-pay-card__number" data-bootcn-pay-number>
+                            •••• •••• •••• ••••
+                          </p>
+                          <div class="bootcn-pay-card__bottom">
+                            <span
+                              ><span class="bootcn-pay-card__label">Card holder</span
+                              ><span class="bootcn-pay-card__name" data-bootcn-pay-name
+                                >Your name</span
+                              ></span
+                            >
+                            <span
+                              ><span class="bootcn-pay-card__label">Expires</span
+                              ><span data-bootcn-pay-expiry>MM / YY</span></span
+                            >
+                          </div>
+                        </div>
+                        <div class="bootcn-pay-card__face bootcn-pay-card__back">
+                          <div class="bootcn-pay-card__stripe"></div>
+                          <div class="bootcn-pay-card__signature" data-bootcn-pay-cvc>•••</div>
+                        </div>
+                      </div>
+                    </div>
+                    <form
+                      class="bootcn-pay-form"
+                      data-bootcn-pay-form="bootcn-methods-card"
+                      novalidate
+                    >
+                      <div class="bootcn-pay-form__grid">
+                        <div class="bootcn-field bootcn-pay-form__wide">
+                          <label class="form-label bootcn-label" for="bootcn-methods-number"
+                            >Card number</label
+                          >
+                          <input
+                            class="form-control bootcn-input"
+                            id="bootcn-methods-number"
+                            type="text"
+                            name="card_number"
+                            inputmode="numeric"
+                            autocomplete="cc-number"
+                            required
+                            placeholder="1234 1234 1234 1234"
+                            aria-describedby="bootcn-methods-number-error"
+                          />
+                          <div class="invalid-feedback" id="bootcn-methods-number-error">
+                            Check the card number.
+                          </div>
+                        </div>
+                        <div class="bootcn-field bootcn-pay-form__wide">
+                          <label class="form-label bootcn-label" for="bootcn-methods-name"
+                            >Name on card</label
+                          >
+                          <input
+                            class="form-control bootcn-input"
+                            id="bootcn-methods-name"
+                            type="text"
+                            name="card_name"
+                            autocomplete="cc-name"
+                            required
+                            aria-describedby="bootcn-methods-name-error"
+                          />
+                          <div class="invalid-feedback" id="bootcn-methods-name-error">
+                            Enter the name as it appears on the card.
+                          </div>
+                        </div>
+                        <div class="bootcn-field">
+                          <label class="form-label bootcn-label" for="bootcn-methods-expiry"
+                            >Expiry date</label
+                          >
+                          <input
+                            class="form-control bootcn-input"
+                            id="bootcn-methods-expiry"
+                            type="text"
+                            name="card_expiry"
+                            inputmode="numeric"
+                            autocomplete="cc-exp"
+                            required
+                            placeholder="MM / YY"
+                            aria-describedby="bootcn-methods-expiry-error"
+                          />
+                          <div class="invalid-feedback" id="bootcn-methods-expiry-error">
+                            Enter a date in the future, as MM / YY.
+                          </div>
+                        </div>
+                        <div class="bootcn-field">
+                          <label class="form-label bootcn-label" for="bootcn-methods-cvc"
+                            >Security code</label
+                          >
+                          <input
+                            class="form-control bootcn-input"
+                            id="bootcn-methods-cvc"
+                            type="text"
+                            name="card_cvc"
+                            inputmode="numeric"
+                            autocomplete="cc-csc"
+                            required
+                            minlength="3"
+                            maxlength="4"
+                            placeholder="CVC"
+                            aria-describedby="bootcn-methods-cvc-error"
+                          />
+                          <div class="invalid-feedback" id="bootcn-methods-cvc-error">
+                            Enter the 3 or 4 digits on the card.
+                          </div>
+                        </div>
+                      </div>
+                      <p class="bootcn-pay-form__note">
+                        <svg
+                          class="bootcn-icon"
+                          width="16"
+                          height="16"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          stroke="currentColor"
+                          stroke-width="2"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          aria-hidden="true"
+                          focusable="false"
+                        >
+                          <rect x="4" y="11" width="16" height="10" rx="2" />
+                          <path d="M8 11V7a4 4 0 0 1 8 0v4" />
+                        </svg>
+                        Card details go straight to the payment provider; this site keeps only the
+                        last four digits.
+                      </p>
+                      <button type="submit" class="btn bootcn-button bootcn-button--default">
+                        Save card
+                      </button>
+                    </form>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div
+              class="modal fade bootcn-dialog bootcn-alert-dialog"
+              id="bootcn-methods-remove"
+              tabindex="-1"
+              role="alertdialog"
+              aria-modal="true"
+              aria-labelledby="bootcn-methods-remove-title"
+              aria-describedby="bootcn-methods-remove-text"
+              data-bs-backdrop="static"
+            >
+              <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h2 class="modal-title bootcn-dialog__title" id="bootcn-methods-remove-title">
+                      Remove <span data-bootcn-methods-remove-name>this card</span>?
+                    </h2>
+                  </div>
+                  <div class="modal-body">
+                    <p class="bootcn-dialog__description" id="bootcn-methods-remove-text">
+                      You can add it again at any time.
+                    </p>
+                  </div>
+                  <div class="modal-footer bootcn-alert-dialog__footer">
+                    <button
+                      type="button"
+                      class="btn bootcn-button bootcn-button--outline"
+                      data-bs-dismiss="modal"
+                    >
+                      Cancel
+                    </button>
+                    <button
+                      type="button"
+                      class="btn bootcn-button bootcn-button--destructive"
+                      data-bootcn-methods-confirm-remove
+                    >
+                      Remove card
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+          <section class="card bootcn-card" aria-labelledby="bootcn-saas-invoices-title">
+            <header class="bootcn-card__header">
+              <h2 class="bootcn-card__title" id="bootcn-saas-invoices-title">Invoices</h2>
+              <p class="bootcn-card__description">
+                Sent to billing@acme.example on the first of each month.
+              </p>
+            </header>
+            <div class="table-responsive">
+              <table class="table bootcn-table mb-0">
+                <caption class="visually-hidden">
+                  Invoices
+                </caption>
+                <thead>
+                  <tr>
+                    <th scope="col">Date</th>
+                    <th scope="col">Description</th>
+                    <th scope="col" class="text-end">Amount</th>
+                    <th scope="col">Status</th>
+                    <th scope="col" class="text-end">
+                      <span class="visually-hidden">Download</span>
+                    </th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <th scope="row"><time datetime="2026-11-01">1 Nov 2026</time></th>
+                    <td>Pro plan, November</td>
+                    <td class="text-end">€19.00</td>
+                    <td><span class="badge bootcn-badge bootcn-badge--secondary">Paid</span></td>
+                    <td class="text-end">
+                      <a href="#INV-0042"
+                        >PDF<span class="visually-hidden">, invoice INV-0042</span></a
+                      >
+                    </td>
+                  </tr>
+                  <tr>
+                    <th scope="row"><time datetime="2026-10-01">1 Oct 2026</time></th>
+                    <td>Pro plan, October</td>
+                    <td class="text-end">€19.00</td>
+                    <td><span class="badge bootcn-badge bootcn-badge--secondary">Paid</span></td>
+                    <td class="text-end">
+                      <a href="#INV-0031"
+                        >PDF<span class="visually-hidden">, invoice INV-0031</span></a
+                      >
+                    </td>
+                  </tr>
+                  <tr>
+                    <th scope="row"><time datetime="2026-09-01">1 Sep 2026</time></th>
+                    <td>Pro plan, September, and 120,000 extra API calls</td>
+                    <td class="text-end">€25.00</td>
+                    <td><span class="badge bootcn-badge bootcn-badge--secondary">Paid</span></td>
+                    <td class="text-end">
+                      <a href="#INV-0027"
+                        >PDF<span class="visually-hidden">, invoice INV-0027</span></a
+                      >
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </section>
+          <div
+            class="modal fade bootcn-dialog"
+            id="bootcn-saas-plan-dialog"
+            tabindex="-1"
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="bootcn-saas-plan-dialog-title"
+          >
+            <div class="modal-dialog modal-dialog-centered">
+              <form class="modal-content" data-saas-plan-form>
+                <div class="modal-header">
+                  <h2 class="modal-title bootcn-dialog__title" id="bootcn-saas-plan-dialog-title">
+                    Change plan
+                  </h2>
+                  <button
+                    type="button"
+                    class="btn-close"
+                    data-bs-dismiss="modal"
+                    aria-label="Close dialog"
+                  ></button>
+                </div>
+                <div class="modal-body">
+                  <fieldset class="bootcn-saas__plan-options">
+                    <legend class="visually-hidden">Plan</legend>
+                    <div class="form-check bootcn-saas__plan-option">
+                      <input
+                        class="form-check-input"
+                        type="radio"
+                        name="plan"
+                        id="bootcn-saas-plan-starter"
+                        value="starter"
+                        data-plan-name="Starter"
+                        data-plan-price="€0"
+                      />
+                      <label class="form-check-label" for="bootcn-saas-plan-starter">
+                        <span class="bootcn-saas__plan-name"
+                          >Starter <span class="bootcn-saas__plan-price">€0 per month</span></span
+                        >
+                        <span class="bootcn-saas__plan-text"
+                          >For individuals and side projects.</span
+                        >
+                      </label>
+                    </div>
+                    <div class="form-check bootcn-saas__plan-option">
+                      <input
+                        class="form-check-input"
+                        type="radio"
+                        name="plan"
+                        id="bootcn-saas-plan-pro"
+                        value="pro"
+                        data-plan-name="Pro"
+                        data-plan-price="€19"
+                        checked
+                      />
+                      <label class="form-check-label" for="bootcn-saas-plan-pro">
+                        <span class="bootcn-saas__plan-name"
+                          >Pro <span class="bootcn-saas__plan-price">€19 per month</span></span
+                        >
+                        <span class="bootcn-saas__plan-text">For freelancers and small teams.</span>
+                      </label>
+                    </div>
+                    <div class="form-check bootcn-saas__plan-option">
+                      <input
+                        class="form-check-input"
+                        type="radio"
+                        name="plan"
+                        id="bootcn-saas-plan-team"
+                        value="team"
+                        data-plan-name="Team"
+                        data-plan-price="€49"
+                      />
+                      <label class="form-check-label" for="bootcn-saas-plan-team">
+                        <span class="bootcn-saas__plan-name"
+                          >Team <span class="bootcn-saas__plan-price">€49 per month</span></span
+                        >
+                        <span class="bootcn-saas__plan-text"
+                          >For companies with several products.</span
+                        >
+                      </label>
+                    </div>
+                  </fieldset>
+                </div>
+                <div class="modal-footer bootcn-dialog__footer">
+                  <button
+                    type="button"
+                    class="btn bootcn-button bootcn-button--outline bootcn-button--sm"
+                    data-bs-dismiss="modal"
+                  >
+                    Cancel
+                  </button>
+                  <button
+                    type="submit"
+                    class="btn bootcn-button bootcn-button--default bootcn-button--sm"
+                  >
+                    Switch plan
+                  </button>
+                </div>
+              </form>
+            </div>
+          </div>
+          <p class="visually-hidden" role="status" data-saas-status></p>
+        </main>
+      </div>
+    </div>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.9/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-WyOxWvTyr1QaMPfiPJSv76iReVthorl5uWlFtZPyK0IEB0hGzo9y5Bp9mYanr8Bu"
+      crossorigin="anonymous"
+    ></script>
+    <script src="{{bootcn:js}}/payment-methods.js"></script>
+    <script src="{{bootcn:js}}/saas.js"></script>
+  </body>
+</html>

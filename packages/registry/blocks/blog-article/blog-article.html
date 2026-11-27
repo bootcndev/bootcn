@@ -1,0 +1,328 @@
+<div class="bootcn-article-progress" aria-hidden="true"><span data-article-progress></span></div>
+<article class="bootcn-article" data-bootcn-article aria-labelledby="bootcn-article-title">
+  <header class="bootcn-article__header">
+    <nav aria-label="Breadcrumb">
+      <ol class="breadcrumb bootcn-article__crumbs">
+        <li class="breadcrumb-item"><a href="#">Blog</a></li>
+        <li class="breadcrumb-item active" aria-current="page">Engineering</li>
+      </ol>
+    </nav>
+    <h1 class="bootcn-article__title" id="bootcn-article-title">
+      How we cut our page load time in half
+    </h1>
+    <p class="bootcn-article__lead">
+      Six months, four fixes and one surprising culprit: what it took to get the dashboard under one
+      second.
+    </p>
+    <div class="bootcn-article__byline">
+      <span class="bootcn-avatar" aria-hidden="true"
+        ><span class="bootcn-avatar__fallback">LF</span></span
+      >
+      <p class="bootcn-article__author">
+        <strong>Lena Fischer</strong> <span>Staff engineer</span>
+      </p>
+      <p class="bootcn-article__meta">
+        <svg
+          class="bootcn-icon"
+          width="14"
+          height="14"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          aria-hidden="true"
+          focusable="false"
+        >
+          <circle cx="12" cy="12" r="9" />
+          <path d="M12 7v5l3 2" /></svg
+        ><time datetime="2026-11-20">20 Nov 2026</time> · 8 min read
+      </p>
+    </div>
+  </header>
+  <div
+    class="bootcn-article__cover"
+    style="--bootcn-blog-cover: linear-gradient(135deg, #0ea5e9, #6366f1)"
+    aria-hidden="true"
+  ></div>
+  <div class="bootcn-article__layout">
+    <div class="bootcn-article__body bootcn-typography">
+      <h2 id="measure">Measure before you change anything</h2>
+      <p>
+        We started with a hunch: the dashboard felt slow. Hunches are a poor guide, so for two weeks
+        we changed nothing and measured everything: real-user timings from every page view, split by
+        country, device and plan.
+      </p>
+      <p>
+        The numbers told a clearer story than our hunch. The median load was fine; the slowest tenth
+        of page views took more than four seconds, and almost all of them came from accounts with
+        large projects.
+      </p>
+      <h2 id="culprit">The surprising culprit</h2>
+      <p>
+        We expected the database. It was the browser. One chart rendered every data point it was
+        given, and large projects gave it tens of thousands.
+      </p>
+      <blockquote>
+        <p>
+          The fastest code is the code that never runs. We stopped drawing points nobody could see.
+        </p>
+      </blockquote>
+      <p>
+        Downsampling to the width of the chart, in pixels, kept the shape of every line and cut the
+        work by more than ninety percent.
+      </p>
+      <h2 id="fixes">Four fixes that mattered</h2>
+      <ol>
+        <li><strong>Downsample charts</strong> to one point per pixel.</li>
+        <li><strong>Stream the first screen</strong> and load the rest after it.</li>
+        <li>
+          <strong>Cache project summaries</strong> for a minute instead of rebuilding them on every
+          visit.
+        </li>
+        <li>
+          <strong>Ship less JavaScript</strong>: a date library we used in one place was a quarter
+          of the bundle.
+        </li>
+      </ol>
+      <pre><code>const step = Math.ceil(points.length / chart.width); // one point per pixel</code></pre>
+      <h2 id="results">The results</h2>
+      <table>
+        <caption>
+          Page load, slowest tenth of visits
+        </caption>
+        <thead>
+          <tr>
+            <th scope="col">Page</th>
+            <th scope="col">Before</th>
+            <th scope="col">After</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row">Dashboard</th>
+            <td>4.2 s</td>
+            <td>1.9 s</td>
+          </tr>
+          <tr>
+            <th scope="row">Project</th>
+            <td>5.1 s</td>
+            <td>2.3 s</td>
+          </tr>
+          <tr>
+            <th scope="row">Reports</th>
+            <td>3.8 s</td>
+            <td>1.7 s</td>
+          </tr>
+        </tbody>
+      </table>
+      <p>
+        Support tickets mentioning speed fell by two thirds the month after. The work is never done,
+        but we now check these numbers every week.
+      </p>
+    </div>
+    <div class="bootcn-article__aside">
+      <nav class="bootcn-article__toc" aria-labelledby="bootcn-article-toc-title">
+        <p class="bootcn-article__aside-title" id="bootcn-article-toc-title">On this page</p>
+        <ol>
+          <li><a href="#measure">Measure before you change anything</a></li>
+          <li><a href="#culprit">The surprising culprit</a></li>
+          <li><a href="#fixes">Four fixes that mattered</a></li>
+          <li><a href="#results">The results</a></li>
+        </ol>
+      </nav>
+      <div class="bootcn-article__share">
+        <p class="bootcn-article__aside-title" id="bootcn-article-share-title">Share</p>
+        <div
+          class="bootcn-article__share-links"
+          role="group"
+          aria-labelledby="bootcn-article-share-title"
+        >
+          <button
+            type="button"
+            class="btn bootcn-button bootcn-button--outline bootcn-button--sm"
+            data-article-copy
+          >
+            <svg
+              class="bootcn-icon"
+              width="14"
+              height="14"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              aria-hidden="true"
+              focusable="false"
+            >
+              <path d="M10 13a5 5 0 0 0 7.5.5l3-3a5 5 0 0 0-7-7l-1.7 1.7" />
+              <path d="M14 11a5 5 0 0 0-7.5-.5l-3 3a5 5 0 0 0 7 7l1.7-1.7" /></svg
+            ><span data-article-copy-label>Copy link</span>
+          </button>
+          <a
+            class="btn bootcn-button bootcn-button--outline bootcn-button--sm bootcn-button--icon"
+            href="https://x.com/intent/post"
+            data-article-share="x"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Share on X (opens in a new tab)"
+            ><svg
+              class="bootcn-icon"
+              width="14"
+              height="14"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              aria-hidden="true"
+              focusable="false"
+            >
+              <path d="M4 4l16 16M20 4 4 20" /></svg
+          ></a>
+          <a
+            class="btn bootcn-button bootcn-button--outline bootcn-button--sm bootcn-button--icon"
+            href="https://www.linkedin.com/sharing/share-offsite/"
+            data-article-share="linkedin"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Share on LinkedIn (opens in a new tab)"
+            ><svg
+              class="bootcn-icon"
+              width="14"
+              height="14"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              aria-hidden="true"
+              focusable="false"
+            >
+              <rect x="3" y="3" width="18" height="18" rx="2" />
+              <path d="M8 10v7M8 7v.01M12 17v-4a2 2 0 0 1 4 0v4M12 10v7" /></svg
+          ></a>
+        </div>
+        <p class="visually-hidden" role="status" data-article-status></p>
+      </div>
+    </div>
+  </div>
+  <footer class="bootcn-article__footer">
+    <ul class="bootcn-article__tags" aria-label="Tags">
+      <li><a href="#performance">Performance</a></li>
+      <li><a href="#charts">Charts</a></li>
+      <li><a href="#engineering">Engineering</a></li>
+    </ul>
+    <div class="bootcn-article__bio">
+      <span class="bootcn-avatar bootcn-avatar--lg" aria-hidden="true"
+        ><span class="bootcn-avatar__fallback">LF</span></span
+      >
+      <div>
+        <p class="bootcn-article__bio-name">Written by Lena Fischer</p>
+        <p class="bootcn-article__bio-text">
+          Lena works on the performance and reliability of the Acme dashboard, and writes about the
+          small changes that make software feel fast.
+        </p>
+      </div>
+    </div>
+  </footer>
+</article>
+<section class="bootcn-article__related" aria-labelledby="bootcn-article-related-title">
+  <h2 class="bootcn-article__related-title" id="bootcn-article-related-title">Keep reading</h2>
+  <ul class="bootcn-blog__grid">
+    <li class="bootcn-blog__post" data-category="engineering">
+      <article class="bootcn-blog__card" aria-labelledby="bootcn-blog-rate-limits">
+        <div
+          class="bootcn-blog__cover"
+          style="--bootcn-blog-cover: linear-gradient(135deg, #0ea5e9, #6366f1)"
+          aria-hidden="true"
+        ></div>
+        <div class="bootcn-blog__body">
+          <p class="bootcn-blog__meta">
+            <span class="badge bootcn-badge bootcn-badge--secondary">Engineering</span
+            ><span>9 min read</span>
+          </p>
+          <h3 class="bootcn-blog__post-title" id="bootcn-blog-rate-limits">
+            <a class="bootcn-blog__link" href="#">A practical guide to API rate limits</a>
+          </h3>
+          <p class="bootcn-blog__excerpt">
+            Token buckets, friendly error messages and headers your users will thank you for.
+          </p>
+          <p class="bootcn-blog__byline">
+            <span class="bootcn-avatar bootcn-avatar--sm" aria-hidden="true"
+              ><span class="bootcn-avatar__fallback">LJ</span></span
+            >
+            <span
+              ><span class="bootcn-blog__author">Liam Johnson</span> ·
+              <time datetime="2026-10-15">15 Oct 2026</time></span
+            >
+          </p>
+        </div>
+      </article>
+    </li>
+    <li class="bootcn-blog__post" data-category="product">
+      <article class="bootcn-blog__card" aria-labelledby="bootcn-blog-usage-billing">
+        <div
+          class="bootcn-blog__cover"
+          style="--bootcn-blog-cover: linear-gradient(135deg, #8b5cf6, #ec4899)"
+          aria-hidden="true"
+        ></div>
+        <div class="bootcn-blog__body">
+          <p class="bootcn-blog__meta">
+            <span class="badge bootcn-badge bootcn-badge--secondary">Product</span
+            ><span>4 min read</span>
+          </p>
+          <h3 class="bootcn-blog__post-title" id="bootcn-blog-usage-billing">
+            <a class="bootcn-blog__link" href="#">Introducing usage-based billing</a>
+          </h3>
+          <p class="bootcn-blog__excerpt">
+            Pay for what your team actually uses, with a monthly cap you set yourself.
+          </p>
+          <p class="bootcn-blog__byline">
+            <span class="bootcn-avatar bootcn-avatar--sm" aria-hidden="true"
+              ><span class="bootcn-avatar__fallback">MB</span></span
+            >
+            <span
+              ><span class="bootcn-blog__author">Marco Bianchi</span> ·
+              <time datetime="2026-11-14">14 Nov 2026</time></span
+            >
+          </p>
+        </div>
+      </article>
+    </li>
+    <li class="bootcn-blog__post" data-category="design">
+      <article class="bootcn-blog__card" aria-labelledby="bootcn-blog-dark-mode">
+        <div
+          class="bootcn-blog__cover"
+          style="--bootcn-blog-cover: linear-gradient(135deg, #10b981, #0ea5e9)"
+          aria-hidden="true"
+        ></div>
+        <div class="bootcn-blog__body">
+          <p class="bootcn-blog__meta">
+            <span class="badge bootcn-badge bootcn-badge--secondary">Design</span
+            ><span>5 min read</span>
+          </p>
+          <h3 class="bootcn-blog__post-title" id="bootcn-blog-dark-mode">
+            <a class="bootcn-blog__link" href="#">Designing for dark mode from day one</a>
+          </h3>
+          <p class="bootcn-blog__excerpt">
+            Tokens, contrast checks and the three mistakes we made before we got it right.
+          </p>
+          <p class="bootcn-blog__byline">
+            <span class="bootcn-avatar bootcn-avatar--sm" aria-hidden="true"
+              ><span class="bootcn-avatar__fallback">NB</span></span
+            >
+            <span
+              ><span class="bootcn-blog__author">Noah Brown</span> ·
+              <time datetime="2026-10-29">29 Oct 2026</time></span
+            >
+          </p>
+        </div>
+      </article>
+    </li>
+  </ul>
+</section>

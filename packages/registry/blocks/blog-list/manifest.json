@@ -1,0 +1,34 @@
+{
+  "$schema": "../../schema/registry-item.schema.json",
+  "name": "blog-list",
+  "type": "registry:block",
+  "title": "Blog list",
+  "description": "A blog index: a featured post across the row, a grid of post cards with covers, topics, reading time and authors, topic filters with a live count, and a link to older posts.",
+  "version": "1.0.0",
+  "added": "0.38.0",
+  "categories": ["marketing"],
+  "dependencies": [],
+  "registryDependencies": ["button", "badge", "avatar"],
+  "compatibility": {
+    "bootstrap": "5.3",
+    "platform": ["Bootstrap CSS"]
+  },
+  "license": "MIT",
+  "files": [
+    {
+      "path": "blog-list.html",
+      "target": "blog-list.html",
+      "type": "registry:component"
+    },
+    {
+      "path": "blog-list.css",
+      "target": "blog-list.css",
+      "type": "registry:style"
+    },
+    {
+      "path": "blog-list.js",
+      "target": "blog-list.js",
+      "type": "registry:script"
+    }
+  ]
+}

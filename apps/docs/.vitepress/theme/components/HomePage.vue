@@ -29,6 +29,7 @@ const showcase = [
   { label: 'Analytics', name: 'analytics-dashboard' },
   { label: 'Landing page', name: 'landing-page' },
   { label: 'Settings', name: 'settings-page' },
+  { label: 'SaaS', name: 'saas' },
 ];
 
 // Newest first: live previews in two staggered columns (each card as tall
@@ -65,6 +66,8 @@ const latest = [
 ];
 
 const alsoNew = [
+  { text: 'SaaS template', href: '/templates/saas' },
+  { text: 'Blog article', href: '/blocks/blog-article' },
   { text: 'Flow builder', href: '/components/flow-builder' },
   { text: 'Swipe actions', href: '/components/swipe-actions' },
   { text: 'Tab bar', href: '/components/tab-bar' },
@@ -73,8 +76,6 @@ const alsoNew = [
   { text: 'Signature pad', href: '/components/signature-pad' },
   { text: 'Route tracker', href: '/components/route-tracker' },
   { text: 'Product tour', href: '/components/tour' },
-  { text: 'Modal', href: '/components/modal' },
-  { text: 'Stepper', href: '/components/stepper' },
 ];
 
 const live = [
@@ -148,7 +149,7 @@ const features = [
       />
       <a class="bootcn-landing__pill" :href="withBase('/changelog')">
         <span class="bootcn-landing__pill-tag">New</span>
-        A flow builder and iOS-style navigation
+        A SaaS template, a blog and a flow builder
         <span aria-hidden="true">→</span>
       </a>
       <h1 id="bootcn-landing-title" class="bootcn-landing__title">

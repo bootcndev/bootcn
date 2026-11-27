@@ -241,11 +241,14 @@ test('items from the latest releases are marked New', async ({ page }) => {
         added?: string;
       }
     ).added;
-  const latest = components.map((item) => item.name).find((name) => added(name) === version);
-  test.skip(!latest, 'no component in this release to check');
+  // New means this release or the one before (NEW_RELEASES in registry.ts).
+  const [major, minor] = version.split('.').map(Number);
+  const recent = [version, `${major}.${minor! - 1}.0`];
+  const latest = components.map((item) => item.name).find((name) => recent.includes(added(name)!));
+  test.skip(!latest, 'no component in the last two releases to check');
 
   await page.goto(`components/${latest}`);
-  await expect(page.locator('.bootcn-meta__new')).toHaveText(`New in ${version}`);
+  await expect(page.locator('.bootcn-meta__new')).toHaveText(`New in ${added(latest!)}`);
   const title = index.items.find((item) => item.name === latest)!.title;
   await expect(
     page.locator('.VPSidebar').getByRole('link', { name: `${title} New`, exact: true }),
@@ -801,3 +804,47 @@ for (const pageName of ['crm-contacts', 'crm-contact']) {
     });
   }
 }
+
+for (const pageName of ['saas', 'saas-blog', 'saas-article', 'saas-app', 'saas-billing']) {
+  for (const theme of ['light', 'dark'] as const) {
+    test(`saas template: ${pageName} has no axe violations in ${theme} mode`, async ({ page }) => {
+      await page.addInitScript((t) => localStorage.setItem('bootcn-theme', t), theme);
+      await page.goto(`previews/templates/saas/${pageName}.html`);
+      await expect(page.locator('html')).toHaveAttribute('data-bs-theme', theme);
+      await expect(page.getByRole('heading', { level: 1 })).toHaveCount(1);
+      const results = await new AxeBuilder({ page }).analyze();
+      expect(results.violations.map((v) => `${v.id}: ${v.help}`)).toEqual([]);
+    });
+  }
+}
+
+test('saas template: the pages link to each other', async ({ page }) => {
+  await page.setViewportSize({ width: 1280, height: 900 });
+  await page.goto('previews/templates/saas/saas.html');
+  const nav = page.getByRole('navigation', { name: 'Main' });
+  await expect(nav.getByRole('link', { name: 'Pricing' })).toHaveAttribute('aria-current', 'page');
+  await nav.getByRole('link', { name: 'Blog' }).click();
+  await expect(page).toHaveURL(/saas-blog\.html$/);
+  await page.getByRole('link', { name: 'How we cut our page load time in half' }).click();
+  await expect(page).toHaveURL(/saas-article\.html$/);
+  await page.getByRole('link', { name: 'Sign in' }).click();
+  await expect(page).toHaveURL(/saas-app\.html$/);
+  await page.getByRole('link', { name: 'Choose a plan' }).click();
+  await expect(page).toHaveURL(/saas-billing\.html$/);
+  await expect(
+    page.getByRole('navigation', { name: 'Main' }).getByRole('link', { name: 'Billing' }),
+  ).toHaveAttribute('aria-current', 'page');
+});
+
+test('saas template: change plan updates the billing page', async ({ page }) => {
+  await page.goto('previews/templates/saas/saas-billing.html');
+  await page.getByRole('button', { name: 'Change plan' }).click();
+  const dialog = page.getByRole('dialog', { name: 'Change plan' });
+  await expect(dialog.getByRole('radio', { name: /^Pro/ })).toBeChecked();
+  await dialog.getByRole('radio', { name: /^Team/ }).check();
+  await dialog.getByRole('button', { name: 'Switch plan' }).click();
+  await expect(dialog).toBeHidden();
+  await expect(page.locator('[data-saas-plan-name]')).toHaveText('Team');
+  await expect(page.locator('[data-saas-plan-price]')).toHaveText('€49');
+  await expect(page.locator('[data-saas-status]')).toHaveText('Switched to the Team plan');
+});
