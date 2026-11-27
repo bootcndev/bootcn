@@ -10,6 +10,12 @@
   font-size: 0.875rem;
 }
 
+/* A scrolling wrapper contains the absolutely positioned visually hidden
+   text in its cells; otherwise it widens the page on phones. */
+.table-responsive:has(> .bootcn-table) {
+  position: relative;
+}
+
 .bootcn-table > caption {
   padding-top: 1rem;
   color: var(--bootcn-muted-foreground);

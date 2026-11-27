@@ -21,6 +21,8 @@ More React and Vue components.
 - Item pages show the React and Vue code under "React and Vue".
 - Both example apps are type-checked (TypeScript and vue-tsc) and tested in
   CI after the CLI installs the components.
+- Table 1.0.1: in a scrolling `.table-responsive`, the visually hidden text
+  in cells no longer widens the page on phones.
 
 ### 0.43.0
 
