@@ -3,7 +3,11 @@
  */
 import { expect, test } from '@playwright/test';
 
-import { expectNoAxeViolations, openPreview } from './helpers.js';
+import {
+  expectNoAxeViolations,
+  expectNoAxeViolationsExceptFirefox,
+  openPreview,
+} from './helpers.js';
 
 test('blog list: topic filters show matching posts and say how many', async ({ page }) => {
   await openPreview(page, 'blog-list', 'blocks');
@@ -58,5 +62,9 @@ test('blog article: contents follow the reading, copy link, share links', async 
     await page.getByRole('button', { name: 'Copy link' }).click();
     await expect(page.locator('[data-article-status]')).toHaveText('Link copied');
   }
-  await expectNoAxeViolations(page);
+  await expectNoAxeViolationsExceptFirefox(
+    page,
+    browserName,
+    'axe crashes this page in Firefox on CI; covered in Chromium and WebKit',
+  );
 });

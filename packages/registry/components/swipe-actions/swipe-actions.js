@@ -222,6 +222,13 @@
     });
   }
 
+  // Firefox starts dragging the row's link (and cancels the pointer) on a
+  // mouse swipe; the row moves instead.
+  function onDragStart(event) {
+    if (event.target.closest && event.target.closest(ROOT + ' .bootcn-swipe__content'))
+      event.preventDefault();
+  }
+
   function onFocusIn(event) {
     const button = event.target.closest && event.target.closest('.bootcn-swipe__action');
     const row = button && button.closest(ROW);
@@ -256,6 +263,7 @@
       document.addEventListener('pointerup', onPointerUp);
       document.addEventListener('pointercancel', onPointerUp);
       document.addEventListener('click', onClick, true);
+      document.addEventListener('dragstart', onDragStart);
       document.addEventListener('focusin', onFocusIn);
       document.addEventListener('focusout', onFocusOut);
       document.addEventListener('keydown', onKeydown);
@@ -271,6 +279,7 @@
     document.removeEventListener('pointerup', onPointerUp);
     document.removeEventListener('pointercancel', onPointerUp);
     document.removeEventListener('click', onClick, true);
+    document.removeEventListener('dragstart', onDragStart);
     document.removeEventListener('focusin', onFocusIn);
     document.removeEventListener('focusout', onFocusOut);
     document.removeEventListener('keydown', onKeydown);

@@ -94,6 +94,24 @@ export async function settleTransitions(page: Page): Promise<void> {
  * with axe in Chromium and WebKit; Firefox still runs every behaviour
  * assertion. The skip is recorded as a test annotation.
  */
+/**
+ * Some pages crash Firefox's page in CI while axe runs over them ("Page
+ * crashed" inside AxeBuilder.analyze), with no error in the page itself and
+ * no way to reproduce it locally. Those tests check axe in Chromium and
+ * WebKit; Firefox runs every behaviour assertion. Recorded as an annotation.
+ */
+export async function expectNoAxeViolationsExceptFirefox(
+  page: Page,
+  browserName: string,
+  reason: string,
+): Promise<void> {
+  if (browserName === 'firefox') {
+    test.info().annotations.push({ type: 'skip-axe', description: reason });
+    return;
+  }
+  await expectNoAxeViolations(page);
+}
+
 export async function expectNoAxeViolationsOnOverlay(
   page: Page,
   browserName: string,
