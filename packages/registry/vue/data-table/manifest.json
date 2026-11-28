@@ -1,0 +1,24 @@
+{
+  "$schema": "../../schema/registry-item.schema.json",
+  "name": "data-table",
+  "type": "registry:ui",
+  "title": "Data table (Vue)",
+  "description": "The data table as a Vue component: a table with sorting, filtering, pagination and row selection, enhancing server-rendered rows.",
+  "version": "1.0.0",
+  "added": "0.45.0",
+  "categories": ["data-display"],
+  "dependencies": [],
+  "registryDependencies": [],
+  "compatibility": {
+    "bootstrap": "5.3",
+    "platform": ["Bootstrap CSS"]
+  },
+  "license": "MIT",
+  "files": [
+    {
+      "path": "DataTable.vue",
+      "target": "DataTable.vue",
+      "type": "registry:vue"
+    }
+  ]
+}

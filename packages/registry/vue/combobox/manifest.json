@@ -1,0 +1,24 @@
+{
+  "$schema": "../../schema/registry-item.schema.json",
+  "name": "combobox",
+  "type": "registry:ui",
+  "title": "Combobox (Vue)",
+  "description": "The combobox as a Vue component: a searchable select: type to filter a list, pick one option or several (shown as chips), fully keyboard accessible.",
+  "version": "1.0.0",
+  "added": "0.45.0",
+  "categories": ["forms"],
+  "dependencies": [],
+  "registryDependencies": [],
+  "compatibility": {
+    "bootstrap": "5.3",
+    "platform": ["Bootstrap CSS"]
+  },
+  "license": "MIT",
+  "files": [
+    {
+      "path": "Combobox.vue",
+      "target": "Combobox.vue",
+      "type": "registry:vue"
+    }
+  ]
+}

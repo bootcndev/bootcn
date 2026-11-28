@@ -1,0 +1,24 @@
+{
+  "$schema": "../../schema/registry-item.schema.json",
+  "name": "popover",
+  "type": "registry:ui",
+  "title": "Popover (Vue)",
+  "description": "The popover as a Vue component: rich click-triggered overlays built on Bootstrap Popover, closable with Escape.",
+  "version": "1.0.0",
+  "added": "0.45.0",
+  "categories": ["overlays"],
+  "dependencies": ["bootstrap", "@popperjs/core"],
+  "registryDependencies": [],
+  "compatibility": {
+    "bootstrap": "5.3",
+    "platform": ["Bootstrap CSS", "Bootstrap JS bundle"]
+  },
+  "license": "MIT",
+  "files": [
+    {
+      "path": "Popover.vue",
+      "target": "Popover.vue",
+      "type": "registry:vue"
+    }
+  ]
+}

@@ -60,7 +60,8 @@ npx bootcn@latest add dialog data-table
   or `.vue` components in `src/components/ui` (CSS and JavaScript in
   `src/bootcn`) and prints the import lines. Components with one so far:
   button, dialog, toaster, input, textarea, select, checkbox, switch, tabs,
-  card, alert, badge, avatar. For other items it installs the CSS and
+  card, alert, badge, avatar, dropdown, tooltip, popover, sheet, combobox,
+  date-picker, data-table. For other items it installs the CSS and
   JavaScript; write the markup from the item's page as JSX or a template.
   Guides: https://bootcn.dev/guide/react and https://bootcn.dev/guide/vue.
 

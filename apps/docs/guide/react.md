@@ -69,18 +69,27 @@ export function App() {
 
 ## Components so far
 
-| Component                     | Props                                                                                                 |
-| ----------------------------- | ----------------------------------------------------------------------------------------------------- |
-| `Button`                      | `variant` (default, secondary, outline, ghost, destructive, link), `size`, and every button attribute |
-| `Dialog`                      | `open`, `onOpenChange`, `title`, `description`, `children`, `footer`, `size`                          |
-| `Toaster`                     | Put `<Toaster />` once; call `toast()`, `toast.success()`, `toast.promise()`…                         |
-| `Input`, `Textarea`, `Select` | `label`, `help`, `error`, and every attribute of the field; `Select` also `options` and `placeholder` |
-| `Checkbox`, `Switch`          | `label`, `checked`, `onChange`, and every input attribute                                             |
-| `Tabs`                        | `label`, `items` (`value`, `label`, `content`), `value` / `defaultValue`, `onValueChange`             |
-| `Card`                        | `title`, `description`, `titleAs`, `footer`, `children`                                               |
-| `Alert`                       | `title`, `variant` (default, destructive), `icon`, `children`                                         |
-| `Badge`                       | `variant` (default, secondary, outline, destructive)                                                  |
-| `Avatar`                      | `name`, `src` (initials when missing or broken), `fallback`, `size`, `square`                         |
+| Component                     | Props                                                                                                                                                                    |
+| ----------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `Button`                      | `variant` (default, secondary, outline, ghost, destructive, link), `size`, and every button attribute                                                                    |
+| `Dialog`                      | `open`, `onOpenChange`, `title`, `description`, `children`, `footer`, `size`                                                                                             |
+| `Toaster`                     | Put `<Toaster />` once; call `toast()`, `toast.success()`, `toast.promise()`…                                                                                            |
+| `Input`, `Textarea`, `Select` | `label`, `help`, `error`, and every attribute of the field; `Select` also `options` and `placeholder`                                                                    |
+| `Checkbox`, `Switch`          | `label`, `checked`, `onChange`, and every input attribute                                                                                                                |
+| `Tabs`                        | `label`, `items` (`value`, `label`, `content`), `value` / `defaultValue`, `onValueChange`                                                                                |
+| `Card`                        | `title`, `description`, `titleAs`, `footer`, `children`                                                                                                                  |
+| `Alert`                       | `title`, `variant` (default, destructive), `icon`, `children`                                                                                                            |
+| `Badge`                       | `variant` (default, secondary, outline, destructive)                                                                                                                     |
+| `Avatar`                      | `name`, `src` (initials when missing or broken), `fallback`, `size`, `square`                                                                                            |
+| `Dropdown`                    | `label`, `items` (`label`, `onSelect`, `href`, `shortcut`, `disabled`, `destructive`; or `type: 'label'` / `'separator'`), `variant`, `align`                            |
+| `Tooltip`, `Popover`          | Wrap one button: `content`, `placement`; Popover also `title` and `trigger` (click or focus)                                                                             |
+| `Sheet`                       | `open`, `onOpenChange`, `title`, `description`, `side` (start, end, top, bottom), `children`, `footer`                                                                   |
+| `Combobox`                    | `label`, `options` (`value`, `label`, `disabled`), `value` / `defaultValue`, `onValueChange`, `placeholder`, `emptyText`, `name`                                         |
+| `DatePicker`                  | `label`, `value` (YYYY-MM-DD), `onValueChange`, `min`, `max`, `weekStart`, `locale`, `name`                                                                              |
+| `DataTable`                   | `columns` (`key`, `header`, `sortable`, `numeric`, `align`, `cell`), `rows`, `rowId`, `caption`, `pageSize`, `filterLabel`, `selectable`, `selected`, `onSelectedChange` |
+
+Dropdown, Tooltip, Popover and the Date picker use Bootstrap's JavaScript,
+which needs Popper: `npm install bootstrap @popperjs/core`.
 
 More come with each release. For an item without a React component yet,
 `add` installs its CSS and JavaScript and says so: copy its markup from its

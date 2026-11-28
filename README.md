@@ -37,7 +37,8 @@ the `<link>` and `<script>` tags to add to your layout.
 In a React or Vue project (`react`, `next`, `vue` or `nuxt` in
 `package.json`) the same commands install `.tsx` or `.vue` components:
 Button, Dialog, Toaster, Input, Textarea, Select, Checkbox, Switch, Tabs,
-Card, Alert, Badge and Avatar so far, typed and tested. See
+Card, Alert, Badge, Avatar, Dropdown, Tooltip, Popover, Sheet, Combobox, Date
+picker and Data table so far, typed and tested. See
 [React](https://bootcn.dev/guide/react) and [Vue](https://bootcn.dev/guide/vue).
 
 ### With an AI assistant

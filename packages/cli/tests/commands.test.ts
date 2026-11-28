@@ -471,6 +471,18 @@ describe('react and vue', () => {
     expect(await exists(resolve(root, 'src/bootcn/js/tree.js'))).toBe(true);
     expect(await exists(resolve(root, 'src/components/ui/tree.html'))).toBe(false);
   });
+
+  it('lists the npm packages a component imports (Popper for dropdowns)', async () => {
+    const root = await tempDir();
+    await writeFiles(root, { 'package.json': '{"dependencies":{"react":"19.3.1"}}' });
+    await runCli(['init', '--yes', '--cwd', root, '--registry', registry]);
+    const add = await runCli(['add', 'dropdown', '--yes', '--cwd', root, '--registry', registry]);
+    expect(add.code, add.output).toBe(EXIT.ok);
+    expect(add.output).toMatch(
+      /External dependencies to install yourself: bootstrap, @popperjs\/core/,
+    );
+    expect(await exists(resolve(root, 'src/components/ui/Dropdown.tsx'))).toBe(true);
+  });
 });
 
 describe('list and info', () => {

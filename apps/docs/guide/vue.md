@@ -65,18 +65,27 @@ const open = ref(false);
 
 ## Components so far
 
-| Component                     | Props and slots                                                                                                                       |
-| ----------------------------- | ------------------------------------------------------------------------------------------------------------------------------------- |
-| `Button`                      | `variant` (default, secondary, outline, ghost, destructive, link), `size`, `type`, default slot                                       |
-| `Dialog`                      | `v-model:open`, `title`, `description`, `size`, default slot, `#footer` slot                                                          |
-| `Toaster`                     | Put `<Toaster />` once; import `toast` from it: `toast()`, `toast.success()`…                                                         |
-| `Input`, `Textarea`, `Select` | `v-model`, `label`, `help`, `error`, and every attribute of the field; `Select` also `options`, `placeholder` and `<option>` children |
-| `Checkbox`, `Switch`          | `v-model` (boolean), `label`                                                                                                          |
-| `Tabs`                        | `v-model`, `label`, `items` (`value`, `label`), a slot named after each value                                                         |
-| `Card`                        | `title`, `description`, `titleAs`, default slot, `#footer` slot                                                                       |
-| `Alert`                       | `title`, `variant` (default, destructive), default slot, `#icon` slot                                                                 |
-| `Badge`                       | `variant` (default, secondary, outline, destructive), default slot                                                                    |
-| `Avatar`                      | `name`, `src` (initials when missing or broken), `fallback`, `size`, `square`                                                         |
+| Component                     | Props and slots                                                                                                                                                              |
+| ----------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `Button`                      | `variant` (default, secondary, outline, ghost, destructive, link), `size`, `type`, default slot                                                                              |
+| `Dialog`                      | `v-model:open`, `title`, `description`, `size`, default slot, `#footer` slot                                                                                                 |
+| `Toaster`                     | Put `<Toaster />` once; import `toast` from it: `toast()`, `toast.success()`…                                                                                                |
+| `Input`, `Textarea`, `Select` | `v-model`, `label`, `help`, `error`, and every attribute of the field; `Select` also `options`, `placeholder` and `<option>` children                                        |
+| `Checkbox`, `Switch`          | `v-model` (boolean), `label`                                                                                                                                                 |
+| `Tabs`                        | `v-model`, `label`, `items` (`value`, `label`), a slot named after each value                                                                                                |
+| `Card`                        | `title`, `description`, `titleAs`, default slot, `#footer` slot                                                                                                              |
+| `Alert`                       | `title`, `variant` (default, destructive), default slot, `#icon` slot                                                                                                        |
+| `Badge`                       | `variant` (default, secondary, outline, destructive), default slot                                                                                                           |
+| `Avatar`                      | `name`, `src` (initials when missing or broken), `fallback`, `size`, `square`                                                                                                |
+| `Dropdown`                    | `label` or default slot, `items` (`label`, `onSelect`, `href`, `shortcut`, `disabled`, `destructive`; or `type: 'label'` / `'separator'`), `variant`, `align`, `@select`     |
+| `Tooltip`, `Popover`          | Wrap one button in the default slot: `content`, `placement`; Popover also `title` and `trigger` (click or focus)                                                             |
+| `Sheet`                       | `v-model:open`, `title`, `description`, `side` (start, end, top, bottom), default slot, `#footer` slot                                                                       |
+| `Combobox`                    | `v-model`, `label`, `options` (`value`, `label`, `disabled`), `placeholder`, `empty-text`, `name`                                                                            |
+| `DatePicker`                  | `v-model` (YYYY-MM-DD), `label`, `min`, `max`, `week-start`, `locale`, `name`                                                                                                |
+| `DataTable`                   | `columns` (`key`, `header`, `sortable`, `numeric`, `align`), `rows`, `row-id`, `caption`, `page-size`, `filter-label`, `selectable`, `v-model:selected`, `#cell-<key>` slots |
+
+Dropdown, Tooltip, Popover and the Date picker use Bootstrap's JavaScript,
+which needs Popper: `npm install bootstrap @popperjs/core`.
 
 More come with each release. For an item without a Vue component yet, `add`
 installs its CSS and JavaScript and says so: copy its markup from its page

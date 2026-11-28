@@ -1,0 +1,24 @@
+{
+  "$schema": "../../schema/registry-item.schema.json",
+  "name": "tooltip",
+  "type": "registry:ui",
+  "title": "Tooltip (Vue)",
+  "description": "The tooltip as a Vue component: short hints on hover and focus, built on Bootstrap Tooltip, dismissible with Escape.",
+  "version": "1.0.0",
+  "added": "0.45.0",
+  "categories": ["overlays", "feedback"],
+  "dependencies": ["bootstrap", "@popperjs/core"],
+  "registryDependencies": [],
+  "compatibility": {
+    "bootstrap": "5.3",
+    "platform": ["Bootstrap CSS", "Bootstrap JS bundle"]
+  },
+  "license": "MIT",
+  "files": [
+    {
+      "path": "Tooltip.vue",
+      "target": "Tooltip.vue",
+      "type": "registry:vue"
+    }
+  ]
+}

@@ -1,0 +1,24 @@
+{
+  "$schema": "../../schema/registry-item.schema.json",
+  "name": "combobox",
+  "type": "registry:ui",
+  "title": "Combobox (React)",
+  "description": "The combobox as a React component: a searchable select: type to filter a list, pick one option or several (shown as chips), fully keyboard accessible.",
+  "version": "1.0.0",
+  "added": "0.45.0",
+  "categories": ["forms"],
+  "dependencies": [],
+  "registryDependencies": [],
+  "compatibility": {
+    "bootstrap": "5.3",
+    "platform": ["Bootstrap CSS"]
+  },
+  "license": "MIT",
+  "files": [
+    {
+      "path": "Combobox.tsx",
+      "target": "Combobox.tsx",
+      "type": "registry:react"
+    }
+  ]
+}

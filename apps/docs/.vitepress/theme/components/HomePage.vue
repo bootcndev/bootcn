@@ -66,8 +66,8 @@ const latest = [
 ];
 
 const alsoNew = [
-  { text: 'React components (13)', href: '/guide/react' },
-  { text: 'Vue components (13)', href: '/guide/vue' },
+  { text: 'React components (20)', href: '/guide/react' },
+  { text: 'Vue components (20)', href: '/guide/vue' },
   { text: 'Border beam', href: '/components/border-beam' },
   { text: 'Gradient text', href: '/components/gradient-text' },
   { text: 'Scroll reveal', href: '/components/scroll-reveal' },
@@ -149,7 +149,7 @@ const features = [
       />
       <a class="bootcn-landing__pill" :href="withBase('/changelog')">
         <span class="bootcn-landing__pill-tag">New</span>
-        13 React and Vue components: forms, tabs, dialogs and more
+        20 React and Vue components: data table, date picker, combobox and more
         <span aria-hidden="true">→</span>
       </a>
       <h1 id="bootcn-landing-title" class="bootcn-landing__title">

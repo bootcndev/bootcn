@@ -228,7 +228,15 @@ async function withFramework(
     const files = item.files.filter(
       (file) => file.type !== 'registry:component' && file.type !== 'registry:page',
     );
-    result.push({ ...item, files: [...files, ...(overlay?.files ?? [])] });
+    // npm packages the component imports (Bootstrap's plugins need Popper).
+    const dependencies = [
+      ...new Set([...(item.dependencies ?? []), ...(overlay?.dependencies ?? [])]),
+    ];
+    result.push({
+      ...item,
+      dependencies,
+      files: [...files, ...(overlay?.files ?? [])],
+    });
   }
   for (const name of missing) {
     ctx.out.warn(

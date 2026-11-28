@@ -10,6 +10,17 @@ each published version stays available under `/v/<version>/`) and the **CLI**
 
 ## Registry
 
+### 0.45.0
+
+Seven more React and Vue components, 20 in all.
+
+- Dropdown, Tooltip, Popover and Sheet on Bootstrap's plugins, loaded in the
+  browser only.
+- Combobox and Data table written for React and Vue state: filtering that
+  ignores accents, keyboard selection, sorting, pages and row selection.
+- Date picker on the calendar script, with the date as `YYYY-MM-DD` in
+  `value` / `v-model`.
+
 ### 0.44.0
 
 More React and Vue components.
@@ -444,6 +455,13 @@ The App UI pack.
 - The first public registry: 20 components and the design tokens.
 
 ## CLI
+
+### 0.8.1
+
+- `add` in React and Vue projects lists the npm packages a component
+  imports, such as `bootstrap` and `@popperjs/core` for the Dropdown.
+- The MCP server tells assistants which items have React and Vue
+  components.
 
 ### 0.8.0
 

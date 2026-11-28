@@ -1,0 +1,24 @@
+{
+  "$schema": "../../schema/registry-item.schema.json",
+  "name": "sheet",
+  "type": "registry:ui",
+  "title": "Sheet (Vue)",
+  "description": "The sheet as a Vue component: a panel that slides in from the edge of the screen for secondary tasks, built on Bootstrap Offcanvas.",
+  "version": "1.0.0",
+  "added": "0.45.0",
+  "categories": ["overlays"],
+  "dependencies": ["bootstrap"],
+  "registryDependencies": [],
+  "compatibility": {
+    "bootstrap": "5.3",
+    "platform": ["Bootstrap CSS", "Bootstrap JS bundle"]
+  },
+  "license": "MIT",
+  "files": [
+    {
+      "path": "Sheet.vue",
+      "target": "Sheet.vue",
+      "type": "registry:vue"
+    }
+  ]
+}

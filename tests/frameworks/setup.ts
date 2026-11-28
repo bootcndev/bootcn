@@ -27,6 +27,7 @@ export default function setup(): void {
       'add',
       ...['button', 'dialog', 'toaster', 'input', 'textarea', 'select', 'checkbox', 'switch'],
       ...['badge', 'alert', 'card', 'avatar', 'tabs'],
+      ...['dropdown', 'tooltip', 'popover', 'sheet', 'combobox', 'date-picker', 'data-table'],
       '--yes',
       '--cwd',
       app,
